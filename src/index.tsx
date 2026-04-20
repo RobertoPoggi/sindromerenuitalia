@@ -17,7 +17,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'RNU4-2 emerge come una delle principali cause di disturbi rari del neurosviluppo – <strong>Rinnovando la Speranza per le Famiglie</strong>',
-    hero_desc: 'La Sindrome ReNU è un disturbo spliceosomale con un hotspot mutazionale definito e un dataset globale crescente, creando un\'opportunità terapeutica straordinariamente accessibile. Circa 100.000 individui nel mondo presentano variazioni del DNA in soli <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a> degli oltre 3 miliardi di paia di basi!',
+    hero_desc: 'La Sindrome ReNU è un disturbo spliceosomale con un hotspot mutazionale definito e un dataset globale crescente. Attualmente sono <strong>~250 i casi accertati nel mondo</strong> (12-14 in Italia), ma la stima del potenziale non diagnosticato è molto più alta: le varianti patogene si concentrano in soli <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a> degli oltre 3 miliardi di paia di basi del genoma!',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Ricerca',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Donazioni', nav_contact: 'Contatti', nav_brochure: 'Brochure',
@@ -91,7 +91,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Together, we make a difference',
     tagline: 'A newly identified genetic condition. A globally coordinated research effort.',
     hero_text: 'RNU4-2 Emerges as a Leading Cause of Rare Neurodevelopmental Disorders – <strong>Renewing Hope for Families</strong>',
-    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Around 100,000 individuals globally have DNA changes in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
+    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (12-14 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
     nav_home: 'Home', nav_about: 'About ReNU', nav_research: 'Research',
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Brochures',
@@ -165,7 +165,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Ensemble, nous faisons la différence',
     tagline: 'Une condition génétique nouvellement identifiée. Un effort de recherche coordonné mondialement.',
     hero_text: 'RNU4-2 émerge comme une cause majeure de troubles rares du neurodéveloppement – <strong>Renouvelant l\'espoir pour les familles</strong>',
-    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Environ 100 000 personnes dans le monde présentent des modifications ADN en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a>!',
+    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (12-14 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
     nav_home: 'Accueil', nav_about: 'À propos de ReNU', nav_research: 'Recherche',
     nav_therapies: 'Thérapies', nav_diagnosis: 'Diagnostic', nav_community: 'Communauté',
     nav_donations: 'Dons', nav_contact: 'Contact', nav_brochure: 'Brochures',
@@ -239,7 +239,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Juntos, hacemos la diferencia',
     tagline: 'Una condición genética recién identificada. Un esfuerzo de investigación coordinado a nivel mundial.',
     hero_text: 'RNU4-2 emerge como una causa principal de trastornos raros del neurodesarrollo – <strong>Renovando la Esperanza para las Familias</strong>',
-    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Alrededor de 100.000 personas en todo el mundo tienen cambios en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
+    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (12-14 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
     nav_home: 'Inicio', nav_about: 'Sobre ReNU', nav_research: 'Investigación',
     nav_therapies: 'Terapias', nav_diagnosis: 'Diagnóstico', nav_community: 'Comunidad',
     nav_donations: 'Donaciones', nav_contact: 'Contacto', nav_brochure: 'Folletos',
@@ -313,7 +313,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Gemeinsam machen wir den Unterschied',
     tagline: 'Eine neu identifizierte genetische Erkrankung. Eine global koordinierte Forschungsarbeit.',
     hero_text: 'RNU4-2 entwickelt sich zu einer führenden Ursache seltener neurologischer Entwicklungsstörungen – <strong>Neue Hoffnung für Familien</strong>',
-    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Etwa 100.000 Menschen weltweit haben DNA-Veränderungen in nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a>!',
+    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (12-14 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
     nav_home: 'Startseite', nav_about: 'Über ReNU', nav_research: 'Forschung',
     nav_therapies: 'Therapien', nav_diagnosis: 'Diagnose', nav_community: 'Gemeinschaft',
     nav_donations: 'Spenden', nav_contact: 'Kontakt', nav_brochure: 'Broschüren',
@@ -662,8 +662,9 @@ function homePage(t: Record<string, string>): string {
 
   <!-- STATS STRIP -->
   <section class="stat-bar text-white py-6 px-4">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div><div class="text-3xl font-extrabold text-sky-300">~100.000</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'persone nel mondo':t.lang==='en'?'people worldwide':t.lang==='fr'?'personnes dans le monde':t.lang==='es'?'personas en el mundo':'Menschen weltweit'}</div></div>
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+      <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi accertati nel mondo':t.lang==='en'?'confirmed cases worldwide':t.lang==='fr'?'cas confirmés dans le monde':t.lang==='es'?'casos confirmados en el mundo':'bestätigte Fälle weltweit'}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">12-14</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi in Italia':t.lang==='en'?'cases in Italy':t.lang==='fr'?'cas en Italie':t.lang==='es'?'casos en Italia':'Fälle in Italien'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'posizioni nel DNA mutate':t.lang==='en'?'DNA positions mutated':t.lang==='fr'?'positions ADN mutées':t.lang==='es'?'posiciones ADN mutadas':'DNA-Positionen mutiert'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'paesi con famiglie mappate':t.lang==='en'?'countries with mapped families':t.lang==='fr'?'pays avec familles':t.lang==='es'?'países con familias':'Länder mit Familien'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'anno della scoperta':t.lang==='en'?'year of discovery':t.lang==='fr'?'année de la découverte':t.lang==='es'?'año del descubrimiento':'Jahr der Entdeckung'}</div></div>
