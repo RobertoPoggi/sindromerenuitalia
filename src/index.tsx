@@ -1148,7 +1148,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <p class="text-sky-300 text-sm">${t.footer_partnership}</p>
         <p class="text-sky-300 text-sm mt-1">www.sindromerenu.it</p>
         <div class="flex gap-3 mt-4">
-          <a href="https://www.facebook.com/groups/1268033701594892" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
           <a href="https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
         </div>
       </div>
@@ -1988,9 +1988,9 @@ function communityPage(t: Record<string, string>): string {
     { country: 'Australia', flag: '🇦🇺', fb: 'https://www.facebook.com/groups/1671427560388792', ig: '', web: '' },
     { country: 'France', flag: '🇫🇷', fb: '', ig: 'https://www.instagram.com/renu_association_france/', web: 'https://www.syndrome-renu.fr/' },
     { country: 'España', flag: '🇪🇸', fb: '', ig: 'https://www.instagram.com/asociacion_sindrome_renu/', web: 'https://www.sindromerenu.es/' },
-    { country: 'UK', flag: '🇬🇧', fb: 'https://www.facebook.com/groups/1603406977204374', ig: 'https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu', web: '' },
+    { country: 'UK', flag: '🇬🇧', fb: 'https://www.facebook.com/groups/1603406977204374', ig: 'https://www.instagram.com/rnu4_2_family/', web: '' },
     { country: 'USA (HQ)', flag: '🇺🇸', fb: 'https://www.facebook.com/groups/rnu42', ig: 'https://www.instagram.com/renusyndromeunited/', web: 'https://www.renusyndrome.org' },
-    { country: 'Italia', flag: '🇮🇹', fb: 'https://www.facebook.com/groups/1268033701594892', ig: 'https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu', web: 'https://www.sindromerenu.it' },
+    { country: 'Italia', flag: '🇮🇹', fb: 'https://www.facebook.com/groups/1268033701594892/?ref=share', ig: 'https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu', web: 'https://www.sindromerenu.it' },
   ]
 
   return `
@@ -2326,7 +2326,7 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
-          <a href="https://www.facebook.com/groups/1268033701594892" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
           <a href="https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl"></i></a>
         </div>
