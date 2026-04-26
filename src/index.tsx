@@ -3888,12 +3888,12 @@ app.get('/api/admin/stats', async (c) => {
   if (db) {
     try {
       const [la, ct, ad, dn] = await Promise.all([
-        db.prepare('SELECT COUNT(*) as n FROM lista_attesa WHERE cancellato=0').first(),
-        db.prepare('SELECT COUNT(*) as n FROM contatti').first(),
-        db.prepare('SELECT COUNT(*) as n FROM adesioni WHERE cancellato=0').first(),
-        db.prepare('SELECT COUNT(*) as n FROM donazioni WHERE cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM lista_attesa WHERE cancellato IS NULL OR cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM contatti WHERE cancellato IS NULL OR cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM adesioni WHERE cancellato IS NULL OR cancellato=0').first(),
+        db.prepare("SELECT COUNT(*) as n FROM sqlite_master WHERE type='table' AND name='donazioni'").first(),
       ])
-      return c.json({ lista_attesa:(la as any)?.n??0, contatti:(ct as any)?.n??0, adesioni:(ad as any)?.n??0, donazioni:(dn as any)?.n??0, db:true })
+      return c.json({ lista_attesa:(la as any)?.n??0, contatti:(ct as any)?.n??0, adesioni:(ad as any)?.n??0, donazioni:0, db:true })
     } catch(e) { /* fallback */ }
   }
   return c.json({ lista_attesa:memStore.la.length, contatti:memStore.ct.length, adesioni:memStore.ad.length, donazioni:memStore.dn.length, db:false })
