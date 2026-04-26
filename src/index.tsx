@@ -12,6 +12,9 @@ app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/images/*', serveStatic({ root: './public' }))
 app.use('/brochure/*', serveStatic({ root: './public' }))
 app.use('/favicon.svg', serveStatic({ root: './public' }))
+app.use('/manuale-utente.html', serveStatic({ root: './public' }))
+app.get('/manuale', (c) => c.redirect('/manuale-utente.html', 302))
+app.get('/manual', (c) => c.redirect('/manuale-utente.html', 302))
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const translations: Record<string, Record<string, string>> = {
@@ -3685,9 +3688,15 @@ const ADMIN_HTML = `<!DOCTYPE html>
       <div class="text-xs text-blue-200">Sindrome ReNU Italia APS – v2.0</div>
     </div>
   </div>
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-3 flex-wrap">
     <span id="dbBadge" class="text-xs bg-gray-500 text-white px-2 py-1 rounded-full">DB: –</span>
     <span class="text-xs bg-green-500 text-white px-2 py-1 rounded-full">GDPR v2.0</span>
+    <a href="/manuale-utente" target="_blank" class="text-xs bg-white text-blue-900 font-bold px-3 py-1 rounded-full hover:bg-blue-50 transition-colors flex items-center gap-1">
+      <i class="fas fa-book-open"></i> Manuale
+    </a>
+    <a href="/it/home" class="text-xs bg-blue-800 text-blue-100 px-3 py-1 rounded-full hover:bg-blue-700 transition-colors">
+      ← Sito
+    </a>
   </div>
 </nav>
 
