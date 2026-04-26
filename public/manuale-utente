@@ -2,1398 +2,1799 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manuale d'Uso – Sindrome ReNU Italia APS</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manuale d'Uso — Sindrome ReNU Italia APS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root {
-    --primary: #082050;
-    --accent:  #1078C0;
-    --sky:     #45B8EC;
-    --light:   #f0f9ff;
-    --text:    #1e293b;
-    --muted:   #64748b;
-    --border:  #e2e8f0;
-    --success: #16a34a;
-    --warn:    #d97706;
-    --danger:  #dc2626;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    background: #f8fafc;
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 15px;
-  }
+/* ═══════════════════════════════════════════════════════════
+   RESET & TOKENS
+═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── HEADER ── */
-  header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: #fff;
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .header-brand { display: flex; align-items: center; gap: 14px; }
-  .header-brand img { height: 48px; filter: brightness(0) invert(1); opacity: .9; }
-  .header-brand-text h1 { font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
-  .header-brand-text p { font-size: 11px; color: #93c5fd; margin-top: 1px; }
-  .header-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    text-transform: uppercase;
-  }
-  .badge-green  { background: #dcfce7; color: #166534; }
-  .badge-blue   { background: #dbeafe; color: #1e40af; }
-  .badge-orange { background: #fef3c7; color: #92400e; }
-  .btn-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 13px;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.3);
-    padding: 6px 14px;
-    border-radius: 8px;
-    transition: background .2s;
-  }
-  .btn-back:hover { background: rgba(255,255,255,.25); }
+:root {
+  --navy:   #082050;
+  --blue:   #1078C0;
+  --sky:    #45B8EC;
+  --pale:   #EFF9FF;
+  --green:  #16A085;
+  --amber:  #D97706;
+  --red:    #E74C3C;
+  --purple: #7C3AED;
+  --text:   #1e293b;
+  --muted:  #64748b;
+  --border: #e2e8f0;
+  --bg:     #f1f5f9;
+  --card:   #ffffff;
+  --header-h: 60px;
+  --sidebar-w: 260px;
+}
 
-  /* ── LAYOUT ── */
-  .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
-  @media(max-width: 900px) { .container { grid-template-columns: 1fr; } }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    position: sticky;
-    top: 85px;
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,.06);
-  }
-  .sidebar-title {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    padding: 14px 18px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .sidebar nav { padding: 8px 0; }
-  .sidebar nav a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 18px;
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: all .15s;
-  }
-  .sidebar nav a:hover, .sidebar nav a.active {
-    color: var(--accent);
-    background: var(--light);
-    border-left-color: var(--accent);
-  }
-  .sidebar nav a i { width: 16px; text-align: center; font-size: 12px; }
-  .sidebar nav .section-label {
-    padding: 12px 18px 4px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    border: none;
-    pointer-events: none;
-  }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-  /* ── CONTENT ── */
-  .content { min-width: 0; }
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: var(--header-h);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  display: flex; align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 20px rgba(8,32,80,.4);
+  gap: 16px;
+}
+.header-logo {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; flex-shrink: 0;
+}
+.header-title {
+  flex: 1; min-width: 0;
+}
+.header-title h1 {
+  font-size: 16px; font-weight: 700; color: #fff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.header-title p {
+  font-size: 11px; color: #93c5fd; margin-top: 0;
+}
+.header-actions {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.btn-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  border: none; text-decoration: none; transition: all .2s;
+  white-space: nowrap;
+}
+.btn-chip-white { background: rgba(255,255,255,.18); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+.btn-chip-white:hover { background: rgba(255,255,255,.28); }
+.btn-chip-green { background: #dcfce7; color: #166534; }
+.btn-chip-print { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+.btn-chip-print:hover { background: rgba(255,255,255,.2); }
+.mobile-menu-btn {
+  display: none; background: none; border: none;
+  color: #fff; font-size: 20px; cursor: pointer; padding: 4px;
+}
 
-  /* ── COVER CARD ── */
-  .cover-card {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%, var(--sky) 100%);
-    color: #fff;
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover-card::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 240px; height: 240px;
-    background: rgba(255,255,255,.07);
-    border-radius: 50%;
-  }
-  .cover-card h1 { font-size: 30px; font-weight: 800; margin-bottom: 8px; position: relative; }
-  .cover-card p { font-size: 15px; color: #bfdbfe; max-width: 560px; position: relative; }
-  .cover-meta { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-  .cover-meta span {
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 100px;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 600;
-  }
+/* ═══════════════════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════════════════ */
+.app-body {
+  display: flex;
+  min-height: 100vh;
+  padding-top: var(--header-h);
+}
 
-  /* ── SECTION ── */
-  section {
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    padding: 36px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.04);
-    scroll-margin-top: 100px;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--light);
-  }
-  .section-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .icon-blue   { background: #dbeafe; color: var(--accent); }
-  .icon-green  { background: #dcfce7; color: var(--success); }
-  .icon-purple { background: #f3e8ff; color: #7c3aed; }
-  .icon-red    { background: #fee2e2; color: var(--danger); }
-  .icon-orange { background: #fef3c7; color: var(--warn); }
-  .icon-sky    { background: #e0f2fe; color: #0369a1; }
-  .icon-teal   { background: #ccfbf1; color: #0f766e; }
-  .icon-pink   { background: #fce7f3; color: #be185d; }
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════════════ */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  padding: 20px 0 40px;
+  z-index: 200;
+  transition: transform .3s ease;
+}
+.sidebar-group-label {
+  padding: 6px 20px 4px;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .8px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.sidebar-group-label:first-child { margin-top: 4px; }
+.nav-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 20px;
+  font-size: 13.5px; font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all .15s;
+}
+.nav-link i { width: 16px; text-align: center; font-size: 12px; }
+.nav-link:hover { background: var(--pale); color: var(--blue); }
+.nav-link.active {
+  background: var(--pale);
+  color: var(--blue);
+  border-left-color: var(--blue);
+  font-weight: 600;
+}
 
-  .section-header-text h2 { font-size: 21px; font-weight: 800; color: var(--primary); }
-  .section-header-text p  { font-size: 13px; color: var(--muted); margin-top: 2px; }
+/* ═══════════════════════════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════════════════════════ */
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  min-width: 0;
+  padding: 40px 48px 80px;
+  max-width: calc(100vw - var(--sidebar-w));
+}
 
-  h3 { font-size: 17px; font-weight: 700; color: var(--primary); margin: 24px 0 10px; display: flex; align-items: center; gap: 8px; }
-  h3 i { font-size: 14px; color: var(--accent); }
-  h4 { font-size: 14px; font-weight: 700; color: var(--text); margin: 16px 0 6px; }
-  p  { margin-bottom: 12px; color: #374151; }
-  ul, ol { margin: 0 0 14px 20px; color: #374151; }
-  li { margin-bottom: 6px; }
+/* ═══════════════════════════════════════════════════════════
+   COVER / HERO
+═══════════════════════════════════════════════════════════ */
+.cover {
+  background: linear-gradient(150deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+  border-radius: 20px;
+  padding: 56px 52px;
+  color: #fff;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 30%, rgba(69,184,236,.25) 0%, transparent 60%);
+}
+.cover-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 600;
+  margin-bottom: 24px; position: relative;
+}
+.cover h1 {
+  font-size: 36px; font-weight: 800;
+  line-height: 1.2; margin-bottom: 12px;
+  position: relative;
+}
+.cover-sub {
+  font-size: 17px; color: rgba(255,255,255,.82);
+  margin-bottom: 32px; max-width: 600px; position: relative;
+}
+.cover-meta {
+  display: flex; flex-wrap: wrap; gap: 24px;
+  position: relative;
+}
+.cover-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: rgba(255,255,255,.75);
+}
+.cover-meta-item strong { color: #fff; }
+.cover-logo-circle {
+  position: absolute; top: 40px; right: 52px;
+  width: 100px; height: 100px; border-radius: 50%;
+  background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px;
+}
 
-  /* ── INFO BOXES ── */
-  .info-box {
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin: 16px 0;
-    display: flex;
-    gap: 14px;
-    font-size: 13.5px;
-  }
-  .info-box i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-  .info-box-blue   { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
-  .info-box-green  { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
-  .info-box-orange { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
-  .info-box-red    { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
-  .info-box-gray   { background: #f8fafc; border: 1px solid var(--border); color: #475569; }
+/* ═══════════════════════════════════════════════════════════
+   TABLE OF CONTENTS
+═══════════════════════════════════════════════════════════ */
+.toc-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 36px;
+  margin-bottom: 40px;
+}
+.toc-card h2 {
+  font-size: 15px; font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase; letter-spacing: .6px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+.toc-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13.5px; font-weight: 500;
+  transition: all .15s;
+}
+.toc-item:hover { background: var(--pale); border-color: var(--sky); color: var(--blue); }
+.toc-num {
+  min-width: 26px; height: 26px; border-radius: 7px;
+  background: var(--pale); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; flex-shrink: 0;
+}
+.toc-item:hover .toc-num { background: var(--blue); color: #fff; }
 
-  /* ── FEATURE CARDS ── */
-  .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
-  .feature-card {
-    background: var(--light);
-    border: 1px solid #bae6fd;
-    border-radius: 12px;
-    padding: 18px;
-  }
-  .feature-card .fc-icon { font-size: 22px; margin-bottom: 8px; }
-  .feature-card .fc-title { font-weight: 700; font-size: 14px; color: var(--primary); margin-bottom: 4px; }
-  .feature-card .fc-desc  { font-size: 12px; color: var(--muted); }
+/* ═══════════════════════════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════════════════════════ */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.section-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 24px 32px 20px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+}
+.section-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.icon-blue { background: #dbeafe; color: var(--blue); }
+.icon-navy { background: #e0e7ef; color: var(--navy); }
+.icon-green { background: #d1fae5; color: var(--green); }
+.icon-amber { background: #fef3c7; color: var(--amber); }
+.icon-red { background: #fee2e2; color: var(--red); }
+.icon-purple { background: #ede9fe; color: var(--purple); }
+.icon-sky { background: #e0f2fe; color: #0369a1; }
+.section-head-text { flex: 1; }
+.section-head h2 {
+  font-size: 20px; font-weight: 700; color: var(--navy);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 6px;
+  background: var(--blue); color: #fff;
+  font-size: 12px; font-weight: 800;
+}
+.section-desc {
+  font-size: 13px; color: var(--muted); margin-top: 3px;
+}
+.section-body {
+  padding: 28px 32px;
+}
+.section-body > p:first-child { margin-top: 0; }
 
-  /* ── PAGE CARDS ── */
-  .page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 16px 0; }
-  .page-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    background: #fff;
-    transition: box-shadow .2s;
-  }
-  .page-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-  .page-card .pc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .page-card .pc-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-  .page-card .pc-title { font-weight: 700; font-size: 15px; color: var(--primary); }
-  .page-card .pc-url   { font-size: 11px; color: var(--muted); margin-bottom: 8px; font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; display: inline-block; }
-  .page-card .pc-desc  { font-size: 13px; color: #374151; }
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY INSIDE SECTIONS
+═══════════════════════════════════════════════════════════ */
+.section-body h3 {
+  font-size: 15px; font-weight: 700;
+  color: var(--navy);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--pale);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-body h3 i { color: var(--blue); font-size: 13px; }
+.section-body h4 {
+  font-size: 13.5px; font-weight: 600;
+  color: var(--navy); margin: 18px 0 6px;
+}
+.section-body p {
+  font-size: 14.5px; color: #374151; margin: 10px 0;
+}
+.section-body strong { color: var(--navy); }
+.section-body em { color: var(--muted); }
 
-  /* ── STEP LIST ── */
-  .steps { counter-reset: step; margin: 16px 0; }
-  .step  { display: flex; gap: 16px; margin-bottom: 20px; }
-  .step-num {
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    font-weight: 800;
-    font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    counter-increment: step;
-  }
-  .step-body { flex: 1; }
-  .step-body b { display: block; font-size: 15px; color: var(--primary); margin-bottom: 4px; }
-  .step-body p { margin: 0; font-size: 13.5px; }
+/* ═══════════════════════════════════════════════════════════
+   LISTS
+═══════════════════════════════════════════════════════════ */
+.section-body ul, .section-body ol {
+  margin: 10px 0; padding-left: 24px;
+}
+.section-body li {
+  font-size: 14.5px; margin: 5px 0; color: #374151;
+}
+.section-body li::marker { color: var(--blue); }
 
-  /* ── TABLE ── */
-  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
-  .data-table th { background: var(--light); color: var(--primary); font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid #bae6fd; }
-  .data-table td { padding: 9px 14px; border: 1px solid var(--border); vertical-align: top; }
-  .data-table tr:nth-child(even) td { background: #f8fafc; }
+/* ═══════════════════════════════════════════════════════════
+   CODE & BADGES
+═══════════════════════════════════════════════════════════ */
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 12.5px;
+  background: #f1f5f9;
+  color: var(--blue);
+  padding: 2px 7px; border-radius: 5px;
+  border: 1px solid var(--border);
+}
+pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  margin: 14px 0;
+  line-height: 1.6;
+}
+pre code { background: none; border: none; color: inherit; font-size: inherit; padding: 0; }
 
-  /* ── CODE ── */
-  code {
-    font-family: 'Courier New', monospace;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 2px 7px;
-    font-size: 12.5px;
-    color: #be185d;
-  }
+/* ═══════════════════════════════════════════════════════════
+   TABLES
+═══════════════════════════════════════════════════════════ */
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead { background: var(--pale); }
+th {
+  padding: 10px 16px; text-align: left;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px;
+  color: var(--navy);
+}
+td { padding: 10px 16px; border-top: 1px solid var(--border); color: #374151; vertical-align: top; }
+tr:hover td { background: #f8fafc; }
 
-  /* ── CONTACTS GRID ── */
-  .contacts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
-  .contact-card {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-    text-align: center;
-  }
-  .contact-card i { font-size: 22px; color: var(--accent); margin-bottom: 6px; display: block; }
-  .contact-card .cc-label { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 700; letter-spacing: .5px; }
-  .contact-card .cc-value { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: 3px; }
-  .contact-card a { color: var(--accent); text-decoration: none; }
-  .contact-card a:hover { text-decoration: underline; }
+/* ═══════════════════════════════════════════════════════════
+   INFO BOXES
+═══════════════════════════════════════════════════════════ */
+.box {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 13.5px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.box i { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.box-blue  { background: #eff6ff; border-left: 4px solid var(--blue); color: #1e3a5f; }
+.box-green { background: #f0fdf4; border-left: 4px solid var(--green); color: #14532d; }
+.box-amber { background: #fffbeb; border-left: 4px solid var(--amber); color: #78350f; }
+.box-red   { background: #fef2f2; border-left: 4px solid var(--red); color: #7f1d1d; }
+.box-navy  { background: #eff9ff; border-left: 4px solid var(--navy); color: #082050; }
 
-  /* ── ADMIN TABLE ── */
-  .admin-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
-  .admin-tab {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    background: #fff;
-  }
-  .admin-tab i { font-size: 14px; }
+/* ═══════════════════════════════════════════════════════════
+   FEATURE GRID
+═══════════════════════════════════════════════════════════ */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.feat-card {
+  background: var(--pale);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px;
+}
+.feat-card i { color: var(--blue); margin-bottom: 6px; display: block; }
+.feat-card strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.feat-card span { font-size: 12px; color: var(--muted); }
 
-  /* ── URL PILL ── */
-  .url-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 700;
-    font-family: monospace;
-    text-decoration: none;
-    margin: 4px 0;
-    word-break: break-all;
-  }
-  .url-pill.light { background: var(--light); color: var(--accent); border: 1px solid #bae6fd; }
+/* ═══════════════════════════════════════════════════════════
+   URL PILL
+═══════════════════════════════════════════════════════════ */
+.url-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #f0fdf4; border: 1px solid #86efac;
+  border-radius: 8px; padding: 4px 12px;
+  font-family: 'Fira Code', monospace; font-size: 12px;
+  color: #166534; text-decoration: none;
+  transition: all .15s;
+}
+.url-pill:hover { background: #dcfce7; }
+.url-pill i { font-size: 11px; }
 
-  /* ── TOC QUICK JUMP ── */
-  .quick-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .qj-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 8px; padding: 7px 13px;
-    font-size: 12.5px; color: var(--accent); font-weight: 600;
-    text-decoration: none; transition: all .15s;
-  }
-  .qj-btn:hover { background: var(--light); border-color: var(--accent); }
-  .qj-btn i { font-size: 11px; }
+/* ═══════════════════════════════════════════════════════════
+   PAGE CARD (navigation entries)
+═══════════════════════════════════════════════════════════ */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px; margin: 14px 0;
+}
+.page-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.page-card-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+.page-card-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); }
+.page-card-text span { font-size: 11.5px; color: var(--muted); font-family: 'Fira Code', monospace; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--primary);
-    color: #94a3b8;
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    margin-top: 48px;
-  }
-  footer a { color: var(--sky); text-decoration: none; }
+/* ═══════════════════════════════════════════════════════════
+   STEP INDICATOR
+═══════════════════════════════════════════════════════════ */
+.steps { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
+.step {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.step-num {
+  min-width: 28px; height: 28px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body { flex: 1; }
+.step-body strong { display: block; font-size: 13.5px; font-weight: 600; color: var(--navy); }
+.step-body span { font-size: 13px; color: #374151; }
 
-  /* ── PRINT ── */
-  @media print {
-    .sidebar, header { display: none !important; }
-    .container { grid-template-columns: 1fr; }
-    section { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
-  }
+/* ═══════════════════════════════════════════════════════════
+   BACK-TO-TOP
+═══════════════════════════════════════════════════════════ */
+#back-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 4px 16px rgba(16,120,192,.4);
+  opacity: 0; transition: opacity .3s;
+  z-index: 400;
+}
+#back-top.visible { opacity: 1; }
+#back-top:hover { background: var(--navy); }
 
-  /* ── SCROLL BAR ── */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #f1f5f9; }
-  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════ */
+footer {
+  margin-left: var(--sidebar-w);
+  background: var(--navy); color: rgba(255,255,255,.7);
+  padding: 24px 48px;
+  font-size: 13px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+footer strong { color: #fff; }
+footer a { color: var(--sky); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════════════════════
+   OVERLAY (mobile)
+═══════════════════════════════════════════════════════════ */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.5); z-index: 150;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar { transform: translateX(-260px); width: 260px; }
+  .sidebar.open { transform: translateX(0); }
+  .overlay.open { display: block; }
+  .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+  .main { margin-left: 0; padding: 24px 20px 60px; max-width: 100vw; }
+  footer { margin-left: 0; padding: 20px; }
+  .cover { padding: 36px 28px; }
+  .cover h1 { font-size: 26px; }
+  .cover-logo-circle { display: none; }
+  .section-head { padding: 18px 20px 14px; }
+  .section-body { padding: 20px; }
+}
+
+@media (max-width: 600px) {
+  .header-title p { display: none; }
+  .btn-chip-green { display: none; }
+  .toc-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .page-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════════════ */
+@media print {
+  .header, .sidebar, .overlay, #back-top, footer { display: none !important; }
+  .app-body { display: block; padding-top: 0; }
+  .main { margin: 0; padding: 20px; max-width: 100%; }
+  .section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  .cover { background: var(--navy) !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══════════ HEADER ══════════ -->
-<header>
-  <div class="header-inner">
-    <div class="header-brand">
-      <div class="header-brand-text">
-        <h1><i class="fas fa-book-open" style="margin-right:10px;opacity:.8"></i>Manuale d'Uso</h1>
-        <p>Sindrome ReNU Italia APS – www.sindromerenu.it</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <span class="badge badge-green"><i class="fas fa-check-circle"></i> GDPR Compliant v2.0</span>
-      <span class="badge badge-blue">v2.0 · Aprile 2026</span>
-      <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i> Torna al sito</a>
-      <button onclick="window.print()" class="btn-back" style="border: none; cursor: pointer;"><i class="fas fa-print"></i> Stampa PDF</button>
-    </div>
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header class="header">
+  <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="header-logo"><i class="fas fa-dna"></i></div>
+  <div class="header-title">
+    <h1>Manuale d'Uso — Sindrome ReNU Italia APS</h1>
+    <p>Guida completa · v2.0 · Aprile 2026</p>
+  </div>
+  <div class="header-actions">
+    <span class="btn-chip btn-chip-green"><i class="fas fa-shield-halved"></i>GDPR v2.0</span>
+    <button class="btn-chip btn-chip-print" onclick="window.print()"><i class="fas fa-print"></i>Stampa</button>
+    <a href="/it/home" class="btn-chip btn-chip-white"><i class="fas fa-arrow-left"></i>Sito</a>
   </div>
 </header>
 
-<!-- ══════════ LAYOUT ══════════ -->
-<div class="container">
+<!-- Overlay mobile -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-  <!-- ── SIDEBAR ── -->
-  <aside class="sidebar">
-    <div class="sidebar-title"><i class="fas fa-list-ul" style="margin-right:8px"></i>Indice</div>
-    <nav>
-      <a href="#panoramica"   class="section-label">Panoramica</a>
-      <a href="#panoramica"><i class="fas fa-home"></i>Panoramica del sito</a>
-      <a href="#navigazione" class="section-label">Navigazione</a>
-      <a href="#navigazione"><i class="fas fa-compass"></i>Come navigare</a>
-      <a href="#pagine" class="section-label">Pagine</a>
-      <a href="#pg-home"><i class="fas fa-house-chimney"></i>Home</a>
-      <a href="#pg-about"><i class="fas fa-info-circle"></i>Cos'è ReNU</a>
-      <a href="#pg-research"><i class="fas fa-microscope"></i>Ricerca</a>
-      <a href="#pg-therapies"><i class="fas fa-heartbeat"></i>Terapie</a>
-      <a href="#pg-diagnosis"><i class="fas fa-stethoscope"></i>Diagnosi</a>
-      <a href="#pg-community"><i class="fas fa-users"></i>Comunità</a>
-      <a href="#pg-donations"><i class="fas fa-donate"></i>Sostienici</a>
-      <a href="#pg-contact"><i class="fas fa-envelope"></i>Contatti</a>
-      <a href="#pg-brochure"><i class="fas fa-file-pdf"></i>Brochure</a>
-      <a href="#pg-events"><i class="fas fa-calendar-alt"></i>Eventi</a>
-      <a href="#pg-members"><i class="fas fa-id-card"></i>Diventa Socio</a>
-      <a href="#pg-faq"><i class="fas fa-question-circle"></i>FAQ & Diritti</a>
-      <a href="#pg-privacy"><i class="fas fa-shield-alt"></i>Privacy</a>
-      <a href="#forms" class="section-label">Moduli</a>
-      <a href="#forms"><i class="fas fa-wpforms"></i>Form & invio dati</a>
-      <a href="#email" class="section-label">Email</a>
-      <a href="#email"><i class="fas fa-paper-plane"></i>Notifiche email</a>
-      <a href="#admin" class="section-label">Admin</a>
-      <a href="#admin"><i class="fas fa-cog"></i>Pannello Admin</a>
-      <a href="#gdpr" class="section-label">GDPR</a>
-      <a href="#gdpr"><i class="fas fa-lock"></i>GDPR & Privacy</a>
-      <a href="#database" class="section-label">Database</a>
-      <a href="#database"><i class="fas fa-database"></i>Database & API</a>
-      <a href="#contacts-section" class="section-label">Contatti tecnici</a>
-      <a href="#contacts-section"><i class="fas fa-tools"></i>Riferimenti tecnici</a>
-    </nav>
+<!-- ══════════════════════════════════════
+     APP BODY
+══════════════════════════════════════ -->
+<div class="app-body">
+
+  <!-- ════ SIDEBAR ════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-group-label">Introduzione</div>
+    <a href="#cover" class="nav-link" data-sec="cover"><i class="fas fa-book-open"></i>Presentazione</a>
+    <a href="#toc" class="nav-link" data-sec="toc"><i class="fas fa-list-ul"></i>Indice</a>
+
+    <div class="sidebar-group-label">Il sito</div>
+    <a href="#sec-overview" class="nav-link" data-sec="sec-overview"><i class="fas fa-globe"></i>1. Panoramica</a>
+    <a href="#sec-nav" class="nav-link" data-sec="sec-nav"><i class="fas fa-bars"></i>2. Navigazione</a>
+
+    <div class="sidebar-group-label">Pagine</div>
+    <a href="#sec-home" class="nav-link" data-sec="sec-home"><i class="fas fa-house"></i>3. Home</a>
+    <a href="#sec-about" class="nav-link" data-sec="sec-about"><i class="fas fa-info-circle"></i>4. Cos'è ReNU</a>
+    <a href="#sec-research" class="nav-link" data-sec="sec-research"><i class="fas fa-flask"></i>5. Ricerca</a>
+    <a href="#sec-therapies" class="nav-link" data-sec="sec-therapies"><i class="fas fa-pills"></i>6. Terapie</a>
+    <a href="#sec-diagnosis" class="nav-link" data-sec="sec-diagnosis"><i class="fas fa-microscope"></i>7. Diagnosi</a>
+    <a href="#sec-community" class="nav-link" data-sec="sec-community"><i class="fas fa-users"></i>8. Community</a>
+    <a href="#sec-donations" class="nav-link" data-sec="sec-donations"><i class="fas fa-heart"></i>9. Donazioni</a>
+    <a href="#sec-contact" class="nav-link" data-sec="sec-contact"><i class="fas fa-envelope"></i>10. Contatti</a>
+    <a href="#sec-brochure" class="nav-link" data-sec="sec-brochure"><i class="fas fa-file-pdf"></i>11. Brochure</a>
+    <a href="#sec-events" class="nav-link" data-sec="sec-events"><i class="fas fa-calendar"></i>12. Eventi</a>
+    <a href="#sec-members" class="nav-link" data-sec="sec-members"><i class="fas fa-id-card"></i>13. Soci</a>
+    <a href="#sec-faq" class="nav-link" data-sec="sec-faq"><i class="fas fa-circle-question"></i>14. FAQ</a>
+    <a href="#sec-privacy" class="nav-link" data-sec="sec-privacy"><i class="fas fa-lock"></i>15. Privacy</a>
+
+    <div class="sidebar-group-label">Funzionalità</div>
+    <a href="#sec-forms" class="nav-link" data-sec="sec-forms"><i class="fas fa-wpforms"></i>16. Moduli</a>
+    <a href="#sec-email" class="nav-link" data-sec="sec-email"><i class="fas fa-paper-plane"></i>17. Email</a>
+    <a href="#sec-admin" class="nav-link" data-sec="sec-admin"><i class="fas fa-user-shield"></i>18. Admin</a>
+    <a href="#sec-gdpr" class="nav-link" data-sec="sec-gdpr"><i class="fas fa-scale-balanced"></i>19. GDPR</a>
+
+    <div class="sidebar-group-label">Tecnico</div>
+    <a href="#sec-db" class="nav-link" data-sec="sec-db"><i class="fas fa-database"></i>20. Database</a>
+    <a href="#sec-deploy" class="nav-link" data-sec="sec-deploy"><i class="fas fa-rocket"></i>21. Deploy</a>
+    <a href="#sec-api" class="nav-link" data-sec="sec-api"><i class="fas fa-code"></i>22. API</a>
   </aside>
 
-  <!-- ── MAIN CONTENT ── -->
-  <main class="content">
+  <!-- ════ MAIN ════ -->
+  <main class="main">
 
-    <!-- COVER -->
-    <div class="cover-card">
-      <h1><i class="fas fa-book-open" style="margin-right:12px;opacity:.85"></i>Manuale d'Uso Completo</h1>
-      <p>Guida a tutte le funzionalità del sito <strong>www.sindromerenu.it</strong> — pannello admin, moduli, email automatiche, database e conformità GDPR.</p>
+    <!-- ══ COVER ══ -->
+    <div id="cover" class="cover">
+      <div class="cover-logo-circle">🧬</div>
+      <div class="cover-badge"><i class="fas fa-book-open"></i>Manuale Ufficiale</div>
+      <h1>Manuale d'Uso<br>Sindrome ReNU Italia APS</h1>
+      <p class="cover-sub">
+        Guida completa a tutte le funzionalità del sito web ufficiale dell'associazione.
+        Destinata a utenti, famiglie, volontari e amministratori.
+      </p>
       <div class="cover-meta">
-        <span><i class="fas fa-calendar-alt"></i> Aprile 2026</span>
-        <span><i class="fas fa-code-branch"></i> Versione 2.0</span>
-        <span><i class="fas fa-globe"></i> 5 lingue supportate</span>
-        <span><i class="fas fa-file-alt"></i> 13 pagine</span>
-        <span><i class="fas fa-shield-alt"></i> GDPR Compliant</span>
+        <div class="cover-meta-item"><i class="fas fa-tag"></i><strong>Versione</strong> 2.0</div>
+        <div class="cover-meta-item"><i class="fas fa-calendar"></i><strong>Data</strong> Aprile 2026</div>
+        <div class="cover-meta-item"><i class="fas fa-globe"></i><strong>Sito</strong> sindromerenu-italia.pages.dev</div>
+        <div class="cover-meta-item"><i class="fas fa-language"></i><strong>Lingue</strong> 5 (IT · EN · FR · ES · DE)</div>
+        <div class="cover-meta-item"><i class="fas fa-shield-halved"></i><strong>GDPR</strong> Conforme Reg. UE 2016/679</div>
       </div>
     </div>
 
-    <!-- QUICK JUMP -->
-    <div class="quick-jump">
-      <a href="#navigazione" class="qj-btn"><i class="fas fa-compass"></i>Navigazione</a>
-      <a href="#forms" class="qj-btn"><i class="fas fa-wpforms"></i>Form</a>
-      <a href="#email" class="qj-btn"><i class="fas fa-paper-plane"></i>Email</a>
-      <a href="#admin" class="qj-btn"><i class="fas fa-cog"></i>Pannello Admin</a>
-      <a href="#gdpr" class="qj-btn"><i class="fas fa-lock"></i>GDPR</a>
-      <a href="#database" class="qj-btn"><i class="fas fa-database"></i>Database</a>
+    <!-- ══ INDICE ══ -->
+    <div id="toc" class="toc-card">
+      <h2><i class="fas fa-list-ul"></i>Indice dei contenuti</h2>
+      <div class="toc-grid">
+        <a href="#sec-overview" class="toc-item"><span class="toc-num">1</span>Panoramica del sito</a>
+        <a href="#sec-nav" class="toc-item"><span class="toc-num">2</span>Navigazione</a>
+        <a href="#sec-home" class="toc-item"><span class="toc-num">3</span>Home Page</a>
+        <a href="#sec-about" class="toc-item"><span class="toc-num">4</span>Cos'è ReNU</a>
+        <a href="#sec-research" class="toc-item"><span class="toc-num">5</span>Ricerca</a>
+        <a href="#sec-therapies" class="toc-item"><span class="toc-num">6</span>Terapie</a>
+        <a href="#sec-diagnosis" class="toc-item"><span class="toc-num">7</span>Diagnosi</a>
+        <a href="#sec-community" class="toc-item"><span class="toc-num">8</span>Community</a>
+        <a href="#sec-donations" class="toc-item"><span class="toc-num">9</span>Donazioni</a>
+        <a href="#sec-contact" class="toc-item"><span class="toc-num">10</span>Contatti</a>
+        <a href="#sec-brochure" class="toc-item"><span class="toc-num">11</span>Brochure</a>
+        <a href="#sec-events" class="toc-item"><span class="toc-num">12</span>Eventi</a>
+        <a href="#sec-members" class="toc-item"><span class="toc-num">13</span>Soci</a>
+        <a href="#sec-faq" class="toc-item"><span class="toc-num">14</span>FAQ</a>
+        <a href="#sec-privacy" class="toc-item"><span class="toc-num">15</span>Privacy</a>
+        <a href="#sec-forms" class="toc-item"><span class="toc-num">16</span>Moduli</a>
+        <a href="#sec-email" class="toc-item"><span class="toc-num">17</span>Email automatiche</a>
+        <a href="#sec-admin" class="toc-item"><span class="toc-num">18</span>Pannello Admin</a>
+        <a href="#sec-gdpr" class="toc-item"><span class="toc-num">19</span>GDPR</a>
+        <a href="#sec-db" class="toc-item"><span class="toc-num">20</span>Database D1</a>
+        <a href="#sec-deploy" class="toc-item"><span class="toc-num">21</span>Deployment</a>
+        <a href="#sec-api" class="toc-item"><span class="toc-num">22</span>API interne</a>
+      </div>
     </div>
 
-    <!-- ══ 1. PANORAMICA ══ -->
-    <section id="panoramica">
-      <div class="section-header">
+    <!-- ══════════════════════════════════════
+         1. PANORAMICA
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-overview">
+      <div class="section-head">
         <div class="section-icon icon-blue"><i class="fas fa-globe"></i></div>
-        <div class="section-header-text">
-          <h2>1. Panoramica del Sito</h2>
-          <p>Informazioni generali sull'architettura e le caratteristiche del portale</p>
+        <div class="section-head-text">
+          <h2><span class="section-num">1</span>Panoramica del sito</h2>
+          <p class="section-desc">Struttura generale, tecnologie e URL principali</p>
         </div>
       </div>
+      <div class="section-body">
+        <p>
+          Il sito di <strong>Sindrome ReNU Italia APS</strong> è una web application moderna, costruita con
+          <strong>Hono</strong> (framework TypeScript serverless), renderizzata lato server (SSR) e distribuita
+          su <strong>Cloudflare Pages</strong> tramite Workers. Non utilizza framework frontend pesanti — tutto
+          il rendering HTML avviene sul server.
+        </p>
 
-      <p>Il sito <strong>Sindrome ReNU Italia APS</strong> è il portale ufficiale della prima associazione italiana dedicata alla Sindrome ReNU (causata da varianti patogene del gene <strong>RNU4-2</strong>). Il sito è costruito con tecnologie moderne serverless su infrastruttura Cloudflare.</p>
-
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="fc-icon">🌍</div>
-          <div class="fc-title">5 Lingue</div>
-          <div class="fc-desc">Italiano, Inglese, Francese, Spagnolo, Tedesco — 60 URL totali</div>
+        <h3><i class="fas fa-link"></i>URL principali</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>URL</th><th>Descrizione</th><th>Stato</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://sindromerenu-italia.pages.dev" class="url-pill" target="_blank"><i class="fas fa-external-link"></i>sindromerenu-italia.pages.dev</a></td><td>Produzione (Cloudflare Pages)</td><td>✅ Online</td></tr>
+              <tr><td><code>/it/home</code></td><td>Homepage italiana</td><td>✅</td></tr>
+              <tr><td><code>/en/home</code></td><td>Homepage inglese</td><td>✅</td></tr>
+              <tr><td><code>/api/health</code></td><td>Health check</td><td>✅ JSON</td></tr>
+              <tr><td><code>/admin</code></td><td>Pannello amministratore</td><td>🔐 Accesso riservato</td></tr>
+              <tr><td><code>/manuale-utente</code></td><td>Questo manuale</td><td>✅</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">📄</div>
-          <div class="fc-title">13 Pagine</div>
-          <div class="fc-desc">Home, Chi siamo, Ricerca, Terapie, Diagnosi, Comunità, Donazioni, Contatti, Brochure, Eventi, Soci, FAQ, Privacy</div>
+
+        <h3><i class="fas fa-server"></i>Stack tecnologico</h3>
+        <div class="feat-grid">
+          <div class="feat-card">
+            <i class="fas fa-cloud"></i>
+            <strong>Cloudflare Pages</strong>
+            <span>Hosting serverless globale su rete edge</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-bolt"></i>
+            <strong>Hono v4</strong>
+            <span>Framework TypeScript ultra-leggero per Workers</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-database"></i>
+            <strong>Cloudflare D1</strong>
+            <span>Database SQLite serverless persistente</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-envelope"></i>
+            <strong>MailChannels + Resend</strong>
+            <span>Invio email transazionali</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-code"></i>
+            <strong>Vite 6</strong>
+            <span>Build tool per SSR bundle</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-language"></i>
+            <strong>i18n integrata</strong>
+            <span>5 lingue: IT · EN · FR · ES · DE</span>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">🗄️</div>
-          <div class="fc-title">Database D1</div>
-          <div class="fc-desc">Cloudflare D1 (SQLite serverless) – GDPR compliant, 7 tabelle</div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">📧</div>
-          <div class="fc-title">Email Auto</div>
-          <div class="fc-desc">Notifiche immediate a info@sindromerenu.it + conferma all'utente</div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">🔐</div>
-          <div class="fc-title">Admin Panel</div>
-          <div class="fc-desc">Pannello protetto con token per gestione dati e funzioni GDPR</div>
-        </div>
-        <div class="feature-card">
-          <div class="fc-icon">⚡</div>
-          <div class="fc-title">Serverless CF</div>
-          <div class="fc-desc">Cloudflare Workers + Pages — zero server da gestire, uptime globale</div>
-        </div>
-      </div>
 
-      <h3><i class="fas fa-link"></i>URL del sito</h3>
-      <p>Il sito è accessibile ai seguenti indirizzi:</p>
-      <ul>
-        <li><strong>Dominio principale (in configurazione):</strong> <code>https://www.sindromerenu.it</code></li>
-        <li><strong>URL Cloudflare Pages (sempre attivo):</strong> <code>https://sindromerenu-italia.pages.dev</code></li>
-        <li><strong>Pannello Admin:</strong> <code>https://sindromerenu-italia.pages.dev/admin</code></li>
-      </ul>
-
-      <h3><i class="fas fa-server"></i>Architettura tecnica</h3>
-      <table class="data-table">
-        <thead><tr><th>Componente</th><th>Tecnologia</th><th>Ruolo</th></tr></thead>
-        <tbody>
-          <tr><td>Frontend + API</td><td>Hono (TypeScript) su Cloudflare Workers</td><td>Server unico che genera le pagine HTML e gestisce le API</td></tr>
-          <tr><td>Hosting</td><td>Cloudflare Pages</td><td>Deploy del worker con CDN globale</td></tr>
-          <tr><td>Database</td><td>Cloudflare D1 (SQLite serverless)</td><td>Persistenza dati moduli, audit log GDPR</td></tr>
-          <tr><td>Email</td><td>MailChannels (nativo CF) + Resend (fallback)</td><td>Notifiche automatiche per ogni modulo compilato</td></tr>
-          <tr><td>File statici</td><td>Cloudflare CDN</td><td>Immagini, PDF, brochure, favicon</td></tr>
-          <tr><td>Repository</td><td>GitHub – RobertoPoggi/sindromerenuitalia</td><td>Codice sorgente e storico versioni</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ══ 2. NAVIGAZIONE ══ -->
-    <section id="navigazione">
-      <div class="section-header">
-        <div class="section-icon icon-sky"><i class="fas fa-compass"></i></div>
-        <div class="section-header-text">
-          <h2>2. Come Navigare il Sito</h2>
-          <p>Struttura della navigazione, cambio lingua e funzionalità comuni</p>
-        </div>
-      </div>
-
-      <h3><i class="fas fa-bars"></i>Menu di navigazione</h3>
-      <p>Il menu principale è presente in cima a ogni pagina e contiene le seguenti voci:</p>
-      <table class="data-table">
-        <thead><tr><th>Voce menu</th><th>URL (italiano)</th><th>Descrizione</th></tr></thead>
-        <tbody>
-          <tr><td>Home</td><td><code>/it/home</code></td><td>Pagina principale</td></tr>
-          <tr><td>Cos'è ReNU</td><td><code>/it/about</code></td><td>Informazioni sulla sindrome</td></tr>
-          <tr><td>Ricerca</td><td><code>/it/research</code></td><td>Studi clinici e ricerche attive</td></tr>
-          <tr><td>Terapie</td><td><code>/it/therapies</code></td><td>Terapie riabilitative disponibili</td></tr>
-          <tr><td>Diagnosi</td><td><code>/it/diagnosis</code></td><td>Come ottenere la diagnosi WGS</td></tr>
-          <tr><td>Comunità</td><td><code>/it/community</code></td><td>Connessione tra famiglie</td></tr>
-          <tr><td>Sostienici</td><td><code>/it/donations</code></td><td>Come donare all'associazione</td></tr>
-          <tr><td>Contatti</td><td><code>/it/contact</code></td><td>Form di contatto e recapiti</td></tr>
-          <tr><td>Brochure</td><td><code>/it/brochure</code></td><td>Materiali informativi scaricabili</td></tr>
-          <tr><td>Eventi</td><td><code>/it/events</code></td><td>Incontri ed eventi in calendario</td></tr>
-          <tr><td>Diventa Socio</td><td><code>/it/members</code></td><td>Pre-iscrizione lista d'attesa soci</td></tr>
-          <tr><td>FAQ & Diritti</td><td><code>/it/faq</code></td><td>Domande frequenti e diritti legali</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-language"></i>Cambio lingua</h3>
-      <p>Il sito è disponibile in <strong>5 lingue</strong>. Per cambiare lingua, fare clic sul <strong>menu a tendina con la bandiera</strong> in alto a destra nel menu di navigazione. Le lingue disponibili sono:</p>
-      <div class="feature-grid">
-        <div class="feature-card"><div class="fc-icon">🇮🇹</div><div class="fc-title">Italiano</div><div class="fc-desc">Percorso: <code>/it/</code></div></div>
-        <div class="feature-card"><div class="fc-icon">🇬🇧</div><div class="fc-title">English</div><div class="fc-desc">Percorso: <code>/en/</code></div></div>
-        <div class="feature-card"><div class="fc-icon">🇫🇷</div><div class="fc-title">Français</div><div class="fc-desc">Percorso: <code>/fr/</code></div></div>
-        <div class="feature-card"><div class="fc-icon">🇪🇸</div><div class="fc-title">Español</div><div class="fc-desc">Percorso: <code>/es/</code></div></div>
-        <div class="feature-card"><div class="fc-icon">🇩🇪</div><div class="fc-title">Deutsch</div><div class="fc-desc">Percorso: <code>/de/</code></div></div>
-      </div>
-
-      <h3><i class="fas fa-search"></i>Barra di ricerca</h3>
-      <p>La pagina <strong>Contatti</strong> include una <strong>barra di ricerca interna</strong> che permette di trovare rapidamente qualsiasi sezione del sito digitando parole chiave (es. "terapie", "diagnosi", "donazioni").</p>
-
-      <h3><i class="fas fa-cookie-bite"></i>Banner cookie</h3>
-      <p>Al primo accesso appare un <strong>banner cookie</strong> in fondo alla pagina che informa l'utente sull'uso di soli cookie tecnici necessari (nessuna profilazione). Cliccando <em>Accetta</em> il banner viene chiuso e non ricompare. Un link alla Privacy Policy è sempre disponibile nel footer.</p>
-    </section>
-
-    <!-- ══ 3. PAGINE ══ -->
-    <section id="pg-home">
-      <div class="section-header">
-        <div class="section-icon icon-blue"><i class="fas fa-house-chimney"></i></div>
-        <div class="section-header-text">
-          <h2>3. Pagina Home</h2>
-          <p>Punto di ingresso principale del sito</p>
-        </div>
-      </div>
-      <p>La pagina Home presenta una <strong>hero section</strong> con il titolo dell'associazione, la descrizione della sindrome (≈250 casi accertati nel mondo, 12-14 in Italia) e due pulsanti di azione rapida:</p>
-      <ul>
-        <li><strong>Vuoi maggiori informazioni?</strong> → porta alla pagina Contatti</li>
-        <li><strong>Diventa Socio</strong> → porta alla pagina pre-iscrizione</li>
-        <li><strong>Chi siamo</strong> → porta alla pagina Cos'è ReNU</li>
-      </ul>
-      <p>Seguono 6 <strong>card tematiche</strong> con link rapidi alle sezioni principali:</p>
-      <div class="feature-grid">
-        <div class="feature-card"><div class="fc-icon">📍</div><div class="fc-title">Registrati sulla mappa</div><div class="fc-desc">Link al registro globale JotForm per segnalare casi in Italia</div></div>
-        <div class="feature-card"><div class="fc-icon">📢</div><div class="fc-title">Aumenta la consapevolezza</div><div class="fc-desc">Link alla sezione Community ed eventi ReNU Speranza</div></div>
-        <div class="feature-card"><div class="fc-icon">🔬</div><div class="fc-title">Ricerca</div><div class="fc-desc">Studi clinici a cui partecipare</div></div>
-        <div class="feature-card"><div class="fc-icon">ℹ️</div><div class="fc-title">Maggiori informazioni</div><div class="fc-desc">Caratteristiche cliniche della sindrome</div></div>
-        <div class="feature-card"><div class="fc-icon">👨‍👩‍👧</div><div class="fc-title">Connessione tra genitori</div><div class="fc-desc">Community italiana e internazionale</div></div>
-        <div class="feature-card"><div class="fc-icon">❤️</div><div class="fc-title">Donazioni</div><div class="fc-desc">Come sostenere l'associazione</div></div>
-      </div>
-      <p>Un <strong>contatore statistiche</strong> mostra: <em>38+ paesi</em> con famiglie mappate e <em>2024</em> anno di identificazione del gene RNU4-2.</p>
-    </section>
-
-    <section id="pg-about">
-      <div class="section-header">
-        <div class="section-icon icon-sky"><i class="fas fa-info-circle"></i></div>
-        <div class="section-header-text">
-          <h2>4. Pagina Cos'è ReNU</h2>
-          <p>Informazioni mediche complete sulla sindrome</p>
-        </div>
-      </div>
-      <p>Questa pagina illustra in modo approfondito la <strong>Sindrome ReNU</strong> dal punto di vista clinico e scientifico:</p>
-      <ul>
-        <li><strong>Causa genetica:</strong> varianti patogene del gene RNU4-2 (RNA non codificante, componente del macchinario di splicing)</li>
-        <li><strong>Scoperta:</strong> ottobre 2024; prevalenza stimata ~1 su 35.000 nati vivi</li>
-        <li><strong>Caratteristiche cliniche principali</strong> (in schede espandibili):
-          <ul>
-            <li>Anomalie cerebrali (materia bianca, corpo calloso, ventricomegalia)</li>
-            <li>Disabilità intellettiva</li>
-            <li>Epilessia (spasmi infantili, crisi focali e tonico-cloniche)</li>
-            <li>Problemi visivi (ipoplasia nervo ottico, CVI, strabismo, nistagmo)</li>
-            <li>Caratteristiche del viso (viso miopatico, epicanto, narici anteverse)</li>
-            <li>Ipotonia / debolezza muscolare</li>
-            <li>Ritardo nel cammino o incapacità di camminare</li>
-            <li>Microcefalia, bassa statura, ipotiroidismo</li>
-            <li>Difficoltà alimentari, scialorrea, stipsi, reflusso</li>
-            <li>Difficoltà di linguaggio / comunicazione alternativa</li>
-            <li>Bassa densità ossea, displasia dell'anca</li>
-          </ul>
-        </li>
-        <li><strong>Nota positiva:</strong> molte persone con ReNU mostrano temperamento felice, sono affettuose, amano altalene, acqua e musica.</li>
-        <li><strong>Nota diagnostica:</strong> In Italia per diagnosticare RNU4-2 è necessario il <strong>WGS (Whole Genome Sequencing)</strong>. Il WES non è in grado di rilevarlo.</li>
-      </ul>
-    </section>
-
-    <section id="pg-research">
-      <div class="section-header">
-        <div class="section-icon icon-purple"><i class="fas fa-microscope"></i></div>
-        <div class="section-header-text">
-          <h2>5. Pagina Ricerca</h2>
-          <p>Studi clinici e opportunità di partecipazione attiva</p>
-        </div>
-      </div>
-      <p>La pagina Ricerca elenca tutti gli <strong>studi clinici attivi</strong> a cui le famiglie possono partecipare per accelerare la ricerca sulla sindrome:</p>
-
-      <div class="info-box info-box-blue">
-        <i class="fas fa-id-card"></i>
-        <div><strong>Prima di iscriversi a qualsiasi ricerca</strong>, creare un <strong>CRID (Clinical Research ID)</strong> su <a href="https://thecrid.org" target="_blank">thecrid.org</a> e condividerlo con ogni studio clinico.</div>
-      </div>
-
-      <table class="data-table">
-        <thead><tr><th>Studio</th><th>Istituzione</th><th>Dettagli</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Citizen Health</strong></td><td>citizen.health</td><td>Registro dati personale online</td></tr>
-          <tr><td><strong>INDEED Study</strong></td><td>Mount Sinai (NY)</td><td>Sequenziamento DNA RNU4-2/RNU2-2 gratuito per uso ricerca</td></tr>
-          <tr><td><strong>Rare-X Registry</strong></td><td>rare-x.org</td><td>Registro internazionale malattie rare</td></tr>
-          <tr><td><strong>GestaltMatcher</strong></td><td>Dr. Ian Krantz</td><td>Studio trasversale ~45 minuti (AI su caratteri facciali)</td></tr>
-          <tr><td><strong>FaceBase / REN Study</strong></td><td>Università di Calgary</td><td>Survey 40-60 min, compenso $100 Amazon gift card</td></tr>
-        </tbody>
-      </table>
-      <p>La pagina include anche le <strong>ultime pubblicazioni PubMed</strong> (2024–2026) con DOI e abstract rilevanti sulla ricerca RNU4-2.</p>
-    </section>
-
-    <section id="pg-therapies">
-      <div class="section-header">
-        <div class="section-icon icon-green"><i class="fas fa-heartbeat"></i></div>
-        <div class="section-header-text">
-          <h2>6. Pagina Terapie</h2>
-          <p>Approcci terapeutici e diritti in Italia</p>
-        </div>
-      </div>
-      <p>La pagina Terapie illustra i principali <strong>approcci riabilitativi</strong> utilizzati per le persone con Sindrome ReNU:</p>
-      <div class="feature-grid">
-        <div class="feature-card"><div class="fc-icon">🏃</div><div class="fc-title">Fisioterapia</div><div class="fc-desc">Forza, equilibrio, coordinazione e miglioramento motorio</div></div>
-        <div class="feature-card"><div class="fc-icon">🗣️</div><div class="fc-title">Logopedia</div><div class="fc-desc">Comunicazione e gestione deglutizione</div></div>
-        <div class="feature-card"><div class="fc-icon">🎵</div><div class="fc-title">Musicoterapia</div><div class="fc-desc">Abilità percettivo-motorie, comunicazione e umore</div></div>
-        <div class="feature-card"><div class="fc-icon">✅</div><div class="fc-title">ABA Therapy</div><div class="fc-desc">Rinforzo positivo, abilità sociali e accademiche</div></div>
-        <div class="feature-card"><div class="fc-icon">🧠</div><div class="fc-title">Metodo Feuerstein</div><div class="fc-desc">Training cognitivo con mediazione</div></div>
-        <div class="feature-card"><div class="fc-icon">🏊</div><div class="fc-title">Acquaticità e Nuoto</div><div class="fc-desc">Tono muscolare, coordinazione, integrazione sensoriale</div></div>
-      </div>
-      <div class="info-box info-box-orange">
-        <i class="fas fa-exclamation-triangle"></i>
-        <div>Il sito <strong>non approva né raccomanda terapie specifiche</strong>. Consultare sempre un medico. La sezione informa anche sui <strong>diritti e tutele previsti dalla legge italiana</strong> per le famiglie di bambini con disabilità.</div>
+        <h3><i class="fas fa-folder-tree"></i>Struttura del repository</h3>
+        <pre><code>sindromerenuitalia/
+├── src/
+│   └── index.tsx          ← App principale (SSR + API routes)
+├── public/
+│   ├── brochure/          ← PDF delle brochure + thumbnail
+│   ├── images/            ← Immagini del sito
+│   ├── static/            ← File statici (statuto PDF, ecc.)
+│   ├── favicon.svg        ← Icona del sito
+│   └── manuale-utente.html← Questo manuale
+├── package.json
+└── vite.config.ts</code></pre>
       </div>
     </section>
 
-    <section id="pg-diagnosis">
-      <div class="section-header">
-        <div class="section-icon icon-teal"><i class="fas fa-stethoscope"></i></div>
-        <div class="section-header-text">
-          <h2>7. Pagina Diagnosi</h2>
-          <p>Come accedere al test diagnostico WGS in Italia</p>
+    <!-- ══════════════════════════════════════
+         2. NAVIGAZIONE
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-nav">
+      <div class="section-head">
+        <div class="section-icon icon-navy"><i class="fas fa-bars"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">2</span>Navigazione del sito</h2>
+          <p class="section-desc">Menu, cambio lingua, cookie banner</p>
         </div>
       </div>
-      <p>La pagina Diagnosi fornisce informazioni su <strong>dove e come eseguire il test diagnostico</strong> per RNU4-2 in Italia:</p>
-      <ul>
-        <li><strong>Tecnica necessaria:</strong> WGS – Whole Genome Sequencing (il WES non rileva RNU4-2)</li>
-        <li><strong>Differenza WGS vs WES:</strong> spiegazione accessibile delle due tecniche</li>
-        <li><strong>Contatto per informazioni:</strong> scrivere a <code>info@sindromerenu.it</code> per ottenere l'elenco aggiornato dei centri WGS disponibili in Italia</li>
-      </ul>
-      <div class="info-box info-box-blue">
-        <i class="fas fa-info-circle"></i>
-        <div>Per riservatezza sui centri partner, i dettagli sui laboratori vengono comunicati direttamente via email. Contattare l'associazione per ricevere l'elenco aggiornato.</div>
+      <div class="section-body">
+
+        <h3><i class="fas fa-bars"></i>Menu principale</h3>
+        <p>Il menu di navigazione è sempre visibile in cima alla pagina. Contiene i link a tutte le sezioni principali:</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-card-icon icon-blue"><i class="fas fa-house"></i></div>
+            <div class="page-card-text"><strong>Home</strong><span>/it/home</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-sky"><i class="fas fa-info-circle"></i></div>
+            <div class="page-card-text"><strong>Cos'è ReNU</strong><span>/it/about</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-green"><i class="fas fa-flask"></i></div>
+            <div class="page-card-text"><strong>Ricerca</strong><span>/it/research</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-amber"><i class="fas fa-pills"></i></div>
+            <div class="page-card-text"><strong>Terapie</strong><span>/it/therapies</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-red"><i class="fas fa-microscope"></i></div>
+            <div class="page-card-text"><strong>Diagnosi</strong><span>/it/diagnosis</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-purple"><i class="fas fa-users"></i></div>
+            <div class="page-card-text"><strong>Community</strong><span>/it/community</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-green"><i class="fas fa-heart"></i></div>
+            <div class="page-card-text"><strong>Donazioni</strong><span>/it/donations</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-blue"><i class="fas fa-envelope"></i></div>
+            <div class="page-card-text"><strong>Contatti</strong><span>/it/contact</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-red"><i class="fas fa-file-pdf"></i></div>
+            <div class="page-card-text"><strong>Brochure</strong><span>/it/brochure</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-amber"><i class="fas fa-calendar"></i></div>
+            <div class="page-card-text"><strong>Eventi</strong><span>/it/events</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-navy"><i class="fas fa-id-card"></i></div>
+            <div class="page-card-text"><strong>Soci</strong><span>/it/members</span></div>
+          </div>
+          <div class="page-card">
+            <div class="page-card-icon icon-sky"><i class="fas fa-circle-question"></i></div>
+            <div class="page-card-text"><strong>FAQ</strong><span>/it/faq</span></div>
+          </div>
+        </div>
+
+        <h3><i class="fas fa-language"></i>Cambio lingua</h3>
+        <p>
+          In alto a destra è presente un <strong>selettore lingua</strong> con bandiera.
+          La lingua è inclusa nel percorso URL (es. <code>/it/</code>, <code>/en/</code>, <code>/fr/</code>).
+          Tutte le pagine sono disponibili nelle 5 lingue supportate.
+        </p>
+        <div class="box box-blue">
+          <i class="fas fa-info-circle"></i>
+          <div>Cambiando lingua si viene reindirizzati alla stessa pagina nella nuova lingua. I dati inseriti nei moduli <strong>non</strong> vengono persi.</div>
+        </div>
+
+        <h3><i class="fas fa-cookie-bite"></i>Banner cookie</h3>
+        <p>
+          Al primo accesso appare un banner nella parte bassa dello schermo che informa dell'uso di
+          <strong>soli cookie tecnici</strong> (nessun cookie di profilazione o marketing).
+          Il banner riporta un link alla pagina Privacy. Cliccando "Accetta" o proseguendo la navigazione, il banner scompare e non riappare.
+        </p>
       </div>
     </section>
 
-    <section id="pg-community">
-      <div class="section-header">
+    <!-- ══════════════════════════════════════
+         3. HOME
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-home">
+      <div class="section-head">
+        <div class="section-icon icon-blue"><i class="fas fa-house"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">3</span>Home Page</h2>
+          <p class="section-desc">Prima pagina del sito, hero section e link rapidi</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La <strong>homepage</strong> è il punto d'ingresso principale. È composta da più blocchi verticali:
+        </p>
+        <ul>
+          <li><strong>Hero section</strong>: titolo principale, sottotitolo con descrizione della sindrome e tre bottoni di azione rapida</li>
+          <li><strong>Statistiche</strong>: ~250 casi confermati nel mondo, 12–14 in Italia, scoperta ottobre 2024</li>
+          <li><strong>Ultimi articoli / Aggiornamenti</strong>: link alle notizie più recenti</li>
+          <li><strong>Pulsanti di azione</strong>: Vuoi informazioni? → Contatti | Diventa Socio → Soci | Chi siamo → About</li>
+        </ul>
+        <div class="box box-green">
+          <i class="fas fa-lightbulb"></i>
+          <div>La homepage è la porta d'ingresso per famiglie e medici. Tutti i contenuti principali sono raggiungibili con al massimo 2 click dalla home.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         4. COS'È ReNU (ABOUT)
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-about">
+      <div class="section-head">
+        <div class="section-icon icon-sky"><i class="fas fa-dna"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">4</span>Cos'è ReNU <code>/about</code></h2>
+          <p class="section-desc">Descrizione clinica della sindrome</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Questa pagina spiega in modo chiaro e accessibile cosa è la <strong>Sindrome da variante di RNU4-2</strong>,
+          a chi si rivolge (famiglie, medici) e cosa si sa finora.
+        </p>
+
+        <h3><i class="fas fa-info-circle"></i>Contenuti principali</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Argomento</th><th>Dettagli</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Gene coinvolto</strong></td><td>RNU4-2 (RNA snU4 n.2) — scoperto ottobre 2024</td></tr>
+              <tr><td><strong>Prevalenza</strong></td><td>~1 per 35.000 nati; ~250 casi confermati nel mondo; 12–14 in Italia</td></tr>
+              <tr><td><strong>Modalità di insorgenza</strong></td><td>Variante de novo (non ereditaria nella maggior parte dei casi)</td></tr>
+              <tr><td><strong>Diagnosi</strong></td><td>Richiede sequenziamento genomico WGS</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><i class="fas fa-clipboard-list"></i>Caratteristiche cliniche descritte</h3>
+        <ul>
+          <li><strong>Cervello</strong>: anomalie strutturali</li>
+          <li><strong>Sviluppo cognitivo</strong>: disabilità intellettiva da lieve a grave</li>
+          <li><strong>Crisi epilettiche</strong>: presenti in molti pazienti</li>
+          <li><strong>Vista</strong>: problemi visivi (strabismo, nistagmo)</li>
+          <li><strong>Tratti facciali</strong>: dismorfismi caratteristici</li>
+          <li><strong>Tono muscolare</strong>: ipotonia</li>
+          <li><strong>Mobilità</strong>: ritardo motorio, difficoltà alla deambulazione</li>
+          <li><strong>Crescita</strong>: alterazioni ponderali</li>
+          <li><strong>Alimentazione</strong>: difficoltà di suzione/deglutizione nei neonati</li>
+          <li><strong>Comunicazione</strong>: assenza o ritardo del linguaggio</li>
+          <li><strong>Ossa</strong>: anomalie scheletriche possibili</li>
+        </ul>
+
+        <div class="box box-blue">
+          <i class="fas fa-link"></i>
+          <div>Fonte scientifica: <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank">rarediseasegenomics.org — Saturation Genome Editing of RNU4-2</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         5. RICERCA
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-research">
+      <div class="section-head">
+        <div class="section-icon icon-green"><i class="fas fa-flask"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">5</span>Ricerca <code>/research</code></h2>
+          <p class="section-desc">Studi e pubblicazioni scientifiche sulla sindrome</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La sezione <strong>Ricerca</strong> presenta lo stato attuale degli studi scientifici
+          sulla Sindrome ReNU a livello internazionale.
+        </p>
+        <h3><i class="fas fa-book-open"></i>Contenuti</h3>
+        <ul>
+          <li>Elenco delle pubblicazioni scientifiche più importanti</li>
+          <li>Link ai paper originali (PubMed, bioRxiv)</li>
+          <li>Descrizione degli studi clinici attivi</li>
+          <li>Collaborazioni internazionali (es. Genomics England, Broad Institute)</li>
+          <li>Descrizione della tecnica di Saturation Genome Editing (SGE)</li>
+        </ul>
+        <div class="box box-amber">
+          <i class="fas fa-triangle-exclamation"></i>
+          <div>I contenuti scientifici sono aggiornati periodicamente dall'associazione. Per segnalare nuove pubblicazioni, contattare <strong>info@sindromerenu.it</strong>.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         6. TERAPIE
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-therapies">
+      <div class="section-head">
+        <div class="section-icon icon-amber"><i class="fas fa-pills"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">6</span>Terapie <code>/therapies</code></h2>
+          <p class="section-desc">Approcci terapeutici e trattamenti disponibili</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Attualmente non esiste una <strong>terapia causale</strong> per la Sindrome ReNU.
+          Questa pagina descrive le opzioni terapeutiche disponibili per la gestione dei sintomi.
+        </p>
+        <h3><i class="fas fa-hand-holding-medical"></i>Terapie descritte</h3>
+        <ul>
+          <li><strong>Logopedia</strong>: per le difficoltà di linguaggio e comunicazione</li>
+          <li><strong>Fisioterapia</strong>: per il tono muscolare e la motricità</li>
+          <li><strong>Neuropsicomotricità</strong>: sviluppo neuromotorio</li>
+          <li><strong>Terapia occupazionale</strong>: autonomia nelle attività quotidiane</li>
+          <li><strong>Antiepilettica</strong>: farmaci per la gestione delle crisi</li>
+          <li><strong>Supporto nutrizionale</strong>: nei casi di difficoltà alimentari</li>
+        </ul>
+        <div class="box box-blue">
+          <i class="fas fa-stethoscope"></i>
+          <div>Le informazioni mediche sul sito sono di carattere generale e non sostituiscono il consulto con specialisti. Per diagnosi e piani terapeutici individuali, rivolgersi sempre a un team multidisciplinare.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         7. DIAGNOSI
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-diagnosis">
+      <div class="section-head">
+        <div class="section-icon icon-red"><i class="fas fa-microscope"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">7</span>Diagnosi <code>/diagnosis</code></h2>
+          <p class="section-desc">Percorso diagnostico e test genetici</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La diagnosi della Sindrome ReNU richiede un approccio genomico avanzato.
+          Questa pagina guida famiglie e medici nel percorso diagnostico.
+        </p>
+        <h3><i class="fas fa-route"></i>Percorso diagnostico</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Sospetto clinico</strong>
+              <span>Presenza di disabilità intellettiva + caratteristiche cliniche compatibili</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Sequenziamento genomico WGS</strong>
+              <span>Whole Genome Sequencing — analisi dell'intero genoma (trio familiare raccomandato)</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Identificazione variante RNU4-2</strong>
+              <span>Variante de novo nel gene RNU4-2 confermata</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <strong>Conferma diagnostica</strong>
+              <span>Consulenza genetica specialistica per interpretazione e counseling</span>
+            </div>
+          </div>
+        </div>
+        <div class="box box-red">
+          <i class="fas fa-triangle-exclamation"></i>
+          <div><strong>Importante:</strong> il WGS è l'unico test che permette di identificare varianti nel gene RNU4-2. I pannelli genetici standard e l'array-CGH non sono sufficienti.</div>
+        </div>
+        <p>La pagina include un <strong>bottone di contatto urgente</strong> evidenziato (con animazione pulse) per le famiglie che sospettano la diagnosi e cercano supporto immediato.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         8. COMMUNITY
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-community">
+      <div class="section-head">
         <div class="section-icon icon-purple"><i class="fas fa-users"></i></div>
-        <div class="section-header-text">
-          <h2>8. Pagina Comunità</h2>
-          <p>Connessione tra famiglie italiane e internazionali</p>
+        <div class="section-head-text">
+          <h2><span class="section-num">8</span>Community <code>/community</code></h2>
+          <p class="section-desc">Canali social e gruppi di supporto</p>
         </div>
       </div>
-      <p>La pagina Comunità raccoglie tutti i <strong>punti di collegamento</strong> per le famiglie ReNU nel mondo:</p>
-      <ul>
-        <li><strong>Gruppo Facebook italiano:</strong> <a href="https://www.facebook.com/groups/1268033701594892" target="_blank">facebook.com/groups/1268033701594892</a></li>
-        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/sindrome_renu_italia/" target="_blank">@sindrome_renu_italia</a></li>
-        <li><strong>ReNU Syndrome United (USA):</strong> <a href="https://www.renusyndrome.org" target="_blank">renusyndrome.org</a></li>
-        <li><strong>Associazione francese:</strong> <a href="https://www.syndrome-renu.fr" target="_blank">syndrome-renu.fr</a></li>
-        <li><strong>Associazione spagnola:</strong> <a href="https://www.sindromerenu.es" target="_blank">sindromerenu.es</a></li>
-        <li><strong>Mappa globale:</strong> famiglie mappate in oltre 38 paesi (link alla mappa internazionale)</li>
-        <li><strong>Storie di famiglie</strong> (James, Ashley, Eliot – link a renusyndrome.org)</li>
-      </ul>
-      <p>La pagina include anche la sezione <strong>campagna Move 4 ReNU</strong> — iniziativa sportiva di sensibilizzazione.</p>
-    </section>
-
-    <section id="pg-donations">
-      <div class="section-header">
-        <div class="section-icon icon-red"><i class="fas fa-donate"></i></div>
-        <div class="section-header-text">
-          <h2>9. Pagina Sostienici (Donazioni)</h2>
-          <p>Come supportare economicamente l'associazione</p>
+      <div class="section-body">
+        <p>
+          La sezione <strong>Community</strong> raccoglie tutti i canali di comunicazione
+          e i gruppi di supporto dell'associazione e della comunità internazionale ReNU.
+        </p>
+        <h3><i class="fas fa-share-nodes"></i>Canali disponibili</h3>
+        <ul>
+          <li><strong>Gruppo Facebook</strong> — per famiglie italiane e italofone</li>
+          <li><strong>Gruppo internazionale ReNU</strong> — per famiglie di tutto il mondo</li>
+          <li><strong>Canale WhatsApp</strong> — aggiornamenti e notizie</li>
+          <li><strong>Gruppo WhatsApp famiglie</strong> — supporto tra famiglie (accesso su richiesta)</li>
+          <li><strong>Pagina Facebook</strong> — notizie e comunicazioni ufficiali</li>
+          <li><strong>Instagram</strong> — contenuti visivi e campagne di sensibilizzazione</li>
+        </ul>
+        <div class="box box-blue">
+          <i class="fas fa-shield-halved"></i>
+          <div>I gruppi WhatsApp sono ad accesso controllato per tutelare la privacy dei membri. Per entrare, compilare il modulo di contatto o scrivere a <strong>info@sindromerenu.it</strong>.</div>
         </div>
-      </div>
-      <p>La pagina Donazioni illustra tutte le <strong>modalità per supportare Sindrome ReNU Italia APS</strong>:</p>
-
-      <h3><i class="fas fa-university"></i>Bonifico bancario (IBAN)</h3>
-      <ul>
-        <li><strong>IBAN:</strong> <code>IT18H0306909606100000416360</code></li>
-        <li><strong>Intestato a:</strong> Sindrome ReNU Italia APS</li>
-        <li>Richiedere la <strong>ricevuta fiscale</strong> scrivendo a <code>donazioni@sindromerenu.it</code></li>
-      </ul>
-
-      <h3><i class="fas fa-credit-card"></i>Donazione online (BuonaCausa)</h3>
-      <ul>
-        <li>Link alla piattaforma <a href="https://buonacausa.org" target="_blank">buonacausa.org</a></li>
-        <li>Accetta: bonifico bancario, PayPal, carte di credito/debito</li>
-        <li>Possibilità di donazione <strong>ricorrente mensile o annuale</strong></li>
-      </ul>
-
-      <h3><i class="fas fa-percentage"></i>Vantaggi fiscali</h3>
-      <table class="data-table">
-        <thead><tr><th>Soggetto</th><th>Beneficio</th><th>Limite</th></tr></thead>
-        <tbody>
-          <tr><td>Persone fisiche</td><td>Detrazione IRPEF 30%</td><td>Fino a €30.000/anno</td></tr>
-          <tr><td>Soci (persone fisiche)</td><td>Detrazione IRPEF 35%</td><td>Fino a €30.000/anno</td></tr>
-          <tr><td>Imprese / persone giuridiche</td><td>Deduzione 10%</td><td>Fino a €70.000/anno</td></tr>
-        </tbody>
-      </table>
-      <div class="info-box info-box-green">
-        <i class="fas fa-check-circle"></i>
-        <div>Per ottenere la ricevuta fiscale valida ai fini della dichiarazione dei redditi, inviare i dati della donazione a <strong>donazioni@sindromerenu.it</strong>.</div>
       </div>
     </section>
 
-    <section id="pg-contact">
-      <div class="section-header">
+    <!-- ══════════════════════════════════════
+         9. DONAZIONI
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-donations">
+      <div class="section-head">
+        <div class="section-icon icon-green"><i class="fas fa-heart"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">9</span>Donazioni <code>/donations</code></h2>
+          <p class="section-desc">Come supportare l'associazione</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La pagina <strong>Donazioni</strong> spiega come supportare economicamente l'associazione
+          e i benefici fiscali per i donatori.
+        </p>
+        <h3><i class="fas fa-university"></i>Coordinate bancarie</h3>
+        <div class="box box-navy">
+          <i class="fas fa-building-columns"></i>
+          <div>
+            <strong>Banca Bper Banca</strong><br>
+            <strong>IBAN:</strong> <code>IT18H0306909606100000416360</code><br>
+            <strong>Beneficiario:</strong> Sindrome ReNU Italia APS<br>
+            <strong>Causale:</strong> Donazione Sindrome ReNU Italia APS
+          </div>
+        </div>
+        <h3><i class="fas fa-percent"></i>Agevolazioni fiscali</h3>
+        <ul>
+          <li>Deducibilità delle erogazioni liberali ai sensi del D.Lgs. 117/2017 (Codice del Terzo Settore)</li>
+          <li>Detrazione IRPEF del 30% (o 35% per soci) per donazioni fino a 30.000€/anno</li>
+          <li>Possibilità di destinare il <strong>5×1000</strong> all'associazione (codice fiscale disponibile su richiesta)</li>
+        </ul>
+        <h3><i class="fas fa-qrcode"></i>Donazione online</h3>
+        <p>La pagina include un <strong>QR code</strong> per facilitare le donazioni tramite applicazioni bancarie, e link a strumenti di pagamento digitale.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         10. CONTATTI
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-contact">
+      <div class="section-head">
         <div class="section-icon icon-blue"><i class="fas fa-envelope"></i></div>
-        <div class="section-header-text">
-          <h2>10. Pagina Contatti</h2>
-          <p>Modulo di contatto e recapiti dell'associazione</p>
+        <div class="section-head-text">
+          <h2><span class="section-num">10</span>Contatti <code>/contact</code></h2>
+          <p class="section-desc">Modulo di contatto e recapiti diretti</p>
         </div>
       </div>
-      <p>La pagina Contatti offre un <strong>modulo online</strong> e i recapiti diretti dell'associazione.</p>
-
-      <h3><i class="fas fa-address-card"></i>Recapiti associazione</h3>
-      <div class="contacts-grid">
-        <div class="contact-card">
-          <i class="fas fa-envelope"></i>
-          <div class="cc-label">Informazioni generali</div>
-          <div class="cc-value"><a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fas fa-hand-holding-heart"></i>
-          <div class="cc-label">Donazioni</div>
-          <div class="cc-value"><a href="mailto:donazioni@sindromerenu.it">donazioni@sindromerenu.it</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fas fa-file-signature"></i>
-          <div class="cc-label">Segreteria</div>
-          <div class="cc-value"><a href="mailto:segreteria@sindromerenu.it">segreteria@sindromerenu.it</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fas fa-user-tie"></i>
-          <div class="cc-label">Presidenza</div>
-          <div class="cc-value"><a href="mailto:presidenza@sindromerenu.it">presidenza@sindromerenu.it</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fab fa-whatsapp"></i>
-          <div class="cc-label">Telefono / WhatsApp</div>
-          <div class="cc-value"><a href="tel:+393357301206">+39 335 730 1206</a></div>
+      <div class="section-body">
+        <p>
+          La pagina Contatti offre sia recapiti diretti che un modulo online per inviare messaggi all'associazione.
+        </p>
+        <h3><i class="fas fa-address-card"></i>Recapiti</h3>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a></li>
+          <li><strong>WhatsApp:</strong> disponibile sulla pagina (link diretto)</li>
+          <li><strong>Risposta garantita:</strong> entro 30 giorni lavorativi per le richieste formali (GDPR)</li>
+        </ul>
+        <h3><i class="fas fa-wpforms"></i>Modulo di contatto</h3>
+        <p>Il modulo raccoglie: nome, cognome, email, oggetto, messaggio e consenso GDPR. Dopo l'invio:</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Conferma visiva</strong><span>Messaggio di successo a video</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Email di conferma</strong><span>Inviata automaticamente all'utente</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Notifica admin</strong><span>Email inviata a info@sindromerenu.it</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body"><strong>Salvataggio DB</strong><span>Messaggio salvato nel database D1 (tabella <code>contatti</code>)</span></div>
+          </div>
         </div>
       </div>
-
-      <h3><i class="fas fa-wpforms"></i>Modulo di contatto online</h3>
-      <p>Il form raccoglie: nome, email, oggetto, messaggio e consenso GDPR. Alla ricezione:</p>
-      <ul>
-        <li>I dati vengono salvati nel database D1 (tabella <code>contatti</code>)</li>
-        <li>Viene inviata <strong>una notifica a info@sindromerenu.it</strong> con tutti i dati e link di risposta diretta</li>
-        <li>Viene inviata una <strong>conferma automatica all'utente</strong> con i tempi di risposta (48–72 ore lavorative)</li>
-      </ul>
     </section>
 
-    <section id="pg-brochure">
-      <div class="section-header">
-        <div class="section-icon icon-orange"><i class="fas fa-file-pdf"></i></div>
-        <div class="section-header-text">
-          <h2>11. Pagina Brochure</h2>
-          <p>Materiali informativi scaricabili e condivisibili</p>
+    <!-- ══════════════════════════════════════
+         11. BROCHURE
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-brochure">
+      <div class="section-head">
+        <div class="section-icon icon-red"><i class="fas fa-file-pdf"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">11</span>Brochure <code>/brochure</code></h2>
+          <p class="section-desc">Materiali scaricabili in PDF</p>
         </div>
       </div>
-      <p>La pagina Brochure offre <strong>8 brochure informative</strong> in formato PDF, scaricabili e stampabili gratuitamente:</p>
-      <table class="data-table">
-        <thead><tr><th>Titolo brochure</th><th>File</th></tr></thead>
-        <tbody>
-          <tr><td>Insieme facciamo la differenza</td><td><code>brochure-insieme-facciamo-differenza.pdf</code></td></tr>
-          <tr><td>Nata ReNU Italia</td><td><code>brochure-nata-renu-italia.pdf</code></td></tr>
-          <tr><td>Finalmente una realtà</td><td><code>brochure-finalmente-realta.pdf</code></td></tr>
-          <tr><td>Una donazione dal cuore</td><td><code>brochure-donazione-cuore.pdf</code></td></tr>
-          <tr><td>Un gesto di speranza</td><td><code>brochure-un-gesto-speranza.pdf</code></td></tr>
-          <tr><td>Potete contare su di noi</td><td><code>brochure-potete-contare.pdf</code></td></tr>
-          <tr><td>Fai la differenza</td><td><code>brochure-fai-differenza.pdf</code></td></tr>
-          <tr><td>Vuole fare la differenza</td><td><code>brochure-vuole-differenza.pdf</code></td></tr>
-        </tbody>
-      </table>
-      <p>Ogni brochure è disponibile con anteprima thumbnail. Per aggiungere nuove brochure è necessario caricare il PDF nella cartella <code>public/brochure/</code> e aggiornare il codice sorgente.</p>
-    </section>
-
-    <section id="pg-events">
-      <div class="section-header">
-        <div class="section-icon icon-pink"><i class="fas fa-calendar-alt"></i></div>
-        <div class="section-header-text">
-          <h2>12. Pagina Eventi</h2>
-          <p>Incontri, eventi e progetti dell'associazione</p>
+      <div class="section-body">
+        <p>
+          La sezione Brochure raccoglie tutti i materiali grafici dell'associazione, scaricabili in formato PDF.
+          Ogni brochure è presentata con una <strong>anteprima visiva</strong> della copertina e un pulsante di download diretto.
+        </p>
+        <h3><i class="fas fa-images"></i>Brochure disponibili</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Titolo</th><th>File</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Insieme, facciamo la differenza</td><td><code>brochure-insieme-facciamo-differenza.pdf</code></td></tr>
+              <tr><td>2</td><td>È nata Sindrome ReNU Italia APS!</td><td><code>brochure-nata-renu-italia.pdf</code></td></tr>
+              <tr><td>3</td><td>Finalmente Realtà</td><td><code>brochure-finalmente-realta.pdf</code></td></tr>
+              <tr><td>4</td><td>Una donazione dal cuore</td><td><code>brochure-donazione-cuore.pdf</code></td></tr>
+              <tr><td>5</td><td>Un gesto, una speranza</td><td><code>brochure-un-gesto-speranza.pdf</code></td></tr>
+              <tr><td>6</td><td>Potete contare sul nostro sostegno</td><td><code>brochure-potete-contare.pdf</code></td></tr>
+              <tr><td>7</td><td>Fai la differenza oggi</td><td><code>brochure-fai-differenza.pdf</code></td></tr>
+              <tr><td>8</td><td>Vuole fare la differenza</td><td><code>brochure-vuole-differenza.pdf</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-download"></i>Come scaricare</h3>
+        <p>Ogni card della griglia mostra:</p>
+        <ul>
+          <li><strong>Anteprima</strong>: thumbnail della copertina del PDF</li>
+          <li><strong>Titolo</strong> e breve descrizione</li>
+          <li>Pulsante <strong>"Scarica PDF"</strong> per il download diretto</li>
+        </ul>
+        <p>In fondo alla pagina è presente anche la sezione <strong>"Scarica tutte le brochure"</strong> con link individuali per ciascuna.</p>
+        <div class="box box-blue">
+          <i class="fas fa-info-circle"></i>
+          <div>I PDF delle brochure sono serviti direttamente da Cloudflare Pages (path <code>/brochure/</code>), non richiedono login e sono liberamente scaricabili.</div>
         </div>
       </div>
-      <p>La pagina Eventi raccoglie gli <strong>incontri e le iniziative</strong> organizzati o supportati dall'associazione:</p>
-      <ul>
-        <li><strong>Prossimi eventi:</strong> sezione con eventi in calendario (aggiornabile dal team)</li>
-        <li><strong>Eventi passati:</strong> archivio storico degli incontri</li>
-        <li><strong>Campagna Move 4 ReNU:</strong> iniziativa sportiva solidale per raccogliere fondi e sensibilizzare</li>
-        <li><strong>Proponi un evento:</strong> le famiglie possono proporre eventi scrivendo a <code>info@sindromerenu.it</code></li>
-      </ul>
     </section>
 
-    <section id="pg-members">
-      <div class="section-header">
-        <div class="section-icon icon-green"><i class="fas fa-id-card"></i></div>
-        <div class="section-header-text">
-          <h2>13. Pagina Diventa Socio</h2>
-          <p>Pre-iscrizione alla lista d'attesa soci</p>
+    <!-- ══════════════════════════════════════
+         12. EVENTI
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-events">
+      <div class="section-head">
+        <div class="section-icon icon-amber"><i class="fas fa-calendar-alt"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">12</span>Eventi <code>/events</code></h2>
+          <p class="section-desc">Incontri, convegni e iniziative</p>
         </div>
       </div>
-      <p>La pagina Diventa Socio permette di <strong>iscriversi alla lista d'attesa</strong> in attesa della delibera del Consiglio Direttivo sulle modalità di adesione formale.</p>
-
-      <h3><i class="fas fa-info-circle"></i>Perché diventare socio?</h3>
-      <ul>
-        <li>Partecipare alla vita associativa</li>
-        <li>Accedere a risorse e supporto esclusivi</li>
-        <li>Contribuire al governo democratico dell'associazione</li>
-        <li>Maggiori detrazioni fiscali sulle donazioni (35% vs 30%)</li>
-      </ul>
-
-      <h3><i class="fas fa-users"></i>Tipologie di soci</h3>
-      <table class="data-table">
-        <thead><tr><th>Tipo socio</th><th>Descrizione</th></tr></thead>
-        <tbody>
-          <tr><td>Familiare (familiare)</td><td>Genitore o familiare di persona con Sindrome ReNU</td></tr>
-          <tr><td>Sostenitore (sostenitore)</td><td>Persona che supporta la causa senza essere familiare</td></tr>
-          <tr><td>Professionista (professionista)</td><td>Medico, terapeuta, ricercatore o operatore sanitario</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-wpforms"></i>Modulo pre-iscrizione</h3>
-      <p>Il modulo raccoglie: nome, cognome, email, città, tipo di socio, come hai conosciuto l'associazione e consenso GDPR. Alla compilazione:</p>
-      <ul>
-        <li>I dati vengono salvati nel database (tabella <code>lista_attesa</code>)</li>
-        <li>Viene inviata una <strong>notifica a info@sindromerenu.it</strong></li>
-        <li>Viene inviata una <strong>email di conferma all'utente</strong></li>
-      </ul>
-    </section>
-
-    <section id="pg-faq">
-      <div class="section-header">
-        <div class="section-icon icon-sky"><i class="fas fa-question-circle"></i></div>
-        <div class="section-header-text">
-          <h2>14. Pagina FAQ & Diritti</h2>
-          <p>Risposte alle domande più frequenti e guida ai diritti legali in Italia</p>
+      <div class="section-body">
+        <p>
+          La pagina <strong>Eventi</strong> raccoglie tutti gli appuntamenti organizzati dall'associazione:
+          incontri tra famiglie, convegni medici, webinar, giornate di sensibilizzazione.
+        </p>
+        <h3><i class="fas fa-calendar-check"></i>Tipologie di eventi</h3>
+        <ul>
+          <li><strong>Prossimi eventi</strong>: con data, luogo e descrizione</li>
+          <li><strong>Eventi passati</strong>: archivio delle iniziative precedenti</li>
+          <li><strong>Online / In presenza</strong>: indicazione della modalità</li>
+        </ul>
+        <div class="box box-amber">
+          <i class="fas fa-bell"></i>
+          <div>Per ricevere notifiche sui nuovi eventi, iscriversi alla newsletter o seguire i canali social dell'associazione.</div>
         </div>
       </div>
-      <p>La pagina FAQ risponde alle domande più comuni e guida le famiglie attraverso il sistema dei <strong>diritti e benefici previsti dalla legge italiana</strong> per le persone con disabilità:</p>
-      <table class="data-table">
-        <thead><tr><th>Argomento</th><th>Contenuto</th></tr></thead>
-        <tbody>
-          <tr><td>Legge 104/1992</td><td>Come presentare domanda, a chi spetta, cosa copre</td></tr>
-          <tr><td>Contrassegno auto</td><td>Pass auto per disabili – come ottenerlo e dove usarlo</td></tr>
-          <tr><td>Disability Card</td><td>Carta europea della disabilità, valida in tutta Europa</td></tr>
-          <tr><td>Scuola e PEI</td><td>Certificazione di disabilità, Piano Educativo Individualizzato, GLHO</td></tr>
-          <tr><td>Indennità di accompagnamento</td><td>INPS – circa €530/mese</td></tr>
-          <tr><td>Assegno Unico</td><td>INPS – assegno unico per figli fino a 21 anni (maggiorazione per disabili)</td></tr>
-          <tr><td>Terapie – Diritti e Tutele</td><td>Accesso alle terapie tramite SSN, LEA, piani di assistenza</td></tr>
-          <tr><td>730 e detrazioni</td><td>Come detrarre le spese mediche e terapeutiche nella dichiarazione dei redditi</td></tr>
-          <tr><td>Statuto APS</td><td>Link al documento dello statuto dell'associazione</td></tr>
-          <tr><td>Costituzione italiana</td><td>Articoli rilevanti sulla tutela delle persone con disabilità</td></tr>
-        </tbody>
-      </table>
     </section>
 
-    <section id="pg-privacy">
-      <div class="section-header">
-        <div class="section-icon icon-red"><i class="fas fa-shield-alt"></i></div>
-        <div class="section-header-text">
-          <h2>15. Pagina Privacy Policy</h2>
-          <p>Informativa completa sul trattamento dei dati personali</p>
+    <!-- ══════════════════════════════════════
+         13. SOCI / MEMBERS
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-members">
+      <div class="section-head">
+        <div class="section-icon icon-navy"><i class="fas fa-id-card"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">13</span>Soci <code>/members</code></h2>
+          <p class="section-desc">Pre-iscrizione e adesione all'associazione</p>
         </div>
       </div>
-      <p>La pagina Privacy illustra l'<strong>Informativa Privacy completa</strong> ai sensi del GDPR (Reg. UE 2016/679):</p>
-      <ul>
-        <li>Titolare del trattamento e DPO</li>
-        <li>Dati raccolti e basi giuridiche (Art. 6.1.a, Art. 6.1.b, Art. 6.1.c, Art. 9.2.a)</li>
-        <li>Finalità e periodi di conservazione</li>
-        <li>Diritti dell'interessato (accesso, rettifica, cancellazione, portabilità, opposizione)</li>
-        <li>Cookie: solo tecnici necessari (nessuna profilazione)</li>
-        <li>Link al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a>)</li>
-      </ul>
-      <p>Per esercitare i propri diritti: scrivere a <code>info@sindromerenu.it</code>. Risposta entro 30 giorni (Art. 12.3 GDPR).</p>
+      <div class="section-body">
+        <p>
+          La pagina <strong>Soci</strong> permette alle famiglie, ai professionisti e ai sostenitori
+          di richiedere l'iscrizione all'associazione compilando un modulo di pre-adesione.
+        </p>
+        <h3><i class="fas fa-list-check"></i>Dati richiesti nel modulo</h3>
+        <ul>
+          <li>Nome e cognome</li>
+          <li>Email di contatto</li>
+          <li>Tipologia (famiglia, medico, sostenitore…)</li>
+          <li>Eventuale relazione con la sindrome</li>
+          <li>Consenso GDPR obbligatorio</li>
+        </ul>
+        <h3><i class="fas fa-check-circle"></i>Cosa succede dopo l'invio</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Salvataggio in DB</strong><span>Dati salvati nella tabella <code>lista_attesa</code> del database D1</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Email di conferma</strong><span>Inviata automaticamente all'utente</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Notifica admin</strong><span>L'associazione riceve notifica e contatterà l'interessato per completare l'iscrizione formale</span></div>
+          </div>
+        </div>
+        <div class="box box-blue">
+          <i class="fas fa-info-circle"></i>
+          <div>L'iscrizione formale avviene offline (firma statuto, quota associativa). Il modulo online è una <em>pre-iscrizione</em> che mette in contatto con il board dell'associazione.</div>
+        </div>
+      </div>
     </section>
 
-    <!-- ══ FORMS ══ -->
-    <section id="forms">
-      <div class="section-header">
+    <!-- ══════════════════════════════════════
+         14. FAQ
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-faq">
+      <div class="section-head">
+        <div class="section-icon icon-sky"><i class="fas fa-circle-question"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">14</span>FAQ <code>/faq</code></h2>
+          <p class="section-desc">Domande frequenti</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La sezione <strong>FAQ</strong> raccoglie le domande più frequenti poste da famiglie,
+          medici e giornalisti, con risposte chiare e aggiornate dall'associazione.
+        </p>
+        <h3><i class="fas fa-question-circle"></i>Argomenti coperti</h3>
+        <ul>
+          <li>Cos'è la Sindrome ReNU e chi ne soffre</li>
+          <li>Come si ottiene la diagnosi</li>
+          <li>Esistono terapie disponibili?</li>
+          <li>Come iscriversi all'associazione</li>
+          <li>Come donare e benefici fiscali</li>
+          <li>Come contattare l'associazione</li>
+        </ul>
+        <p>Le FAQ sono gestibili dall'admin tramite il database (tabella <code>faq</code>).</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         15. PRIVACY
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-privacy">
+      <div class="section-head">
+        <div class="section-icon icon-navy"><i class="fas fa-lock"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">15</span>Privacy <code>/privacy</code></h2>
+          <p class="section-desc">Informativa GDPR e cookie policy</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          La pagina Privacy contiene l'<strong>informativa completa sul trattamento dei dati personali</strong>
+          ai sensi del Regolamento UE 2016/679 (GDPR).
+        </p>
+        <h3><i class="fas fa-file-contract"></i>Contenuti dell'informativa</h3>
+        <ul>
+          <li>Titolare del trattamento: <strong>Sindrome ReNU Italia APS</strong></li>
+          <li>Dati raccolti: nome, email, messaggio (tramite moduli)</li>
+          <li>Finalità: risposta alle richieste, gestione soci, comunicazioni associative</li>
+          <li>Base giuridica: consenso esplicito (art. 6.1.a GDPR)</li>
+          <li>Conservazione: fino a revoca del consenso o richiesta di cancellazione</li>
+          <li>Diritti dell'interessato: accesso, rettifica, cancellazione (Art. 17), limitazione, portabilità</li>
+          <li>Contatto DPO/Privacy: <a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a></li>
+          <li>Risposta garantita entro 30 giorni</li>
+          <li>Autorità di controllo: <a href="https://www.garanteprivacy.it" target="_blank">Garante Privacy italiano</a></li>
+        </ul>
+        <h3><i class="fas fa-cookie"></i>Cookie policy</h3>
+        <p>Il sito utilizza <strong>esclusivamente cookie tecnici</strong> necessari al funzionamento. Nessun cookie di profilazione, marketing o analytics di terze parti.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         16. MODULI
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-forms">
+      <div class="section-head">
         <div class="section-icon icon-blue"><i class="fas fa-wpforms"></i></div>
-        <div class="section-header-text">
-          <h2>16. Moduli e Invio Dati</h2>
-          <p>Come funzionano i form del sito e cosa succede dopo la compilazione</p>
+        <div class="section-head-text">
+          <h2><span class="section-num">16</span>Moduli online</h2>
+          <p class="section-desc">Come funzionano i form del sito</p>
         </div>
       </div>
-      <p>Il sito dispone di <strong>due moduli attivi</strong> che inviano i dati via API al database e attivano le notifiche email.</p>
-
-      <h3><i class="fas fa-envelope"></i>Form Contatti (pagina /contact)</h3>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><b>Compilazione</b><p>L'utente inserisce Nome, Email, Oggetto, Messaggio e spunta il consenso GDPR obbligatorio.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><b>Validazione</b><p>Il sistema verifica: consenso GDPR presente, nome ≥ 2 caratteri, email valida, messaggio ≥ 10 caratteri. Errori mostrati in linea.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><b>Salvataggio</b><p>I dati vengono salvati nel database D1 (tabella <code>contatti</code>) con timestamp, hash IP anonimizzato e versione consenso.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><b>Email a info@sindromerenu.it</b><p>Email HTML con tutti i dati del mittente, oggetto, messaggio completo e link di risposta diretta.</p></div></div>
-        <div class="step"><div class="step-num">5</div><div class="step-body"><b>Conferma all'utente</b><p>Email automatica con riepilogo e indicazione dei tempi di risposta (48-72 ore lavorative).</p></div></div>
-        <div class="step"><div class="step-num">6</div><div class="step-body"><b>Messaggio di successo</b><p>Il form mostra un messaggio verde con icona di conferma. In caso di errore mostra il link mailto: di fallback.</p></div></div>
+      <div class="section-body">
+        <p>Il sito contiene due moduli principali, entrambi validati client-side e server-side:</p>
+        <h3><i class="fas fa-envelope"></i>Modulo Contatti</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Campo</th><th>Obbligatorio</th><th>Validazione</th></tr></thead>
+            <tbody>
+              <tr><td>Nome</td><td>✅ Sì</td><td>Min. 2 caratteri</td></tr>
+              <tr><td>Cognome</td><td>✅ Sì</td><td>Min. 2 caratteri</td></tr>
+              <tr><td>Email</td><td>✅ Sì</td><td>Formato email valido</td></tr>
+              <tr><td>Oggetto</td><td>✅ Sì</td><td>Min. 3 caratteri</td></tr>
+              <tr><td>Messaggio</td><td>✅ Sì</td><td>Min. 10 caratteri</td></tr>
+              <tr><td>Consenso GDPR</td><td>✅ Sì</td><td>Checkbox obbligatorio</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-id-card"></i>Modulo Pre-iscrizione Soci</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Campo</th><th>Obbligatorio</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>Nome e Cognome</td><td>✅ Sì</td><td></td></tr>
+              <tr><td>Email</td><td>✅ Sì</td><td></td></tr>
+              <tr><td>Tipologia socio</td><td>✅ Sì</td><td>Famiglia / Medico / Sostenitore / Altro</td></tr>
+              <tr><td>Note / Descrizione</td><td>❌ No</td><td>Opzionale</td></tr>
+              <tr><td>Consenso GDPR</td><td>✅ Sì</td><td>Obbligatorio per legge</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-shield-halved"></i>Protezione anti-spam</h3>
+        <ul>
+          <li>Rate limiting lato server (max N richieste per IP nell'ora)</li>
+          <li>Honeypot field (campo nascosto per bloccare bot)</li>
+          <li>Validazione server-side di tutti i campi</li>
+          <li>Hash dell'IP per log GDPR-compliant</li>
+        </ul>
       </div>
-
-      <h3><i class="fas fa-id-card"></i>Form Pre-iscrizione Soci (pagina /members)</h3>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><b>Compilazione</b><p>L'utente inserisce Nome, Cognome, Email, Città, Tipo di socio, Come ha conosciuto l'associazione e consenso GDPR.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><b>Validazione</b><p>Controllo consenso GDPR, nome e cognome ≥ 2 caratteri, email valida nel formato corretto.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><b>Salvataggio</b><p>Dati salvati nel database D1 (tabella <code>lista_attesa</code>) con timestamp, IP hash e versione consenso 2.0. La query è <code>INSERT OR IGNORE</code> per evitare duplicati per la stessa email.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><b>Email a info@sindromerenu.it</b><p>Email HTML con tutti i dati del richiedente, tipo di socio e link di risposta.</p></div></div>
-        <div class="step"><div class="step-num">5</div><div class="step-body"><b>Conferma all'utente</b><p>Email con spiegazione che verrà ricontattato non appena il Consiglio Direttivo avrà approvato le modalità di iscrizione.</p></div></div>
-      </div>
-
-      <div class="info-box info-box-orange">
-        <i class="fas fa-exclamation-triangle"></i>
-        <div><strong>Attenzione:</strong> il form usa <code>INSERT OR IGNORE</code>, quindi una stessa email può essere inserita una sola volta nella lista d'attesa. Eventuali tentativi successivi con la stessa email non generano errore ma non creano duplicati.</div>
-      </div>
-
-      <h3><i class="fas fa-shield-alt"></i>Sicurezza dei dati nei form</h3>
-      <ul>
-        <li>Tutti i campi sono <strong>sanitizzati</strong> (trim + troncamento a lunghezza massima)</li>
-        <li>L'IP dell'utente viene <strong>anonimizzato con hash</strong> prima del salvataggio</li>
-        <li>Il consenso GDPR è <strong>obbligatorio</strong> — senza di esso il form non si invia</li>
-        <li>La versione del consenso (<code>2.0</code>) è salvata con ogni record</li>
-        <li>Ogni operazione è registrata nell'<strong>audit log</strong></li>
-      </ul>
     </section>
 
-    <!-- ══ EMAIL ══ -->
-    <section id="email">
-      <div class="section-header">
+    <!-- ══════════════════════════════════════
+         17. EMAIL
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-email">
+      <div class="section-head">
         <div class="section-icon icon-sky"><i class="fas fa-paper-plane"></i></div>
-        <div class="section-header-text">
-          <h2>17. Sistema di Notifiche Email</h2>
-          <p>Come funzionano le email automatiche per ogni evento del sito</p>
+        <div class="section-head-text">
+          <h2><span class="section-num">17</span>Email automatiche</h2>
+          <p class="section-desc">Sistema di notifiche via email</p>
         </div>
       </div>
-      <p>Per ogni form compilato il sistema invia automaticamente <strong>due email</strong>:</p>
-
-      <h3><i class="fas fa-at"></i>Email 1 — Notifica a info@sindromerenu.it</h3>
-      <p>Ricevuta immediatamente dopo ogni compilazione di form. Contiene:</p>
-      <ul>
-        <li>Header colorato (gradiente blu) con data e ora (fuso orario Europe/Rome)</li>
-        <li>Tabella HTML con tutti i dati dell'utente (nome, email, città, tipo, messaggio…)</li>
-        <li>Link diretto per rispondere all'utente (<code>mailto:email?subject=Re: oggetto</code>)</li>
-        <li>Link al pannello admin per visualizzare tutti i dati</li>
-        <li>Nota GDPR sul consenso registrato</li>
-      </ul>
-
-      <h3><i class="fas fa-check-circle"></i>Email 2 — Conferma all'utente</h3>
-      <p>Inviata all'indirizzo inserito nel form. Contiene:</p>
-      <ul>
-        <li>Conferma di ricezione con nome del mittente</li>
-        <li>Per contatti: indicazione tempi di risposta (48-72 ore lavorative)</li>
-        <li>Per pre-iscrizione: spiegazione dell'attesa per delibera del Consiglio Direttivo</li>
-        <li>Recapiti dell'associazione (email e telefono)</li>
-        <li>Link all'informativa Privacy</li>
-        <li>Nota GDPR sui diritti dell'interessato</li>
-      </ul>
-
-      <h3><i class="fas fa-server"></i>Provider email</h3>
-      <table class="data-table">
-        <thead><tr><th>Provider</th><th>Modalità</th><th>Costo</th></tr></thead>
-        <tbody>
-          <tr><td><strong>MailChannels</strong></td><td>Primario – integrazione nativa Cloudflare Workers (zero configurazione)</td><td>Gratuito</td></tr>
-          <tr><td><strong>Resend</strong></td><td>Fallback – richiede <code>RESEND_API_KEY</code> nelle variabili d'ambiente di Cloudflare Pages</td><td>Gratuito (piano base)</td></tr>
-        </tbody>
-      </table>
-      <div class="info-box info-box-blue">
-        <i class="fas fa-info-circle"></i>
-        <div>Per attivare Resend come provider principale (consigliato per affidabilità maggiore), creare un account su <a href="https://resend.com" target="_blank">resend.com</a>, ottenere l'API key e aggiungerla come variabile d'ambiente <code>RESEND_API_KEY</code> nel pannello Cloudflare Pages → Settings → Environment Variables.</div>
+      <div class="section-body">
+        <p>
+          Il sito invia <strong>email transazionali</strong> automaticamente al momento dell'invio
+          di ogni modulo. Utilizza <strong>MailChannels</strong> (nativo su Cloudflare Workers)
+          con fallback su <strong>Resend</strong>.
+        </p>
+        <h3><i class="fas fa-route"></i>Email inviate</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Evento</th><th>Destinatario</th><th>Oggetto email</th></tr></thead>
+            <tbody>
+              <tr><td>Invio modulo Contatti</td><td>info@sindromerenu.it</td><td>Nuovo messaggio da [nome]</td></tr>
+              <tr><td>Invio modulo Contatti</td><td>Utente (mittente)</td><td>Conferma ricezione messaggio</td></tr>
+              <tr><td>Pre-iscrizione Soci</td><td>info@sindromerenu.it</td><td>Nuova pre-iscrizione da [nome]</td></tr>
+              <tr><td>Pre-iscrizione Soci</td><td>Utente</td><td>Conferma pre-iscrizione ReNU Italia APS</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-cog"></i>Configurazione</h3>
+        <ul>
+          <li><strong>Provider primario:</strong> MailChannels (gratuito su Cloudflare Workers)</li>
+          <li><strong>Fallback:</strong> Resend (richiede variabile <code>RESEND_API_KEY</code>)</li>
+          <li><strong>Mittente:</strong> <code>noreply@sindromerenu-italia.pages.dev</code></li>
+          <li><strong>Reply-to:</strong> email dell'utente (per le notifiche admin)</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ══ ADMIN ══ -->
-    <section id="admin">
-      <div class="section-header">
-        <div class="section-icon icon-red"><i class="fas fa-cog"></i></div>
-        <div class="section-header-text">
-          <h2>18. Pannello di Amministrazione</h2>
-          <p>Guida completa all'uso del pannello admin protetto</p>
+    <!-- ══════════════════════════════════════
+         18. ADMIN
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-admin">
+      <div class="section-head">
+        <div class="section-icon icon-red"><i class="fas fa-user-shield"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">18</span>Pannello Admin</h2>
+          <p class="section-desc">Gestione dati, soci, contatti e GDPR</p>
         </div>
       </div>
+      <div class="section-body">
+        <div class="box box-red">
+          <i class="fas fa-lock"></i>
+          <div><strong>Accesso riservato.</strong> Il pannello admin è accessibile solo con il token segreto configurato nelle variabili d'ambiente di Cloudflare (<code>ADMIN_SECRET</code>). Non condividere mai il token.</div>
+        </div>
 
-      <p>Il pannello admin è disponibile all'indirizzo:</p>
-      <a href="https://sindromerenu-italia.pages.dev/admin" target="_blank" class="url-pill">
-        <i class="fas fa-external-link-alt"></i> https://sindromerenu-italia.pages.dev/admin
-      </a>
+        <h3><i class="fas fa-sign-in-alt"></i>Come accedere</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Navigare a <code>/admin</code></strong><span>Aprire il browser e andare su <code>sindromerenu-italia.pages.dev/admin</code></span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Inserire il token</strong><span>Inserire il token segreto nel campo password e premere "Entra"</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Dashboard visibile</strong><span>Vengono mostrate le statistiche e le tab di gestione</span></div>
+          </div>
+        </div>
 
-      <h3><i class="fas fa-sign-in-alt"></i>Accesso</h3>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><b>Aprire il pannello</b><p>Navigare all'URL <code>/admin</code>. Appare una schermata di login a tutto schermo.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><b>Inserire il token</b><p>Digitare il token di accesso nel campo password e premere Invio o il pulsante Accedi.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><b>Accesso effettuato</b><p>Il pannello mostra le statistiche in tempo reale e le tab di navigazione. La sessione rimane attiva finché si tiene aperta la pagina.</p></div></div>
-      </div>
+        <h3><i class="fas fa-chart-bar"></i>Dashboard — Statistiche</h3>
+        <p>La parte superiore del pannello mostra in tempo reale:</p>
+        <div class="feat-grid">
+          <div class="feat-card">
+            <i class="fas fa-users"></i>
+            <strong>Adesioni</strong>
+            <span>Totale pre-iscrizioni ricevute</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-envelope"></i>
+            <strong>Contatti</strong>
+            <span>Messaggi ricevuti dal modulo</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-clock"></i>
+            <strong>Lista attesa</strong>
+            <span>Pre-iscrizioni in elaborazione</span>
+          </div>
+          <div class="feat-card">
+            <i class="fas fa-heart"></i>
+            <strong>Donazioni</strong>
+            <span>Donazioni registrate nel DB</span>
+          </div>
+        </div>
 
-      <div class="info-box info-box-orange">
-        <i class="fas fa-key"></i>
-        <div><strong>Token di accesso admin:</strong> <code>ReNU-Admin-2026-Secure!</code><br>
-        Tenere il token riservato. Ogni operazione eseguita nel pannello viene registrata nell'audit log GDPR.</div>
-      </div>
+        <h3><i class="fas fa-table"></i>Tab di gestione dati</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tab</th><th>Contenuto</th><th>Funzionalità</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Adesioni</strong></td><td>Pre-iscrizioni soci (tabella <code>adesioni</code>)</td><td>Visualizza, filtra, esporta JSON</td></tr>
+              <tr><td><strong>Contatti</strong></td><td>Messaggi dal form contatti (tabella <code>contatti</code>)</td><td>Visualizza, filtra, esporta JSON</td></tr>
+              <tr><td><strong>Lista Attesa</strong></td><td>Utenti in lista attesa (tabella <code>lista_attesa</code>)</td><td>Visualizza, gestisce la coda</td></tr>
+              <tr><td><strong>Donazioni</strong></td><td>Donazioni registrate (tabella <code>donazioni</code>)</td><td>Registro donazioni</td></tr>
+              <tr><td><strong>Audit Log</strong></td><td>Log di tutte le operazioni (tabella <code>audit_log</code>)</td><td>Tracciabilità GDPR completa</td></tr>
+              <tr><td><strong>Cancella Dati</strong></td><td>Cancellazione su richiesta (Art. 17 GDPR)</td><td>Soft delete + audit entry</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3><i class="fas fa-chart-bar"></i>Dashboard statistiche</h3>
-      <p>In cima al pannello sono presenti <strong>4 contatori</strong> che mostrano in tempo reale:</p>
-      <div class="feature-grid">
-        <div class="feature-card"><div class="fc-icon">⏳</div><div class="fc-title">Lista Attesa</div><div class="fc-desc">Numero di pre-iscrizioni ricevute</div></div>
-        <div class="feature-card"><div class="fc-icon">✉️</div><div class="fc-title">Contatti</div><div class="fc-desc">Messaggi ricevuti dal form contatti</div></div>
-        <div class="feature-card"><div class="fc-icon">👥</div><div class="fc-title">Adesioni</div><div class="fc-desc">Adesioni formali (quando attivate)</div></div>
-        <div class="feature-card"><div class="fc-icon">❤️</div><div class="fc-title">Donazioni</div><div class="fc-desc">Donazioni registrate online</div></div>
-      </div>
-      <p>Un badge mostra lo stato del database: <strong>D1: ✓</strong> (persistente) o <strong>D1: memoria</strong> (temporaneo).</p>
-
-      <h3><i class="fas fa-table"></i>Sezioni del pannello</h3>
-      <div class="admin-tabs">
-        <div class="admin-tab" style="background:#eff6ff;border-color:#bfdbfe"><i class="fas fa-users" style="color:#1d4ed8"></i> Adesioni</div>
-        <div class="admin-tab" style="background:#f0fdf4;border-color:#bbf7d0"><i class="fas fa-envelope" style="color:#16a34a"></i> Contatti</div>
-        <div class="admin-tab" style="background:#f0f9ff;border-color:#bae6fd"><i class="fas fa-clock" style="color:#0369a1"></i> Lista Attesa</div>
-        <div class="admin-tab" style="background:#fef2f2;border-color:#fecaca"><i class="fas fa-heart" style="color:#dc2626"></i> Donazioni</div>
-        <div class="admin-tab" style="background:#fefce8;border-color:#fef08a"><i class="fas fa-history" style="color:#ca8a04"></i> Audit Log</div>
-        <div class="admin-tab" style="background:#fef2f2;border-color:#fecaca"><i class="fas fa-trash" style="color:#dc2626"></i> Cancella Dati</div>
-      </div>
-
-      <table class="data-table" style="margin-top:16px">
-        <thead><tr><th>Tab</th><th>Contenuto</th><th>Colonne visualizzate</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Adesioni</strong></td>
-            <td>Adesioni formali quando attivate</td>
-            <td>id, data, nome, cognome, email, città, tipo_membro, come_conosciuto, consenso_gdpr, data_consenso, status</td>
-          </tr>
-          <tr>
-            <td><strong>Contatti</strong></td>
-            <td>Messaggi ricevuti dal form contatti</td>
-            <td>id, data, nome, email, oggetto, messaggio, consenso_gdpr, data_consenso, status</td>
-          </tr>
-          <tr>
-            <td><strong>Lista Attesa</strong></td>
-            <td>Pre-iscrizioni soci</td>
-            <td>id, data, nome, cognome, email, città, tipo, consenso_gdpr, data_consenso</td>
-          </tr>
-          <tr>
-            <td><strong>Donazioni</strong></td>
-            <td>Donazioni online registrate</td>
-            <td>id, data, nome, email, importo, tipo, metodo, consenso_gdpr, data_consenso</td>
-          </tr>
-          <tr>
-            <td><strong>Audit Log</strong></td>
-            <td>Registro di tutte le operazioni GDPR</td>
-            <td>id, timestamp, tabella, record_id, azione, operatore, note</td>
-          </tr>
-          <tr>
-            <td><strong>Cancella Dati</strong></td>
-            <td>Diritto all'oblio Art. 17 GDPR</td>
-            <td>Form per email + conferma digitando CANCELLA</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-download"></i>Esportazione dati</h3>
-      <p>In ogni tab è disponibile un link <strong>"Esporta JSON"</strong> che apre l'endpoint API corrispondente in una nuova scheda. Il JSON può essere salvato o importato in Excel/Calc.</p>
-      <p>Endpoint disponibili (richiedono header <code>X-Admin-Token</code>):</p>
-      <ul>
-        <li><code>GET /api/admin/stats</code> — statistiche generali</li>
-        <li><code>GET /api/admin/adesioni</code> — lista adesioni (max 200)</li>
-        <li><code>GET /api/admin/contatti</code> — lista contatti (max 200)</li>
-        <li><code>GET /api/admin/lista-attesa</code> — lista attesa soci (max 200)</li>
-        <li><code>GET /api/admin/donazioni</code> — lista donazioni (max 200)</li>
-        <li><code>GET /api/admin/audit</code> — audit log (max 500 voci)</li>
-        <li><code>DELETE /api/admin/erasure/{email}</code> — cancellazione dati Art. 17 GDPR</li>
-      </ul>
-
-      <h3><i class="fas fa-trash"></i>Cancellazione dati (Art. 17 GDPR – Diritto all'Oblio)</h3>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><b>Aprire la tab "Cancella Dati"</b><p>Cliccare il pulsante rosso nel menu tab del pannello admin.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><b>Inserire l'email</b><p>Digitare l'indirizzo email dell'interessato che ha richiesto la cancellazione.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><b>Conferma</b><p>Digitare esattamente la parola <code>CANCELLA</code> nel campo di conferma.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><b>Esecuzione</b><p>Il sistema aggiorna tutte le tabelle: nome e cognome diventano <code>[CANCELLATO]</code>, email e messaggi vengono azzerati. L'operazione viene registrata nell'audit log con nota "Art.17 GDPR".</p></div></div>
-      </div>
-      <div class="info-box info-box-red">
-        <i class="fas fa-exclamation-triangle"></i>
-        <div><strong>Attenzione — operazione irreversibile.</strong> Prima di procedere con la cancellazione, verificare sempre l'identità del richiedente. Non è possibile recuperare i dati dopo la cancellazione.</div>
+        <h3><i class="fas fa-trash-alt"></i>Cancellazione dati (Art. 17 GDPR)</h3>
+        <p>
+          La tab <strong>"Cancella Dati"</strong> permette di eseguire la cancellazione dei dati di un utente
+          tramite la sua email. L'operazione:
+        </p>
+        <ul>
+          <li>Effettua un <strong>soft delete</strong> (i record vengono marcati come eliminati, non cancellati fisicamente)</li>
+          <li>Registra l'operazione nell'<strong>Audit Log</strong> con timestamp e motivo</li>
+          <li>Rispetta il principio di <em>accountability</em> richiesto dal GDPR</li>
+        </ul>
+        <p>L'endpoint REST è: <code>DELETE /api/admin/erasure/:email</code></p>
       </div>
     </section>
 
-    <!-- ══ GDPR ══ -->
-    <section id="gdpr">
-      <div class="section-header">
-        <div class="section-icon icon-red"><i class="fas fa-lock"></i></div>
-        <div class="section-header-text">
-          <h2>19. GDPR e Protezione dei Dati</h2>
-          <p>Conformità al Regolamento UE 2016/679 e alla normativa italiana</p>
+    <!-- ══════════════════════════════════════
+         19. GDPR
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-gdpr">
+      <div class="section-head">
+        <div class="section-icon icon-green"><i class="fas fa-scale-balanced"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">19</span>GDPR e Privacy</h2>
+          <p class="section-desc">Conformità al Regolamento UE 2016/679</p>
         </div>
       </div>
-
-      <div class="info-box info-box-green">
-        <i class="fas fa-check-circle"></i>
-        <div>Il sito è progettato per essere <strong>GDPR Compliant v2.0</strong> e rispetta il DPCM 14/09/2020 e le indicazioni del Garante italiano per la protezione dei dati personali.</div>
-      </div>
-
-      <h3><i class="fas fa-clipboard-list"></i>Dati raccolti e basi giuridiche</h3>
-      <table class="data-table">
-        <thead><tr><th>Tipologia dato</th><th>Dati raccolti</th><th>Base giuridica GDPR</th><th>Conservazione</th></tr></thead>
-        <tbody>
-          <tr><td>Richiesta informazioni</td><td>Nome, email, messaggio</td><td>Consenso – Art. 6.1.a</td><td>Fino a cancellazione su richiesta</td></tr>
-          <tr><td>Pre-iscrizione soci</td><td>Nome, cognome, email, città, tipo</td><td>Contratto – Art. 6.1.b</td><td>Fino a iscrizione o cancellazione</td></tr>
-          <tr><td>Adesione associazione</td><td>Nome, cognome, email, dati minore</td><td>Contratto – Art. 6.1.b</td><td>Durata rapporto associativo</td></tr>
-          <tr><td>Donazioni</td><td>Nome, email, importo</td><td>Obbligo legale – Art. 6.1.c</td><td>10 anni (obbligo fiscale)</td></tr>
-          <tr><td>Dati sanitari minore</td><td>Diagnosi, dati clinici</td><td>Consenso esplicito – Art. 9.2.a</td><td>Fino a revoca consenso</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-user-shield"></i>Diritti dell'interessato</h3>
-      <table class="data-table">
-        <thead><tr><th>Diritto</th><th>Art. GDPR</th><th>Come esercitarlo</th><th>Tempo risposta</th></tr></thead>
-        <tbody>
-          <tr><td>Accesso</td><td>Art. 15</td><td>Email a info@sindromerenu.it</td><td>30 giorni</td></tr>
-          <tr><td>Rettifica</td><td>Art. 16</td><td>Email a info@sindromerenu.it</td><td>30 giorni</td></tr>
-          <tr><td>Cancellazione (oblio)</td><td>Art. 17</td><td>Email a info@sindromerenu.it → eseguita via pannello admin</td><td>30 giorni</td></tr>
-          <tr><td>Limitazione</td><td>Art. 18</td><td>Email a info@sindromerenu.it</td><td>30 giorni</td></tr>
-          <tr><td>Portabilità</td><td>Art. 20</td><td>Export JSON dal pannello admin</td><td>30 giorni</td></tr>
-          <tr><td>Opposizione</td><td>Art. 21</td><td>Email a info@sindromerenu.it</td><td>30 giorni</td></tr>
-          <tr><td>Revoca consenso</td><td>Art. 7</td><td>Email a info@sindromerenu.it</td><td>30 giorni</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-network-wired"></i>Misure tecniche di sicurezza</h3>
-      <ul>
-        <li><strong>IP anonimizzato:</strong> l'indirizzo IP viene trasformato in hash prima del salvataggio (mai salvato in chiaro)</li>
-        <li><strong>Audit log:</strong> ogni operazione (INSERT, VIEW, ERASURE) è tracciata con timestamp e operatore</li>
-        <li><strong>Consenso obbligatorio:</strong> nessun dato può essere inviato senza esplicito consenso GDPR</li>
-        <li><strong>Versioning consenso:</strong> la versione del testo del consenso è salvata con ogni record</li>
-        <li><strong>Token admin:</strong> accesso al pannello protetto da token segreto</li>
-        <li><strong>HTTPS:</strong> tutto il traffico è cifrato via TLS (Cloudflare)</li>
-        <li><strong>Campo <code>cancellato</code>:</strong> i record cancellati non sono mai eliminati fisicamente (soft delete) ma anonimizzati, per mantenere l'integrità dell'audit log</li>
-        <li><strong>Cookie:</strong> solo tecnici necessari, nessuna profilazione o tracciamento di terze parti</li>
-      </ul>
-
-      <h3><i class="fas fa-exclamation-circle"></i>Data breach – procedura</h3>
-      <p>In caso di violazione dei dati personali (data breach), il titolare del trattamento deve:</p>
-      <ol>
-        <li>Notificare il Garante entro <strong>72 ore</strong> dalla scoperta (Art. 33 GDPR)</li>
-        <li>Notificare gli interessati se il breach è ad alto rischio (Art. 34 GDPR)</li>
-        <li>Documentare l'evento nel registro dei trattamenti (Art. 30 GDPR)</li>
-      </ol>
-      <p>Il registro dei trattamenti (Art. 30) è disponibile nel file <code>db/REGISTRO_TRATTAMENTI_ART30.md</code> nel repository.</p>
-    </section>
-
-    <!-- ══ DATABASE ══ -->
-    <section id="database">
-      <div class="section-header">
-        <div class="section-icon icon-teal"><i class="fas fa-database"></i></div>
-        <div class="section-header-text">
-          <h2>20. Database e API</h2>
-          <p>Struttura del database Cloudflare D1 e degli endpoint API</p>
+      <div class="section-body">
+        <p>
+          Il sito è progettato per essere <strong>pienamente conforme al GDPR</strong> sin dalla fase di design
+          (<em>Privacy by Design</em>).
+        </p>
+        <h3><i class="fas fa-list-check"></i>Misure tecniche implementate</h3>
+        <ul>
+          <li><strong>HTTPS ovunque</strong>: tutti i dati in transito sono cifrati (TLS 1.3)</li>
+          <li><strong>Hashing degli IP</strong>: gli indirizzi IP non sono mai salvati in chiaro</li>
+          <li><strong>Consenso esplicito</strong>: checkbox GDPR obbligatorio in tutti i form</li>
+          <li><strong>Solo cookie tecnici</strong>: nessun tracking di terze parti</li>
+          <li><strong>Soft delete</strong>: i dati non vengono mai cancellati fisicamente, ma marcati per l'audit</li>
+          <li><strong>Audit Log</strong>: ogni operazione sui dati è tracciata con timestamp</li>
+          <li><strong>Diritto all'oblio</strong>: endpoint di cancellazione funzionante (<code>Art. 17</code>)</li>
+          <li><strong>Data minimization</strong>: raccolta solo dei dati strettamente necessari</li>
+        </ul>
+        <h3><i class="fas fa-gavel"></i>Basi giuridiche del trattamento</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Trattamento</th><th>Base giuridica</th><th>Art. GDPR</th></tr></thead>
+            <tbody>
+              <tr><td>Risposta ai messaggi</td><td>Consenso</td><td>Art. 6.1.a</td></tr>
+              <tr><td>Gestione soci</td><td>Esecuzione di un contratto</td><td>Art. 6.1.b</td></tr>
+              <tr><td>Comunicazioni associative</td><td>Legittimo interesse</td><td>Art. 6.1.f</td></tr>
+              <tr><td>Obbligo di conservazione</td><td>Obbligo legale</td><td>Art. 6.1.c</td></tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-
-      <h3><i class="fas fa-info-circle"></i>Informazioni database</h3>
-      <table class="data-table">
-        <thead><tr><th>Campo</th><th>Valore</th></tr></thead>
-        <tbody>
-          <tr><td>Nome</td><td><code>sindromerenu-db</code></td></tr>
-          <tr><td>UUID</td><td><code>8f747f7d-16ec-4ef8-ac1c-f4b5ce39a25d</code></td></tr>
-          <tr><td>Tipo</td><td>Cloudflare D1 (SQLite serverless)</td></tr>
-          <tr><td>Regione</td><td>ENAM (Europa/Nord America)</td></tr>
-          <tr><td>Visibile su</td><td>Cloudflare Dashboard → Workers & Pages → D1</td></tr>
-          <tr><td>Binding nel codice</td><td><code>DB</code> (env variable)</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-table"></i>Tabelle del database</h3>
-      <table class="data-table">
-        <thead><tr><th>Tabella</th><th>Scopo</th><th>GDPR</th></tr></thead>
-        <tbody>
-          <tr><td><code>lista_attesa</code></td><td>Pre-iscrizioni soci</td><td>consenso_gdpr, ip_hash, cancellato, data_cancellazione</td></tr>
-          <tr><td><code>contatti</code></td><td>Messaggi dal form contatti</td><td>consenso_gdpr, ip_hash, cancellato, data_cancellazione</td></tr>
-          <tr><td><code>adesioni</code></td><td>Adesioni formali soci</td><td>consenso_gdpr, consenso_dati_minore, ip_hash, cancellato</td></tr>
-          <tr><td><code>donazioni</code></td><td>Donazioni online</td><td>consenso_gdpr, ip_hash, cancellato</td></tr>
-          <tr><td><code>audit_log</code></td><td>Registro operazioni GDPR</td><td>Tabella di audit (non cancellabile)</td></tr>
-          <tr><td><code>faq</code></td><td>FAQ dinamiche (future)</td><td>—</td></tr>
-          <tr><td><code>news</code></td><td>Notizie (future)</td><td>—</td></tr>
-          <tr><td><code>pubblicazioni</code></td><td>Pubblicazioni scientifiche (future)</td><td>—</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-plug"></i>Endpoint API pubblici</h3>
-      <table class="data-table">
-        <thead><tr><th>Endpoint</th><th>Metodo</th><th>Descrizione</th></tr></thead>
-        <tbody>
-          <tr><td><code>/api/contatti</code></td><td>POST</td><td>Invio form contatti</td></tr>
-          <tr><td><code>/api/lista-attesa</code></td><td>POST</td><td>Pre-iscrizione lista attesa soci</td></tr>
-          <tr><td><code>/api/health</code></td><td>GET</td><td>Health check del sistema (d1, email, versione)</td></tr>
-          <tr><td><code>/api/contact</code></td><td>POST</td><td>Legacy – redirect 307 a /api/contatti</td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-eye"></i>Dove vedere il database</h3>
-      <p>Il database è visibile e gestibile in due modi:</p>
-      <ol>
-        <li><strong>Pannello Cloudflare:</strong> <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a> → Workers & Pages → D1 → sindromerenu-db → Tabelle e query SQL</li>
-        <li><strong>Pannello Admin del sito:</strong> <a href="https://sindromerenu-italia.pages.dev/admin" target="_blank">sindromerenu-italia.pages.dev/admin</a> → tab Adesioni / Contatti / Lista Attesa / Donazioni / Audit Log</li>
-      </ol>
-
-      <div class="info-box info-box-blue">
-        <i class="fas fa-terminal"></i>
-        <div>Per query SQL avanzate direttamente sul database, usare il CLI Wrangler:<br>
-        <code>npx wrangler d1 execute sindromerenu-db --command="SELECT * FROM contatti"</code></div>
-      </div>
-    </section>
-
-    <!-- ══ CONTACTS ══ -->
-    <section id="contacts-section">
-      <div class="section-header">
-        <div class="section-icon icon-purple"><i class="fas fa-tools"></i></div>
-        <div class="section-header-text">
-          <h2>21. Riferimenti Tecnici e Manutenzione</h2>
-          <p>Informazioni per la gestione tecnica del sito</p>
-        </div>
-      </div>
-
-      <h3><i class="fas fa-cloud"></i>Cloudflare Pages – Configurazione</h3>
-      <table class="data-table">
-        <thead><tr><th>Parametro</th><th>Valore</th></tr></thead>
-        <tbody>
-          <tr><td>Project name</td><td><code>sindromerenu-italia</td></tr>
-          <tr><td>URL produzione</td><td><code>https://sindromerenu-italia.pages.dev</code></td></tr>
-          <tr><td>Framework preset</td><td>None (custom Hono Worker)</td></tr>
-          <tr><td>Build command</td><td><code>npm run build</code></td></tr>
-          <tr><td>Build output</td><td><code>./dist</code></td></tr>
-          <tr><td>Compatibilità</td><td><code>2024-01-01</code> + flag <code>nodejs_compat</code></td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-key"></i>Variabili d'ambiente Cloudflare Pages</h3>
-      <table class="data-table">
-        <thead><tr><th>Variabile</th><th>Tipo</th><th>Descrizione</th></tr></thead>
-        <tbody>
-          <tr><td><code>ADMIN_SECRET</code></td><td>Secret</td><td>Token di accesso al pannello admin</td></tr>
-          <tr><td><code>RESEND_API_KEY</code></td><td>Secret</td><td>Chiave API Resend per email (opzionale, fallback)</td></tr>
-        </tbody>
-      </table>
-      <p>Per aggiornare le variabili: Cloudflare Dashboard → Workers & Pages → sindromerenu-italia → Settings → Environment Variables.</p>
-
-      <h3><i class="fab fa-github"></i>Repository GitHub</h3>
-      <ul>
-        <li><strong>URL:</strong> <a href="https://github.com/RobertoPoggi/sindromerenuitalia" target="_blank">github.com/RobertoPoggi/sindromerenuitalia</a></li>
-        <li><strong>Branch produzione:</strong> <code>main</code></li>
-        <li><strong>Branch sviluppo:</strong> <code>genspark_ai_developer</code></li>
-        <li><strong>File principale:</strong> <code>src/index.tsx</code> (oltre 4.000 righe)</li>
-      </ul>
-
-      <h3><i class="fas fa-upload"></i>Come effettuare un nuovo deploy</h3>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><b>Modificare il codice</b><p>Editare i file in <code>src/index.tsx</code> o nella cartella <code>public/</code>.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><b>Build</b><p><code>npm run build</code> — genera la cartella <code>dist/</code></p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><b>Deploy</b><p><code>export CLOUDFLARE_API_TOKEN="..." && npx wrangler pages deploy dist --project-name sindromerenu-italia</code></p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><b>Verifica</b><p>Aprire <code>https://sindromerenu-italia.pages.dev/api/health</code> — deve tornare <code>{"status":"ok","d1":true}</code></p></div></div>
-      </div>
-
-      <h3><i class="fas fa-plus-circle"></i>Come aggiungere nuovi contenuti</h3>
-      <table class="data-table">
-        <thead><tr><th>Operazione</th><th>File da modificare</th></tr></thead>
-        <tbody>
-          <tr><td>Aggiungere/modificare testi (tutte le lingue)</td><td><code>src/index.tsx</code> – oggetto <code>translations</code> in cima al file</td></tr>
-          <tr><td>Aggiungere una brochure</td><td>Caricare il PDF in <code>public/brochure/</code> e aggiornare l'array in <code>brochurePage()</code></td></tr>
-          <tr><td>Aggiungere un'immagine</td><td>Caricare in <code>public/images/</code> e aggiornare i riferimenti nel codice</td></tr>
-          <tr><td>Modificare i contatti mostrati nella pagina Contatti</td><td><code>src/index.tsx</code> – funzione <code>contactPage()</code></td></tr>
-          <tr><td>Aggiungere un evento</td><td><code>src/index.tsx</code> – funzione <code>eventsPage()</code></td></tr>
-          <tr><td>Modificare la struttura del database</td><td>Creare un nuovo file in <code>migrations/</code> e applicarlo con <code>wrangler d1 migrations apply</code></td></tr>
-        </tbody>
-      </table>
-
-      <h3><i class="fas fa-stethoscope"></i>Verifica stato del sistema</h3>
-      <p>Per verificare che tutto funzioni correttamente, aprire questi URL nel browser:</p>
-      <ul>
-        <li><a href="https://sindromerenu-italia.pages.dev/api/health" target="_blank"><code>https://sindromerenu-italia.pages.dev/api/health</code></a> — stato del sistema</li>
-        <li><a href="https://sindromerenu-italia.pages.dev/it/home" target="_blank"><code>https://sindromerenu-italia.pages.dev/it/home</code></a> — homepage italiana</li>
-        <li><a href="https://sindromerenu-italia.pages.dev/admin" target="_blank"><code>https://sindromerenu-italia.pages.dev/admin</code></a> — pannello admin</li>
-      </ul>
-      <p>La risposta attesa dell'health check è:</p>
-      <code>{"status":"ok","gdpr":"v2.0","version":"2.0","d1":true,"email":true}</code>
-
-      <h3><i class="fas fa-envelope-open-text"></i>Contatti tecnici</h3>
-      <div class="contacts-grid">
-        <div class="contact-card">
+        <h3><i class="fas fa-user-check"></i>Diritti degli interessati</h3>
+        <ul>
+          <li><strong>Accesso</strong> (Art. 15): richiedere copia dei propri dati</li>
+          <li><strong>Rettifica</strong> (Art. 16): correggere dati inesatti</li>
+          <li><strong>Cancellazione</strong> (Art. 17): "diritto all'oblio"</li>
+          <li><strong>Limitazione</strong> (Art. 18): sospendere temporaneamente il trattamento</li>
+          <li><strong>Portabilità</strong> (Art. 20): ricevere i dati in formato leggibile da macchina</li>
+          <li><strong>Opposizione</strong> (Art. 21): opporsi al trattamento per legittimo interesse</li>
+        </ul>
+        <div class="box box-blue">
           <i class="fas fa-envelope"></i>
-          <div class="cc-label">Email associazione</div>
-          <div class="cc-value"><a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fab fa-cloudflare"></i>
-          <div class="cc-label">Dashboard Cloudflare</div>
-          <div class="cc-value"><a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fab fa-github"></i>
-          <div class="cc-label">Repository GitHub</div>
-          <div class="cc-value"><a href="https://github.com/RobertoPoggi/sindromerenuitalia" target="_blank">RobertoPoggi/sindromerenuitalia</a></div>
-        </div>
-        <div class="contact-card">
-          <i class="fas fa-shield-alt"></i>
-          <div class="cc-label">Garante Privacy IT</div>
-          <div class="cc-value"><a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a></div>
+          <div>Per esercitare i propri diritti: <a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a> — risposta garantita entro 30 giorni.
+          Autorità di controllo: <a href="https://www.garanteprivacy.it" target="_blank">Garante per la protezione dei dati personali</a></div>
         </div>
       </div>
     </section>
 
-  </main>
-</div>
+    <!-- ══════════════════════════════════════
+         20. DATABASE D1
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-db">
+      <div class="section-head">
+        <div class="section-icon icon-purple"><i class="fas fa-database"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">20</span>Database Cloudflare D1</h2>
+          <p class="section-desc">Struttura e tabelle del database persistente</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Il sito utilizza <strong>Cloudflare D1</strong> (<code>sindromerenu-db</code>),
+          un database SQLite serverless distribuito globalmente. È il database principale
+          per la persistenza dei dati.
+        </p>
+        <div class="box box-blue">
+          <i class="fas fa-info-circle"></i>
+          <div><strong>Database name:</strong> <code>sindromerenu-db</code><br>
+          <strong>Engine:</strong> SQLite (Cloudflare D1)<br>
+          <strong>Accesso:</strong> solo tramite Cloudflare Workers (non accessibile direttamente dall'esterno)</div>
+        </div>
 
+        <h3><i class="fas fa-table"></i>Tabelle principali</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tabella</th><th>Scopo</th><th>Campi chiave</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>lista_attesa</code></td>
+                <td>Pre-iscrizioni soci</td>
+                <td>id, nome, cognome, email, tipo, gdpr_consent, created_at, deleted_at</td>
+              </tr>
+              <tr>
+                <td><code>contatti</code></td>
+                <td>Messaggi dal form contatti</td>
+                <td>id, nome, cognome, email, oggetto, messaggio, gdpr_consent, ip_hash, created_at</td>
+              </tr>
+              <tr>
+                <td><code>adesioni</code></td>
+                <td>Adesioni formali</td>
+                <td>id, nome, cognome, email, stato, created_at</td>
+              </tr>
+              <tr>
+                <td><code>donazioni</code></td>
+                <td>Registro donazioni</td>
+                <td>id, nome, email, importo, metodo, data, note</td>
+              </tr>
+              <tr>
+                <td><code>audit_log</code></td>
+                <td>Log operazioni GDPR</td>
+                <td>id, azione, email, admin_id, timestamp, note</td>
+              </tr>
+              <tr>
+                <td><code>faq</code></td>
+                <td>Domande frequenti</td>
+                <td>id, domanda, risposta, categoria, ordine, published</td>
+              </tr>
+              <tr>
+                <td><code>news</code></td>
+                <td>Notizie e aggiornamenti</td>
+                <td>id, titolo, testo, data, published</td>
+              </tr>
+              <tr>
+                <td><code>pubblicazioni</code></td>
+                <td>Paper scientifici</td>
+                <td>id, titolo, autori, rivista, anno, url, doi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-shield-halved"></i>Privacy nel database</h3>
+        <ul>
+          <li>Gli IP vengono salvati come <strong>hash SHA-256</strong> (mai in chiaro)</li>
+          <li>Il campo <code>gdpr_consent</code> registra il timestamp del consenso</li>
+          <li>Il campo <code>deleted_at</code> gestisce il soft delete (diritto all'oblio)</li>
+          <li>L'<code>audit_log</code> traccia ogni operazione admin per accountability GDPR</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         21. DEPLOYMENT
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-deploy">
+      <div class="section-head">
+        <div class="section-icon icon-amber"><i class="fas fa-rocket"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">21</span>Deployment</h2>
+          <p class="section-desc">Come pubblicare aggiornamenti sul sito</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <h3><i class="fas fa-terminal"></i>Comandi principali</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Comando</th><th>Descrizione</th></tr></thead>
+            <tbody>
+              <tr><td><code>npm run dev</code></td><td>Avvia server di sviluppo locale (Vite)</td></tr>
+              <tr><td><code>npm run build</code></td><td>Genera bundle di produzione in <code>dist/</code></td></tr>
+              <tr><td><code>npm run preview</code></td><td>Preview locale del build di produzione</td></tr>
+              <tr><td><code>npm run deploy</code></td><td>Build + deploy su Cloudflare Pages</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><i class="fas fa-cog"></i>Variabili d'ambiente necessarie</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Variabile</th><th>Descrizione</th><th>Obbligatoria</th></tr></thead>
+            <tbody>
+              <tr><td><code>ADMIN_SECRET</code></td><td>Token di accesso al pannello admin</td><td>✅ Sì</td></tr>
+              <tr><td><code>RESEND_API_KEY</code></td><td>API key per Resend (fallback email)</td><td>❌ No (ma consigliata)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box box-amber">
+          <i class="fas fa-triangle-exclamation"></i>
+          <div>Le variabili d'ambiente si configurano nel <strong>Dashboard Cloudflare</strong> → Pages → sindromerenu-italia → Settings → Environment variables. Non inserirle mai nel codice sorgente.</div>
+        </div>
+
+        <h3><i class="fas fa-heartbeat"></i>Health check</h3>
+        <p>Per verificare che il sito funzioni correttamente:</p>
+        <pre><code>curl https://sindromerenu-italia.pages.dev/api/health</code></pre>
+        <p>Risposta attesa:</p>
+        <pre><code>{
+  "status": "ok",
+  "gdpr": "v2.0",
+  "version": "2.0",
+  "d1": true,
+  "email": true
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         22. API
+    ══════════════════════════════════════ -->
+    <section class="section" id="sec-api">
+      <div class="section-head">
+        <div class="section-icon icon-purple"><i class="fas fa-code"></i></div>
+        <div class="section-head-text">
+          <h2><span class="section-num">22</span>API interne</h2>
+          <p class="section-desc">Endpoint REST disponibili</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          Il sito espone alcune API REST interne usate dal pannello admin e dai moduli online.
+        </p>
+        <h3><i class="fas fa-lock-open"></i>API pubbliche (senza autenticazione)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Metodo</th><th>Path</th><th>Descrizione</th></tr></thead>
+            <tbody>
+              <tr><td><code>GET</code></td><td><code>/api/health</code></td><td>Health check del sistema</td></tr>
+              <tr><td><code>POST</code></td><td><code>/api/contact</code></td><td>Invio modulo contatti</td></tr>
+              <tr><td><code>POST</code></td><td><code>/api/lista-attesa</code></td><td>Pre-iscrizione soci</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3><i class="fas fa-lock"></i>API admin (richiedono token)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Metodo</th><th>Path</th><th>Descrizione</th></tr></thead>
+            <tbody>
+              <tr><td><code>GET</code></td><td><code>/api/admin/stats</code></td><td>Statistiche dashboard</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/admin/adesioni</code></td><td>Lista pre-iscrizioni</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/admin/contatti</code></td><td>Lista messaggi</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/admin/lista-attesa</code></td><td>Lista attesa</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/admin/donazioni</code></td><td>Lista donazioni</td></tr>
+              <tr><td><code>GET</code></td><td><code>/api/admin/audit</code></td><td>Audit log GDPR</td></tr>
+              <tr><td><code>DELETE</code></td><td><code>/api/admin/erasure/:email</code></td><td>Cancellazione dati (Art. 17)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box box-blue">
+          <i class="fas fa-info-circle"></i>
+          <div>Le API admin richiedono il token tramite header <code>X-Admin-Token: &lt;token&gt;</code> o come query param. Il pannello admin gestisce l'autenticazione automaticamente.</div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+</div><!-- /app-body -->
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
 <footer>
-  <p><strong>Sindrome ReNU Italia APS</strong> — Manuale d'Uso v2.0 — Aprile 2026</p>
-  <p style="margin-top:6px">
-    <a href="/">← Torna al sito</a> &nbsp;·&nbsp;
-    <a href="/it/privacy">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="https://github.com/RobertoPoggi/sindromerenuitalia" target="_blank">GitHub</a>
-  </p>
-  <p style="margin-top:8px;font-size:11px;color:#64748b">
-    Documento riservato all'uso interno dell'associazione e dei suoi collaboratori tecnici.
-    Contiene informazioni sulle credenziali admin — non condividere pubblicamente.
-  </p>
+  <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+    <i class="fas fa-dna" style="color:#45B8EC"></i>
+    <strong>Sindrome ReNU Italia APS</strong>
+  </div>
+  <span>Manuale d'Uso v2.0 · Aprile 2026</span>
+  <span>·</span>
+  <a href="https://sindromerenu-italia.pages.dev/it/privacy" target="_blank">Informativa Privacy</a>
+  <span>·</span>
+  <a href="https://sindromerenu-italia.pages.dev/it/home" target="_blank">Torna al sito</a>
+  <span>·</span>
+  <span>GDPR Conforme · Reg. UE 2016/679</span>
 </footer>
 
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in cima">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
 <script>
-// Highlight active sidebar link on scroll
-const sections = document.querySelectorAll('section[id]');
-const links = document.querySelectorAll('.sidebar nav a[href^="#"]');
-const observer = new IntersectionObserver((entries) => {
+// ══ Sidebar mobile toggle ══
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+}
+
+// ══ Active nav link on scroll ══
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-link[data-sec]');
+
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
-      links.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.sec === id);
       });
     }
   });
-}, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
 sections.forEach(s => observer.observe(s));
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+// ══ Back to top button ══
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+// ══ Smooth close sidebar on link click (mobile) ══
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
   });
 });
 </script>

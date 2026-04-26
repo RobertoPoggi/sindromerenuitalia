@@ -2588,53 +2588,119 @@ function brochurePage(t: Record<string, string>): string {
   ]
   return `
   <section class="hero-gradient text-white py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-file-pdf mr-3 text-sky-300"></i>${t.brochure_title}</h1>
-      <p class="text-sky-100 text-lg">${t.brochure_intro}</p>
+    <div class="max-w-5xl mx-auto text-center">
+      <div style="display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.15);margin-bottom:1.25rem;">
+        <i class="fas fa-file-pdf" style="font-size:2rem;color:#BAE6FD;"></i>
+      </div>
+      <h1 class="text-4xl font-extrabold mb-3">${t.brochure_title}</h1>
+      <p class="text-sky-100 text-lg max-w-2xl mx-auto">${t.brochure_intro}</p>
     </div>
   </section>
 
-  <section class="py-16 px-4 section-light">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        ${brochures.map(b => `
-        <div class="card card-blue overflow-hidden flex flex-col">
-          <div class="overflow-hidden bg-sky-50" style="min-height:200px">
+  <style>
+    .brochure-card {
+      background:#fff;
+      border-radius:1.25rem;
+      box-shadow:0 2px 12px rgba(8,32,80,0.08);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform .25s,box-shadow .25s;
+    }
+    .brochure-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 16px 40px rgba(8,32,80,0.16);
+    }
+    .brochure-thumb-wrap {
+      width:100%;
+      background:#f0f7ff;
+      padding:14px 14px 10px;
+      position:relative;
+    }
+    .brochure-thumb-wrap img {
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:6px;
+      box-shadow:0 4px 16px rgba(8,32,80,0.15);
+    }
+    .brochure-body {
+      padding:1.25rem;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+      border-top:3px solid #1078C0;
+    }
+    .brochure-btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      background:#1078C0;
+      color:#fff;
+      border:none;
+      border-radius:.6rem;
+      padding:.65rem 1rem;
+      font-size:.875rem;
+      font-weight:600;
+      text-decoration:none;
+      cursor:pointer;
+      transition:background .2s;
+      margin-top:auto;
+    }
+    .brochure-btn:hover { background:#082050; }
+    .brochure-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap:1.75rem;
+    }
+    @media(max-width:640px){
+      .brochure-grid { grid-template-columns:1fr 1fr; gap:1rem; }
+    }
+  </style>
+
+  <section style="padding:3.5rem 1.5rem;background:#EEF6FB;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div class="brochure-grid">
+        ${brochures.map((b,i) => `
+        <div class="brochure-card">
+          <div class="brochure-thumb-wrap">
             <img src="/brochure/thumbnails/${b.thumb}.png" alt="${b.title}"
-                 class="w-full h-48 object-contain p-2"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div style="display:none" class="w-full h-48 bg-sky-100 flex items-center justify-center">
-              <i class="fas fa-file-pdf text-5xl" style="color:#1078C0"></i>
-            </div>
+                 onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;width:100%;height:200px;\\'><i class=\\'fas fa-file-pdf\\' style=\\'font-size:4rem;color:#1078C0;\\'></i></div>'">
           </div>
-          <div class="p-4 flex-1 flex flex-col">
-            <h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">${b.title}</h3>
-            <p class="text-gray-500 text-xs mb-4 flex-1">${b.desc}</p>
-            <a href="/brochure/${b.file}" download
-               class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors" style="background:#1078C0">
+          <div class="brochure-body">
+            <div style="font-size:.65rem;font-weight:700;color:#1078C0;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem;">
+              <i class="fas fa-file-pdf" style="margin-right:.25rem;"></i>Brochure ${i+1}
+            </div>
+            <h3 style="font-size:.95rem;font-weight:700;color:#082050;margin-bottom:.4rem;line-height:1.35;">${b.title}</h3>
+            <p style="font-size:.8rem;color:#64748b;margin-bottom:1rem;flex:1;">${b.desc}</p>
+            <a href="/brochure/${b.file}" download class="brochure-btn">
               <i class="fas fa-download"></i>${t.brochure_download}
             </a>
           </div>
         </div>`).join('')}
       </div>
 
-      <!-- Download all -->
-      <div class="mt-10 rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
-        <i class="fas fa-file-archive text-5xl text-sky-300 mb-4 block"></i>
-        <h2 class="text-2xl font-bold mb-2">
+      <!-- Download all banner -->
+      <div style="margin-top:3rem;border-radius:1.5rem;padding:2.5rem 2rem;text-align:center;color:#fff;background:linear-gradient(135deg,#082050 0%,#1078C0 100%);box-shadow:0 8px 32px rgba(8,32,80,0.25);">
+        <i class="fas fa-file-archive" style="font-size:3rem;color:#BAE6FD;display:block;margin-bottom:1rem;"></i>
+        <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:.5rem;">
           ${t.lang==='it'?'Scarica tutte le brochure':t.lang==='en'?'Download all brochures':t.lang==='fr'?'Télécharger toutes les brochures':t.lang==='es'?'Descargar todos los folletos':'Alle Broschüren herunterladen'}
         </h2>
-        <p class="text-sky-200 mb-5">
+        <p style="color:#BAE6FD;margin-bottom:1.75rem;max-width:540px;margin-left:auto;margin-right:auto;">
           ${t.lang==='it'?'Condividi le nostre brochure per diffondere la consapevolezza sulla Sindrome ReNU in Italia.':t.lang==='en'?'Share our brochures to spread awareness about ReNU Syndrome in Italy.':'Partagez nos brochures pour sensibiliser à la maladie ReNU.'}
         </p>
-        <div class="flex flex-wrap justify-center gap-3">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;">
           ${brochures.map(b => `
           <a href="/brochure/${b.file}" download
-             class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
-            <i class="fas fa-download text-xs"></i>${b.file.replace('brochure-','').replace('.pdf','')}
+             style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,0.18);color:#fff;padding:.5rem 1rem;border-radius:.5rem;font-size:.8rem;font-weight:600;text-decoration:none;transition:background .2s;"
+             onmouseover="this.style.background='rgba(255,255,255,0.30)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">
+            <i class="fas fa-download" style="font-size:.7rem;"></i>${b.title}
           </a>`).join('')}
         </div>
       </div>
+
     </div>
   </section>`
 }
