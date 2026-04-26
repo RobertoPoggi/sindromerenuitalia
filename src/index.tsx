@@ -3588,27 +3588,55 @@ function now(): string {
   return new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
 }
 
-// ─── EMAIL via Resend API ─────────────────────────────────────────────────────
-// Invia email di notifica a info@sindromerenu.it per ogni form submission.
-// Richiede variabile d'ambiente RESEND_API_KEY impostata su Cloudflare Pages.
+// ─── EMAIL – doppia strategia: MailChannels (nativo CF, gratis) + Resend fallback ──
+// MailChannels è gratuito e nativo su Cloudflare Workers senza alcuna API key.
+// Resend è il fallback opzionale (imposta RESEND_API_KEY nelle env vars CF Pages).
 async function sendEmail(env: any, opts: {
   to?: string, subject: string, html: string
 }): Promise<void> {
-  const key = env?.RESEND_API_KEY
-  if (!key) { console.warn('[email] RESEND_API_KEY non configurata – email non inviata'); return }
+  const toAddr   = opts.to || 'info@sindromerenu.it'
+  const fromAddr = 'noreply@sindromerenu.it'
+  const fromName = 'Sindrome ReNU Italia APS'
+
+  // 1️⃣  Tentativo MailChannels (nativo Cloudflare Workers – zero config)
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    const mcRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'Sindrome ReNU Italia <noreply@sindromerenu.it>',
-        to: [opts.to || 'info@sindromerenu.it'],
+        personalizations: [{ to: [{ email: toAddr }] }],
+        from: { email: fromAddr, name: fromName },
         subject: opts.subject,
-        html: opts.html
+        content: [{ type: 'text/html', value: opts.html }]
       })
     })
-    if (!res.ok) console.error('[email] Resend error:', await res.text())
-  } catch (e) { console.error('[email] fetch error:', e) }
+    if (mcRes.ok || mcRes.status === 202) {
+      console.log('[email] MailChannels OK →', toAddr)
+      return
+    }
+    console.warn('[email] MailChannels status', mcRes.status, await mcRes.text().catch(()=>''))
+  } catch(e) { console.warn('[email] MailChannels fetch error:', e) }
+
+  // 2️⃣  Fallback Resend (richiede RESEND_API_KEY in env vars CF Pages)
+  const key = env?.RESEND_API_KEY
+  if (key && key.length > 10 && !key.startsWith('INSERIRE')) {
+    try {
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: `${fromName} <${fromAddr}>`,
+          to: [toAddr],
+          subject: opts.subject,
+          html: opts.html
+        })
+      })
+      if (res.ok) { console.log('[email] Resend OK →', toAddr); return }
+      console.error('[email] Resend error:', await res.text())
+    } catch(e) { console.error('[email] Resend fetch error:', e) }
+  }
+
+  console.warn('[email] Nessun provider disponibile – email non inviata a', toAddr)
 }
 
 // ─── ADMIN PANEL (integrato in Hono) ─────────────────────────────────────────
