@@ -3569,7 +3569,7 @@ for (const lang of ['it','en','fr','es','de']) {
   }
 }
 
-// ─── HELPER: sanitize ────────────────────────────────────────────────────────
+// ─── HELPER: sanitize / validate / hash ──────────────────────────────────────
 function san(v: unknown, n = 500): string {
   return v == null ? '' : String(v).trim().slice(0, n)
 }
@@ -3577,7 +3577,6 @@ function validEmail(e: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)
 }
 function hashIP(ip: string): string {
-  // Simple hash for GDPR anonymization (in production use crypto.subtle)
   let h = 0
   for (let i = 0; i < ip.length; i++) { h = (Math.imul(31, h) + ip.charCodeAt(i)) | 0 }
   return 'ip' + Math.abs(h).toString(16).padStart(8, '0')
@@ -3585,8 +3584,376 @@ function hashIP(ip: string): string {
 function getClientIP(c: any): string {
   return c.req.header('CF-Connecting-IP') || c.req.header('X-Forwarded-For') || ''
 }
+function now(): string {
+  return new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
+}
 
-// ─── API: LISTA ATTESA (pre-iscrizione soci) ─────────────────────────────────
+// ─── EMAIL via Resend API ─────────────────────────────────────────────────────
+// Invia email di notifica a info@sindromerenu.it per ogni form submission.
+// Richiede variabile d'ambiente RESEND_API_KEY impostata su Cloudflare Pages.
+async function sendEmail(env: any, opts: {
+  to?: string, subject: string, html: string
+}): Promise<void> {
+  const key = env?.RESEND_API_KEY
+  if (!key) { console.warn('[email] RESEND_API_KEY non configurata – email non inviata'); return }
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: 'Sindrome ReNU Italia <noreply@sindromerenu.it>',
+        to: [opts.to || 'info@sindromerenu.it'],
+        subject: opts.subject,
+        html: opts.html
+      })
+    })
+    if (!res.ok) console.error('[email] Resend error:', await res.text())
+  } catch (e) { console.error('[email] fetch error:', e) }
+}
+
+// ─── ADMIN PANEL (integrato in Hono) ─────────────────────────────────────────
+const ADMIN_HTML = `<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin – Sindrome ReNU Italia APS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:system-ui,sans-serif}</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- LOGIN OVERLAY -->
+<div id="loginOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-600">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4">
+    <div class="text-center mb-6">
+      <i class="fas fa-shield-alt text-5xl text-blue-600 mb-3 block"></i>
+      <h1 class="text-2xl font-bold text-gray-800">Pannello Admin</h1>
+      <p class="text-gray-500 text-sm">Sindrome ReNU Italia APS</p>
+      <span class="inline-block mt-2 text-xs bg-green-100 text-green-700 border border-green-300 px-3 py-1 rounded-full font-semibold">
+        <i class="fas fa-check-circle mr-1"></i>GDPR Compliant v2.0
+      </span>
+    </div>
+    <input id="ti" type="password" placeholder="Token di accesso admin..."
+           class="w-full border rounded-xl px-4 py-3 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">
+      <i class="fas fa-sign-in-alt mr-2"></i>Accedi
+    </button>
+    <p id="le" class="text-red-600 text-sm text-center mt-3 hidden">Token non valido.</p>
+    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+      <i class="fas fa-exclamation-triangle mr-1"></i>
+      <b>Accesso riservato.</b> Ogni operazione è registrata nell'audit log GDPR.
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<nav class="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-4 flex items-center justify-between shadow-xl">
+  <div class="flex items-center gap-3">
+    <i class="fas fa-shield-alt text-2xl text-blue-300"></i>
+    <div>
+      <div class="font-bold text-lg">Pannello Admin GDPR</div>
+      <div class="text-xs text-blue-200">Sindrome ReNU Italia APS – v2.0</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <span id="dbBadge" class="text-xs bg-gray-500 text-white px-2 py-1 rounded-full">DB: –</span>
+    <span class="text-xs bg-green-500 text-white px-2 py-1 rounded-full">GDPR v2.0</span>
+  </div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <!-- STATS -->
+  <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+  </div>
+
+  <!-- GDPR INFO -->
+  <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-6 text-sm text-blue-800 flex gap-3">
+    <i class="fas fa-info-circle text-blue-500 text-xl mt-0.5 flex-shrink-0"></i>
+    <div><b>Protezione dati attiva:</b> ogni visualizzazione è registrata nell'audit log (Art.5 GDPR).
+    I dati dei minori sono protetti (Art.9). Il diritto all'oblio è disponibile nella sezione Cancella Dati.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="flex gap-2 flex-wrap mb-6">
+    <button data-t="adesioni"  onclick="showTab('adesioni')"  class="tb bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-users mr-1"></i>Adesioni</button>
+    <button data-t="contatti"  onclick="showTab('contatti')"  class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-envelope mr-1"></i>Contatti</button>
+    <button data-t="lista"     onclick="showTab('lista')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-clock mr-1"></i>Lista Attesa</button>
+    <button data-t="donazioni" onclick="showTab('donazioni')" class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-heart mr-1"></i>Donazioni</button>
+    <button data-t="audit"     onclick="showTab('audit')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-history mr-1"></i>Audit Log</button>
+    <button data-t="erasure"   onclick="showErasure()"        class="tb bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-trash mr-1"></i>Cancella Dati</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content" class="bg-white rounded-2xl shadow-lg overflow-hidden min-h-64">
+    <div class="p-8 text-center text-gray-400">
+      <i class="fas fa-database text-5xl mb-3 block opacity-20"></i>
+      Seleziona una sezione per visualizzare i dati
+    </div>
+  </div>
+</div>
+
+<script>
+let TOK = '';
+function H(){ return {'X-Admin-Token': TOK, 'Content-Type': 'application/json'}; }
+
+async function doLogin(){
+  const t = document.getElementById('ti').value.trim();
+  if(!t) return;
+  const r = await fetch('/api/admin/stats', {headers: {'X-Admin-Token': t}});
+  if(r.ok){
+    TOK = t;
+    document.getElementById('loginOverlay').style.display = 'none';
+    loadStats();
+    showTab('adesioni');
+  } else {
+    document.getElementById('le').classList.remove('hidden');
+    document.getElementById('ti').value = '';
+  }
+}
+
+async function loadStats(){
+  const r = await fetch('/api/admin/stats', {headers: H()});
+  if(!r.ok) return;
+  const s = await r.json();
+  document.getElementById('dbBadge').textContent = s.db ? 'D1: ✓' : 'D1: memoria';
+  document.getElementById('dbBadge').className = s.db
+    ? 'text-xs bg-green-600 text-white px-2 py-1 rounded-full'
+    : 'text-xs bg-amber-500 text-white px-2 py-1 rounded-full';
+  const cards = [
+    {k:'lista_attesa', l:'Lista Attesa', i:'fa-clock',    c:'blue'},
+    {k:'contatti',     l:'Contatti',     i:'fa-envelope', c:'green'},
+    {k:'adesioni',     l:'Adesioni',     i:'fa-users',    c:'purple'},
+    {k:'donazioni',    l:'Donazioni',    i:'fa-heart',    c:'red'},
+  ];
+  document.getElementById('stats').innerHTML = cards.map(c => \`
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-\${c.c}-500">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-\${c.c}-100 flex items-center justify-center">
+          <i class="fas \${c.i} text-\${c.c}-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-gray-800">\${s[c.k] ?? 0}</div>
+          <div class="text-xs text-gray-500">\${c.l}</div>
+        </div>
+      </div>
+    </div>\`).join('');
+}
+
+const TABS = {
+  adesioni:  {url:'/api/admin/adesioni'},
+  contatti:  {url:'/api/admin/contatti'},
+  lista:     {url:'/api/admin/lista-attesa'},
+  donazioni: {url:'/api/admin/donazioni'},
+  audit:     {url:'/api/admin/audit'},
+};
+
+async function showTab(name){
+  document.querySelectorAll('.tb').forEach(b => {
+    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+  });
+  const btn = document.querySelector('[data-t="'+name+'"]');
+  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  if(name === 'erasure'){ showErasure(); return; }
+  const cfg = TABS[name]; if(!cfg) return;
+  document.getElementById('content').innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-blue-400"></i></div>';
+  const r = await fetch(cfg.url, {headers: H()});
+  if(!r.ok){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-red-500"><i class="fas fa-exclamation-triangle mr-2"></i>Errore caricamento dati – token non valido?</div>';
+    return;
+  }
+  const data = await r.json();
+  if(!data.length){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-gray-400"><i class="fas fa-inbox text-4xl mb-3 block opacity-30"></i>Nessun dato presente</div>';
+    return;
+  }
+  const keys = Object.keys(data[0]);
+  let html = '<div class="overflow-x-auto"><table class="w-full text-xs"><thead class="bg-gray-50 border-b"><tr>'
+    + keys.map(k => '<th class="px-3 py-3 text-left font-semibold text-gray-600 whitespace-nowrap">'+k+'</th>').join('')
+    + '</tr></thead><tbody>';
+  data.forEach((row,i) => {
+    html += '<tr class="'+(i%2?'bg-gray-50':'')+' border-b hover:bg-blue-50">';
+    keys.forEach(k => {
+      const v = row[k] !== null ? String(row[k]) : '–';
+      html += '<td class="px-3 py-2 text-gray-700 max-w-xs truncate" title="'+v.replace(/"/g,'&quot;')+'">'+v+'</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div><div class="px-6 py-3 bg-gray-50 text-xs text-gray-500 border-t flex justify-between">'
+    + '<span><i class="fas fa-lock mr-1 text-green-600"></i>'+data.length+' record · accesso registrato audit log GDPR</span>'
+    + '<a href="'+cfg.url+'" target="_blank" class="text-blue-600 hover:underline">Esporta JSON</a>'
+    + '</div>';
+  document.getElementById('content').innerHTML = html;
+}
+
+function showErasure(){
+  document.querySelectorAll('.tb').forEach(b => {
+    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+  });
+  const btn = document.querySelector('[data-t="erasure"]');
+  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  document.getElementById('content').innerHTML = \`
+    <div class="p-8 max-w-lg mx-auto">
+      <div class="text-center mb-6">
+        <i class="fas fa-user-slash text-5xl text-red-400 mb-3 block"></i>
+        <h2 class="text-xl font-bold">Diritto all'Oblio – Art. 17 GDPR</h2>
+        <p class="text-sm text-gray-500 mt-1">Cancella tutti i dati personali di un interessato</p>
+      </div>
+      <div class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-5 text-sm text-amber-800">
+        <i class="fas fa-exclamation-triangle mr-1"></i>
+        <b>Attenzione – operazione irreversibile.</b><br>
+        Verificare sempre l'identità del richiedente prima di procedere.
+      </div>
+      <input id="ee" type="email" placeholder="email@esempio.it" class="w-full border rounded-xl px-4 py-3 text-sm mb-3">
+      <input id="ec" type="text" placeholder="Digita CANCELLA per confermare" class="w-full border rounded-xl px-4 py-3 text-sm mb-4">
+      <button onclick="doErasure()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl">
+        <i class="fas fa-trash mr-2"></i>Esegui Cancellazione
+      </button>
+      <div id="er" class="mt-4 hidden"></div>
+    </div>\`;
+}
+
+async function doErasure(){
+  const email = document.getElementById('ee').value.trim();
+  const conf  = document.getElementById('ec').value.trim();
+  const res   = document.getElementById('er');
+  if(conf !== 'CANCELLA'){ res.innerHTML='<div class="p-3 bg-red-50 text-red-700 rounded-xl text-sm">Digita esattamente CANCELLA.</div>'; res.classList.remove('hidden'); return; }
+  if(!email){ res.innerHTML='<div class="p-3 bg-red-50 text-red-700 rounded-xl text-sm">Email obbligatoria.</div>'; res.classList.remove('hidden'); return; }
+  const r = await fetch('/api/admin/erasure/'+encodeURIComponent(email), {method:'DELETE', headers:H()});
+  const d = await r.json();
+  if(r.ok){
+    res.innerHTML='<div class="p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-800"><i class="fas fa-check-circle mr-1"></i><b>Cancellazione completata</b><br><pre class="mt-2 text-xs">'+JSON.stringify(d,null,2)+'</pre></div>';
+  } else {
+    res.innerHTML='<div class="p-4 bg-red-50 text-red-800 rounded-xl text-sm">Errore: '+d.error+'</div>';
+  }
+  res.classList.remove('hidden');
+}
+</script>
+</body></html>`
+
+// In-memory store (fallback quando D1 non è configurato)
+const memStore: { la: any[], ct: any[], ad: any[], dn: any[], au: any[] } = { la:[], ct:[], ad:[], dn:[], au:[] }
+
+function memAudit(tabella: string, id: number, azione: string, note = '') {
+  memStore.au.push({ id: memStore.au.length+1, timestamp: new Date().toISOString(), tabella, record_id: id, azione, note })
+}
+
+// ─── ADMIN: token check ───────────────────────────────────────────────────────
+function requireAdmin(c: any): boolean {
+  const tok = c.req.header('X-Admin-Token') || ''
+  const secret = c.env?.ADMIN_SECRET || 'renu-admin-2026'
+  return tok === secret
+}
+
+// ─── ADMIN ROUTES ─────────────────────────────────────────────────────────────
+app.get('/admin', (c) => c.html(ADMIN_HTML))
+app.get('/admin/', (c) => c.html(ADMIN_HTML))
+
+app.get('/api/admin/stats', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const [la, ct, ad, dn] = await Promise.all([
+        db.prepare('SELECT COUNT(*) as n FROM lista_attesa WHERE cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM contatti').first(),
+        db.prepare('SELECT COUNT(*) as n FROM adesioni WHERE cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM donazioni WHERE cancellato=0').first(),
+      ])
+      return c.json({ lista_attesa:(la as any)?.n??0, contatti:(ct as any)?.n??0, adesioni:(ad as any)?.n??0, donazioni:(dn as any)?.n??0, db:true })
+    } catch(e) { /* fallback */ }
+  }
+  return c.json({ lista_attesa:memStore.la.length, contatti:memStore.ct.length, adesioni:memStore.ad.length, donazioni:memStore.dn.length, db:false })
+})
+
+app.get('/api/admin/adesioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,citta,tipo_membro,come_conosciuto,consenso_gdpr,data_consenso,status FROM adesioni WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.ad)
+})
+
+app.get('/api/admin/contatti', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,email,oggetto,messaggio,consenso_gdpr,data_consenso,status FROM contatti ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.ct)
+})
+
+app.get('/api/admin/lista-attesa', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,citta,tipo,consenso_gdpr,data_consenso FROM lista_attesa WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.la)
+})
+
+app.get('/api/admin/donazioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,email,importo,tipo,metodo,consenso_gdpr,data_consenso FROM donazioni WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.dn)
+})
+
+app.get('/api/admin/audit', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,timestamp,tabella,record_id,azione,operatore,note FROM audit_log ORDER BY timestamp DESC LIMIT 500').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.au.slice(-200).reverse())
+})
+
+app.delete('/api/admin/erasure/:email', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const email = decodeURIComponent(c.req.param('email'))
+  if (!validEmail(email)) return c.json({ error: 'Email non valida' }, 400)
+  const db = c.env?.DB
+  const ts = new Date().toISOString()
+  if (db) {
+    try {
+      await db.prepare("UPDATE lista_attesa SET cancellato=1, data_cancellazione=?, nome='[CANCELLATO]', cognome='[CANCELLATO]', email='[CANCELLATO]', citta='' WHERE email=?").bind(ts, email).run()
+      await db.prepare("UPDATE contatti SET nome='[CANCELLATO]', email='[CANCELLATO]', messaggio='[CANCELLATO GDPR Art.17]' WHERE email=?").bind(email).run()
+      await db.prepare("UPDATE adesioni SET cancellato=1, data_cancellazione=?, nome='[CANCELLATO]', cognome='[CANCELLATO]', email='[CANCELLATO]' WHERE email=?").bind(ts, email).run()
+      await db.prepare("INSERT INTO audit_log(tabella,azione,operatore,note) VALUES('*','ERASURE','admin',?)").bind(`Art.17 GDPR email=${email.slice(0,3)}***`).run()
+      return c.json({ success: true, email: email.slice(0,3)+'***', nota: 'Cancellazione Art.17 GDPR completata e registrata in audit log.', timestamp: ts })
+    } catch(e: any) { return c.json({ error: e.message }, 500) }
+  }
+  // fallback memory
+  memStore.la = memStore.la.map(r => r.email===email ? {...r, cancellato:1, nome:'[CANCELLATO]', email:'[CANCELLATO]'} : r)
+  memStore.ct = memStore.ct.map(r => r.email===email ? {...r, nome:'[CANCELLATO]', email:'[CANCELLATO]', messaggio:'[CANCELLATO]'} : r)
+  memAudit('*', 0, 'ERASURE', `Art.17 GDPR email=${email.slice(0,3)}***`)
+  return c.json({ success: true, nota: 'Cancellazione completata (memoria – configura D1 per persistenza).', timestamp: ts })
+})
+
+// ─── API: LISTA ATTESA ────────────────────────────────────────────────────────
 app.post('/api/lista-attesa', async (c) => {
   try {
     const body = await c.req.json().catch(() => ({})) as Record<string, unknown>
@@ -3597,34 +3964,86 @@ app.post('/api/lista-attesa', async (c) => {
     if (!san(body.cognome) || san(body.cognome).length < 2) errors.cognome = 'Cognome obbligatorio.'
     if (!validEmail(san(body.email))) errors.email = 'Email valida obbligatoria.'
 
-    if (Object.keys(errors).length > 0) {
-      return c.json({ success: false, errors }, 400)
-    }
+    if (Object.keys(errors).length > 0) return c.json({ success: false, errors }, 400)
 
-    const ipHash = hashIP(getClientIP(c))
-    const db = c.env?.DB
+    const nome    = san(body.nome)
+    const cognome = san(body.cognome)
+    const email   = san(body.email, 200)
+    const citta   = san(body.citta, 100)
+    const tipo    = san(body.tipo || 'familiare', 50)
+    const come    = san(body.come_conosciuto, 300)
+    const ipHash  = hashIP(getClientIP(c))
+    const ts      = now()
+    const db      = c.env?.DB
 
+    // Salva in D1 se disponibile
     if (db) {
-      // Save to Cloudflare D1
-      await db.prepare(`
-        INSERT OR IGNORE INTO lista_attesa
-        (nome, cognome, email, citta, tipo, consenso_gdpr, data_consenso, testo_consenso_versione, ip_hash)
-        VALUES (?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP, '2.0', ?)
-      `).bind(
-        san(body.nome), san(body.cognome), san(body.email, 200),
-        san(body.citta, 100), san(body.tipo || 'lista_attesa', 50),
-        ipHash
-      ).run()
+      try {
+        await db.prepare(`INSERT OR IGNORE INTO lista_attesa
+          (nome,cognome,email,citta,tipo,come_conosciuto,consenso_gdpr,data_consenso,testo_consenso_versione,ip_hash)
+          VALUES(?,?,?,?,?,?,1,CURRENT_TIMESTAMP,'2.0',?)`)
+          .bind(nome, cognome, email, citta, tipo, come, ipHash).run()
+        await db.prepare("INSERT INTO audit_log(tabella,azione,operatore,note) VALUES('lista_attesa','INSERT','utente',?)")
+          .bind(`Pre-iscrizione da ${citta||'–'}`).run()
+      } catch(e) { console.error('[D1 lista-attesa]', e) }
+    } else {
+      // Fallback in-memory
+      const id = memStore.la.length + 1
+      memStore.la.push({ id, created_at: new Date().toISOString(), nome, cognome, email, citta, tipo, come_conosciuto: come, consenso_gdpr: 1, data_consenso: new Date().toISOString(), cancellato: 0 })
+      memAudit('lista_attesa', id, 'INSERT', `Pre-iscrizione da ${citta||'–'}`)
     }
 
-    return c.json({
-      success: true,
-      message: 'Iscrizione alla lista d\'attesa completata. Ti contatteremo non appena sarà approvata la quota associativa.',
-      gdpr: 'Dati trattati ai sensi del GDPR (Reg. UE 2016/679). Consenso registrato.'
-    }, 201)
+    // ✉️ Email notifica a info@sindromerenu.it
+    await sendEmail(c.env, {
+      to: 'info@sindromerenu.it',
+      subject: `🔔 Nuova pre-iscrizione – ${nome} ${cognome}`,
+      html: `
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
+          <div style="background:linear-gradient(135deg,#082050,#1078C0);padding:24px;border-radius:12px 12px 0 0">
+            <h1 style="color:#fff;margin:0;font-size:20px">🔔 Nuova pre-iscrizione lista attesa</h1>
+            <p style="color:#93C5FD;margin:4px 0 0">Sindrome ReNU Italia APS – ${ts}</p>
+          </div>
+          <div style="background:#fff;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <tr style="background:#f0f9ff"><td style="padding:10px;font-weight:700;color:#082050;width:140px">Nome</td><td style="padding:10px">${nome} ${cognome}</td></tr>
+              <tr><td style="padding:10px;font-weight:700;color:#082050">Email</td><td style="padding:10px"><a href="mailto:${email}">${email}</a></td></tr>
+              <tr style="background:#f0f9ff"><td style="padding:10px;font-weight:700;color:#082050">Città</td><td style="padding:10px">${citta||'–'}</td></tr>
+              <tr><td style="padding:10px;font-weight:700;color:#082050">Tipo socio</td><td style="padding:10px">${tipo}</td></tr>
+              <tr style="background:#f0f9ff"><td style="padding:10px;font-weight:700;color:#082050">Come ci ha trovato</td><td style="padding:10px">${come||'–'}</td></tr>
+              <tr><td style="padding:10px;font-weight:700;color:#082050">Consenso GDPR</td><td style="padding:10px;color:#16a34a">✅ Sì (Art.6 GDPR) – v2.0</td></tr>
+            </table>
+            <div style="margin-top:16px;padding:12px;background:#f0fdf4;border-radius:8px;font-size:13px;color:#166534">
+              <b>➡️ Rispondi a:</b> <a href="mailto:${email}">${email}</a>
+            </div>
+            <p style="font-size:11px;color:#9ca3af;margin-top:16px">Vedi tutti i dati nel pannello admin: <a href="https://sindromerenu-italia.pages.dev/admin">sindromerenu-italia.pages.dev/admin</a></p>
+          </div>
+        </div>`
+    })
+
+    // ✉️ Email conferma all'utente
+    await sendEmail(c.env, {
+      to: email,
+      subject: '✅ Conferma pre-iscrizione – Sindrome ReNU Italia APS',
+      html: `
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
+          <div style="background:linear-gradient(135deg,#082050,#1078C0);padding:24px;border-radius:12px 12px 0 0">
+            <h1 style="color:#fff;margin:0;font-size:20px">✅ Pre-iscrizione ricevuta!</h1>
+          </div>
+          <div style="background:#fff;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
+            <p>Ciao <b>${nome}</b>,</p>
+            <p>Abbiamo ricevuto la tua richiesta di pre-iscrizione alla lista d'attesa di <b>Sindrome ReNU Italia APS</b>.</p>
+            <p>Ti contatteremo non appena il Consiglio Direttivo avrà approvato le modalità di iscrizione (quota, statuto, metodo di pagamento).</p>
+            <p>Per qualsiasi informazione scrivici a <a href="mailto:info@sindromerenu.it">info@sindromerenu.it</a> o chiama <a href="tel:+393357301206">+39 335 730 1206</a>.</p>
+            <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0">
+            <p style="font-size:11px;color:#9ca3af">I tuoi dati sono trattati ai sensi del GDPR (Reg. UE 2016/679). Hai il diritto di accedere, rettificare o cancellare i tuoi dati scrivendo a info@sindromerenu.it.</p>
+          </div>
+        </div>`
+    })
+
+    return c.json({ success: true, message: 'Pre-iscrizione ricevuta! Ti contatteremo presto. Controlla la tua email per la conferma.', gdpr: 'Consenso GDPR registrato – v2.0' }, 201)
   } catch (err: any) {
     console.error('lista-attesa error:', err)
-    return c.json({ success: false, error: 'Errore interno. Riprova o scrivi a info@sindromerenu.it.' }, 500)
+    return c.json({ success: false, error: 'Errore interno. Scrivi a info@sindromerenu.it.' }, 500)
   }
 })
 
@@ -3637,33 +4056,78 @@ app.post('/api/contatti', async (c) => {
     if (!body.consenso_gdpr) errors.consenso_gdpr = 'Consenso obbligatorio (Art. 6 GDPR).'
     if (!san(body.nome) || san(body.nome).length < 2) errors.nome = 'Nome obbligatorio.'
     if (!validEmail(san(body.email))) errors.email = 'Email valida obbligatoria.'
-    if (!san(body.messaggio) || san(body.messaggio).length < 10) errors.messaggio = 'Messaggio troppo breve.'
+    if (!san(body.messaggio) || san(body.messaggio).length < 10) errors.messaggio = 'Messaggio troppo breve (min 10 caratteri).'
 
-    if (Object.keys(errors).length > 0) {
-      return c.json({ success: false, errors }, 400)
-    }
+    if (Object.keys(errors).length > 0) return c.json({ success: false, errors }, 400)
 
-    const ipHash = hashIP(getClientIP(c))
-    const db = c.env?.DB
+    const nome     = san(body.nome)
+    const email    = san(body.email, 200)
+    const oggetto  = san(body.oggetto || 'Contatto dal sito', 200)
+    const messaggio = san(body.messaggio, 2000)
+    const ipHash   = hashIP(getClientIP(c))
+    const ts       = now()
+    const db       = c.env?.DB
 
     if (db) {
-      await db.prepare(`
-        INSERT INTO contatti
-        (nome, email, oggetto, messaggio, consenso_gdpr, data_consenso, testo_consenso_versione, ip_hash)
-        VALUES (?, ?, ?, ?, 1, CURRENT_TIMESTAMP, '2.0', ?)
-      `).bind(
-        san(body.nome), san(body.email, 200),
-        san(body.oggetto || 'Contatto dal sito', 200),
-        san(body.messaggio, 2000),
-        ipHash
-      ).run()
+      try {
+        await db.prepare(`INSERT INTO contatti
+          (nome,email,oggetto,messaggio,consenso_gdpr,data_consenso,testo_consenso_versione,ip_hash)
+          VALUES(?,?,?,?,1,CURRENT_TIMESTAMP,'2.0',?)`)
+          .bind(nome, email, oggetto, messaggio, ipHash).run()
+        await db.prepare("INSERT INTO audit_log(tabella,azione,operatore,note) VALUES('contatti','INSERT','utente',?)")
+          .bind(`Oggetto: ${oggetto.slice(0,50)}`).run()
+      } catch(e) { console.error('[D1 contatti]', e) }
+    } else {
+      const id = memStore.ct.length + 1
+      memStore.ct.push({ id, created_at: new Date().toISOString(), nome, email, oggetto, messaggio, consenso_gdpr: 1, data_consenso: new Date().toISOString(), status: 'nuovo' })
+      memAudit('contatti', id, 'INSERT', `Oggetto: ${oggetto.slice(0,50)}`)
     }
 
-    return c.json({
-      success: true,
-      message: 'Messaggio ricevuto! Ti risponderemo entro 48 ore.',
-      gdpr: 'Dati trattati ai sensi del GDPR (Reg. UE 2016/679).'
-    }, 201)
+    // ✉️ Email notifica a info@sindromerenu.it
+    await sendEmail(c.env, {
+      to: 'info@sindromerenu.it',
+      subject: `📩 Nuovo contatto dal sito – ${nome}`,
+      html: `
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
+          <div style="background:linear-gradient(135deg,#082050,#1078C0);padding:24px;border-radius:12px 12px 0 0">
+            <h1 style="color:#fff;margin:0;font-size:20px">📩 Nuovo messaggio dal sito</h1>
+            <p style="color:#93C5FD;margin:4px 0 0">Sindrome ReNU Italia APS – ${ts}</p>
+          </div>
+          <div style="background:#fff;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <tr style="background:#f0f9ff"><td style="padding:10px;font-weight:700;color:#082050;width:120px">Nome</td><td style="padding:10px">${nome}</td></tr>
+              <tr><td style="padding:10px;font-weight:700;color:#082050">Email</td><td style="padding:10px"><a href="mailto:${email}">${email}</a></td></tr>
+              <tr style="background:#f0f9ff"><td style="padding:10px;font-weight:700;color:#082050">Oggetto</td><td style="padding:10px">${oggetto}</td></tr>
+            </table>
+            <div style="margin:16px 0;padding:16px;background:#f8fafc;border-left:4px solid #1078C0;border-radius:0 8px 8px 0;font-size:14px;white-space:pre-wrap">${messaggio}</div>
+            <div style="padding:12px;background:#f0fdf4;border-radius:8px;font-size:13px;color:#166534">
+              <b>➡️ Rispondi a:</b> <a href="mailto:${email}?subject=Re: ${encodeURIComponent(oggetto)}">${email}</a>
+            </div>
+            <p style="font-size:11px;color:#9ca3af;margin-top:16px">Admin: <a href="https://sindromerenu-italia.pages.dev/admin">sindromerenu-italia.pages.dev/admin</a></p>
+          </div>
+        </div>`
+    })
+
+    // ✉️ Email conferma all'utente
+    await sendEmail(c.env, {
+      to: email,
+      subject: '✅ Messaggio ricevuto – Sindrome ReNU Italia APS',
+      html: `
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
+          <div style="background:linear-gradient(135deg,#082050,#1078C0);padding:24px;border-radius:12px 12px 0 0">
+            <h1 style="color:#fff;margin:0;font-size:20px">✅ Messaggio ricevuto!</h1>
+          </div>
+          <div style="background:#fff;padding:24px;border:1px solid #e5e7eb;border-radius:0 0 12px 12px">
+            <p>Ciao <b>${nome}</b>,</p>
+            <p>Abbiamo ricevuto il tuo messaggio riguardo a: <b>${oggetto}</b></p>
+            <p>Ti risponderemo entro <b>48-72 ore lavorative</b>. Per urgenze chiama <a href="tel:+393357301206">+39 335 730 1206</a>.</p>
+            <hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0">
+            <p style="font-size:11px;color:#9ca3af">I tuoi dati sono trattati ai sensi del GDPR (Reg. UE 2016/679). <a href="https://sindromerenu-italia.pages.dev/it/privacy">Informativa Privacy</a></p>
+          </div>
+        </div>`
+    })
+
+    return c.json({ success: true, message: 'Messaggio ricevuto! Ti risponderemo entro 48-72 ore. Controlla la tua email per la conferma.', gdpr: 'Dati trattati ai sensi del GDPR.' }, 201)
   } catch (err: any) {
     console.error('contatti error:', err)
     return c.json({ success: false, error: 'Errore interno. Scrivi direttamente a info@sindromerenu.it.' }, 500)
@@ -3672,12 +4136,10 @@ app.post('/api/contatti', async (c) => {
 
 // ─── API: HEALTH ──────────────────────────────────────────────────────────────
 app.get('/api/health', (c) => {
-  return c.json({ status: 'ok', gdpr: 'v2.0', version: '2.0', d1: !!c.env?.DB })
+  return c.json({ status: 'ok', gdpr: 'v2.0', version: '2.0', d1: !!c.env?.DB, email: !!(c.env?.RESEND_API_KEY) })
 })
 
-// Legacy contact endpoint (backward compatibility)
-app.post('/api/contact', async (c) => {
-  return c.redirect('/api/contatti', 307)
-})
+// Legacy redirect
+app.post('/api/contact', async (c) => c.redirect('/api/contatti', 307))
 
 export default app
