@@ -490,22 +490,23 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     }
     /* ── Logo sfondo intera pagina (come da specifiche PDF punto 5) ── */
     /* Il logo appare come watermark fisso sopra tutto il contenuto, visibile su ogni sezione */
+    /* watermark fisso su tutta la pagina */
     #page-logo-watermark {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none !important;
-      z-index: 0;
+      display: none; /* nascosto — il logo è nella hero inline */
     }
-    #page-logo-watermark img {
-      width: 70vmin;
-      height: 70vmin;
-      object-fit: contain;
-      opacity: 0.12;
-      mix-blend-mode: screen;
-      pointer-events: none !important;
+    /* watermark nella hero */
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      width: 55vmin;
+      height: 55vmin;
+      max-width: 420px;
+      max-height: 420px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ── Hero gradient – brochure palette ── */
@@ -831,8 +832,9 @@ function homePage(t: Record<string, string>): string {
   ]
   return `
   <!-- HERO -->
-  <section class="hero-gradient text-white py-20 px-4 relative">
-    <div class="max-w-6xl mx-auto relative">
+  <section class="hero-gradient text-white py-20 px-4 relative" style="overflow:hidden;">
+    <img src="/images/logo.png" alt="" class="hero-watermark" aria-hidden="true">
+    <div class="max-w-6xl mx-auto relative" style="z-index:1;">
       <div class="flex flex-col md:flex-row items-center gap-10">
         <div class="flex-1 text-center md:text-left">
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
