@@ -3589,11 +3589,15 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   donations: donationsPage,
   contact:   contactPage,
   brochure:  brochurePage,
-  events:    eventsPage,
-  projects:  projectsPage,
-  members:   membersPage,
-  faq:       faqPage,
-  privacy:   privacyPage,
+  events:          eventsPage,
+  progetti:        projectsPage,
+  projects:        projectsPage,
+  membri:          membersPage,
+  members:         membersPage,
+  'diventa-socio': membersPage,
+  eventi:          eventsPage,
+  faq:             faqPage,
+  privacy:         privacyPage,
 }
 
 for (const lang of ['it','en','fr','es','de']) {
