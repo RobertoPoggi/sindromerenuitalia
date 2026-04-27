@@ -619,7 +619,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <!-- ── NAVBAR ── -->
-<header class="text-white shadow-xl sticky top-0" style="z-index:1000;" style="background: linear-gradient(90deg, #082050 0%, #1078C0 60%, #45B8EC 100%);">
+<header class="text-white shadow-xl sticky top-0" style="z-index:1000;background:linear-gradient(90deg,#082050 0%,#1078C0 60%,#45B8EC 100%);">
   <div class="max-w-screen-2xl mx-auto px-3">
     <div class="flex items-center justify-between" style="min-height:4.5rem">
 
@@ -805,7 +805,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   // Ricerca navbar globale
   const _navIndex = [
     { title:'${t.lang==='it'?'Home':'Home'}', url:'/${t.lang}/home', keywords:'home benvenuto renu sindrome associazione' },
-    { title:'${t.lang==='it'?'Cos\'è ReNU':'What is ReNU'}', url:'/${t.lang}/about', keywords:'about renu sindrome gene rnu4-2 diagnosi sintomi' },
+    { title:'${t.lang==='it'?'Chi\u00e8 ReNU':'What is ReNU'}', url:'/${t.lang}/about', keywords:'about renu sindrome gene rnu4-2 diagnosi sintomi' },
     { title:'${t.lang==='it'?'Terapie':'Therapies'}', url:'/${t.lang}/therapies', keywords:'terapie fisioterapia logopedia feuerstein acquaticità nuoto musicoterapia aba' },
     { title:'${t.lang==='it'?'Diagnosi':'Diagnosis'}', url:'/${t.lang}/diagnosis', keywords:'diagnosi wgs wes sequenziamento genetico esoma genoma' },
     { title:'${t.lang==='it'?'Community':'Community'}', url:'/${t.lang}/community', keywords:'community famiglia genitori rete mappa instagram facebook' },
@@ -2354,7 +2354,7 @@ function contactPage(t: Record<string, string>): string {
   <script>
   const siteIndex = [
     { title:'${t.lang==='it'?'Home':'Home'}', url:'/${t.lang}/home', keywords:'home benvenuto renu sindrome associazione' },
-    { title:'${t.lang==='it'?'Cos\'è ReNU':'What is ReNU'}', url:'/${t.lang}/about', keywords:'about cos è renu sindrome gene rnu4-2 diagnosi caratteristiche sintomi' },
+    { title:'${t.lang==='it'?'Chi\u00e8 ReNU':'What is ReNU'}', url:'/${t.lang}/about', keywords:'about cos e renu sindrome gene rnu4-2 diagnosi caratteristiche sintomi' },
     { title:'${t.lang==='it'?'Ricerca':'Research'}', url:'/${t.lang}/research', keywords:'ricerca research studio indeed pubmed pubblicazioni scientifiche' },
     { title:'${t.lang==='it'?'Terapie':'Therapies'}', url:'/${t.lang}/therapies', keywords:'terapie fisioterapia logopedia feuerstein acquaticità nuoto musicoterapia aba' },
     { title:'${t.lang==='it'?'Diagnosi':'Diagnosis'}', url:'/${t.lang}/diagnosis', keywords:'diagnosi wgs wes sequenziamento genetico esoma genoma' },
