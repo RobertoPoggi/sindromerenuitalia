@@ -1202,44 +1202,32 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     var btn = document.getElementById('mobileBtn');
     var menu = document.getElementById('mobileMenu');
     if (!btn || !menu) return;
-
     function toggleMenu(e) {
       e.preventDefault();
       e.stopPropagation();
       menu.classList.toggle('open');
-      var isOpen = menu.classList.contains('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
     }
-
-    // Supporto click standard
     btn.addEventListener('click', toggleMenu, false);
-    // Supporto touch esplicito per iOS Safari
     btn.addEventListener('touchend', toggleMenu, {passive: false});
-
-    // Chiudi menu cliccando fuori
     document.addEventListener('click', function(e) {
       if (!btn.contains(e.target) && !menu.contains(e.target)) {
         menu.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
       }
     }, false);
-
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-controls', 'mobileMenu');
     btn.setAttribute('role', 'button');
     btn.setAttribute('tabindex', '0');
-
-    // Supporto tastiera
     btn.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         menu.classList.toggle('open');
-        var isOpen = menu.classList.contains('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
       }
     }, false);
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   } else {
@@ -2369,8 +2357,6 @@ function contactPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="space-y-2 text-sky-200 text-sm">
-          <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-5 text-sky-400"></i>Via Marina 6, 20121 Milano (MI)</div>
-          <div class="flex items-center gap-2"><i class="fas fa-receipt w-5 text-sky-400"></i>P.IVA / C.F.: 98020680157</div>
           <div class="flex items-center gap-2"><i class="fas fa-globe w-5 text-sky-400"></i><a href="https://www.sindromerenu.it" class="hover:text-white">www.sindromerenu.it</a></div>
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:info@sindromerenu.it" class="hover:text-white">info@sindromerenu.it</a></div>
           <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393357301206" class="hover:text-white">+39 335 730 1206</a></div>
