@@ -490,19 +490,24 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     }
     /* ── Logo sfondo intera pagina (come da specifiche PDF punto 5) ── */
     /* Il logo appare come watermark fisso sopra tutto il contenuto, visibile su ogni sezione */
-    /* watermark centrato nella hero, scorre con la pagina */
-    .hero-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 65vmin;
-      height: 65vmin;
+    /* watermark fisso centrato su tutta la pagina */
+    #page-logo-watermark {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none !important;
+      z-index: 1;
+    }
+    #page-logo-watermark img {
+      width: 70vmin;
+      height: 70vmin;
       max-width: 500px;
       max-height: 500px;
-      opacity: 0.22;
-      pointer-events: none;
-      z-index: 2;
+      object-fit: contain;
+      opacity: 0.15;
+      pointer-events: none !important;
     }
 
     /* ── Hero gradient – brochure palette ── */
@@ -596,7 +601,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 
 <!-- ── LOGO WATERMARK FISSO SU TUTTA LA PAGINA (PDF punto 5) ── -->
 <div id="page-logo-watermark" aria-hidden="true">
-  <img src="/images/logo_transparent.png" alt="">
+  <img src="/images/logo.png" alt="">
 </div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
@@ -610,7 +615,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <!-- ── NAVBAR ── -->
-<header class="text-white shadow-xl sticky top-0" style="z-index:1000;background:linear-gradient(90deg,#082050 0%,#1078C0 60%,#45B8EC 100%);">
+<header class="text-white shadow-xl sticky top-0" style="z-index:1000;background:linear-gradient(90deg,#082050 0%,#1078C0 60%,#45B8EC 100%);position:relative;">
   <div class="max-w-screen-2xl mx-auto px-3">
     <div class="flex items-center justify-between" style="min-height:4.5rem">
 
@@ -828,9 +833,8 @@ function homePage(t: Record<string, string>): string {
   ]
   return `
   <!-- HERO -->
-  <section class="hero-gradient text-white py-20 px-4 relative" style="overflow:hidden;">
-    <img src="/images/logo.png" alt="" class="hero-watermark" aria-hidden="true">
-    <div class="max-w-6xl mx-auto relative" style="z-index:3;">
+  <section class="hero-gradient text-white py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto relative" style="z-index:2;">
       <div class="flex flex-col md:flex-row items-center gap-10">
         <div class="flex-1 text-center md:text-left">
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
