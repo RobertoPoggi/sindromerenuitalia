@@ -2464,15 +2464,20 @@ app.get('/manual', (c) => c.redirect('/manuale-utente', 301))
 app.get('/', (c) => c.redirect('/it/home'))
 
 const pages: Record<string, (t: Record<string, string>) => string> = {
-  home:      homePage,
-  about:     aboutPage,
-  research:  researchPage,
-  therapies: therapiesPage,
-  diagnosis: diagnosisPage,
-  community: communityPage,
-  donations: donationsPage,
-  contact:   contactPage,
-  brochure:  brochurePage,
+  home:           homePage,
+  about:          aboutPage,
+  research:       researchPage,
+  therapies:      therapiesPage,
+  diagnosis:      diagnosisPage,
+  community:      communityPage,
+  donations:      donationsPage,
+  contact:        contactPage,
+  brochure:       brochurePage,
+  faq:            faqPage,
+  eventi:         eventsPage,
+  progetti:       projectsPage,
+  'diventa-socio': membersPage,
+  privacy:        privacyPage,
 }
 
 for (const lang of ['it','en','fr','es','de']) {
