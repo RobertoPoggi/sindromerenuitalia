@@ -1069,6 +1069,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     /* ── Mobile menu ── */
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
+    #mobileBtn { cursor: pointer; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
     html { scroll-behavior: smooth; }
     img  { max-width:100%; height:auto; }
@@ -1196,9 +1197,55 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </footer>
 
 <script>
-  document.getElementById('mobileBtn')?.addEventListener('click', () => {
-    document.getElementById('mobileMenu')?.classList.toggle('open')
-  })
+(function() {
+  function initMobileMenu() {
+    var btn = document.getElementById('mobileBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+
+    function toggleMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      menu.classList.toggle('open');
+      var isOpen = menu.classList.contains('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    // Supporto click standard
+    btn.addEventListener('click', toggleMenu, false);
+    // Supporto touch esplicito per iOS Safari
+    btn.addEventListener('touchend', toggleMenu, {passive: false});
+
+    // Chiudi menu cliccando fuori
+    document.addEventListener('click', function(e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }, false);
+
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'mobileMenu');
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+
+    // Supporto tastiera
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menu.classList.toggle('open');
+        var isOpen = menu.classList.contains('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    }, false);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+})();
 </script>
 </body>
 </html>`
