@@ -601,7 +601,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 
 <!-- ── LOGO WATERMARK FISSO SU TUTTA LA PAGINA (PDF punto 5) ── -->
 <div id="page-logo-watermark" aria-hidden="true">
-  <img src="/images/logo.png" alt="">
+  <img src="/images/logo_transparent2.png" alt="">
 </div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
