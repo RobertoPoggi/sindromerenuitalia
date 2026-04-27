@@ -663,23 +663,12 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <!-- Dropdown lingua -->
         <div class="flex items-center gap-1">${langSwitcher}</div>
 
-        <button id="mobileBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"
+        <button id="mobileBtn"
+          onclick="var m=document.getElementById('mobileMenu');if(m){var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);}"
+          aria-label="Menu" aria-expanded="false"
           style="cursor:pointer;background:transparent;border:none;padding:10px;min-width:44px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001;">
           <i class="fas fa-bars" style="font-size:1.4rem;color:white;pointer-events:none;"></i>
         </button>
-        <script>
-          (function(){
-            var b=document.getElementById('mobileBtn');
-            var m=document.getElementById('mobileMenu');
-            if(b&&m){
-              b.addEventListener('click',function(e){
-                e.stopPropagation();
-                var open=m.classList.toggle('open');
-                b.setAttribute('aria-expanded',open?'true':'false');
-              });
-            }
-          })();
-        <\/script>
       </div>
     </div>
 
@@ -793,6 +782,18 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <script>
+// Menu hamburger addEventListener (doppia sicurezza per iOS)
+(function(){
+  var b=document.getElementById('mobileBtn');
+  var m=document.getElementById('mobileMenu');
+  if(b&&m){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=m.classList.toggle('open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+  }
+})();
 
   // Chiudi navSearchBox cliccando fuori
   document.addEventListener('click', function(e) {
