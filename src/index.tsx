@@ -501,8 +501,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
-      z-index: 9998;
+      pointer-events: none !important;
+      z-index: 0;
     }
     #page-logo-watermark img {
       width: 70vmin;
@@ -510,6 +510,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       object-fit: contain;
       opacity: 0.20;
       mix-blend-mode: multiply;
+      pointer-events: none !important;
     }
 
     /* ── Hero gradient – brochure palette ── */
@@ -564,25 +565,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     /* ── Mobile menu ── */
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
-    /* Il pulsante hamburger: visibile SOLO sotto 768px, nascosto su PC */
-    #mobileBtn {
-      display: none;
-      cursor: pointer;
-      min-width: 44px;
-      min-height: 44px;
-      align-items: center;
-      justify-content: center;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      background: transparent;
-      border: none;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-    }
-    @media (max-width: 767px) {
-      #mobileBtn { display: flex; }
-    }
-    /* Su PC il menu mobile è sempre nascosto, classe md:hidden gestita via CSS */
+    /* Su PC il menu mobile è sempre nascosto */
     @media (min-width: 768px) {
       #mobileMenu { display: none !important; }
     }
@@ -631,7 +614,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <!-- ── NAVBAR ── -->
-<header class="text-white shadow-xl sticky top-0 z-50" style="background: linear-gradient(90deg, #082050 0%, #1078C0 60%, #45B8EC 100%);">
+<header class="text-white shadow-xl sticky top-0" style="z-index:1000;" style="background: linear-gradient(90deg, #082050 0%, #1078C0 60%, #45B8EC 100%);">
   <div class="max-w-screen-2xl mx-auto px-3">
     <div class="flex items-center justify-between" style="min-height:4.5rem">
 
@@ -675,8 +658,9 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <!-- Dropdown lingua -->
         <div class="flex items-center gap-1">${langSwitcher}</div>
 
-        <button id="mobileBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
-          <i class="fas fa-bars" style="font-size:1.4rem;color:white;"></i>
+        <button id="mobileBtn" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"
+          style="display:none;cursor:pointer;background:transparent;border:none;padding:10px;min-width:44px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001;">
+          <i class="fas fa-bars" style="font-size:1.4rem;color:white;pointer-events:none;"></i>
         </button>
       </div>
     </div>
@@ -791,60 +775,35 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <script>
+// Funzione globale chiamata da onclick inline sul bottone — metodo più affidabile su iOS Safari
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobileMenu');
+  var btn  = document.getElementById('mobileBtn');
+  if (!menu || !btn) return;
+  var isOpen = menu.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+// Mostra hamburger solo su mobile, nascondi su desktop
 (function() {
-  function initMobileMenu() {
+  function checkBreakpoint() {
     var btn = document.getElementById('mobileBtn');
-    var menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
-
-    var lastToggle = 0;
-
-    function toggleMenu(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      // Debounce: ignora eventi doppi entro 300ms (touch+click su iOS)
-      var now = Date.now();
-      if (now - lastToggle < 300) return;
-      lastToggle = now;
-
-      var isOpen = menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!btn) return;
+    if (window.innerWidth < 768) {
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = 'none';
+      // Chiudi il menu se la finestra si allarga
+      var menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.remove('open');
     }
-
-    // Un solo listener per touchstart (iOS risponde immediatamente)
-    btn.addEventListener('touchstart', toggleMenu, {passive: false});
-    // Click per mouse/desktop (ma su iOS arriva 300ms dopo touchstart, ignorato dal debounce)
-    btn.addEventListener('click', toggleMenu, false);
-
-    // Chiudi toccando fuori (solo mobile)
-    document.addEventListener('touchstart', function(e) {
-      if (menu.classList.contains('open') && !btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    }, {passive: true});
-    document.addEventListener('click', function(e) {
-      if (menu.classList.contains('open') && !btn.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    }, false);
-
-    // Tastiera
-    btn.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        var isOpen = menu.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      }
-    }, false);
   }
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', checkBreakpoint);
   } else {
-    initMobileMenu();
+    checkBreakpoint();
   }
+  window.addEventListener('resize', checkBreakpoint);
 })();
 
   // Chiudi navSearchBox cliccando fuori
