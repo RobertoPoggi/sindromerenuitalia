@@ -1147,6 +1147,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <p class="text-sky-200 text-sm italic mb-2">"${t.footer_tagline}"</p>
         <p class="text-sky-300 text-sm">${t.footer_partnership}</p>
         <p class="text-sky-300 text-sm mt-1">www.sindromerenu.it</p>
+        <p class="text-sky-400 text-xs mt-1"><i class="fas fa-map-marker-alt mr-1"></i>Via Marina 6, 20121 Milano (MI)</p>
+        <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
           <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
           <a href="https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
@@ -1188,7 +1190,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       </div>
     </div>
     <div class="border-t border-sky-700 mt-10 pt-6 text-center text-sm text-sky-400">
-      ${t.footer_rights} &nbsp;|&nbsp; Codice Fiscale / P.IVA: [in fase di registrazione]
+      ${t.footer_rights} &nbsp;|&nbsp; P.IVA / C.F.: 98020680157 &nbsp;|&nbsp; Via Marina 6, 20121 Milano (MI)
     </div>
   </div>
 </footer>
@@ -2320,6 +2322,8 @@ function contactPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="space-y-2 text-sky-200 text-sm">
+          <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-5 text-sky-400"></i>Via Marina 6, 20121 Milano (MI)</div>
+          <div class="flex items-center gap-2"><i class="fas fa-receipt w-5 text-sky-400"></i>P.IVA / C.F.: 98020680157</div>
           <div class="flex items-center gap-2"><i class="fas fa-globe w-5 text-sky-400"></i><a href="https://www.sindromerenu.it" class="hover:text-white">www.sindromerenu.it</a></div>
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:info@sindromerenu.it" class="hover:text-white">info@sindromerenu.it</a></div>
           <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393357301206" class="hover:text-white">+39 335 730 1206</a></div>
