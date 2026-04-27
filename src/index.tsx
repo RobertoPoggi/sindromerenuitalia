@@ -564,7 +564,28 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     /* ── Mobile menu ── */
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
-    #mobileBtn { cursor: pointer; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    /* Il pulsante hamburger: visibile SOLO sotto 768px, nascosto su PC */
+    #mobileBtn {
+      display: none;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+    @media (max-width: 767px) {
+      #mobileBtn { display: flex; }
+    }
+    /* Su PC il menu mobile è sempre nascosto, classe md:hidden gestita via CSS */
+    @media (min-width: 768px) {
+      #mobileMenu { display: none !important; }
+    }
 
     html { scroll-behavior: smooth; }
     img  { max-width:100%; height:auto; }
@@ -654,8 +675,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <!-- Dropdown lingua -->
         <div class="flex items-center gap-1">${langSwitcher}</div>
 
-        <button id="mobileBtn" class="md:hidden p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors" aria-label="Menu">
-          <i class="fas fa-bars text-2xl"></i>
+        <button id="mobileBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+          <i class="fas fa-bars" style="font-size:1.4rem;color:white;"></i>
         </button>
       </div>
     </div>
@@ -775,32 +796,50 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     var btn = document.getElementById('mobileBtn');
     var menu = document.getElementById('mobileMenu');
     if (!btn || !menu) return;
+
+    var lastToggle = 0;
+
     function toggleMenu(e) {
       e.preventDefault();
       e.stopPropagation();
-      menu.classList.toggle('open');
-      btn.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
+      // Debounce: ignora eventi doppi entro 300ms (touch+click su iOS)
+      var now = Date.now();
+      if (now - lastToggle < 300) return;
+      lastToggle = now;
+
+      var isOpen = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
+
+    // Un solo listener per touchstart (iOS risponde immediatamente)
+    btn.addEventListener('touchstart', toggleMenu, {passive: false});
+    // Click per mouse/desktop (ma su iOS arriva 300ms dopo touchstart, ignorato dal debounce)
     btn.addEventListener('click', toggleMenu, false);
-    btn.addEventListener('touchend', toggleMenu, {passive: false});
+
+    // Chiudi toccando fuori (solo mobile)
+    document.addEventListener('touchstart', function(e) {
+      if (menu.classList.contains('open') && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }, {passive: true});
     document.addEventListener('click', function(e) {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      if (menu.classList.contains('open') && !btn.contains(e.target) && !menu.contains(e.target)) {
         menu.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
       }
     }, false);
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-controls', 'mobileMenu');
-    btn.setAttribute('role', 'button');
-    btn.setAttribute('tabindex', '0');
+
+    // Tastiera
     btn.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        menu.classList.toggle('open');
-        btn.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
+        var isOpen = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       }
     }, false);
   }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   } else {
