@@ -565,6 +565,11 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     /* ── Mobile menu ── */
     .mobile-menu { display: none; }
     .mobile-menu.open { display: block; }
+    /* Hamburger: visibile SOLO su mobile via CSS puro, nessun JS necessario */
+    #mobileBtn { display: none; }
+    @media (max-width: 767px) {
+      #mobileBtn { display: flex !important; }
+    }
     /* Su PC il menu mobile è sempre nascosto */
     @media (min-width: 768px) {
       #mobileMenu { display: none !important; }
@@ -659,7 +664,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <div class="flex items-center gap-1">${langSwitcher}</div>
 
         <button id="mobileBtn" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu"
-          style="display:none;cursor:pointer;background:transparent;border:none;padding:10px;min-width:44px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001;">
+          style="cursor:pointer;background:transparent;border:none;padding:10px;min-width:44px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001;">
           <i class="fas fa-bars" style="font-size:1.4rem;color:white;pointer-events:none;"></i>
         </button>
       </div>
@@ -775,7 +780,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <script>
-// Funzione globale chiamata da onclick inline sul bottone — metodo più affidabile su iOS Safari
+// Funzione globale chiamata da onclick inline — metodo più affidabile su iOS Safari
 function toggleMobileMenu() {
   var menu = document.getElementById('mobileMenu');
   var btn  = document.getElementById('mobileBtn');
@@ -783,28 +788,6 @@ function toggleMobileMenu() {
   var isOpen = menu.classList.toggle('open');
   btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
-
-// Mostra hamburger solo su mobile, nascondi su desktop
-(function() {
-  function checkBreakpoint() {
-    var btn = document.getElementById('mobileBtn');
-    if (!btn) return;
-    if (window.innerWidth < 768) {
-      btn.style.display = 'flex';
-    } else {
-      btn.style.display = 'none';
-      // Chiudi il menu se la finestra si allarga
-      var menu = document.getElementById('mobileMenu');
-      if (menu) menu.classList.remove('open');
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', checkBreakpoint);
-  } else {
-    checkBreakpoint();
-  }
-  window.addEventListener('resize', checkBreakpoint);
-})();
 
   // Chiudi navSearchBox cliccando fuori
   document.addEventListener('click', function(e) {
