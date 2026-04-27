@@ -418,15 +418,10 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     </div>
     <script>
       (function(){
+        // Chiudi lang dropdown cliccando fuori - usa mousedown per non interferire con touch
         document.addEventListener('click', function(e){
           document.querySelectorAll('.lang-dropdown').forEach(function(d){
             if(!d.contains(e.target)) d.classList.remove('open');
-          });
-        });
-        document.querySelectorAll('.lang-dropdown').forEach(function(d){
-          d.addEventListener('open-change', function(){
-            var menu = d.querySelector('.lang-dropdown-menu');
-            if(menu) menu.style.display = d.classList.contains('open') ? 'block' : 'none';
           });
         });
         var observer = new MutationObserver(function(muts){
@@ -476,7 +471,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -562,18 +557,17 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     .ic-amber  { background:#FEF3C7; color:#D97706; }
     .ic-cyan   { background:#CFFAFE; color:#0E7490; }
 
+    /* ── Navbar desktop: visibile da 768px ── */
+    #desktopNav { display: none; }
+    @media (min-width: 768px) { #desktopNav { display: flex; } }
+
+    /* ── Hamburger: visibile solo su mobile ── */
+    #mobileBtn { display: flex; }
+    @media (min-width: 768px) { #mobileBtn { display: none !important; } }
+
     /* ── Mobile menu ── */
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: block; }
-    /* Hamburger: visibile SOLO su mobile via CSS puro, nessun JS necessario */
-    #mobileBtn { display: none; }
-    @media (max-width: 767px) {
-      #mobileBtn { display: flex !important; }
-    }
-    /* Su PC il menu mobile è sempre nascosto */
-    @media (min-width: 768px) {
-      #mobileMenu { display: none !important; }
-    }
+    #mobileMenu { display: none; }
+    #mobileMenu.open { display: block; }
 
     html { scroll-behavior: smooth; }
     img  { max-width:100%; height:auto; }
@@ -629,8 +623,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <span class="hidden lg:block text-xs font-bold leading-tight text-sky-100" style="max-width:110px">Sindrome<br>ReNU Italia APS</span>
       </a>
 
-      <!-- Desktop nav: visibile da md, testo da lg, solo icone su md -->
-      <nav class="hidden md:flex items-center gap-0.5 flex-nowrap justify-center flex-1 px-2 overflow-x-auto">
+      <!-- Desktop nav: visibile da 768px via CSS puro (no Tailwind) -->
+      <nav id="desktopNav" style="align-items:center;gap:2px;flex-wrap:nowrap;justify-content:center;flex:1;padding:0 8px;overflow-x:auto;">
         ${navLinks}
       </nav>
 
@@ -664,16 +658,16 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <div class="flex items-center gap-1">${langSwitcher}</div>
 
         <button id="mobileBtn"
-          onclick="var m=document.getElementById('mobileMenu');if(m){var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);}"
-          aria-label="Menu" aria-expanded="false"
-          style="cursor:pointer;background:transparent;border:none;padding:10px;min-width:44px;min-height:44px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative;z-index:1001;">
-          <i class="fas fa-bars" style="font-size:1.4rem;color:white;pointer-events:none;"></i>
+          onclick="var m=document.getElementById('mobileMenu');if(m){var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o?'true':'false');}"
+          aria-label="Apri menu" aria-expanded="false"
+          style="cursor:pointer;background:rgba(255,255,255,0.15);border:none;border-radius:8px;padding:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;z-index:1001;flex-shrink:0;">
+          <i class="fas fa-bars" style="font-size:1.3rem;color:white;display:block;pointer-events:none;"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile nav -->
-    <div id="mobileMenu" class="mobile-menu pb-3 md:hidden">
+    <div id="mobileMenu" style="padding-bottom:12px;">
       <nav class="flex flex-col gap-1">
         ${navItems.filter(i => !i.hidden).map(i => i.disabled ? `
         <span class="flex items-center gap-2 px-3 py-2.5 rounded-lg opacity-40 cursor-not-allowed">
@@ -782,19 +776,6 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 </div>
 
 <script>
-// Menu hamburger addEventListener (doppia sicurezza per iOS)
-(function(){
-  var b=document.getElementById('mobileBtn');
-  var m=document.getElementById('mobileMenu');
-  if(b&&m){
-    b.addEventListener('click',function(e){
-      e.stopPropagation();
-      var open=m.classList.toggle('open');
-      b.setAttribute('aria-expanded',open?'true':'false');
-    });
-  }
-})();
-
   // Chiudi navSearchBox cliccando fuori
   document.addEventListener('click', function(e) {
     var box = document.getElementById('navSearchBox');
