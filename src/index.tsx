@@ -503,8 +503,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       width: 70vmin;
       height: 70vmin;
       object-fit: contain;
-      opacity: 0.20;
-      mix-blend-mode: multiply;
+      opacity: 0.12;
+      mix-blend-mode: screen;
       pointer-events: none !important;
     }
 
@@ -835,8 +835,8 @@ function homePage(t: Record<string, string>): string {
     <div class="max-w-6xl mx-auto relative">
       <div class="flex flex-col md:flex-row items-center gap-10">
         <div class="flex-1 text-center md:text-left">
-          <div class="inline-flex items-center gap-2 bg-white bg-opacity-15 backdrop-blur rounded-full px-4 py-2 text-sm mb-6 text-sky-100">
-            <i class="fas fa-dna text-sky-300"></i> ${t.tagline}
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
+            <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
           <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text}</h1>
           <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl">${t.hero_desc}</p>
