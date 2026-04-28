@@ -2409,37 +2409,28 @@ function contactPage(t: Record<string, string>): string {
         ${[
           ['info@sindromerenu.it','ic-blue','fa-envelope',t.lang==='it'?'Info Generali':'General Info'],
           ['donazioni@sindromerenu.it','ic-red','fa-heart',t.lang==='it'?'Donazioni':'Donations'],
-          ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',t.lang==='it'?'Segreteria':'Secretariat','+39 327 763 4894','tel:+393277634894'],
-          ['presidenza@sindromerenu.it','ic-purple','fa-user-tie',t.lang==='it'?'Presidenza':'Presidency','+39 335 730 1206','tel:+393357301206'],
-        ].map(([email,ic,icon,label,phone,phoneHref]) => `
+          ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',t.lang==='it'?'Segreteria':'Secretariat'],
+          ['presidenza@sindromerenu.it','ic-purple','fa-user-tie',t.lang==='it'?'Presidenza':'Presidency'],
+        ].map(([email,ic,icon,label]) => `
         <a href="mailto:${email}" class="card p-5 flex items-center gap-4 group">
           <div class="ic ${ic}"><i class="fas ${icon}"></i></div>
           <div>
             <div class="font-bold group-hover:underline" style="color:#082050">${label}</div>
             <div class="text-sm group-hover:underline" style="color:#1078C0">${email}</div>
-            ${phone ? `<a href="${phoneHref}" onclick="event.stopPropagation()" class="text-xs font-semibold mt-0.5 flex items-center gap-1 hover:underline" style="color:#45B8EC"><i class="fas fa-phone text-xs"></i>${phone}</a>` : ''}
           </div>
         </a>`).join('')}
       </div>
 
       <!-- Phone & WhatsApp -->
-      <div class="card card-sky p-6 mb-8">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="ic ic-sky flex-shrink-0"><i class="fas fa-phone text-xl"></i></div>
-          <div class="font-bold text-lg" style="color:#082050">
+      <div class="card card-sky p-6 mb-8 flex items-center gap-4">
+        <div class="ic ic-sky flex-shrink-0"><i class="fas fa-phone text-xl"></i></div>
+        <div>
+          <div class="font-bold text-lg mb-1" style="color:#082050">
             ${t.lang==='it'?'Telefono / WhatsApp':'Phone / WhatsApp'}
           </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="rounded-xl p-4" style="background:#EEF6FB">
-            <div class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:#1078C0">${t.lang==='it'?'Segreteria':'Secretariat'}</div>
-            <a href="tel:+393277634894" class="text-xl font-extrabold hover:underline" style="color:#082050">+39 327 763 4894</a>
-            <div class="text-xs text-gray-400 mt-1">segreteria@sindromerenu.it</div>
-          </div>
-          <div class="rounded-xl p-4" style="background:#EEF6FB">
-            <div class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:#1078C0">${t.lang==='it'?'Presidenza':'Presidency'}</div>
-            <a href="tel:+393357301206" class="text-xl font-extrabold hover:underline" style="color:#082050">+39 335 730 1206</a>
-            <div class="text-xs text-gray-400 mt-1">presidenza@sindromerenu.it</div>
+          <div class="flex flex-col gap-1">
+            <div class="text-sm text-gray-500">${t.lang==='it'?'Segreteria':'Secretariat'}: <a href="tel:+393277634894" class="text-lg font-extrabold hover:underline" style="color:#1078C0">+39 327 763 4894</a></div>
+            <div class="text-sm text-gray-500">${t.lang==='it'?'Presidenza':'Presidency'}: <a href="tel:+393357301206" class="text-lg font-extrabold hover:underline" style="color:#1078C0">+39 335 730 1206</a></div>
           </div>
         </div>
       </div>
