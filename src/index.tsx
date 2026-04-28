@@ -732,7 +732,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <ul class="space-y-2 text-sm text-sky-300">
           ${[['info','Info Generali'],['donazioni','Donazioni'],['segreteria','Segreteria'],['presidenza','Presidenza']].map(([e,l]) => `
           <li><a href="mailto:${e}@sindromerenu.it" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-envelope text-xs"></i>${e}@sindromerenu.it</a></li>`).join('')}
-          <li class="pt-1"><a href="tel:+393357301206" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-phone text-xs"></i>+39 335 730 1206</a></li>
+          <li class="pt-1"><a href="tel:+393277634894" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-phone text-xs"></i>+39 327 763 4894 <span class="opacity-60">(Segr.)</span></a></li>
+          <li><a href="tel:+393357301206" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-phone text-xs"></i>+39 335 730 1206 <span class="opacity-60">(Pres.)</span></a></li>
         </ul>
       </div>
       <!-- Links -->
@@ -1694,11 +1695,18 @@ function diagnosisPage(t: Record<string, string>): string {
               <div class="text-sm text-gray-500">${label}</div>
             </div>
           </a>`).join('')}
-          <a href="tel:+393357301206" class="flex items-center gap-4 rounded-xl p-4 hover:bg-sky-50 transition-colors group" style="background:#EEF6FB">
+          <a href="tel:+393277634894" class="flex items-center gap-4 rounded-xl p-4 hover:bg-sky-50 transition-colors group" style="background:#EEF6FB">
             <div class="ic ic-sky"><i class="fas fa-phone"></i></div>
             <div>
+              <div class="font-semibold group-hover:underline" style="color:#1078C0">+39 327 763 4894</div>
+              <div class="text-sm text-gray-500">${t.lang==='it'?'Segreteria – Telefono / WhatsApp':'Secretariat – Phone / WhatsApp'}</div>
+            </div>
+          </a>
+          <a href="tel:+393357301206" class="flex items-center gap-4 rounded-xl p-4 hover:bg-sky-50 transition-colors group" style="background:#EEF6FB">
+            <div class="ic ic-purple"><i class="fas fa-user-tie"></i></div>
+            <div>
               <div class="font-semibold group-hover:underline" style="color:#1078C0">+39 335 730 1206</div>
-              <div class="text-sm text-gray-500">${t.lang==='it'?'Telefono / WhatsApp':'Phone / WhatsApp'}</div>
+              <div class="text-sm text-gray-500">${t.lang==='it'?'Presidenza – Telefono / WhatsApp':'Presidency – Phone / WhatsApp'}</div>
             </div>
           </a>
         </div>
@@ -1732,7 +1740,7 @@ function communityPage(t: Record<string, string>): string {
       fb: 'https://www.facebook.com/groups/1268033701594892/?ref=share',
       ig: 'https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu',
       web: 'https://www.sindromerenu.it',
-      email: 'info@sindromerenu.it', phone: '+39 335 730 1206',
+      email: 'info@sindromerenu.it', phone: '+39 327 763 4894',  // Segreteria
       ref: 'Imma Audino, Stefania Rocca' },
     { country: t.lang==='it'?'Francia':'France', flag: '🇫🇷',
       name: 'Association Française du Syndrome ReNU',
@@ -2401,26 +2409,38 @@ function contactPage(t: Record<string, string>): string {
         ${[
           ['info@sindromerenu.it','ic-blue','fa-envelope',t.lang==='it'?'Info Generali':'General Info'],
           ['donazioni@sindromerenu.it','ic-red','fa-heart',t.lang==='it'?'Donazioni':'Donations'],
-          ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',t.lang==='it'?'Segreteria':'Secretariat'],
-          ['presidenza@sindromerenu.it','ic-purple','fa-user-tie',t.lang==='it'?'Presidenza':'Presidency'],
-        ].map(([email,ic,icon,label]) => `
+          ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',t.lang==='it'?'Segreteria':'Secretariat','+39 327 763 4894','tel:+393277634894'],
+          ['presidenza@sindromerenu.it','ic-purple','fa-user-tie',t.lang==='it'?'Presidenza':'Presidency','+39 335 730 1206','tel:+393357301206'],
+        ].map(([email,ic,icon,label,phone,phoneHref]) => `
         <a href="mailto:${email}" class="card p-5 flex items-center gap-4 group">
           <div class="ic ${ic}"><i class="fas ${icon}"></i></div>
           <div>
             <div class="font-bold group-hover:underline" style="color:#082050">${label}</div>
             <div class="text-sm group-hover:underline" style="color:#1078C0">${email}</div>
+            ${phone ? `<a href="${phoneHref}" onclick="event.stopPropagation()" class="text-xs font-semibold mt-0.5 flex items-center gap-1 hover:underline" style="color:#45B8EC"><i class="fas fa-phone text-xs"></i>${phone}</a>` : ''}
           </div>
         </a>`).join('')}
       </div>
 
       <!-- Phone & WhatsApp -->
-      <div class="card card-sky p-6 mb-8 flex items-center gap-4">
-        <div class="ic ic-sky flex-shrink-0"><i class="fas fa-phone text-xl"></i></div>
-        <div>
+      <div class="card card-sky p-6 mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="ic ic-sky flex-shrink-0"><i class="fas fa-phone text-xl"></i></div>
           <div class="font-bold text-lg" style="color:#082050">
             ${t.lang==='it'?'Telefono / WhatsApp':'Phone / WhatsApp'}
           </div>
-          <a href="tel:+393357301206" class="text-2xl font-extrabold hover:underline" style="color:#1078C0">+39 335 730 1206</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-xl p-4" style="background:#EEF6FB">
+            <div class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:#1078C0">${t.lang==='it'?'Segreteria':'Secretariat'}</div>
+            <a href="tel:+393277634894" class="text-xl font-extrabold hover:underline" style="color:#082050">+39 327 763 4894</a>
+            <div class="text-xs text-gray-400 mt-1">segreteria@sindromerenu.it</div>
+          </div>
+          <div class="rounded-xl p-4" style="background:#EEF6FB">
+            <div class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:#1078C0">${t.lang==='it'?'Presidenza':'Presidency'}</div>
+            <a href="tel:+393357301206" class="text-xl font-extrabold hover:underline" style="color:#082050">+39 335 730 1206</a>
+            <div class="text-xs text-gray-400 mt-1">presidenza@sindromerenu.it</div>
+          </div>
         </div>
       </div>
 
@@ -2569,7 +2589,8 @@ function contactPage(t: Record<string, string>): string {
         <div class="space-y-2 text-sky-200 text-sm">
           <div class="flex items-center gap-2"><i class="fas fa-globe w-5 text-sky-400"></i><a href="https://www.sindromerenu.it" class="hover:text-white">www.sindromerenu.it</a></div>
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:info@sindromerenu.it" class="hover:text-white">info@sindromerenu.it</a></div>
-          <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393357301206" class="hover:text-white">+39 335 730 1206</a></div>
+          <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393277634894" class="hover:text-white">+39 327 763 4894</a> <span class="text-sky-500 text-xs">(${t.lang==='it'?'Segreteria':'Secretariat'})</span></div>
+          <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393357301206" class="hover:text-white">+39 335 730 1206</a> <span class="text-sky-500 text-xs">(${t.lang==='it'?'Presidenza':'Presidency'})</span></div>
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
@@ -3454,7 +3475,8 @@ function privacyPage(t: Record<string, string>): string {
             ${isIt?'Associazione di Promozione Sociale':'Social Promotion Association'}<br>
             Email: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a><br>
             PEC: <a href="mailto:sindromerenuitalia@legalmail.it" class="text-blue-600 hover:underline">sindromerenuitalia@legalmail.it</a><br>
-            Tel: +39 335 730 1206<br>
+            Tel (Segreteria): +39 327 763 4894<br>
+            Tel (Presidenza): +39 335 730 1206<br>
             ${isIt?'Sito web':'Website'}: <a href="https://www.sindromerenu.it" class="text-blue-600 hover:underline">www.sindromerenu.it</a>
           </div>
           <p class="mt-3 text-sm text-gray-600">
