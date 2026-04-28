@@ -11,6 +11,7 @@ const app = new Hono<{ Bindings: Env }>()
 app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/images/*', serveStatic({ root: './public' }))
 app.use('/brochure/*', serveStatic({ root: './public' }))
+
 app.use('/favicon.svg', serveStatic({ root: './public' }))
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
@@ -471,6 +472,25 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- iOS / Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ReNU Italia">
+  <link rel="apple-touch-icon" href="/icons/icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="57x57"  href="/icons/icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60"  href="/icons/icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72"  href="/icons/icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76"  href="/icons/icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+  <!-- Android / Chrome -->
+  <meta name="theme-color" content="#082050">
+  <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
