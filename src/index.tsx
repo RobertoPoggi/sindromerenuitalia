@@ -2357,14 +2357,25 @@ function donationsPage(t: Record<string, string>): string {
                 <div class="flex items-center gap-3 font-mono text-lg font-bold" style="color:#082050">
                   <i class="fas fa-hashtag text-sm" style="color:#1078C0"></i>
                   ${t.lang==='it'?'Codice Fiscale:':'Tax Code:'}
-                  <span class="px-3 py-1 rounded-lg text-sm font-bold text-white" style="background:#1078C0">
-                    ${t.lang==='it'?'in aggiornamento – comunicazione imminente':'pending registration – coming soon'}
+                  <span class="px-3 py-1 rounded-lg text-base font-bold text-white tracking-widest" style="background:#1078C0">
+                    98020680157
                   </span>
                 </div>
                 <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
-                  <i class="fas fa-info-circle" style="color:#45B8EC"></i>
-                  ${t.lang==='it'?'Il codice fiscale sarà pubblicato non appena completata l\'iscrizione al RUNTS (Registro Unico Nazionale del Terzo Settore). Seguici sui social per non perdere l\'aggiornamento!':'The tax code will be published as soon as RUNTS registration is complete. Follow us on social media!'}
+                  <i class="fas fa-check-circle" style="color:#22C55E"></i>
+                  ${t.lang==='it'?'Dal 28 aprile 2025 Sindrome ReNU Italia APS è ufficialmente iscritta al RUNTS (Registro Unico Nazionale del Terzo Settore).':'Since 28 April 2025, Sindrome ReNU Italia APS is officially registered in RUNTS (National Register of the Third Sector).'}
                 </p>
+              </div>
+              <!-- LOCANDINA RUNTS / 5x1000 -->
+              <div class="mt-5 flex justify-center">
+                <figure class="text-center">
+                  <img src="/images/renu_runts_5x1000.jpg"
+                       alt="${t.lang==='it'?'Sindrome ReNU Italia APS – Iscritta al RUNTS, destina il tuo 5×1000 – CF 98020680157':'Sindrome ReNU Italia APS – RUNTS registered, donate your 5×1000 – Tax Code 98020680157'}"
+                       class="rounded-2xl shadow-lg max-w-xs w-full mx-auto" style="max-width:320px">
+                  <figcaption class="text-xs text-gray-500 mt-2">
+                    ${t.lang==='it'?'Iscrizione RUNTS confermata dal 28/4/2025 · CF 98020680157':'RUNTS registration confirmed from 28/4/2025 · Tax Code 98020680157'}
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -3183,6 +3194,20 @@ function projectsPage(t: Record<string, string>): string {
               <p class="text-gray-600 leading-relaxed mb-4">
                 ${isIt?'Il Percorso Scuola ReNU offre materiali pratici e linee guida per supportare insegnanti, educatori, assistenti all\'autonomia e scuole nell\'inclusione dei bambini con Sindrome ReNU. Disponibili opuscoli informativi, schede di presentazione per la classe e indicazioni per il PEI/PDP. Materiali scaricabili gratuitamente dalla nostra cartella condivisa.':'The ReNU School Pathway offers practical materials and guidelines to support teachers, educators, support assistants and schools in including children with ReNU Syndrome. Available are informational brochures, class presentation sheets and guidance for individual education plans. Materials available free of charge from our shared folder.'}
               </p>
+              <!-- ANTEPRIMA OPUSCOLO SCUOLA -->
+              <div class="mb-5">
+                <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank" rel="noopener" class="block group">
+                  <figure class="text-center">
+                    <img src="/images/renu_opuscolo_scuola.jpg"
+                         alt="${isIt?'Opuscolo scuola ReNU – "Ciao Mondo!" – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – "Ciao Mondo!" – Informational brochure for teachers about children with ReNU Syndrome'}"
+                         class="rounded-xl shadow-md w-full group-hover:opacity-90 transition-opacity" style="max-width:560px">
+                    <figcaption class="text-xs text-gray-500 mt-2 flex items-center justify-center gap-1">
+                      <i class="fas fa-eye" style="color:#7C3AED"></i>
+                      ${isIt?'Anteprima opuscolo "Ciao Mondo!" – clicca per scaricare dalla cartella Drive':'Preview of "Ciao Mondo!" brochure – click to download from Drive folder'}
+                    </figcaption>
+                  </figure>
+                </a>
+              </div>
               <div class="flex flex-wrap gap-3">
                 <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank"
                    class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#7C3AED">
