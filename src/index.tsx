@@ -35,7 +35,9 @@ const translations: Record<string, Record<string, string>> = {
     section_map_title: 'Mappa Famiglie',
     section_map_desc: 'Aggiungi il tuo familiare con Sindrome ReNU alla mappa mondiale per aumentare la consapevolezza e la forza della comunità.',
     section_awareness_title: 'Aumenta la Consapevolezza',
-    section_awareness_desc: 'Partecipa alle iniziative di sensibilizzazione e diffondi la conoscenza sulla Sindrome ReNU in Italia.',
+    section_awareness_desc: 'Diffondi la conoscenza sulla Sindrome ReNU in Italia e aiuta a raggiungere le famiglie ancora non diagnosticate.',
+    section_science_title: 'Comitato Scientifico',
+    section_science_desc: 'Il Comitato Scientifico garantisce rigore e autorevolezza scientifica. Collabora con famiglie e professionisti per orientamenti pratici.',
     section_research_title: 'Approfondimenti',
     section_research_desc: 'Esplora le risorse scientifiche, le terapie di supporto e le iniziative di ricerca sulla Sindrome ReNU.',
     section_info_title: 'Cos\u2019è ReNU',
@@ -128,7 +130,9 @@ const translations: Record<string, Record<string, string>> = {
     section_map_title: 'Register Here',
     section_map_desc: 'Strength in numbers! Add a ReNU loved one to the worldwide map to raise awareness.',
     section_awareness_title: 'Raise Awareness',
-    section_awareness_desc: 'Attend or support ReNU Hope events to raise awareness!',
+    section_awareness_desc: 'Spread awareness of ReNU Syndrome and help reach undiagnosed families.',
+    section_science_title: 'Scientific Committee',
+    section_science_desc: 'The Scientific Committee ensures scientific rigour and authority, collaborating with families and professionals.',
     section_research_title: 'Research',
     section_research_desc: 'Participate now to accelerate research and the development of new therapies!',
     section_info_title: 'More Information',
@@ -203,7 +207,9 @@ const translations: Record<string, Record<string, string>> = {
     section_map_title: 'Inscrivez-vous ici',
     section_map_desc: 'La force est dans le nombre! Ajoutez un proche atteint de ReNU à la carte mondiale.',
     section_awareness_title: 'Sensibiliser',
-    section_awareness_desc: 'Participez ou soutenez les événements ReNU Espoir!',
+    section_awareness_desc: 'Diffusez la connaissance du Syndrome ReNU et aidez les familles non diagnostiquées.',
+    section_science_title: 'Comité scientifique',
+    section_science_desc: 'Le Comité scientifique garantit la rigueur scientifique et collabore avec les familles et les professionnels.',
     section_research_title: 'Recherche',
     section_research_desc: 'Participez pour accélérer la recherche!',
     section_info_title: 'Plus d\'informations',
@@ -278,7 +284,9 @@ const translations: Record<string, Record<string, string>> = {
     section_map_title: 'Regístrate aquí',
     section_map_desc: '¡La fuerza está en los números! Añade a tu familiar al mapa mundial.',
     section_awareness_title: 'Aumentar la conciencia',
-    section_awareness_desc: '¡Participa o apoya eventos ReNU Esperanza!',
+    section_awareness_desc: 'Difunde el conocimiento del Síndrome ReNU y ayuda a llegar a las familias sin diagnóstico.',
+    section_science_title: 'Comité científico',
+    section_science_desc: 'El Comité científico garantiza el rigor científico y colabora con familias y profesionales.',
     section_research_title: 'Investigación',
     section_research_desc: '¡Participa para acelerar la investigación!',
     section_info_title: 'Más información',
@@ -353,7 +361,9 @@ const translations: Record<string, Record<string, string>> = {
     section_map_title: 'Hier registrieren',
     section_map_desc: 'Stärke in der Zahl! Fügen Sie Ihr ReNU-Familienmitglied zur Weltkarte hinzu.',
     section_awareness_title: 'Bewusstsein schaffen',
-    section_awareness_desc: 'Nehmen Sie an ReNU-Hoffnungsveranstaltungen teil!',
+    section_awareness_desc: 'Verbreite das Wissen über das ReNU-Syndrom und hilf, noch nicht diagnostizierte Familien zu erreichen.',
+    section_science_title: 'Wissenschaftlicher Ausschuss',
+    section_science_desc: 'Der Wissenschaftliche Ausschuss gewährleistet wissenschaftliche Strenge und arbeitet mit Familien und Fachleuten zusammen.',
     section_research_title: 'Forschung',
     section_research_desc: 'Nehmen Sie teil, um die Forschung zu beschleunigen!',
     section_info_title: 'Weitere Informationen',
@@ -866,12 +876,12 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 function homePage(t: Record<string, string>): string {
   const cards = [
-    { href: 'https://form.jotform.com/250154538972159', ext: true,   icon: 'fa-map-marker-alt', ic: 'ic-blue',   title: t.section_map_title,       desc: t.section_map_desc,       accent: 'card-blue',   img: '/images/renu_map.jpg' },
-    { href: `/${t.lang}/community`,                                   icon: 'fa-bullhorn',       ic: 'ic-purple', title: t.section_awareness_title,  desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg' },
-    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg' },
-    { href: `/${t.lang}/about`,                                       icon: 'fa-info-circle',    ic: 'ic-navy',   title: t.section_info_title,       desc: t.section_info_desc,       accent: 'card-navy',   img: '/images/renu_info.jpg' },
     { href: `/${t.lang}/community`,                                   icon: 'fa-users',          ic: 'ic-green',  title: t.section_parents_title,    desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg' },
+    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg' },
+    { href: `/${t.lang}/science`,                                     icon: 'fa-flask',          ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',   img: '/images/renu_science_committee.jpg' },
     { href: `/${t.lang}/donations`,                                   icon: 'fa-heart',          ic: 'ic-red',    title: t.section_donations_title,  desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg' },
+    { href: `/${t.lang}/about`,                                       icon: 'fa-info-circle',    ic: 'ic-navy',   title: t.section_info_title,       desc: t.section_info_desc,       accent: 'card-blue',   img: '/images/renu_info.jpg' },
+    { href: `/${t.lang}/community`,                                   icon: 'fa-bullhorn',       ic: 'ic-purple', title: t.section_awareness_title,  desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg' },
   ]
   return `
   <!-- HERO -->
@@ -900,9 +910,6 @@ function homePage(t: Record<string, string>): string {
         <div class="flex-shrink-0 hidden md:block">
           <div class="flex flex-col items-center gap-4">
             <img src="/images/logo_transparent.png" alt="Sindrome ReNU Italia APS – Logo" class="w-64 xl:w-72 drop-shadow-xl">
-          </div>
-          <div class="mt-4 img-frame w-80 xl:w-96">
-            <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
           </div>
         </div>
       </div>
@@ -1140,25 +1147,6 @@ function homePage(t: Record<string, string>): string {
       </div>
     </div>
   </section>
-
-  <!-- MOVE 4 ReNU BANNER -->
-  <section class="py-5 px-4" style="background:#082050">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center gap-6">
-      <div class="flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-        <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="h-24 w-auto object-cover">
-      </div>
-      <div class="flex-1 text-white text-center sm:text-left">
-        <h3 class="text-xl font-extrabold mb-1">${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}</h3>
-        <p class="text-sky-200 text-sm">${t.lang==='it'?'Cammina, corri, pedala o balla per raccogliere fondi e diffondere la consapevolezza sulla Sindrome ReNU!':t.lang==='en'?'Walk, run, bike or dance to raise funds and spread awareness about ReNU Syndrome!':t.lang==='fr'?'Marchez, courez, pédalez ou dansez pour collecter des fonds et sensibiliser au Syndrome ReNU!':t.lang==='de'?'Gehen, laufen, radfahren oder tanzen – sammelt Spenden für das ReNU-Syndrom!':'¡Camina, corre, pedalea o baila para recaudar fondos para la investigación ReNU!'}</p>
-      </div>
-      <a href="https://www.zeffy.com/en-US/peer-to-peer/move-4-renu" target="_blank" 
-         class="flex-shrink-0 inline-flex items-center gap-2 bg-sky-400 hover:bg-sky-300 text-white font-bold px-6 py-3 rounded-full transition-colors">
-        <i class="fas fa-running"></i>${t.lang==='it'?'Partecipa':t.lang==='fr'?'Participer':t.lang==='de'?'Mitmachen':t.lang==='es'?'Participar':'Join'}
-      </a>
-    </div>
-  </section>
-
-
 
   <!-- RETE INTERNAZIONALE ReNU -->
   <section class="py-14 px-4 section-white">
