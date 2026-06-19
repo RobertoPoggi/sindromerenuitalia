@@ -62,7 +62,7 @@ const translations: Record<string, Record<string, string>> = {
     about_bones: 'Problemi ossei', about_bones_items: 'Bassa densità ossea, displasia dell\'anca, fratture ricorrenti',
     about_happy: 'Molte persone con Sindrome ReNU mostrano un temperamento felice, sono affettuose e amano le altalene, l\'acqua, la musica e le routine.',
     about_diagnosis_note: 'In Italia, per diagnosticare RNU4-2 è necessario il Sequenziamento dell\'Intero Genoma (WGS). Il WES non è in grado di rilevarlo!',
-    research_title: 'Ricerca sulla Sindrome ReNU',
+    research_title: 'Approfondimenti',
     research_intro: 'TU puoi far avanzare la ricerca verso opzioni di trattamento per ReNU!',
     research_crid: 'Prima di iscriversi a qualsiasi ricerca, crea un <a href="https://thecrid.org/" target="_blank" class="text-yellow-300 hover:underline font-semibold">ID di Ricerca Clinica (CRID)</a>! Condividi il tuo CRID con ogni studio clinico a cui partecipi.',
     research_priorities_title: 'Cosa è importante per la comunità RNU4-2?',
@@ -902,7 +902,7 @@ function homePage(t: Record<string, string>): string {
             <img src="/images/renu_hero.jpg" alt="ReNU Syndrome" class="w-full h-56 object-cover">
           </div>
           <div class="mt-4 img-frame w-80 xl:w-96">
-            <img src="${t.lang==='it'?'/images/move4renu_it.jpg':'/images/move4renu.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
+            <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
           </div>
         </div>
       </div>
@@ -1018,21 +1018,40 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
+          ${t.lang==='it' ? `
+          <div class="p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-sky flex-shrink-0"><i class="fas fa-images text-xl"></i></div>
+              <h3 class="font-bold text-lg" style="color:#082050">Galleria Italiana – In Arrivo</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-3">
+              Stiamo raccogliendo foto e momenti delle famiglie italiane con la Sindrome ReNU.
+              La galleria rispetterà le normative GDPR sulla privacy e la tutela dei minori.
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-3">
+              <i class="fas fa-shield-alt mr-1"></i>
+              <strong>Privacy GDPR:</strong> Le foto dei minori saranno pubblicate solo con consenso esplicito dei genitori/tutori.
+            </div>
+            <a href="mailto:presidenza@sindromerenu.it"
+               class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
+              <i class="fas fa-envelope"></i>Invia le tue foto
+            </a>
+          </div>` : `
           <div class="overflow-hidden h-52">
             <img src="/images/renu_gallery.jpg" alt="ReNU Gallery" class="w-full h-full object-cover">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'Galleria Internazionale':t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
+              ${t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Scopri le storie straordinarie dei bambini e delle famiglie che vivono con la Sindrome ReNU in tutto il mondo.':t.lang==='en'?'Discover the extraordinary stories of children and families living with ReNU Syndrome around the world.':'Découvrez les histoires de familles vivant avec le syndrome ReNU.'}
+              ${t.lang==='en'?'Discover the extraordinary stories of children and families living with ReNU Syndrome around the world.':t.lang==='fr'?'Découvrez les histoires de familles vivant avec le syndrome ReNU.':t.lang==='es'?'Descubre las historias de familias que viven con el Síndrome ReNU en todo el mundo.':'Entdecken Sie die außergewöhnlichen Geschichten von Familien mit dem ReNU-Syndrom.'}
             </p>
             <a href="https://www.renusyndrome.org/gallery" target="_blank"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
-              <i class="fas fa-images"></i>${t.lang==='it'?'Visita Galleria':t.lang==='en'?'Visit Gallery':'Galerie'}
+              <i class="fas fa-images"></i>${t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Galerie':t.lang==='es'?'Ver Galería':'Galerie'}
             </a>
-          </div>
+          </div>`}
         </div>
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
@@ -1115,15 +1134,15 @@ function homePage(t: Record<string, string>): string {
   <section class="py-5 px-4" style="background:#082050">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center gap-6">
       <div class="flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-        <img src="${t.lang==='it'?'/images/move4renu_it.jpg':'/images/move4renu.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}" class="h-24 w-auto object-cover">
+        <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="h-24 w-auto object-cover">
       </div>
       <div class="flex-1 text-white text-center sm:text-left">
-        <h3 class="text-xl font-extrabold mb-1">${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}</h3>
-        <p class="text-sky-200 text-sm">${t.lang==='it'?'Cammina, corri, pedala o balla per raccogliere fondi e diffondere la consapevolezza sulla Sindrome ReNU!':t.lang==='en'?'Move to raise funds and spread awareness about ReNU Syndrome!':'Bewegt euch, um Spenden und Bewusstsein für das ReNU-Syndrom zu wecken!'}</p>
+        <h3 class="text-xl font-extrabold mb-1">${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}</h3>
+        <p class="text-sky-200 text-sm">${t.lang==='it'?'Cammina, corri, pedala o balla per raccogliere fondi e diffondere la consapevolezza sulla Sindrome ReNU!':t.lang==='en'?'Walk, run, bike or dance to raise funds and spread awareness about ReNU Syndrome!':t.lang==='fr'?'Marchez, courez, pédalez ou dansez pour collecter des fonds et sensibiliser au Syndrome ReNU!':t.lang==='de'?'Gehen, laufen, radfahren oder tanzen – sammelt Spenden für das ReNU-Syndrom!':'¡Camina, corre, pedalea o baila para recaudar fondos para la investigación ReNU!'}</p>
       </div>
       <a href="https://www.zeffy.com/en-US/peer-to-peer/move-4-renu" target="_blank" 
          class="flex-shrink-0 inline-flex items-center gap-2 bg-sky-400 hover:bg-sky-300 text-white font-bold px-6 py-3 rounded-full transition-colors">
-        <i class="fas fa-running"></i>${t.lang==='it'?'Partecipa':'Move 4 ReNU'}
+        <i class="fas fa-running"></i>${t.lang==='it'?'Partecipa':t.lang==='fr'?'Participer':t.lang==='de'?'Mitmachen':t.lang==='es'?'Participar':'Join'}
       </a>
     </div>
   </section>
@@ -1595,7 +1614,7 @@ function therapiesPage(t: Record<string, string>): string {
     { icon:'fa-tablet-alt',    ic:'ic-sky',    name:t.lang==='it'?'Comunicatore (VOCA / App)':'Communicator (VOCA / App)',
       desc:t.lang==='it'?'Il comunicatore è un dispositivo, spesso digitale, che consente al bambino di selezionare simboli o immagini trasformandoli in voce. Può favorire la comunicazione autonoma e la partecipazione sociale.':'The communicator is a device, often digital, that allows the child to select symbols or images and convert them to speech, supporting autonomous communication.' },
     { icon:'fa-puzzle-piece',  ic:'ic-navy',   name:'ABA – Applied Behavior Analysis',
-      desc:t.lang==='it'?'L\'ABA è un approccio educativo-comportamentale che aiuta il bambino ad apprendere nuove abilità e a ridurre i comportamenti che possono ostacolare la vita quotidiana. Il percorso è personalizzato e utilizza rinforzo positivo e monitoraggio continuo.':'ABA is a behavioral approach helping children learn new skills and reduce barriers to daily life through positive reinforcement.' },
+      desc:t.lang==='it'?'L\'ABA (Applied Behavior Analysis) è un approccio educativo-comportamentale che aiuta il bambino ad apprendere nuove abilità e a ridurre i comportamenti che possono ostacolare la vita quotidiana, la comunicazione e la partecipazione. Il percorso viene personalizzato in base agli obiettivi del bambino e utilizza strategie strutturate, rinforzo positivo e monitoraggio dei progressi.':'ABA (Applied Behavior Analysis) is a behavioral educational approach that helps children learn new skills and reduce behaviors that may hinder daily life, communication and participation. The path is personalized based on the child\'s goals and uses structured strategies, positive reinforcement and progress monitoring.' },
     { icon:'fa-hands-helping', ic:'ic-green',  name:t.lang==='it'?'Terapia Occupazionale (TO)':t.lang==='en'?'Occupational Therapy (OT)':t.lang==='fr'?'Ergothérapie':t.lang==='es'?'Terapia Ocupacional':'Ergotherapie',
       desc:t.lang==='it'?'La terapia occupazionale aiuta a sviluppare autonomia personale, motricità fine, coordinazione e partecipazione alla vita quotidiana, scolastica e sociale.':'Develops personal autonomy, fine motor skills, coordination and participation in daily, school and social life.' },
     { icon:'fa-child',         ic:'ic-cyan',   name:t.lang==='it'?'Psicomotricità':'Psychomotricity',
@@ -1634,11 +1653,16 @@ function therapiesPage(t: Record<string, string>): string {
         <i class="fas fa-exclamation-circle text-amber-500 text-2xl mt-1 flex-shrink-0"></i>
         <p class="text-amber-800 italic">${t.therapies_note}</p>
       </div>
-      <div class="mt-8 text-center">
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/${t.lang}/therapies"
+           class="inline-flex items-center gap-2 text-white font-bold px-7 py-3 rounded-full shadow-lg" style="background: linear-gradient(135deg,#082050,#1078C0)">
+          <i class="fas fa-heartbeat"></i>
+          ${t.lang==='it'?'Vai alla pagina Terapie':t.lang==='en'?'Go to Therapies page':t.lang==='fr'?'Page Thérapies':t.lang==='es'?'Ir a Terapias':'Zur Therapien-Seite'}
+        </a>
         <a href="https://www.renusyndrome.org/therapies" target="_blank"
            class="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full" style="background:#1078C0">
           <i class="fas fa-external-link-alt"></i>
-          ${t.lang==='it'?'Approfondisci su ReNU Syndrome United':t.lang==='en'?'Learn more on ReNU Syndrome United':'Plus d\'infos sur ReNU Syndrome United'}
+          ${t.lang==='it'?'Approfondisci su ReNU Syndrome United':t.lang==='en'?'Learn more on ReNU Syndrome United':t.lang==='fr'?'Plus d\'infos sur ReNU Syndrome United':t.lang==='es'?'Más info en ReNU Syndrome United':'Mehr Infos auf ReNU Syndrome United'}
         </a>
       </div>
 
@@ -2085,8 +2109,37 @@ function communityPage(t: Record<string, string>): string {
         </div>
       </div>` : ''}
 
-      <!-- Gallery Internazionale -->
+      <!-- Gallery -->
       <div class="card card-sky overflow-hidden mb-10">
+        ${t.lang==='it' ? `
+        <div class="p-6 flex flex-col md:flex-row gap-6 items-start">
+          <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full" style="background: linear-gradient(135deg,#C8E8F8,#EEF6FB)">
+            <i class="fas fa-images text-2xl" style="color:#1078C0"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-bold text-xl mb-2 flex items-center gap-2" style="color:#082050">
+              Galleria Italiana – In Arrivo
+            </h3>
+            <p class="text-gray-600 mb-3 text-sm">
+              Vogliamo creare uno spazio italiano per condividere i momenti speciali delle famiglie italiane con la Sindrome ReNU.
+              Rispetteremo le normative GDPR sulla privacy e la tutela dei minori.
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-4">
+              <i class="fas fa-shield-alt mr-1"></i>
+              <strong>Privacy GDPR:</strong> Le immagini dei minori saranno pubblicate esclusivamente previo consenso esplicito e documentato dei genitori o tutori legali.
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="mailto:presidenza@sindromerenu.it"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+                <i class="fas fa-envelope"></i>Invia le tue foto a presidenza@sindromerenu.it
+              </a>
+              <a href="https://www.renusyndrome.org/gallery" target="_blank"
+                 class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm border" style="color:#082050;border-color:#082050">
+                <i class="fas fa-external-link-alt"></i>Galleria Internazionale
+              </a>
+            </div>
+          </div>
+        </div>` : `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
           <div class="overflow-hidden">
             <img src="/images/renu_gallery.jpg" alt="Gallery ReNU" class="w-full h-56 object-cover">
@@ -2094,17 +2147,17 @@ function communityPage(t: Record<string, string>): string {
           <div class="p-6 flex flex-col justify-center">
             <h3 class="font-bold text-xl mb-3 flex items-center gap-2" style="color:#082050">
               <i class="fas fa-images" style="color:#1078C0"></i>
-              ${t.lang==='it'?'Gallery Internazionale':'International Gallery'}
+              ${t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
             </h3>
             <p class="text-gray-600 mb-4 text-sm">
-              ${t.lang==='it'?'Guarda le foto dei coraggiosi bambini e famiglie di tutto il mondo sulla galleria internazionale di ReNU Syndrome United.':'See photos of brave children and families from around the world on the international ReNU Syndrome United gallery.'}
+              ${t.lang==='en'?'See photos of brave children and families from around the world on the international ReNU Syndrome United gallery.':t.lang==='fr'?'Découvrez les photos des familles courageuses du monde entier sur la galerie internationale.':t.lang==='es'?'Mira fotos de valientes niños y familias de todo el mundo en la galería internacional.':'Sehen Sie Fotos mutiger Kinder und Familien aus aller Welt in der internationalen Galerie.'}
             </p>
             <a href="https://www.renusyndrome.org/gallery" target="_blank"
                class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-semibold transition-colors w-fit" style="background:#1078C0">
-              <i class="fas fa-images"></i>${t.lang==='it'?'Visita la Galleria':'Visit Gallery'}
+              <i class="fas fa-images"></i>${t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Galerie':t.lang==='es'?'Ver Galería':'Galerie'}
             </a>
           </div>
-        </div>
+        </div>`}
       </div>
 
       <!-- Storie delle famiglie -->
