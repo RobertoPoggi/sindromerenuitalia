@@ -524,8 +524,6 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy:   #082050;
@@ -535,8 +533,9 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       --bg:     #EEF6FB;
       --white:  #FFFFFF;
     }
+    /* System font stack — nessuna richiesta a Google Fonts (GDPR Art. 5.1.c) */
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--bg);
     }
     /* ── Logo sfondo intera pagina (come da specifiche PDF punto 5) ── */
@@ -799,7 +798,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
       <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.lang==='it'?'Privacy Policy':'Privacy Policy'}</a>
       &nbsp;|&nbsp;
-      <a href="mailto:info@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il DPO':'Contact DPO'}</a>
+      <a href="mailto:info@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il Titolare':'Contact Data Controller'}</a>
       &nbsp;|&nbsp;
       <span>${t.lang==='it'?'Sito conforme GDPR (Reg. UE 2016/679)':'GDPR Compliant (EU Reg. 2016/679)'}</span>
     </div>
@@ -818,9 +817,12 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
           'We only use technical cookies. No profiling or advertising tracking. <a href="/'+t.lang+'/privacy" style="color:#45B8EC;text-decoration:underline">Read Privacy Policy</a>'}
       </span>
     </div>
-    <div style="display:flex;gap:0.75rem;flex-shrink:0">
+    <div style="display:flex;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;align-items:center">
       <button onclick="acceptCookies()" style="background:#45B8EC;color:#082050;border:none;padding:0.5rem 1.25rem;border-radius:999px;font-weight:700;cursor:pointer;font-size:0.85rem">
         ${t.lang==='it'?'Accetto':'Accept'}
+      </button>
+      <button onclick="acceptCookies()" style="background:transparent;color:#C8E8F8;border:1px solid #C8E8F8;padding:0.5rem 1.25rem;border-radius:999px;font-weight:600;cursor:pointer;font-size:0.8rem">
+        ${t.lang==='it'?'Solo tecnici necessari':'Necessary only'}
       </button>
       <a href="/${t.lang}/privacy" style="color:#C8E8F8;font-size:0.75rem;align-self:center;text-decoration:underline">
         ${t.lang==='it'?'Maggiori info':'More info'}
@@ -3387,7 +3389,7 @@ function membersPage(t: Record<string, string>): string {
           <div class="flex items-start gap-3">
             <input type="checkbox" name="privacy" required id="privacyCheck" class="mt-1 w-4 h-4 flex-shrink-0">
             <label for="privacyCheck" class="text-xs text-gray-600">
-              ${t.lang==='it'?'Acconsento al trattamento dei dati personali ai sensi del GDPR (Reg. UE 2016/679) per la gestione della lista d\'attesa di Sindrome ReNU Italia APS. I dati non saranno ceduti a terzi.':'I consent to the processing of personal data pursuant to GDPR (EU Reg. 2016/679) for the management of the Sindrome ReNU Italia APS waiting list. Data will not be shared with third parties.'}
+              ${t.lang==='it'?'Acconsento al trattamento dei dati personali ai sensi del GDPR (Reg. UE 2016/679) per la gestione della lista d\'attesa di Sindrome ReNU Italia APS. I dati non saranno ceduti a terzi. <a href="/it/privacy" class="underline text-sky-600">Leggi l\'informativa privacy</a>.':'I consent to the processing of personal data pursuant to GDPR (EU Reg. 2016/679) for the management of the Sindrome ReNU Italia APS waiting list. Data will not be shared with third parties. <a href="/'+t.lang+'/privacy" class="underline text-sky-600">Read the privacy policy</a>.'}
             </label>
           </div>
           <button type="submit"
@@ -3814,7 +3816,7 @@ function privacyPage(t: Record<string, string>): string {
         <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color:#082050">
           ${isIt?'Informativa sulla Privacy':'Privacy Policy'}
         </h1>
-        <p class="text-gray-500 text-sm">${isIt?'Ultimo aggiornamento: Aprile 2026':'Last updated: April 2026'} · ${isIt?'Versione':'Version'} 1.0</p>
+        <p class="text-gray-500 text-sm">${isIt?'Ultimo aggiornamento: Giugno 2026':'Last updated: June 2026'} · ${isIt?'Versione':'Version'} 2.0</p>
       </div>
 
       <div class="space-y-8 text-gray-700 leading-relaxed">
@@ -3832,7 +3834,7 @@ function privacyPage(t: Record<string, string>): string {
             ${isIt?'Sito web':'Website'}: <a href="https://www.sindromerenu.it" class="text-blue-600 hover:underline">www.sindromerenu.it</a>
           </div>
           <p class="mt-3 text-sm text-gray-600">
-            ${isIt?'Il Responsabile della Protezione dei Dati (DPO) è in fase di nomina. Per qualsiasi richiesta relativa ai tuoi dati personali, scrivi a: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>':'The Data Protection Officer (DPO) is being appointed. For any request regarding your personal data, write to: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>'}
+            ${isIt?'Sindrome ReNU Italia APS, in quanto APS di piccole dimensioni, non è tenuta alla nomina di un Responsabile della Protezione dei Dati (DPO) ai sensi dell\'Art. 37 GDPR. Per qualsiasi richiesta relativa ai tuoi dati personali, scrivi direttamente al Titolare del Trattamento: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>':'Sindrome ReNU Italia APS, as a small-scale APS, is not required to appoint a Data Protection Officer (DPO) pursuant to Art. 37 GDPR. For any request regarding your personal data, write directly to the Data Controller: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>'}
           </p>
         </div>
 
@@ -3895,15 +3897,20 @@ function privacyPage(t: Record<string, string>): string {
         <!-- Cookie -->
         <div class="card p-6">
           <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-cookie-bite mr-2" style="color:#1078C0"></i>${isIt?'5. Cookie e Tecnologie di Tracciamento':'5. Cookies and Tracking Technologies'}</h2>
-          <p class="text-sm mb-3">${isIt?'Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Non utilizza cookie di profilazione o marketing di terze parti.':'This site uses only technical cookies necessary for its operation. It does not use third-party profiling or marketing cookies.'}</p>
+          <p class="text-sm mb-3">${isIt?'Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Non utilizza cookie di profilazione o marketing. Non è integrato Google Analytics o altro strumento di analisi comportamentale.':'This site uses only technical cookies necessary for its operation. No profiling or marketing cookies are used. No Google Analytics or other behavioural analysis tool is integrated.'}</p>
           <div class="overflow-x-auto">
             <table class="w-full text-sm border-collapse">
               <thead><tr class="bg-sky-50"><th class="text-left p-3 border border-sky-100">Cookie</th><th class="text-left p-3 border border-sky-100">${isIt?'Tipo':'Type'}</th><th class="text-left p-3 border border-sky-100">${isIt?'Durata':'Duration'}</th><th class="text-left p-3 border border-sky-100">${isIt?'Finalità':'Purpose'}</th></tr></thead>
               <tbody>
-                <tr><td class="p-3 border border-gray-100">session</td><td class="p-3 border border-gray-100">${isIt?'Tecnico':'Technical'}</td><td class="p-3 border border-gray-100">Sessione</td><td class="p-3 border border-gray-100">${isIt?'Navigazione':'Navigation'}</td></tr>
-                <tr class="bg-gray-50"><td class="p-3 border border-gray-100">cf_clearance</td><td class="p-3 border border-gray-100">${isIt?'Tecnico (Cloudflare)':'Technical (Cloudflare)'}</td><td class="p-3 border border-gray-100">30 giorni</td><td class="p-3 border border-gray-100">${isIt?'Sicurezza CDN':'CDN Security'}</td></tr>
+                <tr><td class="p-3 border border-gray-100">session</td><td class="p-3 border border-gray-100">${isIt?'Tecnico':'Technical'}</td><td class="p-3 border border-gray-100">${isIt?'Sessione':'Session'}</td><td class="p-3 border border-gray-100">${isIt?'Navigazione':'Navigation'}</td></tr>
+                <tr class="bg-gray-50"><td class="p-3 border border-gray-100">cf_clearance</td><td class="p-3 border border-gray-100">${isIt?'Tecnico (Cloudflare)':'Technical (Cloudflare)'}</td><td class="p-3 border border-gray-100">30 ${isIt?'giorni':'days'}</td><td class="p-3 border border-gray-100">${isIt?'Sicurezza CDN':'CDN Security'}</td></tr>
+                <tr><td class="p-3 border border-gray-100">cookie_consent</td><td class="p-3 border border-gray-100">${isIt?'Tecnico (preferenze)':'Technical (preferences)'}</td><td class="p-3 border border-gray-100">365 ${isIt?'giorni':'days'}</td><td class="p-3 border border-gray-100">${isIt?'Memorizza scelta banner cookie':'Stores cookie banner choice'}</td></tr>
               </tbody>
             </table>
+          </div>
+          <div class="mt-4 p-3 rounded-xl text-sm" style="background:#FFF7ED;border-left:3px solid #F59E0B">
+            <p class="font-semibold mb-1" style="color:#92400E"><i class="fas fa-info-circle mr-1"></i>${isIt?'Risorse CSS/JS da CDN esterne':'External CDN CSS/JS resources'}</p>
+            <p class="text-xs text-gray-600">${isIt?'Il sito carica fogli di stile CSS (Tailwind, FontAwesome) dal servizio CDN jsDelivr.net, gestito da ProspectOne (Polonia/UE). Questo può comportare la trasmissione dell\'indirizzo IP al server CDN al primo caricamento della pagina. Non vengono posizionati cookie di profilazione da tali servizi. Il font tipografico è servito dal sistema operativo (nessuna richiesta a Google Fonts).':'The site loads CSS stylesheets (Tailwind, FontAwesome) from the jsDelivr.net CDN service, operated by ProspectOne (Poland/EU). This may involve transmission of your IP address to the CDN server on first page load. No profiling cookies are set by these services. Typography fonts are served by the operating system (no Google Fonts request).'}</p>
           </div>
           <p class="text-xs text-gray-400 mt-3">${isIt?'Puoi gestire i cookie nelle impostazioni del tuo browser.':'You can manage cookies in your browser settings.'}</p>
         </div>
@@ -3924,6 +3931,40 @@ function privacyPage(t: Record<string, string>): string {
         <div class="card p-6">
           <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-lock mr-2" style="color:#1078C0"></i>${isIt?'7. Sicurezza dei Dati':'7. Data Security'}</h2>
           <p class="text-sm text-gray-600">${isIt?'I dati sono trattati con misure di sicurezza tecniche e organizzative adeguate: trasmissione HTTPS/TLS, hosting su Cloudflare Pages (infrastruttura certificata ISO 27001), accesso limitato al personale autorizzato, nessun trasferimento verso paesi terzi extra-UE senza adeguate garanzie.':'Data is processed with appropriate technical and organizational security measures: HTTPS/TLS transmission, hosting on Cloudflare Pages (ISO 27001 certified infrastructure), access limited to authorized personnel, no transfers to non-EU third countries without adequate guarantees.'}</p>
+        </div>
+
+        <!-- Responsabili esterni -->
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-handshake mr-2" style="color:#1078C0"></i>${isIt?'8. Responsabili Esterni del Trattamento (Art. 28 GDPR)':'8. Third-Party Data Processors (Art. 28 GDPR)'}</h2>
+          <p class="text-sm text-gray-600 mb-4">${isIt?'Per alcune attività tecnico-operative, Sindrome ReNU Italia APS si avvale di fornitori terzi nominati Responsabili del Trattamento ai sensi dell\'Art. 28 GDPR. Tali soggetti trattano i dati esclusivamente per conto e su istruzione del Titolare:':'For certain technical and operational activities, Sindrome ReNU Italia APS uses third-party providers appointed as Data Processors pursuant to Art. 28 GDPR. These parties process data exclusively on behalf of and under the instruction of the Data Controller:'}</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead><tr class="bg-sky-50">
+                <th class="text-left p-3 border border-sky-100">${isIt?'Fornitore':'Provider'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Servizio':'Service'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Dati trattati':'Data processed'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Sede':'Location'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Garanzie':'Safeguards'}</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td class="p-3 border border-gray-100 font-semibold">Cloudflare, Inc.</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Hosting, CDN, sicurezza':'Hosting, CDN, security'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'IP, log navigazione':'IP, navigation logs'}</td>
+                  <td class="p-3 border border-gray-100">USA</td>
+                  <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline">DPA + SCC</a></td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="p-3 border border-gray-100 font-semibold">Resend, Inc.</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali':'Transactional email delivery'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
+                  <td class="p-3 border border-gray-100">USA</td>
+                  <td class="p-3 border border-gray-100"><a href="https://resend.com/legal/dpa" target="_blank" class="text-blue-600 hover:underline">DPA + SCC</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) — garanzia adeguata per trasferimenti extra-UE ai sensi dell\'Art. 46 GDPR.':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) — adequate safeguard for extra-EU transfers pursuant to Art. 46 GDPR.'}</p>
         </div>
 
         <!-- Contatti Garante -->
