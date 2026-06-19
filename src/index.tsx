@@ -898,8 +898,8 @@ function homePage(t: Record<string, string>): string {
           <p class="text-sky-200 text-sm mt-3">${t.btn_info_sub}</p>
         </div>
         <div class="flex-shrink-0 hidden md:block">
-          <div class="img-frame w-80 xl:w-96">
-            <img src="/images/renu_hero.jpg" alt="Sindrome ReNU Italia APS" class="w-full h-56 object-cover">
+          <div class="flex flex-col items-center gap-4">
+            <img src="/images/logo_transparent.png" alt="Sindrome ReNU Italia APS – Logo" class="w-64 xl:w-72 drop-shadow-xl">
           </div>
           <div class="mt-4 img-frame w-80 xl:w-96">
             <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
@@ -3102,11 +3102,10 @@ function projectsPage(t: Record<string, string>): string {
           ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
         </p>
       </div>
-      ${isIt?`
       <div class="flex-shrink-0 hidden md:flex gap-4">
         <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover"></div>
         <div class="img-frame w-52"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-36 object-cover"></div>
-      </div>`:''}
+      </div>
     </div>
   </section>
 
@@ -3132,7 +3131,7 @@ function projectsPage(t: Record<string, string>): string {
                 </span>
               </div>
               <p class="text-gray-600 leading-relaxed mb-4">
-                ${isIt?'Un evento sportivo solidale dedicato alla Sindrome ReNU, pensato per unire le famiglie italiane, raccogliere fondi per la ricerca e diffondere la consapevolezza su questa rara condizione genetica. La Maratona ReNU 2027 si propone di coinvolgere runner, famiglie e sostenitori in una giornata di sport, speranza e comunità.':'A solidarity sporting event dedicated to ReNU Syndrome, designed to unite Italian families, raise funds for research and spread awareness of this rare genetic condition. The ReNU Marathon 2027 aims to involve runners, families and supporters in a day of sport, hope and community.'}
+                ${isIt?'La partecipazione alla Wizz Air Milano Marathon 2027 rappresenta un&#39;opportunità concreta per sensibilizzare, coinvolgere sostenitori e raccogliere fondi a favore delle famiglie ReNU. La Maratona di Milano ha un enorme programma solidale chiamato Charity Program, considerato il più grande progetto di raccolta fondi sportiva in Italia e uno dei più importanti in Europa.':'Participation in the Wizz Air Milano Marathon 2027 is a concrete opportunity to raise awareness, engage supporters and raise funds for ReNU families. The Milan Marathon has a huge solidarity programme called Charity Program, considered the largest sports fundraising project in Italy and one of the most important in Europe.'}
               </p>
               <div class="flex flex-wrap gap-3">
                 <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Adesione Maratona ReNU 2027':'Join ReNU Marathon 2027')}"
@@ -3166,7 +3165,7 @@ function projectsPage(t: Record<string, string>): string {
                 </span>
               </div>
               <p class="text-gray-600 leading-relaxed mb-4">
-                ${isIt?'La Rete del Tempo è un progetto di mutuo aiuto tra le famiglie ReNU italiane: chi ha tempo, competenze o esperienze utili le mette a disposizione della comunità. Accompagnamento a visite specialistiche, supporto burocratico, condivisione di percorsi terapeutici: insieme ci si aiuta di più.':'The Time Network is a mutual support project among Italian ReNU families: those with useful time, skills or experience make them available to the community. Accompanying families to specialist appointments, bureaucratic support, sharing therapeutic pathways: together we help each other more.'}
+                ${isIt?'Viene supportata da Associazioni radicate sul territorio che reperiscono personale, lo formano e lo sensibilizzano. Nasce per creare una rete concreta di vicinanza e supporto alle famiglie, attraverso piccoli gesti capaci di fare una grande differenza. Chiediamo a volontari e volontarie di dedicare almeno due ore al mese del proprio tempo, scegliendo liberamente come aiutare una famiglia: accompagnamenti, aiuto compiti, tempo condiviso, piccole commissioni o momenti di sollievo per i genitori.':'Supported by local organisations that recruit, train and raise awareness among volunteers. Born to create a concrete network of closeness and support for families, through small gestures capable of making a great difference. We ask volunteers to dedicate at least two hours a month of their time, freely choosing how to help a family: accompaniments, homework help, shared time, small errands or moments of relief for parents.'}
               </p>
               <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
@@ -3206,34 +3205,6 @@ function projectsPage(t: Record<string, string>): string {
                   <i class="fas fa-envelope"></i>${isIt?'Richiedi supporto':'Request support'}
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CAMPAGNA CONSAPEVOLEZZA PEDIATRI -->
-        <div class="card p-0 overflow-hidden">
-          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
-            <div class="flex-shrink-0">
-              <div class="ic ic-red w-16 h-16">
-                <i class="fas fa-heartbeat text-2xl"></i>
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h3 class="font-extrabold text-xl" style="color:#082050">
-                  ${isIt?'Campagna Consapevolezza Pediatri':'Pediatrician Awareness Campaign'}
-                </h3>
-                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF2F2;color:#DC2626">
-                  <i class="fas fa-circle text-xs"></i>${isIt?'In pianificazione':'In planning'}
-                </span>
-              </div>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                ${isIt?'Campagna di sensibilizzazione rivolta ai pediatri e ai medici di base italiani sulla Sindrome ReNU: distribuzione di materiali informativi, contatti con società scientifiche e ordini medici per ridurre i tempi di diagnosi e garantire un percorso diagnostico corretto (WGS).':'Awareness campaign targeting Italian pediatricians and general practitioners on ReNU Syndrome: distribution of informational materials, contacts with scientific societies and medical associations to reduce diagnostic times and ensure the correct diagnostic pathway (WGS).'}
-              </p>
-              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Campagna pediatri ReNU':'ReNU pediatrician campaign')}"
-                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#FEF2F2;color:#DC2626;border:1px solid #DC2626">
-                <i class="fas fa-envelope"></i>${isIt?'Ricevi aggiornamenti':'Get updates'}
-              </a>
             </div>
           </div>
         </div>
@@ -3979,9 +3950,9 @@ function sciencePage(t: Record<string, string>): string {
         </h1>
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
-      ${isIt?`<div class="flex-shrink-0 hidden md:block">
+      <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-72"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-48 object-cover"></div>
-      </div>`:''}
+      </div>
     </div>
   </section>
 
@@ -4078,6 +4049,35 @@ function sciencePage(t: Record<string, string>): string {
               </span>
             </div>
           </a>
+        </div>
+      </div>
+
+      <!-- CAMPAGNA CONSAPEVOLEZZA PEDIATRI -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-heartbeat" style="color:#DC2626"></i>
+          ${isIt?'Campagna Consapevolezza Pediatri':'Pediatrician Awareness Campaign'}
+        </h2>
+        <div class="card p-6 flex flex-col md:flex-row gap-5 items-start">
+          <div class="flex-shrink-0">
+            <div class="ic ic-red w-14 h-14">
+              <i class="fas fa-user-md text-xl"></i>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF2F2;color:#DC2626">
+                <i class="fas fa-circle text-xs"></i>${isIt?'In pianificazione':'In planning'}
+              </span>
+            </div>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              ${isIt?'Campagna di sensibilizzazione rivolta ai pediatri e ai medici di base italiani sulla Sindrome ReNU: distribuzione di materiali informativi, contatti con societ\u00e0 scientifiche e ordini medici per ridurre i tempi di diagnosi e garantire un percorso diagnostico corretto (WGS).':'Awareness campaign targeting Italian pediatricians and general practitioners on ReNU Syndrome: distribution of informational materials, contacts with scientific societies and medical associations to reduce diagnostic times and ensure the correct diagnostic pathway (WGS).'}
+            </p>
+            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Campagna pediatri ReNU':'ReNU pediatrician campaign')}"
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#FEF2F2;color:#DC2626;border:1px solid #DC2626">
+              <i class="fas fa-envelope"></i>${isIt?'Ricevi aggiornamenti':'Get updates'}
+            </a>
+          </div>
         </div>
       </div>
 
