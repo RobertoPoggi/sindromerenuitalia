@@ -32,18 +32,18 @@ const translations: Record<string, Record<string, string>> = {
     btn_diagnosis_sub: 'Ogni contributo fa la differenza. Grazie.',
     btn_info: 'VUOI MAGGIORI INFORMAZIONI? CLICCA QUI',
     btn_info_sub: 'Contattaci per informazioni sulla Sindrome ReNU',
-    section_map_title: 'Registrati qui',
-    section_map_desc: 'La forza è nei numeri! Aggiungi un tuo caro con ReNU alla mappa mondiale per aumentare la consapevolezza.',
+    section_map_title: 'Mappa Famiglie',
+    section_map_desc: 'Aggiungi il tuo familiare con Sindrome ReNU alla mappa mondiale per aumentare la consapevolezza e la forza della comunità.',
     section_awareness_title: 'Aumenta la Consapevolezza',
-    section_awareness_desc: 'Partecipa o sostieni gli eventi ReNU Speranza per diffondere la consapevolezza!',
-    section_research_title: 'Ricerca',
-    section_research_desc: 'Partecipa ora per accelerare la ricerca e lo sviluppo di nuovi farmaci o terapie!',
-    section_info_title: 'Maggiori Informazioni',
-    section_info_desc: 'Scopri come si manifesta la ReNU, le caratteristiche tipiche e come viene influenzato lo sviluppo.',
-    section_parents_title: 'Connessione tra Genitori',
-    section_parents_desc: 'Non sei solo! Trova speranza e comunità con genitori di tutto il mondo.',
+    section_awareness_desc: 'Partecipa alle iniziative di sensibilizzazione e diffondi la conoscenza sulla Sindrome ReNU in Italia.',
+    section_research_title: 'Approfondimenti',
+    section_research_desc: 'Esplora le risorse scientifiche, le terapie di supporto e le iniziative di ricerca sulla Sindrome ReNU.',
+    section_info_title: 'Cos\u2019è ReNU',
+    section_info_desc: 'Scopri cos\u2019è la Sindrome ReNU, le caratteristiche cliniche e le informazioni genetiche aggiornate.',
+    section_parents_title: 'Rete Genitori Italiani',
+    section_parents_desc: 'La rete dei genitori italiani è un punto di riferimento per chi desidera sentirsi meno solo, condividere domande, esperienze e piccole conquiste del quotidiano.',
     section_donations_title: 'Donazioni',
-    section_donations_desc: 'Promuovere la ricerca, costruire comunità e diffondere la consapevolezza. Ogni contributo fa la differenza!',
+    section_donations_desc: 'Il tuo supporto ci permette di promuovere la ricerca, costruire la comunità e offrire un aiuto concreto alle famiglie ReNU in Italia.',
     about_title: 'Cos\'è la Sindrome ReNU?',
     about_gene: 'La sindrome di ReNU (RNU4-2) è una rara condizione genetica del neurosviluppo, identificata di recente dalla ricerca scientifica internazionale. È associata a variazioni del gene RNU4-2, coinvolto in un processo essenziale per il corretto funzionamento delle cellule, chiamato splicing dell\'RNA. La sua descrizione scientifica è stata consolidata nel 2024 grazie a importanti studi internazionali.',
     about_discovery: 'Scoperta di RNU4-2',
@@ -744,7 +744,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
           <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="https://www.instagram.com/immaaudino1975/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -902,7 +902,7 @@ function homePage(t: Record<string, string>): string {
             <img src="/images/renu_hero.jpg" alt="ReNU Syndrome" class="w-full h-56 object-cover">
           </div>
           <div class="mt-4 img-frame w-80 xl:w-96">
-            <img src="/images/move4renu.jpg" alt="Move 4 ReNU" class="w-full h-28 object-cover">
+            <img src="${t.lang==='it'?'/images/move4renu_it.jpg':'/images/move4renu.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
           </div>
         </div>
       </div>
@@ -1061,12 +1061,21 @@ function homePage(t: Record<string, string>): string {
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-extrabold" style="color:#082050">
-          ${t.lang==='it'?'Storie di Famiglie con ReNU':t.lang==='en'?'Stories from ReNU Families':t.lang==='fr'?'Histoires de familles ReNU':t.lang==='es'?'Historias de Familias ReNU':'Geschichten von ReNU-Familien'}
+          ${t.lang==='it'?'Storie di Famiglie Italiane con ReNU':t.lang==='en'?'Stories from ReNU Families':t.lang==='fr'?'Histoires de familles ReNU':t.lang==='es'?'Historias de Familias ReNU':'Geschichten von ReNU-Familien'}
         </h2>
         <p class="text-gray-500 mt-2 text-sm">
-          ${t.lang==='it'?'Storie reali da tutto il mondo, dalla community di ReNU Syndrome United':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
+          ${t.lang==='it'?'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
         </p>
       </div>
+      ${t.lang==='it'?`
+      <!-- Placeholder storie italiane -->
+      <div class="card p-8 text-center mb-8" style="border: 2px dashed #C8E8F8;">
+        <i class="fas fa-heart text-4xl text-sky-400 mb-4 block"></i>
+        <h3 class="text-xl font-bold mb-2" style="color:#082050">Le storie italiane sono in arrivo</h3>
+        <p class="text-gray-500 text-sm max-w-xl mx-auto">Stiamo raccogliendo le storie delle famiglie italiane con la Sindrome ReNU. Se vuoi condividere la tua storia, scrivici a <a href="mailto:presidenza@sindromerenu.it" class="text-sky-600 hover:underline font-semibold">presidenza@sindromerenu.it</a>.</p>
+      </div>
+      <h3 class="text-lg font-bold mb-4 text-center" style="color:#1078C0"><i class="fas fa-globe mr-2"></i>Storie dalla community internazionale</h3>
+      `:''}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Story cards - from renusyndrome.org/stories -->
         ${[
@@ -1106,15 +1115,15 @@ function homePage(t: Record<string, string>): string {
   <section class="py-5 px-4" style="background:#082050">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center gap-6">
       <div class="flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
-        <img src="/images/move4renu.jpg" alt="Move 4 ReNU" class="h-24 w-auto object-cover">
+        <img src="${t.lang==='it'?'/images/move4renu_it.jpg':'/images/move4renu.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}" class="h-24 w-auto object-cover">
       </div>
       <div class="flex-1 text-white text-center sm:text-left">
-        <h3 class="text-xl font-extrabold mb-1">Move 4 ReNU</h3>
-        <p class="text-sky-200 text-sm">${t.lang==='it'?'Muoviti per raccogliere fondi e diffondere la consapevolezza sulla Sindrome ReNU!':t.lang==='en'?'Move to raise funds and spread awareness about ReNU Syndrome!':'Bewegt euch, um Spenden und Bewusstsein zu wecken!'}</p>
+        <h3 class="text-xl font-extrabold mb-1">${t.lang==='it'?'Muoviti per ReNU':'Move 4 ReNU'}</h3>
+        <p class="text-sky-200 text-sm">${t.lang==='it'?'Cammina, corri, pedala o balla per raccogliere fondi e diffondere la consapevolezza sulla Sindrome ReNU!':t.lang==='en'?'Move to raise funds and spread awareness about ReNU Syndrome!':'Bewegt euch, um Spenden und Bewusstsein für das ReNU-Syndrom zu wecken!'}</p>
       </div>
       <a href="https://www.zeffy.com/en-US/peer-to-peer/move-4-renu" target="_blank" 
          class="flex-shrink-0 inline-flex items-center gap-2 bg-sky-400 hover:bg-sky-300 text-white font-bold px-6 py-3 rounded-full transition-colors">
-        <i class="fas fa-running"></i>Move 4 ReNU
+        <i class="fas fa-running"></i>${t.lang==='it'?'Partecipa':'Move 4 ReNU'}
       </a>
     </div>
   </section>
@@ -1581,6 +1590,10 @@ function therapiesPage(t: Record<string, string>): string {
       desc:t.lang==='it'?'La CAA aiuta i bambini non verbali a comunicare attraverso immagini, simboli, tabelle, gesti o strumenti digitali. È un supporto prezioso per esprimere bisogni, emozioni e richieste anche in assenza del linguaggio verbale.':'AAC helps non-verbal children communicate through images, symbols, boards, gestures or digital tools.' },
     { icon:'fa-hand-pointer',  ic:'ic-amber',  name:t.lang==='it'?'Prompt':'Prompt Therapy',
       desc:t.lang==='it'?'Il prompt è un aiuto fornito dal terapista per insegnare una risposta corretta. Può essere verbale, visivo, gestuale o fisico e viene gradualmente ridotto per accompagnare il bambino verso una maggiore autonomia.':'Prompts are cues provided by the therapist to teach correct responses, gradually faded to build independence.' },
+    { icon:'fa-hand-paper',    ic:'ic-green',  name:t.lang==='it'?'Gesti Comunicativi':'Communicative Gestures',
+      desc:t.lang==='it'?'I gesti sono strumenti comunicativi immediati e accessibili. Possono aiutare il bambino a farsi comprendere più facilmente e a ridurre la frustrazione nelle situazioni quotidiane.':'Gestures are immediate and accessible communicative tools that help the child be understood more easily and reduce frustration in daily situations.' },
+    { icon:'fa-tablet-alt',    ic:'ic-sky',    name:t.lang==='it'?'Comunicatore (VOCA / App)':'Communicator (VOCA / App)',
+      desc:t.lang==='it'?'Il comunicatore è un dispositivo, spesso digitale, che consente al bambino di selezionare simboli o immagini trasformandoli in voce. Può favorire la comunicazione autonoma e la partecipazione sociale.':'The communicator is a device, often digital, that allows the child to select symbols or images and convert them to speech, supporting autonomous communication.' },
     { icon:'fa-puzzle-piece',  ic:'ic-navy',   name:'ABA – Applied Behavior Analysis',
       desc:t.lang==='it'?'L\'ABA è un approccio educativo-comportamentale che aiuta il bambino ad apprendere nuove abilità e a ridurre i comportamenti che possono ostacolare la vita quotidiana. Il percorso è personalizzato e utilizza rinforzo positivo e monitoraggio continuo.':'ABA is a behavioral approach helping children learn new skills and reduce barriers to daily life through positive reinforcement.' },
     { icon:'fa-hands-helping', ic:'ic-green',  name:t.lang==='it'?'Terapia Occupazionale (TO)':t.lang==='en'?'Occupational Therapy (OT)':t.lang==='fr'?'Ergothérapie':t.lang==='es'?'Terapia Ocupacional':'Ergotherapie',
@@ -1588,7 +1601,7 @@ function therapiesPage(t: Record<string, string>): string {
     { icon:'fa-child',         ic:'ic-cyan',   name:t.lang==='it'?'Psicomotricità':'Psychomotricity',
       desc:t.lang==='it'?'La psicomotricità non interviene sulla causa genetica o neurologica, ma può aiutare il bambino a sviluppare strategie motorie più efficaci e funzionali, sostenendo relazione, movimento e organizzazione corporea.':'Supports motor strategies, body organization and relational development. Does not address the genetic or neurological cause.' },
     { icon:'fa-utensils',      ic:'ic-red',    name:t.lang==='it'?'Disfagia e Terapia Oro-Motoria':'Dysphagia & Oral Motor Therapy',
-      desc:t.lang==='it'?'L\'intervento sulla disfagia aiuta a migliorare le funzioni necessarie per alimentarsi e deglutire in sicurezza e può contribuire anche alla gestione della scialorrea. Il Centro Bambino Gesù è un riferimento nazionale per la riabilitazione della disfagia.':'Dysphagia intervention helps improve swallowing and feeding safety, and can also address drooling management.' },
+      desc:t.lang==='it'?'L\'intervento sulla disfagia, soprattutto nei bambini con ipotonia, aiuta a migliorare le funzioni necessarie per alimentarsi e deglutire in sicurezza e può contribuire anche alla gestione della scialorrea. La terapia oro-motoria lavora sul controllo di labbra, lingua, mandibola e respirazione. <a href="https://www.ospedalebambinogesu.it/disfagia-la-riabilitazione-91812/" target="_blank" class="text-sky-600 hover:underline font-semibold">Centro Bambino Gesù →</a>':'Dysphagia intervention helps improve swallowing and feeding safety, and can also address drooling management. Oral motor therapy works on lip, tongue, jaw and breathing control.' },
     { icon:'fa-mountain',      ic:'ic-teal',   name:t.lang==='it'?'Attività Ludico-Sportive Inclusive':t.lang==='en'?'Inclusive Sports Activities':t.lang==='fr'?'Activités Sportives Inclusives':t.lang==='es'?'Actividades Deportivas Inclusivas':'Inklusive Sportaktivitäten',
       desc:t.lang==='it'?'Le attività ludico-sportive – come teatro, danza e sport di squadra inclusivi – possono sostenere benessere, relazione, autostima e partecipazione, valorizzando le capacità di ogni bambino o ragazzo.':'Sports and recreational activities such as theatre, dance and inclusive team sports support wellbeing, self-esteem and social participation.' },
     { icon:'fa-brain',         ic:'ic-indigo', name:t.lang==='it'?'Terapia Feuerstein – Allenamento Cognitivo':t.lang==='en'?'Feuerstein Therapy – Cognitive Training':t.lang==='fr'?'Thérapie Feuerstein':'Terapia Feuerstein',
@@ -1908,10 +1921,20 @@ function communityPage(t: Record<string, string>): string {
             <p class="text-gray-600 mb-4 text-sm">
               ${t.lang==='it'?'La rete dei genitori italiani è un punto di riferimento per chi desidera sentirsi meno solo, condividere domande, esperienze e piccole conquiste del quotidiano.':'The Italian parent network is a reference point for those who want to feel less alone and share experiences.'}
             </p>
-            <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank"
-               class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
-              <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
-            </a>
+            <div class="flex flex-wrap justify-center gap-2">
+              <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
+                <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
+              </a>
+              <a href="https://www.instagram.com/immaaudino1975/" target="_blank"
+                 class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#E1306C">
+                <i class="fab fa-instagram"></i>Instagram
+              </a>
+              <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank"
+                 class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#1877F2">
+                <i class="fab fa-facebook"></i>Facebook
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -3933,6 +3956,19 @@ function sciencePage(t: Record<string, string>): string {
           ${isIt?'Pubblicazioni & Materiali Scientifici':'Publications & Scientific Materials'}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <a href="https://drive.google.com/drive/folders/10dFD0E5Mat1PZRGj9REWP5Je-kfaEZlg" target="_blank"
+             class="card p-6 flex items-center gap-4 group hover:border-navy-400 transition-all">
+            <div class="ic ic-navy w-12 h-12 flex-shrink-0">
+              <i class="fas fa-flask text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Cartella Comitato Scientifico':'Scientific Committee Folder'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Curriculum medici, documenti e risorse del Comitato':'Physicians curriculum, documents and resources'}</p>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#082050">
+                ${isIt?'Accedi alla cartella':'Access folder'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </span>
+            </div>
+          </a>
           <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
              class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
             <div class="ic ic-sky w-12 h-12 flex-shrink-0">
