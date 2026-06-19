@@ -868,7 +868,7 @@ function homePage(t: Record<string, string>): string {
   const cards = [
     { href: 'https://form.jotform.com/250154538972159', ext: true,   icon: 'fa-map-marker-alt', ic: 'ic-blue',   title: t.section_map_title,       desc: t.section_map_desc,       accent: 'card-blue',   img: '/images/renu_map.jpg' },
     { href: `/${t.lang}/community`,                                   icon: 'fa-bullhorn',       ic: 'ic-purple', title: t.section_awareness_title,  desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg' },
-    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg' },
+    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: t.lang==='it'?'/images/it_ricerca.jpg':'/images/renu_research.jpg' },
     { href: `/${t.lang}/about`,                                       icon: 'fa-info-circle',    ic: 'ic-navy',   title: t.section_info_title,       desc: t.section_info_desc,       accent: 'card-navy',   img: '/images/renu_info.jpg' },
     { href: `/${t.lang}/community`,                                   icon: 'fa-users',          ic: 'ic-green',  title: t.section_parents_title,    desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg' },
     { href: `/${t.lang}/donations`,                                   icon: 'fa-heart',          ic: 'ic-red',    title: t.section_donations_title,  desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg' },
@@ -899,7 +899,7 @@ function homePage(t: Record<string, string>): string {
         </div>
         <div class="flex-shrink-0 hidden md:block">
           <div class="img-frame w-80 xl:w-96">
-            <img src="/images/renu_hero.jpg" alt="ReNU Syndrome" class="w-full h-56 object-cover">
+            <img src="/images/renu_hero.jpg" alt="Sindrome ReNU Italia APS" class="w-full h-56 object-cover">
           </div>
           <div class="mt-4 img-frame w-80 xl:w-96">
             <img src="${t.lang==='it'?'/images/move4renu_it.jpg':t.lang==='en'?'/images/move4renu_en.jpg':t.lang==='fr'?'/images/move4renu_fr.jpg':t.lang==='de'?'/images/move4renu_de.jpg':'/images/move4renu_es.jpg'}" alt="${t.lang==='it'?'Muoviti per ReNU':t.lang==='fr'?'Bougez pour ReNU':t.lang==='de'?'Bewegt euch für ReNU':t.lang==='es'?'Muévete por ReNU':'Move 4 ReNU'}" class="w-full h-28 object-cover">
@@ -976,10 +976,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame"><img src="/images/famiglie.png" alt="Famiglie ReNU" class="w-full h-48 object-cover"></div>
-          <div class="img-frame"><img src="/images/bambini.png" alt="Bambini ReNU" class="w-full h-48 object-cover"></div>
-          <div class="img-frame"><img src="/images/mani.png" alt="Mani Unite" class="w-full h-36 object-cover"></div>
-          <div class="img-frame"><img src="/images/festa.png" alt="Insieme" class="w-full h-36 object-cover"></div>
+          <div class="img-frame"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover"></div>
+          <div class="img-frame"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-48 object-cover"></div>
+          <div class="img-frame"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-36 object-cover"></div>
+          <div class="img-frame"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-36 object-cover"></div>
         </div>
       </div>
     </div>
@@ -1038,7 +1038,7 @@ function homePage(t: Record<string, string>): string {
             </a>
           </div>` : `
           <div class="overflow-hidden h-52">
-            <img src="/images/renu_gallery.jpg" alt="ReNU Gallery" class="w-full h-full object-cover">
+            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1056,7 +1056,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden h-52">
-            <img src="/images/renu_map.jpg" alt="Mappa ReNU" class="w-full h-full object-cover">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1087,11 +1087,37 @@ function homePage(t: Record<string, string>): string {
         </p>
       </div>
       ${t.lang==='it'?`
-      <!-- Placeholder storie italiane -->
-      <div class="card p-8 text-center mb-8" style="border: 2px dashed #C8E8F8;">
-        <i class="fas fa-heart text-4xl text-sky-400 mb-4 block"></i>
-        <h3 class="text-xl font-bold mb-2" style="color:#082050">Le storie italiane sono in arrivo</h3>
-        <p class="text-gray-500 text-sm max-w-xl mx-auto">Stiamo raccogliendo le storie delle famiglie italiane con la Sindrome ReNU. Se vuoi condividere la tua storia, scrivici a <a href="mailto:presidenza@sindromerenu.it" class="text-sky-600 hover:underline font-semibold">presidenza@sindromerenu.it</a>.</p>
+      <!-- Card bambini italiani REALI -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+        ${[
+          { name: 'Aaron',     img: '/images/it_bambino_aaron.jpg',     desc: 'Una storia di gioia e determinazione.' },
+          { name: 'Diego',     img: '/images/it_bambino_diego.jpg',     desc: 'Sorrisi che illuminano ogni giornata.' },
+          { name: 'Francesco', img: '/images/it_bambino_francesco.jpg', desc: 'La forza di una famiglia unita.' },
+          { name: 'Maya',      img: '/images/it_bambino_maya.jpg',      desc: 'Ogni traguardo è una vittoria.' },
+          { name: 'Meilda',    img: '/images/it_bambino_meilda.jpg',    desc: 'Curiosità e amore per la vita.' },
+          { name: 'Vittoria',  img: '/images/it_bambino_vittoria.jpg',  desc: 'La tenacia di chi non si arrende.' },
+          { name: 'Manuel',    img: '/images/it_bambino_manuel.jpg',    desc: 'Un sorriso che contagia tutti.' },
+          { name: 'Gabriele',  img: '/images/it_bambino_gabriele.jpg',  desc: 'Ogni passo è un successo da celebrare.' },
+        ].map(b => `
+        <div class="card overflow-hidden group">
+          <div class="overflow-hidden" style="height:180px">
+            <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-3 text-center">
+            <h3 class="font-extrabold text-base mb-1" style="color:#082050">${b.name}</h3>
+            <p class="text-gray-500 text-xs">${b.desc}</p>
+            <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">
+              <i class="fas fa-flag text-xs" style="color:#009246"></i> Italia
+            </div>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div class="text-center mb-8">
+        <p class="text-gray-500 text-sm max-w-lg mx-auto mb-3">Vuoi condividere la storia del tuo bambino? Scrivici!</p>
+        <a href="mailto:presidenza@sindromerenu.it"
+           class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
+          <i class="fas fa-envelope"></i>Condividi la tua storia
+        </a>
       </div>
       <h3 class="text-lg font-bold mb-4 text-center" style="color:#1078C0"><i class="fas fa-globe mr-2"></i>Storie dalla community internazionale</h3>
       `:''}
@@ -1257,9 +1283,9 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="img-frame">
-          <img src="/images/ashley_water.jpg" alt="Ashley, 8 anni, gioca nell'acqua" class="w-full h-64 object-cover">
+          <img src="/images/it_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover">
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
-            ${t.lang==='it'?'Ashley, 8 anni, gioca nell\'acqua':t.lang==='en'?'Ashley, age 8, playing in the water':t.lang==='fr'?'Ashley, 8 ans, joue dans l\'eau':t.lang==='es'?'Ashley, 8 años, jugando en el agua':'Ashley, 8 Jahre, spielt im Wasser'}
+            ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
         </div>
       </div>
@@ -1278,6 +1304,16 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>`).join('')}
       </div>
+
+      <!-- Infografica sintomi (solo IT) -->
+      ${t.lang==='it'?`
+      <div class="card overflow-hidden mb-8">
+        <div class="p-4 flex items-center gap-2" style="background:#EEF6FB; border-bottom:1px solid #C8E8F8">
+          <i class="fas fa-chart-bar" style="color:#1078C0"></i>
+          <span class="font-bold text-sm" style="color:#082050">Infografica: le caratteristiche cliniche della Sindrome ReNU</span>
+        </div>
+        <img src="/images/it_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px">
+      </div>`:''}
 
       <!-- ReNU Syndrome Support Tool -->
       <div class="mt-8 card card-navy p-6 mb-8">
@@ -1632,9 +1668,15 @@ function therapiesPage(t: Record<string, string>): string {
   ]
   return `
   <section class="hero-gradient text-white py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-heartbeat mr-3 text-sky-300"></i>${t.therapies_title}</h1>
-      <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-heartbeat mr-3 text-sky-300"></i>${t.therapies_title}</h1>
+        <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
+      </div>
+      <div class="flex-shrink-0 hidden md:flex gap-4">
+        <div class="img-frame w-56"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-40 object-cover"></div>
+        <div class="img-frame w-56"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-40 object-cover"></div>
+      </div>
     </div>
   </section>
   <section class="py-16 px-4 section-light">
@@ -1903,7 +1945,7 @@ function communityPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/famiglia2.png" alt="Famiglie" class="w-full h-48 object-cover">
+          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover">
         </div>
       </div>
     </div>
@@ -1916,7 +1958,7 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="card card-blue overflow-hidden">
           <div class="h-40 overflow-hidden">
-            <img src="/images/renu_map.jpg" alt="Mappa Mondiale RNU4-2" class="w-full h-full object-cover">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -1935,7 +1977,7 @@ function communityPage(t: Record<string, string>): string {
 
         <div class="card card-sky overflow-hidden">
           <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center">
-            <img src="/images/renu_parents.jpg" alt="Rete Genitori" class="w-full h-full object-cover bg-sky-100">
+            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2077,87 +2119,40 @@ function communityPage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Gallery Italia (placeholder GDPR) -->
-      ${t.lang==='it' || t.lang==='en' ? `
-      <div class="mb-8">
-        <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-2" style="color:#082050">
-          <i class="fas fa-images" style="color:#1078C0"></i>
-          ${t.lang==='it'?'Gallery Italiana':'Italian Gallery'}
-        </h2>
-        <div class="rounded-2xl overflow-hidden border-2 border-dashed" style="border-color:#45B8EC; background:#EEF6FB">
-          <div class="p-8 text-center">
-            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #1078C0, #45B8EC)">
-              <i class="fas fa-camera text-white text-3xl"></i>
-            </div>
-            <h3 class="font-bold text-xl mb-2" style="color:#082050">
-              ${t.lang==='it'?'Foto delle famiglie italiane ReNU':'Photos of Italian ReNU families'}
+      <!-- Gallery – identica per tutte le lingue (foto reali italiane) -->
+      <div class="card card-sky overflow-hidden mb-10">
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-sky flex-shrink-0"><i class="fas fa-images text-xl"></i></div>
+            <h3 class="font-bold text-xl" style="color:#082050">
+              ${t.lang==='it'?'I nostri bambini e le nostre famiglie':t.lang==='en'?'Our children and families':t.lang==='fr'?'Nos enfants et familles':t.lang==='es'?'Nuestros niños y familias':'Unsere Kinder und Familien'}
             </h3>
-            <p class="text-gray-600 mb-3 max-w-lg mx-auto text-sm leading-relaxed">
-              ${t.lang==='it'?'Questa sezione raccoglierà le foto e le storie delle famiglie italiane con un bambino o giovane adulto con Sindrome ReNU. Le fotografie saranno pubblicate solo previo esplicito consenso scritto dei genitori/tutori, nel rispetto del GDPR.':'This section will collect photos and stories of Italian families with a child or young adult with ReNU Syndrome. Photos will be published only with explicit written parental/guardian consent, in compliance with GDPR.'}
-            </p>
-            <div class="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full mb-5" style="background:#FEF3C7; color:#92400E">
-              <i class="fas fa-shield-alt"></i>
-              ${t.lang==='it'?'In raccolta consensi GDPR – Pubblicazione imminente':'Collecting GDPR consents – Publication coming soon'}
-            </div>
-            <br>
-            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Voglio condividere la mia storia nella Gallery Italia':'I want to share my story in the Italian Gallery')}"
-               class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-semibold text-sm" style="background:#1078C0">
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/bambini.jpg" alt="Bambini ReNU" class="w-full h-full object-cover"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/famiglie.jpg" alt="Famiglie ReNU Italia" class="w-full h-full object-cover"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_incontro_famiglie.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_gallery.jpg" alt="Galleria ReNU Italia" class="w-full h-full object-cover"></div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-4">
+            <i class="fas fa-shield-alt mr-1"></i>
+            <strong>Privacy GDPR:</strong>
+            ${t.lang==='it'?'Le immagini sono pubblicate con il consenso esplicito dei genitori. Per aggiungere le foto del tuo bambino scrivi a':t.lang==='en'?'Images are published with explicit parental consent. To add your child\'s photos write to':t.lang==='fr'?'Les images sont publiées avec le consentement explicite des parents. Pour ajouter des photos écrivez à':t.lang==='es'?'Las imágenes se publican con el consentimiento explícito de los padres. Para añadir fotos escriba a':'Bilder werden mit ausdrücklicher Einwilligung der Eltern veröffentlicht. Um Fotos hinzuzufügen schreiben Sie an'}
+            <a href="mailto:presidenza@sindromerenu.it" class="font-semibold underline">presidenza@sindromerenu.it</a>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Voglio condividere la mia storia':'I want to share my story')}"
+               class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm" style="background:#1078C0">
               <i class="fas fa-paper-plane"></i>
-              ${t.lang==='it'?'Condividi la tua storia':'Share your story'}
+              ${t.lang==='it'?'Condividi la tua storia':t.lang==='en'?'Share your story':t.lang==='fr'?'Partager votre histoire':t.lang==='es'?'Comparte tu historia':'Teile deine Geschichte'}
+            </a>
+            <a href="https://www.renusyndrome.org/gallery" target="_blank"
+               class="inline-flex items-center gap-2 font-semibold px-5 py-2 rounded-full text-sm border" style="color:#082050;border-color:#082050">
+              <i class="fas fa-external-link-alt"></i>
+              ${t.lang==='it'?'Galleria Internazionale':t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
             </a>
           </div>
         </div>
-      </div>` : ''}
-
-      <!-- Gallery -->
-      <div class="card card-sky overflow-hidden mb-10">
-        ${t.lang==='it' ? `
-        <div class="p-6 flex flex-col md:flex-row gap-6 items-start">
-          <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full" style="background: linear-gradient(135deg,#C8E8F8,#EEF6FB)">
-            <i class="fas fa-images text-2xl" style="color:#1078C0"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-bold text-xl mb-2 flex items-center gap-2" style="color:#082050">
-              Galleria Italiana – In Arrivo
-            </h3>
-            <p class="text-gray-600 mb-3 text-sm">
-              Vogliamo creare uno spazio italiano per condividere i momenti speciali delle famiglie italiane con la Sindrome ReNU.
-              Rispetteremo le normative GDPR sulla privacy e la tutela dei minori.
-            </p>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-4">
-              <i class="fas fa-shield-alt mr-1"></i>
-              <strong>Privacy GDPR:</strong> Le immagini dei minori saranno pubblicate esclusivamente previo consenso esplicito e documentato dei genitori o tutori legali.
-            </div>
-            <div class="flex flex-wrap gap-3">
-              <a href="mailto:presidenza@sindromerenu.it"
-                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
-                <i class="fas fa-envelope"></i>Invia le tue foto a presidenza@sindromerenu.it
-              </a>
-              <a href="https://www.renusyndrome.org/gallery" target="_blank"
-                 class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm border" style="color:#082050;border-color:#082050">
-                <i class="fas fa-external-link-alt"></i>Galleria Internazionale
-              </a>
-            </div>
-          </div>
-        </div>` : `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div class="overflow-hidden">
-            <img src="/images/renu_gallery.jpg" alt="Gallery ReNU" class="w-full h-56 object-cover">
-          </div>
-          <div class="p-6 flex flex-col justify-center">
-            <h3 class="font-bold text-xl mb-3 flex items-center gap-2" style="color:#082050">
-              <i class="fas fa-images" style="color:#1078C0"></i>
-              ${t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
-            </h3>
-            <p class="text-gray-600 mb-4 text-sm">
-              ${t.lang==='en'?'See photos of brave children and families from around the world on the international ReNU Syndrome United gallery.':t.lang==='fr'?'Découvrez les photos des familles courageuses du monde entier sur la galerie internationale.':t.lang==='es'?'Mira fotos de valientes niños y familias de todo el mundo en la galería internacional.':'Sehen Sie Fotos mutiger Kinder und Familien aus aller Welt in der internationalen Galerie.'}
-            </p>
-            <a href="https://www.renusyndrome.org/gallery" target="_blank"
-               class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-semibold transition-colors w-fit" style="background:#1078C0">
-              <i class="fas fa-images"></i>${t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Galerie':t.lang==='es'?'Ver Galería':'Galerie'}
-            </a>
-          </div>
-        </div>`}
       </div>
 
       <!-- Storie delle famiglie -->
@@ -2235,7 +2230,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-72">
-          <img src="/images/festa.png" alt="Sostienici" class="w-full h-56 object-cover">
+          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full h-56 object-cover">
         </div>
       </div>
     </div>
@@ -2976,17 +2971,54 @@ function eventsPage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Sezione eventi passati (placeholder) -->
+      <!-- Sezione eventi passati con foto reali -->
       <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
         <i class="fas fa-history" style="color:#1078C0"></i>
         ${t.lang==='it'?'Eventi Passati':'Past Events'}
       </h2>
+      ${t.lang==='it'?`
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <div class="card overflow-hidden">
+          <div class="h-40 overflow-hidden"><img src="/images/it_primo_incontro.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover"></div>
+          <div class="p-4">
+            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>4 febbraio 2025</div>
+            <h3 class="font-bold text-sm mb-1" style="color:#082050">Primo incontro famiglie ReNU Italia</h3>
+            <p class="text-gray-500 text-xs">Il primissimo incontro tra le famiglie italiane con Sindrome ReNU — un momento storico per la nostra comunità.</p>
+          </div>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover"></div>
+          <div class="p-4">
+            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>23 luglio 2025</div>
+            <h3 class="font-bold text-sm mb-1" style="color:#082050">1ª Conferenza Internazionale ReNU</h3>
+            <p class="text-gray-500 text-xs">Prima conferenza internazionale sulla Sindrome ReNU — ricercatori, famiglie e medici insieme per fare la storia.</p>
+          </div>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="h-40 overflow-hidden"><img src="/images/renu_maratona.jpg" alt="Maratona Wizz Air Milano 2025" class="w-full h-full object-cover"></div>
+          <div class="p-4">
+            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-running mr-1"></i>2025</div>
+            <h3 class="font-bold text-sm mb-1" style="color:#082050">Maratona Wizz Air Milano</h3>
+            <p class="text-gray-500 text-xs">Le famiglie ReNU Italia corrono per la ricerca alla Maratona di Milano. Move4ReNU!</p>
+          </div>
+        </div>
+        <div class="card overflow-hidden">
+          <div class="h-40 overflow-hidden"><img src="/images/it_festa_natale.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover"></div>
+          <div class="p-4">
+            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-snowflake mr-1"></i>Dicembre 2026</div>
+            <h3 class="font-bold text-sm mb-1" style="color:#082050">Festa di Natale ReNU Italia</h3>
+            <p class="text-gray-500 text-xs">Un momento di gioia e condivisione per le famiglie italiane con Sindrome ReNU.</p>
+          </div>
+        </div>
+      </div>
+      `:`
       <div class="card p-6 text-center" style="background:#F8FAFC; border: 1px solid #E2E8F0">
         <i class="fas fa-archive text-3xl mb-3 block text-gray-300"></i>
         <p class="text-gray-500 text-sm">
-          ${t.lang==='it'?'L\'associazione è nata nel 2024. Gli eventi passati saranno documentati qui.':'The association was founded in 2024. Past events will be documented here.'}
+          The association was founded in 2024. Past events will be documented here.
         </p>
       </div>
+      `}
 
       <!-- GIORNATA GLOBALE 4 FEBBRAIO 2027 -->
       <div class="mt-12 mb-6">
@@ -3074,14 +3106,21 @@ function projectsPage(t: Record<string, string>): string {
   const isIt = t.lang === 'it'
   return `
   <section class="hero-gradient text-white py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-3">
-        <i class="fas fa-rocket mr-3 text-sky-300"></i>
-        ${isIt?'Progetti':'Projects'}
-      </h1>
-      <p class="text-sky-100 text-lg">
-        ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
-      </p>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h1 class="text-4xl font-extrabold mb-3">
+          <i class="fas fa-rocket mr-3 text-sky-300"></i>
+          ${isIt?'Progetti':'Projects'}
+        </h1>
+        <p class="text-sky-100 text-lg">
+          ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
+        </p>
+      </div>
+      ${isIt?`
+      <div class="flex-shrink-0 hidden md:flex gap-4">
+        <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover"></div>
+        <div class="img-frame w-52"><img src="/images/it_progetto_scuola.jpg" alt="Progetto scuola" class="w-full h-36 object-cover"></div>
+      </div>`:''}
     </div>
   </section>
 
@@ -3943,15 +3982,20 @@ function sciencePage(t: Record<string, string>): string {
   ]
   return `
   <section class="hero-gradient text-white py-16 px-4">
-    <div class="max-w-5xl mx-auto">
-      <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.18);color:#BAE6FD;border:1px solid rgba(255,255,255,0.25)">
-        <i class="fas fa-flask" style="color:#7DD3FC"></i>
-        ${isIt?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.18);color:#BAE6FD;border:1px solid rgba(255,255,255,0.25)">
+          <i class="fas fa-flask" style="color:#7DD3FC"></i>
+          ${isIt?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
+        </div>
+        <h1 class="text-4xl font-extrabold mb-3">
+          <i class="fas fa-flask mr-3 text-sky-300"></i>${t.science_title}
+        </h1>
+        <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
-      <h1 class="text-4xl font-extrabold mb-3">
-        <i class="fas fa-flask mr-3 text-sky-300"></i>${t.science_title}
-      </h1>
-      <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
+      ${isIt?`<div class="flex-shrink-0 hidden md:block">
+        <div class="img-frame w-72"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-48 object-cover"></div>
+      </div>`:''}
     </div>
   </section>
 
