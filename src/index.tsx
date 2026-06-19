@@ -901,7 +901,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
       <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.lang==='it'?'Privacy Policy':'Privacy Policy'}</a>
       &nbsp;|&nbsp;
-      <a href="mailto:info@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il Titolare':'Contact Data Controller'}</a>
+      <a href="mailto:info@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il DPO':'Contact DPO'}</a>
       &nbsp;|&nbsp;
       <span>${t.lang==='it'?'Sito conforme GDPR (Reg. UE 2016/679)':'GDPR Compliant (EU Reg. 2016/679)'}</span>
     </div>
@@ -3919,7 +3919,7 @@ function privacyPage(t: Record<string, string>): string {
         <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color:#082050">
           ${isIt?'Informativa sulla Privacy':'Privacy Policy'}
         </h1>
-        <p class="text-gray-500 text-sm">${isIt?'Ultimo aggiornamento: Giugno 2026':'Last updated: June 2026'} · ${isIt?'Versione':'Version'} 2.0</p>
+        <p class="text-gray-500 text-sm">${isIt?'Ultimo aggiornamento: Giugno 2026':'Last updated: June 2026'} · ${isIt?'Versione':'Version'} 2.1</p>
       </div>
 
       <div class="space-y-8 text-gray-700 leading-relaxed">
@@ -3936,9 +3936,18 @@ function privacyPage(t: Record<string, string>): string {
             Tel (Presidenza): +39 335 730 1206<br>
             ${isIt?'Sito web':'Website'}: <a href="https://www.sindromerenu.it" class="text-blue-600 hover:underline">www.sindromerenu.it</a>
           </div>
-          <p class="mt-3 text-sm text-gray-600">
-            ${isIt?'Sindrome ReNU Italia APS, in quanto APS di piccole dimensioni, non è tenuta alla nomina di un Responsabile della Protezione dei Dati (DPO) ai sensi dell\'Art. 37 GDPR. Per qualsiasi richiesta relativa ai tuoi dati personali, scrivi direttamente al Titolare del Trattamento: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>':'Sindrome ReNU Italia APS, as a small-scale APS, is not required to appoint a Data Protection Officer (DPO) pursuant to Art. 37 GDPR. For any request regarding your personal data, write directly to the Data Controller: <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>'}
-          </p>
+          <div class="mt-4 rounded-xl p-4 text-sm" style="background:#EEF6FB; border-left: 4px solid #1078C0">
+            <p class="font-bold mb-2" style="color:#082050">
+              <i class="fas fa-user-shield mr-2" style="color:#1078C0"></i>
+              ${isIt?'Responsabile della Protezione dei Dati (DPO)':'Data Protection Officer (DPO)'}
+            </p>
+            <p class="text-gray-700">
+              <strong>Avv. Francesco Conti</strong><br>
+              ${isIt?'Nominato dal Consiglio Direttivo in data 9 giugno 2026 ai sensi dell\'Art. 37 GDPR (Reg. UE 2016/679).':'Appointed by the Board of Directors on 9 June 2026 pursuant to Art. 37 GDPR (EU Reg. 2016/679).'}<br><br>
+              ${isIt?'Per esercitare i tuoi diritti o per qualsiasi questione relativa al trattamento dei dati personali, puoi contattare il DPO scrivendo al Titolare del Trattamento:':'To exercise your rights or for any matter relating to the processing of personal data, you may contact the DPO by writing to the Data Controller:'}<br>
+              <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline font-semibold">info@sindromerenu.it</a>
+            </p>
+          </div>
         </div>
 
         <!-- Dati raccolti -->
