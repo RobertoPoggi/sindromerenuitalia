@@ -21,14 +21,17 @@ const translations: Record<string, Record<string, string>> = {
     title: 'Sindrome ReNU Italia APS',
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
-    hero_text: 'Nasce la prima Associazione ReNU in Italia con lo scopo di <strong>supportare le famiglie</strong> e offrire un aiuto concreto ai bambini ReNU',
+    hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno <strong>bambini, ragazzi e famiglie</strong>. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
     hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono <strong>~250 i casi accertati nel mondo</strong> (12-14 in Italia). Le varianti patogene si concentrano in soli <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a> degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per <strong>supportare le famiglie italiane</strong> e offrire un aiuto concreto ai bambini ReNU.',
-    nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Ricerca',
+    nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
-    nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Brochure',
+    nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
     nav_events: 'Eventi', nav_projects: 'Progetti', nav_members: 'Diventa Socio', nav_faq: 'FAQ & Diritti',
-    btn_diagnosis: 'VUOI MAGGIORI INFORMAZIONI? CLICCA QUI',
-    btn_diagnosis_sub: 'Contattaci per informazioni sulla Sindrome ReNU',
+    nav_science: 'Comitato Scientifico',
+    btn_diagnosis: 'DONA ORA – SOSTIENI LE FAMIGLIE RENU',
+    btn_diagnosis_sub: 'Ogni contributo fa la differenza. Grazie.',
+    btn_info: 'VUOI MAGGIORI INFORMAZIONI? CLICCA QUI',
+    btn_info_sub: 'Contattaci per informazioni sulla Sindrome ReNU',
     section_map_title: 'Registrati qui',
     section_map_desc: 'La forza è nei numeri! Aggiungi un tuo caro con ReNU alla mappa mondiale per aumentare la consapevolezza.',
     section_awareness_title: 'Aumenta la Consapevolezza',
@@ -42,7 +45,7 @@ const translations: Record<string, Record<string, string>> = {
     section_donations_title: 'Donazioni',
     section_donations_desc: 'Promuovere la ricerca, costruire comunità e diffondere la consapevolezza. Ogni contributo fa la differenza!',
     about_title: 'Cos\'è la Sindrome ReNU?',
-    about_gene: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2, un gene dell\'RNA non codificante componente critico del macchinario di splicing dell\'RNA. È altamente conservato evolutivamente.',
+    about_gene: 'La sindrome di ReNU (RNU4-2) è una rara condizione genetica del neurosviluppo, identificata di recente dalla ricerca scientifica internazionale. È associata a variazioni del gene RNU4-2, coinvolto in un processo essenziale per il corretto funzionamento delle cellule, chiamato splicing dell\'RNA. La sua descrizione scientifica è stata consolidata nel 2024 grazie a importanti studi internazionali.',
     about_discovery: 'Scoperta di RNU4-2',
     about_discovery_text: 'RNU4-2 è stata identificata nell\'ottobre 2024 come una delle principali cause genetiche di disturbi rari del neurosviluppo, con una prevalenza stimata di circa 1 su 35.000 nati vivi.',
     about_features_title: 'Caratteristiche della Sindrome ReNU',
@@ -64,21 +67,38 @@ const translations: Record<string, Record<string, string>> = {
     research_crid: 'Prima di iscriversi a qualsiasi ricerca, crea un <a href="https://thecrid.org/" target="_blank" class="text-yellow-300 hover:underline font-semibold">ID di Ricerca Clinica (CRID)</a>! Condividi il tuo CRID con ogni studio clinico a cui partecipi.',
     research_priorities_title: 'Cosa è importante per la comunità RNU4-2?',
     therapies_title: 'Terapie per la Sindrome ReNU',
-    therapies_intro: 'Molti servizi terapeutici sono utilizzati per aiutare le persone con Sindrome ReNU',
+    therapies_intro: 'Ogni percorso terapeutico deve essere personalizzato sulla base dei bisogni del bambino o del ragazzo e condiviso con i professionisti di riferimento. In questa sezione raccogliamo alcune aree di intervento che possono sostenere sviluppo, autonomia, comunicazione e qualità della vita.',
     therapies_note: 'Questo sito non approva né raccomanda terapie specifiche. Consultare sempre un medico.',
     diagnosis_title: 'Dove fare il Test Diagnostico in Italia',
     diagnosis_intro: 'Per ricevere informazioni sui centri diagnostici disponibili in Italia, contattaci.',
     diagnosis_contact: 'Per informazioni sui centri WGS in Italia, scrivici a:',
-    community_title: 'Comunità – Connessione tra Famiglie',
-    community_intro: 'Non sei solo! Trova speranza e comunità con altre famiglie. Famiglie RNU4-2 mappate in oltre 38 paesi del mondo.',
+    community_title: 'Comunità ReNU Italia',
+    community_intro: 'ReNU Italia APS vuole essere uno spazio di incontro, ascolto e condivisione. La comunità nasce per mettere in relazione famiglie, promuovere il confronto tra esperienze e rendere più accessibili informazioni e contatti utili.',
+    community_network_it: 'Rete genitori italiani',
+    community_network_desc: 'La rete dei genitori italiani è un punto di riferimento per chi desidera sentirsi meno solo, condividere domande, esperienze e piccole conquiste del quotidiano.',
     donations_title: 'Sostienici',
     donations_intro: 'Il tuo supporto ci permette di promuovere la ricerca, costruire la comunità e offrire un aiuto concreto alle famiglie ReNU in Italia.',
     donations_iban: 'IT18H0306909606100000416360',
     donations_iban_label: 'Intestato a: Sindrome ReNU Italia APS',
     contact_title: 'Contattaci',
     contact_intro: 'Siamo a tua disposizione per qualsiasi informazione sulla Sindrome ReNU Italia.',
-    brochure_title: 'Scarica le nostre Brochure',
-    brochure_intro: 'Scarica e condividi le brochure informative di Sindrome ReNU Italia APS',
+    brochure_title: 'Media & Pubblicazioni',
+    brochure_intro: 'In questa sezione raccogliamo video, articoli scientifici, materiali divulgativi e brochure utili ad approfondire la conoscenza della sindrome di ReNU.',
+    science_title: 'Comitato Scientifico',
+    science_intro: 'Il Comitato Scientifico di Sindrome ReNU Italia APS svolge un ruolo fondamentale nel garantire che l\'Associazione operi con rigore, autorevolezza e coerenza con le migliori evidenze scientifiche disponibili. Collabora con i soci, le famiglie e i professionisti per tradurre la conoscenza scientifica in orientamenti pratici, strumenti di supporto e iniziative concrete a favore delle persone con Sindrome ReNU e delle loro famiglie.',
+    science_role1_title: 'Validazione dei Contenuti',
+    science_role1_desc: 'Revisione e validazione dei contenuti medico-scientifici del sito, dei materiali informativi e delle pubblicazioni dell\'Associazione, garantendo accuratezza e aggiornamento continuo.',
+    science_role2_title: 'Supporto alla Diagnosi',
+    science_role2_desc: 'Collaborazione con i centri diagnostici italiani per facilitare l\'accesso al Sequenziamento dell\'Intero Genoma (WGS), unico strumento diagnostico affidabile per RNU4-2, e per costruire un percorso di presa in carico multidisciplinare.',
+    science_role3_title: 'Ricerca e Registro Pazienti',
+    science_role3_desc: 'Promozione e coordinamento di progetti di ricerca italiani, incluso il Registro Nazionale Pazienti ReNU, per contribuire alla comprensione della sindrome e allo sviluppo di future terapie.',
+    science_role4_title: 'Formazione e Sensibilizzazione',
+    science_role4_desc: 'Progettazione e diffusione di campagne rivolte ai pediatri, ai medici di base e agli specialisti, per ridurre i tempi di diagnosi e migliorare la qualità dell\'assistenza.',
+    science_role5_title: 'Collegamento Internazionale',
+    science_role5_desc: 'Partecipazione alla rete scientifica internazionale ReNU, in collaborazione con ReNU Syndrome United (USA) e altri centri di ricerca europei, per condividere dati e avanzare la conoscenza sulla sindrome.',
+    science_members_title: 'I Membri del Comitato',
+    science_members_note: 'L\'elenco dei membri del Comitato Scientifico sarà pubblicato non appena il processo di nomina sarà completato. Per collaborazioni scientifiche o per segnalare nuove pubblicazioni contattaci a presidenza@sindromerenu.it.',
+    science_cta: 'Collabora con noi',
     brochure_download: 'Scarica PDF',
     footer_rights: '© 2026 Sindrome ReNU Italia APS. Tutti i diritti riservati.',
     footer_partnership: 'In partnership con ReNU Syndrome United (USA)',
@@ -100,8 +120,9 @@ const translations: Record<string, Record<string, string>> = {
     hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (12-14 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
     nav_home: 'Home', nav_about: 'About ReNU', nav_research: 'Research',
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
-    nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Brochures',
+    nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
     nav_events: 'Events', nav_projects: 'Projects', nav_members: 'Become a Member', nav_faq: 'FAQ & Rights',
+    nav_science: 'Scientific Committee',
     btn_diagnosis: 'WANT MORE INFORMATION? CLICK HERE',
     btn_diagnosis_sub: 'Contact us for information about ReNU Syndrome',
     section_map_title: 'Register Here',
@@ -442,16 +463,16 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   const navItems = [
     { key: 'nav_home', page: 'home', icon: 'fa-home', disabled: false },
     { key: 'nav_about', page: 'about', icon: 'fa-dna', disabled: false },
-    { key: 'nav_research', page: 'research', icon: 'fa-microscope', disabled: true, hidden: true },
     { key: 'nav_therapies', page: 'therapies', icon: 'fa-heartbeat', disabled: false },
     { key: 'nav_diagnosis', page: 'diagnosis', icon: 'fa-stethoscope', disabled: false },
     { key: 'nav_community', page: 'community', icon: 'fa-users', disabled: false },
     { key: 'nav_donations', page: 'donations', icon: 'fa-heart', disabled: false },
     { key: 'nav_events', page: 'events', icon: 'fa-calendar-alt', disabled: false },
     { key: 'nav_projects', page: 'projects', icon: 'fa-rocket', disabled: false },
+    { key: 'nav_science', page: 'science', icon: 'fa-flask', disabled: false },
+    { key: 'nav_brochure', page: 'brochure', icon: 'fa-photo-video', disabled: false },
     { key: 'nav_members', page: 'members', icon: 'fa-id-card', disabled: false },
     { key: 'nav_faq', page: 'faq', icon: 'fa-question-circle', disabled: false },
-    { key: 'nav_brochure', page: 'brochure', icon: 'fa-file-pdf', disabled: false },
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
   const navLinks = navItems.filter(item => !item.hidden).map(item => item.disabled ? `
@@ -864,17 +885,17 @@ function homePage(t: Record<string, string>): string {
           <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text}</h1>
           <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl">${t.hero_desc}</p>
           <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start flex-wrap">
-            <a href="/${t.lang}/contact" class="btn-diagnosis inline-flex items-center gap-3 text-white font-bold px-7 py-4 rounded-full text-lg shadow-xl">
-              <i class="fas fa-info-circle"></i>${t.btn_diagnosis}
+            <a href="/${t.lang}/donations" class="btn-diagnosis inline-flex items-center gap-3 text-white font-bold px-7 py-4 rounded-full text-lg shadow-xl" style="background: linear-gradient(135deg,#DC2626,#B91C1C);">
+              <i class="fas fa-heart"></i>${t.btn_diagnosis}
             </a>
-            <a href="/${t.lang}/members" class="inline-flex items-center gap-2 font-bold px-6 py-4 rounded-full text-base transition-colors shadow-lg" style="background:#F59E0B; color:#082050">
-              <i class="fas fa-id-card"></i>${t.lang==='it'?'Diventa Socio':t.lang==='en'?'Become a Member':t.lang==='fr'?'Devenir Membre':t.lang==='es'?'Hazte Socio':'Mitglied werden'}
+            <a href="/${t.lang}/contact" class="inline-flex items-center gap-2 font-bold px-6 py-4 rounded-full text-base transition-colors shadow-lg" style="background:#F59E0B; color:#082050">
+              <i class="fas fa-info-circle"></i>${t.btn_info}
             </a>
             <a href="/${t.lang}/about" class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold px-6 py-4 rounded-full text-base transition-colors border border-white border-opacity-30">
               <i class="fas fa-dna"></i>${t.learn_more}
             </a>
           </div>
-          <p class="text-sky-200 text-sm mt-3">${t.btn_diagnosis_sub}</p>
+          <p class="text-sky-200 text-sm mt-3">${t.btn_info_sub}</p>
         </div>
         <div class="flex-shrink-0 hidden md:block">
           <div class="img-frame w-80 xl:w-96">
@@ -975,21 +996,23 @@ function homePage(t: Record<string, string>): string {
         <h2 class="text-3xl font-extrabold" style="color:#082050">${t.section_awareness_title}</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Awareness card -->
+        <!-- Awareness card - mascotte Reny -->
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden h-52">
-            <img src="/images/renu_awareness.jpg" alt="ReNU Awareness" class="w-full h-full object-cover">
+          <div class="overflow-hidden h-52 flex items-center justify-center" style="background: linear-gradient(135deg, #E8F4FC 0%, #C8E8F8 100%);">
+            <img src="/images/mascotte_reny_1.png" alt="Reny – Mascotte Sindrome ReNU Italia"
+                 class="h-full w-auto object-contain py-2"
+                 style="max-height:200px; filter: drop-shadow(0 4px 16px rgba(8,32,80,0.13));">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'Iniziative di Sensibilizzazione':t.lang==='en'?'Awareness Initiatives':t.lang==='fr'?'Initiatives de sensibilisation':t.lang==='es'?'Iniciativas de Sensibilización':'Bewusstseinsinitiativen'}
+              ${t.lang==='it'?'Reny – La nostra mascotte':t.lang==='en'?'Reny – Our Mascot':t.lang==='fr'?'Reny – Notre mascotte':t.lang==='es'?'Reny – Nuestra mascota':'Reny – Unser Maskottchen'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Unisciti alle iniziative globali per diffondere la consapevolezza sulla Sindrome ReNU e mostrare supporto alle famiglie.':t.lang==='en'?'Join global initiatives to spread awareness about ReNU Syndrome and show support for families.':'Rejoignez les initiatives mondiales pour sensibiliser au syndrome ReNU.'}
+              ${t.lang==='it'?'Reny è la tartaruga simbolo di Sindrome ReNU Italia APS. Con la sua energia e il suo sorriso accompagna bambini, famiglie e amici nelle iniziative dell\'associazione.':t.lang==='en'?'Reny is the turtle mascot of Sindrome ReNU Italia APS. With energy and a smile, she accompanies children, families and friends in all association initiatives.':'Reny est la tortue symbole de Sindrome ReNU Italia APS. Elle accompagne les enfants et les familles avec énergie et sourire.'}
             </p>
-            <a href="https://www.renusyndrome.org/awareness-initiatives" target="_blank"
+            <a href="/${t.lang}/community"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#45B8EC">
-              <i class="fas fa-external-link-alt"></i>${t.learn_more}
+              <i class="fas fa-users"></i>${t.lang==='it'?'Unisciti alla comunità':t.lang==='en'?'Join the community':t.lang==='fr'?'Rejoignez la communauté':'Únete a la comunidad'}
             </a>
           </div>
         </div>
@@ -1550,15 +1573,30 @@ function researchPage(t: Record<string, string>): string {
 // ─── THERAPIES PAGE ───────────────────────────────────────────────────────────
 function therapiesPage(t: Record<string, string>): string {
   const th = [
-    { icon:'fa-running',       ic:'ic-blue',   name:t.lang==='it'?'Fisioterapia (FT)':t.lang==='en'?'Physical Therapy (PT)':t.lang==='fr'?'Kinésithérapie':t.lang==='es'?'Fisioterapia':'Physiotherapie',         desc:t.lang==='it'?'Esercizio, potenziamento muscolare e miglioramento dell\'equilibrio, coordinazione e movimento.':'Exercise, strength training, balance, coordination and motion improvement.' },
-    { icon:'fa-hands-helping', ic:'ic-green',  name:t.lang==='it'?'Terapia Occupazionale (TO)':t.lang==='en'?'Occupational Therapy (OT)':t.lang==='fr'?'Ergothérapie':t.lang==='es'?'Terapia Ocupacional':'Ergotherapie', desc:t.lang==='it'?'Trattamento dei ritardi nelle abilità motorie, elaborazione sensoriale e coordinazione.':'Motor skills, sensory processing and coordination treatment.' },
-    { icon:'fa-comments',      ic:'ic-purple', name:t.lang==='it'?'Logopedia':'Speech-Language Pathology',           desc:t.lang==='it'?'Miglioramento della comunicazione e risoluzione dei problemi di deglutizione.':'Improving communication and addressing swallowing issues.' },
-    { icon:'fa-music',         ic:'ic-amber',  name:t.lang==='it'?'Musicoterapia':'Music Therapy',                   desc:t.lang==='it'?'Usata per le abilità motorie percettive, comunicazione e regolazione dell\'umore.':'Used for perceptual motor skills, communication, and mood regulation.' },
-    { icon:'fa-apple-alt',     ic:'ic-red',    name:t.lang==='it'?'Nutrizione e Terapie Alimentari':'Nutrition & Feeding Therapies', desc:t.lang==='it'?'Garantire nutrizione adeguata, sviluppare abilità sensoriali e orali/motorie.':'Ensuring proper nutrition, developing sensory and oral/motor skills.' },
-    { icon:'fa-puzzle-piece',  ic:'ic-sky',    name:'ABA Therapy',                                                    desc:t.lang==='it'?'Rinforzo positivo per comportamenti appropriati, sviluppo sociale e competenze accademiche.':'Positive reinforcement for appropriate behaviors and social/academic skills.' },
-    { icon:'fa-brain',          ic:'ic-navy',   name:t.lang==='it'?'Terapia Feuerstein – Allenamento Cognitivo con Mediazione':t.lang==='en'?'Feuerstein Therapy – Cognitive Training with Mediation':t.lang==='fr'?'Thérapie Feuerstein – Formation cognitive':t.lang==='es'?'Terapia Feuerstein – Entrenamiento Cognitivo':'Feuerstein-Therapie – Kognitives Training', desc:t.lang==='it'?'Metodo basato sulla mediazione per stimolare le funzioni cognitive, migliorare la capacità di apprendimento e sviluppare il potenziale di ogni bambino ReNU.':t.lang==='en'?'Mediation-based method to stimulate cognitive functions, improve learning capacity and develop the potential of each ReNU child.':t.lang==='fr'?'Méthode basée sur la médiation pour stimuler les fonctions cognitives.':'Método de mediación para estimular funciones cognitivas.' },
-    { icon:'fa-swimmer',        ic:'ic-cyan',   name:t.lang==='it'?'Acquaticità e Nuoto':t.lang==='en'?'Aquatics and Swimming':t.lang==='fr'?'Aquaticité et Natation':t.lang==='es'?'Acuaticidad y Natación':'Aquatik und Schwimmen', desc:t.lang==='it'?'L\'ambiente acquatico favorisce la libertà di movimento, il tono muscolare, la coordinazione e la sensorialità. Il nuoto è un\'attività amata da molti bambini ReNU.':t.lang==='en'?'The aquatic environment promotes freedom of movement, muscle tone, coordination and sensory integration. Swimming is loved by many ReNU children.':'L\'environnement aquatique favorise le mouvement, le tonus musculaire et la coordination.' },
-    { icon:'fa-mountain',       ic:'ic-green',  name:t.lang==='it'?'Attività Ludico-Sportive Inclusive':t.lang==='en'?'Inclusive Sports Activities':t.lang==='fr'?'Activités Sportives Inclusives':t.lang==='es'?'Actividades Deportivas Inclusivas':'Inklusive Sportaktivitäten', desc:t.lang==='it'?'Attività come l\'arrampicata sportiva adattata (Rockspot) e altre discipline inclusive favoriscono la fiducia in sé stessi, la forza, la coordinazione e l\'integrazione sociale dei bambini ReNU.':t.lang==='en'?'Activities like adapted sport climbing (Rockspot) and other inclusive disciplines foster self-confidence, strength, coordination and social inclusion for ReNU children.':'Des activités comme l\'escalade adaptée et d\'autres disciplines inclusives favorisent la confiance et l\'intégration sociale.' },
+    { icon:'fa-running',       ic:'ic-blue',   name:t.lang==='it'?'Fisioterapia (FKT)':t.lang==='en'?'Physical Therapy (PT)':t.lang==='fr'?'Kinésithérapie':t.lang==='es'?'Fisioterapia':'Physiotherapie',
+      desc:t.lang==='it'?'La fisioterapia supporta il potenziamento del tono muscolare e favorisce il miglioramento dell\'equilibrio, della coordinazione e delle abilità motorie globali. Può essere particolarmente utile nei casi di ipotonia.':'Exercise, strength training, balance, coordination and motion improvement. Particularly useful in cases of hypotonia.' },
+    { icon:'fa-comments',      ic:'ic-purple', name:t.lang==='it'?'Logopedia':'Speech-Language Pathology',
+      desc:t.lang==='it'?'La logopedia sostiene lo sviluppo della comunicazione e interviene anche sulle funzioni dei muscoli della bocca, del viso e della respirazione, con l\'obiettivo di favorire una maggiore efficacia comunicativa e funzionale.':'Supports communication development and oral-motor functions, including speech, swallowing and breathing.' },
+    { icon:'fa-sign-language', ic:'ic-sky',    name:t.lang==='it'?'CAA – Comunicazione Aumentativa Alternativa':'AAC – Augmentative & Alternative Communication',
+      desc:t.lang==='it'?'La CAA aiuta i bambini non verbali a comunicare attraverso immagini, simboli, tabelle, gesti o strumenti digitali. È un supporto prezioso per esprimere bisogni, emozioni e richieste anche in assenza del linguaggio verbale.':'AAC helps non-verbal children communicate through images, symbols, boards, gestures or digital tools.' },
+    { icon:'fa-hand-pointer',  ic:'ic-amber',  name:t.lang==='it'?'Prompt':'Prompt Therapy',
+      desc:t.lang==='it'?'Il prompt è un aiuto fornito dal terapista per insegnare una risposta corretta. Può essere verbale, visivo, gestuale o fisico e viene gradualmente ridotto per accompagnare il bambino verso una maggiore autonomia.':'Prompts are cues provided by the therapist to teach correct responses, gradually faded to build independence.' },
+    { icon:'fa-puzzle-piece',  ic:'ic-navy',   name:'ABA – Applied Behavior Analysis',
+      desc:t.lang==='it'?'L\'ABA è un approccio educativo-comportamentale che aiuta il bambino ad apprendere nuove abilità e a ridurre i comportamenti che possono ostacolare la vita quotidiana. Il percorso è personalizzato e utilizza rinforzo positivo e monitoraggio continuo.':'ABA is a behavioral approach helping children learn new skills and reduce barriers to daily life through positive reinforcement.' },
+    { icon:'fa-hands-helping', ic:'ic-green',  name:t.lang==='it'?'Terapia Occupazionale (TO)':t.lang==='en'?'Occupational Therapy (OT)':t.lang==='fr'?'Ergothérapie':t.lang==='es'?'Terapia Ocupacional':'Ergotherapie',
+      desc:t.lang==='it'?'La terapia occupazionale aiuta a sviluppare autonomia personale, motricità fine, coordinazione e partecipazione alla vita quotidiana, scolastica e sociale.':'Develops personal autonomy, fine motor skills, coordination and participation in daily, school and social life.' },
+    { icon:'fa-child',         ic:'ic-cyan',   name:t.lang==='it'?'Psicomotricità':'Psychomotricity',
+      desc:t.lang==='it'?'La psicomotricità non interviene sulla causa genetica o neurologica, ma può aiutare il bambino a sviluppare strategie motorie più efficaci e funzionali, sostenendo relazione, movimento e organizzazione corporea.':'Supports motor strategies, body organization and relational development. Does not address the genetic or neurological cause.' },
+    { icon:'fa-utensils',      ic:'ic-red',    name:t.lang==='it'?'Disfagia e Terapia Oro-Motoria':'Dysphagia & Oral Motor Therapy',
+      desc:t.lang==='it'?'L\'intervento sulla disfagia aiuta a migliorare le funzioni necessarie per alimentarsi e deglutire in sicurezza e può contribuire anche alla gestione della scialorrea. Il Centro Bambino Gesù è un riferimento nazionale per la riabilitazione della disfagia.':'Dysphagia intervention helps improve swallowing and feeding safety, and can also address drooling management.' },
+    { icon:'fa-mountain',      ic:'ic-teal',   name:t.lang==='it'?'Attività Ludico-Sportive Inclusive':t.lang==='en'?'Inclusive Sports Activities':t.lang==='fr'?'Activités Sportives Inclusives':t.lang==='es'?'Actividades Deportivas Inclusivas':'Inklusive Sportaktivitäten',
+      desc:t.lang==='it'?'Le attività ludico-sportive – come teatro, danza e sport di squadra inclusivi – possono sostenere benessere, relazione, autostima e partecipazione, valorizzando le capacità di ogni bambino o ragazzo.':'Sports and recreational activities such as theatre, dance and inclusive team sports support wellbeing, self-esteem and social participation.' },
+    { icon:'fa-brain',         ic:'ic-indigo', name:t.lang==='it'?'Terapia Feuerstein – Allenamento Cognitivo':t.lang==='en'?'Feuerstein Therapy – Cognitive Training':t.lang==='fr'?'Thérapie Feuerstein':'Terapia Feuerstein',
+      desc:t.lang==='it'?'Metodo basato sulla mediazione per stimolare le funzioni cognitive, migliorare la capacità di apprendimento e sviluppare il potenziale di ogni bambino ReNU.':'Mediation-based method to stimulate cognitive functions and improve learning capacity for each ReNU child.' },
+    { icon:'fa-swimmer',       ic:'ic-sky',    name:t.lang==='it'?'Acquaticità e Nuoto':t.lang==='en'?'Aquatics and Swimming':t.lang==='fr'?'Aquaticité et Natation':t.lang==='es'?'Acuaticidad y Natación':'Aquatik und Schwimmen',
+      desc:t.lang==='it'?'L\'ambiente acquatico favorisce la libertà di movimento, il tono muscolare, la coordinazione e la sensorialità. Il nuoto è un\'attività amata da molti bambini ReNU.':'The aquatic environment promotes freedom of movement, muscle tone, coordination and sensory integration. Swimming is loved by many ReNU children.' },
+    { icon:'fa-music',         ic:'ic-amber',  name:t.lang==='it'?'Musicoterapia':'Music Therapy',
+      desc:t.lang==='it'?'Utilizzata per le abilità motorie percettive, la comunicazione e la regolazione dell\'umore. La musica è spesso un canale privilegiato di relazione per i bambini ReNU.':'Used for perceptual motor skills, communication and mood regulation. Music is often a privileged relational channel for ReNU children.' },
   ]
   return `
   <section class="hero-gradient text-white py-16 px-4">
@@ -1662,6 +1700,7 @@ function therapiesPage(t: Record<string, string>): string {
 
 // ─── DIAGNOSIS PAGE ───────────────────────────────────────────────────────────
 function diagnosisPage(t: Record<string, string>): string {
+  const isIt = t.lang === 'it'
   return `
   <section class="hero-gradient text-white py-16 px-4">
     <div class="max-w-5xl mx-auto">
@@ -1671,10 +1710,28 @@ function diagnosisPage(t: Record<string, string>): string {
   </section>
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
+
+      <!-- Sezione in aggiornamento -->
+      <div class="card p-8 mb-8 flex flex-col md:flex-row gap-6 items-center" style="background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">
+        <div class="flex-shrink-0 text-6xl">🔬</div>
+        <div>
+          <h2 class="text-2xl font-extrabold mb-2" style="color:#082050">
+            ${isIt?'Sezione in aggiornamento':'Section being updated'}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            ${isIt?'Stiamo raccogliendo le informazioni più aggiornate sui centri italiani che eseguono il Sequenziamento dell\'Intero Genoma (WGS) per la diagnosi della Sindrome ReNU. Questa sezione sarà aggiornata non appena il Comitato Scientifico avrà completato la validazione dei percorsi diagnostici raccomandati.':'We are gathering the most up-to-date information on Italian centres that perform Whole Genome Sequencing (WGS) for the diagnosis of ReNU Syndrome. This section will be updated once the Scientific Committee has completed validation of the recommended diagnostic pathways.'}
+          </p>
+          <p class="text-gray-700 text-sm">
+            ${isIt?'Nel frattempo, per ricevere informazioni sui centri diagnostici disponibili in Italia, puoi contattarci direttamente:':'In the meantime, to receive information on available diagnostic centres in Italy, you can contact us directly:'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Nota WGS importante -->
       <div class="bg-amber-50 border border-amber-400 rounded-2xl p-6 mb-8 flex gap-4 items-start">
         <i class="fas fa-exclamation-triangle text-amber-500 text-3xl flex-shrink-0"></i>
         <div>
-          <h3 class="font-bold text-amber-800 text-xl mb-2">⚠️ ${t.lang==='it'?'Nota Importante':t.lang==='en'?'Important Note':t.lang==='fr'?'Note importante':t.lang==='es'?'Nota importante':'Wichtiger Hinweis'}</h3>
+          <h3 class="font-bold text-amber-800 text-xl mb-2">⚠️ ${isIt?'Nota Importante':t.lang==='en'?'Important Note':t.lang==='fr'?'Note importante':t.lang==='es'?'Nota importante':'Wichtiger Hinweis'}</h3>
           <p class="text-amber-800 text-lg">${t.about_diagnosis_note}</p>
         </div>
       </div>
@@ -1685,8 +1742,8 @@ function diagnosisPage(t: Record<string, string>): string {
         </h2>
         <div class="space-y-4">
           ${[
-            ['info@sindromerenu.it','ic-blue','fa-envelope',t.lang==='it'?'Info generali':'General info'],
-            ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',t.lang==='it'?'Segreteria':'Secretariat'],
+            ['info@sindromerenu.it','ic-blue','fa-envelope',isIt?'Info generali':'General info'],
+            ['segreteria@sindromerenu.it','ic-sky','fa-clipboard',isIt?'Segreteria':'Secretariat'],
           ].map(([email,ic,icon,label]) => `
           <a href="mailto:${email}" class="flex items-center gap-4 rounded-xl p-4 hover:bg-sky-50 transition-colors group" style="background:#EEF6FB">
             <div class="ic ${ic}"><i class="fas ${icon}"></i></div>
@@ -1699,14 +1756,14 @@ function diagnosisPage(t: Record<string, string>): string {
             <div class="ic ic-sky"><i class="fas fa-phone"></i></div>
             <div>
               <div class="font-semibold group-hover:underline" style="color:#1078C0">+39 327 763 4894</div>
-              <div class="text-sm text-gray-500">${t.lang==='it'?'Segreteria – Telefono / WhatsApp':'Secretariat – Phone / WhatsApp'}</div>
+              <div class="text-sm text-gray-500">${isIt?'Segreteria – Telefono / WhatsApp':'Secretariat – Phone / WhatsApp'}</div>
             </div>
           </a>
           <a href="tel:+393357301206" class="flex items-center gap-4 rounded-xl p-4 hover:bg-sky-50 transition-colors group" style="background:#EEF6FB">
             <div class="ic ic-purple"><i class="fas fa-user-tie"></i></div>
             <div>
               <div class="font-semibold group-hover:underline" style="color:#1078C0">+39 335 730 1206</div>
-              <div class="text-sm text-gray-500">${t.lang==='it'?'Presidenza – Telefono / WhatsApp':'Presidency – Phone / WhatsApp'}</div>
+              <div class="text-sm text-gray-500">${isIt?'Presidenza – Telefono / WhatsApp':'Presidency – Phone / WhatsApp'}</div>
             </div>
           </a>
         </div>
@@ -1720,11 +1777,11 @@ function diagnosisPage(t: Record<string, string>): string {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div class="bg-white bg-opacity-10 rounded-xl p-5">
             <h3 class="font-bold text-sky-200 mb-2 flex items-center gap-2"><i class="fas fa-check-circle text-green-400"></i>WGS – Whole Genome Sequencing</h3>
-            <p class="text-sky-100 text-sm">${t.lang==='it'?'Analizza tutta la sequenza del DNA, compresi i geni non codificanti come RNU4-2. <strong>NECESSARIO per diagnosticare la Sindrome ReNU.</strong>':'Analyzes the entire DNA sequence, including non-coding genes like RNU4-2. <strong>REQUIRED to diagnose ReNU Syndrome.</strong>'}</p>
+            <p class="text-sky-100 text-sm">${isIt?'Analizza tutta la sequenza del DNA, compresi i geni non codificanti come RNU4-2. <strong>NECESSARIO per diagnosticare la Sindrome ReNU.</strong>':'Analyzes the entire DNA sequence, including non-coding genes like RNU4-2. <strong>REQUIRED to diagnose ReNU Syndrome.</strong>'}</p>
           </div>
           <div class="bg-white bg-opacity-10 rounded-xl p-5">
             <h3 class="font-bold text-sky-200 mb-2 flex items-center gap-2"><i class="fas fa-times-circle text-red-400"></i>WES – Whole Exome Sequencing</h3>
-            <p class="text-sky-100 text-sm">${t.lang==='it'?'Analizza solo le regioni codificanti. <strong>NON può rilevare le varianti in RNU4-2!</strong>':'Only analyzes coding regions. <strong>CANNOT detect variants in RNU4-2!</strong>'}</p>
+            <p class="text-sky-100 text-sm">${isIt?'Analizza solo le regioni codificanti. <strong>NON può rilevare le varianti in RNU4-2!</strong>':'Only analyzes coding regions. <strong>CANNOT detect variants in RNU4-2!</strong>'}</p>
           </div>
         </div>
       </div>
@@ -1840,35 +1897,94 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="h-40 overflow-hidden">
+          <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center">
             <img src="/images/renu_parents.jpg" alt="Rete Genitori" class="w-full h-full object-cover bg-sky-100">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
             <h3 class="font-bold text-xl mb-3" style="color:#082050">
-              ${t.lang==='it'?'Rete Genitori Italia':'Parent Network Italy'}
+              ${t.lang==='it'?'Rete Genitori Italiani':'Parent Network Italy'}
             </h3>
             <p class="text-gray-600 mb-4 text-sm">
-              ${t.lang==='it'?'Connettiti con famiglie in Italia e nel mondo. Non sei solo in questo percorso.':'Connect with families in Italy and worldwide. You are not alone in this journey.'}
+              ${t.lang==='it'?'La rete dei genitori italiani è un punto di riferimento per chi desidera sentirsi meno solo, condividere domande, esperienze e piccole conquiste del quotidiano.':'The Italian parent network is a reference point for those who want to feel less alone and share experiences.'}
             </p>
-            <a href="mailto:info@sindromerenu.it"
-               class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#45B8EC">
-              <i class="fas fa-envelope"></i>${t.contact_us}
+            <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank"
+               class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
+              <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Mappa mondiale countries -->
+      <!-- Mappa Italia + distribuzione famiglie -->
       <div class="card card-navy p-6 mb-10">
-        <h2 class="text-xl font-extrabold mb-3 flex items-center gap-2" style="color:#082050">
-          <i class="fas fa-globe" style="color:#1078C0"></i>${t.world_title}
+        <h2 class="text-xl font-extrabold mb-4 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-map-marked-alt" style="color:#1078C0"></i>
+          ${t.lang==='it'?'Famiglie ReNU in Italia':'ReNU Families in Italy'}
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed">${t.world_desc}</p>
-        <p class="text-xs mt-3 text-gray-400">
-          <i class="fas fa-calendar-alt mr-1"></i>
-          ${t.lang==='it'?'Ultimo aggiornamento: 15 aprile 2026':'Last updated: April 15, 2026'}
-        </p>
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="flex-shrink-0 flex items-center justify-center">
+            <!-- Mappa SVG professionale dell'Italia -->
+            <svg viewBox="0 0 400 520" width="220" height="286" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 16px rgba(8,32,80,0.18))">
+              <defs>
+                <linearGradient id="italyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1078C0;stop-opacity:1"/>
+                  <stop offset="100%" style="stop-color:#082050;stop-opacity:1"/>
+                </linearGradient>
+                <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#C8E8F8;stop-opacity:1"/>
+                  <stop offset="100%" style="stop-color:#EEF6FB;stop-opacity:1"/>
+                </linearGradient>
+              </defs>
+              <!-- Sfondo mare -->
+              <rect width="400" height="520" fill="url(#seaGrad)" rx="12"/>
+              <!-- Corpo principale Italia -->
+              <path d="M 155 30 C 120 32 95 45 80 60 C 65 75 60 90 62 105 C 64 120 70 130 78 138 C 72 145 65 155 60 165 C 55 175 52 185 55 195 C 58 205 66 212 75 218 C 68 228 62 240 60 252 C 58 264 60 275 66 284 C 72 293 81 300 91 306 C 98 320 104 335 108 348 C 112 361 113 373 110 382 C 107 391 100 397 96 404 C 92 411 91 418 93 424 C 95 430 100 435 108 439 C 116 443 127 446 137 446 C 130 456 126 465 127 473 C 128 481 134 488 143 491 C 152 494 163 492 172 488 C 181 484 188 476 191 468 C 195 460 195 451 191 443 C 200 440 208 435 213 428 C 218 421 219 412 215 405 C 228 402 240 396 248 388 C 256 380 260 370 258 360 C 256 350 249 341 241 335 C 255 330 267 320 274 308 C 281 296 282 281 277 268 C 272 255 261 244 249 237 C 260 228 268 216 270 204 C 272 192 268 180 260 171 C 275 162 286 149 290 136 C 294 123 291 110 283 100 C 275 90 262 84 249 80 C 260 72 268 62 268 52 C 268 42 260 34 249 30 C 238 26 224 26 211 28 C 198 30 185 34 174 36 C 168 33 161 30 155 30 Z"
+                    fill="url(#italyGrad)" stroke="white" stroke-width="2"/>
+              <!-- Sicilia -->
+              <ellipse cx="165" cy="500" rx="38" ry="14" fill="url(#italyGrad)" stroke="white" stroke-width="1.5" transform="rotate(-10,165,500)"/>
+              <!-- Sardegna -->
+              <ellipse cx="62" cy="320" rx="22" ry="38" fill="url(#italyGrad)" stroke="white" stroke-width="1.5"/>
+              <!-- Puntini città -->
+              <circle cx="183" cy="115" r="5" fill="white" opacity="0.9"/>
+              <text x="192" y="119" fill="white" font-size="10" font-family="Inter,sans-serif" font-weight="600">Milano</text>
+              <circle cx="200" cy="160" r="4" fill="white" opacity="0.9"/>
+              <text x="208" y="164" fill="white" font-size="9" font-family="Inter,sans-serif">Bologna</text>
+              <circle cx="200" cy="220" r="5" fill="white" opacity="0.9"/>
+              <text x="208" y="224" fill="white" font-size="10" font-family="Inter,sans-serif" font-weight="600">Roma</text>
+              <circle cx="210" cy="350" r="4" fill="white" opacity="0.9"/>
+              <text x="218" y="354" fill="white" font-size="9" font-family="Inter,sans-serif">Napoli</text>
+              <!-- Cuori famiglie ReNU -->
+              <text x="170" y="135" font-size="12" opacity="0.9">💙</text>
+              <text x="140" y="195" font-size="10" opacity="0.9">💙</text>
+              <text x="190" y="245" font-size="11" opacity="0.9">💙</text>
+              <text x="165" y="320" font-size="10" opacity="0.9">💙</text>
+              <text x="205" y="375" font-size="10" opacity="0.9">💙</text>
+              <text x="155" y="490" font-size="10" opacity="0.9">💙</text>
+              <!-- Badge contatore -->
+              <circle cx="310" cy="80" r="32" fill="#F59E0B"/>
+              <text x="310" y="74" text-anchor="middle" fill="white" font-size="14" font-weight="800" font-family="Inter,sans-serif">12-14</text>
+              <text x="310" y="88" text-anchor="middle" fill="white" font-size="8" font-family="Inter,sans-serif">casi</text>
+              <text x="310" y="100" text-anchor="middle" fill="white" font-size="8" font-family="Inter,sans-serif">in Italia</text>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              ${t.lang==='it'?'In Italia sono stati accertati <strong>12-14 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>12-14 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
+            </p>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              ${t.lang==='it'?'Se hai un familiare con Sindrome ReNU e non sei ancora in contatto con la nostra rete, <strong>scrivici</strong>: ti aiutiamo a entrare nella comunità italiana e a conoscere le famiglie vicino a te.':'If you have a family member with ReNU Syndrome and are not yet in contact with our network, <strong>write to us</strong>: we will help you join the Italian community.'}
+            </p>
+            <a href="mailto:info@sindromerenu.it" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
+              <i class="fas fa-envelope"></i>${t.lang==='it'?'Entra nella rete':'Join the network'}
+            </a>
+          </div>
+        </div>
+        <div class="mt-5 p-4 bg-blue-50 rounded-xl">
+          <p class="text-xs text-blue-700 leading-relaxed">
+            <i class="fas fa-globe mr-1"></i><strong>${t.world_title}:</strong> ${t.world_desc}
+          </p>
+        </div>
       </div>
 
       <!-- International Network -->
@@ -2671,6 +2787,44 @@ function brochurePage(t: Record<string, string>): string {
           </a>`).join('')}
         </div>
       </div>
+
+      <!-- Link cartelle Drive -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
+           class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
+          <div class="ic ic-sky w-12 h-12 flex-shrink-0">
+            <i class="fas fa-file-medical-alt text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold" style="color:#082050">
+              ${t.lang==='it'?'Cartella Articoli Scientifici':t.lang==='en'?'Scientific Articles Folder':'Dossier Articles scientifiques'}
+            </h3>
+            <p class="text-xs text-gray-500 mt-0.5">
+              ${t.lang==='it'?'Pubblicazioni e ricerche su RNU4-2 – Google Drive':t.lang==='en'?'Publications and research on RNU4-2 – Google Drive':'Publications et recherches sur RNU4-2'}
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#1078C0">
+              ${t.lang==='it'?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
+            </span>
+          </div>
+        </a>
+        <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank"
+           class="card p-6 flex items-center gap-4 group hover:border-purple-400 transition-all">
+          <div class="ic ic-purple w-12 h-12 flex-shrink-0">
+            <i class="fas fa-graduation-cap text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold" style="color:#082050">
+              ${t.lang==='it'?'Opuscoli Scuola':t.lang==='en'?'School Materials':'Matériel scolaire'}
+            </h3>
+            <p class="text-xs text-gray-500 mt-0.5">
+              ${t.lang==='it'?'Materiali per insegnanti ed educatori – Google Drive':t.lang==='en'?'Materials for teachers and educators – Google Drive':'Matériaux pour enseignants – Google Drive'}
+            </p>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#7C3AED">
+              ${t.lang==='it'?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
+            </span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>`
 }
@@ -2758,6 +2912,68 @@ function eventsPage(t: Record<string, string>): string {
         </p>
       </div>
 
+      <!-- GIORNATA GLOBALE 4 FEBBRAIO 2027 -->
+      <div class="mt-12 mb-6">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-globe" style="color:#1078C0"></i>
+          ${t.lang==='it'?'Giornata Globale Sindrome ReNU':'ReNU Syndrome Global Day'}
+        </h2>
+        <div class="card overflow-hidden">
+          <!-- Header data -->
+          <div class="px-8 py-6 text-white flex flex-col sm:flex-row items-center gap-6" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
+            <div class="flex-shrink-0 w-24 h-24 rounded-2xl flex flex-col items-center justify-center text-white font-extrabold" style="background:rgba(255,255,255,0.15); border:2px solid rgba(255,255,255,0.3)">
+              <span class="text-3xl leading-none font-black">4</span>
+              <span class="text-xs mt-1 tracking-wide">${t.lang==='it'?'FEB 2027':'FEB 2027'}</span>
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full mb-2" style="background:rgba(255,255,255,0.2); color:#BAE6FD">
+                <i class="fas fa-ribbon"></i>${t.lang==='it'?'Giornata Mondiale delle Malattie Rare':'Rare Disease Day'}
+              </div>
+              <h3 class="text-2xl font-extrabold">
+                ${t.lang==='it'?'Giornata Globale Sindrome ReNU':'ReNU Syndrome Global Day'}
+              </h3>
+              <p class="text-sky-200 text-sm mt-1">
+                ${t.lang==='it'?'4 febbraio 2027 – Evento coordinato a livello internazionale':'February 4, 2027 – Internationally coordinated event'}
+              </p>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="p-8">
+            <p class="text-gray-600 leading-relaxed mb-5">
+              ${t.lang==='it'?'Il 4 febbraio 2027, in occasione della Giornata Mondiale delle Malattie Rare, Sindrome ReNU Italia APS promuove la prima Giornata Globale Sindrome ReNU in Italia, in coordinamento con le associazioni partner internazionali (ReNU Syndrome United USA, ReNU Syndrome UK e altri). L\'obiettivo è aumentare la visibilità pubblica della sindrome, raggiungere famiglie ancora non diagnosticate e sensibilizzare medici e istituzioni.':'On February 4, 2027, on the occasion of Rare Disease Day, Sindrome ReNU Italia APS promotes the first ReNU Syndrome Global Day in Italy, in coordination with international partner associations (ReNU Syndrome United USA, ReNU Syndrome UK and others). The aim is to increase public visibility of the syndrome, reach still-undiagnosed families and raise awareness among physicians and institutions.'}
+            </p>
+            <h4 class="font-bold text-lg mb-4" style="color:#082050">
+              ${t.lang==='it'?'Cosa è previsto per il 4 febbraio 2027:':'What is planned for February 4, 2027:'}
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              ${[
+                ['fa-video','ic-blue', t.lang==='it'?'Webinar Nazionale':'National Webinar', t.lang==='it'?'Incontro online aperto a famiglie, medici e operatori scolastici sulla Sindrome ReNU.':'Online meeting open to families, doctors and school staff on ReNU Syndrome.'],
+                ['fa-newspaper','ic-sky', t.lang==='it'?'Campagna Social':'Social Media Campaign', t.lang==='it'?'Diffusione coordinata di contenuti #SindromeReNU su Instagram, Facebook e LinkedIn.':'Coordinated #SindromeReNU content on Instagram, Facebook and LinkedIn.'],
+                ['fa-hospital','ic-purple', t.lang==='it'?'Coinvolgimento Ospedali':'Hospital Engagement', t.lang==='it'?'Sensibilizzazione dei principali centri pediatrici italiani e neurologi dell\'età evolutiva.':'Awareness of major Italian paediatric centres and developmental neurologists.'],
+                ['fa-hands-helping','ic-green', t.lang==='it'?'Raccolta Fondi':'Fundraising', t.lang==='it'?'Iniziativa di donazione online con obiettivo dedicato alla ricerca e ai servizi alle famiglie.':'Online donation initiative with a target dedicated to research and family services.'],
+              ].map(([icon, ic, title, desc]) => `
+              <div class="flex gap-3 p-4 rounded-xl" style="background:#F0F8FD">
+                <div class="ic ${ic} w-10 h-10 flex-shrink-0"><i class="fas ${icon} text-sm"></i></div>
+                <div>
+                  <div class="font-bold text-sm" style="color:#082050">${title}</div>
+                  <div class="text-xs text-gray-500 mt-0.5">${desc}</div>
+                </div>
+              </div>`).join('')}
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Partecipo Giornata Globale ReNU 4 feb 2027':'Join ReNU Global Day 4 Feb 2027')}"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+                <i class="fas fa-calendar-check"></i>${t.lang==='it'?'Voglio partecipare':'I want to participate'}
+              </a>
+              <a href="/${t.lang}/donations"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#DC2626">
+                <i class="fas fa-heart"></i>${t.lang==='it'?'Sostieni l\'iniziativa':'Support the initiative'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Proponi un evento -->
       <div class="mt-10 rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <i class="fas fa-lightbulb text-4xl text-sky-300 mb-4 block"></i>
@@ -2779,103 +2995,163 @@ function eventsPage(t: Record<string, string>): string {
 
 // ─── PROJECTS PAGE ────────────────────────────────────────────────────────────
 function projectsPage(t: Record<string, string>): string {
-  const projects = [
-    {
-      icon: 'fa-map-marked-alt', ic: 'ic-sky',
-      title: t.lang==='it'?'Mappa Famiglie Italiane':'Italian Families Map',
-      status: t.lang==='it'?'In sviluppo':'In development',
-      statusColor: '#F59E0B', statusBg: '#FEF3C7',
-      desc: t.lang==='it'?'Una mappa interattiva delle famiglie italiane con un bambino o adulto con Sindrome ReNU, per connettersi, condividere esperienze e costruire una rete di supporto. La pubblicazione è subordinata alla raccolta dei consensi GDPR.':'An interactive map of Italian families with a child or adult with ReNU Syndrome, to connect, share experiences and build a support network. Publication is subject to GDPR consent collection.',
-    },
-    {
-      icon: 'fa-book-medical', ic: 'ic-navy',
-      title: t.lang==='it'?'Registro Nazionale Pazienti ReNU':'National ReNU Patient Registry',
-      status: t.lang==='it'?'In definizione':'Being defined',
-      statusColor: '#1078C0', statusBg: '#EEF6FB',
-      desc: t.lang==='it'?'Progetto di raccolta dati anonimizzata dei pazienti italiani con Sindrome ReNU, in collaborazione con il Comitato Scientifico presieduto dalla Dr.ssa Donatella Milani. Sarà coordinato con i centri diagnostici italiani.':'Anonymous data collection project for Italian patients with ReNU Syndrome, in collaboration with the Scientific Committee chaired by Dr. Donatella Milani. Will be coordinated with Italian diagnostic centers.',
-    },
-    {
-      icon: 'fa-graduation-cap', ic: 'ic-purple',
-      title: t.lang==='it'?'Percorso Scuola ReNU':'ReNU School Pathway',
-      status: t.lang==='it'?'In pianificazione':'In planning',
-      statusColor: '#7C3AED', statusBg: '#F5F3FF',
-      desc: t.lang==='it'?'Materiali e linee guida per supportare insegnanti, educatori e scuole nell\'inclusione dei bambini con Sindrome ReNU. Opuscoli, schede informative e contatti con esperti.':'Materials and guidelines to support teachers, educators and schools in including children with ReNU Syndrome. Brochures, information sheets and expert contacts.',
-    },
-    {
-      icon: 'fa-heartbeat', ic: 'ic-red',
-      title: t.lang==='it'?'Campagna Consapevolezza Pediatri':'Pediatrician Awareness Campaign',
-      status: t.lang==='it'?'In pianificazione':'In planning',
-      statusColor: '#DC2626', statusBg: '#FEF2F2',
-      desc: t.lang==='it'?'Campagna di sensibilizzazione rivolta ai pediatri italiani sulla Sindrome ReNU: distribuzione di materiali informativi, contatti con società scientifiche e ordini medici per ridurre i tempi di diagnosi.':'Awareness campaign targeting Italian pediatricians on ReNU Syndrome: distribution of informational materials, contacts with scientific societies and medical associations to reduce diagnostic times.',
-    },
-    {
-      icon: 'fa-trophy', ic: 'ic-amber',
-      title: 'Move 4 ReNU Italia',
-      status: t.lang==='it'?'Attivo – internazionale':'Active – international',
-      statusColor: '#059669', statusBg: '#D1FAE5',
-      desc: t.lang==='it'?'Partecipa alla campagna sportiva internazionale Move 4 ReNU per raccogliere fondi per la ricerca sulla Sindrome ReNU. Ogni chilometro percorso conta!':'Participate in the international sports campaign Move 4 ReNU to raise funds for ReNU Syndrome research. Every kilometre counts!',
-      link: 'https://www.zeffy.com/en-US/peer-to-peer/move-4-renu',
-    },
-  ]
-
+  const isIt = t.lang === 'it'
   return `
   <section class="hero-gradient text-white py-16 px-4">
     <div class="max-w-5xl mx-auto">
       <h1 class="text-4xl font-extrabold mb-3">
         <i class="fas fa-rocket mr-3 text-sky-300"></i>
-        ${t.lang==='it'?'Progetti':'Projects'}
+        ${isIt?'Progetti':'Projects'}
       </h1>
       <p class="text-sky-100 text-lg">
-        ${t.lang==='it'?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
+        ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
       </p>
     </div>
   </section>
 
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
-      <div class="space-y-6">
-        ${projects.map(p => `
-        <div class="card p-7 flex flex-col md:flex-row gap-5">
-          <div class="flex-shrink-0">
-            <div class="ic ${p.ic} w-16 h-16">
-              <i class="fas ${p.icon} text-2xl"></i>
+      <div class="space-y-8">
+
+        <!-- MARATONA 2027 -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
+            <div class="flex-shrink-0">
+              <div class="ic ic-amber w-16 h-16">
+                <i class="fas fa-trophy text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-extrabold text-xl" style="color:#082050">
+                  ${isIt?'Maratona ReNU 2027':'ReNU Marathon 2027'}
+                </h3>
+                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF3C7;color:#D97706">
+                  <i class="fas fa-circle text-xs"></i>${isIt?'In pianificazione':'In planning'}
+                </span>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                ${isIt?'Un evento sportivo solidale dedicato alla Sindrome ReNU, pensato per unire le famiglie italiane, raccogliere fondi per la ricerca e diffondere la consapevolezza su questa rara condizione genetica. La Maratona ReNU 2027 si propone di coinvolgere runner, famiglie e sostenitori in una giornata di sport, speranza e comunità.':'A solidarity sporting event dedicated to ReNU Syndrome, designed to unite Italian families, raise funds for research and spread awareness of this rare genetic condition. The ReNU Marathon 2027 aims to involve runners, families and supporters in a day of sport, hope and community.'}
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Adesione Maratona ReNU 2027':'Join ReNU Marathon 2027')}"
+                   class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#D97706">
+                  <i class="fas fa-running"></i>${isIt?'Aderisco alla Maratona':'Join the Marathon'}
+                </a>
+                <a href="/${t.lang}/donations"
+                   class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#DC2626">
+                  <i class="fas fa-heart"></i>${isIt?'Dona per supportare l\'evento':'Donate to support the event'}
+                </a>
+              </div>
             </div>
           </div>
-          <div class="flex-1">
-            <div class="flex flex-wrap items-center gap-3 mb-2">
-              <h3 class="font-extrabold text-xl" style="color:#082050">${p.title}</h3>
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full"
-                    style="background:${p.statusBg}; color:${p.statusColor}">
-                <i class="fas fa-circle text-xs"></i>${p.status}
-              </span>
+        </div>
+
+        <!-- RETE DEL TEMPO -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
+            <div class="flex-shrink-0">
+              <div class="ic ic-green w-16 h-16">
+                <i class="fas fa-hands-helping text-2xl"></i>
+              </div>
             </div>
-            <p class="text-gray-600 leading-relaxed mb-3">${p.desc}</p>
-            ${p.link ? `
-            <a href="${p.link}" target="_blank"
-               class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors" style="background:#1078C0">
-              <i class="fas fa-external-link-alt text-xs"></i>${t.lang==='it'?'Partecipa ora':'Join now'}
-            </a>` : `
-            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Info progetto '+p.title:'Project info '+p.title)}"
-               class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors" style="background:#EEF6FB; color:#082050; border:1px solid #45B8EC">
-              <i class="fas fa-envelope text-xs"></i>${t.lang==='it'?'Ricevi aggiornamenti':'Get updates'}
-            </a>`}
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-extrabold text-xl" style="color:#082050">
+                  ${isIt?'Rete del Tempo – Banca del Tempo ReNU':'Time Network – ReNU Time Bank'}
+                </h3>
+                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#D1FAE5;color:#059669">
+                  <i class="fas fa-circle text-xs"></i>${isIt?'In sviluppo':'In development'}
+                </span>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                ${isIt?'La Rete del Tempo è un progetto di mutuo aiuto tra le famiglie ReNU italiane: chi ha tempo, competenze o esperienze utili le mette a disposizione della comunità. Accompagnamento a visite specialistiche, supporto burocratico, condivisione di percorsi terapeutici: insieme ci si aiuta di più.':'The Time Network is a mutual support project among Italian ReNU families: those with useful time, skills or experience make them available to the community. Accompanying families to specialist appointments, bureaucratic support, sharing therapeutic pathways: together we help each other more.'}
+              </p>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
+                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
+                <i class="fas fa-envelope"></i>${isIt?'Partecipa alla rete':'Join the network'}
+              </a>
+            </div>
           </div>
-        </div>`).join('')}
+        </div>
+
+        <!-- PERCORSO SCUOLA -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
+            <div class="flex-shrink-0">
+              <div class="ic ic-purple w-16 h-16">
+                <i class="fas fa-graduation-cap text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-extrabold text-xl" style="color:#082050">
+                  ${isIt?'Percorso Scuola ReNU':'ReNU School Pathway'}
+                </h3>
+                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#F5F3FF;color:#7C3AED">
+                  <i class="fas fa-circle text-xs"></i>${isIt?'Attivo':'Active'}
+                </span>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                ${isIt?'Il Percorso Scuola ReNU offre materiali pratici e linee guida per supportare insegnanti, educatori, assistenti all\'autonomia e scuole nell\'inclusione dei bambini con Sindrome ReNU. Disponibili opuscoli informativi, schede di presentazione per la classe e indicazioni per il PEI/PDP. Materiali scaricabili gratuitamente dalla nostra cartella condivisa.':'The ReNU School Pathway offers practical materials and guidelines to support teachers, educators, support assistants and schools in including children with ReNU Syndrome. Available are informational brochures, class presentation sheets and guidance for individual education plans. Materials available free of charge from our shared folder.'}
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank"
+                   class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#7C3AED">
+                  <i class="fas fa-folder-open"></i>${isIt?'Scarica gli opuscoli scuola':'Download school materials'}
+                </a>
+                <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Percorso Scuola ReNU':'ReNU School Pathway')}"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#F5F3FF;color:#7C3AED;border:1px solid #7C3AED">
+                  <i class="fas fa-envelope"></i>${isIt?'Richiedi supporto':'Request support'}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAMPAGNA CONSAPEVOLEZZA PEDIATRI -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
+            <div class="flex-shrink-0">
+              <div class="ic ic-red w-16 h-16">
+                <i class="fas fa-heartbeat text-2xl"></i>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h3 class="font-extrabold text-xl" style="color:#082050">
+                  ${isIt?'Campagna Consapevolezza Pediatri':'Pediatrician Awareness Campaign'}
+                </h3>
+                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF2F2;color:#DC2626">
+                  <i class="fas fa-circle text-xs"></i>${isIt?'In pianificazione':'In planning'}
+                </span>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                ${isIt?'Campagna di sensibilizzazione rivolta ai pediatri e ai medici di base italiani sulla Sindrome ReNU: distribuzione di materiali informativi, contatti con società scientifiche e ordini medici per ridurre i tempi di diagnosi e garantire un percorso diagnostico corretto (WGS).':'Awareness campaign targeting Italian pediatricians and general practitioners on ReNU Syndrome: distribution of informational materials, contacts with scientific societies and medical associations to reduce diagnostic times and ensure the correct diagnostic pathway (WGS).'}
+              </p>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Campagna pediatri ReNU':'ReNU pediatrician campaign')}"
+                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#FEF2F2;color:#DC2626;border:1px solid #DC2626">
+                <i class="fas fa-envelope"></i>${isIt?'Ricevi aggiornamenti':'Get updates'}
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Proponi un progetto -->
       <div class="mt-10 rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <i class="fas fa-plus-circle text-4xl text-sky-300 mb-4 block"></i>
         <h3 class="text-2xl font-bold mb-3">
-          ${t.lang==='it'?'Hai un\'idea per un progetto?':'Have a project idea?'}
+          ${isIt?'Hai un\'idea per un progetto?':'Have a project idea?'}
         </h3>
         <p class="text-sky-100 mb-5">
-          ${t.lang==='it'?'Siamo un\'associazione di famiglie: ogni idea è preziosa. Scrivici a info@sindromerenu.it per proporre collaborazioni, iniziative e campagne.':'We are a family association: every idea is valuable. Write to us at info@sindromerenu.it to propose collaborations, initiatives and campaigns.'}
+          ${isIt?'Siamo un\'associazione di famiglie: ogni idea è preziosa. Scrivici a info@sindromerenu.it per proporre collaborazioni, iniziative e campagne.':'We are a family association: every idea is valuable. Write to us at info@sindromerenu.it to propose collaborations, initiatives and campaigns.'}
         </p>
-        <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Proposta progetto':'Project proposal')}"
+        <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Proposta progetto':'Project proposal')}"
            class="inline-flex items-center gap-2 bg-white font-bold px-7 py-3.5 rounded-full text-base hover:bg-sky-50" style="color:#082050">
           <i class="fas fa-paper-plane"></i>
-          ${t.lang==='it'?'Proponi un progetto':'Propose a project'}
+          ${isIt?'Proponi un progetto':'Propose a project'}
         </a>
       </div>
     </div>
@@ -3579,6 +3855,137 @@ function privacyPage(t: Record<string, string>): string {
   </section>`
 }
 
+// ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
+function sciencePage(t: Record<string, string>): string {
+  const isIt = t.lang === 'it'
+  const roles = [
+    { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
+    { icon: 'fa-stethoscope',   ic: 'ic-navy',   title: t.science_role2_title, desc: t.science_role2_desc },
+    { icon: 'fa-book-medical',  ic: 'ic-sky',    title: t.science_role3_title, desc: t.science_role3_desc },
+    { icon: 'fa-chalkboard-teacher', ic: 'ic-purple', title: t.science_role4_title, desc: t.science_role4_desc },
+    { icon: 'fa-globe-europe',  ic: 'ic-green',  title: t.science_role5_title, desc: t.science_role5_desc },
+  ]
+  return `
+  <section class="hero-gradient text-white py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="background:rgba(255,255,255,0.18);color:#BAE6FD;border:1px solid rgba(255,255,255,0.25)">
+        <i class="fas fa-flask" style="color:#7DD3FC"></i>
+        ${isIt?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
+      </div>
+      <h1 class="text-4xl font-extrabold mb-3">
+        <i class="fas fa-flask mr-3 text-sky-300"></i>${t.science_title}
+      </h1>
+      <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 section-light">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Ruoli del Comitato -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-tasks" style="color:#1078C0"></i>
+          ${isIt?'Funzioni e Responsabilità':'Functions & Responsibilities'}
+        </h2>
+        <div class="space-y-5">
+          ${roles.map((r, i) => `
+          <div class="card p-6 flex gap-5 items-start">
+            <div class="flex-shrink-0">
+              <div class="ic ${r.ic} w-14 h-14">
+                <i class="fas ${r.icon} text-xl"></i>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:#EEF6FB;color:#1078C0">${String(i+1).padStart(2,'0')}</span>
+                <h3 class="font-extrabold text-lg" style="color:#082050">${r.title}</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">${r.desc}</p>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- Membri del Comitato -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-user-md" style="color:#1078C0"></i>
+          ${t.science_members_title}
+        </h2>
+        <div class="card card-blue p-8 flex flex-col md:flex-row gap-6 items-center">
+          <div class="flex-shrink-0 flex items-center justify-center w-24 h-24 rounded-full" style="background:linear-gradient(135deg,#C8E8F8,#EEF6FB)">
+            <i class="fas fa-user-md text-4xl" style="color:#1078C0"></i>
+          </div>
+          <div class="flex-1">
+            <p class="text-gray-600 leading-relaxed italic">${t.science_members_note}</p>
+            <a href="mailto:presidenza@sindromerenu.it" class="inline-flex items-center gap-2 mt-4 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+              <i class="fas fa-envelope"></i>presidenza@sindromerenu.it
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Materiali Drive -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-folder-open" style="color:#1078C0"></i>
+          ${isIt?'Pubblicazioni & Materiali Scientifici':'Publications & Scientific Materials'}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
+             class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
+            <div class="ic ic-sky w-12 h-12 flex-shrink-0">
+              <i class="fas fa-file-medical-alt text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Articoli Scientifici':'Scientific Articles'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Raccolta articoli e ricerche su RNU4-2':'Articles and research on RNU4-2'}</p>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#1078C0">
+                ${isIt?'Accedi alla cartella':'Access folder'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </span>
+            </div>
+          </a>
+          <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank"
+             class="card p-6 flex items-center gap-4 group hover:border-purple-400 transition-all">
+            <div class="ic ic-purple w-12 h-12 flex-shrink-0">
+              <i class="fas fa-graduation-cap text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Opuscoli Scuola':'School Materials'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Materiali per insegnanti ed educatori':'Materials for teachers and educators'}</p>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#7C3AED">
+                ${isIt?'Accedi alla cartella':'Access folder'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA collabora -->
+      <div class="rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
+        <i class="fas fa-handshake text-5xl text-sky-300 mb-4 block"></i>
+        <h3 class="text-2xl font-bold mb-3">${t.science_cta}</h3>
+        <p class="text-sky-100 mb-5 max-w-xl mx-auto">
+          ${isIt?'Sei un medico, ricercatore o specialista interessato a collaborare con il Comitato Scientifico? Scrivici per proporre contributi scientifici o segnalare pubblicazioni rilevanti.':'Are you a physician, researcher or specialist interested in collaborating with the Scientific Committee? Write to us to propose scientific contributions or flag relevant publications.'}
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="mailto:presidenza@sindromerenu.it?subject=${encodeURIComponent(isIt?'Collaborazione Comitato Scientifico':'Scientific Committee Collaboration')}"
+             class="inline-flex items-center gap-2 bg-white font-bold px-7 py-3.5 rounded-full text-base hover:bg-sky-50" style="color:#082050">
+            <i class="fas fa-paper-plane"></i>
+            ${isIt?'Scrivici':'Contact us'}
+          </a>
+          <a href="/${t.lang}/contact"
+             class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold px-7 py-3.5 rounded-full text-base border border-white border-opacity-30">
+            <i class="fas fa-envelope"></i>${isIt?'Modulo di contatto':'Contact form'}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>`
+}
+
 // ─── ROUTES ───────────────────────────────────────────────────────────────────
 app.get('/', (c) => c.redirect('/it/home'))
 
@@ -3601,6 +4008,8 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   eventi:          eventsPage,
   faq:             faqPage,
   privacy:         privacyPage,
+  science:         sciencePage,
+  'comitato-scientifico': sciencePage,
 }
 
 for (const lang of ['it','en','fr','es','de']) {
@@ -3722,6 +4131,374 @@ app.get('/api/health', (c) => {
 // Legacy contact endpoint (backward compatibility)
 app.post('/api/contact', async (c) => {
   return c.redirect('/api/contatti', 307)
+})
+
+// ─── HELPER: now() ────────────────────────────────────────────────────────────
+function now(): string {
+  return new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' })
+}
+
+// ─── EMAIL via Resend API ─────────────────────────────────────────────────────
+async function sendEmail(env: any, opts: {
+  to?: string, subject: string, html: string
+}): Promise<void> {
+  const key = env?.RESEND_API_KEY
+  if (!key) { console.warn('[email] RESEND_API_KEY non configurata – email non inviata'); return }
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: 'Sindrome ReNU Italia <noreply@sindromerenu.it>',
+        to: [opts.to || 'info@sindromerenu.it'],
+        subject: opts.subject,
+        html: opts.html
+      })
+    })
+    if (!res.ok) console.error('[email] Resend error:', await res.text())
+  } catch (e) { console.error('[email] fetch error:', e) }
+}
+
+// ─── ADMIN PANEL (integrato in Hono) ─────────────────────────────────────────
+const ADMIN_HTML = `<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin – Sindrome ReNU Italia APS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:system-ui,sans-serif}</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- LOGIN OVERLAY -->
+<div id="loginOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-600">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4">
+    <div class="text-center mb-6">
+      <i class="fas fa-shield-alt text-5xl text-blue-600 mb-3 block"></i>
+      <h1 class="text-2xl font-bold text-gray-800">Pannello Admin</h1>
+      <p class="text-gray-500 text-sm">Sindrome ReNU Italia APS</p>
+      <span class="inline-block mt-2 text-xs bg-green-100 text-green-700 border border-green-300 px-3 py-1 rounded-full font-semibold">
+        <i class="fas fa-check-circle mr-1"></i>GDPR Compliant v2.0
+      </span>
+    </div>
+    <input id="ti" type="password" placeholder="Token di accesso admin..."
+           class="w-full border rounded-xl px-4 py-3 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors">
+      <i class="fas fa-sign-in-alt mr-2"></i>Accedi
+    </button>
+    <p id="le" class="text-red-600 text-sm text-center mt-3 hidden">Token non valido.</p>
+    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+      <i class="fas fa-exclamation-triangle mr-1"></i>
+      <b>Accesso riservato.</b> Ogni operazione è registrata nell'audit log GDPR.
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<nav class="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-4 flex items-center justify-between shadow-xl">
+  <div class="flex items-center gap-3">
+    <i class="fas fa-shield-alt text-2xl text-blue-300"></i>
+    <div>
+      <div class="font-bold text-lg">Pannello Admin GDPR</div>
+      <div class="text-xs text-blue-200">Sindrome ReNU Italia APS – v2.0</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <span id="dbBadge" class="text-xs bg-gray-500 text-white px-2 py-1 rounded-full">DB: –</span>
+    <span class="text-xs bg-green-500 text-white px-2 py-1 rounded-full">GDPR v2.0</span>
+  </div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <!-- STATS -->
+  <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
+  </div>
+
+  <!-- GDPR INFO -->
+  <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-6 text-sm text-blue-800 flex gap-3">
+    <i class="fas fa-info-circle text-blue-500 text-xl mt-0.5 flex-shrink-0"></i>
+    <div><b>Protezione dati attiva:</b> ogni visualizzazione è registrata nell'audit log (Art.5 GDPR).
+    I dati dei minori sono protetti (Art.9). Il diritto all'oblio è disponibile nella sezione Cancella Dati.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="flex gap-2 flex-wrap mb-6">
+    <button data-t="adesioni"  onclick="showTab('adesioni')"  class="tb bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-users mr-1"></i>Adesioni</button>
+    <button data-t="contatti"  onclick="showTab('contatti')"  class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-envelope mr-1"></i>Contatti</button>
+    <button data-t="lista"     onclick="showTab('lista')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-clock mr-1"></i>Lista Attesa</button>
+    <button data-t="donazioni" onclick="showTab('donazioni')" class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-heart mr-1"></i>Donazioni</button>
+    <button data-t="audit"     onclick="showTab('audit')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-history mr-1"></i>Audit Log</button>
+    <button data-t="erasure"   onclick="showErasure()"        class="tb bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-trash mr-1"></i>Cancella Dati</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content" class="bg-white rounded-2xl shadow-lg overflow-hidden min-h-64">
+    <div class="p-8 text-center text-gray-400">
+      <i class="fas fa-database text-5xl mb-3 block opacity-20"></i>
+      Seleziona una sezione per visualizzare i dati
+    </div>
+  </div>
+</div>
+
+<script>
+let TOK = '';
+function H(){ return {'X-Admin-Token': TOK, 'Content-Type': 'application/json'}; }
+
+async function doLogin(){
+  const t = document.getElementById('ti').value.trim();
+  if(!t) return;
+  const r = await fetch('/api/admin/stats', {headers: {'X-Admin-Token': t}});
+  if(r.ok){
+    TOK = t;
+    document.getElementById('loginOverlay').style.display = 'none';
+    loadStats();
+    showTab('adesioni');
+  } else {
+    document.getElementById('le').classList.remove('hidden');
+    document.getElementById('ti').value = '';
+  }
+}
+
+async function loadStats(){
+  const r = await fetch('/api/admin/stats', {headers: H()});
+  if(!r.ok) return;
+  const s = await r.json();
+  document.getElementById('dbBadge').textContent = s.db ? 'D1: ✓' : 'D1: memoria';
+  document.getElementById('dbBadge').className = s.db
+    ? 'text-xs bg-green-600 text-white px-2 py-1 rounded-full'
+    : 'text-xs bg-amber-500 text-white px-2 py-1 rounded-full';
+  const cards = [
+    {k:'lista_attesa', l:'Lista Attesa', i:'fa-clock',    c:'blue'},
+    {k:'contatti',     l:'Contatti',     i:'fa-envelope', c:'green'},
+    {k:'adesioni',     l:'Adesioni',     i:'fa-users',    c:'purple'},
+    {k:'donazioni',    l:'Donazioni',    i:'fa-heart',    c:'red'},
+  ];
+  document.getElementById('stats').innerHTML = cards.map(c => \`
+    <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-\${c.c}-500">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-\${c.c}-100 flex items-center justify-center">
+          <i class="fas \${c.i} text-\${c.c}-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-gray-800">\${s[c.k] ?? 0}</div>
+          <div class="text-xs text-gray-500">\${c.l}</div>
+        </div>
+      </div>
+    </div>\`).join('');
+}
+
+const TABS = {
+  adesioni:  {url:'/api/admin/adesioni'},
+  contatti:  {url:'/api/admin/contatti'},
+  lista:     {url:'/api/admin/lista-attesa'},
+  donazioni: {url:'/api/admin/donazioni'},
+  audit:     {url:'/api/admin/audit'},
+};
+
+async function showTab(name){
+  document.querySelectorAll('.tb').forEach(b => {
+    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+  });
+  const btn = document.querySelector('[data-t="'+name+'"]');
+  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  if(name === 'erasure'){ showErasure(); return; }
+  const cfg = TABS[name]; if(!cfg) return;
+  document.getElementById('content').innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-blue-400"></i></div>';
+  const r = await fetch(cfg.url, {headers: H()});
+  if(!r.ok){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-red-500"><i class="fas fa-exclamation-triangle mr-2"></i>Errore caricamento dati – token non valido?</div>';
+    return;
+  }
+  const data = await r.json();
+  if(!data.length){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-gray-400"><i class="fas fa-inbox text-4xl mb-3 block opacity-30"></i>Nessun dato presente</div>';
+    return;
+  }
+  const keys = Object.keys(data[0]);
+  let html = '<div class="overflow-x-auto"><table class="w-full text-xs"><thead class="bg-gray-50 border-b"><tr>'
+    + keys.map(k => '<th class="px-3 py-3 text-left font-semibold text-gray-600 whitespace-nowrap">'+k+'</th>').join('')
+    + '</tr></thead><tbody>';
+  data.forEach((row,i) => {
+    html += '<tr class="'+(i%2?'bg-gray-50':'')+' border-b hover:bg-blue-50">';
+    keys.forEach(k => {
+      const v = row[k] !== null ? String(row[k]) : '–';
+      html += '<td class="px-3 py-2 text-gray-700 max-w-xs truncate" title="'+v.replace(/"/g,'&quot;')+'">'+v+'</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div><div class="px-6 py-3 bg-gray-50 text-xs text-gray-500 border-t flex justify-between">'
+    + '<span><i class="fas fa-lock mr-1 text-green-600"></i>'+data.length+' record · accesso registrato audit log GDPR</span>'
+    + '<a href="'+cfg.url+'" target="_blank" class="text-blue-600 hover:underline">Esporta JSON</a>'
+    + '</div>';
+  document.getElementById('content').innerHTML = html;
+}
+
+function showErasure(){
+  document.querySelectorAll('.tb').forEach(b => {
+    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+  });
+  const btn = document.querySelector('[data-t="erasure"]');
+  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  document.getElementById('content').innerHTML = \`
+    <div class="p-8 max-w-lg mx-auto">
+      <div class="text-center mb-6">
+        <i class="fas fa-user-slash text-5xl text-red-400 mb-3 block"></i>
+        <h2 class="text-xl font-bold">Diritto all'Oblio – Art. 17 GDPR</h2>
+        <p class="text-sm text-gray-500 mt-1">Cancella tutti i dati personali di un interessato</p>
+      </div>
+      <div class="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-5 text-sm text-amber-800">
+        <i class="fas fa-exclamation-triangle mr-1"></i>
+        <b>Attenzione – operazione irreversibile.</b><br>
+        Verificare sempre l'identità del richiedente prima di procedere.
+      </div>
+      <input id="ee" type="email" placeholder="email@esempio.it" class="w-full border rounded-xl px-4 py-3 text-sm mb-3">
+      <input id="ec" type="text" placeholder="Digita CANCELLA per confermare" class="w-full border rounded-xl px-4 py-3 text-sm mb-4">
+      <button onclick="doErasure()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl">
+        <i class="fas fa-trash mr-2"></i>Esegui Cancellazione
+      </button>
+      <div id="er" class="mt-4 hidden"></div>
+    </div>\`;
+}
+
+async function doErasure(){
+  const email = document.getElementById('ee').value.trim();
+  const conf  = document.getElementById('ec').value.trim();
+  const res   = document.getElementById('er');
+  if(conf !== 'CANCELLA'){ res.innerHTML='<div class="p-3 bg-red-50 text-red-700 rounded-xl text-sm">Digita esattamente CANCELLA.</div>'; res.classList.remove('hidden'); return; }
+  if(!email){ res.innerHTML='<div class="p-3 bg-red-50 text-red-700 rounded-xl text-sm">Email obbligatoria.</div>'; res.classList.remove('hidden'); return; }
+  const r = await fetch('/api/admin/erasure/'+encodeURIComponent(email), {method:'DELETE', headers:H()});
+  const d = await r.json();
+  if(r.ok){
+    res.innerHTML='<div class="p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-800"><i class="fas fa-check-circle mr-1"></i><b>Cancellazione completata</b><br><pre class="mt-2 text-xs">'+JSON.stringify(d,null,2)+'</pre></div>';
+  } else {
+    res.innerHTML='<div class="p-4 bg-red-50 text-red-800 rounded-xl text-sm">Errore: '+d.error+'</div>';
+  }
+  res.classList.remove('hidden');
+}
+</script>
+</body></html>`
+
+// In-memory store (fallback quando D1 non è configurato)
+const memStore: { la: any[], ct: any[], ad: any[], dn: any[], au: any[] } = { la:[], ct:[], ad:[], dn:[], au:[] }
+
+function memAudit(tabella: string, id: number, azione: string, note = '') {
+  memStore.au.push({ id: memStore.au.length+1, timestamp: new Date().toISOString(), tabella, record_id: id, azione, note })
+}
+
+// ─── ADMIN: token check ───────────────────────────────────────────────────────
+function requireAdmin(c: any): boolean {
+  const tok = c.req.header('X-Admin-Token') || ''
+  const secret = c.env?.ADMIN_SECRET || 'renu-admin-2026'
+  return tok === secret
+}
+
+// ─── ADMIN ROUTES ─────────────────────────────────────────────────────────────
+app.get('/admin', (c) => c.html(ADMIN_HTML))
+app.get('/admin/', (c) => c.html(ADMIN_HTML))
+
+app.get('/api/admin/stats', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const [la, ct, ad, dn] = await Promise.all([
+        db.prepare('SELECT COUNT(*) as n FROM lista_attesa WHERE cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM contatti').first(),
+        db.prepare('SELECT COUNT(*) as n FROM adesioni WHERE cancellato=0').first(),
+        db.prepare('SELECT COUNT(*) as n FROM donazioni WHERE cancellato=0').first(),
+      ])
+      return c.json({ lista_attesa:(la as any)?.n??0, contatti:(ct as any)?.n??0, adesioni:(ad as any)?.n??0, donazioni:(dn as any)?.n??0, db:true })
+    } catch(e) { /* fallback */ }
+  }
+  return c.json({ lista_attesa:memStore.la.length, contatti:memStore.ct.length, adesioni:memStore.ad.length, donazioni:memStore.dn.length, db:false })
+})
+
+app.get('/api/admin/adesioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,citta,tipo_membro,come_conosciuto,consenso_gdpr,data_consenso,status FROM adesioni WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.ad)
+})
+
+app.get('/api/admin/contatti', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,email,oggetto,messaggio,consenso_gdpr,data_consenso,status FROM contatti ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.ct)
+})
+
+app.get('/api/admin/lista-attesa', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,citta,tipo,consenso_gdpr,data_consenso FROM lista_attesa WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.la)
+})
+
+app.get('/api/admin/donazioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,created_at,nome,email,importo,tipo,metodo,consenso_gdpr,data_consenso FROM donazioni WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.dn)
+})
+
+app.get('/api/admin/audit', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (db) {
+    try {
+      const r = await db.prepare('SELECT id,timestamp,tabella,record_id,azione,operatore,note FROM audit_log ORDER BY timestamp DESC LIMIT 500').all()
+      return c.json(r.results)
+    } catch(e) {}
+  }
+  return c.json(memStore.au.slice(-200).reverse())
+})
+
+app.delete('/api/admin/erasure/:email', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const email = decodeURIComponent(c.req.param('email'))
+  if (!validEmail(email)) return c.json({ error: 'Email non valida' }, 400)
+  const db = c.env?.DB
+  const ts = new Date().toISOString()
+  if (db) {
+    try {
+      await db.prepare("UPDATE lista_attesa SET cancellato=1, data_cancellazione=?, nome='[CANCELLATO]', cognome='[CANCELLATO]', email='[CANCELLATO]', citta='' WHERE email=?").bind(ts, email).run()
+      await db.prepare("UPDATE contatti SET nome='[CANCELLATO]', email='[CANCELLATO]', messaggio='[CANCELLATO GDPR Art.17]' WHERE email=?").bind(email).run()
+      await db.prepare("UPDATE adesioni SET cancellato=1, data_cancellazione=?, nome='[CANCELLATO]', cognome='[CANCELLATO]', email='[CANCELLATO]' WHERE email=?").bind(ts, email).run()
+      await db.prepare("INSERT INTO audit_log(tabella,azione,operatore,note) VALUES('*','ERASURE','admin',?)").bind(`Art.17 GDPR email=${email.slice(0,3)}***`).run()
+      return c.json({ success: true, email: email.slice(0,3)+'***', nota: 'Cancellazione Art.17 GDPR completata e registrata in audit log.', timestamp: ts })
+    } catch(e: any) { return c.json({ error: e.message }, 500) }
+  }
+  // fallback memory
+  memStore.la = memStore.la.map(r => r.email===email ? {...r, cancellato:1, nome:'[CANCELLATO]', email:'[CANCELLATO]'} : r)
+  memStore.ct = memStore.ct.map(r => r.email===email ? {...r, nome:'[CANCELLATO]', email:'[CANCELLATO]', messaggio:'[CANCELLATO]'} : r)
+  memAudit('*', 0, 'ERASURE', `Art.17 GDPR email=${email.slice(0,3)}***`)
+  return c.json({ success: true, nota: 'Cancellazione completata (memoria – configura D1 per persistenza).', timestamp: ts })
 })
 
 export default app
