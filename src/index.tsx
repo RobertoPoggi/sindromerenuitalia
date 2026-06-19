@@ -499,7 +499,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -645,6 +645,109 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 
     /* Image frame */
     .img-frame { border-radius: 1.25rem; overflow: hidden; box-shadow: 0 12px 40px rgba(8,32,80,0.18); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CROSS-BROWSER / CROSS-DEVICE COMPATIBILITY FIXES
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* A — iOS Safari: previene zoom automatico su input con font-size < 16px
+       Safari Mobile esegue zoom se font-size < 16px. font-size: 1rem = 16px */
+    input, textarea, select {
+      font-size: 1rem !important;        /* 16px — soglia anti-zoom iOS */
+      -webkit-appearance: none;          /* rimuove stile nativo iOS su input */
+      appearance: none;
+    }
+    /* Ripristina select nativo su Safari (appearance:none nasconde la freccia) */
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231078C0' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.5rem !important;
+    }
+    /* Checkbox: non toccare appearance */
+    input[type="checkbox"], input[type="radio"] {
+      -webkit-appearance: checkbox;
+      appearance: checkbox;
+      font-size: inherit !important;
+    }
+
+    /* B — Safari / WebKit: bottoni e link */
+    button, [role="button"], a {
+      -webkit-tap-highlight-color: transparent; /* rimuove flash grigio al tap su iOS */
+    }
+    button {
+      -webkit-appearance: none;          /* rimuove stile nativo Safari su <button> */
+      appearance: none;
+    }
+
+    /* C — Disabilita hover animato su touch device (evita "stuck hover" su mobile) */
+    @media (hover: none) and (pointer: coarse) {
+      .card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+      .card { transition: none !important; }
+    }
+
+    /* D — Safe area iPhone con notch / Dynamic Island (iOS 11+)
+       Impedisce che header e cookie banner finiscano sotto la tacca */
+    header {
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+    #cookieBanner {
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+      padding-left: calc(1.5rem + env(safe-area-inset-left));
+      padding-right: calc(1.5rem + env(safe-area-inset-right));
+    }
+
+    /* E — focus-visible: outline accessibile solo da tastiera (non al click) */
+    :focus-visible {
+      outline: 3px solid #45B8EC;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* F — Smooth scroll: prefissato per Safari < 15.4 */
+    @supports not (scroll-behavior: smooth) {
+      html { scroll-behavior: auto; }  /* fallback sicuro */
+    }
+
+    /* G — Overflow scroll fluido su iOS (momentum scrolling) */
+    .overflow-x-auto, .overflow-y-auto, .max-h-64 {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* H — Edge / IE fallback per gap in flex (Edge 79 non supporta gap in flexbox) */
+    @supports not (gap: 1rem) {
+      .flex > * + * { margin-left: 0.5rem; }
+    }
+
+    /* I — Immagini: prevenzione distorsione altezza in Safari (Flexbox + img) */
+    img { display: block; max-width: 100%; height: auto; }
+    /* eccezione: img inline dentro span/a */
+    a > img, button > img { display: inline-block; }
+
+    /* J — Prevenzione text overflow su mobile per titoli lunghi */
+    h1, h2, h3 {
+      overflow-wrap: break-word;
+      word-break: break-word;        /* Safari non supporta overflow-wrap: anywhere */
+      hyphens: auto;
+    }
+
+    /* K — <details>/<summary>: arrow nativa su Safari */
+    details > summary { cursor: pointer; list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+
+    /* L — Tailwind 2 non ha line-clamp nativo; polyfill via -webkit */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    /* ═══════════════════════════════════════════════════════════════ */
   </style>
 </head>
 <body>
@@ -671,7 +774,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 
       <!-- Logo + nome -->
       <a href="/${t.lang}/home" class="flex items-center gap-2 flex-shrink-0">
-        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-14 w-auto drop-shadow-lg">
+        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-14 w-auto drop-shadow-lg" loading="lazy" decoding="async">
         <span class="hidden lg:block text-xs font-bold leading-tight text-sky-100" style="max-width:110px">Sindrome<br>ReNU Italia APS</span>
       </a>
 
@@ -745,7 +848,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <!-- Brand -->
       <div class="md:col-span-1">
-        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-16 w-auto mb-4 drop-shadow">
+        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-16 w-auto mb-4 drop-shadow" loading="lazy" decoding="async">
         <p class="text-sky-200 text-sm italic mb-2">"${t.footer_tagline}"</p>
         <p class="text-sky-300 text-sm">${t.footer_partnership}</p>
         <p class="text-sky-300 text-sm mt-1">www.sindromerenu.it</p>
@@ -940,7 +1043,7 @@ function homePage(t: Record<string, string>): string {
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
           <div class="h-36 overflow-hidden bg-sky-50">
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                 onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full\'><i class=\'fas ${c.icon} text-4xl text-sky-300\'></i></div>'">
+                 onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full\' loading="lazy" decoding="async"><i class=\'fas ${c.icon} text-4xl text-sky-300\'></i></div>'">
           </div>
           <div class="p-5">
             <div class="flex items-center gap-3 mb-2">
@@ -985,10 +1088,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover"></div>
-          <div class="img-frame"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-48 object-cover"></div>
-          <div class="img-frame"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-36 object-cover"></div>
-          <div class="img-frame"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-36 object-cover"></div>
+          <div class="img-frame"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1010,7 +1113,7 @@ function homePage(t: Record<string, string>): string {
           <div class="overflow-hidden h-52 flex items-center justify-center" style="background: linear-gradient(135deg, #E8F4FC 0%, #C8E8F8 100%);">
             <img src="/images/mascotte_reny_1.png" alt="Reny – Mascotte Sindrome ReNU Italia"
                  class="h-full w-auto object-contain py-2"
-                 style="max-height:200px; filter: drop-shadow(0 4px 16px rgba(8,32,80,0.13));">
+                 style="max-height:200px; filter: drop-shadow(0 4px 16px rgba(8,32,80,0.13));" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1028,7 +1131,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
           <div class="overflow-hidden h-52">
-            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover">
+            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1046,7 +1149,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden h-52">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1090,7 +1193,7 @@ function homePage(t: Record<string, string>): string {
         ].map(b => `
         <div class="card overflow-hidden group">
           <div class="overflow-hidden" style="height:180px">
-            <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
           </div>
           <div class="p-3 text-center">
             <h3 class="font-extrabold text-base mb-1" style="color:#082050">${b.name}</h3>
@@ -1225,7 +1328,7 @@ function aboutPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/nastro.png" alt="Nastro ReNU" class="w-full h-48 object-cover">
+          <img src="/images/nastro.png" alt="Nastro ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1258,7 +1361,7 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="img-frame">
-          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover">
+          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover" loading="lazy" decoding="async">
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
             ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
@@ -1288,7 +1391,7 @@ function aboutPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
           </span>
         </div>
-        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px">
+        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px" loading="lazy" decoding="async">
       </div>
 
       <!-- ReNU Syndrome Support Tool -->
@@ -1650,8 +1753,8 @@ function therapiesPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-56"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-40 object-cover"></div>
-        <div class="img-frame w-56"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-40 object-cover"></div>
+        <div class="img-frame w-56"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-40 object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-40 object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -1921,7 +2024,7 @@ function communityPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover">
+          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1934,7 +2037,7 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="card card-blue overflow-hidden">
           <div class="h-40 overflow-hidden">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -1953,7 +2056,7 @@ function communityPage(t: Record<string, string>): string {
 
         <div class="card card-sky overflow-hidden">
           <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center">
-            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover">
+            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2081,7 +2184,7 @@ function communityPage(t: Record<string, string>): string {
       <!-- RSU Partnership -->
       <div class="rounded-2xl p-8 text-white mb-10" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex flex-col md:flex-row items-center gap-6">
-          <img src="/images/logo.png" alt="Logo" class="w-28 h-auto drop-shadow-lg flex-shrink-0">
+          <img src="/images/logo.png" alt="Logo" class="w-28 h-auto drop-shadow-lg flex-shrink-0" loading="lazy" decoding="async">
           <div>
             <h3 class="text-2xl font-bold mb-2">ReNU Syndrome United (USA)</h3>
             <p class="text-sky-200 mb-4">
@@ -2105,10 +2208,10 @@ function communityPage(t: Record<string, string>): string {
             </h3>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/bambini.jpg" alt="Bambini ReNU" class="w-full h-full object-cover"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/famiglie.jpg" alt="Famiglie ReNU Italia" class="w-full h-full object-cover"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_incontro_famiglie.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_gallery.jpg" alt="Galleria ReNU Italia" class="w-full h-full object-cover"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/bambini.jpg" alt="Bambini ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/famiglie.jpg" alt="Famiglie ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_incontro_famiglie.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_gallery.jpg" alt="Galleria ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           </div>
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-4">
             <i class="fas fa-shield-alt mr-1"></i>
@@ -2206,7 +2309,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-72">
-          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full h-56 object-cover">
+          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full h-56 object-cover" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2373,7 +2476,7 @@ function donationsPage(t: Record<string, string>): string {
                 <figure class="text-center">
                   <img src="/images/renu_runts_5x1000.jpg"
                        alt="${t.lang==='it'?'Sindrome ReNU Italia APS – Iscritta al RUNTS, destina il tuo 5×1000 – CF 98020680157':'Sindrome ReNU Italia APS – RUNTS registered, donate your 5×1000 – Tax Code 98020680157'}"
-                       class="rounded-2xl shadow-lg max-w-xs w-full mx-auto" style="max-width:320px">
+                       class="rounded-2xl shadow-lg max-w-xs w-full mx-auto" style="max-width:320px" loading="lazy" decoding="async">
                   <figcaption class="text-xs text-gray-500 mt-2">
                     ${t.lang==='it'?'Iscrizione RUNTS confermata dal 28/4/2025 · CF 98020680157':'RUNTS registration confirmed from 28/4/2025 · Tax Code 98020680157'}
                   </figcaption>
@@ -2745,7 +2848,7 @@ function contactPage(t: Record<string, string>): string {
       <!-- Card info associazione -->
       <div class="rounded-2xl p-8 text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex items-center gap-4 mb-5">
-          <img src="/images/logo.png" alt="Logo" class="h-16 w-auto drop-shadow">
+          <img src="/images/logo.png" alt="Logo" class="h-16 w-auto drop-shadow" loading="lazy" decoding="async">
           <div>
             <h2 class="text-xl font-bold">Sindrome ReNU Italia APS</h2>
             <p class="text-sky-200 text-sm">${t.footer_partnership}</p>
@@ -2812,7 +2915,7 @@ function brochurePage(t: Record<string, string>): string {
           <div class="overflow-hidden bg-sky-50" style="min-height:200px">
             <img src="/brochure/thumbnails/${b.thumb}.png" alt="${b.title}"
                  class="w-full h-48 object-contain p-2"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" decoding="async">
             <div style="display:none" class="w-full h-48 bg-sky-100 flex items-center justify-center">
               <i class="fas fa-file-pdf text-5xl" style="color:#1078C0"></i>
             </div>
@@ -2966,7 +3069,7 @@ function eventsPage(t: Record<string, string>): string {
       ${t.lang==='it'?`
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>4 febbraio 2025</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">Primo incontro famiglie ReNU Italia</h3>
@@ -2974,7 +3077,7 @@ function eventsPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>23 luglio 2025</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">1ª Conferenza Internazionale ReNU</h3>
@@ -2982,7 +3085,7 @@ function eventsPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_maratona.jpg" alt="Maratona Wizz Air Milano 2025" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_maratona.jpg" alt="Maratona Wizz Air Milano 2025" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-running mr-1"></i>2025</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">Maratona Wizz Air Milano</h3>
@@ -2990,7 +3093,7 @@ function eventsPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_natale_2026.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_natale_2026.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-snowflake mr-1"></i>Dicembre 2026</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">Festa di Natale ReNU Italia</h3>
@@ -3104,8 +3207,8 @@ function projectsPage(t: Record<string, string>): string {
         </p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover"></div>
-        <div class="img-frame w-52"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-36 object-cover"></div>
+        <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -3202,7 +3305,7 @@ function projectsPage(t: Record<string, string>): string {
                   <figure class="text-center">
                     <img src="/images/renu_opuscolo_scuola.jpg"
                          alt="${isIt?'Opuscolo scuola ReNU – "Ciao Mondo!" – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – "Ciao Mondo!" – Informational brochure for teachers about children with ReNU Syndrome'}"
-                         class="rounded-xl shadow-md w-full group-hover:opacity-90 transition-opacity" style="max-width:560px">
+                         class="rounded-xl shadow-md w-full group-hover:opacity-90 transition-opacity" style="max-width:560px" loading="lazy" decoding="async">
                     <figcaption class="text-xs text-gray-500 mt-2 flex items-center justify-center gap-1">
                       <i class="fas fa-eye" style="color:#7C3AED"></i>
                       ${isIt?'Anteprima opuscolo "Ciao Mondo!" – clicca per scaricare dalla cartella Drive':'Preview of "Ciao Mondo!" brochure – click to download from Drive folder'}
@@ -4005,7 +4108,7 @@ function sciencePage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-48 object-cover"></div>
+        <div class="img-frame w-72"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
