@@ -868,7 +868,7 @@ function homePage(t: Record<string, string>): string {
   const cards = [
     { href: 'https://form.jotform.com/250154538972159', ext: true,   icon: 'fa-map-marker-alt', ic: 'ic-blue',   title: t.section_map_title,       desc: t.section_map_desc,       accent: 'card-blue',   img: '/images/renu_map.jpg' },
     { href: `/${t.lang}/community`,                                   icon: 'fa-bullhorn',       ic: 'ic-purple', title: t.section_awareness_title,  desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg' },
-    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: t.lang==='it'?'/images/it_ricerca.jpg':'/images/renu_research.jpg' },
+    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg' },
     { href: `/${t.lang}/about`,                                       icon: 'fa-info-circle',    ic: 'ic-navy',   title: t.section_info_title,       desc: t.section_info_desc,       accent: 'card-navy',   img: '/images/renu_info.jpg' },
     { href: `/${t.lang}/community`,                                   icon: 'fa-users',          ic: 'ic-green',  title: t.section_parents_title,    desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg' },
     { href: `/${t.lang}/donations`,                                   icon: 'fa-heart',          ic: 'ic-red',    title: t.section_donations_title,  desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg' },
@@ -1018,40 +1018,21 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
-          ${t.lang==='it' ? `
-          <div class="p-5">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-sky flex-shrink-0"><i class="fas fa-images text-xl"></i></div>
-              <h3 class="font-bold text-lg" style="color:#082050">Galleria Italiana – In Arrivo</h3>
-            </div>
-            <p class="text-gray-600 text-sm mb-3">
-              Stiamo raccogliendo foto e momenti delle famiglie italiane con la Sindrome ReNU.
-              La galleria rispetterà le normative GDPR sulla privacy e la tutela dei minori.
-            </p>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-3">
-              <i class="fas fa-shield-alt mr-1"></i>
-              <strong>Privacy GDPR:</strong> Le foto dei minori saranno pubblicate solo con consenso esplicito dei genitori/tutori.
-            </div>
-            <a href="mailto:presidenza@sindromerenu.it"
-               class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
-              <i class="fas fa-envelope"></i>Invia le tue foto
-            </a>
-          </div>` : `
           <div class="overflow-hidden h-52">
             <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
+              ${t.lang==='it'?'I nostri bambini e famiglie':t.lang==='en'?'Our children and families':t.lang==='fr'?'Nos enfants et familles':t.lang==='es'?'Nuestros niños y familias':'Unsere Kinder und Familien'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='en'?'Discover the extraordinary stories of children and families living with ReNU Syndrome around the world.':t.lang==='fr'?'Découvrez les histoires de familles vivant avec le syndrome ReNU.':t.lang==='es'?'Descubre las historias de familias que viven con el Síndrome ReNU en todo el mundo.':'Entdecken Sie die außergewöhnlichen Geschichten von Familien mit dem ReNU-Syndrom.'}
+              ${t.lang==='it'?'Scopri i volti e le storie dei bambini italiani con la Sindrome ReNU e le loro famiglie.':t.lang==='en'?'Discover the faces and stories of Italian children with ReNU Syndrome and their families.':t.lang==='fr'?'Découvrez les histoires des familles italiennes vivant avec le syndrome ReNU.':t.lang==='es'?'Descubre las historias de las familias italianas con Síndrome ReNU.':'Entdecken Sie die Geschichten der italienischen Familien mit ReNU-Syndrom.'}
             </p>
-            <a href="https://www.renusyndrome.org/gallery" target="_blank"
+            <a href="/${t.lang}/community"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
-              <i class="fas fa-images"></i>${t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Galerie':t.lang==='es'?'Ver Galería':'Galerie'}
+              <i class="fas fa-images"></i>${t.lang==='it'?'Vai alla Gallery':t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Voir Galerie':t.lang==='es'?'Ver Galería':'Galerie ansehen'}
             </a>
-          </div>`}
+          </div>
         </div>
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
@@ -1086,18 +1067,17 @@ function homePage(t: Record<string, string>): string {
           ${t.lang==='it'?'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
         </p>
       </div>
-      ${t.lang==='it'?`
-      <!-- Card bambini italiani REALI -->
+      <!-- Card bambini italiani REALI – identiche per tutte le lingue -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
         ${[
-          { name: 'Aaron',     img: '/images/it_bambino_aaron.jpg',     desc: 'Una storia di gioia e determinazione.' },
-          { name: 'Diego',     img: '/images/it_bambino_diego.jpg',     desc: 'Sorrisi che illuminano ogni giornata.' },
-          { name: 'Francesco', img: '/images/it_bambino_francesco.jpg', desc: 'La forza di una famiglia unita.' },
-          { name: 'Maya',      img: '/images/it_bambino_maya.jpg',      desc: 'Ogni traguardo è una vittoria.' },
-          { name: 'Meilda',    img: '/images/it_bambino_meilda.jpg',    desc: 'Curiosità e amore per la vita.' },
-          { name: 'Vittoria',  img: '/images/it_bambino_vittoria.jpg',  desc: 'La tenacia di chi non si arrende.' },
-          { name: 'Manuel',    img: '/images/it_bambino_manuel.jpg',    desc: 'Un sorriso che contagia tutti.' },
-          { name: 'Gabriele',  img: '/images/it_bambino_gabriele.jpg',  desc: 'Ogni passo è un successo da celebrare.' },
+          { name: 'Aaron',     img: '/images/renu_bambino_aaron.jpg',    desc: t.lang==='it'?'Una storia di gioia e determinazione.':t.lang==='en'?'A story of joy and determination.':t.lang==='fr'?'Une histoire de joie et de détermination.':t.lang==='es'?'Una historia de alegría y determinación.':'Eine Geschichte der Freude und Entschlossenheit.' },
+          { name: 'Diego',     img: '/images/renu_bambino_diego.jpg',    desc: t.lang==='it'?'Sorrisi che illuminano ogni giornata.':t.lang==='en'?'Smiles that light up every day.':t.lang==='fr'?'Des sourires qui illuminent chaque journée.':t.lang==='es'?'Sonrisas que iluminan cada día.':'Lächeln, das jeden Tag erhellt.' },
+          { name: 'Francesco', img: '/images/renu_bambino_francesco.jpg', desc: t.lang==='it'?'La forza di una famiglia unita.':t.lang==='en'?'The strength of a united family.':t.lang==='fr'?'La force d\'une famille unie.':t.lang==='es'?'La fuerza de una familia unida.':'Die Stärke einer vereinten Familie.' },
+          { name: 'Maya',      img: '/images/renu_bambina_maya.jpg',     desc: t.lang==='it'?'Ogni traguardo è una vittoria.':t.lang==='en'?'Every milestone is a victory.':t.lang==='fr'?'Chaque étape est une victoire.':t.lang==='es'?'Cada logro es una victoria.':'Jeder Meilenstein ist ein Sieg.' },
+          { name: 'Meilda',    img: '/images/renu_ragazza_meilda.jpg',   desc: t.lang==='it'?'Curiosità e amore per la vita.':t.lang==='en'?'Curiosity and love for life.':t.lang==='fr'?'Curiosité et amour de la vie.':t.lang==='es'?'Curiosidad y amor por la vida.':'Neugier und Lebensfreude.' },
+          { name: 'Vittoria',  img: '/images/renu_ragazza_vittoria.jpg', desc: t.lang==='it'?'La tenacia di chi non si arrende.':t.lang==='en'?'The tenacity of those who never give up.':t.lang==='fr'?'La ténacité de qui ne renonce pas.':t.lang==='es'?'La tenacidad de quien no se rinde.':'Die Zähigkeit derer, die nie aufgeben.' },
+          { name: 'Manuel',    img: '/images/renu_ragazzo_manuel.jpg',   desc: t.lang==='it'?'Un sorriso che contagia tutti.':t.lang==='en'?'A smile that spreads to everyone.':t.lang==='fr'?'Un sourire qui se propage à tous.':t.lang==='es'?'Una sonrisa que contagia a todos.':'Ein Lächeln, das alle ansteckt.' },
+          { name: 'Gabriele',  img: '/images/renu_bambino_gabriele.jpg', desc: t.lang==='it'?'Ogni passo è un successo da celebrare.':t.lang==='en'?'Every step is a success to celebrate.':t.lang==='fr'?'Chaque pas est un succès à célébrer.':t.lang==='es'?'Cada paso es un éxito que celebrar.':'Jeder Schritt ist ein Erfolg zum Feiern.' },
         ].map(b => `
         <div class="card overflow-hidden group">
           <div class="overflow-hidden" style="height:180px">
@@ -1113,14 +1093,19 @@ function homePage(t: Record<string, string>): string {
         </div>`).join('')}
       </div>
       <div class="text-center mb-8">
-        <p class="text-gray-500 text-sm max-w-lg mx-auto mb-3">Vuoi condividere la storia del tuo bambino? Scrivici!</p>
+        <p class="text-gray-500 text-sm max-w-lg mx-auto mb-3">
+          ${t.lang==='it'?'Vuoi condividere la storia del tuo bambino? Scrivici!':t.lang==='en'?'Want to share your child\'s story? Write to us!':t.lang==='fr'?'Voulez-vous partager l\'histoire de votre enfant?':t.lang==='es'?'¿Quieres compartir la historia de tu hijo? ¡Escríbenos!':'Möchten Sie die Geschichte Ihres Kindes teilen?'}
+        </p>
         <a href="mailto:presidenza@sindromerenu.it"
            class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
-          <i class="fas fa-envelope"></i>Condividi la tua storia
+          <i class="fas fa-envelope"></i>
+          ${t.lang==='it'?'Condividi la tua storia':t.lang==='en'?'Share your story':t.lang==='fr'?'Partager votre histoire':t.lang==='es'?'Comparte tu historia':'Teile deine Geschichte'}
         </a>
       </div>
-      <h3 class="text-lg font-bold mb-4 text-center" style="color:#1078C0"><i class="fas fa-globe mr-2"></i>Storie dalla community internazionale</h3>
-      `:''}
+      <h3 class="text-lg font-bold mb-4 text-center" style="color:#1078C0">
+        <i class="fas fa-globe mr-2"></i>
+        ${t.lang==='it'?'Storie dalla community internazionale':t.lang==='en'?'Stories from the international community':t.lang==='fr'?'Histoires de la communauté internationale':t.lang==='es'?'Historias de la comunidad internacional':'Geschichten aus der internationalen Gemeinschaft'}
+      </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Story cards - from renusyndrome.org/stories -->
         ${[
@@ -1283,7 +1268,7 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="img-frame">
-          <img src="/images/it_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover">
+          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover">
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
             ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
@@ -1306,14 +1291,15 @@ function aboutPage(t: Record<string, string>): string {
       </div>
 
       <!-- Infografica sintomi (solo IT) -->
-      ${t.lang==='it'?`
       <div class="card overflow-hidden mb-8">
         <div class="p-4 flex items-center gap-2" style="background:#EEF6FB; border-bottom:1px solid #C8E8F8">
           <i class="fas fa-chart-bar" style="color:#1078C0"></i>
-          <span class="font-bold text-sm" style="color:#082050">Infografica: le caratteristiche cliniche della Sindrome ReNU</span>
+          <span class="font-bold text-sm" style="color:#082050">
+            ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
+          </span>
         </div>
-        <img src="/images/it_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px">
-      </div>`:''}
+        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px">
+      </div>
 
       <!-- ReNU Syndrome Support Tool -->
       <div class="mt-8 card card-navy p-6 mb-8">
@@ -2979,7 +2965,7 @@ function eventsPage(t: Record<string, string>): string {
       ${t.lang==='it'?`
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/it_primo_incontro.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>4 febbraio 2025</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">Primo incontro famiglie ReNU Italia</h3>
@@ -3003,7 +2989,7 @@ function eventsPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/it_festa_natale.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover"></div>
+          <div class="h-40 overflow-hidden"><img src="/images/renu_natale_2026.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover"></div>
           <div class="p-4">
             <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-snowflake mr-1"></i>Dicembre 2026</div>
             <h3 class="font-bold text-sm mb-1" style="color:#082050">Festa di Natale ReNU Italia</h3>
@@ -3119,7 +3105,7 @@ function projectsPage(t: Record<string, string>): string {
       ${isIt?`
       <div class="flex-shrink-0 hidden md:flex gap-4">
         <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover"></div>
-        <div class="img-frame w-52"><img src="/images/it_progetto_scuola.jpg" alt="Progetto scuola" class="w-full h-36 object-cover"></div>
+        <div class="img-frame w-52"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-36 object-cover"></div>
       </div>`:''}
     </div>
   </section>
