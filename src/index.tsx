@@ -2976,6 +2976,73 @@ function eventsPage(t: Record<string, string>): string {
       })();
       </script>
 
+      <!-- MOVE4RENU INTERNAZIONALE -->
+      <div class="mt-12 mb-6">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-globe" style="color:#45B8EC"></i>
+          ${t.lang==='it'?'Move4ReNU – L\'Iniziativa Internazionale':'Move4ReNU – The International Initiative'}
+        </h2>
+        <div class="card overflow-hidden">
+          <div class="px-8 py-6 text-white" style="background: linear-gradient(135deg, #0e7490 0%, #45B8EC 100%);">
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+              <div class="flex-shrink-0">
+                <img src="/images/move4renu.jpg"
+                     alt="Move4ReNU International"
+                     class="w-40 h-24 object-cover rounded-xl border-2 border-white border-opacity-30"
+                     loading="lazy" decoding="async">
+              </div>
+              <div>
+                <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full mb-2" style="background:rgba(255,255,255,0.2); color:#BAE6FD">
+                  <i class="fas fa-running"></i>${t.lang==='it'?'Evento Internazionale Annuale':'Annual International Event'}
+                </div>
+                <h3 class="text-2xl font-extrabold">Move4ReNU</h3>
+                <p class="text-sky-100 text-sm mt-1">
+                  ${t.lang==='it'?'Ogni aprile – In tutto il mondo':'Every April – Worldwide'}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-gray-600 leading-relaxed mb-5">
+              ${t.lang==='it'?'Move4ReNU è l\'iniziativa sportiva e di sensibilizzazione lanciata dalla comunità ReNU internazionale. Ogni aprile, famiglie e sostenitori da tutto il mondo camminano, corrono, pedalano o ballano per far conoscere la Sindrome ReNU. L\'iniziativa è disponibile in 5 lingue: italiano, inglese, francese, spagnolo e tedesco.':'Move4ReNU is the sports and awareness initiative launched by the international ReNU community. Every April, families and supporters from around the world walk, run, cycle or dance to raise awareness of ReNU Syndrome. Available in 5 languages: Italian, English, French, Spanish and German.'}
+            </p>
+            <!-- Versioni linguistiche grafiche -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-5">
+              <div class="text-center">
+                <img src="/images/move4renu_it.jpg" alt="Move4ReNU Italiano" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <span class="text-xs font-semibold text-gray-500">🇮🇹 Italiano</span>
+              </div>
+              <div class="text-center">
+                <img src="/images/move4renu_en.jpg" alt="Move4ReNU English" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <span class="text-xs font-semibold text-gray-500">🇬🇧 English</span>
+              </div>
+              <div class="text-center">
+                <img src="/images/move4renu_fr.jpg" alt="Move4ReNU Français" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <span class="text-xs font-semibold text-gray-500">🇫🇷 Français</span>
+              </div>
+              <div class="text-center">
+                <img src="/images/move4renu_es.jpg" alt="Move4ReNU Español" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <span class="text-xs font-semibold text-gray-500">🇪🇸 Español</span>
+              </div>
+              <div class="text-center">
+                <img src="/images/move4renu_de.jpg" alt="Move4ReNU Deutsch" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <span class="text-xs font-semibold text-gray-500">🇩🇪 Deutsch</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://www.renusyndrome.org/move4renu" target="_blank"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#0e7490">
+                <i class="fas fa-external-link-alt"></i>${t.lang==='it'?'Scopri Move4ReNU Internazionale':'Learn about Move4ReNU International'}
+              </a>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Partecipo Move4ReNU':'Join Move4ReNU')}"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+                <i class="fas fa-running"></i>${t.lang==='it'?'Voglio partecipare':'I want to participate'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- GIORNATA GLOBALE 4 FEBBRAIO 2027 -->
       <div class="mt-12 mb-6">
         <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
@@ -4052,6 +4119,29 @@ function sciencePage(t: Record<string, string>): string {
             </div>
           </div>`).join('')}
         </div>
+      </div>
+
+      <!-- Foto Comitato Scientifico -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-images" style="color:#1078C0"></i>
+          ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
+            <img src="/images/it_comitato.jpg"
+                 alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia':'Sindrome ReNU Italia Scientific Committee'}"
+                 class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </div>
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
+            <img src="/images/renu_science_committee.jpg"
+                 alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
+                 class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mt-3 text-center">
+          ${isIt?'Comitato Scientifico Sindrome ReNU Italia APS (sinistra) · Comitato Scientifico ReNU Internazionale (destra)':'Sindrome ReNU Italia APS Scientific Committee (left) · ReNU International Scientific Committee (right)'}
+        </p>
       </div>
 
       <!-- Membri del Comitato -->
