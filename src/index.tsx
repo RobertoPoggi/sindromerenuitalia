@@ -981,12 +981,12 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 function homePage(t: Record<string, string>): string {
   const cards = [
-    { href: `/${t.lang}/community`,                                   icon: 'fa-users',          ic: 'ic-green',  title: t.section_parents_title,    desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg' },
-    { href: `/${t.lang}/research`,                                    icon: 'fa-microscope',     ic: 'ic-sky',    title: t.section_research_title,   desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg' },
-    { href: `/${t.lang}/science`,                                     icon: 'fa-flask',          ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',   img: '/images/renu_science_committee.jpg' },
-    { href: `/${t.lang}/donations`,                                   icon: 'fa-heart',          ic: 'ic-red',    title: t.section_donations_title,  desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg' },
-    { href: `/${t.lang}/about`,                                       icon: 'fa-info-circle',    ic: 'ic-navy',   title: t.section_info_title,       desc: t.section_info_desc,       accent: 'card-blue',   img: '/images/renu_info.jpg' },
-    { href: `/${t.lang}/community`,                                   icon: 'fa-bullhorn',       ic: 'ic-purple', title: t.section_awareness_title,  desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg' },
+    { href: `/${t.lang}/community`,  icon: 'fa-users',       ic: 'ic-green',  title: t.section_parents_title,               desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg',          pos: 'top' },
+    { href: `/${t.lang}/research`,   icon: 'fa-microscope',  ic: 'ic-sky',    title: t.section_research_title,              desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg',         pos: 'center' },
+    { href: `/${t.lang}/science`,    icon: 'fa-flask',       ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',  img: '/images/renu_science_committee.jpg',pos: 'center' },
+    { href: `/${t.lang}/donations`,  icon: 'fa-heart',       ic: 'ic-red',    title: t.section_donations_title,             desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg',        pos: 'center' },
+    { href: `/${t.lang}/about`,      icon: 'fa-info-circle', ic: 'ic-navy',   title: t.section_info_title,                  desc: t.section_info_desc,       accent: 'card-blue',   img: '/images/renu_info.jpg',             pos: 'center' },
+    { href: `/${t.lang}/community`,  icon: 'fa-bullhorn',    ic: 'ic-purple', title: t.section_awareness_title,             desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg',        pos: 'center' },
   ]
   return `
   <!-- HERO -->
@@ -1044,6 +1044,7 @@ function homePage(t: Record<string, string>): string {
           <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="aspect-ratio:16/9">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
+                 style="object-position:${(c as any).pos||'center'}"
                  loading="lazy" decoding="async"
                  onerror="this.style.display='none'">
           </div>
@@ -1090,10 +1091,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-contain" style="background:#f0f8fd" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" style="background:#f0f8fd" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1383,7 +1384,8 @@ function aboutPage(t: Record<string, string>): string {
         <div class="rounded-2xl overflow-hidden shadow-lg">
           <div style="aspect-ratio:4/3; overflow:hidden;">
             <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
-                 class="w-full h-full object-cover object-center"
+                 class="w-full h-full object-cover"
+                 style="object-position:top"
                  loading="lazy" decoding="async">
           </div>
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
@@ -1961,7 +1963,8 @@ function communityPage(t: Record<string, string>): string {
       <div class="flex-shrink-0 hidden md:block">
         <div class="rounded-2xl overflow-hidden shadow-lg" style="width:280px; aspect-ratio:4/3; flex-shrink:0">
           <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia"
-               class="w-full h-full object-cover"
+               class="w-full h-full object-contain"
+               style="background:#f0f8fd"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -1994,7 +1997,7 @@ function communityPage(t: Record<string, string>): string {
 
         <div class="card card-sky overflow-hidden">
           <div class="overflow-hidden bg-sky-50" style="aspect-ratio:16/9">
-            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover" style="object-position:top" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2240,6 +2243,7 @@ function donationsPage(t: Record<string, string>): string {
         <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3">
           <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia"
                class="w-full h-full object-cover"
+               style="object-position:right center"
                loading="lazy" decoding="async">
         </div>
       </div>
