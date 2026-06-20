@@ -4686,15 +4686,16 @@ const CRUD_CONFIG = {
     label: 'FAQ',
     icon: 'fa-question-circle',
     color: 'indigo',
-    // Schema reale tabella: domanda, risposta, lingua (monolinguua) + pubblicata
-    cols: ['id','categoria','domanda','lingua','ordine','pubblicata'],
+    // Schema produzione: domanda_it/en, risposta_it/en, attiva
+    cols: ['id','categoria','domanda_it','domanda_en','ordine','attiva'],
     fields: [
       {name:'categoria',   label:'Categoria',   type:'select', opts:['diagnosi','terapie','comunita','ricerca','medici','diritti','scuola','bonus']},
-      {name:'lingua',      label:'Lingua',      type:'select', opts:['it','en','fr','es','de'], def:'it'},
-      {name:'domanda',     label:'Domanda',     type:'text',   req:true},
-      {name:'risposta',    label:'Risposta',    type:'textarea', req:true},
+      {name:'domanda_it',  label:'Domanda IT',  type:'text',   req:true},
+      {name:'domanda_en',  label:'Domanda EN',  type:'text'},
+      {name:'risposta_it', label:'Risposta IT', type:'textarea', req:true},
+      {name:'risposta_en', label:'Risposta EN', type:'textarea'},
       {name:'ordine',      label:'Ordine',      type:'number', def:0},
-      {name:'pubblicata',  label:'Pubblicata',  type:'select', opts:['1','0']},
+      {name:'attiva',      label:'Attiva',      type:'select', opts:['1','0']},
     ]
   },
   news: {
@@ -5104,17 +5105,18 @@ app.delete('/api/admin/erasure/:email', async (c) => {
 // ─── API CONTENUTI PUBBLICHE ──────────────────────────────────────────────────
 
 // GET /api/faq?lang=it
-// Schema reale: domanda TEXT, risposta TEXT, lingua TEXT DEFAULT 'it'
+// Schema produzione: domanda_it/en, risposta_it/en, attiva, ordine
 app.get('/api/faq', async (c) => {
   const lang = (c.req.query('lang') || 'it').toLowerCase()
   const db = c.env?.DB
   if (!db) return c.json([])
   try {
+    const dCol = lang === 'en' ? 'domanda_en' : 'domanda_it'
+    const rCol = lang === 'en' ? 'risposta_en' : 'risposta_it'
     const r = await db.prepare(
-      `SELECT id, categoria, domanda, risposta, ordine
-       FROM faq WHERE pubblicata=1 AND lingua=?
-       ORDER BY ordine ASC, id ASC`
-    ).bind(lang).all()
+      'SELECT id, categoria, ' + dCol + ' as domanda, ' + rCol + ' as risposta, ordine ' +
+      'FROM faq WHERE attiva=1 ORDER BY ordine ASC, id ASC'
+    ).all()
     return c.json(r.results)
   } catch(e: any) { return c.json([]) }
 })
@@ -5240,11 +5242,10 @@ app.post('/api/admin/faq', async (c) => {
   if (!db) return c.json({ error: 'DB non disponibile' }, 500)
   try {
     const b = await c.req.json() as any
-    // Schema reale: domanda, risposta, lingua (monolinguua)
+    // Schema produzione: domanda_it/en, risposta_it/en, attiva
     const r = await db.prepare(
-      `INSERT INTO faq (categoria, domanda, risposta, lingua, ordine, pubblicata)
-       VALUES (?,?,?,?,?,?)`
-    ).bind(b.categoria||'',b.domanda||'',b.risposta||'',b.lingua||'it',b.ordine||0,b.pubblicata??1).run()
+      'INSERT INTO faq (categoria, domanda_it, domanda_en, risposta_it, risposta_en, ordine, attiva) VALUES (?,?,?,?,?,?,?)'
+    ).bind(b.categoria||'',b.domanda_it||'',b.domanda_en||'',b.risposta_it||'',b.risposta_en||'',b.ordine||0,b.attiva??1).run()
     return c.json({ success: true, id: r.meta.last_row_id })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
@@ -5255,10 +5256,10 @@ app.put('/api/admin/faq/:id', async (c) => {
   try {
     const id = parseInt(c.req.param('id'))
     const b = await c.req.json() as any
-    // Schema reale: domanda, risposta, lingua (monolinguua)
+    // Schema produzione: domanda_it/en, risposta_it/en, attiva
     await db.prepare(
-      `UPDATE faq SET categoria=?, domanda=?, risposta=?, lingua=?, ordine=?, pubblicata=? WHERE id=?`
-    ).bind(b.categoria||'',b.domanda||'',b.risposta||'',b.lingua||'it',b.ordine||0,b.pubblicata??1,id).run()
+      'UPDATE faq SET categoria=?, domanda_it=?, domanda_en=?, risposta_it=?, risposta_en=?, ordine=?, attiva=? WHERE id=?'
+    ).bind(b.categoria||'',b.domanda_it||'',b.domanda_en||'',b.risposta_it||'',b.risposta_en||'',b.ordine||0,b.attiva??1,id).run()
     return c.json({ success: true })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
@@ -5547,5 +5548,6 @@ app.delete('/api/admin/eventi/:id', async (c) => {
     return c.json({ success: true })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
+
 
 export default app
