@@ -901,7 +901,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
       <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.lang==='it'?'Privacy Policy':'Privacy Policy'}</a>
       &nbsp;|&nbsp;
-      <a href="mailto:info@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il DPO':'Contact DPO'}</a>
+      <a href="mailto:dpo@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il DPO':'Contact DPO'}</a>
       &nbsp;|&nbsp;
       <span>${t.lang==='it'?'Sito conforme GDPR (Reg. UE 2016/679)':'GDPR Compliant (EU Reg. 2016/679)'}</span>
     </div>
@@ -1130,7 +1130,7 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden h-52">
+          <div class="overflow-hidden" style="aspect-ratio:16/9">
             <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
@@ -1148,15 +1148,15 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
-          <div class="overflow-hidden h-52">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden" style="aspect-ratio:16/9">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'Mappa Mondiale RNU4-2':t.lang==='en'?'RNU4-2 World Map':t.lang==='fr'?'Carte Mondiale RNU4-2':t.lang==='es'?'Mapa Mundial RNU4-2':'RNU4-2 Weltkarte'}
+              ${t.lang==='it'?'Mappa Italia e Mondiale RNU4-2':t.lang==='en'?'Italy &amp; World Map RNU4-2':t.lang==='fr'?'Carte Italie et Mondiale RNU4-2':t.lang==='es'?'Mapa Italia y Mundial RNU4-2':'Karte Italien und Welt RNU4-2'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Famiglie RNU4-2 mappate in 38+ paesi. Aggiungiti alla mappa e aiuta ad aumentare la forza dei numeri nella ricerca.':t.lang==='en'?'RNU4-2 families mapped in 38+ countries. Add yourself to the map and help strengthen research.':'Familles RNU4-2 cartographiées dans 38+ pays. Ajoutez-vous à la carte!'}
+              ${t.lang==='it'?'Famiglie RNU4-2 mappate in Italia e in 38+ paesi nel mondo. Aggiungiti alla mappa e aiuta ad aumentare la forza dei numeri nella ricerca.':t.lang==='en'?'RNU4-2 families mapped in Italy and 38+ countries worldwide. Add yourself to the map and help strengthen research.':'Familles RNU4-2 cartographiées en Italie et dans 38+ pays. Ajoutez-vous à la carte!'}
             </p>
             <a href="https://www.renusyndrome.org/map" target="_blank"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#082050">
@@ -1328,7 +1328,7 @@ function aboutPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/nastro.png" alt="Nastro ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async">
+          <img src="/images/nastro.png" alt="Nastro ReNU" class="w-full object-contain" style="max-height:220px;background:#f0f8fd;" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1361,7 +1361,7 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="img-frame">
-          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full h-64 object-cover" loading="lazy" decoding="async">
+          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full object-cover" style="aspect-ratio:16/9;" loading="lazy" decoding="async">
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
             ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
@@ -1753,8 +1753,8 @@ function therapiesPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-56"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-40 object-cover" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-56"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-40 object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -2036,16 +2036,16 @@ function communityPage(t: Record<string, string>): string {
       <!-- Map and Parent Network -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="card card-blue overflow-hidden">
-          <div class="h-40 overflow-hidden">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italiana Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden" style="aspect-ratio:16/9">
+            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
             <h3 class="font-bold text-xl mb-3" style="color:#082050">
-              ${t.lang==='it'?'Mappa Mondiale RNU4-2':'World Map RNU4-2'}
+              ${t.lang==='it'?'Mappa Italia e Mondiale RNU4-2':'Italy &amp; World Map RNU4-2'}
             </h3>
             <p class="text-gray-600 mb-4 text-sm">
-              ${t.lang==='it'?'Aggiungi il tuo familiare alla mappa mondiale di RNU4-2. Ultimi aggiornati: 15 aprile 2026.':'Add your family member to the worldwide RNU4-2 map. Last updated: April 15, 2026.'}
+              ${t.lang==='it'?'Aggiungi il tuo familiare alla mappa Italia e mondiale di RNU4-2. Ultimo aggiornamento: 15 aprile 2026.':'Add your family member to the Italy and worldwide RNU4-2 map. Last updated: April 15, 2026.'}
             </p>
             <a href="https://form.jotform.com/250154538972159" target="_blank"
                class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#1078C0">
@@ -2351,7 +2351,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
 
       <!-- COME DONARE -->
-      <div id="come-donare">
+      <div id="come-donare" class="scroll-mt-36">
         <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
           <span class="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:#1078C0">1</span>
           ${t.lang==='it'?'Come Donare':t.lang==='en'?'How to Donate':'Comment Donner'}
@@ -2428,7 +2428,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
 
       <!-- 5X1000 -->
-      <div id="cinque-per-mille">
+      <div id="cinque-per-mille" class="scroll-mt-36">
         <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
           <span class="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:#1078C0">2</span>
           5×1000
@@ -2471,12 +2471,12 @@ function donationsPage(t: Record<string, string>): string {
                   ${t.lang==='it'?'Dal 28 aprile 2025 Sindrome ReNU Italia APS è ufficialmente iscritta al RUNTS (Registro Unico Nazionale del Terzo Settore).':'Since 28 April 2025, Sindrome ReNU Italia APS is officially registered in RUNTS (National Register of the Third Sector).'}
                 </p>
               </div>
-              <!-- LOCANDINA RUNTS / 5x1000 -->
+              <!-- LOCANDINA RUNTS / 5x1000 (formato verticale 704x1024) -->
               <div class="mt-5 flex justify-center">
                 <figure class="text-center">
                   <img src="/images/renu_runts_5x1000.jpg"
                        alt="${t.lang==='it'?'Sindrome ReNU Italia APS – Iscritta al RUNTS, destina il tuo 5×1000 – CF 98020680157':'Sindrome ReNU Italia APS – RUNTS registered, donate your 5×1000 – Tax Code 98020680157'}"
-                       class="rounded-2xl shadow-lg max-w-xs w-full mx-auto" style="max-width:320px" loading="lazy" decoding="async">
+                       class="rounded-2xl shadow-lg mx-auto" style="width:100%;max-width:360px;height:auto;display:block;" loading="lazy" decoding="async">
                   <figcaption class="text-xs text-gray-500 mt-2">
                     ${t.lang==='it'?'Iscrizione RUNTS confermata dal 28/4/2025 · CF 98020680157':'RUNTS registration confirmed from 28/4/2025 · Tax Code 98020680157'}
                   </figcaption>
@@ -2488,7 +2488,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
 
       <!-- COMPLEANNO SOLIDALE -->
-      <div id="compleanno-solidale">
+      <div id="compleanno-solidale" class="scroll-mt-36">
         <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
           <span class="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:#1078C0">3</span>
           ${t.lang==='it'?'Compleanno Solidale':'Birthday Fundraiser'}
@@ -3207,8 +3207,8 @@ function projectsPage(t: Record<string, string>): string {
         </p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-52"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-52"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -3299,13 +3299,13 @@ function projectsPage(t: Record<string, string>): string {
               <p class="text-gray-600 leading-relaxed mb-4">
                 ${isIt?'Il Percorso Scuola ReNU offre materiali pratici e linee guida per supportare insegnanti, educatori, assistenti all\'autonomia e scuole nell\'inclusione dei bambini con Sindrome ReNU. Disponibili opuscoli informativi, schede di presentazione per la classe e indicazioni per il PEI/PDP. Materiali scaricabili gratuitamente dalla nostra cartella condivisa.':'The ReNU School Pathway offers practical materials and guidelines to support teachers, educators, support assistants and schools in including children with ReNU Syndrome. Available are informational brochures, class presentation sheets and guidance for individual education plans. Materials available free of charge from our shared folder.'}
               </p>
-              <!-- ANTEPRIMA OPUSCOLO SCUOLA -->
+              <!-- ANTEPRIMA OPUSCOLO SCUOLA (1024x683, orizzontale) -->
               <div class="mb-5">
                 <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank" rel="noopener" class="block group">
                   <figure class="text-center">
                     <img src="/images/renu_opuscolo_scuola.jpg"
-                         alt="${isIt?'Opuscolo scuola ReNU – "Ciao Mondo!" – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – "Ciao Mondo!" – Informational brochure for teachers about children with ReNU Syndrome'}"
-                         class="rounded-xl shadow-md w-full group-hover:opacity-90 transition-opacity" style="max-width:560px" loading="lazy" decoding="async">
+                         alt="${isIt?'Opuscolo scuola ReNU – Ciao Mondo! – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – Ciao Mondo! – Informational brochure for teachers about children with ReNU Syndrome'}"
+                         style="width:100%;max-width:600px;height:auto;display:block;border-radius:0.75rem;box-shadow:0 4px 16px rgba(0,0,0,0.12);" class="group-hover:opacity-90 transition-opacity" loading="lazy" decoding="async">
                     <figcaption class="text-xs text-gray-500 mt-2 flex items-center justify-center gap-1">
                       <i class="fas fa-eye" style="color:#7C3AED"></i>
                       ${isIt?'Anteprima opuscolo "Ciao Mondo!" – clicca per scaricare dalla cartella Drive':'Preview of "Ciao Mondo!" brochure – click to download from Drive folder'}
@@ -3944,8 +3944,8 @@ function privacyPage(t: Record<string, string>): string {
             <p class="text-gray-700">
               <strong>Avv. Francesco Conti</strong><br>
               ${isIt?'Nominato dal Consiglio Direttivo in data 9 giugno 2026 ai sensi dell\'Art. 37 GDPR (Reg. UE 2016/679).':'Appointed by the Board of Directors on 9 June 2026 pursuant to Art. 37 GDPR (EU Reg. 2016/679).'}<br><br>
-              ${isIt?'Per esercitare i tuoi diritti o per qualsiasi questione relativa al trattamento dei dati personali, puoi contattare il DPO scrivendo al Titolare del Trattamento:':'To exercise your rights or for any matter relating to the processing of personal data, you may contact the DPO by writing to the Data Controller:'}<br>
-              <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline font-semibold">info@sindromerenu.it</a>
+              ${isIt?'Per esercitare i tuoi diritti o per qualsiasi questione relativa al trattamento dei dati personali, contatta direttamente il DPO:':'To exercise your rights or for any matter relating to the processing of personal data, contact the DPO directly:'}<br>
+              <a href="mailto:dpo@sindromerenu.it" class="text-blue-600 hover:underline font-semibold">dpo@sindromerenu.it</a>
             </p>
           </div>
         </div>
@@ -4117,7 +4117,7 @@ function sciencePage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-72" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
