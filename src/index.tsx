@@ -1041,9 +1041,11 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="h-36 overflow-hidden bg-sky-50">
-            <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                 onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full\' loading="lazy" decoding="async"><i class=\'fas ${c.icon} text-4xl text-sky-300\'></i></div>'">
+          <div class="h-36 overflow-hidden bg-sky-50 relative flex items-center justify-center">
+            <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
+            <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
+                 loading="lazy" decoding="async"
+                 onerror="this.style.display='none'">
           </div>
           <div class="p-5">
             <div class="flex items-center gap-3 mb-2">
