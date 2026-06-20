@@ -5549,5 +5549,4 @@ app.delete('/api/admin/eventi/:id', async (c) => {
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
 
-
 export default app
