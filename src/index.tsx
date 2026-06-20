@@ -1090,10 +1090,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-48 object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-36 object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1246,7 +1246,7 @@ function homePage(t: Record<string, string>): string {
             const shown = data.slice(0,6);
             g.innerHTML = shown.map(s=>(
             '<a href="'+(s.url_storia||'https://www.renusyndrome.org/stories')+'" target="_blank" class="card card-sky overflow-hidden group block">'+
-              '<div class="h-40 overflow-hidden flex items-center justify-center" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
+              '<div class="overflow-hidden flex items-center justify-center" style="aspect-ratio:16/9; background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
                 '<div class="text-center">'+
                   '<div class="text-5xl mb-2">'+(s.flag||'🌍')+'</div>'+
                   '<div class="text-2xl font-extrabold" style="color:#082050">'+s.nome+'</div>'+
@@ -1368,9 +1368,9 @@ function aboutPage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Ashley photo -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="md:col-span-2">
+      <!-- Aaron photo -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
           <div class="bg-amber-50 border border-amber-300 rounded-2xl p-5 mb-5 flex items-start gap-3">
             <i class="fas fa-exclamation-triangle text-amber-500 text-2xl mt-1 flex-shrink-0"></i>
             <p class="text-amber-800 font-semibold text-lg">${t.about_diagnosis_note}</p>
@@ -1380,8 +1380,12 @@ function aboutPage(t: Record<string, string>): string {
             <p class="text-gray-700 italic text-base">${t.about_happy}</p>
           </div>
         </div>
-        <div class="img-frame">
-          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full object-cover rounded-xl" style="aspect-ratio:16/9; display:block;" loading="lazy" decoding="async">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <div style="aspect-ratio:4/3; overflow:hidden;">
+            <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
+                 class="w-full h-full object-cover object-center"
+                 loading="lazy" decoding="async">
+          </div>
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
             ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
@@ -1955,8 +1959,10 @@ function communityPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.community_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-64">
-          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-48 object-cover" loading="lazy" decoding="async">
+        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:280px; aspect-ratio:4/3; flex-shrink:0">
+          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia"
+               class="w-full h-full object-cover"
+               loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2230,9 +2236,11 @@ function donationsPage(t: Record<string, string>): string {
           </a>
         </div>
       </div>
-      <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72">
-          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full object-cover rounded-xl" style="aspect-ratio:16/9; display:block;" loading="lazy" decoding="async">
+      <div class="flex-shrink-0 hidden md:block" style="width:340px">
+        <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3">
+          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia"
+               class="w-full h-full object-cover"
+               loading="lazy" decoding="async">
         </div>
       </div>
     </div>
