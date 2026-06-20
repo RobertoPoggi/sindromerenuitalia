@@ -1196,8 +1196,8 @@ function homePage(t: Record<string, string>): string {
             if(!data || !data.length){ g.innerHTML=''; return; }
             g.innerHTML = data.map(b=>\`
             <div class="card overflow-hidden group">
-              <div class="overflow-hidden" style="height:180px">
-                \${b.img_url ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
+              <div class="overflow-hidden" style="aspect-ratio:4/5">
+                \${b.img_url ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
                   : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-5xl text-sky-300"></i></div>'}
               </div>
               <div class="p-3 text-center">
@@ -2122,7 +2122,7 @@ function communityPage(t: Record<string, string>): string {
                 const g = document.getElementById('gallery-community-grid');
                 if(!data || !data.length){ g.innerHTML=''; return; }
                 g.innerHTML = data.map(img=>(
-                  '<div class="rounded-xl overflow-hidden" style="height:140px">'+
+                  '<div class="rounded-xl overflow-hidden" style="aspect-ratio:16/9">'+
                     '<img src="'+img.img_url+'" alt="'+(img.didascalia_it||img.didascalia||'ReNU Italia')+'" class="w-full h-full object-cover" loading="lazy" decoding="async">'+
                   '</div>'
                 )).join('');
