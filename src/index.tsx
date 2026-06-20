@@ -1041,7 +1041,7 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="h-36 overflow-hidden bg-sky-50 relative flex items-center justify-center">
+          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="aspect-ratio:16/9">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
                  loading="lazy" decoding="async"
@@ -1381,7 +1381,7 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="img-frame">
-          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full object-cover" style="aspect-ratio:16/9;" loading="lazy" decoding="async">
+          <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU" class="w-full object-cover rounded-xl" style="aspect-ratio:16/9; display:block;" loading="lazy" decoding="async">
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
             ${t.lang==='it'?'Aaron, un bambino italiano con Sindrome ReNU':t.lang==='en'?'Aaron, an Italian child with ReNU Syndrome':t.lang==='fr'?'Aaron, un enfant italien atteint du Syndrome ReNU':t.lang==='es'?'Aaron, un niño italiano con Síndrome ReNU':'Aaron, ein italienisches Kind mit ReNU-Syndrom'}
           </div>
@@ -1987,7 +1987,7 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center">
+          <div class="overflow-hidden bg-sky-50" style="aspect-ratio:16/9">
             <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
@@ -2232,7 +2232,7 @@ function donationsPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-72">
-          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full h-56 object-cover" loading="lazy" decoding="async">
+          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia" class="w-full object-cover rounded-xl" style="aspect-ratio:16/9; display:block;" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
