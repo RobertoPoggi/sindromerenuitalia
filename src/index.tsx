@@ -1179,31 +1179,38 @@ function homePage(t: Record<string, string>): string {
           ${t.lang==='it'?'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
         </p>
       </div>
-      <!-- Card bambini italiani REALI – identiche per tutte le lingue -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
-        ${[
-          { name: 'Aaron',     img: '/images/renu_bambino_aaron.jpg',    desc: t.lang==='it'?'Una storia di gioia e determinazione.':t.lang==='en'?'A story of joy and determination.':t.lang==='fr'?'Une histoire de joie et de détermination.':t.lang==='es'?'Una historia de alegría y determinación.':'Eine Geschichte der Freude und Entschlossenheit.' },
-          { name: 'Diego',     img: '/images/renu_bambino_diego.jpg',    desc: t.lang==='it'?'Sorrisi che illuminano ogni giornata.':t.lang==='en'?'Smiles that light up every day.':t.lang==='fr'?'Des sourires qui illuminent chaque journée.':t.lang==='es'?'Sonrisas que iluminan cada día.':'Lächeln, das jeden Tag erhellt.' },
-          { name: 'Francesco', img: '/images/renu_bambino_francesco.jpg', desc: t.lang==='it'?'La forza di una famiglia unita.':t.lang==='en'?'The strength of a united family.':t.lang==='fr'?'La force d\'une famille unie.':t.lang==='es'?'La fuerza de una familia unida.':'Die Stärke einer vereinten Familie.' },
-          { name: 'Maya',      img: '/images/renu_bambina_maya.jpg',     desc: t.lang==='it'?'Ogni traguardo è una vittoria.':t.lang==='en'?'Every milestone is a victory.':t.lang==='fr'?'Chaque étape est une victoire.':t.lang==='es'?'Cada logro es una victoria.':'Jeder Meilenstein ist ein Sieg.' },
-          { name: 'Meilda',    img: '/images/renu_ragazza_meilda.jpg',   desc: t.lang==='it'?'Curiosità e amore per la vita.':t.lang==='en'?'Curiosity and love for life.':t.lang==='fr'?'Curiosité et amour de la vie.':t.lang==='es'?'Curiosidad y amor por la vida.':'Neugier und Lebensfreude.' },
-          { name: 'Vittoria',  img: '/images/renu_ragazza_vittoria.jpg', desc: t.lang==='it'?'La tenacia di chi non si arrende.':t.lang==='en'?'The tenacity of those who never give up.':t.lang==='fr'?'La ténacité de qui ne renonce pas.':t.lang==='es'?'La tenacidad de quien no se rinde.':'Die Zähigkeit derer, die nie aufgeben.' },
-          { name: 'Manuel',    img: '/images/renu_ragazzo_manuel.jpg',   desc: t.lang==='it'?'Un sorriso che contagia tutti.':t.lang==='en'?'A smile that spreads to everyone.':t.lang==='fr'?'Un sourire qui se propage à tous.':t.lang==='es'?'Una sonrisa que contagia a todos.':'Ein Lächeln, das alle ansteckt.' },
-          { name: 'Gabriele',  img: '/images/renu_bambino_gabriele.jpg', desc: t.lang==='it'?'Ogni passo è un successo da celebrare.':t.lang==='en'?'Every step is a success to celebrate.':t.lang==='fr'?'Chaque pas est un succès à célébrer.':t.lang==='es'?'Cada paso es un éxito que celebrar.':'Jeder Schritt ist ein Erfolg zum Feiern.' },
-        ].map(b => `
-        <div class="card overflow-hidden group">
-          <div class="overflow-hidden" style="height:180px">
-            <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
-          </div>
-          <div class="p-3 text-center">
-            <h3 class="font-extrabold text-base mb-1" style="color:#082050">${b.name}</h3>
-            <p class="text-gray-500 text-xs">${b.desc}</p>
-            <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">
-              <i class="fas fa-flag text-xs" style="color:#009246"></i> Italia
-            </div>
-          </div>
-        </div>`).join('')}
+      <!-- Card bambini italiani REALI – caricate dal DB -->
+      <div id="storie-italiane-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+        <div class="col-span-full text-center py-8 text-gray-400">
+          <i class="fas fa-spinner fa-spin text-2xl mb-2 block"></i>
+          ${t.lang==='it'?'Caricamento storie...':t.lang==='en'?'Loading stories...':'Chargement...'}
+        </div>
       </div>
+      <script>
+      (function(){
+        const lang = '${t.lang}';
+        fetch('/api/storie?lang=' + lang + '&tipo=italiana')
+          .then(r=>r.json())
+          .then(data=>{
+            const g = document.getElementById('storie-italiane-grid');
+            if(!data || !data.length){ g.innerHTML=''; return; }
+            g.innerHTML = data.map(b=>\`
+            <div class="card overflow-hidden group">
+              <div class="overflow-hidden" style="height:180px">
+                \${b.img_url ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
+                  : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-5xl text-sky-300"></i></div>'}
+              </div>
+              <div class="p-3 text-center">
+                <h3 class="font-extrabold text-base mb-1" style="color:#082050">\${b.nome}</h3>
+                <p class="text-gray-500 text-xs">\${b.desc||''}</p>
+                <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">
+                  <i class="fas fa-flag text-xs" style="color:#009246"></i> Italia
+                </div>
+              </div>
+            </div>\`).join('');
+          }).catch(()=>{ document.getElementById('storie-italiane-grid').innerHTML=''; });
+      })();
+      </script>
       <div class="text-center mb-8">
         <p class="text-gray-500 text-sm max-w-lg mx-auto mb-3">
           ${t.lang==='it'?'Vuoi condividere la storia del tuo bambino? Scrivici!':t.lang==='en'?'Want to share your child\'s story? Write to us!':t.lang==='fr'?'Voulez-vous partager l\'histoire de votre enfant?':t.lang==='es'?'¿Quieres compartir la historia de tu hijo? ¡Escríbenos!':'Möchten Sie die Geschichte Ihres Kindes teilen?'}
@@ -1218,31 +1225,41 @@ function homePage(t: Record<string, string>): string {
         <i class="fas fa-globe mr-2"></i>
         ${t.lang==='it'?'Storie dalla community internazionale':t.lang==='en'?'Stories from the international community':t.lang==='fr'?'Histoires de la communauté internationale':t.lang==='es'?'Historias de la comunidad internacional':'Geschichten aus der internationalen Gemeinschaft'}
       </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Story cards - from renusyndrome.org/stories -->
-        ${[
-          { name: 'James', country: '🇬🇧', url: 'https://www.renusyndrome.org/james-2', desc: t.lang==='it'?'Una storia di forza e gioia dalla Gran Bretagna.':t.lang==='en'?'A story of strength and joy from Great Britain.':'Une histoire de force et joie de Grande-Bretagne.' },
-          { name: 'Ashley', country: '🇺🇸', url: 'https://www.renusyndrome.org/ashley', desc: t.lang==='it'?'Ashley, 8 anni, ama l\'acqua, la musica e i momenti di gioia.':t.lang==='en'?'Ashley, age 8, loves water, music, and joyful moments.':'Ashley, 8 ans, adore l\'eau et la musique.' },
-          { name: 'Eliot', country: '🇫🇷', url: 'https://www.renusyndrome.org/eliot', desc: t.lang==='it'?'La famiglia di Eliot dalla Francia, unita nella speranza.':t.lang==='en'?'Eliot\'s family from France, united in hope.':'La famille d\'Eliot de France.' },
-          { name: 'Isla', country: '🇦🇺', url: 'https://www.renusyndrome.org/isla', desc: t.lang==='it'?'Isla dall\'Australia, la gioia di ogni giorno.':t.lang==='en'?'Isla from Australia, the joy of every day.':'Isla d\'Australie, la joie quotidienne.' },
-          { name: 'Noah', country: '🇨🇦', url: 'https://www.renusyndrome.org/noah', desc: t.lang==='it'?'Noah dal Canada, una storia che ispira.':t.lang==='en'?'Noah from Canada, an inspiring story.':'Noah du Canada, une histoire inspirante.' },
-          { name: 'Antonin', country: '🇫🇷', url: 'https://www.renusyndrome.org/antonin', desc: t.lang==='it'?'Antonin dalla Francia, la forza di una famiglia unita.':t.lang==='en'?'Antonin from France, the strength of a united family.':'Antonin de France, la force d\'une famille.' },
-        ].map(s => `
-        <a href="${s.url}" target="_blank" class="card card-sky overflow-hidden group block">
-          <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">
-            <div class="text-center">
-              <div class="text-5xl mb-2">${s.country}</div>
-              <div class="text-2xl font-extrabold" style="color:#082050">${s.name}</div>
-            </div>
-          </div>
-          <div class="p-5">
-            <p class="text-gray-600 text-sm mb-3">${s.desc}</p>
-            <span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#1078C0">
-              ${t.read_more} <i class="fas fa-arrow-right text-xs"></i>
-            </span>
-          </div>
-        </a>`).join('')}
+      <!-- Storie internazionali caricate dal DB -->
+      <div id="storie-intl-home-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="col-span-full text-center py-8 text-gray-400">
+          <i class="fas fa-spinner fa-spin text-2xl mb-2 block"></i>
+          ${t.lang==='it'?'Caricamento storie...':t.lang==='en'?'Loading stories...':t.lang==='fr'?'Chargement...':t.lang==='es'?'Cargando...':'Laden...'}
+        </div>
       </div>
+      <script>
+      (function(){
+        const lang = '${t.lang}';
+        const readMore = '${t.read_more}';
+        fetch('/api/storie?lang=' + lang + '&tipo=internazionale')
+          .then(r=>r.json())
+          .then(data=>{
+            const g = document.getElementById('storie-intl-home-grid');
+            if(!data || !data.length){ g.innerHTML=''; return; }
+            const shown = data.slice(0,6);
+            g.innerHTML = shown.map(s=>`+"`"+`
+            <a href="${s.url_storia||'https://www.renusyndrome.org/stories'}" target="_blank" class="card card-sky overflow-hidden group block">
+              <div class="h-40 overflow-hidden bg-sky-50 flex items-center justify-center" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">
+                <div class="text-center">
+                  <div class="text-5xl mb-2">${s.flag||'🌍'}</div>
+                  <div class="text-2xl font-extrabold" style="color:#082050">${s.nome}</div>
+                </div>
+              </div>
+              <div class="p-5">
+                <p class="text-gray-600 text-sm mb-3">${s.desc||''}</p>
+                <span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#1078C0">
+                  ${readMore} <i class="fas fa-arrow-right text-xs"></i>
+                </span>
+              </div>
+            </a>`+"`"+`).join('');
+          }).catch(()=>{ document.getElementById('storie-intl-home-grid').innerHTML=''; });
+      })();
+      </script>
       <div class="text-center mt-8">
         <a href="https://www.renusyndrome.org/stories" target="_blank"
            class="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-colors" style="background:#1078C0">
@@ -1541,7 +1558,7 @@ function researchPage(t: Record<string, string>): string {
           'Nous travaillons avec notre Comité Scientifique pour préparer des contenus précis sur la recherche du Syndrome ReNU.'}
       </p>
 
-      <!-- PUBBLICAZIONI PUBMED -->
+      <!-- PUBBLICAZIONI PUBMED – dinamiche dal DB -->
       <div class="text-left mb-12">
         <div class="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 rounded-full px-4 py-2 text-sm font-semibold mb-6" style="color:#082050">
           <i class="fas fa-book-medical" style="color:#1078C0"></i>
@@ -1550,137 +1567,11 @@ function researchPage(t: Record<string, string>): string {
         <h3 class="text-2xl font-extrabold mb-6" style="color:#082050">
           ${t.lang==='it'?'Letteratura Scientifica sulla Sindrome ReNU (RNU4-2)':'Scientific Literature on ReNU Syndrome (RNU4-2)'}
         </h3>
-        <div class="space-y-5">
-          ${[
-            // ── 2026 ──────────────────────────────────────────────────────────
-            {
-              authors: 'Rius R, Blakes AJM, Chen Y, et al.',
-              year: '2026',
-              title: 'Biallelic variants in the noncoding RNA gene RNU4-2 cause a recessive neurodevelopmental syndrome with distinct white matter changes',
-              journal: 'Nature Genetics. 2026 Apr;58(4):761-773.',
-              pmid: '41951959',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41951959/',
-              badge: t.lang==='it'?'NUOVO 2026':'NEW 2026',
-              summary: t.lang==='it'?'Scoperta rivoluzionaria: le varianti bialleliche (recessive) in RNU4-2 causano una seconda sindrome del neurosviluppo, distinta da ReNU dominante, con caratteristiche cambiamenti della sostanza bianca cerebrale. Lo studio identifica 38 individui con varianti omozigoti o eterozigoti composte in RNU4-2, ampliando enormemente lo spettro delle malattie legate a questo gene.':
-                        'Groundbreaking discovery: biallelic (recessive) variants in RNU4-2 cause a second neurodevelopmental syndrome, distinct from dominant ReNU, with distinct white matter changes. The study identifies 38 individuals with homozygous or compound heterozygous variants in RNU4-2, greatly expanding the disease spectrum linked to this gene.'
-            },
-            {
-              authors: 'De Jonghe J, Kim HC, Adedeji A, et al.',
-              year: '2026',
-              title: 'Saturation editing of RNU4-2 reveals distinct dominant and recessive disorders',
-              journal: 'Nature. 2026 Apr (Online ahead of print).',
-              pmid: '41951737',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41951737/',
-              badge: t.lang==='it'?'NUOVO 2026':'NEW 2026',
-              summary: t.lang==='it'?'Studio di "saturation editing" su RNU4-2 che rivela due distinte malattie: una dominante (ReNU) e una recessiva. Mappa sistematicamente le conseguenze funzionali di ogni variante possibile nello snRNA spliceosomal, identificando le posizioni critiche e fornendo la base molecolare per distinguere e comprendere entrambe le sindromi.':
-                        'Saturation editing study of RNU4-2 revealing two distinct disorders: one dominant (ReNU) and one recessive. Systematically maps functional consequences of every possible variant in the spliceosomal snRNA, identifying critical positions and providing molecular basis to distinguish and understand both syndromes.'
-            },
-            {
-              authors: 'Leitão E, Santini A, Cogne B, et al.',
-              year: '2026',
-              title: 'Systematic analysis of snRNA genes reveals frequent RNU2-2 variants in dominant and recessive developmental and epileptic encephalopathies',
-              journal: 'Nature Genetics. 2026 Apr;58(4):782-797.',
-              pmid: '41912934',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41912934/',
-              badge: '',
-              summary: t.lang==='it'?'Analisi sistematica dei geni snRNA che rivela varianti frequenti in RNU2-2, gene correlato a RNU4-2, in encefalopatie dello sviluppo ed epilettiche sia dominanti che recessive. Lo studio amplia la comprensione del ruolo degli snRNA nelle malattie neurologiche rare e apre nuove prospettive diagnostiche per pazienti non diagnosticati.':
-                        'Systematic analysis of snRNA genes revealing frequent RNU2-2 variants in dominant and recessive developmental and epileptic encephalopathies. The study broadens understanding of snRNA roles in rare neurological diseases and opens new diagnostic perspectives for undiagnosed patients.'
-            },
-            {
-              authors: 'Ajmone PF, Rigamonti C, Brasca F, Milani D, et al.',
-              year: '2026',
-              title: 'Longitudinal Behavior Phenotype Hallmarks in RNU4-2 Syndrome: Implications for Clinical Management',
-              journal: 'Am J Med Genet B Neuropsychiatr Genet. 2026 Apr;201(3):205-211.',
-              pmid: '41681065',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41681065/',
-              badge: t.lang==='it'?'🇮🇹 ITALIANO':'🇮🇹 ITALIAN',
-              summary: t.lang==='it'?'Studio italiano — con la partecipazione della Dr.ssa Donatella Milani, presidente del Comitato Scientifico di Sindrome ReNU Italia — che descrive i tratti comportamentali longitudinali della Sindrome RNU4-2. Vengono identificati comportamenti caratteristici con implicazioni per la gestione clinica: umore felice, ricerca di contatto fisico, brevi episodi di agitazione. Uno dei primi studi longitudinali sul fenotipo comportamentale.':
-                        'Italian study — with participation of Dr. Donatella Milani, President of the Scientific Committee of Sindrome ReNU Italia — describing longitudinal behavioral traits of RNU4-2 Syndrome. Characteristic behaviors are identified with implications for clinical management: happy mood, seeking physical contact, brief agitation episodes. One of the first longitudinal studies on the behavioral phenotype.'
-            },
-            {
-              authors: 'Crocker K, O\'Toole J, Pearse L, Milani D, et al.',
-              year: '2026',
-              title: 'Summary of the Inaugural ReNU Hope Conference and Scientific Symposium, July 23-25, 2025, Long Island, New York',
-              journal: 'Am J Med Genet A. 2026 Feb.',
-              pmid: '41714173',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41714173/',
-              badge: '',
-              summary: t.lang==='it'?'Sintesi della prima Conferenza Scientifica ReNU Hope (luglio 2025, New York), che ha riunito ricercatori, famiglie, medici e sviluppatori di terapie da tutto il mondo. I temi principali: progressi nella ricerca su RNU4-2, nuovi approcci diagnostici, sviluppo di terapie, supporto alle famiglie e creazione di registri internazionali di pazienti.':
-                        'Summary of the inaugural ReNU Hope Conference (July 2025, New York), bringing together researchers, families, clinicians and therapy developers worldwide. Key themes: advances in RNU4-2 research, new diagnostic approaches, therapy development, family support and international patient registry creation.'
-            },
-            // ── 2025 ──────────────────────────────────────────────────────────
-            {
-              authors: 'Hayashi Y, Kajiwara K, Mizuno S, et al.',
-              year: '2025',
-              title: 'Monoallelic and biallelic RNU4-2 variants in neurodevelopmental disorders',
-              journal: 'J Hum Genet. 2025 Dec.',
-              pmid: '41408479',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41408479/',
-              badge: '',
-              summary: t.lang==='it'?'Studio giapponese che analizza le varianti monoalleliche e bialleliche in RNU4-2 in una coorte di casi non diagnosticati con disturbi del neurosviluppo. Conferma la prevalenza delle varianti de novo nella regione critica T-loop, caratterizza lo spettro mutazionale e fornisce dati epidemiologici su popolazioni asiatiche, contribuendo alla comprensione globale della sindrome.':
-                        'Japanese study analyzing monoallelic and biallelic RNU4-2 variants in a cohort of unresolved neurodevelopmental disorder cases. Confirms prevalence of de novo variants in the critical T-loop region, characterizes the mutational spectrum and provides epidemiological data on Asian populations, contributing to global understanding of the syndrome.'
-            },
-            {
-              authors: 'Chen Y, Gao L, Han X, et al.',
-              year: '2025',
-              title: 'Prenatal Evaluation of RNU4-2 Variants in Fetuses With Central Nervous System Anomalies',
-              journal: 'Am J Med Genet C Semin Med Genet. 2025 Dec.',
-              pmid: '41449851',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/41449851/',
-              badge: '',
-              summary: t.lang==='it'?'Primo studio sulla valutazione prenatale delle varianti RNU4-2 in feti con anomalie del sistema nervoso centrale. Le anomalie cerebrali congenite sono tra le malformazioni più comuni, ma il rendimento diagnostico genetico prenatale rimane basso (<40%). Questo studio dimostra il valore del sequenziamento di RNU4-2 nella diagnostica prenatale di anomalie cerebrali, aprendo la strada a diagnosi più precoci.':
-                        'First study on prenatal evaluation of RNU4-2 variants in fetuses with central nervous system anomalies. Congenital brain anomalies are among the most common malformations but prenatal genetic diagnostic yield remains below 40%. This study demonstrates the value of RNU4-2 sequencing in prenatal diagnosis of brain anomalies, paving the way for earlier diagnoses.'
-            },
-            // ── 2024 ──────────────────────────────────────────────────────────
-            {
-              authors: 'Delmaghani S, Chen Y, Dawes R, et al.',
-              year: '2024',
-              title: 'De novo variants in RNU4-2 cause a frequent neurodevelopmental syndrome',
-              journal: 'Nature. 2024;632:832-840.',
-              pmid: '39169177',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/39169177/',
-              badge: t.lang==='it'?'STUDIO FONDAMENTALE':'LANDMARK STUDY',
-              summary: t.lang==='it'?'Lo studio fondamentale che ha scoperto la Sindrome ReNU. Analizzando 47.606 individui in 34 coorti internazionali, gli autori hanno identificato varianti de novo in RNU4-2 come causa di una frequente sindrome del neurosviluppo. Prevalenza stimata ~1:35.000 nati vivi. La sindrome — ribattezzata ReNU — include ritardo psicomotorio grave, ipotonia, epilessia, microcefalia, dismorfismi facciali e anomalie cerebrali strutturali.':
-                        'The landmark study that discovered ReNU Syndrome. Analyzing 47,606 individuals across 34 international cohorts, authors identified de novo variants in RNU4-2 as the cause of a frequent neurodevelopmental syndrome. Estimated prevalence ~1:35,000 live births. The syndrome — named ReNU — includes severe psychomotor delay, hypotonia, epilepsy, microcephaly, facial dysmorphisms and structural brain anomalies.'
-            },
-            {
-              authors: 'Greene D, Mendez R, Lees J, Turro E, et al.',
-              year: '2024',
-              title: 'RNU4-2-Related Neurodevelopmental Disorder Is Associated With Severe Intellectual Disability',
-              journal: 'Neurol Genet. 2024.',
-              pmid: '39434505',
-              doi: 'https://pubmed.ncbi.nlm.nih.gov/39434505/',
-              badge: '',
-              summary: t.lang==='it'?'Studio che caratterizza nel dettaglio il disturbo del neurosviluppo correlato a RNU4-2, con focus sulla disabilità intellettiva grave. Include analisi del ritardo dello sviluppo globale, epilessia, microcefalia, bassa statura e ipotonia. Contribuisce a definire i criteri diagnostici clinici e a stratificare i pazienti per gravità del fenotipo, con implicazioni per la gestione e il supporto.':
-                        'Study characterizing in detail the RNU4-2-related neurodevelopmental disorder with focus on severe intellectual disability. Includes analysis of global developmental delay, epilepsy, microcephaly, short stature and hypotonia. Contributes to defining clinical diagnostic criteria and stratifying patients by phenotype severity, with implications for management and support.'
-            },
-          ].map(pub => `
-          <div class="card card-blue p-6 text-left">
-            <div class="flex flex-col md:flex-row gap-4">
-              <div class="flex-shrink-0">
-                <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #1078C0, #45B8EC)">
-                  <i class="fas fa-file-alt text-white text-xl"></i>
-                </div>
-              </div>
-              <div class="flex-1">
-                <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white" style="background:#082050">${pub.year}</span>
-                  ${pub.badge ? `<span class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:#F59E0B;color:#082050">${pub.badge}</span>` : ''}
-                  <span class="text-xs text-gray-500 font-medium">${pub.authors}</span>
-                </div>
-                <h4 class="font-bold text-base mb-1" style="color:#082050">${pub.title}</h4>
-                <p class="text-xs text-gray-400 italic mb-3">${pub.journal}</p>
-                <div class="rounded-xl p-4 mb-3 text-sm text-gray-700 leading-relaxed" style="background:#EEF6FB; border-left:3px solid #45B8EC">
-                  <strong style="color:#082050">${t.lang==='it'?'Sintesi:':'Summary:'}</strong> ${pub.summary}
-                </div>
-                <a href="${pub.doi}" target="_blank"
-                   class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-xs font-semibold" style="background:#1078C0">
-                  <i class="fas fa-external-link-alt"></i>
-                  PubMed${pub.pmid ? ' · PMID '+pub.pmid : ''}
-                </a>
-              </div>
-            </div>
-          </div>`).join('')}
+        <div id="pub-list" class="space-y-5">
+          <div class="text-center py-10 text-gray-400">
+            <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
+            ${t.lang==='it'?'Caricamento pubblicazioni...':t.lang==='en'?'Loading publications...':'Chargement...'}
+          </div>
         </div>
         <div class="text-center mt-6">
           <a href="https://pubmed.ncbi.nlm.nih.gov/?term=RNU4-2+syndrome+neurodevelopmental" target="_blank"
@@ -1690,6 +1581,44 @@ function researchPage(t: Record<string, string>): string {
           </a>
         </div>
       </div>
+      <script>
+      (function(){
+        const lang = '${t.lang}';
+        const synLabel = lang==='it'?'Sintesi:':'Summary:';
+        fetch('/api/pubblicazioni?lang=' + lang)
+          .then(r=>r.json())
+          .then(data=>{
+            const el = document.getElementById('pub-list');
+            if(!data.length){ el.innerHTML='<p class="text-gray-500 text-center py-8">Nessuna pubblicazione presente.</p>'; return; }
+            el.innerHTML = data.map(pub=>\`
+            <div class="card card-blue p-6 text-left">
+              <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-shrink-0">
+                  <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#1078C0,#45B8EC)">
+                    <i class="fas fa-file-alt text-white text-xl"></i>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white" style="background:#082050">\${pub.anno}</span>
+                    \${pub.badge ? \`<span class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:#F59E0B;color:#082050">\${pub.badge}</span>\` : ''}
+                    <span class="text-xs text-gray-500 font-medium">\${pub.autori}</span>
+                  </div>
+                  <h4 class="font-bold text-base mb-1" style="color:#082050">\${pub.titolo}</h4>
+                  <p class="text-xs text-gray-400 italic mb-3">\${pub.rivista}</p>
+                  \${pub.sintesi ? \`<div class="rounded-xl p-4 mb-3 text-sm text-gray-700 leading-relaxed" style="background:#EEF6FB;border-left:3px solid #45B8EC"><strong style="color:#082050">\${synLabel}</strong> \${pub.sintesi}</div>\` : ''}
+                  <a href="\${pub.doi}" target="_blank" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-xs font-semibold" style="background:#1078C0">
+                    <i class="fas fa-external-link-alt"></i>
+                    PubMed\${pub.pmid ? ' · PMID '+pub.pmid : ''}
+                  </a>
+                </div>
+              </div>
+            </div>\`).join('');
+          }).catch(()=>{
+            document.getElementById('pub-list').innerHTML='<p class="text-gray-500 text-center py-8">Errore nel caricamento delle pubblicazioni.</p>';
+          });
+      })();
+      </script>
 
       <div class="rounded-2xl p-8 text-white mt-4" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex flex-col md:flex-row items-center gap-6">
@@ -2091,50 +2020,20 @@ function communityPage(t: Record<string, string>): string {
           ${t.lang==='it'?'Famiglie ReNU in Italia':'ReNU Families in Italy'}
         </h2>
         <div class="flex flex-col md:flex-row gap-6 items-center">
-          <div class="flex-shrink-0 flex items-center justify-center">
-            <!-- Mappa SVG professionale dell'Italia -->
-            <svg viewBox="0 0 400 520" width="220" height="286" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 16px rgba(8,32,80,0.18))">
-              <defs>
-                <linearGradient id="italyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#1078C0;stop-opacity:1"/>
-                  <stop offset="100%" style="stop-color:#082050;stop-opacity:1"/>
-                </linearGradient>
-                <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#C8E8F8;stop-opacity:1"/>
-                  <stop offset="100%" style="stop-color:#EEF6FB;stop-opacity:1"/>
-                </linearGradient>
-              </defs>
-              <!-- Sfondo mare -->
-              <rect width="400" height="520" fill="url(#seaGrad)" rx="12"/>
-              <!-- Corpo principale Italia -->
-              <path d="M 155 30 C 120 32 95 45 80 60 C 65 75 60 90 62 105 C 64 120 70 130 78 138 C 72 145 65 155 60 165 C 55 175 52 185 55 195 C 58 205 66 212 75 218 C 68 228 62 240 60 252 C 58 264 60 275 66 284 C 72 293 81 300 91 306 C 98 320 104 335 108 348 C 112 361 113 373 110 382 C 107 391 100 397 96 404 C 92 411 91 418 93 424 C 95 430 100 435 108 439 C 116 443 127 446 137 446 C 130 456 126 465 127 473 C 128 481 134 488 143 491 C 152 494 163 492 172 488 C 181 484 188 476 191 468 C 195 460 195 451 191 443 C 200 440 208 435 213 428 C 218 421 219 412 215 405 C 228 402 240 396 248 388 C 256 380 260 370 258 360 C 256 350 249 341 241 335 C 255 330 267 320 274 308 C 281 296 282 281 277 268 C 272 255 261 244 249 237 C 260 228 268 216 270 204 C 272 192 268 180 260 171 C 275 162 286 149 290 136 C 294 123 291 110 283 100 C 275 90 262 84 249 80 C 260 72 268 62 268 52 C 268 42 260 34 249 30 C 238 26 224 26 211 28 C 198 30 185 34 174 36 C 168 33 161 30 155 30 Z"
-                    fill="url(#italyGrad)" stroke="white" stroke-width="2"/>
-              <!-- Sicilia -->
-              <ellipse cx="165" cy="500" rx="38" ry="14" fill="url(#italyGrad)" stroke="white" stroke-width="1.5" transform="rotate(-10,165,500)"/>
-              <!-- Sardegna -->
-              <ellipse cx="62" cy="320" rx="22" ry="38" fill="url(#italyGrad)" stroke="white" stroke-width="1.5"/>
-              <!-- Puntini città -->
-              <circle cx="183" cy="115" r="5" fill="white" opacity="0.9"/>
-              <text x="192" y="119" fill="white" font-size="10" font-family="Inter,sans-serif" font-weight="600">Milano</text>
-              <circle cx="200" cy="160" r="4" fill="white" opacity="0.9"/>
-              <text x="208" y="164" fill="white" font-size="9" font-family="Inter,sans-serif">Bologna</text>
-              <circle cx="200" cy="220" r="5" fill="white" opacity="0.9"/>
-              <text x="208" y="224" fill="white" font-size="10" font-family="Inter,sans-serif" font-weight="600">Roma</text>
-              <circle cx="210" cy="350" r="4" fill="white" opacity="0.9"/>
-              <text x="218" y="354" fill="white" font-size="9" font-family="Inter,sans-serif">Napoli</text>
-              <!-- Cuori famiglie ReNU -->
-              <text x="170" y="135" font-size="12" opacity="0.9">💙</text>
-              <text x="140" y="195" font-size="10" opacity="0.9">💙</text>
-              <text x="190" y="245" font-size="11" opacity="0.9">💙</text>
-              <text x="165" y="320" font-size="10" opacity="0.9">💙</text>
-              <text x="205" y="375" font-size="10" opacity="0.9">💙</text>
-              <text x="155" y="490" font-size="10" opacity="0.9">💙</text>
-              <!-- Badge contatore -->
-              <circle cx="310" cy="80" r="32" fill="#F59E0B"/>
-              <text x="310" y="74" text-anchor="middle" fill="white" font-size="14" font-weight="800" font-family="Inter,sans-serif">12-14</text>
-              <text x="310" y="88" text-anchor="middle" fill="white" font-size="8" font-family="Inter,sans-serif">casi</text>
-              <text x="310" y="100" text-anchor="middle" fill="white" font-size="8" font-family="Inter,sans-serif">in Italia</text>
-            </svg>
+          <div class="flex-shrink-0 flex items-center justify-center" style="position:relative">
+            <!-- Mappa Italia reale con badge famiglie -->
+            <div style="position:relative;width:220px">
+              <img src="/images/renu_mappa_italia.jpg"
+                   alt="Mappa Italia Famiglie ReNU"
+                   style="width:220px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22))"
+                   loading="lazy" decoding="async">
+              <!-- Badge contatore sovrapposto -->
+              <div style="position:absolute;top:10px;right:-12px;background:#F59E0B;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+                <span style="font-size:14px;font-weight:800;line-height:1.1">12-14</span>
+                <span style="font-size:8px;line-height:1.2">casi</span>
+                <span style="font-size:8px;line-height:1.2">in Italia</span>
+              </div>
+            </div>
           </div>
           <div class="flex-1">
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
@@ -2207,12 +2106,28 @@ function communityPage(t: Record<string, string>): string {
               ${t.lang==='it'?'I nostri bambini e le nostre famiglie':t.lang==='en'?'Our children and families':t.lang==='fr'?'Nos enfants et familles':t.lang==='es'?'Nuestros niños y familias':'Unsere Kinder und Familien'}
             </h3>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/bambini.jpg" alt="Bambini ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/famiglie.jpg" alt="Famiglie ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_incontro_famiglie.jpg" alt="Primo incontro famiglie ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-            <div class="rounded-xl overflow-hidden" style="height:140px"><img src="/images/renu_gallery.jpg" alt="Galleria ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <!-- Gallery foto caricate dal DB -->
+          <div id="gallery-community-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
+            <div class="col-span-full text-center py-4 text-gray-400 text-xs">
+              <i class="fas fa-spinner fa-spin mr-1"></i>Caricamento...
+            </div>
           </div>
+          <script>
+          (function(){
+            const lang = '${t.lang}';
+            fetch('/api/gallery?pagina=community&lang=' + lang)
+              .then(r=>r.json())
+              .then(data=>{
+                const g = document.getElementById('gallery-community-grid');
+                if(!data || !data.length){ g.innerHTML=''; return; }
+                g.innerHTML = data.map(img=>`+"`"+`
+                  <div class="rounded-xl overflow-hidden" style="height:140px">
+                    <img src="${img.img_url}" alt="${img.didascalia||'ReNU Italia'}"
+                         class="w-full h-full object-cover" loading="lazy" decoding="async">
+                  </div>`+"`"+`).join('');
+              }).catch(()=>{ document.getElementById('gallery-community-grid').innerHTML=''; });
+          })();
+          </script>
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 mb-4">
             <i class="fas fa-shield-alt mr-1"></i>
             <strong>Privacy GDPR:</strong>
@@ -2240,34 +2155,38 @@ function communityPage(t: Record<string, string>): string {
           <i class="fas fa-heart" style="color:#E74C3C"></i>
           ${t.lang==='it'?'Storie di Famiglie da Tutto il Mondo':t.lang==='en'?'Stories from Families Around the World':t.lang==='fr'?'Histoires de Familles du Monde Entier':t.lang==='es'?'Historias de Familias de Todo el Mundo':'Familiengeschichten aus aller Welt'}
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          ${[
-            { name: 'James', flag: '🇬🇧', url: 'https://www.renusyndrome.org/james-2', desc: t.lang==='it'?'Gran Bretagna – Una storia di forza':t.lang==='en'?'Great Britain – A story of strength':'Grande-Bretagne – Une histoire de force' },
-            { name: 'Mia Joy', flag: '🇺🇸', url: 'https://www.renusyndrome.org/mia-joy', desc: t.lang==='it'?'USA – Gioia in ogni momento':t.lang==='en'?'USA – Joy in every moment':'USA – La joie à chaque instant' },
-            { name: 'Max', flag: '🇺🇸', url: 'https://www.renusyndrome.org/max-us', desc: t.lang==='it'?'USA – Coraggio e determinazione':t.lang==='en'?'USA – Courage and determination':'USA – Courage et détermination' },
-            { name: 'Eliot', flag: '🇫🇷', url: 'https://www.renusyndrome.org/eliot', desc: t.lang==='it'?'Francia – Una famiglia unita':t.lang==='en'?'France – A united family':'France – Une famille unie' },
-            { name: 'Isla', flag: '🇦🇺', url: 'https://www.renusyndrome.org/isla', desc: t.lang==='it'?'Australia – La gioia di ogni giorno':t.lang==='en'?'Australia – Joy every day':'Australie – La joie quotidienne' },
-            { name: 'Cooper', flag: '🇦🇺', url: 'https://www.renusyndrome.org/cooper', desc: t.lang==='it'?'Australia – Forza e amore':t.lang==='en'?'Australia – Strength and love':'Australie – Force et amour' },
-            { name: 'Thibault', flag: '🇫🇷', url: 'https://www.renusyndrome.org/thibault', desc: t.lang==='it'?'Francia – Speranza e progresso':t.lang==='en'?'France – Hope and progress':'France – Espoir et progrès' },
-            { name: 'Noah', flag: '🇨🇦', url: 'https://www.renusyndrome.org/noah', desc: t.lang==='it'?'Canada – Un\'avventura speciale':t.lang==='en'?'Canada – A special adventure':'Canada – Une aventure spéciale' },
-            { name: 'Antonin', flag: '🇫🇷', url: 'https://www.renusyndrome.org/antonin', desc: t.lang==='it'?'Francia – Amore senza confini':t.lang==='en'?'France – Love without borders':'France – Amour sans frontières' },
-            { name: 'Poppy', flag: '🇬🇧', url: 'https://www.renusyndrome.org/poppy', desc: t.lang==='it'?'Gran Bretagna – La dolcezza di Poppy':t.lang==='en'?'Great Britain – The sweetness of Poppy':'Grande-Bretagne – La douceur de Poppy' },
-            { name: 'Vivaan', flag: '🇮🇳', url: 'https://www.renusyndrome.org/vivaan', desc: t.lang==='it'?'India – Famiglia che lotta insieme':t.lang==='en'?'India – Family fighting together':'Inde – Famille qui se bat ensemble' },
-            { name: 'Chase', flag: '🇺🇸', url: 'https://www.renusyndrome.org/chase', desc: t.lang==='it'?'USA – Perseveranza e gioia':t.lang==='en'?'USA – Perseverance and joy':'USA – Persévérance et joie' },
-          ].map(s => `
-          <a href="${s.url}" target="_blank" class="card p-4 flex items-center gap-4 group hover:shadow-lg">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-3xl" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">
-              ${s.flag}
-            </div>
-            <div>
-              <div class="font-bold text-base" style="color:#082050">${s.name}</div>
-              <div class="text-xs text-gray-500 mt-0.5">${s.desc}</div>
-              <div class="text-xs font-semibold mt-1 flex items-center gap-1" style="color:#1078C0">
-                ${t.read_more} <i class="fas fa-arrow-right text-xs"></i>
-              </div>
-            </div>
-          </a>`).join('')}
+        <!-- Storie internazionali caricate dal DB -->
+        <div id="storie-intl-community-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="col-span-full text-center py-8 text-gray-400">
+            <i class="fas fa-spinner fa-spin text-2xl mb-2 block"></i>
+            ${t.lang==='it'?'Caricamento storie...':t.lang==='en'?'Loading stories...':t.lang==='fr'?'Chargement...':t.lang==='es'?'Cargando...':'Laden...'}
+          </div>
         </div>
+        <script>
+        (function(){
+          const lang = '${t.lang}';
+          const readMore = '${t.read_more}';
+          fetch('/api/storie?lang=' + lang + '&tipo=internazionale')
+            .then(r=>r.json())
+            .then(data=>{
+              const g = document.getElementById('storie-intl-community-grid');
+              if(!data || !data.length){ g.innerHTML=''; return; }
+              g.innerHTML = data.map(s=>`+"`"+`
+              <a href="${s.url_storia||'https://www.renusyndrome.org/stories'}" target="_blank" class="card p-4 flex items-center gap-4 group hover:shadow-lg">
+                <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-3xl" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">
+                  ${s.flag||'🌍'}
+                </div>
+                <div>
+                  <div class="font-bold text-base" style="color:#082050">${s.nome}</div>
+                  <div class="text-xs text-gray-500 mt-0.5">${s.desc||''}</div>
+                  <div class="text-xs font-semibold mt-1 flex items-center gap-1" style="color:#1078C0">
+                    ${readMore} <i class="fas fa-arrow-right text-xs"></i>
+                  </div>
+                </div>
+              </a>`+"`"+`).join('');
+            }).catch(()=>{ document.getElementById('storie-intl-community-grid').innerHTML=''; });
+        })();
+        </script>
         <div class="mt-6 text-center">
           <a href="https://www.renusyndrome.org/stories" target="_blank"
              class="inline-flex items-center gap-2 font-bold px-7 py-3 rounded-full text-sm" style="background:#EEF6FB; color:#082050; border: 2px solid #45B8EC">
@@ -2873,32 +2792,7 @@ function contactPage(t: Record<string, string>): string {
 
 // ─── BROCHURE PAGE ────────────────────────────────────────────────────────────
 function brochurePage(t: Record<string, string>): string {
-  const brochures = [
-    { file: 'brochure-insieme-facciamo-differenza.pdf', thumb: 'CTEp6mH2',
-      title: t.lang==='it'?'Insieme, facciamo la differenza':t.lang==='en'?'Together we make a difference':t.lang==='fr'?'Ensemble nous faisons la différence':t.lang==='es'?'Juntos hacemos la diferencia':'Gemeinsam machen wir den Unterschied',
-      desc:  t.lang==='it'?'SINDROME ReNU ITALIA APS – Sostieni la nostra missione':'SINDROME ReNU ITALIA APS – Support our mission' },
-    { file: 'brochure-nata-renu-italia.pdf', thumb: 'GbPysspb',
-      title: t.lang==='it'?'È nata Sindrome ReNU Italia APS!':t.lang==='en'?'ReNU Syndrome Italy APS is born!':t.lang==='fr'?'Le syndrome ReNU Italie APS est né!':t.lang==='es'?'¡Ha nacido Síndrome ReNU Italia APS!':'ReNU-Syndrom Italien APS ist gegründet!',
-      desc:  t.lang==='it'?'La nostra associazione è finalmente realtà':'Our association is finally a reality' },
-    { file: 'brochure-finalmente-realta.pdf', thumb: 'HE4kWb3R',
-      title: t.lang==='it'?'Finalmente Realtà':'Finally Reality',
-      desc:  t.lang==='it'?'Contribuisci con un gesto concreto':'Contribute with a concrete gesture' },
-    { file: 'brochure-donazione-cuore.pdf', thumb: 'Haieyn55',
-      title: t.lang==='it'?'Una donazione dal cuore':'A donation from the heart',
-      desc:  t.lang==='it'?'Un piccolo gesto può fare la differenza':'A small gesture can make a difference' },
-    { file: 'brochure-un-gesto-speranza.pdf', thumb: 'nBeYaQkm',
-      title: t.lang==='it'?'Un gesto, una speranza':'A gesture, a hope',
-      desc:  t.lang==='it'?'Un piccolo aiuto può cambiare una vita':'A small help can change a life' },
-    { file: 'brochure-potete-contare.pdf', thumb: 'oi3JFkgN',
-      title: t.lang==='it'?'Potete contare sul nostro sostegno':'You can count on our support',
-      desc:  t.lang==='it'?'Insieme facciamo la differenza':'Together we make a difference' },
-    { file: 'brochure-fai-differenza.pdf', thumb: 'tezKurU2',
-      title: t.lang==='it'?'Fai la differenza oggi':'Make the difference today',
-      desc:  t.lang==='it'?'Ogni contributo conta':'Every contribution counts' },
-    { file: 'brochure-vuole-differenza.pdf', thumb: 'wrScJxVD',
-      title: t.lang==='it'?'Vuole fare la differenza':'Wants to make a difference',
-      desc:  t.lang==='it'?'Un gesto semplice può fare una grande differenza':'A simple gesture can make a big difference' },
-  ]
+  const dlLabel = t.brochure_download || (t.lang==='it'?'Scarica PDF':t.lang==='en'?'Download PDF':t.lang==='fr'?'Télécharger':'Descargar PDF')
   return `
   <section class="hero-gradient text-white py-16 px-4">
     <div class="max-w-5xl mx-auto">
@@ -2909,30 +2803,16 @@ function brochurePage(t: Record<string, string>): string {
 
   <section class="py-16 px-4 section-light">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        ${brochures.map(b => `
-        <div class="card card-blue overflow-hidden flex flex-col">
-          <div class="overflow-hidden bg-sky-50" style="min-height:200px">
-            <img src="/brochure/thumbnails/${b.thumb}.png" alt="${b.title}"
-                 class="w-full h-48 object-contain p-2"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" decoding="async">
-            <div style="display:none" class="w-full h-48 bg-sky-100 flex items-center justify-center">
-              <i class="fas fa-file-pdf text-5xl" style="color:#1078C0"></i>
-            </div>
-          </div>
-          <div class="p-4 flex-1 flex flex-col">
-            <h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">${b.title}</h3>
-            <p class="text-gray-500 text-xs mb-4 flex-1">${b.desc}</p>
-            <a href="/brochure/${b.file}" download
-               class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors" style="background:#1078C0">
-              <i class="fas fa-download"></i>${t.brochure_download}
-            </a>
-          </div>
-        </div>`).join('')}
+      <!-- Griglia brochure caricata dal DB -->
+      <div id="brochure-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="col-span-full text-center py-12 text-gray-400">
+          <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
+          ${t.lang==='it'?'Caricamento brochure...':t.lang==='en'?'Loading brochures...':'Chargement...'}
+        </div>
       </div>
 
       <!-- Download all -->
-      <div class="mt-10 rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
+      <div id="brochure-download-all" class="mt-10 rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%); display:none">
         <i class="fas fa-file-archive text-5xl text-sky-300 mb-4 block"></i>
         <h2 class="text-2xl font-bold mb-2">
           ${t.lang==='it'?'Scarica tutte le brochure':t.lang==='en'?'Download all brochures':t.lang==='fr'?'Télécharger toutes les brochures':t.lang==='es'?'Descargar todos los folletos':'Alle Broschüren herunterladen'}
@@ -2940,14 +2820,43 @@ function brochurePage(t: Record<string, string>): string {
         <p class="text-sky-200 mb-5">
           ${t.lang==='it'?'Condividi le nostre brochure per diffondere la consapevolezza sulla Sindrome ReNU in Italia.':t.lang==='en'?'Share our brochures to spread awareness about ReNU Syndrome in Italy.':'Partagez nos brochures pour sensibiliser à la maladie ReNU.'}
         </p>
-        <div class="flex flex-wrap justify-center gap-3">
-          ${brochures.map(b => `
-          <a href="/brochure/${b.file}" download
-             class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
-            <i class="fas fa-download text-xs"></i>${b.file.replace('brochure-','').replace('.pdf','')}
-          </a>`).join('')}
-        </div>
+        <div id="brochure-links-all" class="flex flex-wrap justify-center gap-3"></div>
       </div>
+
+  <script>
+  (function(){
+    const lang = '${t.lang}';
+    const dlLabel = '${dlLabel}';
+    fetch('/api/brochure?lang=' + lang)
+      .then(r=>r.json())
+      .then(data=>{
+        const grid = document.getElementById('brochure-grid');
+        const dlAll = document.getElementById('brochure-download-all');
+        const linksAll = document.getElementById('brochure-links-all');
+        if(!data.length){ grid.innerHTML='<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-info-circle text-3xl mb-3 block"></i>Nessuna brochure disponibile.</div>'; return; }
+        grid.innerHTML = data.map(b=>\`
+        <div class="card card-blue overflow-hidden flex flex-col">
+          <div class="overflow-hidden bg-sky-50" style="min-height:200px">
+            \${b.thumb_id ? \`<img src="/brochure/thumbnails/\${b.thumb_id}.png" alt="\${b.titolo}" class="w-full h-48 object-contain p-2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">\` : ''}
+            <div \${b.thumb_id?'style="display:none"':''} class="w-full h-48 bg-sky-100 flex items-center justify-center">
+              <i class="fas fa-file-pdf text-5xl" style="color:#1078C0"></i>
+            </div>
+          </div>
+          <div class="p-4 flex-1 flex flex-col">
+            <h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">\${b.titolo}</h3>
+            <p class="text-gray-500 text-xs mb-4 flex-1">\${b.desc||''}</p>
+            <a href="/brochure/\${b.file_name}" download class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#1078C0">
+              <i class="fas fa-download"></i>\${dlLabel}
+            </a>
+          </div>
+        </div>\`).join('');
+        if(linksAll) linksAll.innerHTML = data.map(b=>\`<a href="/brochure/\${b.file_name}" download class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium"><i class="fas fa-download text-xs"></i>\${b.file_name.replace('brochure-','').replace('.pdf','')}</a>\`).join('');
+        if(dlAll) dlAll.style.display='block';
+      }).catch(()=>{
+        document.getElementById('brochure-grid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-exclamation-circle text-3xl mb-3 block"></i>Errore nel caricamento.</div>';
+      });
+  })();
+  </script>
 
       <!-- Link cartelle Drive -->
       <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -3008,107 +2917,64 @@ function eventsPage(t: Record<string, string>): string {
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
 
-      <!-- Prossimi eventi -->
+      <!-- Prossimi eventi – caricati dal DB -->
       <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
         <i class="fas fa-star" style="color:#F59E0B"></i>
         ${t.lang==='it'?'Prossimi Appuntamenti':'Upcoming Events'}
       </h2>
-
-      <!-- Placeholder evento in arrivo -->
-      <div class="card card-amber p-8 mb-6 flex flex-col md:flex-row items-start gap-6">
-        <div class="flex-shrink-0">
-          <div class="w-20 h-20 rounded-2xl flex flex-col items-center justify-center text-white font-extrabold" style="background: linear-gradient(135deg, #F59E0B, #D97706)">
-            <span class="text-2xl leading-none">2026</span>
-            <span class="text-xs mt-1">2026</span>
-          </div>
-        </div>
-        <div class="flex-1">
-          <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full mb-3" style="background:#FEF3C7; color:#92400E">
-            <i class="fas fa-clock"></i>
-            ${t.lang==='it'?'In definizione':'To be announced'}
-          </div>
-          <h3 class="font-bold text-xl mb-2" style="color:#082050">
-            ${t.lang==='it'?'Primo Incontro Famiglie ReNU Italia':'First ReNU Italia Family Meeting'}
-          </h3>
-          <p class="text-gray-600 mb-3">
-            ${t.lang==='it'?'Il primo incontro ufficiale tra le famiglie italiane con un bambino o giovane adulto con Sindrome ReNU. Data, luogo e programma in fase di definizione da parte del Consiglio Direttivo.':'The first official meeting between Italian families with a child or young adult with ReNU Syndrome. Date, location and agenda being defined by the Board of Directors.'}
-          </p>
-          <p class="text-sm font-semibold" style="color:#1078C0">
-            <i class="fas fa-envelope mr-1"></i>
-            ${t.lang==='it'?'Per informazioni:':'For info:'} <a href="mailto:info@sindromerenu.it" class="underline">info@sindromerenu.it</a>
-          </p>
+      <div id="eventi-list">
+        <div class="text-center py-10 text-gray-400">
+          <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
+          ${t.lang==='it'?'Caricamento eventi...':t.lang==='en'?'Loading events...':'Chargement...'}
         </div>
       </div>
 
-      <!-- Nessun altro evento -->
-      <div class="rounded-2xl p-8 text-center mb-10" style="background:#EEF6FB; border: 2px dashed #45B8EC">
-        <i class="fas fa-calendar-plus text-5xl mb-4 block" style="color:#45B8EC"></i>
-        <h3 class="font-bold text-xl mb-2" style="color:#082050">
-          ${t.lang==='it'?'Nuovi eventi in arrivo!':'New events coming soon!'}
-        </h3>
-        <p class="text-gray-600 mb-4">
-          ${t.lang==='it'?'Segui i nostri canali social per essere il primo a sapere di incontri, webinar e iniziative di sensibilizzazione.':'Follow our social channels to be the first to know about meetings, webinars and awareness initiatives.'}
-        </p>
-        <div class="flex justify-center gap-3 flex-wrap">
-          <a href="https://www.facebook.com/groups/1268033701594892" target="_blank"
-             class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1877F2">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
-          <a href="https://www.instagram.com/sindrome_renu_italia/" target="_blank"
-             class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#E1306C">
-            <i class="fab fa-instagram"></i> Instagram
-          </a>
-        </div>
-      </div>
-
-      <!-- Sezione eventi passati con foto reali -->
-      <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
-        <i class="fas fa-history" style="color:#1078C0"></i>
-        ${t.lang==='it'?'Eventi Passati':'Past Events'}
-      </h2>
-      ${t.lang==='it'?`
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-        <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="p-4">
-            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>4 febbraio 2025</div>
-            <h3 class="font-bold text-sm mb-1" style="color:#082050">Primo incontro famiglie ReNU Italia</h3>
-            <p class="text-gray-500 text-xs">Il primissimo incontro tra le famiglie italiane con Sindrome ReNU — un momento storico per la nostra comunità.</p>
-          </div>
-        </div>
-        <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_conferenza_2025.jpg" alt="Prima conferenza internazionale ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="p-4">
-            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-calendar mr-1"></i>23 luglio 2025</div>
-            <h3 class="font-bold text-sm mb-1" style="color:#082050">1ª Conferenza Internazionale ReNU</h3>
-            <p class="text-gray-500 text-xs">Prima conferenza internazionale sulla Sindrome ReNU — ricercatori, famiglie e medici insieme per fare la storia.</p>
-          </div>
-        </div>
-        <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_maratona.jpg" alt="Maratona Wizz Air Milano 2025" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="p-4">
-            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-running mr-1"></i>2025</div>
-            <h3 class="font-bold text-sm mb-1" style="color:#082050">Maratona Wizz Air Milano</h3>
-            <p class="text-gray-500 text-xs">Le famiglie ReNU Italia corrono per la ricerca alla Maratona di Milano. Move4ReNU!</p>
-          </div>
-        </div>
-        <div class="card overflow-hidden">
-          <div class="h-40 overflow-hidden"><img src="/images/renu_natale_2026.jpg" alt="Festa di Natale ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="p-4">
-            <div class="text-xs font-bold text-sky-600 mb-1"><i class="fas fa-snowflake mr-1"></i>Dicembre 2026</div>
-            <h3 class="font-bold text-sm mb-1" style="color:#082050">Festa di Natale ReNU Italia</h3>
-            <p class="text-gray-500 text-xs">Un momento di gioia e condivisione per le famiglie italiane con Sindrome ReNU.</p>
-          </div>
-        </div>
-      </div>
-      `:`
-      <div class="card p-6 text-center" style="background:#F8FAFC; border: 1px solid #E2E8F0">
-        <i class="fas fa-archive text-3xl mb-3 block text-gray-300"></i>
-        <p class="text-gray-500 text-sm">
-          The association was founded in 2024. Past events will be documented here.
-        </p>
-      </div>
-      `}
+      <script>
+      (function(){
+        const lang = '${t.lang}';
+        const statoMap = { 'in_definizione': '${t.lang==='it'?'In definizione':t.lang==='en'?'To be announced':'À définir'}', 'confermato': '${t.lang==='it'?'Confermato':t.lang==='en'?'Confirmed':'Confirmé'}', 'passato': '${t.lang==='it'?'Passato':t.lang==='en'?'Past':'Passé'}', 'annullato': '${t.lang==='it'?'Annullato':t.lang==='en'?'Cancelled':'Annulé'}' };
+        fetch('/api/eventi?lang=' + lang)
+          .then(r=>r.json())
+          .then(data=>{
+            const el = document.getElementById('eventi-list');
+            if(!data.length){
+              el.innerHTML = \`<div class="rounded-2xl p-8 text-center mb-6" style="background:#EEF6FB; border: 2px dashed #45B8EC">
+                <i class="fas fa-calendar-plus text-5xl mb-4 block" style="color:#45B8EC"></i>
+                <h3 class="font-bold text-xl mb-2" style="color:#082050">${t.lang==='it'?'Nuovi eventi in arrivo!':'New events coming soon!'}</h3>
+                <p class="text-gray-600 mb-4">${t.lang==='it'?'Segui i nostri canali social per essere il primo a sapere.':'Follow our social channels to be the first to know.'}</p>
+              </div>\`;
+              return;
+            }
+            el.innerHTML = data.map(ev=>{
+              const dataStr = ev.data_evento ? new Date(ev.data_evento).toLocaleDateString('${t.lang==='it'?'it-IT':'en-GB'}',{day:'numeric',month:'long',year:'numeric'}) : (statoMap[ev.stato]||ev.stato);
+              const anno = ev.data_evento ? new Date(ev.data_evento).getFullYear() : '?';
+              const mese = ev.data_evento ? new Date(ev.data_evento).toLocaleDateString('${t.lang==='it'?'it-IT':'en-GB'}',{month:'short'}).toUpperCase() : '';
+              return \`<div class="card card-amber p-8 mb-6 flex flex-col md:flex-row items-start gap-6">
+                <div class="flex-shrink-0">
+                  <div class="w-20 h-20 rounded-2xl flex flex-col items-center justify-center text-white font-extrabold" style="background:linear-gradient(135deg,#F59E0B,#D97706)">
+                    <span class="text-xl leading-none">\${mese||anno}</span>
+                    \${mese ? \`<span class="text-xs mt-1">\${anno}</span>\` : ''}
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF3C7;color:#92400E">
+                      <i class="fas fa-clock"></i> \${statoMap[ev.stato]||ev.stato}
+                    </span>
+                    \${ev.categoria ? \`<span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#EEF6FB;color:#1078C0">\${ev.categoria}</span>\` : ''}
+                  </div>
+                  <h3 class="font-bold text-xl mb-2" style="color:#082050">\${ev.titolo||''}</h3>
+                  \${ev.luogo ? \`<p class="text-xs font-semibold text-sky-600 mb-2"><i class="fas fa-map-marker-alt mr-1"></i>\${ev.luogo}</p>\` : ''}
+                  <p class="text-gray-600 mb-3 text-sm">\${ev.desc||''}</p>
+                  \${ev.url_esterno ? \`<a href="\${ev.url_esterno}" target="_blank" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0"><i class="fas fa-external-link-alt"></i>${t.lang==='it'?'Apri link':'Open link'}</a>\` : ''}
+                </div>
+              </div>\`;
+            }).join('');
+          }).catch(()=>{
+            document.getElementById('eventi-list').innerHTML = '<div class="card p-6 text-gray-500 text-center">Errore nel caricamento degli eventi.</div>';
+          });
+      })();
+      </script>
 
       <!-- GIORNATA GLOBALE 4 FEBBRAIO 2027 -->
       <div class="mt-12 mb-6">
@@ -3117,11 +2983,10 @@ function eventsPage(t: Record<string, string>): string {
           ${t.lang==='it'?'Giornata Globale Sindrome ReNU':'ReNU Syndrome Global Day'}
         </h2>
         <div class="card overflow-hidden">
-          <!-- Header data -->
           <div class="px-8 py-6 text-white flex flex-col sm:flex-row items-center gap-6" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
             <div class="flex-shrink-0 w-24 h-24 rounded-2xl flex flex-col items-center justify-center text-white font-extrabold" style="background:rgba(255,255,255,0.15); border:2px solid rgba(255,255,255,0.3)">
               <span class="text-3xl leading-none font-black">4</span>
-              <span class="text-xs mt-1 tracking-wide">${t.lang==='it'?'FEB 2027':'FEB 2027'}</span>
+              <span class="text-xs mt-1 tracking-wide">FEB 2027</span>
             </div>
             <div>
               <div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full mb-2" style="background:rgba(255,255,255,0.2); color:#BAE6FD">
@@ -3135,31 +3000,12 @@ function eventsPage(t: Record<string, string>): string {
               </p>
             </div>
           </div>
-          <!-- Body -->
           <div class="p-8">
             <p class="text-gray-600 leading-relaxed mb-5">
-              ${t.lang==='it'?'Il 4 febbraio 2027, in occasione della Giornata Mondiale delle Malattie Rare, Sindrome ReNU Italia APS promuove la prima Giornata Globale Sindrome ReNU in Italia, in coordinamento con le associazioni partner internazionali (ReNU Syndrome United USA, ReNU Syndrome UK e altri). L\'obiettivo è aumentare la visibilità pubblica della sindrome, raggiungere famiglie ancora non diagnosticate e sensibilizzare medici e istituzioni.':'On February 4, 2027, on the occasion of Rare Disease Day, Sindrome ReNU Italia APS promotes the first ReNU Syndrome Global Day in Italy, in coordination with international partner associations (ReNU Syndrome United USA, ReNU Syndrome UK and others). The aim is to increase public visibility of the syndrome, reach still-undiagnosed families and raise awareness among physicians and institutions.'}
+              ${t.lang==='it'?'Il 4 febbraio 2027, in occasione della Giornata Mondiale delle Malattie Rare, Sindrome ReNU Italia APS promuove la prima Giornata Globale Sindrome ReNU in Italia, in coordinamento con le associazioni partner internazionali.':'On February 4, 2027, on the occasion of Rare Disease Day, Sindrome ReNU Italia APS promotes the first ReNU Syndrome Global Day in Italy, in coordination with international partner associations.'}
             </p>
-            <h4 class="font-bold text-lg mb-4" style="color:#082050">
-              ${t.lang==='it'?'Cosa è previsto per il 4 febbraio 2027:':'What is planned for February 4, 2027:'}
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              ${[
-                ['fa-video','ic-blue', t.lang==='it'?'Webinar Nazionale':'National Webinar', t.lang==='it'?'Incontro online aperto a famiglie, medici e operatori scolastici sulla Sindrome ReNU.':'Online meeting open to families, doctors and school staff on ReNU Syndrome.'],
-                ['fa-newspaper','ic-sky', t.lang==='it'?'Campagna Social':'Social Media Campaign', t.lang==='it'?'Diffusione coordinata di contenuti #SindromeReNU su Instagram, Facebook e LinkedIn.':'Coordinated #SindromeReNU content on Instagram, Facebook and LinkedIn.'],
-                ['fa-hospital','ic-purple', t.lang==='it'?'Coinvolgimento Ospedali':'Hospital Engagement', t.lang==='it'?'Sensibilizzazione dei principali centri pediatrici italiani e neurologi dell\'età evolutiva.':'Awareness of major Italian paediatric centres and developmental neurologists.'],
-                ['fa-hands-helping','ic-green', t.lang==='it'?'Raccolta Fondi':'Fundraising', t.lang==='it'?'Iniziativa di donazione online con obiettivo dedicato alla ricerca e ai servizi alle famiglie.':'Online donation initiative with a target dedicated to research and family services.'],
-              ].map(([icon, ic, title, desc]) => `
-              <div class="flex gap-3 p-4 rounded-xl" style="background:#F0F8FD">
-                <div class="ic ${ic} w-10 h-10 flex-shrink-0"><i class="fas ${icon} text-sm"></i></div>
-                <div>
-                  <div class="font-bold text-sm" style="color:#082050">${title}</div>
-                  <div class="text-xs text-gray-500 mt-0.5">${desc}</div>
-                </div>
-              </div>`).join('')}
-            </div>
             <div class="flex flex-wrap gap-3">
-              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Partecipo Giornata Globale ReNU 4 feb 2027':'Join ReNU Global Day 4 Feb 2027')}"
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Partecipo Giornata Globale ReNU':'Join ReNU Global Day')}"
                  class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
                 <i class="fas fa-calendar-check"></i>${t.lang==='it'?'Voglio partecipare':'I want to participate'}
               </a>
@@ -3886,6 +3732,64 @@ function faqPage(t: Record<string, string>): string {
       </div>
       ` : ''}
 
+      <!-- ── FAQ DINAMICHE DA DB ── -->
+      <div id="faq-db-section" class="card card-blue p-7 scroll-mt-24 mb-8">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="ic ic-blue flex-shrink-0 w-14 h-14"><i class="fas fa-question-circle text-2xl"></i></div>
+          <div>
+            <h2 class="text-xl font-extrabold" style="color:#082050">
+              ${t.lang==='it'?'Domande Frequenti':'Frequently Asked Questions'}
+            </h2>
+            <p class="text-sm text-gray-500">${t.lang==='it'?'Aggiornate dal nostro team':'Updated by our team'}</p>
+          </div>
+        </div>
+        <div id="faq-accordion" class="space-y-2">
+          <div class="text-gray-400 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i>${t.lang==='it'?'Caricamento FAQ...':'Loading FAQ...'}</div>
+        </div>
+      </div>
+      <script>
+      (function(){
+        const lang = '${t.lang}';
+        fetch('/api/faq?lang=' + lang)
+          .then(r => r.json())
+          .then(data => {
+            const acc = document.getElementById('faq-accordion');
+            if (!data || !data.length) {
+              acc.innerHTML = '<p class="text-gray-400 text-sm">' + (lang==='it'?'Nessuna FAQ disponibile.':'No FAQ available.') + '</p>';
+              return;
+            }
+            const catIcons = {
+              diagnosi:'fa-microscope', terapie:'fa-stethoscope', comunita:'fa-users',
+              ricerca:'fa-flask', medici:'fa-user-md', diritti:'fa-balance-scale',
+              scuola:'fa-graduation-cap', bonus:'fa-money-bill-wave'
+            };
+            const catColors = {
+              diagnosi:'#1078C0', terapie:'#059669', comunita:'#7C3AED',
+              ricerca:'#D97706', medici:'#DC2626', diritti:'#082050',
+              scuola:'#0891B2', bonus:'#065F46'
+            };
+            acc.innerHTML = data.map((faq, i) => {
+              const icon = catIcons[faq.categoria] || 'fa-question';
+              const color = catColors[faq.categoria] || '#1078C0';
+              return '<div class="border border-gray-200 rounded-xl overflow-hidden">' +
+                '<button onclick="this.nextElementSibling.classList.toggle(\'hidden\');this.querySelector(\'.fa-chevron-down\').classList.toggle(\'rotate-180\')" ' +
+                'class="w-full text-left flex items-center gap-3 p-4 bg-white hover:bg-sky-50 transition-colors">' +
+                '<i class="fas ' + icon + ' text-sm flex-shrink-0" style="color:' + color + '"></i>' +
+                '<span class="flex-1 font-semibold text-sm" style="color:#082050">' + faq.domanda + '</span>' +
+                '<i class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-200 flex-shrink-0"></i>' +
+                '</button>' +
+                '<div class="hidden px-4 pb-4 pt-2 bg-sky-50 border-t border-gray-100">' +
+                '<p class="text-sm text-gray-700 leading-relaxed">' + faq.risposta + '</p>' +
+                '</div></div>';
+            }).join('');
+          })
+          .catch(() => {
+            const acc = document.getElementById('faq-accordion');
+            if (acc) acc.innerHTML = '';
+          });
+      })();
+      </script>
+
       <!-- Contattaci -->
       <div class="mt-12 rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <i class="fas fa-hands-helping text-4xl text-sky-300 mb-4 block"></i>
@@ -4452,7 +4356,14 @@ const ADMIN_HTML = `<!DOCTYPE html>
 <title>Admin – Sindrome ReNU Italia APS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:system-ui,sans-serif}</style>
+<style>
+body{font-family:system-ui,sans-serif}
+.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);overflow-y:auto}
+.modal.open{display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem}
+.modal-box{background:#fff;border-radius:1rem;padding:2rem;width:100%;max-width:680px;margin:auto}
+textarea{min-height:80px}
+.tab-btn.active{background:#1e40af!important;color:#fff!important}
+</style>
 </head>
 <body class="bg-gray-50 min-h-screen">
 
@@ -4481,13 +4392,34 @@ const ADMIN_HTML = `<!DOCTYPE html>
   </div>
 </div>
 
+<!-- MODAL FORM -->
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <div class="flex items-center justify-between mb-4">
+      <h3 id="modalTitle" class="text-lg font-bold text-gray-800"></h3>
+      <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+    </div>
+    <form id="modalForm" onsubmit="return false">
+      <div id="modalFields" class="space-y-3"></div>
+      <div class="flex gap-3 mt-5 pt-4 border-t">
+        <button id="modalSaveBtn" onclick="saveRecord()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl">
+          <i class="fas fa-save mr-2"></i>Salva
+        </button>
+        <button onclick="closeModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 rounded-xl">
+          Annulla
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- HEADER -->
 <nav class="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-4 flex items-center justify-between shadow-xl">
   <div class="flex items-center gap-3">
     <i class="fas fa-shield-alt text-2xl text-blue-300"></i>
     <div>
       <div class="font-bold text-lg">Pannello Admin GDPR</div>
-      <div class="text-xs text-blue-200">Sindrome ReNU Italia APS – v2.0</div>
+      <div class="text-xs text-blue-200">Sindrome ReNU Italia APS – v3.0</div>
     </div>
   </div>
   <div class="flex items-center gap-3">
@@ -4496,7 +4428,7 @@ const ADMIN_HTML = `<!DOCTYPE html>
   </div>
 </nav>
 
-<div class="max-w-7xl mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 py-6">
   <!-- STATS -->
   <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
     <div class="bg-white rounded-2xl shadow p-5 border-l-4 border-gray-200 animate-pulse h-24"></div>
@@ -4512,17 +4444,34 @@ const ADMIN_HTML = `<!DOCTYPE html>
     I dati dei minori sono protetti (Art.9). Il diritto all'oblio è disponibile nella sezione Cancella Dati.</div>
   </div>
 
-  <!-- TABS -->
-  <div class="flex gap-2 flex-wrap mb-6">
-    <button data-t="adesioni"  onclick="showTab('adesioni')"  class="tb bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-users mr-1"></i>Adesioni</button>
-    <button data-t="contatti"  onclick="showTab('contatti')"  class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-envelope mr-1"></i>Contatti</button>
-    <button data-t="lista"     onclick="showTab('lista')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-clock mr-1"></i>Lista Attesa</button>
-    <button data-t="donazioni" onclick="showTab('donazioni')" class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-heart mr-1"></i>Donazioni</button>
-    <button data-t="audit"     onclick="showTab('audit')"     class="tb bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-history mr-1"></i>Audit Log</button>
-    <button data-t="erasure"   onclick="showErasure()"        class="tb bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-trash mr-1"></i>Cancella Dati</button>
+  <!-- TABS GRUPPO 1: Iscrizioni/Contatti -->
+  <div class="mb-1 text-xs font-bold text-gray-500 uppercase tracking-widest px-1">
+    <i class="fas fa-users mr-1"></i>Iscrizioni &amp; Contatti
+  </div>
+  <div class="flex gap-2 flex-wrap mb-2">
+    <button data-t="adesioni"  onclick="showTab('adesioni')"  class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-users mr-1"></i>Adesioni</button>
+    <button data-t="contatti"  onclick="showTab('contatti')"  class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-envelope mr-1"></i>Contatti</button>
+    <button data-t="lista"     onclick="showTab('lista')"     class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-clock mr-1"></i>Lista Attesa</button>
+    <button data-t="donazioni" onclick="showTab('donazioni')" class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-heart mr-1"></i>Donazioni</button>
+    <button data-t="audit"     onclick="showTab('audit')"     class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-history mr-1"></i>Audit Log</button>
+    <button data-t="erasure"   onclick="showErasure()"        class="tab-btn bg-red-100 text-red-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-trash mr-1"></i>Cancella Dati</button>
   </div>
 
-  <!-- CONTENT -->
+  <!-- TABS GRUPPO 2: Contenuti -->
+  <div class="mb-1 text-xs font-bold text-gray-500 uppercase tracking-widest px-1 mt-4">
+    <i class="fas fa-database mr-1"></i>Gestione Contenuti
+  </div>
+  <div class="flex gap-2 flex-wrap mb-6">
+    <button data-t="faq"          onclick="showCrudTab('faq')"          class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-question-circle mr-1"></i>FAQ</button>
+    <button data-t="news"         onclick="showCrudTab('news')"         class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-newspaper mr-1"></i>News</button>
+    <button data-t="pubblicazioni" onclick="showCrudTab('pubblicazioni')" class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-flask mr-1"></i>Pubblicazioni</button>
+    <button data-t="storie"       onclick="showCrudTab('storie')"       class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-book-open mr-1"></i>Storie</button>
+    <button data-t="brochure"     onclick="showCrudTab('brochure')"     class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-file-pdf mr-1"></i>Brochure</button>
+    <button data-t="gallery"      onclick="showCrudTab('gallery')"      class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-images mr-1"></i>Gallery</button>
+    <button data-t="eventi"       onclick="showCrudTab('eventi')"       class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-calendar-alt mr-1"></i>Eventi</button>
+  </div>
+
+  <!-- CONTENT AREA -->
   <div id="content" class="bg-white rounded-2xl shadow-lg overflow-hidden min-h-64">
     <div class="p-8 text-center text-gray-400">
       <i class="fas fa-database text-5xl mb-3 block opacity-20"></i>
@@ -4534,6 +4483,8 @@ const ADMIN_HTML = `<!DOCTYPE html>
 <script>
 let TOK = '';
 function H(){ return {'X-Admin-Token': TOK, 'Content-Type': 'application/json'}; }
+let currentCrudTab = '';
+let currentEditId = null;
 
 async function doLogin(){
   const t = document.getElementById('ti').value.trim();
@@ -4586,12 +4537,23 @@ const TABS = {
   audit:     {url:'/api/admin/audit'},
 };
 
-async function showTab(name){
-  document.querySelectorAll('.tb').forEach(b => {
-    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+function setActiveTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active','bg-blue-600','text-white');
+    if(!b.classList.contains('bg-red-100'))
+      b.className = b.className.replace('bg-blue-600 text-white','').replace('active','').trim();
+    b.classList.add('bg-gray-200','text-gray-700');
   });
   const btn = document.querySelector('[data-t="'+name+'"]');
-  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  if(btn){
+    btn.classList.remove('bg-gray-200','text-gray-700');
+    btn.classList.add('bg-blue-600','text-white','active');
+  }
+}
+
+async function showTab(name){
+  setActiveTab(name);
+  currentCrudTab = '';
   if(name === 'erasure'){ showErasure(); return; }
   const cfg = TABS[name]; if(!cfg) return;
   document.getElementById('content').innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-blue-400"></i></div>';
@@ -4613,7 +4575,8 @@ async function showTab(name){
     html += '<tr class="'+(i%2?'bg-gray-50':'')+' border-b hover:bg-blue-50">';
     keys.forEach(k => {
       const v = row[k] !== null ? String(row[k]) : '–';
-      html += '<td class="px-3 py-2 text-gray-700 max-w-xs truncate" title="'+v.replace(/"/g,'&quot;')+'">'+v+'</td>';
+      const short = v.length > 60 ? v.substring(0,60)+'…' : v;
+      html += '<td class="px-3 py-2 text-gray-700 max-w-xs" title="'+v.replace(/"/g,'&quot;')+'">'+short+'</td>';
     });
     html += '</tr>';
   });
@@ -4624,12 +4587,272 @@ async function showTab(name){
   document.getElementById('content').innerHTML = html;
 }
 
-function showErasure(){
-  document.querySelectorAll('.tb').forEach(b => {
-    b.className = b.className.replace('bg-blue-600 text-white','bg-gray-200 text-gray-700');
+// ─── CRUD CONTENUTI ────────────────────────────────────────────────────────────
+
+const CRUD_CONFIG = {
+  faq: {
+    label: 'FAQ',
+    icon: 'fa-question-circle',
+    color: 'indigo',
+    // Schema reale tabella: domanda, risposta, lingua (monolinguua) + pubblicata
+    cols: ['id','categoria','domanda','lingua','ordine','pubblicata'],
+    fields: [
+      {name:'categoria',   label:'Categoria',   type:'select', opts:['diagnosi','terapie','comunita','ricerca','medici','diritti','scuola','bonus']},
+      {name:'lingua',      label:'Lingua',      type:'select', opts:['it','en','fr','es','de'], def:'it'},
+      {name:'domanda',     label:'Domanda',     type:'text',   req:true},
+      {name:'risposta',    label:'Risposta',    type:'textarea', req:true},
+      {name:'ordine',      label:'Ordine',      type:'number', def:0},
+      {name:'pubblicata',  label:'Pubblicata',  type:'select', opts:['1','0']},
+    ]
+  },
+  news: {
+    label: 'News',
+    icon: 'fa-newspaper',
+    color: 'green',
+    cols: ['id','created_at','categoria','titolo_it','pubblicata'],
+    fields: [
+      {name:'titolo_it',  label:'Titolo IT',  type:'text',     req:true},
+      {name:'titolo_en',  label:'Titolo EN',  type:'text'},
+      {name:'testo_it',   label:'Testo IT',   type:'textarea', req:true},
+      {name:'testo_en',   label:'Testo EN',   type:'textarea'},
+      {name:'categoria',  label:'Categoria',  type:'select', opts:['notizia','comunicato','ricerca','evento']},
+      {name:'pubblicata', label:'Pubblicata', type:'select', opts:['1','0']},
+    ]
+  },
+  pubblicazioni: {
+    label: 'Pubblicazioni',
+    icon: 'fa-flask',
+    color: 'purple',
+    cols: ['id','anno','autori','titolo','badge','ordine'],
+    fields: [
+      {name:'autori',    label:'Autori',       type:'text', req:true},
+      {name:'anno',      label:'Anno',         type:'number', req:true},
+      {name:'titolo',    label:'Titolo',       type:'text', req:true},
+      {name:'rivista',   label:'Rivista',      type:'text'},
+      {name:'pmid',      label:'PMID',         type:'text'},
+      {name:'doi',       label:'DOI/URL',      type:'text'},
+      {name:'sintesi_it',label:'Sintesi IT',   type:'textarea'},
+      {name:'sintesi_en',label:'Sintesi EN',   type:'textarea'},
+      {name:'badge',     label:'Badge',        type:'text'},
+      {name:'ordine',    label:'Ordine',       type:'number', def:0},
+    ]
+  },
+  storie: {
+    label: 'Storie',
+    icon: 'fa-book-open',
+    color: 'orange',
+    cols: ['id','nome','nazione','flag','tipo','attiva','ordine'],
+    fields: [
+      {name:'nome',      label:'Nome',       type:'text', req:true},
+      {name:'img_url',   label:'URL Immagine', type:'text'},
+      {name:'nazione',   label:'Nazione (2 lettere)', type:'text', def:'IT'},
+      {name:'flag',      label:'Flag emoji', type:'text', def:'🇮🇹'},
+      {name:'url_storia',label:'URL Storia', type:'text'},
+      {name:'desc_it',   label:'Descrizione IT', type:'textarea'},
+      {name:'desc_en',   label:'Descrizione EN', type:'textarea'},
+      {name:'desc_fr',   label:'Descrizione FR', type:'textarea'},
+      {name:'desc_es',   label:'Descrizione ES', type:'textarea'},
+      {name:'desc_de',   label:'Descrizione DE', type:'textarea'},
+      {name:'tipo',      label:'Tipo', type:'select', opts:['italiana','internazionale']},
+      {name:'consenso_firmato', label:'Consenso firmato', type:'select', opts:['1','0']},
+      {name:'ordine',    label:'Ordine', type:'number', def:0},
+      {name:'attiva',    label:'Attiva', type:'select', opts:['1','0']},
+    ]
+  },
+  brochure: {
+    label: 'Brochure',
+    icon: 'fa-file-pdf',
+    color: 'red',
+    cols: ['id','file_name','thumb_id','titolo_it','ordine','attiva'],
+    fields: [
+      {name:'file_name', label:'Nome file PDF',  type:'text', req:true},
+      {name:'thumb_id',  label:'Thumb ID (Cloudflare Images)', type:'text'},
+      {name:'titolo_it', label:'Titolo IT', type:'text', req:true},
+      {name:'titolo_en', label:'Titolo EN', type:'text'},
+      {name:'titolo_fr', label:'Titolo FR', type:'text'},
+      {name:'titolo_es', label:'Titolo ES', type:'text'},
+      {name:'titolo_de', label:'Titolo DE', type:'text'},
+      {name:'desc_it',   label:'Descrizione IT', type:'text'},
+      {name:'desc_en',   label:'Descrizione EN', type:'text'},
+      {name:'ordine',    label:'Ordine', type:'number', def:0},
+      {name:'attiva',    label:'Attiva', type:'select', opts:['1','0']},
+    ]
+  },
+  gallery: {
+    label: 'Gallery',
+    icon: 'fa-images',
+    color: 'pink',
+    cols: ['id','img_url','pagina','didascalia_it','ordine','attiva'],
+    fields: [
+      {name:'img_url',       label:'URL Immagine', type:'text', req:true},
+      {name:'didascalia_it', label:'Didascalia IT', type:'text'},
+      {name:'didascalia_en', label:'Didascalia EN', type:'text'},
+      {name:'pagina',        label:'Pagina', type:'select', opts:['community','home','about','ricerca']},
+      {name:'ordine',        label:'Ordine', type:'number', def:0},
+      {name:'attiva',        label:'Attiva', type:'select', opts:['1','0']},
+      {name:'consenso',      label:'Consenso genitori', type:'select', opts:['1','0']},
+    ]
+  },
+  eventi: {
+    label: 'Eventi',
+    icon: 'fa-calendar-alt',
+    color: 'teal',
+    cols: ['id','titolo_it','data_evento','luogo','stato','categoria','attivo'],
+    fields: [
+      {name:'titolo_it', label:'Titolo IT', type:'text', req:true},
+      {name:'titolo_en', label:'Titolo EN', type:'text'},
+      {name:'titolo_fr', label:'Titolo FR', type:'text'},
+      {name:'titolo_es', label:'Titolo ES', type:'text'},
+      {name:'titolo_de', label:'Titolo DE', type:'text'},
+      {name:'data_evento', label:'Data (YYYY-MM-DD)', type:'text'},
+      {name:'luogo',     label:'Luogo', type:'text'},
+      {name:'desc_it',   label:'Descrizione IT', type:'textarea'},
+      {name:'desc_en',   label:'Descrizione EN', type:'textarea'},
+      {name:'img_url',   label:'URL Immagine', type:'text'},
+      {name:'url_esterno', label:'URL Esterno', type:'text'},
+      {name:'categoria', label:'Categoria', type:'select', opts:['incontro','maratona','webinar','conferenza','altro']},
+      {name:'stato',     label:'Stato', type:'select', opts:['in_definizione','confermato','passato','annullato']},
+      {name:'ordine',    label:'Ordine', type:'number', def:0},
+      {name:'attivo',    label:'Attivo', type:'select', opts:['1','0']},
+    ]
+  }
+};
+
+async function showCrudTab(name){
+  setActiveTab(name);
+  currentCrudTab = name;
+  const cfg = CRUD_CONFIG[name];
+  if(!cfg) return;
+  document.getElementById('content').innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-blue-400"></i></div>';
+  const r = await fetch('/api/admin/'+name, {headers: H()});
+  if(!r.ok){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-red-500">Errore: token non valido?</div>';
+    return;
+  }
+  const data = await r.json();
+  const cols = cfg.cols;
+  let html = \`<div class="p-4 flex items-center justify-between border-b">
+    <h2 class="font-bold text-lg text-gray-800"><i class="fas \${cfg.icon} mr-2 text-blue-500"></i>\${cfg.label} <span class="text-gray-400 text-sm font-normal">(\${data.length} record)</span></h2>
+    <button onclick="openCreate()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+      <i class="fas fa-plus mr-1"></i>Nuovo
+    </button>
+  </div>
+  <div class="overflow-x-auto">
+  <table class="w-full text-xs">
+  <thead class="bg-gray-50 border-b"><tr>
+    <th class="px-3 py-3 text-left font-semibold text-gray-600">Azioni</th>\`;
+  cols.forEach(k => { html += \`<th class="px-3 py-3 text-left font-semibold text-gray-600 whitespace-nowrap">\${k}</th>\`; });
+  html += '</tr></thead><tbody>';
+  if(!data.length){
+    html += '<tr><td colspan="'+(cols.length+1)+'" class="px-4 py-8 text-center text-gray-400">Nessun record</td></tr>';
+  }
+  data.forEach((row,i) => {
+    html += '<tr class="'+(i%2?'bg-gray-50':'')+' border-b hover:bg-blue-50">';
+    html += \`<td class="px-3 py-2 whitespace-nowrap">
+      <button onclick='openEdit(\${row.id})' class="bg-amber-100 hover:bg-amber-200 text-amber-700 px-2 py-1 rounded text-xs mr-1"><i class="fas fa-edit"></i></button>
+      <button onclick='deleteRecord(\${row.id})' class="bg-red-100 hover:bg-red-200 text-red-700 px-2 py-1 rounded text-xs"><i class="fas fa-trash"></i></button>
+    </td>\`;
+    cols.forEach(k => {
+      const v = row[k] !== null && row[k] !== undefined ? String(row[k]) : '–';
+      const short = v.length > 50 ? v.substring(0,50)+'…' : v;
+      html += '<td class="px-3 py-2 text-gray-700" title="'+v.replace(/"/g,'&quot;')+'">'+short+'</td>';
+    });
+    html += '</tr>';
   });
-  const btn = document.querySelector('[data-t="erasure"]');
-  if(btn) btn.className = btn.className.replace('bg-gray-200 text-gray-700','bg-blue-600 text-white');
+  html += \`</tbody></table></div>
+  <div class="px-6 py-3 bg-gray-50 text-xs text-gray-500 border-t">
+    <i class="fas fa-lock mr-1 text-green-600"></i>\${data.length} record · DB D1
+  </div>\`;
+  document.getElementById('content').innerHTML = html;
+  // salva dati per edit
+  window._crudData = data;
+}
+
+function openCreate(){
+  if(!currentCrudTab) return;
+  currentEditId = null;
+  const cfg = CRUD_CONFIG[currentCrudTab];
+  document.getElementById('modalTitle').textContent = 'Nuovo – '+cfg.label;
+  renderFields(cfg.fields, null);
+  document.getElementById('modal').classList.add('open');
+}
+
+function openEdit(id){
+  if(!currentCrudTab) return;
+  const cfg = CRUD_CONFIG[currentCrudTab];
+  const row = (window._crudData||[]).find(r=>r.id===id);
+  if(!row) return;
+  currentEditId = id;
+  document.getElementById('modalTitle').textContent = 'Modifica – '+cfg.label+' #'+id;
+  renderFields(cfg.fields, row);
+  document.getElementById('modal').classList.add('open');
+}
+
+function renderFields(fields, row){
+  const container = document.getElementById('modalFields');
+  container.innerHTML = fields.map(f => {
+    const val = row ? (row[f.name] !== null && row[f.name] !== undefined ? String(row[f.name]) : '') : (f.def !== undefined ? String(f.def) : '');
+    let input = '';
+    if(f.type === 'textarea'){
+      input = \`<textarea id="f_\${f.name}" name="\${f.name}" rows="3" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400">\${val.replace(/</g,'&lt;')}</textarea>\`;
+    } else if(f.type === 'select'){
+      const opts = f.opts.map(o => \`<option value="\${o}" \${val===o?'selected':''}>\${o}</option>\`).join('');
+      input = \`<select id="f_\${f.name}" name="\${f.name}" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400">\${opts}</select>\`;
+    } else {
+      input = \`<input type="\${f.type||'text'}" id="f_\${f.name}" name="\${f.name}" value="\${val.replace(/"/g,'&quot;')}" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-400" \${f.req?'required':''}>\`;
+    }
+    return \`<div>
+      <label class="block text-xs font-semibold text-gray-600 mb-1">\${f.label}\${f.req?' <span class=\\'text-red-500\\'>*</span>':''}</label>
+      \${input}
+    </div>\`;
+  }).join('');
+}
+
+async function saveRecord(){
+  if(!currentCrudTab) return;
+  const cfg = CRUD_CONFIG[currentCrudTab];
+  const body = {};
+  cfg.fields.forEach(f => {
+    const el = document.getElementById('f_'+f.name);
+    if(el) body[f.name] = el.value;
+  });
+  let url = '/api/admin/'+currentCrudTab;
+  let method = 'POST';
+  if(currentEditId){
+    url += '/'+currentEditId;
+    method = 'PUT';
+  }
+  const r = await fetch(url, {method, headers: H(), body: JSON.stringify(body)});
+  const d = await r.json();
+  if(r.ok && d.success){
+    closeModal();
+    showCrudTab(currentCrudTab);
+  } else {
+    alert('Errore: '+(d.error||'unknown'));
+  }
+}
+
+async function deleteRecord(id){
+  if(!currentCrudTab) return;
+  if(!confirm('Eliminare il record #'+id+'?')) return;
+  const r = await fetch('/api/admin/'+currentCrudTab+'/'+id, {method:'DELETE', headers: H()});
+  const d = await r.json();
+  if(r.ok && d.success){
+    showCrudTab(currentCrudTab);
+  } else {
+    alert('Errore eliminazione: '+(d.error||'unknown'));
+  }
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  currentEditId = null;
+}
+document.getElementById('modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+
+function showErasure(){
+  setActiveTab('erasure');
+  currentCrudTab = '';
   document.getElementById('content').innerHTML = \`
     <div class="p-8 max-w-lg mx-auto">
       <div class="text-center mb-6">
@@ -4784,6 +5007,453 @@ app.delete('/api/admin/erasure/:email', async (c) => {
   memStore.ct = memStore.ct.map(r => r.email===email ? {...r, nome:'[CANCELLATO]', email:'[CANCELLATO]', messaggio:'[CANCELLATO]'} : r)
   memAudit('*', 0, 'ERASURE', `Art.17 GDPR email=${email.slice(0,3)}***`)
   return c.json({ success: true, nota: 'Cancellazione completata (memoria – configura D1 per persistenza).', timestamp: ts })
+})
+
+// ─── API CONTENUTI PUBBLICHE ──────────────────────────────────────────────────
+
+// GET /api/faq?lang=it
+// Schema reale: domanda TEXT, risposta TEXT, lingua TEXT DEFAULT 'it'
+app.get('/api/faq', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare(
+      `SELECT id, categoria, domanda, risposta, ordine
+       FROM faq WHERE pubblicata=1 AND lingua=?
+       ORDER BY ordine ASC, id ASC`
+    ).bind(lang).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/news?lang=it&limit=20
+app.get('/api/news', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const limit = parseInt(c.req.query('limit') || '20')
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare(`
+      SELECT id, created_at, categoria,
+             titolo_${lang==='en'?'en':'it'} as titolo,
+             testo_${lang==='en'?'en':'it'} as testo
+      FROM news WHERE pubblicata=1 ORDER BY created_at DESC LIMIT ?
+    `).bind(limit).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/pubblicazioni?lang=it
+app.get('/api/pubblicazioni', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare(`
+      SELECT id, autori, anno, titolo, rivista, pmid, doi, badge, ordine,
+             ${lang==='en'?'sintesi_en':'sintesi_it'} as sintesi
+      FROM pubblicazioni ORDER BY ordine ASC, anno DESC, id DESC
+    `).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/storie?lang=it&tipo=italiana
+app.get('/api/storie', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const tipo = c.req.query('tipo') || ''
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
+    let sql = `SELECT id, nome, img_url, nazione, flag, url_storia, tipo, ordine,
+                      desc_${col} as desc FROM storie WHERE attiva=1`
+    if (tipo) sql += ` AND tipo=?`
+    sql += ` ORDER BY ordine ASC, id ASC`
+    const stmt = tipo ? db.prepare(sql).bind(tipo) : db.prepare(sql)
+    const r = await stmt.all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/brochure?lang=it
+app.get('/api/brochure', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
+    const r = await db.prepare(`
+      SELECT id, file_name, thumb_id, ordine,
+             titolo_${col} as titolo,
+             desc_${col === 'it' ? 'it' : 'en'} as desc
+      FROM brochure WHERE attiva=1 ORDER BY ordine ASC, id ASC
+    `).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/gallery?pagina=community
+app.get('/api/gallery', async (c) => {
+  const pagina = c.req.query('pagina') || 'community'
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare(`
+      SELECT id, img_url, ordine,
+             ${lang==='en'?'didascalia_en':'didascalia_it'} as didascalia
+      FROM gallery WHERE attiva=1 AND pagina=? ORDER BY ordine ASC, id ASC
+    `).bind(pagina).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// GET /api/eventi?lang=it&stato=confermato
+app.get('/api/eventi', async (c) => {
+  const lang = (c.req.query('lang') || 'it').toLowerCase()
+  const stato = c.req.query('stato') || ''
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
+    let sql = `SELECT id, data_evento, luogo, stato, categoria, img_url, url_esterno, ordine,
+                      titolo_${col} as titolo,
+                      desc_${col==='it'?'it':'en'} as desc
+               FROM eventi WHERE attivo=1`
+    if (stato) sql += ` AND stato=?`
+    sql += ` ORDER BY COALESCE(data_evento,'9999') ASC, ordine ASC`
+    const stmt = stato ? db.prepare(sql).bind(stato) : db.prepare(sql)
+    const r = await stmt.all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+
+// ─── API ADMIN CONTENUTI (CRUD) ───────────────────────────────────────────────
+
+// ── FAQ ADMIN ──────────────────────────────────────────────────────────────────
+app.get('/api/admin/faq', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM faq ORDER BY ordine ASC, id ASC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/faq', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    // Schema reale: domanda, risposta, lingua (monolinguua)
+    const r = await db.prepare(
+      `INSERT INTO faq (categoria, domanda, risposta, lingua, ordine, pubblicata)
+       VALUES (?,?,?,?,?,?)`
+    ).bind(b.categoria||'',b.domanda||'',b.risposta||'',b.lingua||'it',b.ordine||0,b.pubblicata??1).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/faq/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    // Schema reale: domanda, risposta, lingua (monolinguua)
+    await db.prepare(
+      `UPDATE faq SET categoria=?, domanda=?, risposta=?, lingua=?, ordine=?, pubblicata=? WHERE id=?`
+    ).bind(b.categoria||'',b.domanda||'',b.risposta||'',b.lingua||'it',b.ordine||0,b.pubblicata??1,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/faq/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM faq WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── NEWS ADMIN ────────────────────────────────────────────────────────────────
+app.get('/api/admin/news', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM news ORDER BY created_at DESC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/news', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO news (titolo_it,titolo_en,testo_it,testo_en,categoria,pubblicata)
+       VALUES (?,?,?,?,?,?)`
+    ).bind(b.titolo_it||'',b.titolo_en||'',b.testo_it||'',b.testo_en||'',b.categoria||'notizia',b.pubblicata??0).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/news/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE news SET titolo_it=?,titolo_en=?,testo_it=?,testo_en=?,categoria=?,pubblicata=? WHERE id=?`
+    ).bind(b.titolo_it||'',b.titolo_en||'',b.testo_it||'',b.testo_en||'',b.categoria||'notizia',b.pubblicata??0,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/news/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM news WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── PUBBLICAZIONI ADMIN ───────────────────────────────────────────────────────
+app.get('/api/admin/pubblicazioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM pubblicazioni ORDER BY ordine ASC, anno DESC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/pubblicazioni', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO pubblicazioni (autori,anno,titolo,rivista,pmid,doi,sintesi_it,sintesi_en,badge,ordine)
+       VALUES (?,?,?,?,?,?,?,?,?,?)`
+    ).bind(b.autori||'',b.anno||new Date().getFullYear(),b.titolo||'',b.rivista||'',b.pmid||'',b.doi||'',b.sintesi_it||'',b.sintesi_en||'',b.badge||'',b.ordine||0).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/pubblicazioni/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE pubblicazioni SET autori=?,anno=?,titolo=?,rivista=?,pmid=?,doi=?,sintesi_it=?,sintesi_en=?,badge=?,ordine=? WHERE id=?`
+    ).bind(b.autori||'',b.anno||0,b.titolo||'',b.rivista||'',b.pmid||'',b.doi||'',b.sintesi_it||'',b.sintesi_en||'',b.badge||'',b.ordine||0,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/pubblicazioni/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM pubblicazioni WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── STORIE ADMIN ──────────────────────────────────────────────────────────────
+app.get('/api/admin/storie', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM storie ORDER BY ordine ASC, id ASC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/storie', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO storie (nome,img_url,nazione,flag,url_storia,desc_it,desc_en,desc_fr,desc_es,desc_de,tipo,consenso_firmato,ordine,attiva)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    ).bind(b.nome||'',b.img_url||null,b.nazione||'IT',b.flag||'🇮🇹',b.url_storia||null,b.desc_it||'',b.desc_en||'',b.desc_fr||'',b.desc_es||'',b.desc_de||'',b.tipo||'italiana',b.consenso_firmato??0,b.ordine||0,b.attiva??1).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/storie/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE storie SET nome=?,img_url=?,nazione=?,flag=?,url_storia=?,desc_it=?,desc_en=?,desc_fr=?,desc_es=?,desc_de=?,tipo=?,consenso_firmato=?,ordine=?,attiva=? WHERE id=?`
+    ).bind(b.nome||'',b.img_url||null,b.nazione||'IT',b.flag||'🇮🇹',b.url_storia||null,b.desc_it||'',b.desc_en||'',b.desc_fr||'',b.desc_es||'',b.desc_de||'',b.tipo||'italiana',b.consenso_firmato??0,b.ordine||0,b.attiva??1,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/storie/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM storie WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── BROCHURE ADMIN ────────────────────────────────────────────────────────────
+app.get('/api/admin/brochure', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM brochure ORDER BY ordine ASC, id ASC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/brochure', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO brochure (file_name,thumb_id,titolo_it,titolo_en,titolo_fr,titolo_es,titolo_de,desc_it,desc_en,ordine,attiva)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?)`
+    ).bind(b.file_name||'',b.thumb_id||'',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/brochure/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE brochure SET file_name=?,thumb_id=?,titolo_it=?,titolo_en=?,titolo_fr=?,titolo_es=?,titolo_de=?,desc_it=?,desc_en=?,ordine=?,attiva=? WHERE id=?`
+    ).bind(b.file_name||'',b.thumb_id||'',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/brochure/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM brochure WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── GALLERY ADMIN ─────────────────────────────────────────────────────────────
+app.get('/api/admin/gallery', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM gallery ORDER BY pagina ASC, ordine ASC, id ASC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/gallery', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO gallery (img_url,didascalia_it,didascalia_en,pagina,ordine,attiva,consenso)
+       VALUES (?,?,?,?,?,?,?)`
+    ).bind(b.img_url||'',b.didascalia_it||'',b.didascalia_en||'',b.pagina||'community',b.ordine||0,b.attiva??1,b.consenso??0).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/gallery/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE gallery SET img_url=?,didascalia_it=?,didascalia_en=?,pagina=?,ordine=?,attiva=?,consenso=? WHERE id=?`
+    ).bind(b.img_url||'',b.didascalia_it||'',b.didascalia_en||'',b.pagina||'community',b.ordine||0,b.attiva??1,b.consenso??0,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/gallery/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM gallery WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ── EVENTI ADMIN ──────────────────────────────────────────────────────────────
+app.get('/api/admin/eventi', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json([])
+  try {
+    const r = await db.prepare('SELECT * FROM eventi ORDER BY COALESCE(data_evento,"9999") ASC, ordine ASC').all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json([]) }
+})
+app.post('/api/admin/eventi', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const b = await c.req.json() as any
+    const r = await db.prepare(
+      `INSERT INTO eventi (titolo_it,titolo_en,titolo_fr,titolo_es,titolo_de,data_evento,luogo,desc_it,desc_en,img_url,url_esterno,categoria,stato,ordine,attivo)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    ).bind(b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.data_evento||null,b.luogo||'',b.desc_it||'',b.desc_en||'',b.img_url||null,b.url_esterno||null,b.categoria||'incontro',b.stato||'in_definizione',b.ordine||0,b.attivo??1).run()
+    return c.json({ success: true, id: r.meta.last_row_id })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.put('/api/admin/eventi/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const id = parseInt(c.req.param('id'))
+    const b = await c.req.json() as any
+    await db.prepare(
+      `UPDATE eventi SET titolo_it=?,titolo_en=?,titolo_fr=?,titolo_es=?,titolo_de=?,data_evento=?,luogo=?,desc_it=?,desc_en=?,img_url=?,url_esterno=?,categoria=?,stato=?,ordine=?,attivo=? WHERE id=?`
+    ).bind(b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.data_evento||null,b.luogo||'',b.desc_it||'',b.desc_en||'',b.img_url||null,b.url_esterno||null,b.categoria||'incontro',b.stato||'in_definizione',b.ordine||0,b.attivo??1,id).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+app.delete('/api/admin/eventi/:id', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    await db.prepare('DELETE FROM eventi WHERE id=?').bind(parseInt(c.req.param('id'))).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
 
 export default app
