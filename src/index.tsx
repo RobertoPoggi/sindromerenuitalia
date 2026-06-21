@@ -5113,7 +5113,7 @@ const TESTI_LABELS = {
   section_awareness_title:'Card Consapevolezza – titolo', section_awareness_desc:'Card Consapevolezza – desc',
   section_science_title:'Card Comitato – titolo', section_science_desc:'Card Comitato – desc',
   section_research_title:'Card Approfondimenti – titolo', section_research_desc:'Card Approfondimenti – desc',
-  section_info_title:'Card Cos\'è ReNU – titolo', section_info_desc:'Card Cos\'è ReNU – desc',
+  section_info_title:'Card Info ReNU \u2013 titolo', section_info_desc:'Card Info ReNU \u2013 desc',
   section_parents_title:'Card Genitori – titolo', section_parents_desc:'Card Genitori – desc',
   section_donations_title:'Card Donazioni – titolo', section_donations_desc:'Card Donazioni – desc',
   about_title:'About – titolo', about_gene:'About – paragrafo gene',
