@@ -2991,7 +2991,7 @@ function brochurePage(t: Record<string, string>): string {
           var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
           var fileIcon = isDrive ? 'fa-file-alt' : 'fa-file-pdf';
           var thumb = b.thumb_id
-            ? '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-48 object-contain p-2" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" loading="lazy">'
+            ? '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-48 object-contain p-2" onerror="this.style.display=&apos;none&apos;;this.nextElementSibling.style.display=&apos;flex&apos;" loading="lazy">'
               + '<div style="display:none" class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>'
             : '<div class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>';
           return '<div class="card card-blue overflow-hidden flex flex-col">'
