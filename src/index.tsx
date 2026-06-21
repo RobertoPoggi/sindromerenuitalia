@@ -5257,8 +5257,14 @@ app.get('/api/storie', async (c) => {
   if (!db) return c.json([])
   try {
     const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
+    // fallback a cascata: lingua richiesta → it → en → NULL (nessun hardcode)
+    const descExpr = col==='it'
+      ? `COALESCE(NULLIF(desc_it,''), NULLIF(desc_en,''))`
+      : col==='en'
+      ? `COALESCE(NULLIF(desc_en,''), NULLIF(desc_it,''))`
+      : `COALESCE(NULLIF(desc_${col},''), NULLIF(desc_it,''), NULLIF(desc_en,''))`
     let sql = `SELECT id, nome, img_url, nazione, flag, url_storia, tipo, ordine,
-                      desc_${col} as desc FROM storie WHERE attiva=1`
+                      ${descExpr} as desc FROM storie WHERE attiva=1`
     if (tipo) sql += ` AND tipo=?`
     sql += ` ORDER BY ordine ASC, id ASC`
     const stmt = tipo ? db.prepare(sql).bind(tipo) : db.prepare(sql)
@@ -5274,10 +5280,20 @@ app.get('/api/brochure', async (c) => {
   if (!db) return c.json([])
   try {
     const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
+    const titoloExpr = col==='it'
+      ? `COALESCE(NULLIF(titolo_it,''), NULLIF(titolo_en,''))`
+      : col==='en'
+      ? `COALESCE(NULLIF(titolo_en,''), NULLIF(titolo_it,''))`
+      : `COALESCE(NULLIF(titolo_${col},''), NULLIF(titolo_it,''), NULLIF(titolo_en,''))`
+    const descExpr2 = col==='it'
+      ? `COALESCE(NULLIF(desc_it,''), NULLIF(desc_en,''))`
+      : col==='en'
+      ? `COALESCE(NULLIF(desc_en,''), NULLIF(desc_it,''))`
+      : `COALESCE(NULLIF(desc_${col},''), NULLIF(desc_it,''), NULLIF(desc_en,''))`
     const r = await db.prepare(`
       SELECT id, file_name, thumb_id, ordine,
-             titolo_${col} as titolo,
-             desc_${col} as desc
+             ${titoloExpr} as titolo,
+             ${descExpr2} as desc
       FROM brochure WHERE attiva=1 ORDER BY ordine ASC, id ASC
     `).all()
     return c.json(r.results)
