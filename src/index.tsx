@@ -1057,9 +1057,9 @@ function homePage(t: Record<string, string>): string {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
-          <h1 class="font-extrabold mb-4 leading-tight" style="font-size:clamp(1.6rem,4vw,2.75rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${
+          <h1 class="font-extrabold mb-4 leading-tight" style="font-size:clamp(1.4rem,3.5vw,2.5rem);">${
             t.lang==='it'
-              ? 'Sindrome <strong>ReNU</strong> — per bambini, ragazzi e famiglie'
+              ? 'Sindrome <strong>ReNU</strong> Italia APS — per <strong>bambini, ragazzi e famiglie</strong>'
               : t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')
           }</h1>
           ${t.lang==='it'
@@ -1112,10 +1112,9 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="max-height:220px;">
-            <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
-            <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
-                 style="object-position:${(c as any).pos||'center'}"
+          <div class="overflow-hidden bg-sky-50 relative">
+            <i class="fas ${c.icon} text-4xl text-sky-200 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
+            <img src="${c.img}" alt="${c.title}" class="w-full h-auto block group-hover:scale-105 transition-transform duration-300 relative z-10"
                  loading="lazy" decoding="async"
                  onerror="this.style.display='none'">
           </div>
@@ -1830,8 +1829,8 @@ function therapiesPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-56" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-56" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56 overflow-hidden rounded-xl"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56 overflow-hidden rounded-xl"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-auto block" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -3372,8 +3371,8 @@ function projectsPage(t: Record<string, string>): string {
         </p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-52" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-52" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52 overflow-hidden rounded-xl"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52 overflow-hidden rounded-xl"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-auto block" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -4340,7 +4339,7 @@ function sciencePage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72" style="aspect-ratio:16/9;overflow:hidden"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-72 overflow-hidden rounded-xl"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-auto block" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
