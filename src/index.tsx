@@ -21,8 +21,8 @@ const translations: Record<string, Record<string, string>> = {
     title: 'Sindrome ReNU Italia APS',
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
-    hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno <strong>bambini, ragazzi e famiglie</strong>. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono <strong>~250 i casi accertati nel mondo</strong> (12-14 in Italia). Le varianti patogene si concentrano in soli <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a> degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per <strong>supportare le famiglie italiane</strong> e offrire un aiuto concreto ai bambini ReNU.',
+    hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (12-14 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -66,7 +66,7 @@ const translations: Record<string, Record<string, string>> = {
     about_diagnosis_note: 'In Italia, per diagnosticare RNU4-2 è necessario il Sequenziamento dell\'Intero Genoma (WGS). Il WES non è in grado di rilevarlo!',
     research_title: 'Approfondimenti',
     research_intro: 'TU puoi far avanzare la ricerca verso opzioni di trattamento per ReNU!',
-    research_crid: 'Prima di iscriversi a qualsiasi ricerca, crea un <a href="https://thecrid.org/" target="_blank" class="text-yellow-300 hover:underline font-semibold">ID di Ricerca Clinica (CRID)</a>! Condividi il tuo CRID con ogni studio clinico a cui partecipi.',
+    research_crid: 'Prima di iscriversi a qualsiasi ricerca, crea un ID di Ricerca Clinica (CRID) su thecrid.org! Condividi il tuo CRID con ogni studio clinico a cui partecipi.',
     research_priorities_title: 'Cosa è importante per la comunità RNU4-2?',
     therapies_title: 'Terapie per la Sindrome ReNU',
     therapies_intro: 'Ogni percorso terapeutico deve essere personalizzato sulla base dei bisogni del bambino o del ragazzo e condiviso con i professionisti di riferimento. In questa sezione raccogliamo alcune aree di intervento che possono sostenere sviluppo, autonomia, comunicazione e qualità della vita.',
@@ -997,8 +997,11 @@ function homePage(t: Record<string, string>): string {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
-          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text}</h1>
-          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl">${t.hero_desc}</p>
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')}</h1>
+          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl">${t.hero_desc
+            .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
+            .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
+            .replace('supportare le famiglie italiane','<strong>supportare le famiglie italiane</strong>')}</p>
           <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start flex-wrap">
             <a href="/${t.lang}/donations" class="btn-diagnosis inline-flex items-center gap-3 text-white font-bold px-7 py-4 rounded-full text-lg shadow-xl" style="background: linear-gradient(135deg,#DC2626,#B91C1C);">
               <i class="fas fa-heart"></i>${t.btn_diagnosis}
@@ -4402,7 +4405,12 @@ async function loadTesti(db: D1Database | undefined, lang: string): Promise<Reco
     const out: Record<string,string> = {}
     for (const row of (r.results as any[])) {
       if (row.chiave && row.valore !== undefined && row.valore !== null && row.valore !== '') {
+        // Testo puro: escape HTML per sicurezza (opzione A)
         out[row.chiave] = row.valore
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
       }
     }
     return out
@@ -5160,7 +5168,7 @@ const TESTI_GROUPS = [
   { label:'🏠 Generali & Header',  keys:['title','subtitle','tagline','hero_text','hero_desc','btn_diagnosis','btn_diagnosis_sub','btn_info','btn_info_sub','footer_rights','footer_partnership','footer_tagline'] },
   { label:'🃏 Card Sezioni Home',   keys:['section_map_title','section_map_desc','section_awareness_title','section_awareness_desc','section_science_title','section_science_desc','section_research_title','section_research_desc','section_info_title','section_info_desc','section_parents_title','section_parents_desc','section_donations_title','section_donations_desc'] },
   { label:'ℹ️ Pagina About',        keys:['about_title','about_gene','about_discovery','about_discovery_text','about_features_title','about_brain','about_brain_items','about_development','about_development_items','about_seizures','about_seizures_items','about_vision','about_vision_items','about_face','about_face_items','about_muscle','about_muscle_items','about_mobility','about_mobility_items','about_growth','about_growth_items','about_feeding','about_feeding_items','about_communication','about_communication_items','about_bones','about_bones_items','about_happy','about_diagnosis_note'] },
-  { label:'🔬 Ricerca & Terapie',   keys:['research_title','research_intro','research_crid','research_priorities_title','therapies_title','therapies_intro','therapies_note','diagnosis_title','diagnosis_intro','diagnosis_contact'] },
+  { label:'🔬 Ricerca & Terapie',   keys:['research_title','research_intro','research_priorities_title','therapies_title','therapies_intro','therapies_note','diagnosis_title','diagnosis_intro','diagnosis_contact'] },
   { label:'👨‍👩‍👧 Comunità & Donazioni', keys:['community_title','community_intro','community_network_it','community_network_desc','donations_title','donations_intro','donations_iban','donations_iban_label','contact_title','contact_intro','brochure_title','brochure_intro'] },
   { label:'🧪 Comitato Scientifico', keys:['science_title','science_intro','science_role1_title','science_role1_desc','science_role2_title','science_role2_desc','science_role3_title','science_role3_desc','science_role4_title','science_role4_desc','science_role5_title','science_role5_desc','science_members_title','science_members_note','science_cta'] },
   { label:'🌍 Rete & Footer',        keys:['coe_title','coe_desc','world_title','world_desc','intl_network'] },
@@ -5208,7 +5216,7 @@ function renderTestiUI(){
     <i class="fas fa-info-circle mr-1"></i>
     <b>Solo italiano (IT).</b> Le altre lingue (EN/FR/ES/DE) restano nel codice. Modifica il testo e clicca <b>Salva tutto</b>.
     Il sito si aggiorna <b>immediatamente</b> al prossimo caricamento pagina, senza necessità di deploy.
-    Il testo supporta HTML semplice (&lt;strong&gt;, &lt;a&gt;, ecc.).
+    Solo testo normale — la formattazione (grassetti, link) è gestita automaticamente dal codice.
   </div>
   <div class="divide-y">\`;
 
