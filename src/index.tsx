@@ -1184,24 +1184,28 @@ function homePage(t: Record<string, string>): string {
       </div>
       <!-- Modale storia bambino -->
       <div id="storia-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,32,80,0.7);backdrop-filter:blur(4px)" onclick="if(event.target===this)chiudiStoria()">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:1.5rem;max-width:480px;width:90%;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.35)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:1.5rem;max-width:520px;width:92%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.35);display:flex;flex-direction:column">
           <button onclick="chiudiStoria()" style="position:absolute;top:12px;right:14px;z-index:10;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15)">✕</button>
-          <div id="storia-modal-img-wrap" style="width:100%;aspect-ratio:4/5;overflow:hidden;background:#EEF6FB">
+          <div id="storia-modal-img-wrap" style="width:100%;aspect-ratio:4/5;overflow:hidden;background:#EEF6FB;flex-shrink:0">
             <img id="storia-modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top">
           </div>
-          <div style="padding:1.5rem">
+          <div style="padding:1.5rem;flex:1">
             <div style="display:inline-flex;align-items:center;gap:6px;background:#f0f8fd;border-radius:9999px;padding:4px 12px;margin-bottom:12px">
               <i class="fas fa-flag" style="color:#009246;font-size:11px"></i>
               <span style="font-size:11px;font-weight:700;color:#1078C0">Italia</span>
             </div>
             <h3 id="storia-modal-nome" style="font-size:1.5rem;font-weight:800;color:#082050;margin:0 0 8px"></h3>
-            <p id="storia-modal-desc" style="color:#4b5563;font-size:0.95rem;line-height:1.6;margin:0 0 16px"></p>
+            <p id="storia-modal-desc" style="color:#4b5563;font-size:0.95rem;line-height:1.6;margin:0 0 16px;white-space:pre-line"></p>
             <p id="storia-modal-nodesc" style="display:none;color:#9ca3af;font-style:italic;font-size:0.9rem;margin:0 0 16px">${t.lang==='it'?'La storia di questo bambino sarà presto condivisa dalla famiglia.':t.lang==='en'?'This child\'s story will be shared by the family soon.':'L\'histoire de cet enfant sera bientôt partagée par la famille.'}</p>
+            <a id="storia-modal-link" href="#" target="_blank" style="display:none;align-items:center;gap:8px;background:#082050;color:white;font-weight:700;font-size:0.9rem;padding:10px 20px;border-radius:9999px;text-decoration:none;margin-top:4px">
+              <i class="fas fa-book-open"></i>
+              ${t.lang==='it'?'Leggi la storia completa':t.lang==='en'?'Read the full story':t.lang==='fr'?'Lire l\'histoire complète':t.lang==='es'?'Leer la historia completa':'Vollständige Geschichte lesen'}
+            </a>
           </div>
         </div>
       </div>
       <script>
-      function apriStoria(nome, desc, imgUrl) {
+      function apriStoria(nome, desc, imgUrl, urlStoria) {
         document.getElementById('storia-modal-nome').textContent = nome;
         document.getElementById('storia-modal-desc').textContent = desc || '';
         document.getElementById('storia-modal-nodesc').style.display = desc ? 'none' : 'block';
@@ -1213,6 +1217,13 @@ function homePage(t: Record<string, string>): string {
           img.src = imgUrl; img.alt = nome;
         } else {
           imgWrap.style.display = 'none';
+        }
+        var linkEl = document.getElementById('storia-modal-link');
+        if (urlStoria) {
+          linkEl.href = urlStoria;
+          linkEl.style.display = 'inline-flex';
+        } else {
+          linkEl.style.display = 'none';
         }
         document.getElementById('storia-modal').style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -1263,7 +1274,7 @@ function homePage(t: Record<string, string>): string {
               if(!card) return;
               var idx = parseInt(card.getAttribute('data-idx'), 10);
               var b = storieData[idx];
-              if(b) apriStoria(b.nome, b.desc||'', b.img_url||'');
+              if(b) apriStoria(b.nome, b.desc||'', b.img_url||'', b.url_storia||'');
             });
           }).catch(function(){ document.getElementById('storie-italiane-grid').innerHTML=''; });
       })();
