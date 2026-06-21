@@ -546,13 +546,13 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
   const navLinks = navItems.filter(item => !item.hidden).map(item => item.disabled ? `
-    <span class="flex items-center gap-1 px-1 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.lang==='it'?'Sezione in preparazione':'Section coming soon'}">
+    <span class="flex items-center gap-0.5 px-1.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.lang==='it'?'Sezione in preparazione':'Section coming soon'}">
       <i class="fas ${item.icon} text-xs"></i>
-      <span class="hidden xl:inline nav-label">${t[item.key]}</span>
+      <span class="hidden 2xl:inline nav-label ml-0.5">${t[item.key]}</span>
     </span>` : `
-    <a href="/${t.lang}/${item.page}" class="flex items-center gap-1 px-1 py-1 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors text-xs font-semibold whitespace-nowrap ${page === item.page ? 'bg-white bg-opacity-25 shadow-inner ring-1 ring-sky-300' : ''}" title="${t[item.key]}">
+    <a href="/${t.lang}/${item.page}" class="flex items-center gap-0.5 px-1.5 py-1 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors text-xs font-semibold whitespace-nowrap ${page === item.page ? 'bg-white bg-opacity-25 shadow-inner ring-1 ring-sky-300' : ''}" title="${t[item.key]}">
       <i class="fas ${item.icon} text-xs opacity-80"></i>
-      <span class="hidden xl:inline nav-label">${t[item.key]}</span>
+      <span class="hidden 2xl:inline nav-label ml-0.5">${t[item.key]}</span>
     </a>`).join('')
 
   return `<!DOCTYPE html>
@@ -839,7 +839,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       </a>
 
       <!-- Desktop nav: visibile da 768px via CSS puro (no Tailwind) -->
-      <nav id="desktopNav" style="align-items:center;gap:1px;flex-wrap:nowrap;justify-content:flex-start;flex:1;padding:0 4px;overflow-x:auto;scrollbar-width:none;min-width:0;">
+      <nav id="desktopNav" style="align-items:center;gap:0;flex-wrap:nowrap;justify-content:flex-start;flex:1;padding:0 2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;min-width:0;">
         ${navLinks}
       </nav>
 
@@ -1057,7 +1057,15 @@ function homePage(t: Record<string, string>): string {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
-          <h1 class="font-extrabold mb-6 leading-tight text-lg md:text-2xl">${t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')}</h1>
+          <h1 class="font-extrabold mb-4 leading-tight" style="font-size:clamp(1.6rem,4vw,2.75rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${
+            t.lang==='it'
+              ? 'Sindrome <strong>ReNU</strong> — per bambini, ragazzi e famiglie'
+              : t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')
+          }</h1>
+          ${t.lang==='it'
+            ? `<p class="text-sky-200 text-sm md:text-base mb-4 leading-relaxed italic">${t.hero_text}</p>`
+            : ''
+          }
           <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed">${t.hero_desc
             .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
             .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
@@ -1104,7 +1112,7 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="aspect-ratio:${(c as any).aspect||'16/9'}">
+          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="max-height:220px;">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
                  style="object-position:${(c as any).pos||'center'}"
@@ -1548,10 +1556,10 @@ function aboutPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
           </span>
         </div>
-        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" loading="lazy" decoding="async">
+        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
       </div>
 
-      <!-- ReNU Syndrome Support Tool -->
+      <!-- Strumento di Supporto per la Sindrome ReNU -->
       <div class="mt-8 card card-navy p-6 mb-8">
         <div class="flex flex-col md:flex-row items-center gap-6">
           <div class="flex-shrink-0">
@@ -1561,7 +1569,7 @@ function aboutPage(t: Record<string, string>): string {
           </div>
           <div class="flex-1">
             <h3 class="font-bold text-xl mb-2" style="color:#082050">
-              ${t.lang==='it'?'ReNU Syndrome Support Tool':'ReNU Syndrome Support Tool'}
+              ${t.lang==='it'?'Strumento di Supporto per la Sindrome ReNU':t.lang==='en'?'ReNU Syndrome Support Tool':t.lang==='fr'?'Outil de Soutien pour le Syndrome ReNU':'ReNU Syndrome Support Tool'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
               ${t.lang==='it'?'Scarica il documento completo sulle specificità cliniche della Sindrome ReNU, elaborato dai principali ricercatori mondiali. Un supporto essenziale per i medici che seguono pazienti con ReNU.':t.lang==='en'?'Download the complete document on the clinical specifics of ReNU Syndrome, prepared by leading world researchers. An essential support for physicians treating ReNU patients.':'Téléchargez le document complet sur les spécificités cliniques du syndrome ReNU.'}
@@ -1569,7 +1577,7 @@ function aboutPage(t: Record<string, string>): string {
             <a href="https://static1.squarespace.com/static/66cde7d2bedfe27eac771da1/t/692f8c2e4f8faf429c4b30e8/1764723758650/ReNU+Support+Tool.pdf" target="_blank"
                class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
               <i class="fas fa-download"></i>
-              ${t.lang==='it'?'Scarica ReNU Support Tool PDF':t.lang==='en'?'Download ReNU Support Tool PDF':'Télécharger ReNU Support Tool PDF'}
+              ${t.lang==='it'?'Scarica PDF – Strumento di Supporto ReNU':t.lang==='en'?'Download ReNU Support Tool PDF':'Télécharger ReNU Support Tool PDF'}
             </a>
           </div>
         </div>
@@ -2938,32 +2946,72 @@ function contactPage(t: Record<string, string>): string {
 // ─── BROCHURE PAGE ────────────────────────────────────────────────────────────
 function brochurePage(t: Record<string, string>): string {
   const dlLabel = t.brochure_download || (t.lang==='it'?'Scarica PDF':t.lang==='en'?'Download PDF':t.lang==='fr'?'Télécharger':'Descargar PDF')
+  const isIt = t.lang === 'it'
   return `
   <section class="hero-gradient text-white py-16 px-4">
     <div class="max-w-5xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-file-pdf mr-3 text-sky-300"></i>${t.brochure_title}</h1>
+      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-photo-video mr-3 text-sky-300"></i>${t.brochure_title}</h1>
       <p class="text-sky-100 text-lg">${t.brochure_intro}</p>
     </div>
   </section>
 
   <section class="py-16 px-4 section-light">
-    <div class="max-w-6xl mx-auto">
-      <!-- Griglia brochure caricata dal DB -->
-      <div id="brochure-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="col-span-full text-center py-12 text-gray-400">
-          <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
-          ${t.lang==='it'?'Caricamento brochure...':t.lang==='en'?'Loading brochures...':'Chargement...'}
+    <div class="max-w-6xl mx-auto space-y-14">
+
+      <!-- ═══ SEZIONE 1: BROCHURE & MATERIALI ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#1078C0">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Brochure & Materiali Divulgativi':t.lang==='en'?'Brochures & Educational Materials':t.lang==='fr'?'Brochures & Matériaux':t.lang==='es'?'Folletos & Materiales':'Broschüren & Materialien'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Opuscoli, flyer e materiali da condividere sulle Sindrome ReNU':t.lang==='en'?'Booklets, flyers and materials to share about ReNU Syndrome':'Dépliants et matériaux sur le syndrome ReNU'}
+            </p>
+          </div>
+        </div>
+        <div id="brochure-grid-brochure" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="col-span-full text-center py-12 text-gray-400">
+            <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
+            ${t.lang==='it'?'Caricamento brochure...':t.lang==='en'?'Loading brochures...':'Chargement...'}
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SEZIONE 2: PUBBLICAZIONI SCIENTIFICHE ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#082050">
+            <i class="fas fa-flask"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Pubblicazioni Scientifiche':t.lang==='en'?'Scientific Publications':t.lang==='fr'?'Publications Scientifiques':t.lang==='es'?'Publicaciones Científicas':'Wissenschaftliche Publikationen'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Articoli, studi e paper scientifici sulla Sindrome ReNU (RNU4-2)':t.lang==='en'?'Articles, studies and scientific papers on ReNU Syndrome (RNU4-2)':'Articles et études scientifiques sur le syndrome ReNU'}
+            </p>
+          </div>
+        </div>
+        <div id="brochure-grid-pubblicazione" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="col-span-full text-center py-12 text-gray-400">
+            <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
+            ${isIt?'Caricamento pubblicazioni...':'Loading publications...'}
+          </div>
         </div>
       </div>
 
       <!-- Download all -->
-      <div id="brochure-download-all" class="mt-10 rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%); display:none">
+      <div id="brochure-download-all" class="rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%); display:none">
         <i class="fas fa-file-archive text-5xl text-sky-300 mb-4 block"></i>
         <h2 class="text-2xl font-bold mb-2">
-          ${t.lang==='it'?'Scarica tutte le brochure':t.lang==='en'?'Download all brochures':t.lang==='fr'?'Télécharger toutes les brochures':t.lang==='es'?'Descargar todos los folletos':'Alle Broschüren herunterladen'}
+          ${isIt?'Scarica tutti i materiali':t.lang==='en'?'Download all materials':'Télécharger tous les matériaux'}
         </h2>
         <p class="text-sky-200 mb-5">
-          ${t.lang==='it'?'Condividi le nostre brochure per diffondere la consapevolezza sulla Sindrome ReNU in Italia.':t.lang==='en'?'Share our brochures to spread awareness about ReNU Syndrome in Italy.':'Partagez nos brochures pour sensibiliser à la maladie ReNU.'}
+          ${isIt?'Condividi brochure e pubblicazioni per diffondere la consapevolezza sulla Sindrome ReNU.':t.lang==='en'?'Share brochures and publications to spread awareness about ReNU Syndrome.':'Partagez brochures et publications pour sensibiliser à la maladie ReNU.'}
         </p>
         <div id="brochure-links-all" class="flex flex-wrap justify-center gap-3"></div>
       </div>
@@ -2972,55 +3020,97 @@ function brochurePage(t: Record<string, string>): string {
   (function(){
     var lang = '${t.lang}';
     var dlLabel = "${dlLabel.replace(/"/g, '&quot;')}";
+    var isIt = lang === 'it';
+
+    function buildCard(b, isPub) {
+      var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
+      var isDrive = isExt && b.file_name.indexOf('drive.google.com') !== -1;
+      var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+      var target = isExt ? '_blank' : '_self';
+      var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
+      var fileIcon = isDrive ? 'fa-file-alt' : (isPub ? 'fa-file-medical-alt' : 'fa-file-pdf');
+
+      var thumbHtml;
+      if (b.img_url) {
+        // immagine copertina reale
+        thumbHtml = '<div class="overflow-hidden bg-sky-50" style="min-height:180px">'
+          + '<img src="' + b.img_url + '" alt="' + (b.titolo || '').replace(/"/g,'&quot;') + '" class="w-full h-auto block" loading="lazy" onerror="this.parentNode.innerHTML=&apos;<div class=\\\"w-full flex items-center justify-center\\\" style=\\\"min-height:180px;background:linear-gradient(135deg,#EEF6FB,#C8E8F8)\\\"><i class=\\\"fas ' + fileIcon + ' text-5xl\\\" style=\\\"color:#1078C0\\\"></i></div>&apos;">'
+          + '</div>';
+      } else if (b.thumb_id) {
+        thumbHtml = '<div class="overflow-hidden bg-sky-50" style="min-height:180px">'
+          + '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-auto block p-2" loading="lazy" onerror="this.parentNode.innerHTML=&apos;<div class=\\\"w-full flex items-center justify-center\\\" style=\\\"min-height:180px;background:linear-gradient(135deg,#EEF6FB,#C8E8F8)\\\"><i class=\\\"fas ' + fileIcon + ' text-5xl\\\" style=\\\"color:#1078C0\\\"></i></div>&apos;">'
+          + '</div>';
+      } else {
+        thumbHtml = '<div class="w-full flex items-center justify-center" style="min-height:180px;background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">'
+          + '<i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i>'
+          + '</div>';
+      }
+
+      var btnStyle = isPub ? 'background:#082050' : 'background:#1078C0';
+      var btnLabelPub = isIt ? 'Leggi Pubblicazione' : (lang==='en' ? 'Read Publication' : (lang==='fr' ? 'Lire la publication' : 'Leer publicación'));
+      var finalLabel = isPub ? btnLabelPub : dlLabel;
+
+      return '<div class="card card-blue overflow-hidden flex flex-col">'
+        + thumbHtml
+        + '<div class="p-4 flex-1 flex flex-col">'
+        + '<h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">' + (b.titolo || '') + '</h3>'
+        + '<p class="text-gray-500 text-xs mb-4 flex-1">' + (b.desc || '') + '</p>'
+        + '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="' + btnStyle + '">'
+        + '<i class="fas ' + btnIcon + '"></i>' + finalLabel
+        + '</a>'
+        + '</div>'
+        + '</div>';
+    }
+
     fetch('/api/brochure?lang=' + lang)
       .then(function(r){ return r.json(); })
       .then(function(data){
-        var grid = document.getElementById('brochure-grid');
+        var gridBro = document.getElementById('brochure-grid-brochure');
+        var gridPub = document.getElementById('brochure-grid-pubblicazione');
         var dlAll = document.getElementById('brochure-download-all');
         var linksAll = document.getElementById('brochure-links-all');
-        if(!data.length){
-          grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-info-circle text-3xl mb-3 block"></i>Nessuna pubblicazione disponibile.</div>';
-          return;
+
+        var brochures = data.filter(function(b){ return !b.category || b.category === 'brochure'; });
+        var pubblicazioni = data.filter(function(b){ return b.category === 'pubblicazione'; });
+
+        if(gridBro) {
+          if(!brochures.length) {
+            gridBro.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400"><i class="fas fa-info-circle text-2xl mb-2 block"></i>'
+              + (isIt ? 'Nessuna brochure disponibile al momento.' : 'No brochures available yet.') + '</div>';
+          } else {
+            gridBro.innerHTML = brochures.map(function(b){ return buildCard(b, false); }).join('');
+          }
         }
-        grid.innerHTML = data.map(function(b){
-          var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
-          var isDrive = isExt && b.file_name.indexOf('drive.google.com') !== -1;
-          var href = isExt ? b.file_name : '/brochure/' + b.file_name;
-          var target = isExt ? '_blank' : '_self';
-          var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
-          var fileIcon = isDrive ? 'fa-file-alt' : 'fa-file-pdf';
-          var thumb = b.thumb_id
-            ? '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-48 object-contain p-2" onerror="this.style.display=&apos;none&apos;;this.nextElementSibling.style.display=&apos;flex&apos;" loading="lazy">'
-              + '<div style="display:none" class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>'
-            : '<div class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>';
-          return '<div class="card card-blue overflow-hidden flex flex-col">'
-            + '<div class="overflow-hidden bg-sky-50" style="min-height:200px">' + thumb + '</div>'
-            + '<div class="p-4 flex-1 flex flex-col">'
-            + '<h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">' + (b.titolo || '') + '</h3>'
-            + '<p class="text-gray-500 text-xs mb-4 flex-1">' + (b.desc || '') + '</p>'
-            + '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#1078C0">'
-            + '<i class="fas ' + btnIcon + '"></i>' + dlLabel
-            + '</a>'
-            + '</div>'
-            + '</div>';
-        }).join('');
-        if(linksAll) linksAll.innerHTML = data.map(function(b){
-          var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
-          var href = isExt ? b.file_name : '/brochure/' + b.file_name;
-          var target = isExt ? '_blank' : '_self';
-          var label = b.titolo ? b.titolo.substring(0, 32) + (b.titolo.length > 32 ? '…' : '') : b.file_name.replace('brochure-','').replace('.pdf','');
-          return '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium">'
-            + '<i class="fas fa-external-link-alt text-xs"></i>' + label + '</a>';
-        }).join('');
-        if(dlAll) dlAll.style.display = 'block';
+
+        if(gridPub) {
+          if(!pubblicazioni.length) {
+            gridPub.innerHTML = '<div class="col-span-full text-center py-10 text-gray-400"><i class="fas fa-info-circle text-2xl mb-2 block"></i>'
+              + (isIt ? 'Nessuna pubblicazione scientifica disponibile al momento. Consulta la cartella Google Drive qui sotto.' : 'No scientific publications available yet. See the Google Drive folder below.') + '</div>';
+          } else {
+            gridPub.innerHTML = pubblicazioni.map(function(b){ return buildCard(b, true); }).join('');
+          }
+        }
+
+        if(linksAll && data.length) {
+          linksAll.innerHTML = data.map(function(b){
+            var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
+            var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+            var target = isExt ? '_blank' : '_self';
+            var label = b.titolo ? b.titolo.substring(0, 32) + (b.titolo.length > 32 ? '…' : '') : b.file_name.replace('brochure-','').replace('.pdf','');
+            return '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium">'
+              + '<i class="fas fa-external-link-alt text-xs"></i>' + label + '</a>';
+          }).join('');
+          if(dlAll) dlAll.style.display = 'block';
+        }
       }).catch(function(){
-        document.getElementById('brochure-grid').innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-exclamation-circle text-3xl mb-3 block"></i>Errore nel caricamento.</div>';
+        var g = document.getElementById('brochure-grid-brochure');
+        if(g) g.innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-exclamation-circle text-3xl mb-3 block"></i>Errore nel caricamento.</div>';
       });
   })();
   </script>
 
       <!-- Link cartelle Drive -->
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
            class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
           <div class="ic ic-sky w-12 h-12 flex-shrink-0">
@@ -3028,13 +3118,13 @@ function brochurePage(t: Record<string, string>): string {
           </div>
           <div>
             <h3 class="font-bold" style="color:#082050">
-              ${t.lang==='it'?'Cartella Articoli Scientifici':t.lang==='en'?'Scientific Articles Folder':'Dossier Articles scientifiques'}
+              ${isIt?'Cartella Articoli Scientifici':t.lang==='en'?'Scientific Articles Folder':'Dossier Articles scientifiques'}
             </h3>
             <p class="text-xs text-gray-500 mt-0.5">
-              ${t.lang==='it'?'Pubblicazioni e ricerche su RNU4-2 – Google Drive':t.lang==='en'?'Publications and research on RNU4-2 – Google Drive':'Publications et recherches sur RNU4-2'}
+              ${isIt?'Pubblicazioni e ricerche su RNU4-2 – Google Drive':t.lang==='en'?'Publications and research on RNU4-2 – Google Drive':'Publications et recherches sur RNU4-2'}
             </p>
             <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#1078C0">
-              ${t.lang==='it'?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
+              ${isIt?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
             </span>
           </div>
         </a>
@@ -3045,17 +3135,18 @@ function brochurePage(t: Record<string, string>): string {
           </div>
           <div>
             <h3 class="font-bold" style="color:#082050">
-              ${t.lang==='it'?'Opuscoli Scuola':t.lang==='en'?'School Materials':'Matériel scolaire'}
+              ${isIt?'Opuscoli Scuola':t.lang==='en'?'School Materials':'Matériel scolaire'}
             </h3>
             <p class="text-xs text-gray-500 mt-0.5">
-              ${t.lang==='it'?'Materiali per insegnanti ed educatori – Google Drive':t.lang==='en'?'Materials for teachers and educators – Google Drive':'Matériaux pour enseignants – Google Drive'}
+              ${isIt?'Materiali per insegnanti ed educatori – Google Drive':t.lang==='en'?'Materials for teachers and educators – Google Drive':'Matériaux pour enseignants – Google Drive'}
             </p>
             <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#7C3AED">
-              ${t.lang==='it'?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
+              ${isIt?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
             </span>
           </div>
         </a>
       </div>
+
     </div>
   </section>`
 }
@@ -4938,9 +5029,11 @@ const CRUD_CONFIG = {
     label: 'Brochure',
     icon: 'fa-file-pdf',
     color: 'red',
-    cols: ['id','file_name','thumb_id','titolo_it','ordine','attiva'],
+    cols: ['id','category','file_name','titolo_it','ordine','attiva'],
     fields: [
-      {name:'file_name', label:'Nome file PDF',  type:'text', req:true},
+      {name:'category',  label:'Categoria', type:'select', opts:['brochure','pubblicazione']},
+      {name:'file_name', label:'URL o Nome file PDF', type:'text', req:true},
+      {name:'img_url',   label:'URL Immagine copertina', type:'text'},
       {name:'thumb_id',  label:'Thumb ID (Cloudflare Images)', type:'text'},
       {name:'titolo_it', label:'Titolo IT', type:'text', req:true},
       {name:'titolo_en', label:'Titolo EN', type:'text'},
@@ -5590,9 +5683,11 @@ app.get('/api/brochure', async (c) => {
       : `COALESCE(NULLIF(desc_${col},''), NULLIF(desc_it,''), NULLIF(desc_en,''))`
     const r = await db.prepare(`
       SELECT id, file_name, thumb_id, ordine,
+             COALESCE(NULLIF(category,''), 'brochure') as category,
+             img_url,
              ${titoloExpr} as titolo,
              ${descExpr2} as desc
-      FROM brochure WHERE attiva=1 ORDER BY ordine ASC, id ASC
+      FROM brochure WHERE attiva=1 ORDER BY category ASC, ordine ASC, id ASC
     `).all()
     return c.json(r.results)
   } catch(e: any) { return c.json([]) }
@@ -5839,9 +5934,9 @@ app.post('/api/admin/brochure', async (c) => {
   try {
     const b = await c.req.json() as any
     const r = await db.prepare(
-      `INSERT INTO brochure (file_name,thumb_id,titolo_it,titolo_en,titolo_fr,titolo_es,titolo_de,desc_it,desc_en,ordine,attiva)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?)`
-    ).bind(b.file_name||'',b.thumb_id||'',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1).run()
+      `INSERT INTO brochure (file_name,thumb_id,img_url,category,titolo_it,titolo_en,titolo_fr,titolo_es,titolo_de,desc_it,desc_en,ordine,attiva)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    ).bind(b.file_name||'',b.thumb_id||'',b.img_url||'',b.category||'brochure',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1).run()
     return c.json({ success: true, id: r.meta.last_row_id })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
@@ -5853,8 +5948,8 @@ app.put('/api/admin/brochure/:id', async (c) => {
     const id = parseInt(c.req.param('id'))
     const b = await c.req.json() as any
     await db.prepare(
-      `UPDATE brochure SET file_name=?,thumb_id=?,titolo_it=?,titolo_en=?,titolo_fr=?,titolo_es=?,titolo_de=?,desc_it=?,desc_en=?,ordine=?,attiva=? WHERE id=?`
-    ).bind(b.file_name||'',b.thumb_id||'',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1,id).run()
+      `UPDATE brochure SET file_name=?,thumb_id=?,img_url=?,category=?,titolo_it=?,titolo_en=?,titolo_fr=?,titolo_es=?,titolo_de=?,desc_it=?,desc_en=?,ordine=?,attiva=? WHERE id=?`
+    ).bind(b.file_name||'',b.thumb_id||'',b.img_url||'',b.category||'brochure',b.titolo_it||'',b.titolo_en||'',b.titolo_fr||'',b.titolo_es||'',b.titolo_de||'',b.desc_it||'',b.desc_en||'',b.ordine||0,b.attiva??1,id).run()
     return c.json({ success: true })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
