@@ -1182,6 +1182,48 @@ function homePage(t: Record<string, string>): string {
           ${t.lang==='it'?'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
         </p>
       </div>
+      <!-- Modale storia bambino -->
+      <div id="storia-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,32,80,0.7);backdrop-filter:blur(4px)" onclick="if(event.target===this)chiudiStoria()">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:1.5rem;max-width:480px;width:90%;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.35)">
+          <button onclick="chiudiStoria()" style="position:absolute;top:12px;right:14px;z-index:10;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15)">✕</button>
+          <div id="storia-modal-img-wrap" style="width:100%;aspect-ratio:4/5;overflow:hidden;background:#EEF6FB">
+            <img id="storia-modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          </div>
+          <div style="padding:1.5rem">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:#f0f8fd;border-radius:9999px;padding:4px 12px;margin-bottom:12px">
+              <i class="fas fa-flag" style="color:#009246;font-size:11px"></i>
+              <span style="font-size:11px;font-weight:700;color:#1078C0">Italia</span>
+            </div>
+            <h3 id="storia-modal-nome" style="font-size:1.5rem;font-weight:800;color:#082050;margin:0 0 8px"></h3>
+            <p id="storia-modal-desc" style="color:#4b5563;font-size:0.95rem;line-height:1.6;margin:0 0 16px"></p>
+            <p id="storia-modal-nodesc" style="display:none;color:#9ca3af;font-style:italic;font-size:0.9rem;margin:0 0 16px">${t.lang==='it'?'La storia di questo bambino sarà presto condivisa dalla famiglia.':t.lang==='en'?'This child\'s story will be shared by the family soon.':'L\'histoire de cet enfant sera bientôt partagée par la famille.'}</p>
+          </div>
+        </div>
+      </div>
+      <script>
+      function apriStoria(nome, desc, imgUrl) {
+        document.getElementById('storia-modal-nome').textContent = nome;
+        document.getElementById('storia-modal-desc').textContent = desc || '';
+        document.getElementById('storia-modal-nodesc').style.display = desc ? 'none' : 'block';
+        document.getElementById('storia-modal-desc').style.display = desc ? 'block' : 'none';
+        var imgWrap = document.getElementById('storia-modal-img-wrap');
+        var img = document.getElementById('storia-modal-img');
+        if (imgUrl) {
+          imgWrap.style.display = 'block';
+          img.src = imgUrl; img.alt = nome;
+        } else {
+          imgWrap.style.display = 'none';
+        }
+        document.getElementById('storia-modal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+      function chiudiStoria() {
+        document.getElementById('storia-modal').style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') chiudiStoria(); });
+      </script>
+
       <!-- Card bambini italiani REALI – caricate dal DB -->
       <div id="storie-italiane-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
         <div class="col-span-full text-center py-8 text-gray-400">
@@ -1192,22 +1234,25 @@ function homePage(t: Record<string, string>): string {
       <script>
       (function(){
         const lang = '${t.lang}';
+        const leggi = '${t.lang==='it'?'Leggi la storia':t.lang==='en'?'Read story':'Lire'}';
         fetch('/api/storie?lang=' + lang + '&tipo=italiana')
           .then(r=>r.json())
           .then(data=>{
             const g = document.getElementById('storie-italiane-grid');
-            if(!data || !data.length){ g.innerHTML=''; return; }
+            if(!data || !data.length){ g.innerHTML='<div class="col-span-full text-center py-8 text-gray-400">Nessuna storia disponibile</div>'; return; }
             g.innerHTML = data.map(b=>\`
-            <div class="card overflow-hidden group">
+            <div class="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
+                 onclick="apriStoria(\${JSON.stringify(b.nome)}, \${JSON.stringify(b.desc||'')}, \${JSON.stringify(b.img_url||'')})">
               <div class="overflow-hidden" style="aspect-ratio:4/5">
-                \${b.img_url ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
-                  : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-5xl text-sky-300"></i></div>'}
+                \${b.img_url
+                  ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
+                  : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-6xl text-sky-300"></i></div>'}
               </div>
               <div class="p-3 text-center">
                 <h3 class="font-extrabold text-base mb-1" style="color:#082050">\${b.nome}</h3>
-                <p class="text-gray-500 text-xs">\${b.desc||''}</p>
+                <p class="text-gray-500 text-xs line-clamp-2">\${b.desc||''}</p>
                 <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">
-                  <i class="fas fa-flag text-xs" style="color:#009246"></i> Italia
+                  <i class="fas fa-book-open text-xs"></i> \${leggi}
                 </div>
               </div>
             </div>\`).join('');
@@ -1383,7 +1428,7 @@ function aboutPage(t: Record<string, string>): string {
         </div>
         <div class="rounded-2xl overflow-hidden shadow-lg">
           <div style="aspect-ratio:4/3; overflow:hidden;">
-            <img src="/images/renu_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
+            <img src="/images/it_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
                  class="w-full h-full object-cover"
                  style="object-position:top"
                  loading="lazy" decoding="async">
