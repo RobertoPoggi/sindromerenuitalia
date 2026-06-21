@@ -262,6 +262,26 @@ const translations: Record<string, Record<string, string>> = {
     footer_tagline: 'Ensemble, nous faisons la différence',
     donate_now: 'Faire un don', join_registry: 'Rejoindre le registre',
     learn_more: 'En savoir plus', contact_us: 'Contactez-nous', read_more: 'Lire la suite',
+    btn_info: 'VOUS SOUHAITEZ PLUS D\'INFORMATIONS? CLIQUEZ ICI',
+    btn_info_sub: 'Contactez-nous pour des informations sur le Syndrome ReNU',
+    community_network_it: 'Réseau de parents italiens',
+    community_network_desc: 'Le réseau de parents italiens est un point de référence pour ceux qui veulent se sentir moins seuls, partager des questions et des expériences du quotidien.',
+    nav_science: 'Comité Scientifique',
+    science_title: 'Comité Scientifique',
+    science_intro: 'Le Comité Scientifique de Sindrome ReNU Italia APS joue un rôle fondamental pour garantir rigueur et cohérence avec les meilleures preuves scientifiques disponibles.',
+    science_role1_title: 'Validation des Contenus',
+    science_role1_desc: 'Révision et validation des contenus médico-scientifiques du site et des publications de l\'Association.',
+    science_role2_title: 'Soutien au Diagnostic',
+    science_role2_desc: 'Collaboration avec les centres diagnostiques italiens pour faciliter l\'accès au Séquençage du Génome Entier (WGS).',
+    science_role3_title: 'Recherche et Registre des Patients',
+    science_role3_desc: 'Promotion de projets de recherche italiens, y compris le Registre National des Patients ReNU.',
+    science_role4_title: 'Formation et Sensibilisation',
+    science_role4_desc: 'Conception de campagnes pour les pédiatres et les médecins généralistes afin de réduire les délais de diagnostic.',
+    science_role5_title: 'Connexion Internationale',
+    science_role5_desc: 'Participation au réseau scientifique international ReNU, en collaboration avec ReNU Syndrome United (USA).',
+    science_members_title: 'Les Membres du Comité',
+    science_members_note: 'La liste des membres du Comité Scientifique sera publiée dès que le processus de nomination sera terminé.',
+    science_cta: 'Collaborez avec nous',
     coe_title: 'Centre d\'Excellence ReNU (COE)',
     coe_desc: 'ReNU Syndrome United construit un réseau mondial de Centres d\'Excellence pour connecter les familles avec des équipes médicales multidisciplinaires.',
     world_title: 'ReNU dans le Monde',
@@ -339,6 +359,26 @@ const translations: Record<string, Record<string, string>> = {
     footer_tagline: 'Juntos, hacemos la diferencia',
     donate_now: 'Donar', join_registry: 'Unirse al registro',
     learn_more: 'Más información', contact_us: 'Contáctenos', read_more: 'Leer más',
+    btn_info: 'QUIERES MÁS INFORMACIÓN? HAZ CLIC AQUÍ',
+    btn_info_sub: 'Contáctenos para información sobre el Síndrome ReNU',
+    community_network_it: 'Red de padres italianos',
+    community_network_desc: 'La red de padres italianos es un punto de referencia para quienes desean sentirse menos solos y compartir experiencias cotidianas.',
+    nav_science: 'Comité Científico',
+    science_title: 'Comité Científico',
+    science_intro: 'El Comité Científico de Sindrome ReNU Italia APS juega un papel fundamental para garantizar rigor y coherencia con la mejor evidencia científica disponible.',
+    science_role1_title: 'Validación de Contenidos',
+    science_role1_desc: 'Revisión y validación de los contenidos médico-científicos del sitio y las publicaciones de la Asociación.',
+    science_role2_title: 'Apoyo al Diagnóstico',
+    science_role2_desc: 'Colaboración con centros diagnósticos italianos para facilitar el acceso a la Secuenciación del Genoma Completo (WGS).',
+    science_role3_title: 'Investigación y Registro de Pacientes',
+    science_role3_desc: 'Promoción de proyectos de investigación italianos, incluido el Registro Nacional de Pacientes ReNU.',
+    science_role4_title: 'Formación y Sensibilización',
+    science_role4_desc: 'Diseño de campañas para pediatras y médicos de cabecera para reducir los tiempos de diagnóstico.',
+    science_role5_title: 'Conexión Internacional',
+    science_role5_desc: 'Participación en la red científica internacional ReNU, en colaboración con ReNU Syndrome United (EE.UU.).',
+    science_members_title: 'Los Miembros del Comité',
+    science_members_note: 'La lista de miembros del Comité Científico se publicará cuando el proceso de nombramiento haya concluido.',
+    science_cta: 'Colabora con nosotros',
     coe_title: 'Centro de Excelencia ReNU (COE)',
     coe_desc: 'ReNU Syndrome United está construyendo una red global de Centros de Excelencia.',
     world_title: 'ReNU en el Mundo',
@@ -416,6 +456,26 @@ const translations: Record<string, Record<string, string>> = {
     footer_tagline: 'Gemeinsam machen wir den Unterschied',
     donate_now: 'Jetzt spenden', join_registry: 'Dem Register beitreten',
     learn_more: 'Mehr erfahren', contact_us: 'Kontaktieren Sie uns', read_more: 'Mehr lesen',
+    btn_info: 'MÖCHTEN SIE MEHR INFORMATIONEN? KLICKEN SIE HIER',
+    btn_info_sub: 'Kontaktieren Sie uns für Informationen zum ReNU-Syndrom',
+    community_network_it: 'Netzwerk italienischer Eltern',
+    community_network_desc: 'Das Netzwerk italienischer Eltern ist ein Anlaufpunkt für alle, die sich weniger allein fühlen und alltägliche Erfahrungen teilen möchten.',
+    nav_science: 'Wissenschaftlicher Ausschuss',
+    science_title: 'Wissenschaftlicher Ausschuss',
+    science_intro: 'Der Wissenschaftliche Ausschuss von Sindrome ReNU Italia APS spielt eine grundlegende Rolle bei der Sicherstellung von Strenge und Kohärenz mit den besten verfügbaren wissenschaftlichen Erkenntnissen.',
+    science_role1_title: 'Validierung von Inhalten',
+    science_role1_desc: 'Überprüfung und Validierung der medizinisch-wissenschaftlichen Inhalte der Website und der Publikationen des Vereins.',
+    science_role2_title: 'Diagnoseunterstützung',
+    science_role2_desc: 'Zusammenarbeit mit italienischen Diagnosezentren zur Erleichterung des Zugangs zur Gesamtgenomsequenzierung (WGS).',
+    science_role3_title: 'Forschung und Patientenregister',
+    science_role3_desc: 'Förderung italienischer Forschungsprojekte, einschließlich des Nationalen ReNU-Patientenregisters.',
+    science_role4_title: 'Aus- und Weiterbildung',
+    science_role4_desc: 'Konzeption von Kampagnen für Kinderärzte und Allgemeinmediziner zur Reduzierung der Diagnosezeiten.',
+    science_role5_title: 'Internationale Vernetzung',
+    science_role5_desc: 'Teilnahme am internationalen wissenschaftlichen ReNU-Netzwerk in Zusammenarbeit mit ReNU Syndrome United (USA).',
+    science_members_title: 'Die Mitglieder des Ausschusses',
+    science_members_note: 'Die Mitgliederliste des Wissenschaftlichen Ausschusses wird veröffentlicht, sobald das Ernennungsverfahren abgeschlossen ist.',
+    science_cta: 'Arbeiten Sie mit uns',
     coe_title: 'ReNU Exzellenzzentrum (COE)',
     coe_desc: 'ReNU Syndrome United baut ein globales Netzwerk von Exzellenzzentren auf.',
     world_title: 'ReNU weltweit',
@@ -486,13 +546,13 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
   const navLinks = navItems.filter(item => !item.hidden).map(item => item.disabled ? `
-    <span class="flex items-center gap-1 px-1.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.lang==='it'?'Sezione in preparazione':'Section coming soon'}">
+    <span class="flex items-center gap-1 px-1 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.lang==='it'?'Sezione in preparazione':'Section coming soon'}">
       <i class="fas ${item.icon} text-xs"></i>
-      <span class="hidden lg:inline nav-label">${t[item.key]}</span>
+      <span class="hidden xl:inline nav-label">${t[item.key]}</span>
     </span>` : `
-    <a href="/${t.lang}/${item.page}" class="flex items-center gap-1 px-1.5 py-1 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors text-xs font-semibold whitespace-nowrap ${page === item.page ? 'bg-white bg-opacity-25 shadow-inner ring-1 ring-sky-300' : ''}" title="${t[item.key]}">
+    <a href="/${t.lang}/${item.page}" class="flex items-center gap-1 px-1 py-1 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors text-xs font-semibold whitespace-nowrap ${page === item.page ? 'bg-white bg-opacity-25 shadow-inner ring-1 ring-sky-300' : ''}" title="${t[item.key]}">
       <i class="fas ${item.icon} text-xs opacity-80"></i>
-      <span class="hidden lg:inline nav-label">${t[item.key]}</span>
+      <span class="hidden xl:inline nav-label">${t[item.key]}</span>
     </a>`).join('')
 
   return `<!DOCTYPE html>
@@ -779,7 +839,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       </a>
 
       <!-- Desktop nav: visibile da 768px via CSS puro (no Tailwind) -->
-      <nav id="desktopNav" style="align-items:center;gap:2px;flex-wrap:nowrap;justify-content:center;flex:1;padding:0 8px;overflow-x:auto;">
+      <nav id="desktopNav" style="align-items:center;gap:1px;flex-wrap:nowrap;justify-content:flex-start;flex:1;padding:0 4px;overflow-x:auto;scrollbar-width:none;min-width:0;">
         ${navLinks}
       </nav>
 
@@ -1159,7 +1219,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden" style="aspect-ratio:16/9">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1457,7 +1517,7 @@ function aboutPage(t: Record<string, string>): string {
           <div style="aspect-ratio:4/3; overflow:hidden;">
             <img src="/images/it_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
                  class="w-full h-full object-cover"
-                 style="object-position:top"
+                 style="object-position:center top"
                  loading="lazy" decoding="async">
           </div>
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
@@ -2049,7 +2109,7 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="card card-blue overflow-hidden">
           <div class="overflow-hidden" style="aspect-ratio:16/9">
-            <img src="/images/renu_mappa_italia.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2067,8 +2127,8 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden bg-white">
-            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-auto block" loading="lazy" decoding="async">
+          <div class="overflow-hidden bg-white" style="aspect-ratio:4/3">
+            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2106,7 +2166,7 @@ function communityPage(t: Record<string, string>): string {
           <div class="flex-shrink-0 flex items-center justify-center" style="position:relative">
             <!-- Mappa Italia reale con badge famiglie -->
             <div style="position:relative;width:220px">
-              <img src="/images/renu_mappa_italia.jpg"
+              <img src="/images/renu_mappa_italia_14casi.jpg"
                    alt="Mappa Italia Famiglie ReNU"
                    style="width:220px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22))"
                    loading="lazy" decoding="async">
@@ -2912,7 +2972,7 @@ function brochurePage(t: Record<string, string>): string {
   <script>
   (function(){
     var lang = '${t.lang}';
-    var dlLabel = '${dlLabel}';
+    var dlLabel = "${dlLabel.replace(/"/g, '&quot;')}";
     fetch('/api/brochure?lang=' + lang)
       .then(function(r){ return r.json(); })
       .then(function(data){
