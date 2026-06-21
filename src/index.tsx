@@ -981,7 +981,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 function homePage(t: Record<string, string>): string {
   const cards = [
-    { href: `/${t.lang}/community`,  icon: 'fa-users',       ic: 'ic-green',  title: t.section_parents_title,               desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/renu_parents.jpg',          pos: 'top' },
+    { href: `/${t.lang}/community`,  icon: 'fa-users',       ic: 'ic-green',  title: t.section_parents_title,               desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/it_rete_famiglie.jpg',      pos: 'center' },
     { href: `/${t.lang}/research`,   icon: 'fa-microscope',  ic: 'ic-sky',    title: t.section_research_title,              desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg',         pos: 'center' },
     { href: `/${t.lang}/science`,    icon: 'fa-flask',       ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',  img: '/images/renu_science_committee.jpg',pos: 'center' },
     { href: `/${t.lang}/donations`,  icon: 'fa-heart',       ic: 'ic-red',    title: t.section_donations_title,             desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg',        pos: 'center' },
@@ -1091,10 +1091,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" style="background:#f0f8fd" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-contain" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1123,7 +1123,11 @@ function homePage(t: Record<string, string>): string {
               ${t.lang==='it'?'Reny – La nostra mascotte':t.lang==='en'?'Reny – Our Mascot':t.lang==='fr'?'Reny – Notre mascotte':t.lang==='es'?'Reny – Nuestra mascota':'Reny – Unser Maskottchen'}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Reny è la tartaruga simbolo di Sindrome ReNU Italia APS. Con la sua energia e il suo sorriso accompagna bambini, famiglie e amici nelle iniziative dell\'associazione.':t.lang==='en'?'Reny is the turtle mascot of Sindrome ReNU Italia APS. With energy and a smile, she accompanies children, families and friends in all association initiatives.':'Reny est la tortue symbole de Sindrome ReNU Italia APS. Elle accompagne les enfants et les familles avec énergie et sourire.'}
+              ${t.lang==='it'
+                ? '<em class="block text-sky-700 font-semibold mb-2" style="border-left:3px solid #45B8EC;padding-left:8px">"Lenta, forte e determinata: la tartaruga ReNU rappresenta il viaggio di chi non si arrende mai e raggiunge il proprio traguardo un passo alla volta."</em>Reny è la tartaruga simbolo di Sindrome ReNU Italia APS. Con la sua energia e il suo sorriso accompagna bambini, famiglie e amici nelle iniziative dell\'associazione.'
+                : t.lang==='en'
+                ? '<em class="block text-sky-700 font-semibold mb-2" style="border-left:3px solid #45B8EC;padding-left:8px">"Slow, strong and determined: the ReNU turtle represents the journey of those who never give up and reach their goal one step at a time."</em>Reny is the turtle mascot of Sindrome ReNU Italia APS. With energy and a smile, she accompanies children, families and friends in all association initiatives.'
+                : '<em class="block text-sky-700 font-semibold mb-2" style="border-left:3px solid #45B8EC;padding-left:8px">"Lente, forte et déterminée: la tortue ReNU représente le voyage de ceux qui n\'abandonnent jamais."</em>Reny est la tortue symbole de Sindrome ReNU Italia APS. Elle accompagne les enfants et les familles avec énergie et sourire.'}
             </p>
             <a href="/${t.lang}/community"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#45B8EC">
@@ -2026,10 +2030,10 @@ function communityPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.community_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:280px; aspect-ratio:4/3; flex-shrink:0">
-          <img src="/images/famiglia2.jpg" alt="Famiglie Sindrome ReNU Italia"
-               class="w-full h-full object-contain"
-               style="background:#f0f8fd"
+        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:320px; aspect-ratio:2/1; flex-shrink:0">
+          <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana Sindrome ReNU – Stefania, Francesco e Massimiliano"
+               class="w-full h-full object-cover"
+               style="object-position:center center"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -2061,8 +2065,8 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden bg-sky-50" style="aspect-ratio:16/9">
-            <img src="/images/renu_parents.jpg" alt="Rete Genitori ReNU Italia" class="w-full h-full object-cover" style="object-position:top" loading="lazy" decoding="async">
+          <div class="overflow-hidden bg-sky-50" style="aspect-ratio:3/2">
+            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2198,8 +2202,8 @@ function communityPage(t: Record<string, string>): string {
                 const g = document.getElementById('gallery-community-grid');
                 if(!data || !data.length){ g.innerHTML=''; return; }
                 g.innerHTML = data.map(img=>(
-                  '<div class="rounded-xl overflow-hidden" style="aspect-ratio:16/9">'+
-                    '<img src="'+img.img_url+'" alt="'+(img.didascalia_it||img.didascalia||'ReNU Italia')+'" class="w-full h-full object-cover" loading="lazy" decoding="async">'+
+                  '<div class="rounded-xl overflow-hidden bg-sky-50" style="aspect-ratio:4/3">'+
+                    '<img src="'+img.img_url+'" alt="'+(img.didascalia_it||img.didascalia||'ReNU Italia')+'" class="w-full h-full object-contain" loading="lazy" decoding="async">'+
                   '</div>'
                 )).join('');
               }).catch(()=>{ document.getElementById('gallery-community-grid').innerHTML=''; });
