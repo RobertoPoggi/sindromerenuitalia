@@ -4405,12 +4405,10 @@ async function loadTesti(db: D1Database | undefined, lang: string): Promise<Reco
     const out: Record<string,string> = {}
     for (const row of (r.results as any[])) {
       if (row.chiave && row.valore !== undefined && row.valore !== null && row.valore !== '') {
-        // Testo puro: escape HTML per sicurezza (opzione A)
+        // Testo puro dal DB: nessun tag HTML atteso, nessun escape necessario.
+        // Le chiavi strutturate (hero_text, hero_desc) vengono formattate
+        // nel template con .replace() hardcoded. Le altre sono plain text.
         out[row.chiave] = row.valore
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
       }
     }
     return out
