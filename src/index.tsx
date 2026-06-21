@@ -1057,8 +1057,8 @@ function homePage(t: Record<string, string>): string {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
-          <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')}</h1>
-          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl break-words">${t.hero_desc
+          <h1 class="font-extrabold mb-6 leading-tight text-lg md:text-2xl">${t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')}</h1>
+          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed">${t.hero_desc
             .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
             .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
             .replace('supportare le famiglie italiane','<strong>supportare le famiglie italiane</strong>')}</p>
@@ -1154,10 +1154,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover object-center" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden bg-sky-50 rounded-xl"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden bg-sky-50 rounded-xl"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden rounded-xl"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden rounded-xl"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1200,8 +1200,8 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden" style="aspect-ratio:16/9">
-            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden">
+            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1218,8 +1218,8 @@ function homePage(t: Record<string, string>): string {
         </div>
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
-          <div class="overflow-hidden" style="aspect-ratio:16/9">
-            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden">
+            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -1514,10 +1514,9 @@ function aboutPage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="rounded-2xl overflow-hidden shadow-lg">
-          <div style="aspect-ratio:4/3; overflow:hidden;">
+          <div class="overflow-hidden">
             <img src="/images/it_bambino_aaron.jpg" alt="Aaron, bambino con Sindrome ReNU"
-                 class="w-full h-full object-cover"
-                 style="object-position:center top"
+                 class="w-full h-auto block"
                  loading="lazy" decoding="async">
           </div>
           <div class="p-3 text-center text-xs text-gray-500 bg-sky-50">
@@ -2108,8 +2107,8 @@ function communityPage(t: Record<string, string>): string {
       <!-- Map and Parent Network -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden" style="aspect-ratio:16/9">
-            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden">
+            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2127,8 +2126,8 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden bg-white" style="aspect-ratio:4/3">
-            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async">
+          <div class="overflow-hidden bg-white">
+            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -4290,15 +4289,15 @@ function sciencePage(t: Record<string, string>): string {
           ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
+          <div class="img-frame overflow-hidden rounded-2xl">
             <img src="/images/it_comitato.jpg"
                  alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia':'Sindrome ReNU Italia Scientific Committee'}"
-                 class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
+                 class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
+          <div class="img-frame overflow-hidden rounded-2xl">
             <img src="/images/renu_science_committee.jpg"
                  alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
-                 class="w-full h-full object-cover" loading="lazy" decoding="async">
+                 class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
         </div>
         <p class="text-sm text-gray-500 mt-3 text-center">
