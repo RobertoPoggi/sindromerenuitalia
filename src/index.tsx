@@ -177,9 +177,9 @@ const translations: Record<string, Record<string, string>> = {
     donations_iban_label: 'Account holder: Sindrome ReNU Italia APS',
     contact_title: 'Contact Us',
     contact_intro: 'We are available for any information about ReNU Syndrome Italy.',
-    brochure_title: 'Download our Brochures',
-    brochure_intro: 'Download and share the informational brochures of Sindrome ReNU Italia APS',
-    brochure_download: 'Download PDF',
+    brochure_title: 'Media & Publications',
+    brochure_intro: 'Scientific articles, informational materials, guides and documents to deepen knowledge of ReNU Syndrome.',
+    brochure_download: 'Open / Download',
     footer_rights: '© 2026 Sindrome ReNU Italia APS. All rights reserved.',
     footer_partnership: 'In partnership with ReNU Syndrome United (USA)',
     footer_tagline: 'Together, we make a difference',
@@ -254,9 +254,9 @@ const translations: Record<string, Record<string, string>> = {
     donations_iban_label: 'Titulaire: Sindrome ReNU Italia APS',
     contact_title: 'Contactez-nous',
     contact_intro: 'Nous sommes disponibles pour toute information.',
-    brochure_title: 'Télécharger nos brochures',
-    brochure_intro: 'Téléchargez et partagez les brochures de Sindrome ReNU Italia APS',
-    brochure_download: 'Télécharger PDF',
+    brochure_title: 'Médias & Publications',
+    brochure_intro: 'Articles scientifiques, matériaux d\'information, guides et documents pour approfondir la connaissance du Syndrome ReNU.',
+    brochure_download: 'Ouvrir / Télécharger',
     footer_rights: '© 2026 Sindrome ReNU Italia APS. Tous droits réservés.',
     footer_partnership: 'En partenariat avec ReNU Syndrome United (USA)',
     footer_tagline: 'Ensemble, nous faisons la différence',
@@ -331,9 +331,9 @@ const translations: Record<string, Record<string, string>> = {
     donations_iban_label: 'Titular: Sindrome ReNU Italia APS',
     contact_title: 'Contáctenos',
     contact_intro: 'Estamos disponibles para cualquier información.',
-    brochure_title: 'Descarga nuestros folletos',
-    brochure_intro: 'Descarga y comparte los folletos de Sindrome ReNU Italia APS',
-    brochure_download: 'Descargar PDF',
+    brochure_title: 'Medios & Publicaciones',
+    brochure_intro: 'Artículos científicos, materiales informativos, guías y documentos para profundizar el conocimiento del Síndrome ReNU.',
+    brochure_download: 'Abrir / Descargar',
     footer_rights: '© 2026 Sindrome ReNU Italia APS. Todos los derechos reservados.',
     footer_partnership: 'En asociación con ReNU Syndrome United (USA)',
     footer_tagline: 'Juntos, hacemos la diferencia',
@@ -408,9 +408,9 @@ const translations: Record<string, Record<string, string>> = {
     donations_iban_label: 'Kontoinhaber: Sindrome ReNU Italia APS',
     contact_title: 'Kontaktieren Sie uns',
     contact_intro: 'Wir stehen für alle Informationen zur Verfügung.',
-    brochure_title: 'Broschüren herunterladen',
-    brochure_intro: 'Laden Sie die Informationsbroschüren von Sindrome ReNU Italia APS herunter',
-    brochure_download: 'PDF herunterladen',
+    brochure_title: 'Medien & Publikationen',
+    brochure_intro: 'Wissenschaftliche Artikel, Informationsmaterialien, Leitfäden und Dokumente zum ReNU-Syndrom.',
+    brochure_download: 'Öffnen / Herunterladen',
     footer_rights: '© 2026 Sindrome ReNU Italia APS. Alle Rechte vorbehalten.',
     footer_partnership: 'In Partnerschaft mit ReNU Syndrome United (USA)',
     footer_tagline: 'Gemeinsam machen wir den Unterschied',
@@ -2895,35 +2895,51 @@ function brochurePage(t: Record<string, string>): string {
 
   <script>
   (function(){
-    const lang = '${t.lang}';
-    const dlLabel = '${dlLabel}';
+    var lang = '${t.lang}';
+    var dlLabel = '${dlLabel}';
     fetch('/api/brochure?lang=' + lang)
-      .then(r=>r.json())
-      .then(data=>{
-        const grid = document.getElementById('brochure-grid');
-        const dlAll = document.getElementById('brochure-download-all');
-        const linksAll = document.getElementById('brochure-links-all');
-        if(!data.length){ grid.innerHTML='<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-info-circle text-3xl mb-3 block"></i>Nessuna brochure disponibile.</div>'; return; }
-        grid.innerHTML = data.map(b=>\`
-        <div class="card card-blue overflow-hidden flex flex-col">
-          <div class="overflow-hidden bg-sky-50" style="min-height:200px">
-            \${b.thumb_id ? \`<img src="/brochure/thumbnails/\${b.thumb_id}.png" alt="\${b.titolo}" class="w-full h-48 object-contain p-2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">\` : ''}
-            <div \${b.thumb_id?'style="display:none"':''} class="w-full h-48 bg-sky-100 flex items-center justify-center">
-              <i class="fas fa-file-pdf text-5xl" style="color:#1078C0"></i>
-            </div>
-          </div>
-          <div class="p-4 flex-1 flex flex-col">
-            <h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">\${b.titolo}</h3>
-            <p class="text-gray-500 text-xs mb-4 flex-1">\${b.desc||''}</p>
-            <a href="/brochure/\${b.file_name}" download class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#1078C0">
-              <i class="fas fa-download"></i>\${dlLabel}
-            </a>
-          </div>
-        </div>\`).join('');
-        if(linksAll) linksAll.innerHTML = data.map(b=>\`<a href="/brochure/\${b.file_name}" download class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium"><i class="fas fa-download text-xs"></i>\${b.file_name.replace('brochure-','').replace('.pdf','')}</a>\`).join('');
-        if(dlAll) dlAll.style.display='block';
-      }).catch(()=>{
-        document.getElementById('brochure-grid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-exclamation-circle text-3xl mb-3 block"></i>Errore nel caricamento.</div>';
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var grid = document.getElementById('brochure-grid');
+        var dlAll = document.getElementById('brochure-download-all');
+        var linksAll = document.getElementById('brochure-links-all');
+        if(!data.length){
+          grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-info-circle text-3xl mb-3 block"></i>Nessuna pubblicazione disponibile.</div>';
+          return;
+        }
+        grid.innerHTML = data.map(function(b){
+          var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
+          var isDrive = isExt && b.file_name.indexOf('drive.google.com') !== -1;
+          var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+          var target = isExt ? '_blank' : '_self';
+          var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
+          var fileIcon = isDrive ? 'fa-file-alt' : 'fa-file-pdf';
+          var thumb = b.thumb_id
+            ? '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-48 object-contain p-2" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" loading="lazy">'
+              + '<div style="display:none" class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>'
+            : '<div class="w-full h-48 bg-gradient-to-br from-sky-50 to-sky-100 flex items-center justify-center"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>';
+          return '<div class="card card-blue overflow-hidden flex flex-col">'
+            + '<div class="overflow-hidden bg-sky-50" style="min-height:200px">' + thumb + '</div>'
+            + '<div class="p-4 flex-1 flex flex-col">'
+            + '<h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">' + (b.titolo || '') + '</h3>'
+            + '<p class="text-gray-500 text-xs mb-4 flex-1">' + (b.desc || '') + '</p>'
+            + '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#1078C0">'
+            + '<i class="fas ' + btnIcon + '"></i>' + dlLabel
+            + '</a>'
+            + '</div>'
+            + '</div>';
+        }).join('');
+        if(linksAll) linksAll.innerHTML = data.map(function(b){
+          var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
+          var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+          var target = isExt ? '_blank' : '_self';
+          var label = b.titolo ? b.titolo.substring(0, 32) + (b.titolo.length > 32 ? '…' : '') : b.file_name.replace('brochure-','').replace('.pdf','');
+          return '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium">'
+            + '<i class="fas fa-external-link-alt text-xs"></i>' + label + '</a>';
+        }).join('');
+        if(dlAll) dlAll.style.display = 'block';
+      }).catch(function(){
+        document.getElementById('brochure-grid').innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-exclamation-circle text-3xl mb-3 block"></i>Errore nel caricamento.</div>';
       });
   })();
   </script>
@@ -5221,6 +5237,7 @@ app.get('/api/pubblicazioni', async (c) => {
   } catch(e: any) { return c.json([]) }
 })
 
+
 // GET /api/storie?lang=it&tipo=italiana
 app.get('/api/storie', async (c) => {
   const lang = (c.req.query('lang') || 'it').toLowerCase()
@@ -5249,7 +5266,7 @@ app.get('/api/brochure', async (c) => {
     const r = await db.prepare(`
       SELECT id, file_name, thumb_id, ordine,
              titolo_${col} as titolo,
-             desc_${col === 'it' ? 'it' : 'en'} as desc
+             desc_${col} as desc
       FROM brochure WHERE attiva=1 ORDER BY ordine ASC, id ASC
     `).all()
     return c.json(r.results)
@@ -5291,6 +5308,7 @@ app.get('/api/eventi', async (c) => {
     return c.json(r.results)
   } catch(e: any) { return c.json([]) }
 })
+
 
 // ─── API ADMIN CONTENUTI (CRUD) ───────────────────────────────────────────────
 
