@@ -22,7 +22,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (12-14 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (14 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -119,7 +119,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Together, we make a difference',
     tagline: 'A newly identified genetic condition. A globally coordinated research effort.',
     hero_text: 'RNU4-2 Emerges as a Leading Cause of Rare Neurodevelopmental Disorders – <strong>Renewing Hope for Families</strong>',
-    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (12-14 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
+    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (14 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
     nav_home: 'Home', nav_about: 'About ReNU', nav_research: 'Research',
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
@@ -197,7 +197,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Ensemble, nous faisons la différence',
     tagline: 'Une condition génétique nouvellement identifiée. Un effort de recherche coordonné mondialement.',
     hero_text: 'RNU4-2 émerge comme une cause majeure de troubles rares du neurodéveloppement – <strong>Renouvelant l\'espoir pour les familles</strong>',
-    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (12-14 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
+    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (14 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
     nav_home: 'Accueil', nav_about: 'À propos de ReNU', nav_research: 'Recherche',
     nav_therapies: 'Thérapies', nav_diagnosis: 'Diagnostic', nav_community: 'Communauté',
     nav_donations: 'Dons', nav_contact: 'Contact', nav_brochure: 'Brochures',
@@ -274,7 +274,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Juntos, hacemos la diferencia',
     tagline: 'Una condición genética recién identificada. Un esfuerzo de investigación coordinado a nivel mundial.',
     hero_text: 'RNU4-2 emerge como una causa principal de trastornos raros del neurodesarrollo – <strong>Renovando la Esperanza para las Familias</strong>',
-    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (12-14 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
+    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (14 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
     nav_home: 'Inicio', nav_about: 'Sobre ReNU', nav_research: 'Investigación',
     nav_therapies: 'Terapias', nav_diagnosis: 'Diagnóstico', nav_community: 'Comunidad',
     nav_donations: 'Donaciones', nav_contact: 'Contacto', nav_brochure: 'Folletos',
@@ -351,7 +351,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Gemeinsam machen wir den Unterschied',
     tagline: 'Eine neu identifizierte genetische Erkrankung. Eine global koordinierte Forschungsarbeit.',
     hero_text: 'RNU4-2 entwickelt sich zu einer führenden Ursache seltener neurologischer Entwicklungsstörungen – <strong>Neue Hoffnung für Familien</strong>',
-    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (12-14 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
+    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (14 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
     nav_home: 'Startseite', nav_about: 'Über ReNU', nav_research: 'Forschung',
     nav_therapies: 'Therapien', nav_diagnosis: 'Diagnose', nav_community: 'Gemeinschaft',
     nav_donations: 'Spenden', nav_contact: 'Kontakt', nav_brochure: 'Broschüren',
@@ -1028,7 +1028,7 @@ function homePage(t: Record<string, string>): string {
   <section class="stat-bar text-white py-6 px-4">
     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
       <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi accertati nel mondo':t.lang==='en'?'confirmed cases worldwide':t.lang==='fr'?'cas confirmés dans le monde':t.lang==='es'?'casos confirmados en el mundo':'bestätigte Fälle weltweit'}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">12-14</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi in Italia':t.lang==='en'?'cases in Italy':t.lang==='fr'?'cas en Italie':t.lang==='es'?'casos en Italia':'Fälle in Italien'}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">14</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi in Italia':t.lang==='en'?'cases in Italy':t.lang==='fr'?'cas en Italie':t.lang==='es'?'casos en Italia':'Fälle in Italien'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'posizioni nel DNA mutate':t.lang==='en'?'DNA positions mutated':t.lang==='fr'?'positions ADN mutées':t.lang==='es'?'posiciones ADN mutadas':'DNA-Positionen mutiert'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'paesi con famiglie mappate':t.lang==='en'?'countries with mapped families':t.lang==='fr'?'pays avec familles':t.lang==='es'?'países con familias':'Länder mit Familien'}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'anno della scoperta':t.lang==='en'?'year of discovery':t.lang==='fr'?'année de la découverte':t.lang==='es'?'año del descubrimiento':'Jahr der Entdeckung'}</div></div>
@@ -2112,7 +2112,7 @@ function communityPage(t: Record<string, string>): string {
                    loading="lazy" decoding="async">
               <!-- Badge contatore sovrapposto -->
               <div style="position:absolute;top:10px;right:-12px;background:#F59E0B;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
-                <span style="font-size:14px;font-weight:800;line-height:1.1">12-14</span>
+                <span style="font-size:14px;font-weight:800;line-height:1.1">14</span>
                 <span style="font-size:8px;line-height:1.2">casi</span>
                 <span style="font-size:8px;line-height:1.2">in Italia</span>
               </div>
@@ -2120,7 +2120,7 @@ function communityPage(t: Record<string, string>): string {
           </div>
           <div class="flex-1">
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              ${t.lang==='it'?'In Italia sono stati accertati <strong>12-14 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>12-14 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
+              ${t.lang==='it'?'In Italia sono stati accertati <strong>14 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>14 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
             </p>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
               ${t.lang==='it'?'Se hai un familiare con Sindrome ReNU e non sei ancora in contatto con la nostra rete, <strong>scrivici</strong>: ti aiutiamo a entrare nella comunità italiana e a conoscere le famiglie vicino a te.':'If you have a family member with ReNU Syndrome and are not yet in contact with our network, <strong>write to us</strong>: we will help you join the Italian community.'}
@@ -3091,7 +3091,7 @@ function eventsPage(t: Record<string, string>): string {
               <div class="flex-shrink-0">
                 <img src="/images/move4renu.jpg"
                      alt="Move4ReNU International"
-                     class="w-40 h-24 object-cover rounded-xl border-2 border-white border-opacity-30"
+                     class="w-40 h-auto rounded-xl border-2 border-white border-opacity-30"
                      loading="lazy" decoding="async">
               </div>
               <div>
@@ -3107,28 +3107,28 @@ function eventsPage(t: Record<string, string>): string {
           </div>
           <div class="p-8">
             <p class="text-gray-600 leading-relaxed mb-5">
-              ${t.lang==='it'?'Move4ReNU è l\'iniziativa sportiva e di sensibilizzazione lanciata dalla comunità ReNU internazionale. Ogni aprile, famiglie e sostenitori da tutto il mondo camminano, corrono, pedalano o ballano per far conoscere la Sindrome ReNU. L\'iniziativa è disponibile in 5 lingue: italiano, inglese, francese, spagnolo e tedesco.':'Move4ReNU is the sports and awareness initiative launched by the international ReNU community. Every April, families and supporters from around the world walk, run, cycle or dance to raise awareness of ReNU Syndrome. Available in 5 languages: Italian, English, French, Spanish and German.'}
+              ${t.lang==='it'?'Move4ReNU è l\'iniziativa sportiva e di sensibilizzazione lanciata dalla comunità ReNU internazionale. Ogni aprile, famiglie e sostenitori da tutto il mondo camminano, corrono, pedalano o ballano per far conoscere la Sindrome ReNU.':'Move4ReNU is the sports and awareness initiative launched by the international ReNU community. Every April, families and supporters from around the world walk, run, cycle or dance to raise awareness of ReNU Syndrome.'}
             </p>
             <!-- Versioni linguistiche grafiche -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-5">
               <div class="text-center">
-                <img src="/images/move4renu_it.jpg" alt="Move4ReNU Italiano" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <img src="/images/move4renu_it.jpg" alt="Move4ReNU Italiano" class="w-full rounded-lg mb-1 block h-auto" loading="lazy" decoding="async">
                 <span class="text-xs font-semibold text-gray-500">🇮🇹 Italiano</span>
               </div>
               <div class="text-center">
-                <img src="/images/move4renu_en.jpg" alt="Move4ReNU English" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <img src="/images/move4renu_en.jpg" alt="Move4ReNU English" class="w-full rounded-lg mb-1 block h-auto" loading="lazy" decoding="async">
                 <span class="text-xs font-semibold text-gray-500">🇬🇧 English</span>
               </div>
               <div class="text-center">
-                <img src="/images/move4renu_fr.jpg" alt="Move4ReNU Français" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <img src="/images/move4renu_fr.jpg" alt="Move4ReNU Français" class="w-full rounded-lg mb-1 block h-auto" loading="lazy" decoding="async">
                 <span class="text-xs font-semibold text-gray-500">🇫🇷 Français</span>
               </div>
               <div class="text-center">
-                <img src="/images/move4renu_es.jpg" alt="Move4ReNU Español" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <img src="/images/move4renu_es.jpg" alt="Move4ReNU Español" class="w-full rounded-lg mb-1 block h-auto" loading="lazy" decoding="async">
                 <span class="text-xs font-semibold text-gray-500">🇪🇸 Español</span>
               </div>
               <div class="text-center">
-                <img src="/images/move4renu_de.jpg" alt="Move4ReNU Deutsch" class="w-full rounded-lg object-cover mb-1" style="aspect-ratio:4/3" loading="lazy" decoding="async">
+                <img src="/images/move4renu_de.jpg" alt="Move4ReNU Deutsch" class="w-full rounded-lg mb-1 block h-auto" loading="lazy" decoding="async">
                 <span class="text-xs font-semibold text-gray-500">🇩🇪 Deutsch</span>
               </div>
             </div>
