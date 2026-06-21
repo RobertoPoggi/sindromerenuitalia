@@ -4388,11 +4388,30 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   'comitato-scientifico': sciencePage,
 }
 
+// ─── HELPER: carica override testi_ui dal DB per una lingua ──────────────────
+// Restituisce un oggetto {chiave: valore} con i record presenti nel DB.
+// Solo lingua IT (opzione A): per le altre lingue ritorna {} immediatamente.
+async function loadTesti(db: D1Database | undefined, lang: string): Promise<Record<string,string>> {
+  if (!db || lang !== 'it') return {}
+  try {
+    const r = await db.prepare('SELECT chiave, valore FROM testi_ui WHERE lang=?').bind(lang).all()
+    const out: Record<string,string> = {}
+    for (const row of (r.results as any[])) {
+      if (row.chiave && row.valore !== undefined && row.valore !== null && row.valore !== '') {
+        out[row.chiave] = row.valore
+      }
+    }
+    return out
+  } catch { return {} }
+}
+
 for (const lang of ['it','en','fr','es','de']) {
   app.get(`/${lang}`, (c) => c.redirect(`/${lang}/home`))
   for (const [page, fn] of Object.entries(pages)) {
-    app.get(`/${lang}/${page}`, (c) => {
-      const t = translations[lang]
+    app.get(`/${lang}/${page}`, async (c) => {
+      const base = translations[lang]
+      const overrides = await loadTesti(c.env?.DB, lang)
+      const t = Object.keys(overrides).length > 0 ? { ...base, ...overrides } : base
       return c.html(getHtml(t, page, fn(t)))
     })
   }
@@ -4656,6 +4675,7 @@ textarea{min-height:80px}
     <button data-t="brochure"     onclick="showCrudTab('brochure')"     class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-file-pdf mr-1"></i>Brochure</button>
     <button data-t="gallery"      onclick="showCrudTab('gallery')"      class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-images mr-1"></i>Gallery</button>
     <button data-t="eventi"       onclick="showCrudTab('eventi')"       class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-calendar-alt mr-1"></i>Eventi</button>
+    <button data-t="testi_ui"     onclick="showTestiUI()"               class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-language mr-1"></i>Testi Pagine</button>
   </div>
 
   <!-- CONTENT AREA -->
@@ -5076,6 +5096,217 @@ async function doErasure(){
     res.innerHTML='<div class="p-4 bg-red-50 text-red-800 rounded-xl text-sm">Errore: '+d.error+'</div>';
   }
   res.classList.remove('hidden');
+}
+
+// ─── TESTI UI ────────────────────────────────────────────────────────────────
+// Mappa chiave → etichetta leggibile per l'interfaccia admin
+const TESTI_LABELS = {
+  title:'Titolo sito', subtitle:'Sottotitolo', tagline:'Tagline header',
+  hero_text:'Hero – testo principale', hero_desc:'Hero – descrizione casi',
+  btn_diagnosis:'Pulsante CTA donazioni', btn_diagnosis_sub:'Pulsante CTA donazioni – sub',
+  btn_info:'Pulsante CTA info', btn_info_sub:'Pulsante CTA info – sub',
+  section_map_title:'Card Mappa – titolo', section_map_desc:'Card Mappa – desc',
+  section_awareness_title:'Card Consapevolezza – titolo', section_awareness_desc:'Card Consapevolezza – desc',
+  section_science_title:'Card Comitato – titolo', section_science_desc:'Card Comitato – desc',
+  section_research_title:'Card Approfondimenti – titolo', section_research_desc:'Card Approfondimenti – desc',
+  section_info_title:'Card Cos\'è ReNU – titolo', section_info_desc:'Card Cos\'è ReNU – desc',
+  section_parents_title:'Card Genitori – titolo', section_parents_desc:'Card Genitori – desc',
+  section_donations_title:'Card Donazioni – titolo', section_donations_desc:'Card Donazioni – desc',
+  about_title:'About – titolo', about_gene:'About – paragrafo gene',
+  about_discovery:'About – titolo scoperta', about_discovery_text:'About – testo scoperta',
+  about_features_title:'About – titolo caratteristiche',
+  about_brain:'About – anomalie cerebrali', about_brain_items:'About – anomalie cerebrali (lista)',
+  about_development:'About – disabilità intellettiva', about_development_items:'About – disabilità (lista)',
+  about_seizures:'About – epilessia', about_seizures_items:'About – epilessia (lista)',
+  about_vision:'About – problemi visivi', about_vision_items:'About – visivi (lista)',
+  about_face:'About – caratteristiche viso', about_face_items:'About – viso (lista)',
+  about_muscle:'About – tono muscolare', about_muscle_items:'About – muscolare (lista)',
+  about_mobility:'About – mobilità', about_mobility_items:'About – mobilità (lista)',
+  about_growth:'About – crescita', about_growth_items:'About – crescita (lista)',
+  about_feeding:'About – alimentazione', about_feeding_items:'About – alimentazione (lista)',
+  about_communication:'About – comunicazione', about_communication_items:'About – comunicazione (lista)',
+  about_bones:'About – problemi ossei', about_bones_items:'About – ossei (lista)',
+  about_happy:'About – nota carattere felice', about_diagnosis_note:'About – nota diagnostica WGS',
+  research_title:'Ricerca – titolo', research_intro:'Ricerca – intro',
+  research_crid:'Ricerca – testo CRID', research_priorities_title:'Ricerca – priorità comunità',
+  therapies_title:'Terapie – titolo', therapies_intro:'Terapie – intro', therapies_note:'Terapie – nota disclaimer',
+  diagnosis_title:'Diagnosi – titolo', diagnosis_intro:'Diagnosi – intro', diagnosis_contact:'Diagnosi – contatto',
+  community_title:'Comunità – titolo', community_intro:'Comunità – intro',
+  community_network_it:'Comunità – rete genitori titolo', community_network_desc:'Comunità – rete genitori desc',
+  donations_title:'Donazioni – titolo', donations_intro:'Donazioni – intro',
+  donations_iban:'Donazioni – IBAN', donations_iban_label:'Donazioni – intestatario',
+  contact_title:'Contatti – titolo', contact_intro:'Contatti – intro',
+  brochure_title:'Media – titolo', brochure_intro:'Media – intro',
+  science_title:'Comitato – titolo', science_intro:'Comitato – intro',
+  science_role1_title:'Comitato – ruolo 1 titolo', science_role1_desc:'Comitato – ruolo 1 desc',
+  science_role2_title:'Comitato – ruolo 2 titolo', science_role2_desc:'Comitato – ruolo 2 desc',
+  science_role3_title:'Comitato – ruolo 3 titolo', science_role3_desc:'Comitato – ruolo 3 desc',
+  science_role4_title:'Comitato – ruolo 4 titolo', science_role4_desc:'Comitato – ruolo 4 desc',
+  science_role5_title:'Comitato – ruolo 5 titolo', science_role5_desc:'Comitato – ruolo 5 desc',
+  science_members_title:'Comitato – titolo membri', science_members_note:'Comitato – nota membri',
+  science_cta:'Comitato – CTA collabora',
+  coe_title:'COE – titolo', coe_desc:'COE – descrizione',
+  world_title:'Mondo – titolo', world_desc:'Mondo – desc paesi',
+  footer_rights:'Footer – copyright', footer_partnership:'Footer – partnership', footer_tagline:'Footer – tagline',
+  intl_network:'Rete Internazionale',
+};
+
+// Raggruppa le chiavi per area tematica
+const TESTI_GROUPS = [
+  { label:'🏠 Generali & Header',  keys:['title','subtitle','tagline','hero_text','hero_desc','btn_diagnosis','btn_diagnosis_sub','btn_info','btn_info_sub','footer_rights','footer_partnership','footer_tagline'] },
+  { label:'🃏 Card Sezioni Home',   keys:['section_map_title','section_map_desc','section_awareness_title','section_awareness_desc','section_science_title','section_science_desc','section_research_title','section_research_desc','section_info_title','section_info_desc','section_parents_title','section_parents_desc','section_donations_title','section_donations_desc'] },
+  { label:'ℹ️ Pagina About',        keys:['about_title','about_gene','about_discovery','about_discovery_text','about_features_title','about_brain','about_brain_items','about_development','about_development_items','about_seizures','about_seizures_items','about_vision','about_vision_items','about_face','about_face_items','about_muscle','about_muscle_items','about_mobility','about_mobility_items','about_growth','about_growth_items','about_feeding','about_feeding_items','about_communication','about_communication_items','about_bones','about_bones_items','about_happy','about_diagnosis_note'] },
+  { label:'🔬 Ricerca & Terapie',   keys:['research_title','research_intro','research_crid','research_priorities_title','therapies_title','therapies_intro','therapies_note','diagnosis_title','diagnosis_intro','diagnosis_contact'] },
+  { label:'👨‍👩‍👧 Comunità & Donazioni', keys:['community_title','community_intro','community_network_it','community_network_desc','donations_title','donations_intro','donations_iban','donations_iban_label','contact_title','contact_intro','brochure_title','brochure_intro'] },
+  { label:'🧪 Comitato Scientifico', keys:['science_title','science_intro','science_role1_title','science_role1_desc','science_role2_title','science_role2_desc','science_role3_title','science_role3_desc','science_role4_title','science_role4_desc','science_role5_title','science_role5_desc','science_members_title','science_members_note','science_cta'] },
+  { label:'🌍 Rete & Footer',        keys:['coe_title','coe_desc','world_title','world_desc','intl_network'] },
+];
+
+let _testiData = [];     // cache locale dati caricati dal server
+let _testiModified = {}; // {chiave: valore} modifiche non ancora salvate
+
+async function showTestiUI(){
+  setActiveTab('testi_ui');
+  currentCrudTab = 'testi_ui';
+  document.getElementById('content').innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-blue-400"></i></div>';
+  const r = await fetch('/api/admin/testi_ui?lang=it', {headers: H()});
+  if(!r.ok){
+    document.getElementById('content').innerHTML = '<div class="p-8 text-center text-red-500">Errore caricamento – token non valido?</div>';
+    return;
+  }
+  _testiData = await r.json();
+  _testiModified = {};
+  renderTestiUI();
+}
+
+function renderTestiUI(){
+  // Mappa chiave→valore corrente
+  const dbMap = {};
+  _testiData.forEach(row => { dbMap[row.chiave] = row.valore; });
+
+  let html = \`
+  <div class="p-4 flex items-center justify-between border-b sticky top-0 bg-white z-10">
+    <h2 class="font-bold text-lg text-gray-800">
+      <i class="fas fa-language mr-2 text-blue-500"></i>Testi Pagine IT
+      <span class="text-gray-400 text-sm font-normal ml-1">(\${_testiData.length} voci)</span>
+    </h2>
+    <div class="flex items-center gap-3">
+      <span id="testiSaveCounter" class="hidden text-xs bg-amber-100 text-amber-700 border border-amber-300 px-3 py-1 rounded-full font-semibold">
+        <i class="fas fa-circle-dot mr-1"></i><span id="testiModCount">0</span> modifiche non salvate
+      </span>
+      <button onclick="saveAllTesti()" id="testiSaveBtn"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold">
+        <i class="fas fa-save mr-1"></i>Salva tutto
+      </button>
+    </div>
+  </div>
+  <div class="p-4 bg-amber-50 border-b border-amber-200 text-xs text-amber-800">
+    <i class="fas fa-info-circle mr-1"></i>
+    <b>Solo italiano (IT).</b> Le altre lingue (EN/FR/ES/DE) restano nel codice. Modifica il testo e clicca <b>Salva tutto</b>.
+    Il sito si aggiorna <b>immediatamente</b> al prossimo caricamento pagina, senza necessità di deploy.
+    Il testo supporta HTML semplice (&lt;strong&gt;, &lt;a&gt;, ecc.).
+  </div>
+  <div class="divide-y">\`;
+
+  TESTI_GROUPS.forEach(group => {
+    html += \`<details open class="group">
+      <summary class="px-4 py-3 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-sm text-gray-700 flex items-center gap-2 select-none">
+        <i class="fas fa-chevron-down text-xs transition-transform group-open:rotate-0 -rotate-90 text-gray-400"></i>
+        \${group.label}
+        <span class="text-gray-400 font-normal text-xs ml-1">(\${group.keys.length} voci)</span>
+      </summary>
+      <div class="divide-y">\`;
+
+    group.keys.forEach(chiave => {
+      const label = TESTI_LABELS[chiave] || chiave;
+      const val   = dbMap[chiave] !== undefined ? dbMap[chiave] : '';
+      // Testo lungo → textarea, corto → input
+      const isLong = val.length > 80 || chiave.endsWith('_desc') || chiave.endsWith('_intro')
+        || chiave.endsWith('_text') || chiave.endsWith('_items') || chiave.endsWith('_note')
+        || chiave.endsWith('_gene') || chiave.endsWith('_crid') || chiave === 'hero_text'
+        || chiave === 'hero_desc' || chiave === 'about_happy' || chiave === 'world_desc';
+      const escaped = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const escapedAttr = val.replace(/"/g,'&quot;');
+      const field = isLong
+        ? \`<textarea id="testo_\${chiave}" rows="3"
+              class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 font-mono resize-y"
+              oninput="markTestiModified('\${chiave}')">\${escaped}</textarea>\`
+        : \`<input type="text" id="testo_\${chiave}" value="\${escapedAttr}"
+              class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 font-mono"
+              oninput="markTestiModified('\${chiave}')">\`;
+      html += \`<div class="px-4 py-3 hover:bg-blue-50 transition-colors" id="testo_row_\${chiave}">
+        <label class="block text-xs font-semibold text-gray-500 mb-1">
+          <code class="bg-gray-100 text-gray-600 px-1 rounded text-xs">\${chiave}</code>
+          <span class="ml-2 text-gray-700">\${label}</span>
+        </label>
+        \${field}
+      </div>\`;
+    });
+
+    html += '</div></details>';
+  });
+
+  html += \`</div>
+  <div class="px-6 py-3 bg-gray-50 text-xs text-gray-500 border-t flex justify-between items-center">
+    <span><i class="fas fa-lock mr-1 text-green-600"></i>Testi salvati su Cloudflare D1 · effetto immediato senza deploy</span>
+    <span class="text-gray-400">Solo IT – per EN/FR/ES/DE modificare src/index.tsx</span>
+  </div>\`;
+
+  document.getElementById('content').innerHTML = html;
+}
+
+function markTestiModified(chiave){
+  const el = document.getElementById('testo_' + chiave);
+  if(!el) return;
+  _testiModified[chiave] = el.tagName === 'TEXTAREA' ? el.value : el.value;
+  // Colora la riga
+  const row = document.getElementById('testo_row_' + chiave);
+  if(row) row.classList.add('bg-amber-50');
+  // Aggiorna contatore
+  const count = Object.keys(_testiModified).length;
+  document.getElementById('testiModCount').textContent = count;
+  document.getElementById('testiSaveCounter').classList.toggle('hidden', count === 0);
+}
+
+async function saveAllTesti(){
+  const btn = document.getElementById('testiSaveBtn');
+  const keys = Object.keys(_testiModified);
+  if(!keys.length){
+    // Salva TUTTO anche se non modificato (utile per primo salvataggio)
+    const allKeys = [];
+    TESTI_GROUPS.forEach(g => g.keys.forEach(k => allKeys.push(k)));
+    allKeys.forEach(k => {
+      const el = document.getElementById('testo_' + k);
+      if(el) _testiModified[k] = el.tagName === 'TEXTAREA' ? el.value : el.value;
+    });
+  }
+  const items = Object.entries(_testiModified).map(([chiave, valore]) => ({chiave, lang:'it', valore}));
+  if(!items.length){ alert('Nessuna modifica da salvare.'); return; }
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>Salvataggio...';
+  const r = await fetch('/api/admin/testi_ui/bulk', {
+    method:'POST', headers: H(), body: JSON.stringify(items)
+  });
+  const d = await r.json();
+  btn.disabled = false;
+  if(r.ok && d.success){
+    btn.innerHTML = '<i class="fas fa-check mr-1"></i>Salvato!';
+    btn.className = btn.className.replace('bg-blue-600 hover:bg-blue-700','bg-green-600');
+    // Rimuovi highlight righe
+    Object.keys(_testiModified).forEach(k => {
+      const row = document.getElementById('testo_row_' + k);
+      if(row) row.classList.remove('bg-amber-50');
+    });
+    _testiModified = {};
+    document.getElementById('testiSaveCounter').classList.add('hidden');
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-save mr-1"></i>Salva tutto';
+      btn.className = btn.className.replace('bg-green-600','bg-blue-600 hover:bg-blue-700');
+    }, 2500);
+  } else {
+    alert('Errore: ' + (d.error || 'unknown'));
+    btn.innerHTML = '<i class="fas fa-save mr-1"></i>Salva tutto';
+  }
 }
 </script>
 </body></html>`
@@ -5659,6 +5890,61 @@ app.delete('/api/admin/eventi/:id', async (c) => {
   try {
     await db.prepare('DELETE FROM eventi WHERE id=?').bind(parseInt(c.req.param('id'))).run()
     return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ─── ADMIN: TESTI UI ────────────────────────────────────────────────────────
+// GET  /api/admin/testi_ui?lang=it  → array [{chiave, lang, valore, updated_at}]
+// PUT  /api/admin/testi_ui/:chiave  → {chiave, lang, valore}  upsert singola chiave
+// POST /api/admin/testi_ui/bulk     → [{chiave, lang, valore}]  upsert massivo
+
+app.get('/api/admin/testi_ui', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  const lang = c.req.query('lang') || 'it'
+  try {
+    const r = await db.prepare(
+      'SELECT chiave, lang, valore, updated_at FROM testi_ui WHERE lang=? ORDER BY chiave'
+    ).bind(lang).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+app.put('/api/admin/testi_ui/:chiave', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  const chiave = c.req.param('chiave')
+  try {
+    const body = await c.req.json() as { lang?: string; valore?: string }
+    const lang   = body.lang  || 'it'
+    const valore = body.valore ?? ''
+    await db.prepare(
+      `INSERT INTO testi_ui (chiave, lang, valore, updated_at)
+       VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+       ON CONFLICT(chiave, lang) DO UPDATE SET valore=excluded.valore, updated_at=excluded.updated_at`
+    ).bind(chiave, lang, valore).run()
+    return c.json({ success: true })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+app.post('/api/admin/testi_ui/bulk', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const items = await c.req.json() as { chiave: string; lang: string; valore: string }[]
+    if (!Array.isArray(items)) return c.json({ error: 'Array atteso' }, 400)
+    const stmts = items.map(i =>
+      db.prepare(
+        `INSERT INTO testi_ui (chiave, lang, valore, updated_at)
+         VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+         ON CONFLICT(chiave, lang) DO UPDATE SET valore=excluded.valore, updated_at=excluded.updated_at`
+      ).bind(i.chiave, i.lang || 'it', i.valore ?? '')
+    )
+    await db.batch(stmts)
+    return c.json({ success: true, count: stmts.length })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
 
