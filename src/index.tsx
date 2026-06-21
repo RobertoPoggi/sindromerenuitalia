@@ -985,7 +985,7 @@ function homePage(t: Record<string, string>): string {
     { href: `/${t.lang}/research`,   icon: 'fa-microscope',  ic: 'ic-sky',    title: t.section_research_title,              desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg',         pos: 'center' },
     { href: `/${t.lang}/science`,    icon: 'fa-flask',       ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',  img: '/images/renu_science_committee.jpg',pos: 'center' },
     { href: `/${t.lang}/donations`,  icon: 'fa-heart',       ic: 'ic-red',    title: t.section_donations_title,             desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg',        pos: 'center' },
-    { href: `/${t.lang}/about`,      icon: 'fa-info-circle', ic: 'ic-navy',   title: t.section_info_title,                  desc: t.section_info_desc,       accent: 'card-blue',   img: '/images/renu_info.jpg',             pos: 'center' },
+    { href: `/${t.lang}/about`,      icon: 'fa-info-circle', ic: 'ic-navy',   title: t.section_info_title,                  desc: t.section_info_desc,       accent: 'card-blue',   img: '/images/renu_info.jpg',             pos: 'top', aspect: '4/3' },
     { href: `/${t.lang}/community`,  icon: 'fa-bullhorn',    ic: 'ic-purple', title: t.section_awareness_title,             desc: t.section_awareness_desc,  accent: 'card-purple', img: '/images/renu_awareness.jpg',        pos: 'center' },
   ]
   return `
@@ -1041,7 +1041,7 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="aspect-ratio:16/9">
+          <div class="overflow-hidden bg-sky-50 relative flex items-center justify-center" style="aspect-ratio:${(c as any).aspect||'16/9'}">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute"></i>
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
                  style="object-position:${(c as any).pos||'center'}"
@@ -1091,7 +1091,7 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-contain" style="background:#f0f8fd" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" style="background:#f0f8fd" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
