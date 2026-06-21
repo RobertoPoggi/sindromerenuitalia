@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Crea le versioni EN, FR, ES, DE di move4renu.jpg
-Strategia FINALE PULITA:
-- Incolla la zona tartaruga (x >= 610) dall'immagine IT
-- Costruisce il pannello sinistro bianco da zero
-- Non tocca la diagonale: la lascia provenire dall'IT (zona 610+)
-- Il testo IT finisce a x=575, quindi x=610 è GARANTITO pulito
+Crea le versioni EN, FR, ES, DE di move4renu_it.jpg
+Strategia PIXEL-PERFECT:
+1. Copia 1:1 l'immagine IT (tutto: tartaruga, icone, sfondo, banner)
+2. Copre con bianco SOLO le zone testo:
+   - Testo principale (MUOVITI / PER RENU): rettangolo (42,90)→(590,330)
+   - Etichette attività (Cammina/Corri/Pedala/Balla): rettangolo (40,515)→(580,575)
+   - Testo banner (APRILE - ...): zona centrale del banner
+3. Ridisegna il testo nuovo nelle stesse posizioni
 """
 from PIL import Image, ImageDraw, ImageFont
 import os
@@ -17,6 +19,14 @@ COLOR_DARK_BLUE   = (13, 27, 77)
 COLOR_RED_ORANGE  = (220, 75, 50)
 COLOR_WHITE       = (255, 255, 255)
 COLOR_BLUE_BANNER = (14, 116, 144)
+
+# Zone testo IT misurate con numpy:
+# - Testo principale: y=96..320, x=59..574
+# - Etichette: y=520..566, x=51..565
+# - Banner inizia a y=605
+TEXT_BOX   = (42, 88,  592, 372)   # (x0,y0,x1,y1) rettangolo bianco su testo principale
+LABEL_BOX  = (38, 512, 582, 572)   # rettangolo bianco su etichette attività
+BANNER_Y   = 605                    # y dove inizia il banner cyan
 
 LANGS = {
     'en': {
@@ -49,127 +59,110 @@ LANGS = {
     },
 }
 
-def load_font(path, size):
+def load_font(size):
     try:
-        return ImageFont.truetype(path, size)
+        return ImageFont.truetype(FONT_BOLD, size)
     except:
         return ImageFont.load_default()
+
+def best_size(draw, text, max_w, sizes):
+    for sz in sizes:
+        f = load_font(sz)
+        bb = draw.textbbox((0, 0), text, font=f)
+        if (bb[2] - bb[0]) <= max_w:
+            return sz, f
+    return sizes[-1], load_font(sizes[-1])
 
 
 def create_version(lang_code, cfg):
     it_path  = os.path.join(IMG_DIR, 'move4renu_it.jpg')
     out_path = os.path.join(IMG_DIR, f'move4renu_{lang_code}.jpg')
 
-    it = Image.open(it_path).convert('RGB')
-    W, H = it.size   # 1200, 670
-
-    # ── 1. Canvas bianco puro ──────────────────────────────────────────────
-    img = Image.new('RGB', (W, H), COLOR_WHITE)
-
-    # ── 2. Incolla zona tartaruga/verde dall'IT ────────────────────────────
-    # Il testo IT finisce a x=575, MA il testo si estende nella zona verde
-    # a partire da x=630 (il testo IT è sovrapposto alla tartaruga).
-    # Usiamo x_cut=625 e poi copriamo con bianco fino a x=660 per
-    # eliminare il testo residuo che si vede nella transizione.
-    x_cut = 625
-    right_zone = it.crop((x_cut, 0, W, H - 55))
-    img.paste(right_zone, (x_cut, 0))
-
-    # ── 2b. Ridisegna pannello sinistro bianco SOLIDO ─────────────────────
-    # Copre la zona sinistra ESTESA fino a 660 per eliminare il testo IT
-    # che sconfina nella zona verde (verificato: pixel scuri a x=630..640+)
-    draw_temp = ImageDraw.Draw(img)
-    draw_temp.rectangle([(0, 0), (660, H - 56)], fill=COLOR_WHITE)
-
-    # ── 3. Banner ─────────────────────────────────────────────────────────
+    # ── 1. Copia 1:1 l'immagine IT ───────────────────────────────────────────
+    img = Image.open(it_path).convert('RGB').copy()
+    W, H = img.size
     draw = ImageDraw.Draw(img)
-    banner_h = 55
-    banner_y = H - banner_h
-    draw.rectangle([(0, banner_y), (W, H)], fill=COLOR_BLUE_BANNER)
 
-    banner_text = cfg['banner']
-    for sz in [22, 19, 17, 15, 13]:
-        f = load_font(FONT_BOLD, sz)
-        bb = draw.textbbox((0,0), banner_text, font=f)
-        if (bb[2]-bb[0]) <= W - 40:
-            f_banner, bb_b = f, bb
-            break
+    # ── 2a. Copre testo principale con bianco ─────────────────────────────────
+    draw.rectangle(TEXT_BOX, fill=COLOR_WHITE)
 
-    tw_b = bb_b[2] - bb_b[0]
-    x_b  = (W - tw_b) // 2
-    y_b  = banner_y + (banner_h - (bb_b[3] - bb_b[1])) // 2
-    draw.text((x_b, y_b), banner_text, font=f_banner, fill=COLOR_WHITE)
+    # ── 2b. Copre etichette attività con bianco ───────────────────────────────
+    draw.rectangle(LABEL_BOX, fill=COLOR_WHITE)
 
-    # ── 4. Testo principale ───────────────────────────────────────────────
+    # ── 2c. Copre testo banner (lascia lo sfondo cyan, ridisegna solo testo) ──
+    # Usiamo un rettangolo un po' più stretto del banner per non toccare i bordi
+    draw.rectangle([(10, BANNER_Y + 5), (W - 10, H - 5)], fill=COLOR_BLUE_BANNER)
+
+    # ── 3. Ridisegna testo principale ────────────────────────────────────────
     line1    = cfg['line1']
     line2_bl = cfg['line2_blue']
     line2_rd = cfg['line2_red']
-    full2    = (line2_bl + ' ' + line2_rd).strip()
+    full2    = (line2_bl + ' ' + line2_rd).strip() if line2_bl else line2_rd
 
-    # Larghezza disponibile per il testo: da margin fino a x_cut con un po' di margine
-    margin  = 42
-    avail_w = x_cut - margin - 30   # ~538px
+    # Larghezza disponibile: dalla margin fino al bordo del box testo
+    margin   = 59   # allineato al margine sinistro dell'IT
+    avail_w  = TEXT_BOX[2] - margin - 10
 
-    # Trova font size ottimale per line1
-    def best_size(text, max_w, sizes):
-        for sz in sizes:
-            f = load_font(FONT_BOLD, sz)
-            bb = draw.textbbox((0,0), text, font=f)
-            if (bb[2]-bb[0]) <= max_w:
-                return sz
-        return sizes[-1]
+    SIZES = [140, 130, 120, 110, 100, 90, 80, 70, 60]
+    fs1, _ = best_size(draw, line1, avail_w, SIZES)
+    fs2, _ = best_size(draw, full2, avail_w, SIZES)
+    fs     = min(fs1, fs2)
+    f_main = load_font(fs)
 
-    SIZES = [120, 110, 100, 90, 80, 70, 60, 50]
-    fs1 = best_size(line1, avail_w, SIZES)
-    fs2 = best_size(full2, avail_w, SIZES)
-    # Usa la stessa dimensione per entrambe le righe (il minore dei due)
-    fs  = min(fs1, fs2)
-    f1 = load_font(FONT_BOLD, fs)
-    f2 = load_font(FONT_BOLD, fs)
+    # Posizione y1: stessa dell'IT (testo inizia a y≈96)
+    y1 = 96
+    draw.text((margin, y1), line1, font=f_main, fill=COLOR_DARK_BLUE)
 
-    y1 = 52
-    draw.text((margin, y1), line1, font=f1, fill=COLOR_DARK_BLUE)
-
-    bb1 = draw.textbbox((0,0), line1, font=f1)
+    bb1 = draw.textbbox((0, 0), line1, font=f_main)
     h1  = bb1[3] - bb1[1]
-    y2  = y1 + h1 + 10
+    y2  = y1 + h1 + 8
 
     # line2: parte blu + "ReNU" rosso
     x_cur = margin
     if line2_bl:
         bl_text = line2_bl + ' '
-        draw.text((x_cur, y2), bl_text, font=f2, fill=COLOR_DARK_BLUE)
-        bb_bl = draw.textbbox((0,0), bl_text, font=f2)
+        draw.text((x_cur, y2), bl_text, font=f_main, fill=COLOR_DARK_BLUE)
+        bb_bl = draw.textbbox((0, 0), bl_text, font=f_main)
         x_cur += bb_bl[2] - bb_bl[0]
-    draw.text((x_cur, y2), line2_rd, font=f2, fill=COLOR_RED_ORANGE)
+    draw.text((x_cur, y2), line2_rd, font=f_main, fill=COLOR_RED_ORANGE)
 
-    bb2 = draw.textbbox((0,0), full2, font=f2)
-    h2  = bb2[3] - bb2[1]
+    # ── 4. Ridisegna etichette attività ──────────────────────────────────────
+    # Nell'IT le 4 etichette sono a y≈546..566, x da 51 a 564
+    # Le icone occupano x=80..575 divise in 4 slot da ~124px ciascuna
+    # Slot centri (misurati): ~140, ~265, ~390, ~510
+    activities = cfg['activities']
+    f_act  = load_font(19)
 
-    # ── 5. Icone (dall'IT, zona garantita x<575) ──────────────────────────
-    # Nell'IT le 4 icone occupano y≈322..488, x=22..560 (verificato: arrivano a x=550)
-    # Tutte stanno prima di x=575 (fine testo) quindi sicure
-    icons_src = it.crop((22, 322, 560, 490))
-    icon_h    = 490 - 322  # 168
-    icon_w    = 560 - 22   # 538
+    # Usiamo gli stessi centri x delle icone IT
+    # Le icone nell'IT sono in 4 colonne uguali su x=80..575 → slot_w=123.75
+    icon_x0   = 80
+    icon_x1   = 576
+    slot_w    = (icon_x1 - icon_x0) / 4
+    label_y   = 546   # y di partenza delle etichette nell'IT
 
-    icons_y = y2 + h2 + 32
-    if icons_y + icon_h < banner_y - 5:
-        img.paste(icons_src, (22, icons_y))
+    for i, act in enumerate(activities):
+        cx  = int(icon_x0 + i * slot_w + slot_w / 2)
+        abb = draw.textbbox((0, 0), act, font=f_act)
+        tw  = abb[2] - abb[0]
+        draw.text((cx - tw // 2, label_y), act, font=f_act, fill=COLOR_DARK_BLUE)
 
-        # Etichette sotto le icone
-        activities = cfg['activities']
-        f_act  = load_font(FONT_BOLD, 19)
-        slot_w = icon_w // 4   # ~121px
-        act_y  = icons_y + icon_h + 3
-        for i, act in enumerate(activities):
-            x_c  = 22 + i * slot_w + slot_w // 2
-            abb  = draw.textbbox((0,0), act, font=f_act)
-            tw_a = abb[2] - abb[0]
-            draw.text((x_c - tw_a // 2, act_y), act, font=f_act, fill=COLOR_DARK_BLUE)
+    # ── 5. Ridisegna testo banner ─────────────────────────────────────────────
+    banner_text = cfg['banner']
+    for sz in [22, 19, 17, 15, 13, 11]:
+        f = load_font(sz)
+        bb = draw.textbbox((0, 0), banner_text, font=f)
+        tw = bb[2] - bb[0]
+        if tw <= W - 60:
+            f_banner = f
+            bh = bb[3] - bb[1]
+            break
 
-    # ── 6. Salva ──────────────────────────────────────────────────────────
-    img.save(out_path, 'JPEG', quality=93)
+    x_b = (W - tw) // 2
+    y_b = BANNER_Y + ((H - BANNER_Y) - bh) // 2
+    draw.text((x_b, y_b), banner_text, font=f_banner, fill=COLOR_WHITE)
+
+    # ── 6. Salva ──────────────────────────────────────────────────────────────
+    img.save(out_path, 'JPEG', quality=95)
     v = Image.open(out_path)
     print(f'  -> {os.path.basename(out_path)} {v.size}')
 

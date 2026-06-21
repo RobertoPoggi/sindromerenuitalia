@@ -998,7 +998,7 @@ function homePage(t: Record<string, string>): string {
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
           <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">${t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')}</h1>
-          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl">${t.hero_desc
+          <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed max-w-2xl break-words">${t.hero_desc
             .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
             .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
             .replace('supportare le famiglie italiane','<strong>supportare le famiglie italiane</strong>')}</p>
@@ -1094,7 +1094,7 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-contain" loading="lazy" decoding="async"></div>
+          <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover object-center" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden bg-sky-50" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-contain" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center" loading="lazy" decoding="async"></div>
           <div class="img-frame overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
@@ -1262,7 +1262,7 @@ function homePage(t: Record<string, string>): string {
             storieData = data;
             g.innerHTML = data.map(function(b, i){
               var imgHtml = b.img_url
-                ? '<img src="' + b.img_url + '" alt="' + b.nome.replace(/"/g,'&quot;') + '" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">'
+                ? '<img src="' + b.img_url + '" alt="' + b.nome.replace(/"/g,'&quot;') + '" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">'  
                 : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-6xl text-sky-300"></i></div>';
               return '<div class="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow" data-idx="' + i + '">' +
                 '<div class="overflow-hidden" style="aspect-ratio:4/5">' + imgHtml + '</div>' +
@@ -1489,7 +1489,7 @@ function aboutPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
           </span>
         </div>
-        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" style="max-height:500px" loading="lazy" decoding="async">
+        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full object-contain" loading="lazy" decoding="async">
       </div>
 
       <!-- ReNU Syndrome Support Tool -->
@@ -2311,10 +2311,9 @@ function donationsPage(t: Record<string, string>): string {
         </div>
       </div>
       <div class="flex-shrink-0 hidden md:block" style="width:340px">
-        <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3">
+        <div class="rounded-2xl overflow-hidden shadow-2xl">
           <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia"
-               class="w-full h-full object-cover"
-               style="object-position:right center"
+               class="w-full h-auto block"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -4234,7 +4233,7 @@ function sciencePage(t: Record<string, string>): string {
           <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
             <img src="/images/it_comitato.jpg"
                  alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia':'Sindrome ReNU Italia Scientific Committee'}"
-                 class="w-full h-full object-cover" loading="lazy" decoding="async">
+                 class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
           </div>
           <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:16/9">
             <img src="/images/renu_science_committee.jpg"
