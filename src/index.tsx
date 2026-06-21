@@ -1233,30 +1233,39 @@ function homePage(t: Record<string, string>): string {
       </div>
       <script>
       (function(){
-        const lang = '${t.lang}';
-        const leggi = '${t.lang==='it'?'Leggi la storia':t.lang==='en'?'Read story':'Lire'}';
+        var lang = '${t.lang}';
+        var leggi = '${t.lang==='it'?'Leggi la storia':t.lang==='en'?'Read story':'Lire'}';
+        var storieData = [];
         fetch('/api/storie?lang=' + lang + '&tipo=italiana')
-          .then(r=>r.json())
-          .then(data=>{
-            const g = document.getElementById('storie-italiane-grid');
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            var g = document.getElementById('storie-italiane-grid');
             if(!data || !data.length){ g.innerHTML='<div class="col-span-full text-center py-8 text-gray-400">Nessuna storia disponibile</div>'; return; }
-            g.innerHTML = data.map(b=>\`
-            <div class="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow"
-                 onclick="apriStoria(\${JSON.stringify(b.nome)}, \${JSON.stringify(b.desc||'')}, \${JSON.stringify(b.img_url||'')})">
-              <div class="overflow-hidden" style="aspect-ratio:4/5">
-                \${b.img_url
-                  ? \`<img src="\${b.img_url}" alt="\${b.nome}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">\`
-                  : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-6xl text-sky-300"></i></div>'}
-              </div>
-              <div class="p-3 text-center">
-                <h3 class="font-extrabold text-base mb-1" style="color:#082050">\${b.nome}</h3>
-                <p class="text-gray-500 text-xs line-clamp-2">\${b.desc||''}</p>
-                <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">
-                  <i class="fas fa-book-open text-xs"></i> \${leggi}
-                </div>
-              </div>
-            </div>\`).join('');
-          }).catch(()=>{ document.getElementById('storie-italiane-grid').innerHTML=''; });
+            storieData = data;
+            g.innerHTML = data.map(function(b, i){
+              var imgHtml = b.img_url
+                ? '<img src="' + b.img_url + '" alt="' + b.nome.replace(/"/g,'&quot;') + '" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">'
+                : '<div class="w-full h-full bg-sky-100 flex items-center justify-center"><i class="fas fa-user-circle text-6xl text-sky-300"></i></div>';
+              return '<div class="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow" data-idx="' + i + '">' +
+                '<div class="overflow-hidden" style="aspect-ratio:4/5">' + imgHtml + '</div>' +
+                '<div class="p-3 text-center">' +
+                  '<h3 class="font-extrabold text-base mb-1" style="color:#082050">' + b.nome + '</h3>' +
+                  '<p class="text-gray-500 text-xs line-clamp-2">' + (b.desc||'') + '</p>' +
+                  '<div class="mt-2 inline-flex items-center gap-1 text-xs font-bold" style="color:#1078C0">' +
+                    '<i class="fas fa-book-open text-xs"></i> ' + leggi +
+                  '</div>' +
+                '</div>' +
+              '</div>';
+            }).join('');
+            /* Event delegation: un solo listener sul grid */
+            g.addEventListener('click', function(e){
+              var card = e.target.closest('[data-idx]');
+              if(!card) return;
+              var idx = parseInt(card.getAttribute('data-idx'), 10);
+              var b = storieData[idx];
+              if(b) apriStoria(b.nome, b.desc||'', b.img_url||'');
+            });
+          }).catch(function(){ document.getElementById('storie-italiane-grid').innerHTML=''; });
       })();
       </script>
       <div class="text-center mb-8">
