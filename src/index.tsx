@@ -2033,10 +2033,9 @@ function communityPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.community_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:360px; aspect-ratio:9/4; flex-shrink:0">
+        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:360px; flex-shrink:0">
           <img src="/images/it_festa_natale.jpg" alt="Comunità ReNU Italia – famiglie e bambini insieme"
-               class="w-full h-full object-cover"
-               style="object-position:center center"
+               class="w-full h-auto block"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -2068,8 +2067,8 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden bg-sky-50" style="aspect-ratio:2/1">
-            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-contain" style="object-position:center center" loading="lazy" decoding="async">
+          <div class="overflow-hidden bg-white">
+            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -2205,8 +2204,8 @@ function communityPage(t: Record<string, string>): string {
                 const g = document.getElementById('gallery-community-grid');
                 if(!data || !data.length){ g.innerHTML=''; return; }
                 g.innerHTML = data.map(img=>(
-                  '<div class="rounded-xl overflow-hidden bg-sky-50" style="aspect-ratio:2/1">'+
-                    '<img src="'+img.img_url+'" alt="'+(img.didascalia_it||img.didascalia||'ReNU Italia')+'" class="w-full h-full object-contain" loading="lazy" decoding="async">'+
+                  '<div class="rounded-xl overflow-hidden bg-white shadow-sm">'+
+                    '<img src="'+img.img_url+'" alt="'+(img.didascalia_it||img.didascalia||'ReNU Italia')+'" class="w-full h-auto block" loading="lazy" decoding="async">'+
                   '</div>'
                 )).join('');
               }).catch(()=>{ document.getElementById('gallery-community-grid').innerHTML=''; });
