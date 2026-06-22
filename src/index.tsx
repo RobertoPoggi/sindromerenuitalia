@@ -112,6 +112,98 @@ const translations: Record<string, Record<string, string>> = {
     world_title: 'ReNU nel Mondo',
     world_desc: 'Famiglie RNU4-2 sono state mappate in: Australia, Belgio, Brasile, Canada, Cina, Colombia, Repubblica Ceca, Danimarca, Inghilterra, Francia, Germania, Grecia, Hong Kong, Islanda, Irlanda, Israele, Italia, Giappone, Messico, Paesi Bassi, Nuova Zelanda, Irlanda del Nord, Norvegia, Palestina, Polonia, Romania, Russia, Arabia Saudita, Scozia, Corea del Sud, Spagna, Svezia, Svizzera, Turchia, Ucraina, Stati Uniti, Galles.',
     intl_network: 'Rete Internazionale',
+    section_explore: 'Approfondimenti',
+    stat_cases_world: 'casi accertati nel mondo',
+    stat_cases_italy: 'casi in Italia',
+    stat_dna: 'posizioni nel DNA mutate',
+    stat_countries: 'paesi con famiglie mappate',
+    stat_year: 'anno della scoperta',
+    news_title: 'Consapevolezza & Iniziative',
+    section_awareness_badge: 'Consapevolezza & Iniziative',
+    community_join_btn: 'Unisciti alla comunità',
+    gallery_btn: 'Vai alla Gallery',
+    map_btn: 'Vedi Mappa',
+    stories_nodesc: 'La storia di questo bambino sarà presto condivisa dalla famiglia.',
+    privacy_link: 'Privacy Policy',
+    mascot_desc: 'Reny è la mascotte di ReNU Italia. Puoi scaricare le risorse grafiche per sensibilizzare sui social media.',
+    stories_it_title: 'Storie di Famiglie Italiane con ReNU',
+    stories_it_desc: 'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.',
+    stories_read_full: 'Leggi la storia completa',
+    stories_loading: 'Caricamento storie...',
+    stories_read: 'Leggi la storia',
+    stories_share_cta: 'Vuoi condividere la storia del tuo bambino? Scrivici!',
+    stories_share_btn: 'Condividi la tua storia',
+    stories_intl_title: 'Storie dalla community internazionale',
+    stories_all_btn: 'Tutte le Storie di Famiglie ReNU',
+    network_title: 'La Rete Internazionale ReNU',
+    network_desc: 'Associazioni nazionali partner in tutto il mondo',
+    map_title: 'Mappa Italia e Mondiale RNU4-2',
+    map_desc: 'Famiglie RNU4-2 mappate in Italia e in 38+ paesi nel mondo. Aggiungiti alla mappa e aiuta ad aumentare la forza dei numeri nella ricerca.',
+    children_title: 'I nostri bambini e famiglie',
+    children_desc: 'Scopri i volti e le storie dei bambini italiani con la Sindrome ReNU e le loro famiglie.',
+    research_coming: 'Sezione Ricerca in Preparazione',
+    research_coming_desc: 'Stiamo lavorando con il nostro Comitato Scientifico per preparare contenuti accurati e aggiornati sulla ricerca scientifica relativa alla Sindrome ReNU. Questa sezione sarà disponibile presto.',
+    pubmed_label: 'Pubblicazioni Scientifiche su PubMed',
+    pubmed_title: 'Letteratura Scientifica sulla Sindrome ReNU (RNU4-2)',
+    pubmed_loading: 'Caricamento pubblicazioni...',
+    pubmed_search: 'Cerca tutte le pubblicazioni su PubMed',
+    science_collab_title: 'Vuoi collaborare con il nostro Comitato Scientifico?',
+    science_collab_desc: 'Il Comitato Scientifico di Sindrome ReNU Italia è in fase di costituzione. Per collaborazioni scientifiche o per segnalare nuove pubblicazioni, contattaci.',
+    therapies_go: 'Vai alla pagina Terapie',
+    therapies_rsu: 'Approfondisci su ReNU Syndrome United',
+    rights_title: 'Diritti e Tutele – Rete Famiglie Italia',
+    rights_desc: 'Avere un figlio con Sindrome ReNU comporta l\'accesso a una serie di diritti, tutele e agevolazioni previsti dalla legislazione italiana. La nostra rete famiglie è qui per aiutarti a navigare il sistema.',
+    law104_title: 'Legge 104/92 – Assistenza Disabili',
+    law104_desc: 'Permessi lavorativi per genitori (3 giorni/mese), congedi straordinari, agevolazioni fiscali e supporto scolastico. La Sindrome ReNU può dare diritto alla 104 in situazione di gravità (art. 3 comma 3).',
+    carpass_title: 'Contrassegno Disabile (Pass Auto)',
+    carpass_desc: 'Il contrassegno per parcheggio disabili si richiede al Comune di residenza tramite certificazione medica. Permette la sosta in zone riservate e agevolazioni per la circolazione.',
+    school_title: 'Supporto Scolastico (Insegnante di Sostegno)',
+    school_desc: 'Il bambino con ReNU ha diritto all\'insegnante di sostegno, al Piano Educativo Individualizzato (PEI) e ad ausili didattici specifici. Richiede certificazione della disabilità e valutazione UMVD.',
+    allowance_title: 'Indennità di Accompagnamento e Bonus',
+    allowance_desc: 'L\'indennità di accompagnamento INPS è riservata ai disabili totali che non possono deambulare autonomamente. Esistono anche altri bonus: Bonus Bebè, Assegno Unico, agevolazioni ISEE per disabili.',
+    discard_title: 'Disability Card (Carta Europea della Disabilità)',
+    discard_desc: 'La Disability Card è una tessera europea che certifica la disabilità e dà accesso a agevolazioni in strutture pubbliche, musei, trasporti e servizi. Si richiede tramite INPS.',
+    network_it_title: 'Rete Famiglie ReNU Italia',
+    network_it_desc: 'Connettiti con le altre famiglie italiane con un bambino ReNU. Condividiamo esperienze, suggerimenti pratici e supporto emotivo. Scrivici a info@sindromerenu.it per essere inserito nella rete!',
+    faq_title: 'FAQ & Diritti',
+    faq_intro: 'Domande frequenti e informazioni sui diritti delle famiglie ReNU in Italia.',
+    join_title: 'Diventa Socio',
+    join_intro: 'Unisciti a Sindrome ReNU Italia APS e fai parte della nostra comunità.',
+    events_title: 'Incontri ed Eventi',
+    events_intro: 'Incontri, conferenze ed eventi di sensibilizzazione sulla Sindrome ReNU.',
+    projects_title: 'Progetti',
+    projects_intro: 'Iniziative, campagne di sensibilizzazione e progetti dell\'associazione.',
+    donate_5x1000: '5x1000',
+    donate_5x1000_title: '5x1000 – Donazione senza costi',
+    donate_5x1000_desc: 'In fase di dichiarazione dei redditi, indica il nostro codice fiscale nella casella \'Associazioni di promozione sociale\'. Non ti costa nulla ma rappresenta un supporto prezioso per noi.',
+    donate_bday_title: 'Compleanno Solidale',
+    donate_bday_desc: 'Trasforma il tuo compleanno o quello del tuo bambino in un\'occasione di sostegno alla ricerca sulla Sindrome ReNU.',
+    donate_company_title: 'Donazioni Aziendali',
+    donate_company_desc: 'La tua azienda può supportare la nostra missione e beneficiare di agevolazioni fiscali. Contattaci per maggiori informazioni.',
+    donate_recurring_title: 'Donazione Ricorrente',
+    donate_recurring_desc: 'Con una donazione ricorrente mensile o annuale, garantisci un supporto continuo alle attività dell\'associazione e alle famiglie ReNU in Italia.',
+    donate_recurring_btn: 'Imposta Donazione Ricorrente',
+    donate_intl_label: 'Per donazioni dall\'estero',
+    contact_form_name: 'Nome e Cognome',
+    contact_form_email: 'Indirizzo email',
+    contact_form_subject: 'Oggetto',
+    contact_form_message: 'Messaggio',
+    contact_form_send: 'Invia messaggio',
+    contact_form_sending: 'Invio in corso...',
+    contact_form_success: 'Messaggio inviato con successo!',
+    contact_form_error: 'Errore nell\'invio. Riprova.',
+    privacy_title: 'Privacy Policy',
+    cookie_notice: 'Informativa Cookie',
+    cookie_text: 'Utilizziamo solo cookie tecnici necessari al funzionamento del sito. Non vengono utilizzati cookie di profilazione o tracciamento.',
+    cookie_accept: 'Accetto',
+    cookie_necessary: 'Solo tecnici necessari',
+    cookie_more: 'Maggiori info',
+    gdpr_label: 'Sito conforme GDPR (Reg. UE 2016/679)',
+    contact_dpo: 'Contatta il DPO',
+    coming_soon: 'Sezione in preparazione',
+    search_placeholder: 'Cerca nel sito...',
+    search_label: 'Cerca nel sito',
+    pubmed_syn: 'Sintesi:',
   },
   en: {
     lang: 'en', langName: 'English',
@@ -190,6 +282,98 @@ const translations: Record<string, Record<string, string>> = {
     world_title: 'ReNU Worldwide',
     world_desc: 'RNU4-2 families have been mapped in: Australia, Belgium, Brazil, Canada, China, Colombia, Czech Republic, Denmark, England, France, Germany, Greece, Hong Kong, Iceland, Ireland, Israel, Italy, Japan, Mexico, Netherlands, New Zealand, Northern Ireland, Norway, Palestine, Poland, Romania, Russia, Saudi Arabia, Scotland, South Korea, Spain, Sweden, Switzerland, Turkey, Ukraine, United States, Wales.',
     intl_network: 'International Network',
+    section_explore: 'Explore',
+    stat_cases_world: 'confirmed cases worldwide',
+    stat_cases_italy: 'cases in Italy',
+    stat_dna: 'DNA positions mutated',
+    stat_countries: 'countries with mapped families',
+    stat_year: 'year of discovery',
+    news_title: 'Awareness & Initiatives',
+    section_awareness_badge: 'Awareness & Initiatives',
+    community_join_btn: 'Join the community',
+    gallery_btn: 'Visit Gallery',
+    map_btn: 'See Map',
+    stories_nodesc: 'This child\'s story will be shared by the family soon.',
+    privacy_link: 'Privacy Policy',
+    mascot_desc: 'Reny is the mascot of ReNU Italia. You can download the graphic resources to raise awareness on social media.',
+    stories_it_title: 'Stories from ReNU Families',
+    stories_it_desc: 'Real stories from around the world, from the ReNU Syndrome United community.',
+    stories_read_full: 'Read the full story',
+    stories_loading: 'Loading stories...',
+    stories_read: 'Read story',
+    stories_share_cta: 'Want to share your child\'s story? Write to us!',
+    stories_share_btn: 'Share your story',
+    stories_intl_title: 'Stories from the international community',
+    stories_all_btn: 'All ReNU Family Stories',
+    network_title: 'The International ReNU Network',
+    network_desc: 'National partner associations worldwide',
+    map_title: 'Italy & World Map RNU4-2',
+    map_desc: 'RNU4-2 families mapped in Italy and 38+ countries worldwide. Add yourself to the map and help strengthen research.',
+    children_title: 'Our children and families',
+    children_desc: 'Discover the faces and stories of Italian children with ReNU Syndrome and their families.',
+    research_coming: 'Research Section Coming Soon',
+    research_coming_desc: 'We are working with our Scientific Committee to prepare accurate and up-to-date content on scientific research related to ReNU Syndrome. This section will be available soon.',
+    pubmed_label: 'Scientific Publications on PubMed',
+    pubmed_title: 'Scientific Literature on ReNU Syndrome (RNU4-2)',
+    pubmed_loading: 'Loading publications...',
+    pubmed_search: 'Search all publications on PubMed',
+    science_collab_title: 'Want to collaborate with our Scientific Committee?',
+    science_collab_desc: 'The Scientific Committee of Sindrome ReNU Italia is being established. For scientific collaborations or to report new publications, contact us.',
+    therapies_go: 'Go to Therapies page',
+    therapies_rsu: 'Learn more on ReNU Syndrome United',
+    rights_title: 'Rights & Protections – Italian Family Network',
+    rights_desc: 'Having a child with ReNU Syndrome entitles you to a range of rights, protections and benefits under Italian law. Our family network is here to help you navigate the system.',
+    law104_title: 'Law 104/92 – Disability Assistance',
+    law104_desc: 'Work leave for parents (3 days/month), extraordinary leave, tax benefits and school support. ReNU Syndrome may qualify for law 104 in serious condition (art. 3 comma 3).',
+    carpass_title: 'Disabled Badge (Car Pass)',
+    carpass_desc: 'The disabled parking badge is requested at the municipality of residence via medical certification. It allows parking in reserved areas and circulation benefits.',
+    school_title: 'School Support (Support Teacher)',
+    school_desc: 'A ReNU child has the right to a support teacher, an Individual Educational Plan (PEI) and specific teaching aids. Requires disability certification and UMVD assessment.',
+    allowance_title: 'Attendance Allowance & Bonuses',
+    allowance_desc: 'INPS attendance allowance is reserved for total disabled people who cannot walk independently. Other bonuses also exist: Baby Bonus, Unique Allowance, ISEE benefits for disabled.',
+    discard_title: 'Disability Card (European Disability Card)',
+    discard_desc: 'The Disability Card is a European card certifying disability and provides access to benefits in public facilities, museums, transport and services. Applied for via INPS.',
+    network_it_title: 'ReNU Italy Family Network',
+    network_it_desc: 'Connect with other Italian families with a ReNU child. We share experiences, practical tips and emotional support. Write to us at info@sindromerenu.it to join the network!',
+    faq_title: 'FAQ & Rights',
+    faq_intro: 'Frequently asked questions and information on the rights of ReNU families in Italy.',
+    join_title: 'Become a Member',
+    join_intro: 'Join Sindrome ReNU Italia APS and be part of our community.',
+    events_title: 'Events',
+    events_intro: 'Meetings, conferences and awareness events on ReNU Syndrome.',
+    projects_title: 'Projects',
+    projects_intro: 'Initiatives, awareness campaigns and projects of the association.',
+    donate_5x1000: '5x1000',
+    donate_5x1000_title: '5x1000 – Free donation',
+    donate_5x1000_desc: 'In your tax return, indicate our tax code in the \'Social promotion associations\' box. It costs you nothing but represents valuable support for us.',
+    donate_bday_title: 'Solidarity Birthday',
+    donate_bday_desc: 'Turn your birthday or your child\'s birthday into an opportunity to support ReNU Syndrome research.',
+    donate_company_title: 'Corporate Donations',
+    donate_company_desc: 'Your company can support our mission and benefit from tax advantages. Contact us for more information.',
+    donate_recurring_title: 'Recurring Donation',
+    donate_recurring_desc: 'With a monthly or annual recurring donation, you provide continuous support to the association\'s activities and ReNU families in Italy.',
+    donate_recurring_btn: 'Set Up Recurring Donation',
+    donate_intl_label: 'For international donations',
+    contact_form_name: 'First and Last Name',
+    contact_form_email: 'Email address',
+    contact_form_subject: 'Subject',
+    contact_form_message: 'Message',
+    contact_form_send: 'Send message',
+    contact_form_sending: 'Sending...',
+    contact_form_success: 'Message sent successfully!',
+    contact_form_error: 'Error sending. Please try again.',
+    privacy_title: 'Privacy Policy',
+    cookie_notice: 'Cookie Notice',
+    cookie_text: 'We use only technical cookies necessary for the operation of the site. No profiling or tracking cookies are used.',
+    cookie_accept: 'Accept',
+    cookie_necessary: 'Necessary only',
+    cookie_more: 'More info',
+    gdpr_label: 'GDPR Compliant (EU Reg. 2016/679)',
+    contact_dpo: 'Contact DPO',
+    coming_soon: 'Section coming soon',
+    search_placeholder: 'Search site...',
+    search_label: 'Search site',
+    pubmed_syn: 'Summary:',
   },
   fr: {
     lang: 'fr', langName: 'Français',
@@ -287,6 +471,99 @@ const translations: Record<string, Record<string, string>> = {
     world_title: 'ReNU dans le Monde',
     world_desc: 'Les familles RNU4-2 ont été cartographiées dans plus de 38 pays.',
     intl_network: 'Réseau International',
+    // Chiavi mancanti aggiunte
+    section_explore: 'Approfondissements',
+    stat_cases_world: 'cas confirmés dans le monde',
+    stat_cases_italy: 'cas en Italie',
+    stat_dna: 'positions ADN mutées',
+    stat_countries: 'pays avec familles',
+    stat_year: 'année de la découverte',
+    news_title: 'Sensibilisation & Initiatives',
+    section_awareness_badge: 'Sensibilisation & Initiatives',
+    community_join_btn: 'Rejoindre la communauté',
+    gallery_btn: 'Voir la Galerie',
+    map_btn: 'Voir la Carte',
+    stories_nodesc: 'L\'histoire de cet enfant sera bientôt partagée par la famille.',
+    privacy_link: 'Politique de confidentialité',
+    mascot_desc: 'Reny est la mascotte de ReNU Italie. Vous pouvez télécharger les ressources graphiques pour sensibiliser le public sur les réseaux sociaux.',
+    stories_it_title: 'Histoires de familles ReNU',
+    stories_it_desc: 'Histoires de familles italiennes avec le Syndrome ReNU. En attendant, lisez les histoires de la communauté internationale.',
+    stories_read_full: 'Lire l\'histoire complète',
+    stories_loading: 'Chargement des histoires...',
+    stories_read: 'Lire',
+    stories_share_cta: 'Vous souhaitez partager l\'histoire de votre enfant? Écrivez-nous!',
+    stories_share_btn: 'Partager votre histoire',
+    stories_intl_title: 'Histoires de la communauté internationale',
+    stories_all_btn: 'Toutes les histoires ReNU',
+    network_title: 'Le Réseau International ReNU',
+    network_desc: 'Associations nationales partenaires dans le monde entier',
+    map_title: 'Carte Italie et Mondiale RNU4-2',
+    map_desc: 'Familles RNU4-2 cartographiées en Italie et dans 38+ pays. Ajoutez-vous à la carte!',
+    children_title: 'Nos enfants et familles',
+    children_desc: 'Découvrez les histoires des familles italiennes vivant avec le syndrome ReNU.',
+    research_coming: 'Section Recherche en Préparation',
+    research_coming_desc: 'Nous travaillons avec notre Comité Scientifique pour préparer des contenus précis sur la recherche du Syndrome ReNU. Cette section sera disponible prochainement.',
+    pubmed_label: 'Publications Scientifiques sur PubMed',
+    pubmed_title: 'Littérature Scientifique sur le Syndrome ReNU (RNU4-2)',
+    pubmed_loading: 'Chargement des publications...',
+    pubmed_search: 'Rechercher toutes les publications sur PubMed',
+    science_collab_title: 'Vous souhaitez collaborer avec notre Comité Scientifique?',
+    science_collab_desc: 'Le Comité Scientifique est en cours de constitution. Pour des collaborations scientifiques, contactez-nous.',
+    therapies_go: 'Page Thérapies',
+    therapies_rsu: 'Plus d\'infos sur ReNU Syndrome United',
+    rights_title: 'Droits et Protections – Réseau Familles Italie',
+    rights_desc: 'Avoir un enfant avec le Syndrome ReNU donne accès à une série de droits et protections prévus par la législation italienne. Notre réseau de familles est là pour vous aider.',
+    law104_title: 'Loi 104/92 – Aide aux personnes handicapées',
+    law104_desc: 'Congés de travail pour les parents (3 jours/mois), congés extraordinaires, avantages fiscaux et soutien scolaire.',
+    carpass_title: 'Badge Handicapé (Pass Auto)',
+    carpass_desc: 'Le badge de stationnement pour handicapés se demande à la mairie de résidence via certificat médical.',
+    school_title: 'Soutien Scolaire (Enseignant de Soutien)',
+    school_desc: 'L\'enfant avec ReNU a droit à un enseignant de soutien, à un Plan Éducatif Individualisé (PEI) et à des aides didactiques spécifiques.',
+    allowance_title: 'Allocation et Aides',
+    allowance_desc: 'L\'allocation d\'accompagnement INPS est réservée aux personnes ayant un handicap total. Il existe également d\'autres aides: Bonus Bébé, Allocation Unique, avantages ISEE.',
+    discard_title: 'Disability Card (Carte Européenne du Handicap)',
+    discard_desc: 'La Disability Card est une carte européenne certifiant le handicap et donne accès à des avantages dans les établissements publics, musées, transports.',
+    network_it_title: 'Réseau Familles ReNU Italie',
+    network_it_desc: 'Rejoignez les autres familles italiennes avec un enfant ReNU. Écrivez-nous à info@sindromerenu.it!',
+    faq_title: 'FAQ & Droits',
+    faq_intro: 'Questions fréquentes et informations sur les droits des familles ReNU en Italie.',
+    join_title: 'Devenir Membre',
+    join_intro: 'Rejoignez Sindrome ReNU Italia APS et faites partie de notre communauté.',
+    events_title: 'Événements',
+    events_intro: 'Rencontres, conférences et événements de sensibilisation sur le Syndrome ReNU.',
+    projects_title: 'Projets',
+    projects_intro: 'Initiatives, campagnes de sensibilisation et projets de l\'association.',
+    donate_5x1000: '5x1000',
+    donate_5x1000_title: '5x1000 – Don sans frais',
+    donate_5x1000_desc: 'Lors de votre déclaration de revenus, indiquez notre code fiscal dans la case \'Associations de promotion sociale\'. Cela ne vous coûte rien mais représente un soutien précieux pour nous.',
+    donate_bday_title: 'Anniversaire Solidaire',
+    donate_bday_desc: 'Transformez votre anniversaire ou celui de votre enfant en une occasion de soutien pour la recherche sur le Syndrome ReNU.',
+    donate_company_title: 'Dons d\'Entreprise',
+    donate_company_desc: 'Votre entreprise peut soutenir notre mission et bénéficier d\'avantages fiscaux. Contactez-nous pour plus d\'informations.',
+    donate_recurring_title: 'Don Récurrent',
+    donate_recurring_desc: 'Avec un don récurrent mensuel ou annuel, vous garantissez un soutien continu aux activités de l\'association et aux familles ReNU en Italie.',
+    donate_recurring_btn: 'Configurer un Don Récurrent',
+    donate_intl_label: 'Pour les dons internationaux',
+    contact_form_name: 'Nom et Prénom',
+    contact_form_email: 'Adresse e-mail',
+    contact_form_subject: 'Objet',
+    contact_form_message: 'Message',
+    contact_form_send: 'Envoyer le message',
+    contact_form_sending: 'Envoi en cours...',
+    contact_form_success: 'Message envoyé avec succès!',
+    contact_form_error: 'Erreur lors de l\'envoi. Veuillez réessayer.',
+    privacy_title: 'Politique de Confidentialité',
+    cookie_notice: 'Avis sur les Cookies',
+    cookie_text: 'Nous utilisons uniquement des cookies techniques nécessaires au fonctionnement du site. Aucun cookie de profilage ou de suivi n\'est utilisé.',
+    cookie_accept: 'Accepter',
+    cookie_necessary: 'Nécessaires uniquement',
+    cookie_more: 'Plus d\'informations',
+    gdpr_label: 'Site conforme RGPD (Règl. UE 2016/679)',
+    contact_dpo: 'Contacter le DPO',
+    coming_soon: 'Section en préparation',
+    search_placeholder: 'Rechercher sur le site...',
+    search_label: 'Rechercher sur le site',
+    pubmed_syn: 'Résumé:',
   },
   es: {
     lang: 'es', langName: 'Español',
@@ -384,6 +661,99 @@ const translations: Record<string, Record<string, string>> = {
     world_title: 'ReNU en el Mundo',
     world_desc: 'Familias RNU4-2 en más de 38 países.',
     intl_network: 'Red Internacional',
+    // Chiavi mancanti aggiunte
+    section_explore: 'Profundización',
+    stat_cases_world: 'casos confirmados en el mundo',
+    stat_cases_italy: 'casos en Italia',
+    stat_dna: 'posiciones ADN mutadas',
+    stat_countries: 'países con familias',
+    stat_year: 'año del descubrimiento',
+    news_title: 'Conciencia & Iniciativas',
+    section_awareness_badge: 'Conciencia & Iniciativas',
+    community_join_btn: 'Únete a la comunidad',
+    gallery_btn: 'Ver Galería',
+    map_btn: 'Ver Mapa',
+    stories_nodesc: 'La historia de este niño será pronto compartida por la familia.',
+    privacy_link: 'Política de Privacidad',
+    mascot_desc: 'Reny es la mascota de ReNU Italia. Puede descargar los recursos gráficos para concienciar en redes sociales.',
+    stories_it_title: 'Historias de Familias ReNU',
+    stories_it_desc: 'Historias de familias italianas con Síndrome ReNU. Mientras tanto, lea las historias de la comunidad internacional.',
+    stories_read_full: 'Leer la historia completa',
+    stories_loading: 'Cargando historias...',
+    stories_read: 'Leer',
+    stories_share_cta: '¿Quieres compartir la historia de tu hijo? ¡Escríbenos!',
+    stories_share_btn: 'Comparte tu historia',
+    stories_intl_title: 'Historias de la comunidad internacional',
+    stories_all_btn: 'Todas las historias ReNU',
+    network_title: 'La Red Internacional ReNU',
+    network_desc: 'Asociaciones nacionales socias en todo el mundo',
+    map_title: 'Mapa Italia y Mundial RNU4-2',
+    map_desc: 'Familias RNU4-2 en Italia y 38+ países. ¡Añádete al mapa!',
+    children_title: 'Nuestros niños y familias',
+    children_desc: 'Descubre las historias de las familias italianas con Síndrome ReNU.',
+    research_coming: 'Sección de Investigación en Preparación',
+    research_coming_desc: 'Estamos trabajando con nuestro Comité Científico para preparar contenidos precisos sobre la investigación del Síndrome ReNU. Esta sección estará disponible pronto.',
+    pubmed_label: 'Publicaciones Científicas en PubMed',
+    pubmed_title: 'Literatura Científica sobre el Síndrome ReNU (RNU4-2)',
+    pubmed_loading: 'Cargando publicaciones...',
+    pubmed_search: 'Buscar todas las publicaciones en PubMed',
+    science_collab_title: '¿Quiere colaborar con nuestro Comité Científico?',
+    science_collab_desc: 'El Comité Científico está en proceso de constitución. Para colaboraciones científicas, contáctenos.',
+    therapies_go: 'Ir a Terapias',
+    therapies_rsu: 'Más info en ReNU Syndrome United',
+    rights_title: 'Derechos y Protecciones – Red Familias Italia',
+    rights_desc: 'Tener un hijo con Síndrome ReNU da derecho a una serie de derechos y protecciones bajo la legislación italiana. Nuestra red de familias está aquí para ayudarte.',
+    law104_title: 'Ley 104/92 – Asistencia a Discapacitados',
+    law104_desc: 'Permisos laborales para padres (3 días/mes), bajas extraordinarias, beneficios fiscales y apoyo escolar.',
+    carpass_title: 'Distintivo Discapacitado (Pase de Auto)',
+    carpass_desc: 'El distintivo de aparcamiento para discapacitados se solicita en el ayuntamiento mediante certificado médico.',
+    school_title: 'Apoyo Escolar (Maestro de Apoyo)',
+    school_desc: 'El niño con ReNU tiene derecho a un maestro de apoyo, a un Plan Educativo Individualizado (PEI) y a ayudas didácticas específicas.',
+    allowance_title: 'Subsidio y Bonificaciones',
+    allowance_desc: 'El subsidio de acompañamiento INPS está reservado para personas con discapacidad total. También existen otros bonos: Bonus Bebé, Asignación Única, ventajas ISEE.',
+    discard_title: 'Disability Card (Tarjeta Europea de Discapacidad)',
+    discard_desc: 'La Disability Card es una tarjeta europea que certifica la discapacidad y da acceso a beneficios en instalaciones públicas, museos y transporte.',
+    network_it_title: 'Red Familias ReNU Italia',
+    network_it_desc: 'Conéctate con otras familias italianas con un niño ReNU. Escríbenos a info@sindromerenu.it.',
+    faq_title: 'FAQ & Derechos',
+    faq_intro: 'Preguntas frecuentes e información sobre los derechos de las familias ReNU en Italia.',
+    join_title: 'Hazte Socio',
+    join_intro: 'Únete a Sindrome ReNU Italia APS y forma parte de nuestra comunidad.',
+    events_title: 'Eventos',
+    events_intro: 'Encuentros, conferencias y eventos de concienciación sobre el Síndrome ReNU.',
+    projects_title: 'Proyectos',
+    projects_intro: 'Iniciativas, campañas de concienciación y proyectos de la asociación.',
+    donate_5x1000: '5x1000',
+    donate_5x1000_title: '5x1000 – Donación sin coste',
+    donate_5x1000_desc: 'En tu declaración de la renta, indica nuestro código fiscal en la casilla \'Asociaciones de promoción social\'. No te cuesta nada pero representa un apoyo valioso.',
+    donate_bday_title: 'Cumpleaños Solidario',
+    donate_bday_desc: 'Convierte tu cumpleaños o el de tu hijo en una oportunidad de apoyo a la investigación del Síndrome ReNU.',
+    donate_company_title: 'Donaciones de Empresa',
+    donate_company_desc: 'Tu empresa puede apoyar nuestra misión y beneficiarse de ventajas fiscales. Contáctenos para más información.',
+    donate_recurring_title: 'Donación Recurrente',
+    donate_recurring_desc: 'Con una donación recurrente mensual o anual, garantizas un apoyo continuo a las actividades de la asociación y a las familias ReNU.',
+    donate_recurring_btn: 'Configurar Donación Recurrente',
+    donate_intl_label: 'Para donaciones internacionales',
+    contact_form_name: 'Nombre y Apellido',
+    contact_form_email: 'Correo electrónico',
+    contact_form_subject: 'Asunto',
+    contact_form_message: 'Mensaje',
+    contact_form_send: 'Enviar mensaje',
+    contact_form_sending: 'Enviando...',
+    contact_form_success: '¡Mensaje enviado con éxito!',
+    contact_form_error: 'Error al enviar. Por favor, inténtelo de nuevo.',
+    privacy_title: 'Política de Privacidad',
+    cookie_notice: 'Aviso de Cookies',
+    cookie_text: 'Solo utilizamos cookies técnicas necesarias para el funcionamiento del sitio. No se utilizan cookies de perfilado ni de seguimiento.',
+    cookie_accept: 'Aceptar',
+    cookie_necessary: 'Solo necesarias',
+    cookie_more: 'Más información',
+    gdpr_label: 'Sitio conforme RGPD (Regl. UE 2016/679)',
+    contact_dpo: 'Contactar al DPO',
+    coming_soon: 'Sección en preparación',
+    search_placeholder: 'Buscar en el sitio...',
+    search_label: 'Buscar en el sitio',
+    pubmed_syn: 'Resumen:',
   },
   de: {
     lang: 'de', langName: 'Deutsch',
@@ -481,7 +851,110 @@ const translations: Record<string, Record<string, string>> = {
     world_title: 'ReNU weltweit',
     world_desc: 'RNU4-2-Familien in über 38 Ländern kartiert.',
     intl_network: 'Internationales Netzwerk',
+    // Chiavi mancanti aggiunte
+    section_explore: 'Vertiefungen',
+    stat_cases_world: 'bestätigte Fälle weltweit',
+    stat_cases_italy: 'Fälle in Italien',
+    stat_dna: 'DNA-Positionen mutiert',
+    stat_countries: 'Länder mit Familien',
+    stat_year: 'Jahr der Entdeckung',
+    news_title: 'Bewusstsein & Initiativen',
+    section_awareness_badge: 'Bewusstsein & Initiativen',
+    community_join_btn: 'Der Gemeinschaft beitreten',
+    gallery_btn: 'Galerie ansehen',
+    map_btn: 'Karte ansehen',
+    stories_nodesc: 'Die Geschichte dieses Kindes wird bald von der Familie geteilt.',
+    privacy_link: 'Datenschutzerklärung',
+    mascot_desc: 'Reny ist das Maskottchen von ReNU Italia. Sie können die Grafikressourcen herunterladen, um in sozialen Medien Bewusstsein zu schaffen.',
+    stories_it_title: 'Geschichten von ReNU-Familien',
+    stories_it_desc: 'Geschichten von italienischen Familien mit dem ReNU-Syndrom. In der Zwischenzeit lesen Sie die Geschichten der internationalen Gemeinschaft.',
+    stories_read_full: 'Vollständige Geschichte lesen',
+    stories_loading: 'Geschichten werden geladen...',
+    stories_read: 'Lesen',
+    stories_share_cta: 'Möchten Sie die Geschichte Ihres Kindes teilen? Schreiben Sie uns!',
+    stories_share_btn: 'Teile deine Geschichte',
+    stories_intl_title: 'Geschichten aus der internationalen Gemeinschaft',
+    stories_all_btn: 'Alle ReNU-Familiengeschichten',
+    network_title: 'Das Internationale ReNU-Netzwerk',
+    network_desc: 'Nationale Partnerorganisationen weltweit',
+    map_title: 'Karte Italien und Welt RNU4-2',
+    map_desc: 'RNU4-2-Familien in Italien und 38+ Ländern. Fügen Sie sich der Karte hinzu!',
+    children_title: 'Unsere Kinder und Familien',
+    children_desc: 'Entdecken Sie die Geschichten der italienischen Familien mit ReNU-Syndrom.',
+    research_coming: 'Forschungsbereich in Vorbereitung',
+    research_coming_desc: 'Wir arbeiten mit unserem Wissenschaftlichen Ausschuss an genauen Inhalten zur Forschung über das ReNU-Syndrom. Dieser Bereich wird bald verfügbar sein.',
+    pubmed_label: 'Wissenschaftliche Publikationen auf PubMed',
+    pubmed_title: 'Wissenschaftliche Literatur über das ReNU-Syndrom (RNU4-2)',
+    pubmed_loading: 'Publikationen werden geladen...',
+    pubmed_search: 'Alle Publikationen auf PubMed suchen',
+    science_collab_title: 'Möchten Sie mit unserem Wissenschaftlichen Ausschuss zusammenarbeiten?',
+    science_collab_desc: 'Der Wissenschaftliche Ausschuss befindet sich im Aufbau. Für wissenschaftliche Zusammenarbeit kontaktieren Sie uns.',
+    therapies_go: 'Zur Therapien-Seite',
+    therapies_rsu: 'Mehr Infos auf ReNU Syndrome United',
+    rights_title: 'Rechte und Schutzmaßnahmen – Netzwerk Familien Italien',
+    rights_desc: 'Ein Kind mit ReNU-Syndrom berechtigt zu einer Reihe von Rechten und Schutzmaßnahmen nach italienischem Recht. Unser Familienzentrum hilft Ihnen.',
+    law104_title: 'Gesetz 104/92 – Behindertenhilfe',
+    law104_desc: 'Arbeitsurlaub für Eltern (3 Tage/Monat), außerordentlicher Urlaub, Steuervorteile und Schulunterstützung.',
+    carpass_title: 'Behindertenausweis (Auto-Pass)',
+    carpass_desc: 'Der Behindertenparkausweis wird beim Wohnsitz-Gemeindeamt über ärztliches Attest beantragt.',
+    school_title: 'Schulische Unterstützung (Förderlehrer)',
+    school_desc: 'Das Kind mit ReNU hat Anspruch auf einen Förderlehrer, einen Individuellen Bildungsplan (PEI) und spezifische Lehrmittel.',
+    allowance_title: 'Beihilfe und Boni',
+    allowance_desc: 'Die INPS-Begleitungsbeihilfe ist für vollständig behinderte Personen vorgesehen. Es gibt auch weitere Boni: Babybonus, Einheitliche Zulage, ISEE-Vorteile.',
+    discard_title: 'Disability Card (Europäischer Behindertenausweis)',
+    discard_desc: 'Die Disability Card ist ein europäischer Ausweis, der die Behinderung bescheinigt und Zugang zu Vorteilen in öffentlichen Einrichtungen, Museen und Verkehrsmitteln bietet.',
+    network_it_title: 'ReNU-Familienzentrum Italien',
+    network_it_desc: 'Vernetzen Sie sich mit anderen italienischen Familien mit einem ReNU-Kind. Schreiben Sie uns an info@sindromerenu.it.',
+    faq_title: 'FAQ & Rechte',
+    faq_intro: 'Häufig gestellte Fragen und Informationen zu den Rechten von ReNU-Familien in Italien.',
+    join_title: 'Mitglied werden',
+    join_intro: 'Treten Sie Sindrome ReNU Italia APS bei und werden Sie Teil unserer Gemeinschaft.',
+    events_title: 'Veranstaltungen',
+    events_intro: 'Begegnungen, Konferenzen und Sensibilisierungsveranstaltungen über das ReNU-Syndrom.',
+    projects_title: 'Projekte',
+    projects_intro: 'Initiativen, Sensibilisierungskampagnen und Projekte des Vereins.',
+    donate_5x1000: '5x1000',
+    donate_5x1000_title: '5x1000 – Kostenlose Spende',
+    donate_5x1000_desc: 'Geben Sie bei Ihrer Steuererklärung unsere Steuernummer im Feld \'Vereinigungen zur Förderung sozialer Aktivitäten\' an. Es kostet Sie nichts, unterstützt uns aber sehr.',
+    donate_bday_title: 'Solidarischer Geburtstag',
+    donate_bday_desc: 'Verwandeln Sie Ihren Geburtstag oder den Ihres Kindes in eine Gelegenheit zur Unterstützung der ReNU-Syndrom-Forschung.',
+    donate_company_title: 'Unternehmensspenden',
+    donate_company_desc: 'Ihr Unternehmen kann unsere Mission unterstützen und steuerliche Vorteile genießen. Kontaktieren Sie uns für weitere Informationen.',
+    donate_recurring_title: 'Wiederkehrende Spende',
+    donate_recurring_desc: 'Mit einer monatlichen oder jährlichen wiederkehrenden Spende sichern Sie kontinuierliche Unterstützung für den Verein und die ReNU-Familien.',
+    donate_recurring_btn: 'Wiederkehrende Spende einrichten',
+    donate_intl_label: 'Für internationale Spenden',
+    contact_form_name: 'Vor- und Nachname',
+    contact_form_email: 'E-Mail-Adresse',
+    contact_form_subject: 'Betreff',
+    contact_form_message: 'Nachricht',
+    contact_form_send: 'Nachricht senden',
+    contact_form_sending: 'Wird gesendet...',
+    contact_form_success: 'Nachricht erfolgreich gesendet!',
+    contact_form_error: 'Fehler beim Senden. Bitte versuchen Sie es erneut.',
+    privacy_title: 'Datenschutzerklärung',
+    cookie_notice: 'Cookie-Hinweis',
+    cookie_text: 'Wir verwenden nur technische Cookies, die für den Betrieb der Website notwendig sind. Es werden keine Profiling- oder Tracking-Cookies verwendet.',
+    cookie_accept: 'Akzeptieren',
+    cookie_necessary: 'Nur notwendige',
+    cookie_more: 'Weitere Informationen',
+    gdpr_label: 'DSGVO-konformes Angebot (EU-Verord. 2016/679)',
+    contact_dpo: 'DPO kontaktieren',
+    coming_soon: 'Bereich in Vorbereitung',
+    search_placeholder: 'Website durchsuchen...',
+    search_label: 'Website durchsuchen',
+    pubmed_syn: 'Zusammenfassung:',
   }
+}
+
+// ─── TRANSLATION HELPER ───────────────────────────────────────────────────────
+// tx(t, key, fallbacks?) — restituisce t[key] se presente, altrimenti cerca nel
+// fallback esplicito per lingua, infine cade su EN o IT.
+function tx(t: Record<string,string>, key: string, fb?: Record<string,string>): string {
+  if (t[key]) return t[key];
+  if (fb && fb[t.lang]) return fb[t.lang];
+  if (fb && fb['en']) return fb['en'];
+  return key; // chiave come ultimo fallback
 }
 
 // ─── LAYOUT SHELL ─────────────────────────────────────────────────────────────
@@ -546,7 +1019,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
   const navLinks = navItems.filter(item => !item.hidden).map(item => item.disabled ? `
-    <span class="flex items-center gap-0.5 px-1.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.lang==='it'?'Sezione in preparazione':'Section coming soon'}">
+    <span class="flex items-center gap-0.5 px-1.5 py-1 rounded-lg text-xs font-semibold whitespace-nowrap opacity-40 cursor-not-allowed" title="${t.coming_soon}">
       <i class="fas ${item.icon} text-xs"></i>
       <span class="hidden 2xl:inline nav-label ml-0.5">${t[item.key]}</span>
     </span>` : `
@@ -850,14 +1323,14 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <div class="relative nav-search-wrap">
           <button onclick="document.getElementById('navSearchBox').classList.toggle('hidden')" 
                   class="p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors" 
-                  aria-label="${t.lang==='it'?'Cerca nel sito':'Search site'}" title="${t.lang==='it'?'Cerca nel sito':'Search site'}">
+                  aria-label="${t.search_label}" title="${t.search_label}">
             <i class="fas fa-search text-sm"></i>
           </button>
           <div id="navSearchBox" class="hidden absolute right-0 top-full mt-2 z-[9999]" style="width:280px">
             <div class="rounded-xl shadow-2xl border border-white border-opacity-20 overflow-hidden" style="background:linear-gradient(135deg,#082050,#1078C0)">
               <div class="flex items-center gap-2 px-3 py-2">
                 <i class="fas fa-search text-sky-300 text-sm"></i>
-                <input id="navSearchInput" type="text" placeholder="${t.lang==='it'?'Cerca nel sito...':'Search site...'}"
+                <input id="navSearchInput" type="text" placeholder="${t.search_placeholder}"
                        class="flex-1 bg-transparent text-white placeholder-sky-300 text-sm outline-none"
                        oninput="navDoSearch(this.value,'${t.lang}')">
                 <button onclick="document.getElementById('navSearchBox').classList.add('hidden')" class="text-sky-300 hover:text-white">
@@ -888,7 +1361,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <span class="flex items-center gap-2 px-3 py-2.5 rounded-lg opacity-40 cursor-not-allowed">
           <i class="fas ${i.icon} w-5 text-center text-sm"></i>
           <span class="font-medium">${t[i.key]}</span>
-          <span class="text-xs ml-1">(${t.lang==='it'?'in preparazione':'coming soon'})</span>
+          <span class="text-xs ml-1">(${t.coming_soon})</span>
         </span>` : `
         <a href="/${t.lang}/${i.page}" class="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors ${page === i.page ? 'bg-white bg-opacity-25' : ''}">
           <i class="fas ${i.icon} w-5 text-center text-sm opacity-80"></i>
@@ -959,11 +1432,11 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       ${t.footer_rights} &nbsp;|&nbsp; P.IVA / C.F.: 98020680157 &nbsp;|&nbsp; Via Marina 6, 20121 Milano (MI)
       <br class="md:hidden">
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
-      <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.lang==='it'?'Privacy Policy':'Privacy Policy'}</a>
+      <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.privacy_link}</a>
       &nbsp;|&nbsp;
-      <a href="mailto:dpo@sindromerenu.it" class="hover:text-white underline">${t.lang==='it'?'Contatta il DPO':'Contact DPO'}</a>
+      <a href="mailto:dpo@sindromerenu.it" class="hover:text-white underline">${t.contact_dpo}</a>
       &nbsp;|&nbsp;
-      <span>${t.lang==='it'?'Sito conforme GDPR (Reg. UE 2016/679)':'GDPR Compliant (EU Reg. 2016/679)'}</span>
+      <span>${t.gdpr_label}</span>
     </div>
   </div>
 </footer>
@@ -973,22 +1446,20 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between">
     <div style="flex:1;min-width:200px;font-size:0.85rem">
       <i class="fas fa-cookie-bite" style="color:#45B8EC;margin-right:0.5rem"></i>
-      <strong>${t.lang==='it'?'Informativa Cookie':'Cookie Notice'}</strong>
+      <strong>${t.cookie_notice}</strong>
       <span style="color:#C8E8F8;margin-left:0.5rem">
-        ${t.lang==='it'?
-          'Utilizziamo solo cookie tecnici necessari. Nessuna profilazione o tracciamento pubblicitario. <a href="/'+t.lang+'/privacy" style="color:#45B8EC;text-decoration:underline">Leggi la Privacy Policy</a>':
-          'We only use technical cookies. No profiling or advertising tracking. <a href="/'+t.lang+'/privacy" style="color:#45B8EC;text-decoration:underline">Read Privacy Policy</a>'}
+        ${t.cookie_text}
       </span>
     </div>
     <div style="display:flex;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;align-items:center">
       <button onclick="acceptCookies()" style="background:#45B8EC;color:#082050;border:none;padding:0.5rem 1.25rem;border-radius:999px;font-weight:700;cursor:pointer;font-size:0.85rem">
-        ${t.lang==='it'?'Accetto':'Accept'}
+        ${t.cookie_accept}
       </button>
       <button onclick="acceptCookies()" style="background:transparent;color:#C8E8F8;border:1px solid #C8E8F8;padding:0.5rem 1.25rem;border-radius:999px;font-weight:600;cursor:pointer;font-size:0.8rem">
-        ${t.lang==='it'?'Solo tecnici necessari':'Necessary only'}
+        ${t.cookie_necessary}
       </button>
       <a href="/${t.lang}/privacy" style="color:#C8E8F8;font-size:0.75rem;align-self:center;text-decoration:underline">
-        ${t.lang==='it'?'Maggiori info':'More info'}
+        ${t.cookie_more}
       </a>
     </div>
   </div>
@@ -1095,11 +1566,11 @@ function homePage(t: Record<string, string>): string {
   <!-- STATS STRIP -->
   <section class="stat-bar text-white py-6 px-4">
     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-      <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi accertati nel mondo':t.lang==='en'?'confirmed cases worldwide':t.lang==='fr'?'cas confirmés dans le monde':t.lang==='es'?'casos confirmados en el mundo':'bestätigte Fälle weltweit'}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">14</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'casi in Italia':t.lang==='en'?'cases in Italy':t.lang==='fr'?'cas en Italie':t.lang==='es'?'casos en Italia':'Fälle in Italien'}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'posizioni nel DNA mutate':t.lang==='en'?'DNA positions mutated':t.lang==='fr'?'positions ADN mutées':t.lang==='es'?'posiciones ADN mutadas':'DNA-Positionen mutiert'}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'paesi con famiglie mappate':t.lang==='en'?'countries with mapped families':t.lang==='fr'?'pays avec familles':t.lang==='es'?'países con familias':'Länder mit Familien'}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.lang==='it'?'anno della scoperta':t.lang==='en'?'year of discovery':t.lang==='fr'?'année de la découverte':t.lang==='es'?'año del descubrimiento':'Jahr der Entdeckung'}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_world}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">14</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.stat_dna}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.stat_countries}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.stat_year}</div></div>
     </div>
   </section>
 
@@ -1107,7 +1578,7 @@ function homePage(t: Record<string, string>): string {
   <section class="py-16 px-4 section-light">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl font-extrabold text-center mb-10" style="color:#082050">
-        ${t.lang==='it'?'Approfondimenti':t.lang==='en'?'Explore':t.lang==='fr'?'Approfondissements':t.lang==='es'?'Profundización':'Vertiefungen'}
+        ${t.section_explore}
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
@@ -1177,7 +1648,7 @@ function homePage(t: Record<string, string>): string {
       <div class="text-center mb-10">
         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-3 px-3 py-1 rounded-full" style="background:#082050; color:white">
           <i class="fas fa-ribbon"></i>
-          ${t.lang==='it'?'Consapevolezza & Iniziative':t.lang==='en'?'Awareness & Initiatives':t.lang==='fr'?'Sensibilisation & Initiatives':t.lang==='es'?'Conciencia & Iniciativas':'Bewusstsein & Initiativen'}
+          ${t.section_awareness_badge}
         </div>
         <h2 class="text-3xl font-extrabold" style="color:#082050">${t.section_awareness_title}</h2>
       </div>
@@ -1191,7 +1662,7 @@ function homePage(t: Record<string, string>): string {
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'Reny – La nostra mascotte':t.lang==='en'?'Reny – Our Mascot':t.lang==='fr'?'Reny – Notre mascotte':t.lang==='es'?'Reny – Nuestra mascota':'Reny – Unser Maskottchen'}
+              ${t.mascot_title}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
               ${t.lang==='it'
@@ -1202,7 +1673,7 @@ function homePage(t: Record<string, string>): string {
             </p>
             <a href="/${t.lang}/community"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#45B8EC">
-              <i class="fas fa-users"></i>${t.lang==='it'?'Unisciti alla comunità':t.lang==='en'?'Join the community':t.lang==='fr'?'Rejoignez la communauté':'Únete a la comunidad'}
+              <i class="fas fa-users"></i>${t.community_join_btn}
             </a>
           </div>
         </div>
@@ -1213,14 +1684,14 @@ function homePage(t: Record<string, string>): string {
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'I nostri bambini e famiglie':t.lang==='en'?'Our children and families':t.lang==='fr'?'Nos enfants et familles':t.lang==='es'?'Nuestros niños y familias':'Unsere Kinder und Familien'}
+              ${t.children_title}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Scopri i volti e le storie dei bambini italiani con la Sindrome ReNU e le loro famiglie.':t.lang==='en'?'Discover the faces and stories of Italian children with ReNU Syndrome and their families.':t.lang==='fr'?'Découvrez les histoires des familles italiennes vivant avec le syndrome ReNU.':t.lang==='es'?'Descubre las historias de las familias italianas con Síndrome ReNU.':'Entdecken Sie die Geschichten der italienischen Familien mit ReNU-Syndrom.'}
+              ${t.children_desc}
             </p>
             <a href="/${t.lang}/community"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0">
-              <i class="fas fa-images"></i>${t.lang==='it'?'Vai alla Gallery':t.lang==='en'?'Visit Gallery':t.lang==='fr'?'Voir Galerie':t.lang==='es'?'Ver Galería':'Galerie ansehen'}
+              <i class="fas fa-images"></i>${t.gallery_btn}
             </a>
           </div>
         </div>
@@ -1231,14 +1702,14 @@ function homePage(t: Record<string, string>): string {
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${t.lang==='it'?'Mappa Italia e Mondiale RNU4-2':t.lang==='en'?'Italy &amp; World Map RNU4-2':t.lang==='fr'?'Carte Italie et Mondiale RNU4-2':t.lang==='es'?'Mapa Italia y Mundial RNU4-2':'Karte Italien und Welt RNU4-2'}
+              ${t.map_title}
             </h3>
             <p class="text-gray-600 text-sm mb-4">
-              ${t.lang==='it'?'Famiglie RNU4-2 mappate in Italia e in 38+ paesi nel mondo. Aggiungiti alla mappa e aiuta ad aumentare la forza dei numeri nella ricerca.':t.lang==='en'?'RNU4-2 families mapped in Italy and 38+ countries worldwide. Add yourself to the map and help strengthen research.':'Familles RNU4-2 cartographiées en Italie et dans 38+ pays. Ajoutez-vous à la carte!'}
+              ${t.map_desc}
             </p>
             <a href="https://www.renusyndrome.org/map" target="_blank"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#082050">
-              <i class="fas fa-map-marked-alt"></i>${t.lang==='it'?'Vedi Mappa':t.lang==='en'?'See Map':'Carte'}
+              <i class="fas fa-map-marked-alt"></i>${t.map_btn}
             </a>
           </div>
         </div>
@@ -1251,10 +1722,10 @@ function homePage(t: Record<string, string>): string {
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-extrabold" style="color:#082050">
-          ${t.lang==='it'?'Storie di Famiglie Italiane con ReNU':t.lang==='en'?'Stories from ReNU Families':t.lang==='fr'?'Histoires de familles ReNU':t.lang==='es'?'Historias de Familias ReNU':'Geschichten von ReNU-Familien'}
+          ${t.stories_it_title}
         </h2>
         <p class="text-gray-500 mt-2 text-sm">
-          ${t.lang==='it'?'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.':t.lang==='en'?'Real stories from around the world, from the ReNU Syndrome United community':t.lang==='fr'?'Histoires réelles du monde entier':'Historias reales de todo el mundo'}
+          ${t.stories_it_desc}
         </p>
       </div>
       <!-- Modale storia bambino -->
@@ -1271,10 +1742,10 @@ function homePage(t: Record<string, string>): string {
             </div>
             <h3 id="storia-modal-nome" style="font-size:1.5rem;font-weight:800;color:#082050;margin:0 0 8px"></h3>
             <p id="storia-modal-desc" style="color:#4b5563;font-size:0.95rem;line-height:1.6;margin:0 0 16px;white-space:pre-line"></p>
-            <p id="storia-modal-nodesc" style="display:none;color:#9ca3af;font-style:italic;font-size:0.9rem;margin:0 0 16px">${t.lang==='it'?'La storia di questo bambino sarà presto condivisa dalla famiglia.':t.lang==='en'?'This child\'s story will be shared by the family soon.':'L\'histoire de cet enfant sera bientôt partagée par la famille.'}</p>
+            <p id="storia-modal-nodesc" style="display:none;color:#9ca3af;font-style:italic;font-size:0.9rem;margin:0 0 16px">${t.stories_nodesc}</p>
             <a id="storia-modal-link" href="#" target="_blank" style="display:none;align-items:center;gap:8px;background:#082050;color:white;font-weight:700;font-size:0.9rem;padding:10px 20px;border-radius:9999px;text-decoration:none;margin-top:4px">
               <i class="fas fa-book-open"></i>
-              ${t.lang==='it'?'Leggi la storia completa':t.lang==='en'?'Read the full story':t.lang==='fr'?'Lire l\'histoire complète':t.lang==='es'?'Leer la historia completa':'Vollständige Geschichte lesen'}
+              ${t.stories_read_full}
             </a>
           </div>
         </div>
@@ -1314,13 +1785,13 @@ function homePage(t: Record<string, string>): string {
       <div id="storie-italiane-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
         <div class="col-span-full text-center py-8 text-gray-400">
           <i class="fas fa-spinner fa-spin text-2xl mb-2 block"></i>
-          ${t.lang==='it'?'Caricamento storie...':t.lang==='en'?'Loading stories...':'Chargement...'}
+          ${t.stories_loading}
         </div>
       </div>
       <script>
       (function(){
         var lang = '${t.lang}';
-        var leggi = '${t.lang==='it'?'Leggi la storia':t.lang==='en'?'Read story':'Lire'}';
+        var leggi = '${t.stories_read}';
         var storieData = [];
         fetch('/api/storie?lang=' + lang + '&tipo=italiana')
           .then(function(r){ return r.json(); })
@@ -1356,23 +1827,23 @@ function homePage(t: Record<string, string>): string {
       </script>
       <div class="text-center mb-8">
         <p class="text-gray-500 text-sm max-w-lg mx-auto mb-3">
-          ${t.lang==='it'?'Vuoi condividere la storia del tuo bambino? Scrivici!':t.lang==='en'?'Want to share your child\'s story? Write to us!':t.lang==='fr'?'Voulez-vous partager l\'histoire de votre enfant?':t.lang==='es'?'¿Quieres compartir la historia de tu hijo? ¡Escríbenos!':'Möchten Sie die Geschichte Ihres Kindes teilen?'}
+          ${t.stories_share_cta}
         </p>
         <a href="mailto:presidenza@sindromerenu.it"
            class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
           <i class="fas fa-envelope"></i>
-          ${t.lang==='it'?'Condividi la tua storia':t.lang==='en'?'Share your story':t.lang==='fr'?'Partager votre histoire':t.lang==='es'?'Comparte tu historia':'Teile deine Geschichte'}
+          ${t.stories_share_btn}
         </a>
       </div>
       <h3 class="text-lg font-bold mb-4 text-center" style="color:#1078C0">
         <i class="fas fa-globe mr-2"></i>
-        ${t.lang==='it'?'Storie dalla community internazionale':t.lang==='en'?'Stories from the international community':t.lang==='fr'?'Histoires de la communauté internationale':t.lang==='es'?'Historias de la comunidad internacional':'Geschichten aus der internationalen Gemeinschaft'}
+        ${t.stories_intl_title}
       </h3>
       <!-- Storie internazionali caricate dal DB -->
       <div id="storie-intl-home-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="col-span-full text-center py-8 text-gray-400">
           <i class="fas fa-spinner fa-spin text-2xl mb-2 block"></i>
-          ${t.lang==='it'?'Caricamento storie...':t.lang==='en'?'Loading stories...':t.lang==='fr'?'Chargement...':t.lang==='es'?'Cargando...':'Laden...'}
+          ${t.stories_loading}
         </div>
       </div>
       <script>
@@ -1408,7 +1879,7 @@ function homePage(t: Record<string, string>): string {
         <a href="https://www.renusyndrome.org/stories" target="_blank"
            class="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-colors" style="background:#1078C0">
           <i class="fas fa-heart"></i>
-          ${t.lang==='it'?'Tutte le Storie di Famiglie ReNU':t.lang==='en'?'All ReNU Family Stories':t.lang==='fr'?'Toutes les histoires':'Todas las Historias'}
+          ${t.stories_all_btn}
         </a>
       </div>
     </div>
@@ -1419,10 +1890,10 @@ function homePage(t: Record<string, string>): string {
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="text-2xl font-extrabold" style="color:#082050">
-          ${t.lang==='it'?'La Rete Internazionale ReNU':t.lang==='en'?'The International ReNU Network':t.lang==='fr'?'Le Réseau International ReNU':t.lang==='es'?'La Red Internacional ReNU':'Das Internationale ReNU-Netzwerk'}
+          ${t.network_title}
         </h2>
         <p class="text-gray-500 mt-2 text-sm">
-          ${t.lang==='it'?'Associazioni nazionali partner in tutto il mondo':t.lang==='en'?'National partner associations worldwide':'Associations nationales partenaires dans le monde entier'}
+          ${t.network_desc}
         </p>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
