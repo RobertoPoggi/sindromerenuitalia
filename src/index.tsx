@@ -2113,10 +2113,10 @@ function communityPage(t: Record<string, string>): string {
     <div class="max-w-5xl mx-auto">
 
       <!-- Map and Parent Network -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden">
-            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
+          <div class="overflow-hidden" style="aspect-ratio:1024/683">
+            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2134,8 +2134,8 @@ function communityPage(t: Record<string, string>): string {
         </div>
 
         <div class="card card-sky overflow-hidden">
-          <div class="overflow-hidden bg-white">
-            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-auto block" loading="lazy" decoding="async">
+          <div class="overflow-hidden bg-white" style="aspect-ratio:1018/955">
+            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
