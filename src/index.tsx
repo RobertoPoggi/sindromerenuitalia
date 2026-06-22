@@ -839,7 +839,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       </a>
 
       <!-- Desktop nav: visibile da 768px via CSS puro (no Tailwind) -->
-      <nav id="desktopNav" style="align-items:center;gap:0;flex-wrap:nowrap;justify-content:flex-start;flex:1;padding:0 2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;min-width:0;">
+      <nav id="desktopNav" style="align-items:center;gap:0;flex-wrap:wrap;justify-content:flex-start;flex:1;padding:0 2px;min-width:0;">
         ${navLinks}
       </nav>
 
@@ -1385,22 +1385,22 @@ function homePage(t: Record<string, string>): string {
             const g = document.getElementById('storie-intl-home-grid');
             if(!data || !data.length){ g.innerHTML=''; return; }
             const shown = data.slice(0,6);
-            g.innerHTML = shown.map(s=>(
-            '<a href="'+(s.url_storia||'https://www.renusyndrome.org/stories')+'" target="_blank" class="card card-sky overflow-hidden group block">'+
-              '<div class="overflow-hidden flex items-center justify-center" style="aspect-ratio:16/9; background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
-                '<div class="text-center">'+
-                  '<div class="text-5xl mb-2">'+(s.flag||'🌍')+'</div>'+
-                  '<div class="text-2xl font-extrabold" style="color:#082050">'+s.nome+'</div>'+
+            g.innerHTML = shown.map(s=>{
+              var tag = s.url_storia ? 'a' : 'div';
+              var attrs = s.url_storia ? ' href="'+s.url_storia+'" target="_blank"' : '';
+              return '<'+tag+attrs+' class="card card-sky overflow-hidden group block">'+
+                '<div class="overflow-hidden flex items-center justify-center" style="aspect-ratio:16/9; background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
+                  '<div class="text-center">'+
+                    '<div class="text-5xl mb-2">'+(s.flag||'🌍')+'</div>'+
+                    '<div class="text-2xl font-extrabold" style="color:#082050">'+s.nome+'</div>'+
+                  '</div>'+
                 '</div>'+
-              '</div>'+
-              '<div class="p-5">'+
-                '<p class="text-gray-600 text-sm mb-3">'+(s.desc||'')+'</p>'+
-                '<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#1078C0">'+
-                  readMore+' <i class="fas fa-arrow-right text-xs"></i>'+
-                '</span>'+
-              '</div>'+
-            '</a>'
-            )).join('');
+                '<div class="p-5">'+
+                  '<p class="text-gray-600 text-sm mb-3">'+(s.desc||'')+'</p>'+
+                  (s.url_storia ? '<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#1078C0">'+readMore+' <i class="fas fa-arrow-right text-xs"></i></span>' : '')+
+                '</div>'+
+              '</'+tag+'>';
+            }).join('');
           }).catch(()=>{ document.getElementById('storie-intl-home-grid').innerHTML=''; });
       })();
       </script>
@@ -2321,20 +2321,20 @@ function communityPage(t: Record<string, string>): string {
             .then(data=>{
               const g = document.getElementById('storie-intl-community-grid');
               if(!data || !data.length){ g.innerHTML=''; return; }
-              g.innerHTML = data.map(s=>(
-              '<a href="'+(s.url_storia||'https://www.renusyndrome.org/stories')+'" target="_blank" class="card p-4 flex items-center gap-4 group hover:shadow-lg">'+
-                '<div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-3xl" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
-                  (s.flag||'🌍')+
-                '</div>'+
-                '<div>'+
-                  '<div class="font-bold text-base" style="color:#082050">'+s.nome+'</div>'+
-                  '<div class="text-xs text-gray-500 mt-0.5">'+(s.desc||'')+'</div>'+
-                  '<div class="text-xs font-semibold mt-1 flex items-center gap-1" style="color:#1078C0">'+
-                    readMore+' <i class="fas fa-arrow-right text-xs"></i>'+
+              g.innerHTML = data.map(s=>{
+                var tag = s.url_storia ? 'a' : 'div';
+                var attrs = s.url_storia ? ' href="'+s.url_storia+'" target="_blank"' : '';
+                return '<'+tag+attrs+' class="card p-4 flex items-center gap-4 group hover:shadow-lg">'+
+                  '<div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-3xl" style="background: linear-gradient(135deg, #C8E8F8 0%, #EEF6FB 100%)">'+
+                    (s.flag||'🌍')+
                   '</div>'+
-                '</div>'+
-              '</a>'
-              )).join('');
+                  '<div>'+
+                    '<div class="font-bold text-base" style="color:#082050">'+s.nome+'</div>'+
+                    '<div class="text-xs text-gray-500 mt-0.5">'+(s.desc||'')+'</div>'+
+                    (s.url_storia ? '<div class="text-xs font-semibold mt-1 flex items-center gap-1" style="color:#1078C0">'+readMore+' <i class="fas fa-arrow-right text-xs"></i></div>' : '')+
+                  '</div>'+
+                '</'+tag+'>';
+              }).join('');
             }).catch(()=>{ document.getElementById('storie-intl-community-grid').innerHTML=''; });
         })();
         </script>
