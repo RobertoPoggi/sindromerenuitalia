@@ -2442,6 +2442,24 @@ function donationsPage(t: Record<string, string>): string {
               <p class="text-xl font-bold tracking-wide" style="color:#082050">${t.donations_iban}</p>
             </div>
             <p class="text-center text-sm text-gray-500 font-sans">${t.lang==='it'?'Causale: "Donazione Sindrome ReNU Italia APS"':'Reference: "Donazione Sindrome ReNU Italia APS"'}</p>
+
+            <!-- Sezione donazioni dall'estero -->
+            <div class="border-t mt-2 pt-4" style="border-color:#C7DFF0">
+              <p class="text-xs font-sans font-semibold text-center mb-3" style="color:#1078C0">
+                🌍 ${t.lang==='it'?'Per donazioni dall\'estero':'For international donations'}
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="text-center">
+                  <p class="text-xs text-gray-500 font-sans mb-1">BIC / SWIFT</p>
+                  <p class="text-lg font-bold tracking-widest" style="color:#082050">BCITITMM</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-xs text-gray-500 font-sans mb-1">IBAN</p>
+                  <p class="text-base font-bold tracking-wide" style="color:#082050">IT18H0306909606100000416360</p>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 font-sans text-center mt-2">Banca Intesa Sanpaolo S.p.A. — ABI 03069 · CAB 09606</p>
+            </div>
           </div>
           <p class="mt-3 text-sm text-gray-500 text-center">
             <i class="fas fa-envelope mr-1" style="color:#1078C0"></i>
