@@ -1556,7 +1556,7 @@ function aboutPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
           </span>
         </div>
-        <img src="/images/renu_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full h-auto block" style="border-radius:0 0 1rem 1rem" loading="lazy" decoding="async">
+        <img src="/images/it_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full h-auto block" style="border-radius:0 0 1rem 1rem" loading="lazy" decoding="async">
       </div>
 
       <!-- Strumento di Supporto per la Sindrome ReNU -->
