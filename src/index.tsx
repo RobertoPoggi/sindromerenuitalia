@@ -4285,20 +4285,27 @@ function privacyPage(t: Record<string, string>): string {
                   <td class="p-3 border border-gray-100 font-semibold">Cloudflare, Inc.</td>
                   <td class="p-3 border border-gray-100">${isIt?'Hosting, CDN, sicurezza':'Hosting, CDN, security'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'IP, log navigazione':'IP, navigation logs'}</td>
-                  <td class="p-3 border border-gray-100">USA <span class="text-xs text-gray-400">(edge EU)</span></td>
+                  <td class="p-3 border border-gray-100">🇺🇸 USA</td>
                   <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
                 </tr>
                 <tr class="bg-gray-50">
                   <td class="p-3 border border-gray-100 font-semibold">Resend, Inc.</td>
-                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali':'Transactional email delivery'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali (primario)':'Transactional email (primary)'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
-                  <td class="p-3 border border-gray-100">USA <span class="text-xs text-gray-400">(opt. EU)</span></td>
+                  <td class="p-3 border border-gray-100">🇺🇸 USA</td>
                   <td class="p-3 border border-gray-100"><a href="https://resend.com/legal/dpa" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
+                </tr>
+                <tr>
+                  <td class="p-3 border border-gray-100 font-semibold">Brevo SAS <span class="text-xs font-normal text-gray-400">(ex Sendinblue)</span></td>
+                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali (backup)':'Transactional email (backup)'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
+                  <td class="p-3 border border-gray-100">🇫🇷 <span class="font-semibold text-green-700">Francia — UE</span></td>
+                  <td class="p-3 border border-gray-100"><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA (Art. 28 GDPR)</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) · DPF = Data Privacy Framework EU-USA (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023) — garanzie adeguate per trasferimenti extra-UE ai sensi degli Artt. 45-46 GDPR. Cloudflare dispone anche di edge server in UE (Francoforte, Amsterdam, Parigi). Resend offre regione EU opzionale (eu-west-1, AWS Francoforte).':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) · DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023) — adequate safeguards for extra-EU transfers pursuant to Arts. 45-46 GDPR. Cloudflare also operates edge servers in the EU (Frankfurt, Amsterdam, Paris). Resend offers an optional EU region (eu-west-1, AWS Frankfurt).'}</p>
+          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) · DPF = Data Privacy Framework EU-USA (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023) — garanzie adeguate per trasferimenti extra-UE ai sensi degli Artt. 45-46 GDPR. Brevo SAS (Francia) tratta i dati interamente in UE, senza necessità di SCC o DPF.':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) · DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023) — adequate safeguards for extra-EU transfers pursuant to Arts. 45-46 GDPR. Brevo SAS (France) processes all data within the EU, with no need for SCC or DPF.'}</p>
         </div>
 
         <!-- Contatti Garante -->
