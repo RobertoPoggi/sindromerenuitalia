@@ -2378,9 +2378,9 @@ function donationsPage(t: Record<string, string>): string {
         </div>
       </div>
       <div class="flex-shrink-0 hidden md:block" style="width:340px">
-        <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:16/9">
-          <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia"
-               class="w-full h-full object-cover"
+        <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:9/4">
+          <img src="/images/it_donazioni.jpg" alt="Sostienici – Sindrome ReNU Italia"
+               class="w-full h-full object-cover" style="object-position:center center"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -3371,7 +3371,7 @@ function projectsPage(t: Record<string, string>): string {
         </p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4" style="align-items:start">
-        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:8/5"><img src="/images/renu_parents.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
         <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:8/5"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
