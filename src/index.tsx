@@ -4289,15 +4289,8 @@ function privacyPage(t: Record<string, string>): string {
                   <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
                 </tr>
                 <tr class="bg-gray-50">
-                  <td class="p-3 border border-gray-100 font-semibold">Resend, Inc.</td>
-                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali (primario)':'Transactional email (primary)'}</td>
-                  <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
-                  <td class="p-3 border border-gray-100">🇺🇸 USA</td>
-                  <td class="p-3 border border-gray-100"><a href="https://resend.com/legal/dpa" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
-                </tr>
-                <tr>
                   <td class="p-3 border border-gray-100 font-semibold">Brevo SAS <span class="text-xs font-normal text-gray-400">(ex Sendinblue)</span></td>
-                  <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali (backup)':'Transactional email (backup)'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Invio notifiche email':'Email notifications'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
                   <td class="p-3 border border-gray-100">🇫🇷 <span class="font-semibold text-green-700">Francia — UE</span></td>
                   <td class="p-3 border border-gray-100"><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA (Art. 28 GDPR)</a></td>
