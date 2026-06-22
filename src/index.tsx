@@ -4264,7 +4264,7 @@ function privacyPage(t: Record<string, string>): string {
         <!-- Sicurezza -->
         <div class="card p-6">
           <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-lock mr-2" style="color:#1078C0"></i>${isIt?'7. Sicurezza dei Dati':'7. Data Security'}</h2>
-          <p class="text-sm text-gray-600">${isIt?'I dati sono trattati con misure di sicurezza tecniche e organizzative adeguate: trasmissione HTTPS/TLS, hosting su Cloudflare Pages (infrastruttura certificata ISO 27001), accesso limitato al personale autorizzato, nessun trasferimento verso paesi terzi extra-UE senza adeguate garanzie.':'Data is processed with appropriate technical and organizational security measures: HTTPS/TLS transmission, hosting on Cloudflare Pages (ISO 27001 certified infrastructure), access limited to authorized personnel, no transfers to non-EU third countries without adequate guarantees.'}</p>
+          <p class="text-sm text-gray-600">${isIt?'I dati sono trattati con misure di sicurezza tecniche e organizzative adeguate: trasmissione HTTPS/TLS, hosting su Cloudflare Pages (infrastruttura certificata ISO 27001), accesso limitato al personale autorizzato. I trasferimenti verso fornitori extra-UE avvengono nel rispetto dell&#39;Art. 46 GDPR mediante Clausole Contrattuali Standard (SCC) e adesione al Data Privacy Framework EU-USA (Decisione di adeguatezza della Commissione Europea 2023/1795 del 10 luglio 2023).':'Data is processed with appropriate technical and organizational security measures: HTTPS/TLS transmission, hosting on Cloudflare Pages (ISO 27001 certified infrastructure), access limited to authorized personnel. Transfers to non-EU providers are carried out in compliance with Art. 46 GDPR through Standard Contractual Clauses (SCC) and adherence to the EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795 of 10 July 2023).'}</p>
         </div>
 
         <!-- Responsabili esterni -->
@@ -4285,20 +4285,20 @@ function privacyPage(t: Record<string, string>): string {
                   <td class="p-3 border border-gray-100 font-semibold">Cloudflare, Inc.</td>
                   <td class="p-3 border border-gray-100">${isIt?'Hosting, CDN, sicurezza':'Hosting, CDN, security'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'IP, log navigazione':'IP, navigation logs'}</td>
-                  <td class="p-3 border border-gray-100">USA</td>
-                  <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline">DPA + SCC</a></td>
+                  <td class="p-3 border border-gray-100">USA <span class="text-xs text-gray-400">(edge EU)</span></td>
+                  <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
                 </tr>
                 <tr class="bg-gray-50">
                   <td class="p-3 border border-gray-100 font-semibold">Resend, Inc.</td>
                   <td class="p-3 border border-gray-100">${isIt?'Invio email transazionali':'Transactional email delivery'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
-                  <td class="p-3 border border-gray-100">USA</td>
-                  <td class="p-3 border border-gray-100"><a href="https://resend.com/legal/dpa" target="_blank" class="text-blue-600 hover:underline">DPA + SCC</a></td>
+                  <td class="p-3 border border-gray-100">USA <span class="text-xs text-gray-400">(opt. EU)</span></td>
+                  <td class="p-3 border border-gray-100"><a href="https://resend.com/legal/dpa" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) — garanzia adeguata per trasferimenti extra-UE ai sensi dell\'Art. 46 GDPR.':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) — adequate safeguard for extra-EU transfers pursuant to Art. 46 GDPR.'}</p>
+          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) · DPF = Data Privacy Framework EU-USA (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023) — garanzie adeguate per trasferimenti extra-UE ai sensi degli Artt. 45-46 GDPR. Cloudflare dispone anche di edge server in UE (Francoforte, Amsterdam, Parigi). Resend offre regione EU opzionale (eu-west-1, AWS Francoforte).':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) · DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023) — adequate safeguards for extra-EU transfers pursuant to Arts. 45-46 GDPR. Cloudflare also operates edge servers in the EU (Frankfurt, Amsterdam, Paris). Resend offers an optional EU region (eu-west-1, AWS Frankfurt).'}</p>
         </div>
 
         <!-- Contatti Garante -->
