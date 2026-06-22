@@ -4066,6 +4066,14 @@ function faqPage(t: Record<string, string>): string {
         </div>
       </div>
       <script>
+      function toggleFaq(btn) {
+        var id = btn.getAttribute('data-target');
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.classList.toggle('hidden');
+        var icon = btn.querySelector('.fa-chevron-down');
+        if (icon) icon.classList.toggle('rotate-180');
+      }
       (function(){
         const lang = '${t.lang}';
         fetch('/api/faq?lang=' + lang)
@@ -4089,14 +4097,15 @@ function faqPage(t: Record<string, string>): string {
             acc.innerHTML = data.map((faq, i) => {
               const icon = catIcons[faq.categoria] || 'fa-question';
               const color = catColors[faq.categoria] || '#1078C0';
+              const id = 'faq-ans-' + i;
               return '<div class="border border-gray-200 rounded-xl overflow-hidden">' +
-                '<button onclick="this.nextElementSibling.classList.toggle(\'hidden\');this.querySelector(\'.fa-chevron-down\').classList.toggle(\'rotate-180\')" ' +
+                '<button onclick="toggleFaq(this)" data-target="' + id + '" ' +
                 'class="w-full text-left flex items-center gap-3 p-4 bg-white hover:bg-sky-50 transition-colors">' +
                 '<i class="fas ' + icon + ' text-sm flex-shrink-0" style="color:' + color + '"></i>' +
                 '<span class="flex-1 font-semibold text-sm" style="color:#082050">' + faq.domanda + '</span>' +
                 '<i class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-200 flex-shrink-0"></i>' +
                 '</button>' +
-                '<div class="hidden px-4 pb-4 pt-2 bg-sky-50 border-t border-gray-100">' +
+                '<div id="' + id + '" class="hidden px-4 pb-4 pt-2 bg-sky-50 border-t border-gray-100">' +
                 '<p class="text-sm text-gray-700 leading-relaxed">' + faq.risposta + '</p>' +
                 '</div></div>';
             }).join('');
