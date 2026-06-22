@@ -1163,9 +1163,9 @@ function homePage(t: Record<string, string>): string {
         </div>
         <div class="grid grid-cols-2 gap-4" style="align-items:start">
           <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1018/955"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:12/7"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/1109"><img src="/images/it_bambini_gruppo.jpg" alt="Bambini con Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
           <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:3/2"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:15/7"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/757"><img src="/images/renu_natale_2026.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
