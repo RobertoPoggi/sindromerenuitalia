@@ -1041,7 +1041,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 function homePage(t: Record<string, string>): string {
   const cards = [
-    { href: `/${t.lang}/community`,  icon: 'fa-users',       ic: 'ic-green',  title: t.section_parents_title,               desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/it_rete_famiglie.jpg',      pos: 'center' },
+    { href: `/${t.lang}/community`,  icon: 'fa-users',       ic: 'ic-green',  title: t.section_parents_title,               desc: t.section_parents_desc,    accent: 'card-green',  img: '/images/it_rete_famiglie.jpg',      pos: 'center top', aspect: '1018/955' },
     { href: `/${t.lang}/research`,   icon: 'fa-microscope',  ic: 'ic-sky',    title: t.section_research_title,              desc: t.section_research_desc,   accent: 'card-sky',    img: '/images/renu_research.jpg',         pos: 'center' },
     { href: `/${t.lang}/science`,    icon: 'fa-flask',       ic: 'ic-navy',   title: t.section_science_title||t.nav_science, desc: t.section_science_desc||'', accent: 'card-navy',  img: '/images/renu_science_committee.jpg',pos: 'center' },
     { href: `/${t.lang}/donations`,  icon: 'fa-heart',       ic: 'ic-red',    title: t.section_donations_title,             desc: t.section_donations_desc,  accent: 'card-red',    img: '/images/renu_donations.jpg',        pos: 'center' },
@@ -1112,7 +1112,7 @@ function homePage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${cards.map(c => `
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
-          <div class="overflow-hidden bg-sky-50 relative" style="aspect-ratio:16/9">
+          <div class="overflow-hidden bg-sky-50 relative" style="aspect-ratio:${(c as any).aspect||'16/9'}">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
             <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
                  style="object-position:${(c as any).pos||'center'}"
