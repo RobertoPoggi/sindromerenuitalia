@@ -1161,11 +1161,11 @@ function homePage(t: Record<string, string>): string {
             </a>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:4/3"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:4/3"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-cover" style="object-position:center 15%" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:4/3"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:4/3"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" style="object-position:center 20%" loading="lazy" decoding="async"></div>
+        <div class="grid grid-cols-2 gap-4" style="align-items:start">
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1018/955"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:12/7"><img src="/images/bambini.jpg" alt="Bambini Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:3/2"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:15/7"><img src="/images/festa.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1830,8 +1830,8 @@ function therapiesPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-56 overflow-hidden rounded-xl"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-auto block" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-56 overflow-hidden rounded-xl"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -2100,9 +2100,9 @@ function communityPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.community_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:360px; flex-shrink:0">
+        <div class="rounded-2xl overflow-hidden shadow-lg" style="width:360px; flex-shrink:0; aspect-ratio:1080/709">
           <img src="/images/it_festa_natale.jpg" alt="Comunità ReNU Italia – famiglie e bambini insieme"
-               class="w-full h-auto block"
+               class="w-full h-full object-cover"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -2378,9 +2378,9 @@ function donationsPage(t: Record<string, string>): string {
         </div>
       </div>
       <div class="flex-shrink-0 hidden md:block" style="width:340px">
-        <div class="rounded-2xl overflow-hidden shadow-2xl" style="height:260px">
+        <div class="rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio:16/9">
           <img src="/images/renu_donazione_hero.jpg" alt="Sostienici – Sindrome ReNU Italia"
-               class="w-full h-full object-cover" style="object-position:center center"
+               class="w-full h-full object-cover"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -3370,9 +3370,9 @@ function projectsPage(t: Record<string, string>): string {
           ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
         </p>
       </div>
-      <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-52 overflow-hidden rounded-xl" style="height:160px"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" style="object-position:center 40%" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-52 overflow-hidden rounded-xl" style="height:160px"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" style="object-position:center 35%" loading="lazy" decoding="async"></div>
+      <div class="flex-shrink-0 hidden md:flex gap-4" style="align-items:start">
+        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_volontari.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:8/5"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -4339,7 +4339,7 @@ function sciencePage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72 overflow-hidden rounded-xl"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+        <div class="img-frame w-72 overflow-hidden rounded-xl" style="aspect-ratio:3/2"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -4378,16 +4378,16 @@ function sciencePage(t: Record<string, string>): string {
           <i class="fas fa-images" style="color:#1078C0"></i>
           ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="img-frame overflow-hidden rounded-2xl" style="height:220px">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" style="align-items:start">
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:9/4">
             <img src="/images/it_comitato.jpg"
                  alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia':'Sindrome ReNU Italia Scientific Committee'}"
-                 class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy" decoding="async">
+                 class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
-          <div class="img-frame overflow-hidden rounded-2xl" style="height:220px">
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:3/2">
             <img src="/images/renu_science_committee.jpg"
                  alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
-                 class="w-full h-full object-cover" style="object-position:center 30%" loading="lazy" decoding="async">
+                 class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
         </div>
         <p class="text-sm text-gray-500 mt-3 text-center">
