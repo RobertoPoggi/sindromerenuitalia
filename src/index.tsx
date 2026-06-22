@@ -3029,32 +3029,30 @@ function brochurePage(t: Record<string, string>): string {
       var target = isExt ? '_blank' : '_self';
       var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
       var fileIcon = isDrive ? 'fa-file-alt' : (isPub ? 'fa-file-medical-alt' : 'fa-file-pdf');
-
-      var placeholderHtml = '<div class="w-full h-48 flex items-center justify-center" style="background:linear-gradient(135deg,#EEF6FB,#C8E8F8)"><i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i></div>';
-
-      var thumbHtml;
-      if (b.img_url) {
-        thumbHtml = '<div class="w-full h-48 overflow-hidden bg-sky-50">'
-          + '<img src="' + b.img_url + '" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.parentNode.outerHTML=' + "'" + placeholderHtml.replace(/'/g, "\\'") + "'" + '">'
-          + '</div>';
-      } else if (b.thumb_id) {
-        thumbHtml = '<div class="w-full h-48 overflow-hidden bg-sky-50 flex items-center justify-center">'
-          + '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-full object-contain" loading="lazy" onerror="this.parentNode.outerHTML=' + "'" + placeholderHtml.replace(/'/g, "\\'") + "'" + '">'
-          + '</div>';
-      } else {
-        thumbHtml = placeholderHtml;
-      }
-
       var btnStyle = isPub ? 'background:#082050' : 'background:#1078C0';
       var btnLabelPub = isIt ? 'Leggi Pubblicazione' : (lang==='en' ? 'Read Publication' : (lang==='fr' ? 'Lire la publication' : 'Leer publicación'));
       var finalLabel = isPub ? btnLabelPub : dlLabel;
 
+      var thumbHtml;
+      if (b.img_url) {
+        thumbHtml = '<div class="w-full overflow-hidden bg-sky-50" style="aspect-ratio:3/4">'
+          + '<img src="' + b.img_url + '" alt="' + (b.titolo||'').replace(/"/g,'&quot;') + '" class="w-full h-full object-cover" loading="lazy">'
+          + '</div>';
+      } else if (b.thumb_id) {
+        thumbHtml = '<div class="w-full overflow-hidden bg-sky-50 flex items-center justify-center" style="aspect-ratio:3/4">'
+          + '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-full object-contain" loading="lazy">'
+          + '</div>';
+      } else {
+        thumbHtml = '<div class="w-full flex items-center justify-center" style="aspect-ratio:3/4;background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">'
+          + '<i class="fas ' + fileIcon + ' text-5xl" style="color:#1078C0"></i>'
+          + '</div>';
+      }
+
       return '<div class="card card-blue overflow-hidden flex flex-col">'
         + thumbHtml
         + '<div class="p-4 flex-1 flex flex-col">'
-        + '<h3 class="font-bold mb-1 text-sm leading-snug" style="color:#082050">' + (b.titolo || '') + '</h3>'
-        + '<p class="text-gray-500 text-xs mb-4 flex-1">' + (b.desc || '') + '</p>'
-        + '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="' + btnStyle + '">'
+        + '<h3 class="font-bold mb-1 text-sm leading-snug flex-1" style="color:#082050">' + (b.titolo || '') + '</h3>'
+        + '<a href="' + href + '" target="' + target + '" rel="noopener" class="mt-3 inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold" style="' + btnStyle + '">'
         + '<i class="fas ' + btnIcon + '"></i>' + finalLabel
         + '</a>'
         + '</div>'
