@@ -4794,33 +4794,36 @@ function privacyPage(t: Record<string, string>): string {
         <!-- Sicurezza -->
         <div class="card p-6">
           <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-lock mr-2" style="color:#1078C0"></i>${isIt?'7. Sicurezza dei Dati':'7. Data Security'}</h2>
-          <p class="text-sm text-gray-600">${isIt?'I dati sono trattati con misure di sicurezza tecniche e organizzative adeguate: trasmissione HTTPS/TLS, hosting su Cloudflare Pages (infrastruttura certificata ISO 27001), accesso limitato al personale autorizzato. I trasferimenti verso fornitori extra-UE avvengono nel rispetto dell&#39;Art. 46 GDPR mediante Clausole Contrattuali Standard (SCC) e adesione al Data Privacy Framework EU-USA (Decisione di adeguatezza della Commissione Europea 2023/1795 del 10 luglio 2023).':'Data is processed with appropriate technical and organizational security measures: HTTPS/TLS transmission, hosting on Cloudflare Pages (ISO 27001 certified infrastructure), access limited to authorized personnel. Transfers to non-EU providers are carried out in compliance with Art. 46 GDPR through Standard Contractual Clauses (SCC) and adherence to the EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795 of 10 July 2023).'}</p>
+          <p class="text-sm text-gray-600">${isIt?'I dati sono trattati con misure di sicurezza tecniche e organizzative adeguate: trasmissione HTTPS/TLS, hosting su Cloudflare Pages (infrastruttura certificata ISO 27001), accesso limitato al personale autorizzato, hash crittografico degli indirizzi IP (SHA-256, non reversibile). I trasferimenti verso Cloudflare Inc. (USA) sono leciti in base all\'adesione di Cloudflare all\'EU-US Data Privacy Framework (Decisione di adeguatezza della Commissione Europea 2023/1795 del 10 luglio 2023) — base giuridica autonoma e sufficiente ai sensi dell\'Art. 45 GDPR, che non richiede Clausole Contrattuali Standard.':'Data is processed with appropriate technical and organizational security measures: HTTPS/TLS transmission, hosting on Cloudflare Pages (ISO 27001 certified infrastructure), access limited to authorized personnel, cryptographic hashing of IP addresses (SHA-256, non-reversible). Transfers to Cloudflare Inc. (USA) are lawful based on Cloudflare\'s certification under the EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795 of 10 July 2023) — a sufficient and autonomous legal basis pursuant to Art. 45 GDPR, requiring no Standard Contractual Clauses.'}</p>
         </div>
 
         <!-- Responsabili esterni -->
         <div class="card p-6">
-          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-handshake mr-2" style="color:#1078C0"></i>${isIt?'8. Responsabili Esterni del Trattamento (Art. 28 GDPR)':'8. Third-Party Data Processors (Art. 28 GDPR)'}</h2>
-          <p class="text-sm text-gray-600 mb-4">${isIt?'Per alcune attività tecnico-operative, Sindrome ReNU Italia APS si avvale di fornitori terzi nominati Responsabili del Trattamento ai sensi dell\'Art. 28 GDPR. Tali soggetti trattano i dati esclusivamente per conto e su istruzione del Titolare:':'For certain technical and operational activities, Sindrome ReNU Italia APS uses third-party providers appointed as Data Processors pursuant to Art. 28 GDPR. These parties process data exclusively on behalf of and under the instruction of the Data Controller:'}</p>
-          <div class="overflow-x-auto">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-handshake mr-2" style="color:#1078C0"></i>${isIt?'8. Responsabili del Trattamento e Terze Parti (Art. 28 GDPR)':'8. Data Processors and Third Parties (Art. 28 GDPR)'}</h2>
+          <p class="text-sm text-gray-600 mb-4">${isIt?'Per alcune attività tecnico-operative, Sindrome ReNU Italia APS si avvale di soggetti terzi. Alcuni sono nominati Responsabili del Trattamento ai sensi dell\'Art. 28 GDPR (trattano i dati per conto del Titolare); altri sono titolari autonomi del trattamento (trattano i dati per proprie finalità, indipendentemente dal Titolare).':'For certain technical and operational activities, Sindrome ReNU Italia APS uses third parties. Some are appointed Data Processors pursuant to Art. 28 GDPR (processing data on behalf of the Controller); others are independent data controllers (processing data for their own purposes, independently of the Controller).'}</p>
+
+          <!-- Responsabili del Trattamento Art. 28 -->
+          <h3 class="text-sm font-bold mb-2 mt-2" style="color:#082050">${isIt?'Responsabili del Trattamento (Art. 28 GDPR)':'Data Processors (Art. 28 GDPR)'}</h3>
+          <div class="overflow-x-auto mb-4">
             <table class="w-full text-sm border-collapse">
               <thead><tr class="bg-sky-50">
-                <th class="text-left p-3 border border-sky-100">${isIt?'Fornitore':'Provider'}</th>
-                <th class="text-left p-3 border border-sky-100">${isIt?'Servizio':'Service'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Soggetto':'Party'}</th>
+                <th class="text-left p-3 border border-sky-100">${isIt?'Ruolo':'Role'}</th>
                 <th class="text-left p-3 border border-sky-100">${isIt?'Dati trattati':'Data processed'}</th>
                 <th class="text-left p-3 border border-sky-100">${isIt?'Sede':'Location'}</th>
                 <th class="text-left p-3 border border-sky-100">${isIt?'Garanzie':'Safeguards'}</th>
               </tr></thead>
               <tbody>
                 <tr>
-                  <td class="p-3 border border-gray-100 font-semibold">Cloudflare, Inc.</td>
-                  <td class="p-3 border border-gray-100">${isIt?'Hosting, CDN, sicurezza':'Hosting, CDN, security'}</td>
-                  <td class="p-3 border border-gray-100">${isIt?'IP, log navigazione':'IP, navigation logs'}</td>
-                  <td class="p-3 border border-gray-100">🇺🇸 USA</td>
-                  <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/gdpr/introduction/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA + SCC + DPF</a></td>
+                  <td class="p-3 border border-gray-100 font-semibold">${isIt?'Responsabile Tecnico del Sito':'Website Technical Manager'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Sviluppo e gestione tecnica del sito, database e pannello admin':'Website development and technical management, database and admin panel'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Tutti i dati nel database (contatti, iscrizioni, storie, donazioni)':'All database data (contacts, memberships, stories, donations)'}</td>
+                  <td class="p-3 border border-gray-100">🇮🇹 Italia</td>
+                  <td class="p-3 border border-gray-100"><span class="text-green-700 font-semibold">${isIt?'Contratto DPA Art. 28 GDPR':'DPA Contract Art. 28 GDPR'}</span></td>
                 </tr>
                 <tr class="bg-gray-50">
                   <td class="p-3 border border-gray-100 font-semibold">Brevo SAS <span class="text-xs font-normal text-gray-400">(ex Sendinblue)</span></td>
-                  <td class="p-3 border border-gray-100">${isIt?'Invio notifiche email':'Email notifications'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'Invio notifiche email transazionali (non ancora attivo)':'Transactional email notifications (not yet active)'}</td>
                   <td class="p-3 border border-gray-100">${isIt?'Nome, email, messaggio':'Name, email, message'}</td>
                   <td class="p-3 border border-gray-100">🇫🇷 <span class="font-semibold text-green-700">Francia — UE</span></td>
                   <td class="p-3 border border-gray-100"><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" class="text-blue-600 hover:underline font-semibold">DPA (Art. 28 GDPR)</a></td>
@@ -4828,7 +4831,38 @@ function privacyPage(t: Record<string, string>): string {
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-gray-400 mt-3">${isIt?'SCC = Clausole Contrattuali Standard della Commissione Europea (Dec. 2021/914/UE) · DPF = Data Privacy Framework EU-USA (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023) — garanzie adeguate per trasferimenti extra-UE ai sensi degli Artt. 45-46 GDPR. Brevo SAS (Francia) tratta i dati interamente in UE, senza necessità di SCC o DPF.':'SCC = Standard Contractual Clauses of the European Commission (Dec. 2021/914/EU) · DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023) — adequate safeguards for extra-EU transfers pursuant to Arts. 45-46 GDPR. Brevo SAS (France) processes all data within the EU, with no need for SCC or DPF.'}</p>
+
+          <!-- Terze parti titolari autonomi -->
+          <h3 class="text-sm font-bold mb-2 mt-4" style="color:#082050">${isIt?'Terze Parti — Titolari Autonomi del Trattamento':'Third Parties — Independent Data Controllers'}</h3>
+          <p class="text-xs text-gray-500 mb-2">${isIt?'I seguenti soggetti trattano dati tecnici dei visitatori (es. indirizzi IP, dati di rete) nell\'ambito dei propri servizi, agendo come titolari autonomi del trattamento. L\'Associazione non impartisce istruzioni su tali trattamenti né è in grado di limitarli; si rinvia alle rispettive informative privacy.':'The following parties process technical visitor data (e.g. IP addresses, network data) as part of their own services, acting as independent data controllers. The Association does not instruct these parties on such processing and cannot restrict it; please refer to their respective privacy policies.'}</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead><tr class="bg-amber-50">
+                <th class="text-left p-3 border border-amber-100">${isIt?'Soggetto':'Party'}</th>
+                <th class="text-left p-3 border border-amber-100">${isIt?'Servizio':'Service'}</th>
+                <th class="text-left p-3 border border-amber-100">${isIt?'Dati elaborati autonomamente':'Data processed independently'}</th>
+                <th class="text-left p-3 border border-amber-100">${isIt?'Sede':'Location'}</th>
+                <th class="text-left p-3 border border-amber-100">${isIt?'Base trasferimento USA':'US transfer basis'}</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td class="p-3 border border-gray-100 font-semibold">Cloudflare, Inc.</td>
+                  <td class="p-3 border border-gray-100">${isIt?'CDN, sicurezza rete, protezione DDoS, hosting Pages':'CDN, network security, DDoS protection, Pages hosting'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'IP visitatori, header HTTP, dati di routing (per proprie finalità di sicurezza)':'Visitor IPs, HTTP headers, routing data (for own security purposes)'}</td>
+                  <td class="p-3 border border-gray-100">🇺🇸 USA</td>
+                  <td class="p-3 border border-gray-100"><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" class="text-blue-600 hover:underline font-semibold">EU-US DPF ✓</a></td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="p-3 border border-gray-100 font-semibold">jsDelivr CDN <span class="text-xs font-normal text-gray-400">(ProspectOne)</span></td>
+                  <td class="p-3 border border-gray-100">${isIt?'Distribuzione file CSS/JS (Tailwind, FontAwesome)':'CSS/JS file delivery (Tailwind, FontAwesome)'}</td>
+                  <td class="p-3 border border-gray-100">${isIt?'IP visitatori al caricamento della pagina':'Visitor IP at page load'}</td>
+                  <td class="p-3 border border-gray-100">🇵🇱 <span class="text-green-700 font-semibold">Polonia — UE</span></td>
+                  <td class="p-3 border border-gray-100"><span class="text-green-700">${isIt?'Trattamento in UE':'EU processing'}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">${isIt?'DPF = EU-US Data Privacy Framework (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023). Cloudflare è certificata DPF: il trasferimento dati verso USA è lecito senza necessità di Clausole Contrattuali Standard. Per i dati che Cloudflare elabora come titolare autonomo, si rinvia alla sua Privacy Policy: www.cloudflare.com/privacypolicy/':'DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023). Cloudflare is DPF certified: data transfers to the USA are lawful without Standard Contractual Clauses. For data that Cloudflare processes as independent controller, please refer to its Privacy Policy: www.cloudflare.com/privacypolicy/'}</p>
         </div>
 
         <!-- Contatti Garante -->
