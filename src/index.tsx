@@ -1504,6 +1504,40 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       }).join('');
     }
   }
+
+  // ── Cookie banner GDPR ──────────────────────────────────────────────────────
+  var COOKIE_KEY = 'renu_cookie_consent';
+  var COOKIE_VER = '1';
+
+  function acceptCookies() {
+    try {
+      localStorage.setItem(COOKIE_KEY, COOKIE_VER);
+    } catch(e) {
+      // localStorage non disponibile (es. Safari privato): usa cookie di sessione
+      document.cookie = COOKIE_KEY + '=' + COOKIE_VER + '; path=/; SameSite=Lax';
+    }
+    var banner = document.getElementById('cookieBanner');
+    if (banner) banner.style.display = 'none';
+  }
+
+  function _cookieAlreadyAccepted() {
+    try {
+      if (localStorage.getItem(COOKIE_KEY) === COOKIE_VER) return true;
+    } catch(e) {}
+    // fallback: controlla cookie di sessione
+    return document.cookie.split(';').some(function(c){
+      return c.trim().startsWith(COOKIE_KEY + '=');
+    });
+  }
+
+  // Mostra il banner solo se il consenso non è ancora stato registrato
+  document.addEventListener('DOMContentLoaded', function() {
+    var banner = document.getElementById('cookieBanner');
+    if (banner && !_cookieAlreadyAccepted()) {
+      // Piccolo ritardo per evitare layout shift durante il caricamento
+      setTimeout(function(){ banner.style.display = 'block'; }, 800);
+    }
+  });
 </script>
 </body>
 </html>`
@@ -5077,11 +5111,20 @@ function san(v: unknown, n = 500): string {
 function validEmail(e: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)
 }
-function hashIP(ip: string): string {
-  // Simple hash for GDPR anonymization (in production use crypto.subtle)
-  let h = 0
-  for (let i = 0; i < ip.length; i++) { h = (Math.imul(31, h) + ip.charCodeAt(i)) | 0 }
-  return 'ip' + Math.abs(h).toString(16).padStart(8, '0')
+async function hashIPAsync(ip: string): Promise<string> {
+  // SHA-256 crittografico tramite Web Crypto API (GDPR pseudonimizzazione)
+  try {
+    const encoder = new TextEncoder()
+    // Salt fisso per prevenire rainbow table sull'IP
+    const data = encoder.encode('renu-ip-salt-2026:' + ip)
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+    const hashArray = Array.from(new Uint8Array(hashBuffer))
+    // Restituisce i primi 16 caratteri hex (64 bit) — sufficiente per pseudonimizzazione
+    return 'sha2:' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 16)
+  } catch {
+    // Fallback se crypto.subtle non disponibile (non dovrebbe accadere su Cloudflare Workers)
+    return 'ip:unavailable'
+  }
 }
 function getClientIP(c: any): string {
   return c.req.header('CF-Connecting-IP') || c.req.header('X-Forwarded-For') || ''
@@ -5102,7 +5145,7 @@ app.post('/api/lista-attesa', async (c) => {
       return c.json({ success: false, errors }, 400)
     }
 
-    const ipHash = hashIP(getClientIP(c))
+    const ipHash = await hashIPAsync(getClientIP(c))
     const db = c.env?.DB
 
     if (db) {
@@ -5144,7 +5187,7 @@ app.post('/api/contatti', async (c) => {
       return c.json({ success: false, errors }, 400)
     }
 
-    const ipHash = hashIP(getClientIP(c))
+    const ipHash = await hashIPAsync(getClientIP(c))
     const db = c.env?.DB
 
     if (db) {
