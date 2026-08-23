@@ -2434,6 +2434,72 @@ function therapiesPage(t: Record<string, string>): string {
             </div>
           </div>
         </div>
+
+        <!-- PROGETTO VITA -->
+        <div class="mt-10">
+          <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+            <i class="fas fa-seedling" style="color:#059669"></i>
+            ${t.lang==='it'?'Progetto Vita – Pianificazione del Futuro':'Progetto Vita – Future Planning'}
+          </h2>
+          <div class="card p-0 overflow-hidden mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="p-6 flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="ic ic-green w-14 h-14 flex-shrink-0">
+                    <i class="fas fa-seedling text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-extrabold text-lg" style="color:#082050">PROGETTO VITA</h3>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full" style="background:#D1FAE5;color:#065F46">
+                      <i class="fas fa-leaf text-xs"></i>${t.lang==='it'?'Pianificazione del futuro':'Future planning'}
+                    </span>
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-5 text-sm">
+                  ${t.lang==='it'
+                    ? 'Il Progetto Vita è uno strumento di pianificazione che aiuta le famiglie a costruire un futuro sereno per i propri figli con Sindrome ReNU. Include la definizione degli obiettivi di vita, le tutele legali (amministratore di sostegno, trust), il testamento biologico e la pianificazione del "Dopo di Noi". Un percorso concreto per affrontare le sfide burocratiche, legali e finanziarie con serenità.'
+                    : 'The Progetto Vita (Life Project) is a planning tool that helps families build a serene future for their children with ReNU Syndrome. It includes defining life goals, legal protections (support administrator, trust), living will and planning for the "After Us". A practical path to face bureaucratic, legal and financial challenges with peace of mind.'}
+                </p>
+                <div class="grid grid-cols-1 gap-2 mb-5">
+                  ${[
+                    ['fa-gavel','ic-navy', t.lang==='it'?'Amministratore di Sostegno':'Support Administrator', t.lang==='it'?'Protezione legale per persone con disabilità cognitiva.':'Legal protection for people with cognitive disability.'],
+                    ['fa-home','ic-green', t.lang==='it'?'Dopo di Noi (L. 112/2016)':'After Us (L. 112/2016)', t.lang==='it'?'Strumenti e fondi per garantire autonomia dopo la scomparsa dei genitori.':'Tools and funds to ensure autonomy after parents\' passing.'],
+                    ['fa-file-signature','ic-sky', t.lang==='it'?'Trust e Fondi Familiari':'Trust & Family Funds', t.lang==='it'?'Pianificazione patrimoniale per tutelare il futuro del figlio.':'Asset planning to protect the child\'s future.'],
+                    ['fa-balance-scale','ic-purple', t.lang==='it'?'Testamento Biologico (DAT)':'Living Will (DAT)', t.lang==='it'?'Disposizioni anticipate di trattamento sanitario.':'Advance healthcare directives.'],
+                  ].map(([icon,ic,title,desc]) => `
+                  <div class="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0">
+                    <div class="ic ${ic} w-8 h-8 flex-shrink-0" style="width:2rem;height:2rem;min-width:2rem">
+                      <i class="fas ${icon} text-sm"></i>
+                    </div>
+                    <div>
+                      <span class="font-bold text-sm" style="color:#082050">${title}</span>
+                      <span class="text-gray-500 text-xs ml-2">${desc}</span>
+                    </div>
+                  </div>`).join('')}
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <a href="/${t.lang}/faq" class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#059669">
+                    <i class="fas fa-question-circle"></i>${t.lang==='it'?'Guida Diritti & Tutele':'Rights & Protections Guide'}
+                  </a>
+                  <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Informazioni Progetto Vita':'Progetto Vita information')}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7">
+                    <i class="fas fa-envelope"></i>${t.lang==='it'?'Contattaci':'Contact us'}
+                  </a>
+                </div>
+              </div>
+              <div class="relative overflow-hidden rounded-r-2xl" style="min-height:320px">
+                <img src="/images/progetto-vita.png"
+                     alt="${t.lang==='it'?'Progetto Vita – Sindrome ReNU':'Progetto Vita – ReNU Syndrome'}"
+                     class="w-full h-full object-cover" style="min-height:320px" loading="lazy" decoding="async">
+                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,95,70,0.6) 0%, transparent 50%)"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                  <span class="inline-flex items-center gap-2 text-white text-xs font-bold px-3 py-1.5 rounded-full" style="background:rgba(5,150,105,0.85)">
+                    <i class="fas fa-heart"></i>${t.lang==='it'?'Costruiamo insieme il futuro':'Building the future together'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>`
@@ -3378,6 +3444,20 @@ function contactPage(t: Record<string, string>): string {
                       placeholder="${t.lang==='it'?'Scrivi qui il tuo messaggio…':'Write your message here…'}"
                       class="w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sky-400 resize-none" style="border-color:#C8E8F8"></textarea>
           </div>
+          <!-- Campo familiare -->
+          <div class="rounded-xl p-4" style="background:#EFF6FF; border:1px solid #BAE6FD">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" name="sono_familiare" id="sonoFamiliare" class="mt-1 w-4 h-4 flex-shrink-0 accent-sky-600">
+              <div>
+                <span class="text-sm font-semibold" style="color:#082050">
+                  ${t.lang==='it'?'👨‍👩‍👧 Sono un familiare di una persona con Sindrome ReNU':'👨‍👩‍👧 I am a family member of a person with ReNU Syndrome'}
+                </span>
+                <p class="text-xs text-sky-600 mt-0.5">
+                  ${t.lang==='it'?'Se sei genitore o tutore di un bambino/a con Sindrome ReNU, riceverai automaticamente il nostro documento di accoglienza.':'If you are a parent or guardian of a child with ReNU Syndrome, you will automatically receive our welcome document.'}
+                </p>
+              </div>
+            </label>
+          </div>
           <div class="flex items-start gap-3">
             <input type="checkbox" name="consenso_gdpr" required id="contactPrivacy" class="mt-1 w-4 h-4 flex-shrink-0">
             <label for="contactPrivacy" class="text-xs text-gray-600">
@@ -3414,6 +3494,7 @@ function contactPage(t: Record<string, string>): string {
             oggetto: fd.get('oggetto') || '${t.lang==='it'?'Contatto dal sito':'Contact from website'}',
             messaggio: fd.get('messaggio'),
             consenso_gdpr: !!fd.get('consenso_gdpr'),
+            sono_familiare: !!fd.get('sono_familiare'),
           };
 
           try {
@@ -3428,6 +3509,14 @@ function contactPage(t: Record<string, string>): string {
               msg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>${t.lang==='it'?'✅ Messaggio inviato! Ti risponderemo entro 48 ore.':'✅ Message sent! We will reply within 48 hours.'}';
               form.reset();
               btn.innerHTML = '<i class="fas fa-check mr-2"></i>${t.lang==='it'?'Inviato!':'Sent!'}';
+              // Banner accoglienza per familiari
+              if (payload.sono_familiare) {
+                const pdfBanner = document.createElement('div');
+                pdfBanner.className = 'mt-4 rounded-xl p-5 flex items-start gap-4';
+                pdfBanner.style.cssText = 'background:#D1FAE5; border:2px solid #6EE7B7';
+                pdfBanner.innerHTML = '<i class="fas fa-file-pdf text-green-600 text-2xl mt-0.5 flex-shrink-0"></i><div><p class="font-bold text-green-800 mb-1">${t.lang==='it'?'📄 Documento di Benvenuto ReNU':'📄 ReNU Welcome Document'}</p><p class="text-green-700 text-sm mb-3">${t.lang==='it'?'Abbiamo preparato per te il documento di accoglienza con tutte le informazioni essenziali per le nuove famiglie che entrano nella nostra comunità. Benvenuto/a in Sindrome ReNU Italia APS!':'We have prepared the welcome document with all essential information for new families joining our community. Welcome to Sindrome ReNU Italia APS!'}</p><a href="/static/accoglienza-nuove-famiglie.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold px-5 py-2.5 rounded-full text-sm text-white" style="background:linear-gradient(135deg,#059669,#10B981)"><i class="fas fa-download mr-1"></i>${t.lang==='it'?'Scarica il PDF di Accoglienza':'Download Welcome PDF'}</a></div>';
+                msg.parentNode.insertBefore(pdfBanner, msg.nextSibling);
+              }
             } else {
               throw new Error(data.error || '${t.lang==='it'?'Errore invio':'Send error'}');
             }
@@ -4227,6 +4316,14 @@ function membersPage(t: Record<string, string>): string {
               msg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>${t.lang==='it'?'✅ Iscrizione completata! Ti contatteremo appena sarà definita la quota associativa.':'✅ Registration complete! We will contact you as soon as the membership fee is set.'}';
               form.reset();
               btn.innerHTML = '<i class="fas fa-check mr-2"></i>${t.lang==='it'?'Inviato con successo':'Successfully sent'}';
+              // Banner accoglienza per Socio Familiare
+              if (payload.tipo === 'familiare') {
+                const pdfBanner = document.createElement('div');
+                pdfBanner.className = 'mt-4 rounded-xl p-5 flex items-start gap-4';
+                pdfBanner.style.cssText = 'background:#D1FAE5; border:2px solid #6EE7B7';
+                pdfBanner.innerHTML = '<i class="fas fa-file-pdf text-green-600 text-2xl mt-0.5 flex-shrink-0"></i><div><p class="font-bold text-green-800 mb-1">${t.lang==='it'?'📄 Documento di Benvenuto ReNU':'📄 ReNU Welcome Document'}</p><p class="text-green-700 text-sm mb-3">${t.lang==='it'?'Abbiamo preparato per te il documento di accoglienza con tutte le informazioni essenziali per le nuove famiglie che entrano nella nostra comunità.':'We have prepared the welcome document with all essential information for new families joining our community.'}</p><a href="/static/accoglienza-nuove-famiglie.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold px-5 py-2.5 rounded-full text-sm text-white" style="background:linear-gradient(135deg,#059669,#10B981)"><i class="fas fa-download"></i>${t.lang==='it'?'Scarica il PDF di Accoglienza':'Download Welcome PDF'}</a></div>';
+                msg.parentNode.insertBefore(pdfBanner, msg.nextSibling);
+              }
             } else {
               throw new Error(data.error || JSON.stringify(data.errors || {}));
             }
@@ -5058,6 +5155,77 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- PATOLOGIE CORRELATE: EPILESSIA -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
+          <i class="fas fa-bolt" style="color:#D97706"></i>
+          ${isIt?'Patologie Correlate alla Sindrome ReNU':'Conditions Associated with ReNU Syndrome'}
+        </h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          ${isIt
+            ? 'La Sindrome ReNU può essere associata a condizioni neurologiche specifiche che richiedono attenzione clinica dedicata. La conoscenza di queste correlazioni è fondamentale per una presa in carico multidisciplinare efficace.'
+            : 'ReNU Syndrome may be associated with specific neurological conditions requiring dedicated clinical attention. Knowledge of these correlations is essential for effective multidisciplinary care.'}
+        </p>
+        <div class="card p-6 flex flex-col md:flex-row gap-6 items-start">
+          <div class="flex-shrink-0">
+            <div class="ic ic-amber w-16 h-16">
+              <i class="fas fa-bolt text-2xl"></i>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="font-extrabold text-xl" style="color:#082050">
+                ${isIt?'Epilessia / Crisi Epilettiche':'Epilepsy / Seizures'}
+              </h3>
+              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF3C7;color:#92400E">
+                <i class="fas fa-exclamation-triangle text-xs"></i>${isIt?'Monitoraggio raccomandato':'Monitoring recommended'}
+              </span>
+            </div>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              ${isIt
+                ? 'Le crisi epilettiche rappresentano una delle manifestazioni neurologiche più significative della Sindrome ReNU. Possono presentarsi in forme diverse: spasmi infantili, crisi focali, crisi tonico-cloniche, crisi febbrili complesse o stato epilettico. La loro presenza, frequenza e gravità variano da paziente a paziente e richiedono valutazione neurologica specialistica.'
+                : 'Epileptic seizures represent one of the most significant neurological manifestations of ReNU Syndrome. They may present in different forms: infantile spasms, focal seizures, tonic-clonic seizures, complex febrile seizures or status epilepticus. Their presence, frequency and severity vary from patient to patient and require specialist neurological evaluation.'}
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+              ${[
+                ['fa-stethoscope','ic-navy', isIt?'Spasmi infantili':'Infantile spasms', isIt?'Contrazioni muscolari brevi e ricorrenti, spesso associate a iperaritmia all\'EEG (sindrome di West).':'Brief, recurrent muscle contractions, often associated with hypsarrhythmia on EEG (West syndrome).'],
+                ['fa-wave-square','ic-amber', isIt?'Crisi focali e tonico-cloniche':'Focal and tonic-clonic seizures', isIt?'Crisi originate da una zona localizzata del cervello (focali) o generalizzate con perdita di coscienza e irrigidimento muscolare (tonico-cloniche).':'Seizures originating from a localised brain area (focal) or generalised with loss of consciousness and muscle stiffening (tonic-clonic).'],
+                ['fa-thermometer-half','ic-red', isIt?'Crisi febbrili complesse':'Complex febrile seizures', isIt?'Crisi scatenate da rialzo termico, più prolungate o ripetute rispetto alle crisi febbrili semplici; richiedono monitoraggio neurologico.':'Seizures triggered by fever, more prolonged or repeated than simple febrile seizures; require neurological monitoring.'],
+                ['fa-exclamation-circle','ic-red', isIt?'Stato epilettico':'Status epilepticus', isIt?'Crisi prolungata (>5 minuti) o serie di crisi senza ripresa della coscienza. È un\'emergenza medica che richiede intervento immediato.':'Prolonged seizure (>5 minutes) or series of seizures without recovery of consciousness. It is a medical emergency requiring immediate intervention.'],
+              ].map(([icon,ic,title,desc]) => `
+              <div class="rounded-xl p-4 flex gap-3" style="background:#FFFBEB; border:1px solid #FDE68A">
+                <div class="ic ${ic} w-8 h-8 flex-shrink-0" style="width:2rem;height:2rem;min-width:2rem">
+                  <i class="fas ${icon} text-sm"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm mb-1" style="color:#92400E">${title}</h4>
+                  <p class="text-xs text-gray-600 leading-relaxed">${desc}</p>
+                </div>
+              </div>`).join('')}
+            </div>
+            <div class="rounded-xl p-4 flex items-start gap-3 mb-4" style="background:#EEF6FB; border-left:4px solid #1078C0">
+              <i class="fas fa-info-circle text-xl mt-0.5 flex-shrink-0" style="color:#1078C0"></i>
+              <p class="text-gray-700 text-sm leading-relaxed">
+                ${isIt
+                  ? '<strong>Nota clinica:</strong> La gestione delle crisi nei pazienti ReNU richiede valutazione EEG, neuroimaging e un piano terapeutico individualizzato. Il trattamento farmacologico antiepilettico deve essere adattato al profilo clinico specifico del paziente. La ricerca internazionale ReNU sta raccogliendo dati sul profilo epilettico della sindrome per migliorare le linee guida di trattamento.'
+                  : '<strong>Clinical note:</strong> Seizure management in ReNU patients requires EEG assessment, neuroimaging and an individualised therapeutic plan. Antiepileptic drug treatment must be adapted to the patient\'s specific clinical profile. International ReNU research is collecting data on the epileptic profile of the syndrome to improve treatment guidelines.'}
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="/${t.lang}/about" class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
+                <i class="fas fa-dna"></i>${isIt?'Caratteristiche cliniche ReNU':'ReNU clinical features'}
+              </a>
+              <a href="/${t.lang}/research" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
+                <i class="fas fa-microscope"></i>${isIt?'Ricerca e pubblicazioni':'Research & publications'}
+              </a>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Informazioni epilessia ReNU':'ReNU epilepsy information')}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#FEF3C7;color:#92400E;border:1px solid #FDE68A">
+                <i class="fas fa-envelope"></i>${isIt?'Contattaci':'Contact us'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA collabora -->
       <div class="rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <i class="fas fa-handshake text-5xl text-sky-300 mb-4 block"></i>
@@ -5227,13 +5395,16 @@ app.post('/api/contatti', async (c) => {
     const db = c.env?.DB
 
     if (db) {
+      const oggettoFinal = body.sono_familiare
+        ? '[FAMILIARE] ' + san(body.oggetto || 'Contatto familiare dal sito', 200)
+        : san(body.oggetto || 'Contatto dal sito', 200)
       await db.prepare(`
         INSERT INTO contatti
         (nome, email, oggetto, messaggio, consenso_gdpr, data_consenso, testo_consenso_versione, ip_hash)
         VALUES (?, ?, ?, ?, 1, CURRENT_TIMESTAMP, '2.0', ?)
       `).bind(
         san(body.nome), san(body.email, 200),
-        san(body.oggetto || 'Contatto dal sito', 200),
+        oggettoFinal,
         san(body.messaggio, 2000),
         ipHash
       ).run()
