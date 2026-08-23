@@ -1388,8 +1388,9 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         <p class="text-sky-400 text-xs mt-1"><i class="fas fa-map-marker-alt mr-1"></i>Via Marina 6, 20121 Milano (MI)</p>
         <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
-          <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.instagram.com/immaaudino1975/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="https://www.facebook.com/share/1EjJ5EfaZ4/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -1732,7 +1733,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden">
-            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -2534,8 +2535,8 @@ function communityPage(t: Record<string, string>): string {
   const intlAssoc = [
     { country: t.lang==='it'?'Italia':'Italy', flag: '🇮🇹',
       name: 'Associazione Sindrome RENU Italia APS',
-      fb: 'https://www.facebook.com/groups/1268033701594892/?ref=share',
-      ig: 'https://www.instagram.com/immaaudino1975?igsh=dTd0amh2b203bnFu',
+      fb: 'https://www.facebook.com/share/1D4c9R5w3V/',
+      ig: 'https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw',
       web: 'https://www.sindromerenu.it',
       email: 'info@sindromerenu.it', phone: '+39 327 763 4894',  // Segreteria
       ref: 'Imma Audino, Stefania Rocca' },
@@ -2621,7 +2622,7 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
           <div class="overflow-hidden" style="aspect-ratio:1024/683">
-            <img src="/images/renu_mappa_italia_14casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2655,11 +2656,11 @@ function communityPage(t: Record<string, string>): string {
                  class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
                 <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
               </a>
-              <a href="https://www.instagram.com/immaaudino1975/" target="_blank"
+              <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank"
                  class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#E1306C">
                 <i class="fab fa-instagram"></i>Instagram
               </a>
-              <a href="https://www.facebook.com/groups/1268033701594892/?ref=share" target="_blank"
+              <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank"
                  class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#1877F2">
                 <i class="fab fa-facebook"></i>Facebook
               </a>
@@ -2678,7 +2679,7 @@ function communityPage(t: Record<string, string>): string {
           <div class="flex-shrink-0 flex items-center justify-center" style="position:relative">
             <!-- Mappa Italia reale con badge famiglie -->
             <div style="position:relative;width:220px">
-              <img src="/images/renu_mappa_italia_14casi.jpg"
+              <img src="/images/renu_mappa_italia_16casi.jpg"
                    alt="Mappa Italia Famiglie ReNU"
                    style="width:220px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22))"
                    loading="lazy" decoding="async">
@@ -3457,7 +3458,8 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
-          <a href="https://www.facebook.com/groups/1268033701594892" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://www.facebook.com/share/1EjJ5EfaZ4/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
           <a href="https://www.instagram.com/sindrome_renu_italia/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl"></i></a>
         </div>
