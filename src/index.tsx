@@ -2751,7 +2751,7 @@ function communityPage(t: Record<string, string>): string {
                    loading="lazy" decoding="async">
               <!-- Badge contatore sovrapposto -->
               <div style="position:absolute;top:10px;right:-12px;background:#F59E0B;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
-                <span style="font-size:14px;font-weight:800;line-height:1.1">14</span>
+                <span style="font-size:14px;font-weight:800;line-height:1.1">16</span>
                 <span style="font-size:8px;line-height:1.2">casi</span>
                 <span style="font-size:8px;line-height:1.2">in Italia</span>
               </div>
@@ -2759,7 +2759,7 @@ function communityPage(t: Record<string, string>): string {
           </div>
           <div class="flex-1">
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              ${t.lang==='it'?'In Italia sono stati accertati <strong>14 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>14 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
+              ${t.lang==='it'?'In Italia sono stati accertati <strong>16 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>16 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
             </p>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
               ${t.lang==='it'?'Se hai un familiare con Sindrome ReNU e non sei ancora in contatto con la nostra rete, <strong>scrivici</strong>: ti aiutiamo a entrare nella comunità italiana e a conoscere le famiglie vicino a te.':'If you have a family member with ReNU Syndrome and are not yet in contact with our network, <strong>write to us</strong>: we will help you join the Italian community.'}
