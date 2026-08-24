@@ -1481,7 +1481,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { title:'${t.lang==='it'?'Terapie':'Therapies'}', url:'/${t.lang}/therapies', keywords:'terapie fisioterapia logopedia feuerstein acquaticità nuoto musicoterapia aba' },
     { title:'${t.lang==='it'?'Diagnosi':'Diagnosis'}', url:'/${t.lang}/diagnosis', keywords:'diagnosi wgs wes sequenziamento genetico esoma genoma' },
     { title:'${t.lang==='it'?'Community':'Community'}', url:'/${t.lang}/community', keywords:'community famiglia genitori rete mappa instagram facebook' },
-    { title:'${t.lang==='it'?'Sostienici':'Support Us'}', url:'/${t.lang}/donations', keywords:'donazioni sostieni 5x1000 buonacausa compleanno solidale matilde frontis' },
+    { title:'${t.lang==='it'?'Sostienici':'Support Us'}', url:'/${t.lang}/donations', keywords:'donazioni sostieni iban bonifico 5x1000 compleanno solidale matilde frontis' },
     { title:'${t.lang==='it'?'Contatti':'Contact'}', url:'/${t.lang}/contact', keywords:'contatti email telefono whatsapp info presidenza segreteria' },
     { title:'${t.lang==='it'?'Brochure':'Brochures'}', url:'/${t.lang}/brochure', keywords:'brochure pdf scarica download materiali' },
     { title:'${t.lang==='it'?'Diventa Socio':'Become a Member'}', url:'/${t.lang}/members', keywords:'socio iscrizione quota associazione membro' },
@@ -2829,10 +2829,10 @@ function donationsPage(t: Record<string, string>): string {
         </h1>
         <p class="text-sky-100 text-lg mb-8 max-w-xl leading-relaxed">${t.donations_intro}</p>
         <div class="flex flex-wrap gap-3">
-          <a href="https://buonacausa.org" target="_blank"
+          <a href="#come-donare"
              class="inline-flex items-center gap-2 bg-white font-bold px-7 py-4 rounded-full shadow-xl text-base transition-colors hover:bg-sky-50" style="color:#082050">
-            <i class="fas fa-hand-holding-heart"></i>
-            ${t.lang==='it'?'Dona ora su BuonaCausa.org':'Donate on BuonaCausa.org'}
+            <i class="fas fa-university"></i>
+            ${t.lang==='it'?'Dona con Bonifico Bancario':'Donate via Bank Transfer'}
           </a>
           <a href="mailto:donazioni@sindromerenu.it"
              class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold px-6 py-4 rounded-full text-base transition-colors border border-white border-opacity-30">
@@ -2939,45 +2939,13 @@ function donationsPage(t: Record<string, string>): string {
           <p class="text-gray-600 text-sm mb-4">
             ${t.lang==='it'?'Con una donazione ricorrente mensile o annuale, garantisci un supporto continuo alle attività dell\'associazione e alle famiglie ReNU in Italia. Ogni contributo, anche piccolo, fa la differenza ogni giorno.':'With a monthly or annual recurring donation, you provide continuous support to the association\'s activities and ReNU families in Italy.'}
           </p>
-          <a href="https://buonacausa.org" target="_blank"
+          <a href="#come-donare"
              class="inline-flex items-center gap-2 text-white font-bold px-6 py-3 rounded-full transition-colors" style="background:#1078C0">
-            <i class="fas fa-hand-holding-heart"></i>
-            ${t.lang==='it'?'Imposta Donazione Ricorrente':'Set Up Recurring Donation'}
+            <i class="fas fa-university"></i>
+            ${t.lang==='it'?'Vedi dati Bonifico':'See Bank Transfer Details'}
           </a>
         </div>
 
-        <!-- Donazione online BuonaCausa -->
-        <div class="card p-8 mb-6" style="border-top:4px solid #16A085">
-          <div class="flex items-start gap-5">
-            <div class="flex-shrink-0">
-              <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow" style="background: linear-gradient(135deg, #1078C0, #45B8EC)">
-                <i class="fas fa-hand-holding-heart text-2xl text-white"></i>
-              </div>
-            </div>
-            <div class="flex-1">
-              <div class="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-3 py-1 text-xs font-bold mb-3" style="color:#16A085">
-                <i class="fas fa-star text-yellow-400"></i>
-                ${t.lang==='it'?'Piattaforma Italiana Consigliata':'Recommended Italian Platform'}
-              </div>
-              <h3 class="text-xl font-extrabold mb-2" style="color:#082050">
-                ${t.lang==='it'?'Donazione Online – BuonaCausa.org':'Online Donation – BuonaCausa.org'}
-              </h3>
-              <p class="text-gray-600 text-sm mb-1 leading-relaxed">
-                ${t.lang==='it'?'Dona online in modo semplice e sicuro su <strong>BuonaCausa.org</strong>, la piattaforma italiana gratuita di crowdfunding per associazioni del Terzo Settore. Accetta bonifico, PayPal e carta di credito/debito.':'Donate online easily and securely on <strong>BuonaCausa.org</strong>, the free Italian crowdfunding platform for non-profit organizations. Accepts bank transfer, PayPal and credit/debit card.'}
-              </p>
-              <ul class="text-sm text-gray-500 mb-4 space-y-1 list-none">
-                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-xs"></i>${t.lang==='it'?'Trasparente e sicura':'Transparent and secure'}</li>
-                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-xs"></i>${t.lang==='it'?'Donazione individuale o ricorrente':'Individual or recurring donation'}</li>
-                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-xs"></i>${t.lang==='it'?'Ricevuta fiscale disponibile':'Tax receipt available'}</li>
-              </ul>
-              <a href="https://buonacausa.org" target="_blank"
-                 class="inline-flex items-center gap-2 text-white font-bold px-7 py-3 rounded-full shadow-lg transition-colors hover:opacity-90" style="background: linear-gradient(135deg, #1078C0, #45B8EC)">
-                <i class="fas fa-hand-holding-heart"></i>
-                ${t.lang==='it'?'Vai a BuonaCausa.org':'Go to BuonaCausa.org'}
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- 5X1000 -->
@@ -3060,10 +3028,10 @@ function donationsPage(t: Record<string, string>): string {
               <p class="text-gray-600 mb-4 leading-relaxed">
                 ${t.lang==='it'?'In occasione del tuo compleanno, puoi chiedere ai tuoi amici e familiari di fare una piccola donazione a Sindrome ReNU Italia APS al posto dei regali. Un modo semplice e bellissimo per fare la differenza!':'On your birthday, you can ask your friends and family to make a small donation to Sindrome ReNU Italia APS instead of gifts. A simple and beautiful way to make a difference!'}
               </p>
-              <a href="https://buonacausa.org" target="_blank"
+              <a href="mailto:donazioni@sindromerenu.it"
                  class="inline-flex items-center gap-2 text-white font-bold px-6 py-3 rounded-full transition-colors" style="background:#7C3AED">
-                <i class="fas fa-gift"></i>
-                ${t.lang==='it'?'Crea la tua raccolta fondi':'Create your fundraiser'}
+                <i class="fas fa-envelope"></i>
+                ${t.lang==='it'?'Scrivi per informazioni':'Write to us'}
               </a>
             </div>
           </div>
@@ -3155,10 +3123,10 @@ function donationsPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Ogni donazione, grande o piccola, va direttamente a supportare le famiglie ReNU in Italia e la ricerca scientifica. Grazie dal profondo del cuore per ogni contributo.':'Every donation, big or small, goes directly to supporting ReNU families in Italy and scientific research. Thank you from the bottom of our hearts.'}
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="https://buonacausa.org" target="_blank"
+            <a href="#come-donare"
                class="inline-flex items-center gap-2 bg-white font-bold px-8 py-4 rounded-full shadow-lg text-lg transition-colors hover:bg-sky-50" style="color:#082050">
-              <i class="fas fa-hand-holding-heart"></i>
-              ${t.lang==='it'?'Dona ora su BuonaCausa.org':'Donate on BuonaCausa.org'}
+              <i class="fas fa-university"></i>
+              ${t.lang==='it'?'Dona con Bonifico Bancario':'Donate via Bank Transfer'}
             </a>
             <a href="mailto:donazioni@sindromerenu.it"
                class="inline-flex items-center gap-2 bg-white bg-opacity-15 hover:bg-opacity-25 text-white font-semibold px-7 py-4 rounded-full text-base transition-colors border border-white border-opacity-30">
@@ -3200,7 +3168,7 @@ function contactPage(t: Record<string, string>): string {
     { title:'${t.lang==='it'?'Terapie':'Therapies'}', url:'/${t.lang}/therapies', keywords:'terapie fisioterapia logopedia feuerstein acquaticità nuoto musicoterapia aba' },
     { title:'${t.lang==='it'?'Diagnosi':'Diagnosis'}', url:'/${t.lang}/diagnosis', keywords:'diagnosi wgs wes sequenziamento genetico esoma genoma' },
     { title:'${t.lang==='it'?'Community':'Community'}', url:'/${t.lang}/community', keywords:'community famiglia genitori rete mappa instagram facebook' },
-    { title:'${t.lang==='it'?'Sostienici':'Support Us'}', url:'/${t.lang}/donations', keywords:'donazioni sostieni iban buonacausa 5x1000 compleanno solidale matilde frontis' },
+    { title:'${t.lang==='it'?'Sostienici':'Support Us'}', url:'/${t.lang}/donations', keywords:'donazioni sostieni iban bonifico 5x1000 compleanno solidale matilde frontis' },
     { title:'${t.lang==='it'?'Contatti':'Contact'}', url:'/${t.lang}/contact', keywords:'contatti email telefono whatsapp info presidenza segreteria statuto' },
     { title:'${t.lang==='it'?'Brochure':'Brochures'}', url:'/${t.lang}/brochure', keywords:'brochure pdf scarica download materiali' },
     { title:'${t.lang==='it'?'Diventa Socio':'Become a Member'}', url:'/${t.lang}/members', keywords:'socio iscrizione quota associazione membro' },
