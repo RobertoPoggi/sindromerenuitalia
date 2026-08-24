@@ -2370,134 +2370,27 @@ function therapiesPage(t: Record<string, string>): string {
         </a>
       </div>
 
-      <!-- DIRITTI E TUTELE -->
-      <div class="mt-14">
-        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
-          <i class="fas fa-shield-alt" style="color:#1078C0"></i>
-          ${t.lang==='it'?'Diritti e Tutele – Rete Famiglie Italia':t.lang==='en'?'Rights & Protections – Italian Family Network':'Droits et Protections – Réseau Familles Italie'}
-        </h2>
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          ${t.lang==='it'?'Avere un figlio con Sindrome ReNU comporta l\'accesso a una serie di diritti, tutele e agevolazioni previsti dalla legislazione italiana. La nostra rete famiglie è qui per aiutarti a navigare il sistema.':'Having a child with ReNU Syndrome entitles you to a range of rights, protections and benefits under Italian law. Our family network is here to help you navigate the system.'}
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          ${[
-            ['fa-id-card','ic-blue',
-              t.lang==='it'?'Legge 104/92 – Assistenza Disabili':'Law 104/92 – Disability Assistance',
-              t.lang==='it'?'Permessi lavorativi per genitori (3 giorni/mese), congedi straordinari, agevolazioni fiscali e supporto scolastico. La Sindrome ReNU può dare diritto alla 104 in situazione di gravità (art. 3 comma 3).':'Work leave for parents (3 days/month), extraordinary leave, tax benefits and school support. ReNU Syndrome may qualify for law 104 in serious condition (art. 3 comma 3).'],
-            ['fa-car','ic-purple',
-              t.lang==='it'?'Contrassegno Disabile (Pass Auto)':'Disabled Badge (Car Pass)',
-              t.lang==='it'?'Il contrassegno per parcheggio disabili si richiede al Comune di residenza tramite certificazione medica. Permette la sosta in zone riservate e agevolazioni per la circolazione.':'The disabled parking badge is requested at the municipality of residence via medical certification. It allows parking in reserved areas and circulation benefits.'],
-            ['fa-graduation-cap','ic-green',
-              t.lang==='it'?'Supporto Scolastico (Insegnante di Sostegno)':'School Support (Support Teacher)',
-              t.lang==='it'?'Il bambino con ReNU ha diritto all\'insegnante di sostegno, al Piano Educativo Individualizzato (PEI) e ad ausili didattici specifici. Richiede certificazione della disabilità e valutazione UMVD.':'A ReNU child has the right to a support teacher, an Individual Educational Plan (PEI) and specific teaching aids. Requires disability certification and UMVD assessment.'],
-            ['fa-money-bill-wave','ic-amber',
-              t.lang==='it'?'Indennità di Accompagnamento e Bonus':'Attendance Allowance & Bonuses',
-              t.lang==='it'?'L\'indennità di accompagnamento INPS è riservata ai disabili totali che non possono deambulare autonomamente. Esistono anche altri bonus: Bonus Bebè, Assegno Unico, agevolazioni ISEE per disabili.':'INPS attendance allowance is reserved for total disabled people who cannot walk independently. Other bonuses also exist: Baby Bonus, Unique Allowance, ISEE benefits for disabled.'],
-            ['fa-id-badge','ic-navy',
-              t.lang==='it'?'Disability Card (Carta Europea della Disabilità)':'Disability Card (European Disability Card)',
-              t.lang==='it'?'La Disability Card è una tessera europea che certifica la disabilità e dà accesso a agevolazioni in strutture pubbliche, musei, trasporti e servizi. Si richiede tramite INPS.':'The Disability Card is a European card certifying disability and provides access to benefits in public facilities, museums, transport and services. Applied for via INPS.'],
-            ['fa-hand-holding-heart','ic-red',
-              t.lang==='it'?'Rete Famiglie ReNU Italia':'ReNU Italy Family Network',
-              t.lang==='it'?'Connettiti con le altre famiglie italiane con un bambino ReNU. Condividiamo esperienze, suggerimenti pratici e supporto emotivo. Scrivici a info@sindromerenu.it per essere inserito nella rete!':'Connect with other Italian families with a ReNU child. We share experiences, practical tips and emotional support. Write to us at info@sindromerenu.it to join the network!'],
-          ].map(([icon,ic,title,desc]) => `
-          <div class="card p-5 flex gap-4">
-            <div class="ic ${ic} flex-shrink-0"><i class="fas ${icon} text-lg"></i></div>
-            <div>
-              <h3 class="font-bold mb-1" style="color:#082050">${title}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">${desc}</p>
-            </div>
-          </div>`).join('')}
+      <!-- CTA Diritti e Tutele -->
+      <div class="mt-14 rounded-2xl p-7 text-white flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
+        <div class="flex-shrink-0 ic ic-sky w-20 h-20">
+          <i class="fas fa-shield-alt text-3xl"></i>
         </div>
-
-        <!-- CTA Guida -->
-        <div class="rounded-2xl p-7 text-white flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
-          <div class="flex-shrink-0 ic ic-sky w-20 h-20">
-            <i class="fas fa-book-open text-3xl"></i>
-          </div>
-          <div class="flex-1 text-center md:text-left">
-            <h3 class="font-bold text-xl mb-2">
-              ${t.lang==='it'?'Hai bisogno di orientamento?':'Need guidance?'}
-            </h3>
-            <p class="text-sky-100 text-sm mb-4">
-              ${t.lang==='it'?'Consulta la nostra guida anti-burocrazia con tutti i passi pratici, oppure contattaci direttamente: siamo qui per aiutarti.':'Check our anti-bureaucracy guide with all practical steps, or contact us directly: we are here to help you.'}
-            </p>
-            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-              <a href="/${t.lang}/faq" class="inline-flex items-center gap-2 bg-white font-bold px-5 py-2.5 rounded-full text-sm" style="color:#082050">
-                <i class="fas fa-question-circle"></i>
-                ${t.lang==='it'?'Guida Anti-Burocrazia':'Anti-Bureaucracy Guide'}
-              </a>
-              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Richiesta supporto diritti e tutele':'Rights and protections support request')}"
-                 class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold px-5 py-2.5 rounded-full text-sm">
-                <i class="fas fa-envelope"></i>
-                ${t.lang==='it'?'Contattaci':'Contact us'}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROGETTO VITA -->
-        <div class="mt-10">
-          <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
-            <i class="fas fa-seedling" style="color:#059669"></i>
-            ${t.lang==='it'?'Progetto Vita – Pianificazione del Futuro':'Progetto Vita – Future Planning'}
-          </h2>
-          <div class="card p-0 overflow-hidden mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 flex flex-col justify-center">
-                <div class="flex items-center gap-3 mb-4">
-                  <div class="ic ic-green w-14 h-14 flex-shrink-0">
-                    <i class="fas fa-seedling text-2xl"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-extrabold text-lg" style="color:#082050">PROGETTO VITA</h3>
-                    <span class="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full" style="background:#D1FAE5;color:#065F46">
-                      <i class="fas fa-leaf text-xs"></i>${t.lang==='it'?'Pianificazione del futuro':'Future planning'}
-                    </span>
-                  </div>
-                </div>
-                <p class="text-gray-700 leading-relaxed mb-5 text-sm">
-                  ${t.lang==='it'
-                    ? 'Il Progetto Vita è uno strumento di pianificazione che aiuta le famiglie a costruire un futuro sereno per i propri figli con Sindrome ReNU. Include la definizione degli obiettivi di vita, le tutele legali (amministratore di sostegno, trust), il testamento biologico e la pianificazione del "Dopo di Noi". Un percorso concreto per affrontare le sfide burocratiche, legali e finanziarie con serenità.'
-                    : 'The Progetto Vita (Life Project) is a planning tool that helps families build a serene future for their children with ReNU Syndrome. It includes defining life goals, legal protections (support administrator, trust), living will and planning for the "After Us". A practical path to face bureaucratic, legal and financial challenges with peace of mind.'}
-                </p>
-                <div class="grid grid-cols-1 gap-2 mb-5">
-                  ${[
-                    ['fa-gavel','ic-navy', t.lang==='it'?'Amministratore di Sostegno':'Support Administrator', t.lang==='it'?'Protezione legale per persone con disabilità cognitiva.':'Legal protection for people with cognitive disability.'],
-                    ['fa-home','ic-green', t.lang==='it'?'Dopo di Noi (L. 112/2016)':'After Us (L. 112/2016)', t.lang==='it'?'Strumenti e fondi per garantire autonomia dopo la scomparsa dei genitori.':'Tools and funds to ensure autonomy after parents\' passing.'],
-                    ['fa-file-signature','ic-sky', t.lang==='it'?'Trust e Fondi Familiari':'Trust & Family Funds', t.lang==='it'?'Pianificazione patrimoniale per tutelare il futuro del figlio.':'Asset planning to protect the child\'s future.'],
-                    ['fa-balance-scale','ic-purple', t.lang==='it'?'Testamento Biologico (DAT)':'Living Will (DAT)', t.lang==='it'?'Disposizioni anticipate di trattamento sanitario.':'Advance healthcare directives.'],
-                  ].map(([icon,ic,title,desc]) => `
-                  <div class="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0">
-                    <div class="ic ${ic} w-8 h-8 flex-shrink-0" style="width:2rem;height:2rem;min-width:2rem">
-                      <i class="fas ${icon} text-sm"></i>
-                    </div>
-                    <div>
-                      <span class="font-bold text-sm" style="color:#082050">${title}</span>
-                      <span class="text-gray-500 text-xs ml-2">${desc}</span>
-                    </div>
-                  </div>`).join('')}
-                </div>
-                <div class="flex flex-wrap gap-3">
-                  <a href="/${t.lang}/faq" class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#059669">
-                    <i class="fas fa-question-circle"></i>${t.lang==='it'?'Guida Diritti & Tutele':'Rights & Protections Guide'}
-                  </a>
-                  <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Informazioni Progetto Vita':'Progetto Vita information')}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7">
-                    <i class="fas fa-envelope"></i>${t.lang==='it'?'Contattaci':'Contact us'}
-                  </a>
-                </div>
-              </div>
-              <div class="relative overflow-hidden rounded-r-2xl" style="min-height:320px">
-                <img src="/images/progetto-vita.png"
-                     alt="${t.lang==='it'?'Progetto Vita – Sindrome ReNU':'Progetto Vita – ReNU Syndrome'}"
-                     class="w-full h-full object-cover" style="min-height:320px" loading="lazy" decoding="async">
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,95,70,0.6) 0%, transparent 50%)"></div>
-                <div class="absolute bottom-4 left-4 right-4">
-                  <span class="inline-flex items-center gap-2 text-white text-xs font-bold px-3 py-1.5 rounded-full" style="background:rgba(5,150,105,0.85)">
-                    <i class="fas fa-heart"></i>${t.lang==='it'?'Costruiamo insieme il futuro':'Building the future together'}
-                  </span>
-                </div>
-              </div>
-            </div>
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="font-bold text-xl mb-2">
+            ${t.lang==='it'?'Diritti, Tutele e Progetto Vita':'Rights, Protections & Life Project'}
+          </h3>
+          <p class="text-sky-100 text-sm mb-4">
+            ${t.lang==='it'?'Tutte le informazioni su Legge 104, agevolazioni, Progetto Vita e pianificazione del futuro sono raccolte nella sezione FAQ & Diritti, pensata per essere un\'area unica, ordinata e facilmente consultabile.':'All information on Law 104, benefits, Life Project and future planning is collected in the FAQ & Rights section, designed as a single, well-organised and easy-to-consult area.'}
+          </p>
+          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+            <a href="/${t.lang}/faq" class="inline-flex items-center gap-2 bg-white font-bold px-5 py-2.5 rounded-full text-sm" style="color:#082050">
+              <i class="fas fa-question-circle"></i>
+              ${t.lang==='it'?'Vai a FAQ & Diritti':'Go to FAQ & Rights'}
+            </a>
+            <a href="/${t.lang}/faq#progetto-vita" class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold px-5 py-2.5 rounded-full text-sm">
+              <i class="fas fa-seedling"></i>
+              ${t.lang==='it'?'Progetto Vita':'Progetto Vita'}
+            </a>
           </div>
         </div>
       </div>
@@ -2687,8 +2580,8 @@ function communityPage(t: Record<string, string>): string {
       <!-- Map and Parent Network -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden" style="aspect-ratio:1024/683">
-            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          <div class="overflow-hidden flex items-center justify-center" style="aspect-ratio:1024/683;background:#EEF6FB">
+            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-contain" style="object-position:center center" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2741,16 +2634,16 @@ function communityPage(t: Record<string, string>): string {
           <i class="fas fa-map-marked-alt" style="color:#1078C0"></i>
           ${t.lang==='it'?'Famiglie ReNU in Italia':'ReNU Families in Italy'}
         </h2>
-        <div class="flex flex-col md:flex-row gap-6 items-center">
-          <div class="flex-shrink-0 flex items-center justify-center" style="position:relative">
+        <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+          <div class="flex-shrink-0 flex items-center justify-center mx-auto md:mx-0" style="position:relative">
             <!-- Mappa Italia reale con badge famiglie -->
-            <div style="position:relative;width:220px">
+            <div style="position:relative;width:240px;display:flex;align-items:center;justify-content:center">
               <img src="/images/renu_mappa_italia_16casi.jpg"
                    alt="Mappa Italia Famiglie ReNU"
-                   style="width:220px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22))"
+                   style="width:240px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22));object-fit:contain"
                    loading="lazy" decoding="async">
               <!-- Badge contatore sovrapposto -->
-              <div style="position:absolute;top:10px;right:-12px;background:#F59E0B;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+              <div style="position:absolute;top:10px;right:-14px;background:#F59E0B;color:white;border-radius:50%;width:66px;height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
                 <span style="font-size:14px;font-weight:800;line-height:1.1">16</span>
                 <span style="font-size:8px;line-height:1.2">casi</span>
                 <span style="font-size:8px;line-height:1.2">in Italia</span>
@@ -4050,9 +3943,13 @@ function projectsPage(t: Record<string, string>): string {
           ${isIt?'Le iniziative e i progetti di Sindrome ReNU Italia APS per supportare famiglie, ricerca e consapevolezza.':'The initiatives and projects of Sindrome ReNU Italia APS to support families, research and awareness.'}
         </p>
       </div>
-      <div class="flex-shrink-0 hidden md:flex gap-4" style="align-items:start">
-        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:8/5"><img src="/images/renu_parents.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" style="object-position:center top" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-52 overflow-hidden rounded-xl" style="aspect-ratio:8/5"><img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+      <div class="flex-shrink-0 hidden md:flex gap-4 items-center">
+        <div class="img-frame overflow-hidden rounded-2xl shadow-xl" style="width:13rem;aspect-ratio:4/5">
+          <img src="/images/renu_parents.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
+        </div>
+        <div class="img-frame overflow-hidden rounded-2xl shadow-xl" style="width:11rem;aspect-ratio:3/4">
+          <img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
   </section>
@@ -4124,7 +4021,7 @@ function projectsPage(t: Record<string, string>): string {
         </div>
 
         <!-- PERCORSO SCUOLA -->
-        <div class="card p-0 overflow-hidden">
+        <div id="percorso-scuola" class="card p-0 overflow-hidden scroll-mt-24">
           <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
             <div class="flex-shrink-0">
               <div class="ic ic-purple w-16 h-16">
@@ -4157,11 +4054,33 @@ function projectsPage(t: Record<string, string>): string {
                   </figure>
                 </a>
               </div>
+              <!-- OPUSCOLI SCARICABILI -->
+              <div class="mb-5 rounded-xl p-5" style="background:#F5F3FF; border:1px solid #DDD6FE">
+                <p class="text-xs font-bold mb-3" style="color:#7C3AED">
+                  <i class="fas fa-download mr-1"></i>${isIt?'Opuscoli scaricabili gratuitamente:':'Free downloadable brochures:'}
+                </p>
+                <div class="flex flex-col gap-2">
+                  <a href="/static/opuscolo-bambini-elementari.pdf" target="_blank" rel="noopener"
+                     class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-colors hover:opacity-90" style="background:#E0F2FE;color:#0369A1">
+                    <i class="fas fa-child text-sm"></i>
+                    <span>${isIt?'Bambini – Scuola Elementare':'Children – Primary School'}</span>
+                    <i class="fas fa-download text-xs ml-auto opacity-60"></i>
+                  </a>
+                  <a href="/static/opuscolo-adolescenti-scuola-media.pdf" target="_blank" rel="noopener"
+                     class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-colors hover:opacity-90" style="background:#EEF2FF;color:#4338CA">
+                    <i class="fas fa-user-graduate text-sm"></i>
+                    <span>${isIt?'Adolescenti – Scuola Media':'Teenagers – Middle School'}</span>
+                    <i class="fas fa-download text-xs ml-auto opacity-60"></i>
+                  </a>
+                  <a href="/static/opuscolo-adulti-educatori.pdf" target="_blank" rel="noopener"
+                     class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-colors hover:opacity-90" style="background:#D1FAE5;color:#059669">
+                    <i class="fas fa-chalkboard-teacher text-sm"></i>
+                    <span>${isIt?'Adulti, Insegnanti & Educatori':'Adults, Teachers & Educators'}</span>
+                    <i class="fas fa-download text-xs ml-auto opacity-60"></i>
+                  </a>
+                </div>
+              </div>
               <div class="flex flex-wrap gap-3">
-                <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank"
-                   class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#7C3AED">
-                  <i class="fas fa-folder-open"></i>${isIt?'Scarica gli opuscoli scuola':'Download school materials'}
-                </a>
                 <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Percorso Scuola ReNU':'ReNU School Pathway')}"
                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#F5F3FF;color:#7C3AED;border:1px solid #7C3AED">
                   <i class="fas fa-envelope"></i>${isIt?'Richiedi supporto':'Request support'}
@@ -4210,15 +4129,15 @@ function membersPage(t: Record<string, string>): string {
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
 
-      <!-- Banner approvazione CDA -->
-      <div class="rounded-2xl p-6 mb-10 flex items-start gap-4" style="background:#FEF3C7; border: 2px solid #F59E0B">
-        <i class="fas fa-clock text-3xl mt-1 flex-shrink-0" style="color:#D97706"></i>
+      <!-- Quota associativa approvata -->
+      <div class="rounded-2xl p-6 mb-10 flex items-start gap-4" style="background:#D1FAE5; border: 2px solid #059669">
+        <i class="fas fa-check-circle text-3xl mt-1 flex-shrink-0" style="color:#059669"></i>
         <div>
-          <h3 class="font-bold text-xl mb-1" style="color:#92400E">
-            ${t.lang==='it'?'In attesa di delibera del Consiglio Direttivo':'Pending Board of Directors resolution'}
+          <h3 class="font-bold text-xl mb-1" style="color:#065F46">
+            ${t.lang==='it'?'Quota Associativa Annuale: 25 €':'Annual Membership Fee: €25'}
           </h3>
-          <p class="text-amber-800 text-sm leading-relaxed">
-            ${t.lang==='it'?'La quota associativa e le modalità di iscrizione sono in fase di definizione da parte del Consiglio Direttivo. Questa pagina sarà aggiornata non appena il CDA avrà approvato il regolamento. Per essere informato/a in anticipo, iscriviti alla nostra newsletter o scrivici a info@sindromerenu.it.':'The membership fee and registration procedures are being defined by the Board of Directors. This page will be updated as soon as the Board has approved the regulations. To be informed in advance, subscribe to our newsletter or write to us at info@sindromerenu.it.'}
+          <p class="text-green-800 text-sm leading-relaxed">
+            ${t.lang==='it'?'Il Consiglio Direttivo ha approvato la quota associativa annuale di <strong>25 euro</strong>. La quota è valida per tutti i tipi di socio (familiare, sostenitore). Compila il modulo qui sotto per iscriverti o pre-iscriverti — ti contatteremo con le istruzioni di pagamento.':'The Board of Directors has approved the annual membership fee of <strong>€25</strong>. The fee applies to all member types (family, supporting). Fill in the form below to register or pre-register — we will contact you with payment instructions.'}
           </p>
         </div>
       </div>
@@ -4249,7 +4168,7 @@ function membersPage(t: Record<string, string>): string {
       <div class="card card-navy p-8 mb-10">
         <h3 class="font-bold text-xl mb-4 flex items-center gap-2" style="color:#082050">
           <i class="fas fa-tag" style="color:#1078C0"></i>
-          ${t.lang==='it'?'Quote Associative (in definizione)':'Membership Fees (being defined)'}
+          ${t.lang==='it'?'Quote Associative':'Membership Fees'}
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           ${[
@@ -4261,15 +4180,15 @@ function membersPage(t: Record<string, string>): string {
             <div class="ic ${ic} mx-auto mb-3"><i class="fas ${icon}"></i></div>
             <h4 class="font-bold mb-1" style="color:#082050">${title}</h4>
             <p class="text-gray-500 text-xs mb-3">${desc}</p>
-            <div class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#FEF3C7; color:#92400E">
-              <i class="fas fa-clock text-xs"></i>
-              ${t.lang==='it'?'Quota in definizione':'Fee being defined'}
+            <div class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#D1FAE5; color:#065F46">
+              <i class="fas fa-euro-sign text-xs"></i>
+              25 €/anno
             </div>
           </div>`).join('')}
         </div>
         <p class="text-gray-500 text-xs mt-4 flex items-center gap-1">
           <i class="fas fa-info-circle" style="color:#45B8EC"></i>
-          ${t.lang==='it'?'Le quote definitive saranno comunicate dopo l\'approvazione del CDA. Per informazioni scrivi a':'Final fees will be communicated after Board approval. For information write to'}
+          ${t.lang==='it'?'La quota annuale di 25€ è valida per tutti i soci. Per informazioni scrivi a':'The annual fee of €25 applies to all members. For information write to'}
           <a href="mailto:segreteria@sindromerenu.it" class="underline" style="color:#1078C0">segreteria@sindromerenu.it</a>
         </p>
       </div>
@@ -4278,10 +4197,10 @@ function membersPage(t: Record<string, string>): string {
       <div class="mt-10 card card-navy p-8">
         <h3 class="text-2xl font-extrabold mb-2 flex items-center gap-2" style="color:#082050">
           <i class="fas fa-user-plus" style="color:#1078C0"></i>
-          ${t.lang==='it'?'Pre-Iscrizione – Lista d\'Attesa':'Pre-Registration – Waiting List'}
+          ${t.lang==='it'?'Iscriviti – Quota 25€/anno':'Registration – Fee €25/year'}
         </h3>
         <p class="text-gray-600 text-sm mb-6">
-          ${t.lang==='it'?'Compila il form per essere inserito/a nella lista di attesa. Riceverai tutte le comunicazioni sull\'iscrizione appena il Consiglio Direttivo avrà approvato le modalità (quota, metodo di pagamento, statuto).':'Fill in the form to be added to the waiting list. You will receive all communications about registration as soon as the Board of Directors approves the procedures.'}
+          ${t.lang==='it'?'Compila il form per iscriverti all\'associazione. La quota annuale è di <strong>25 euro</strong>. Ti contatteremo con le istruzioni per il pagamento e l\'invio della documentazione.':'Fill in the form to join the association. The annual fee is <strong>€25</strong>. We will contact you with payment instructions and documentation.'}
         </p>
         <form id="preIscrForm" onsubmit="submitPreIscr(event)" class="space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -4381,7 +4300,7 @@ function membersPage(t: Record<string, string>): string {
             const data = await res.json();
             if (res.ok && data.success) {
               msg.style.background = '#D1FAE5'; msg.style.color = '#065F46';
-              msg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>${t.lang==='it'?'✅ Iscrizione completata! Ti contatteremo appena sarà definita la quota associativa.':'✅ Registration complete! We will contact you as soon as the membership fee is set.'}';
+              msg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>${t.lang==='it'?'✅ Iscrizione completata! Ti contatteremo a breve con le istruzioni per il versamento della quota annuale di 25€.':'✅ Registration complete! We will contact you shortly with instructions for paying the annual fee of €25.'}';
               form.reset();
               btn.innerHTML = '<i class="fas fa-check mr-2"></i>${t.lang==='it'?'Inviato con successo':'Successfully sent'}';
               // Banner accoglienza per Socio Familiare
@@ -4599,6 +4518,8 @@ function faqPage(t: Record<string, string>): string {
         <a href="#regioni" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"><i class="fas fa-map-italy text-xs"></i>Misure Regionali</a>
         <a href="#730" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"><i class="fas fa-file-invoice text-xs"></i>Detrazioni 730</a>
         <a href="#costituzione" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"><i class="fas fa-balance-scale text-xs"></i>Articoli Costituzione</a>
+        <a href="#diritti-tutele" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"><i class="fas fa-shield-alt text-xs"></i>Diritti e Tutele</a>
+        <a href="#progetto-vita" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-colors"><i class="fas fa-seedling text-xs"></i>Progetto Vita</a>
         `:''}
       </div>
     </div>
@@ -4804,6 +4725,113 @@ function faqPage(t: Record<string, string>): string {
           });
       })();
       </script>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- DIRITTI E TUTELE                                          -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <div id="diritti-tutele" class="mt-16 scroll-mt-24">
+        <h2 class="text-2xl font-extrabold mb-2 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-shield-alt" style="color:#1078C0"></i>
+          ${t.lang==='it'?'Diritti e Tutele – Rete Famiglie Italia':t.lang==='en'?'Rights & Protections – Italian Family Network':'Droits et Protections – Réseau Familles Italie'}
+        </h2>
+        <p class="text-gray-500 text-sm mb-6">
+          ${t.lang==='it'?'Agevolazioni, permessi e tutele previsti dalla legislazione italiana per le famiglie con un bambino con Sindrome ReNU.':'Benefits, leave and protections under Italian law for families with a child with ReNU Syndrome.'}
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          ${[
+            ['fa-id-card','ic-blue',
+              t.lang==='it'?'Legge 104/92 – Assistenza Disabili':'Law 104/92 – Disability Assistance',
+              t.lang==='it'?'Permessi lavorativi per genitori (3 giorni/mese), congedi straordinari, agevolazioni fiscali e supporto scolastico. La Sindrome ReNU può dare diritto alla 104 in situazione di gravità (art. 3 comma 3).':'Work leave for parents (3 days/month), extraordinary leave, tax benefits and school support. ReNU Syndrome may qualify for law 104 in serious condition (art. 3 comma 3).'],
+            ['fa-car','ic-purple',
+              t.lang==='it'?'Contrassegno Disabile (Pass Auto)':'Disabled Badge (Car Pass)',
+              t.lang==='it'?'Il contrassegno per parcheggio disabili si richiede al Comune di residenza tramite certificazione medica. Permette la sosta in zone riservate e agevolazioni per la circolazione.':'The disabled parking badge is requested at the municipality of residence via medical certification. It allows parking in reserved areas and circulation benefits.'],
+            ['fa-graduation-cap','ic-green',
+              t.lang==='it'?'Supporto Scolastico (Insegnante di Sostegno)':'School Support (Support Teacher)',
+              t.lang==='it'?'Il bambino con ReNU ha diritto all\'insegnante di sostegno, al Piano Educativo Individualizzato (PEI) e ad ausili didattici specifici. Richiede certificazione della disabilità e valutazione UMVD.':'A ReNU child has the right to a support teacher, an Individual Educational Plan (PEI) and specific teaching aids. Requires disability certification and UMVD assessment.'],
+            ['fa-money-bill-wave','ic-amber',
+              t.lang==='it'?'Indennità di Accompagnamento e Bonus':'Attendance Allowance & Bonuses',
+              t.lang==='it'?'L\'indennità di accompagnamento INPS è riservata ai disabili totali che non possono deambulare autonomamente. Esistono anche altri bonus: Bonus Bebè, Assegno Unico, agevolazioni ISEE per disabili.':'INPS attendance allowance is reserved for total disabled people who cannot walk independently. Other bonuses also exist: Baby Bonus, Unique Allowance, ISEE benefits for disabled.'],
+            ['fa-id-badge','ic-navy',
+              t.lang==='it'?'Disability Card (Carta Europea della Disabilità)':'Disability Card (European Disability Card)',
+              t.lang==='it'?'La Disability Card è una tessera europea che certifica la disabilità e dà accesso a agevolazioni in strutture pubbliche, musei, trasporti e servizi. Si richiede tramite INPS.':'The Disability Card is a European card certifying disability and provides access to benefits in public facilities, museums, transport and services. Applied for via INPS.'],
+            ['fa-hand-holding-heart','ic-red',
+              t.lang==='it'?'Rete Famiglie ReNU Italia':'ReNU Italy Family Network',
+              t.lang==='it'?'Connettiti con le altre famiglie italiane con un bambino ReNU. Condividiamo esperienze, suggerimenti pratici e supporto emotivo. Scrivici a info@sindromerenu.it per essere inserito nella rete!':'Connect with other Italian families with a ReNU child. We share experiences, practical tips and emotional support. Write to us at info@sindromerenu.it to join the network!'],
+          ].map(([icon,ic,title,desc]) => `
+          <div class="card p-5 flex gap-4">
+            <div class="ic ${ic} flex-shrink-0"><i class="fas ${icon} text-lg"></i></div>
+            <div>
+              <h3 class="font-bold mb-1" style="color:#082050">${title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">${desc}</p>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- PROGETTO VITA – PIANIFICAZIONE DEL FUTURO                 -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <div id="progetto-vita" class="mt-14 scroll-mt-24">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-seedling" style="color:#059669"></i>
+          ${t.lang==='it'?'Progetto Vita – Pianificazione del Futuro':'Progetto Vita – Future Planning'}
+        </h2>
+        <div class="card p-0 overflow-hidden mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-6 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="ic ic-green w-14 h-14 flex-shrink-0">
+                  <i class="fas fa-seedling text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg" style="color:#082050">PROGETTO VITA</h3>
+                  <span class="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full" style="background:#D1FAE5;color:#065F46">
+                    <i class="fas fa-leaf text-xs"></i>${t.lang==='it'?'Pianificazione del futuro':'Future planning'}
+                  </span>
+                </div>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-5 text-sm">
+                ${t.lang==='it'
+                  ? 'Il Progetto Vita è uno strumento di pianificazione che aiuta le famiglie a costruire un futuro sereno per i propri figli con Sindrome ReNU. Include la definizione degli obiettivi di vita, le tutele legali (amministratore di sostegno, trust), il testamento biologico e la pianificazione del "Dopo di Noi". Un percorso concreto per affrontare le sfide burocratiche, legali e finanziarie con serenità.'
+                  : 'The Progetto Vita (Life Project) is a planning tool that helps families build a serene future for their children with ReNU Syndrome. It includes defining life goals, legal protections (support administrator, trust), living will and planning for the "After Us". A practical path to face bureaucratic, legal and financial challenges with peace of mind.'}
+              </p>
+              <div class="grid grid-cols-1 gap-2 mb-5">
+                ${[
+                  ['fa-gavel','ic-navy', t.lang==='it'?'Amministratore di Sostegno':'Support Administrator', t.lang==='it'?'Protezione legale per persone con disabilità cognitiva.':'Legal protection for people with cognitive disability.'],
+                  ['fa-home','ic-green', t.lang==='it'?'Dopo di Noi (L. 112/2016)':'After Us (L. 112/2016)', t.lang==='it'?'Strumenti e fondi per garantire autonomia dopo la scomparsa dei genitori.':'Tools and funds to ensure autonomy after parents\'s passing.'],
+                  ['fa-file-signature','ic-sky', t.lang==='it'?'Trust e Fondi Familiari':'Trust & Family Funds', t.lang==='it'?'Pianificazione patrimoniale per tutelare il futuro del figlio.':'Asset planning to protect the child\'s future.'],
+                  ['fa-balance-scale','ic-purple', t.lang==='it'?'Testamento Biologico (DAT)':'Living Will (DAT)', t.lang==='it'?'Disposizioni anticipate di trattamento sanitario.':'Advance healthcare directives.'],
+                ].map(([icon,ic,title,desc]) => `
+                <div class="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0">
+                  <div class="ic ${ic} w-8 h-8 flex-shrink-0" style="width:2rem;height:2rem;min-width:2rem">
+                    <i class="fas ${icon} text-sm"></i>
+                  </div>
+                  <div>
+                    <span class="font-bold text-sm" style="color:#082050">${title}</span>
+                    <span class="text-gray-500 text-xs ml-2">${desc}</span>
+                  </div>
+                </div>`).join('')}
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Informazioni Progetto Vita':'Progetto Vita information')}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7">
+                  <i class="fas fa-envelope"></i>${t.lang==='it'?'Contattaci':'Contact us'}
+                </a>
+              </div>
+            </div>
+            <div class="relative overflow-hidden rounded-r-2xl" style="min-height:320px">
+              <img src="/images/progetto-vita.png"
+                   alt="${t.lang==='it'?'Progetto Vita – Sindrome ReNU':'Progetto Vita – ReNU Syndrome'}"
+                   class="w-full h-full object-cover" style="min-height:320px" loading="lazy" decoding="async">
+              <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,95,70,0.6) 0%, transparent 50%)"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span class="inline-flex items-center gap-2 text-white text-xs font-bold px-3 py-1.5 rounded-full" style="background:rgba(5,150,105,0.85)">
+                  <i class="fas fa-heart"></i>${t.lang==='it'?'Costruiamo insieme il futuro':'Building the future together'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Contattaci -->
       <div class="mt-12 rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
@@ -5178,29 +5206,19 @@ function sciencePage(t: Record<string, string>): string {
               </span>
             </div>
           </a>
-          <div class="card p-6 flex items-start gap-4" style="border-top:3px solid #7C3AED">
-            <div class="ic ic-purple w-12 h-12 flex-shrink-0 mt-0.5">
+          <a href="/${t.lang}/projects#percorso-scuola" 
+             class="card p-6 flex items-center gap-4 group hover:border-purple-400 transition-all" style="border-top:3px solid #7C3AED">
+            <div class="ic ic-purple w-12 h-12 flex-shrink-0">
               <i class="fas fa-graduation-cap text-lg"></i>
             </div>
             <div class="flex-1">
-              <h3 class="font-bold mb-1" style="color:#082050">${isIt?'Opuscoli Scuola':'School Brochures'}</h3>
-              <p class="text-xs text-gray-500 mb-3">${isIt?'3 opuscoli scaricabili: bambini, adolescenti, adulti/educatori':'3 downloadable brochures: children, teens, adults/educators'}</p>
-              <div class="flex flex-col gap-1.5">
-                <a href="/static/opuscolo-bambini-elementari.pdf" target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#E0F2FE;color:#0369A1">
-                  <i class="fas fa-download text-xs"></i>${isIt?'Bambini (elementari)':'Children (primary)'}
-                </a>
-                <a href="/static/opuscolo-adolescenti-scuola-media.pdf" target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#EEF2FF;color:#4338CA">
-                  <i class="fas fa-download text-xs"></i>${isIt?'Adolescenti (scuola media)':'Teens (middle school)'}
-                </a>
-                <a href="/static/opuscolo-adulti-educatori.pdf" target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#D1FAE5;color:#059669">
-                  <i class="fas fa-download text-xs"></i>${isIt?'Adulti, insegnanti & educatori':'Adults, teachers & educators'}
-                </a>
-              </div>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Opuscoli Scuola':'School Brochures'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'3 opuscoli per bambini, adolescenti, adulti/educatori':'3 brochures for children, teens, adults/educators'}</p>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#7C3AED">
+                ${isIt?'Vai alla sezione Progetti':'Go to Projects section'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -5587,7 +5605,7 @@ app.post('/api/lista-attesa', async (c) => {
 
     return c.json({
       success: true,
-      message: 'Iscrizione alla lista d\'attesa completata. Ti contatteremo non appena sarà approvata la quota associativa.',
+      message: 'Iscrizione completata. Ti contatteremo a breve con le istruzioni per il versamento della quota annuale di 25€.',
       gdpr: 'Dati trattati ai sensi del GDPR (Reg. UE 2016/679). Consenso registrato.'
     }, 201)
   } catch (err: any) {
