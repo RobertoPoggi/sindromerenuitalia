@@ -127,7 +127,7 @@ const translations: Record<string, Record<string, string>> = {
     privacy_link: 'Privacy Policy',
     mascot_desc: 'Reny è la mascotte di ReNU Italia. Puoi scaricare le risorse grafiche per sensibilizzare sui social media.',
     stories_it_title: 'Storie di Famiglie Italiane con ReNU',
-    stories_it_desc: 'Storie di famiglie italiane con la Sindrome ReNU — in arrivo. Nel frattempo puoi leggere le storie della community internazionale.',
+    stories_it_desc: '',
     stories_read_full: 'Leggi la storia completa',
     stories_loading: 'Caricamento storie...',
     stories_read: 'Leggi la storia',
@@ -487,7 +487,7 @@ const translations: Record<string, Record<string, string>> = {
     privacy_link: 'Politique de confidentialité',
     mascot_desc: 'Reny est la mascotte de ReNU Italie. Vous pouvez télécharger les ressources graphiques pour sensibiliser le public sur les réseaux sociaux.',
     stories_it_title: 'Histoires de familles ReNU',
-    stories_it_desc: 'Histoires de familles italiennes avec le Syndrome ReNU. En attendant, lisez les histoires de la communauté internationale.',
+    stories_it_desc: '',
     stories_read_full: 'Lire l\'histoire complète',
     stories_loading: 'Chargement des histoires...',
     stories_read: 'Lire',
@@ -677,7 +677,7 @@ const translations: Record<string, Record<string, string>> = {
     privacy_link: 'Política de Privacidad',
     mascot_desc: 'Reny es la mascota de ReNU Italia. Puede descargar los recursos gráficos para concienciar en redes sociales.',
     stories_it_title: 'Historias de Familias ReNU',
-    stories_it_desc: 'Historias de familias italianas con Síndrome ReNU. Mientras tanto, lea las historias de la comunidad internacional.',
+    stories_it_desc: '',
     stories_read_full: 'Leer la historia completa',
     stories_loading: 'Cargando historias...',
     stories_read: 'Leer',
@@ -867,7 +867,7 @@ const translations: Record<string, Record<string, string>> = {
     privacy_link: 'Datenschutzerklärung',
     mascot_desc: 'Reny ist das Maskottchen von ReNU Italia. Sie können die Grafikressourcen herunterladen, um in sozialen Medien Bewusstsein zu schaffen.',
     stories_it_title: 'Geschichten von ReNU-Familien',
-    stories_it_desc: 'Geschichten von italienischen Familien mit dem ReNU-Syndrom. In der Zwischenzeit lesen Sie die Geschichten der internationalen Gemeinschaft.',
+    stories_it_desc: '',
     stories_read_full: 'Vollständige Geschichte lesen',
     stories_loading: 'Geschichten werden geladen...',
     stories_read: 'Lesen',
@@ -1759,9 +1759,7 @@ function homePage(t: Record<string, string>): string {
         <h2 class="text-3xl font-extrabold" style="color:#082050">
           ${t.stories_it_title}
         </h2>
-        <p class="text-gray-500 mt-2 text-sm">
-          ${t.stories_it_desc}
-        </p>
+        ${t.stories_it_desc ? `<p class="text-gray-500 mt-2 text-sm">${t.stories_it_desc}</p>` : ''}
       </div>
       <!-- Modale storia bambino -->
       <div id="storia-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,32,80,0.7);backdrop-filter:blur(4px)" onclick="if(event.target===this)chiudiStoria()">
