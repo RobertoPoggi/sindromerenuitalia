@@ -3826,54 +3826,6 @@ function brochurePage(t: Record<string, string>): string {
   })();
   </script>
 
-      <!-- Link cartelle Drive -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
-           class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
-          <div class="ic ic-sky w-12 h-12 flex-shrink-0">
-            <i class="fas fa-file-medical-alt text-lg"></i>
-          </div>
-          <div>
-            <h3 class="font-bold" style="color:#082050">
-              ${isIt?'Cartella Articoli Scientifici':t.lang==='en'?'Scientific Articles Folder':'Dossier Articles scientifiques'}
-            </h3>
-            <p class="text-xs text-gray-500 mt-0.5">
-              ${isIt?'Pubblicazioni e ricerche su RNU4-2 – Google Drive':t.lang==='en'?'Publications and research on RNU4-2 – Google Drive':'Publications et recherches sur RNU4-2'}
-            </p>
-            <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#1078C0">
-              ${isIt?'Apri cartella':'Open folder'} <i class="fas fa-external-link-alt text-xs group-hover:translate-x-0.5 transition-transform"></i>
-            </span>
-          </div>
-        </a>
-        <div class="card p-6 flex items-start gap-4" style="border-top:3px solid #7C3AED">
-          <div class="ic ic-purple w-12 h-12 flex-shrink-0 mt-0.5">
-            <i class="fas fa-graduation-cap text-lg"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-bold mb-1" style="color:#082050">
-              ${isIt?'Opuscoli Scuola':t.lang==='en'?'School Brochures':'Brochures scolaires'}
-            </h3>
-            <p class="text-xs text-gray-500 mb-3">
-              ${isIt?'3 opuscoli scaricabili: bambini, adolescenti, adulti/educatori':t.lang==='en'?'3 downloadable brochures: children, teens, adults/educators':'3 brochures téléchargeables: enfants, ados, adultes/éducateurs'}
-            </p>
-            <div class="flex flex-col gap-1.5">
-              <a href="/static/opuscolo-bambini-elementari.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#E0F2FE;color:#0369A1">
-                <i class="fas fa-download text-xs"></i>${isIt?'Bambini (elementari)':t.lang==='en'?'Children (primary)':'Enfants (primaire)'}
-              </a>
-              <a href="/static/opuscolo-adolescenti-scuola-media.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#EEF2FF;color:#4338CA">
-                <i class="fas fa-download text-xs"></i>${isIt?'Adolescenti (scuola media)':t.lang==='en'?'Teens (middle school)':'Adolescents (collège)'}
-              </a>
-              <a href="/static/opuscolo-adulti-educatori.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg" style="background:#D1FAE5;color:#059669">
-                <i class="fas fa-download text-xs"></i>${isIt?'Adulti, insegnanti & educatori':t.lang==='en'?'Adults, teachers & educators':'Adultes, enseignants & éducateurs'}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>`
 }
