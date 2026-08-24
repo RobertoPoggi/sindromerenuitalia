@@ -2580,8 +2580,8 @@ function communityPage(t: Record<string, string>): string {
       <!-- Map and Parent Network -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
-          <div class="overflow-hidden flex items-center justify-center" style="aspect-ratio:1024/683;background:#EEF6FB">
-            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-full object-contain" style="object-position:center center" loading="lazy" decoding="async">
+          <div class="flex items-center justify-center p-3" style="background:#EEF6FB">
+            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto" style="display:block;border-radius:0.5rem" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -3944,11 +3944,11 @@ function projectsPage(t: Record<string, string>): string {
         </p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4 items-center">
-        <div class="img-frame overflow-hidden rounded-2xl shadow-xl" style="width:13rem;aspect-ratio:4/5">
+        <div class="img-frame overflow-hidden rounded-2xl shadow-xl" style="width:13rem;aspect-ratio:16/10">
           <img src="/images/renu_parents.jpg" alt="Volontari ReNU Italia" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
         </div>
-        <div class="img-frame overflow-hidden rounded-2xl shadow-xl" style="width:11rem;aspect-ratio:3/4">
-          <img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-full object-cover" style="object-position:center center" loading="lazy" decoding="async">
+        <div class="overflow-hidden rounded-2xl shadow-xl flex items-center justify-center" style="width:11rem;background:#F5F3FF">
+          <img src="/images/renu_progetto_scuola.jpg" alt="Progetto scuola ReNU" class="w-full h-auto" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
