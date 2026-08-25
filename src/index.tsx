@@ -126,6 +126,7 @@ const translations: Record<string, Record<string, string>> = {
     map_btn: 'Vedi Mappa',
     stories_nodesc: 'La storia di questo bambino sarà presto condivisa dalla famiglia.',
     privacy_link: 'Privacy Policy',
+    mascot_title: 'Tartaruga Reny',
     mascot_desc: 'Reny è la mascotte di ReNU Italia. Puoi scaricare le risorse grafiche per sensibilizzare sui social media.',
     stories_it_title: 'Storie di Famiglie Italiane con ReNU',
     stories_it_desc: '',
@@ -296,6 +297,7 @@ const translations: Record<string, Record<string, string>> = {
     map_btn: 'See Map',
     stories_nodesc: 'This child\'s story will be shared by the family soon.',
     privacy_link: 'Privacy Policy',
+    mascot_title: 'Reny the Turtle',
     mascot_desc: 'Reny is the mascot of ReNU Italia. You can download the graphic resources to raise awareness on social media.',
     stories_it_title: 'Stories from ReNU Families',
     stories_it_desc: 'Real stories from around the world, from the ReNU Syndrome United community.',
@@ -486,6 +488,7 @@ const translations: Record<string, Record<string, string>> = {
     map_btn: 'Voir la Carte',
     stories_nodesc: 'L\'histoire de cet enfant sera bientôt partagée par la famille.',
     privacy_link: 'Politique de confidentialité',
+    mascot_title: 'Reny la Tortue',
     mascot_desc: 'Reny est la mascotte de ReNU Italie. Vous pouvez télécharger les ressources graphiques pour sensibiliser le public sur les réseaux sociaux.',
     stories_it_title: 'Histoires de familles ReNU',
     stories_it_desc: '',
@@ -676,6 +679,7 @@ const translations: Record<string, Record<string, string>> = {
     map_btn: 'Ver Mapa',
     stories_nodesc: 'La historia de este niño será pronto compartida por la familia.',
     privacy_link: 'Política de Privacidad',
+    mascot_title: 'Tortuga Reny',
     mascot_desc: 'Reny es la mascota de ReNU Italia. Puede descargar los recursos gráficos para concienciar en redes sociales.',
     stories_it_title: 'Historias de Familias ReNU',
     stories_it_desc: '',
@@ -866,6 +870,7 @@ const translations: Record<string, Record<string, string>> = {
     map_btn: 'Karte ansehen',
     stories_nodesc: 'Die Geschichte dieses Kindes wird bald von der Familie geteilt.',
     privacy_link: 'Datenschutzerklärung',
+    mascot_title: 'Schildkröte Reny',
     mascot_desc: 'Reny ist das Maskottchen von ReNU Italia. Sie können die Grafikressourcen herunterladen, um in sozialen Medien Bewusstsein zu schaffen.',
     stories_it_title: 'Geschichten von ReNU-Familien',
     stories_it_desc: '',
@@ -1033,7 +1038,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-25-e">
+  <meta name="build" content="2026-08-25-f">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
