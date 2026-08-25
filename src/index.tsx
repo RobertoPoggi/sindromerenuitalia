@@ -1033,6 +1033,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
+  <meta name="build" content="2026-08-25-d">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
