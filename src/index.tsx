@@ -1565,11 +1565,7 @@ function homePage(t: Record<string, string>): string {
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.18);border-radius:9999px;padding:8px 16px;font-size:0.875rem;margin-bottom:1.5rem;color:#BAE6FD;border:1px solid rgba(255,255,255,0.25);">
             <i class="fas fa-dna" style="color:#7DD3FC;"></i> ${t.tagline}
           </div>
-          <h1 class="font-extrabold mb-4 leading-tight" style="font-size:clamp(1.4rem,3.5vw,2.5rem);">${
-            t.lang==='it'
-              ? 'Sindrome <strong>ReNU</strong> Italia APS — per <strong>bambini, ragazzi e famiglie</strong>'
-              : t.hero_text.replace(/bambini, ragazzi e famiglie/,'<strong>bambini, ragazzi e famiglie</strong>')
-          }</h1>
+          <h1 class="font-extrabold mb-4 leading-tight" style="font-size:clamp(1.7rem,4vw,3rem);">Sindrome <strong>ReNU</strong> Italia APS</h1>
           ${t.lang==='it'
             ? `<p class="text-sky-200 text-sm md:text-base mb-4 leading-relaxed italic">${t.hero_text}</p>`
             : ''
@@ -4565,13 +4561,13 @@ function faqPage(t: Record<string, string>): string {
       steps: t.lang==='it' ? [
         'Ottenere la certificazione di disabilità (Legge 104 art. 3 comma 1 o 3) e la diagnosi funzionale.',
         'Presentare la documentazione alla scuola prima dell\'inizio dell\'anno scolastico.',
-        'La scuola convoca il GLHO (Gruppo di Lavoro Operativo) per la definizione del PEI (Piano Educativo Individualizzato).',
+        'La scuola convoca il GLO (Gruppo di Lavoro Operativo) per la definizione del PEI (Piano Educativo Individualizzato).',
         'L\'insegnante di sostegno viene assegnato dall\'USR (Ufficio Scolastico Regionale).',
         'In caso di diniego o ore insufficienti, si può fare ricorso tramite il Difensore Civico o un legale.',
       ] : [
         'Obtain the disability certificate (Law 104 art. 3 comma 1 or 3) and functional diagnosis.',
         'Submit documentation to the school before the start of the school year.',
-        'The school convenes the GLHO to define the PEI (Individual Educational Plan).',
+        'The school convenes the GLO to define the PEI (Individual Educational Plan).',
         'The support teacher is assigned by the Regional School Office (USR).',
         'If denied or hours are insufficient, you can appeal via the Civil Ombudsman or a lawyer.',
       ],
