@@ -22,7 +22,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (14 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (${t.casi_italia} in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -211,7 +211,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Together, we make a difference',
     tagline: 'A newly identified genetic condition. A globally coordinated research effort.',
     hero_text: 'RNU4-2 Emerges as a Leading Cause of Rare Neurodevelopmental Disorders – <strong>Renewing Hope for Families</strong>',
-    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (14 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
+    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (${t.casi_italia} in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
     nav_home: 'Home', nav_about: 'About ReNU', nav_research: 'Research',
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
@@ -381,7 +381,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Ensemble, nous faisons la différence',
     tagline: 'Une condition génétique nouvellement identifiée. Un effort de recherche coordonné mondialement.',
     hero_text: 'RNU4-2 émerge comme une cause majeure de troubles rares du neurodéveloppement – <strong>Renouvelant l\'espoir pour les familles</strong>',
-    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (14 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
+    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (${t.casi_italia} en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
     nav_home: 'Accueil', nav_about: 'À propos de ReNU', nav_research: 'Recherche',
     nav_therapies: 'Thérapies', nav_diagnosis: 'Diagnostic', nav_community: 'Communauté',
     nav_donations: 'Dons', nav_contact: 'Contact', nav_brochure: 'Brochures',
@@ -571,7 +571,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Juntos, hacemos la diferencia',
     tagline: 'Una condición genética recién identificada. Un esfuerzo de investigación coordinado a nivel mundial.',
     hero_text: 'RNU4-2 emerge como una causa principal de trastornos raros del neurodesarrollo – <strong>Renovando la Esperanza para las Familias</strong>',
-    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (14 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
+    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (${t.casi_italia} en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
     nav_home: 'Inicio', nav_about: 'Sobre ReNU', nav_research: 'Investigación',
     nav_therapies: 'Terapias', nav_diagnosis: 'Diagnóstico', nav_community: 'Comunidad',
     nav_donations: 'Donaciones', nav_contact: 'Contacto', nav_brochure: 'Folletos',
@@ -761,7 +761,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Gemeinsam machen wir den Unterschied',
     tagline: 'Eine neu identifizierte genetische Erkrankung. Eine global koordinierte Forschungsarbeit.',
     hero_text: 'RNU4-2 entwickelt sich zu einer führenden Ursache seltener neurologischer Entwicklungsstörungen – <strong>Neue Hoffnung für Familien</strong>',
-    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (14 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
+    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (${t.casi_italia} in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
     nav_home: 'Startseite', nav_about: 'Über ReNU', nav_research: 'Forschung',
     nav_therapies: 'Therapien', nav_diagnosis: 'Diagnose', nav_community: 'Gemeinschaft',
     nav_donations: 'Spenden', nav_contact: 'Kontakt', nav_brochure: 'Broschüren',
@@ -1602,7 +1602,7 @@ function homePage(t: Record<string, string>): string {
   <section class="stat-bar text-white py-6 px-4">
     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
       <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_world}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300">14</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300" id="stat-cases-italy">${t.casi_italia||'16'}</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.stat_dna}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.stat_countries}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.stat_year}</div></div>
@@ -2385,7 +2385,7 @@ function therapiesPage(t: Record<string, string>): string {
               <i class="fas fa-question-circle"></i>
               ${t.lang==='it'?'Vai a FAQ & Diritti':'Go to FAQ & Rights'}
             </a>
-            <a href="/${t.lang}/faq#progetto-vita" class="inline-flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold px-5 py-2.5 rounded-full text-sm">
+            <a href="/${t.lang}/faq#progetto-vita" class="inline-flex items-center gap-2 text-white font-bold px-5 py-2.5 rounded-full text-sm" style="border:2px solid rgba(255,255,255,0.8);background:rgba(255,255,255,0.12)">
               <i class="fas fa-seedling"></i>
               ${t.lang==='it'?'Progetto Vita':'Progetto Vita'}
             </a>
@@ -3129,7 +3129,8 @@ function donationsPage(t: Record<string, string>): string {
               ${t.lang==='it'?'Dona con Bonifico Bancario':'Donate via Bank Transfer'}
             </a>
             <a href="mailto:donazioni@sindromerenu.it"
-               class="inline-flex items-center gap-2 bg-white bg-opacity-15 hover:bg-opacity-25 text-white font-semibold px-7 py-4 rounded-full text-base transition-colors border border-white border-opacity-30">
+               class="inline-flex items-center gap-2 text-white font-semibold px-7 py-4 rounded-full text-base transition-colors"
+               style="border:2px solid rgba(255,255,255,0.8);background:rgba(255,255,255,0.15)">
               <i class="fas fa-envelope"></i>
               ${t.lang==='it'?'Scrivi per informazioni':'Write for information'}
             </a>
@@ -5500,13 +5501,28 @@ async function loadTesti(db: D1Database | undefined, lang: string): Promise<Reco
   } catch { return {} }
 }
 
+// ─── HELPER: carica parametri config dal DB ───────────────────────────────────
+async function loadConfig(db: D1Database | undefined): Promise<Record<string,string>> {
+  if (!db) return {}
+  try {
+    const r = await db.prepare('SELECT chiave, valore FROM config').all()
+    const out: Record<string,string> = {}
+    for (const row of (r.results as any[])) {
+      if (row.chiave) out[row.chiave] = row.valore ?? ''
+    }
+    return out
+  } catch { return {} }
+}
+
 for (const lang of ['it','en','fr','es','de']) {
   app.get(`/${lang}`, (c) => c.redirect(`/${lang}/home`))
   for (const [page, fn] of Object.entries(pages)) {
     app.get(`/${lang}/${page}`, async (c) => {
       const base = translations[lang]
       const overrides = await loadTesti(c.env?.DB, lang)
-      const t = Object.keys(overrides).length > 0 ? { ...base, ...overrides } : base
+      const config = await loadConfig(c.env?.DB)
+      // Inietta i parametri config in t (precedenza bassa, sovrascrivibili da overrides)
+      const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
       return c.html(getHtml(t, page, fn(t)))
     })
   }
@@ -5783,6 +5799,7 @@ textarea{min-height:80px}
     <button data-t="gallery"      onclick="showCrudTab('gallery')"      class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-images mr-1"></i>Gallery</button>
     <button data-t="eventi"       onclick="showCrudTab('eventi')"       class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-calendar-alt mr-1"></i>Eventi</button>
     <button data-t="testi_ui"     onclick="showTestiUI()"               class="tab-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-language mr-1"></i>Testi Pagine</button>
+    <button data-t="config"       onclick="showConfig()"                class="tab-btn bg-amber-100 text-amber-800 px-4 py-2 rounded-lg text-sm font-semibold"><i class="fas fa-cog mr-1"></i>Impostazioni</button>
   </div>
 
   <!-- CONTENT AREA -->
@@ -6415,6 +6432,53 @@ async function saveAllTesti(){
   } else {
     alert('Errore: ' + (d.error || 'unknown'));
     btn.innerHTML = '<i class="fas fa-save mr-1"></i>Salva tutto';
+  }
+}
+
+// ─── IMPOSTAZIONI (CONFIG) ────────────────────────────────────────────────────
+async function showConfig(){
+  setActiveTab('config');
+  currentCrudTab = 'config';
+  const cont = document.getElementById('content');
+  cont.innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-3xl text-amber-400"></i></div>';
+  const r = await fetch('/api/admin/config', {headers: H()});
+  if(!r.ok){ cont.innerHTML = '<div class="p-8 text-red-500">Errore caricamento – token non valido?</div>'; return; }
+  const items = await r.json();
+  let html = '<div class="p-6"><h2 class="text-xl font-bold text-gray-800 mb-1 flex items-center gap-2"><i class="fas fa-cog text-amber-500"></i>Impostazioni Sito</h2>'
+    + '<p class="text-sm text-gray-500 mb-5">Parametri dinamici aggiornabili senza toccare il codice. Il valore viene letto dal DB a ogni caricamento pagina.</p>'
+    + '<div class="space-y-4">';
+  for(const item of items){
+    html += '<div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col gap-2">'
+      + '<div class="flex items-center justify-between">'
+      + '<span class="font-mono text-sm font-bold text-amber-700">' + item.chiave + '</span>'
+      + '<span class="text-xs text-gray-400">Aggiornato: ' + (item.updated_at||'–') + '</span>'
+      + '</div>'
+      + (item.descrizione ? '<p class="text-xs text-gray-600">' + item.descrizione + '</p>' : '')
+      + '<div class="flex items-center gap-3 mt-1">'
+      + '<input id="cfg_' + item.chiave + '" type="text" value="' + (item.valore||'') + '" class="flex-1 border border-amber-300 rounded-lg px-3 py-2 text-sm font-semibold" placeholder="Valore…">'
+      + '<button onclick="saveConfig(\'' + item.chiave + '\')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap">'
+      + '<i class="fas fa-save mr-1"></i>Salva</button>'
+      + '</div>'
+      + '</div>';
+  }
+  html += '</div></div>';
+  cont.innerHTML = html;
+}
+
+async function saveConfig(chiave){
+  const inp = document.getElementById('cfg_' + chiave);
+  if(!inp) return;
+  const valore = inp.value.trim();
+  const r = await fetch('/api/admin/config/' + chiave, {
+    method:'PUT', headers: H(),
+    body: JSON.stringify({valore})
+  });
+  const d = await r.json();
+  if(r.ok && d.success){
+    inp.style.background = '#d1fae5';
+    setTimeout(() => { inp.style.background = ''; }, 2000);
+  } else {
+    alert('Errore: ' + (d.error||'unknown'));
   }
 }
 </script>
@@ -7056,6 +7120,49 @@ app.post('/api/admin/testi_ui/bulk', async (c) => {
     )
     await db.batch(stmts)
     return c.json({ success: true, count: stmts.length })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// ─── CONFIG API ────────────────────────────────────────────────────────────────
+// GET /api/config/:chiave — lettura pubblica di un parametro
+app.get('/api/config/:chiave', async (c) => {
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  const chiave = c.req.param('chiave')
+  try {
+    const r = await db.prepare(`SELECT valore FROM config WHERE chiave=?`).bind(chiave).first()
+    if (!r) return c.json({ error: 'Chiave non trovata' }, 404)
+    return c.json({ chiave, valore: (r as any).valore })
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// GET /api/admin/config — lista tutti i parametri (admin)
+app.get('/api/admin/config', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  try {
+    const r = await db.prepare(`SELECT chiave, valore, descrizione, updated_at FROM config ORDER BY chiave`).all()
+    return c.json(r.results)
+  } catch(e: any) { return c.json({ error: e.message }, 500) }
+})
+
+// PUT /api/admin/config/:chiave — aggiorna un parametro (admin)
+app.put('/api/admin/config/:chiave', async (c) => {
+  if (!requireAdmin(c)) return c.json({ error: 'Non autorizzato' }, 401)
+  const db = c.env?.DB
+  if (!db) return c.json({ error: 'DB non disponibile' }, 500)
+  const chiave = c.req.param('chiave')
+  try {
+    const body = await c.req.json() as { valore: string; descrizione?: string }
+    await db.prepare(
+      `INSERT INTO config (chiave, valore, descrizione, updated_at)
+       VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+       ON CONFLICT(chiave) DO UPDATE SET valore=excluded.valore,
+         descrizione=COALESCE(excluded.descrizione, config.descrizione),
+         updated_at=CURRENT_TIMESTAMP`
+    ).bind(chiave, body.valore ?? '', body.descrizione ?? null).run()
+    return c.json({ success: true, chiave, valore: body.valore })
   } catch(e: any) { return c.json({ error: e.message }, 500) }
 })
 
