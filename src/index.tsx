@@ -1038,7 +1038,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-25-f">
+  <meta name="build" content="2026-08-25-g">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
@@ -3747,7 +3747,8 @@ function brochurePage(t: Record<string, string>): string {
     function buildCard(b, isPub) {
       var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
       var isDrive = isExt && b.file_name.indexOf('drive.google.com') !== -1;
-      var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+      var isAbsPath = !isExt && b.file_name && b.file_name.indexOf('/') === 0;
+      var href = isExt ? b.file_name : (isAbsPath ? b.file_name : '/brochure/' + b.file_name);
       var target = isExt ? '_blank' : '_self';
       var btnIcon = isExt ? 'fa-external-link-alt' : 'fa-download';
       var fileIcon = isDrive ? 'fa-file-alt' : (isPub ? 'fa-file-medical-alt' : 'fa-file-pdf');
@@ -3757,8 +3758,8 @@ function brochurePage(t: Record<string, string>): string {
 
       var thumbHtml;
       if (b.img_url) {
-        thumbHtml = '<div class="w-full overflow-hidden bg-sky-50" style="aspect-ratio:3/4">'
-          + '<img src="' + b.img_url + '" alt="' + (b.titolo||'').replace(/"/g,'&quot;') + '" class="w-full h-full object-cover" loading="lazy">'
+        thumbHtml = '<div class="w-full overflow-hidden bg-sky-50 flex items-center justify-center" style="aspect-ratio:3/4">'
+          + '<img src="' + b.img_url + '" alt="' + (b.titolo||'').replace(/"/g,'&quot;') + '" class="w-full h-full object-contain" loading="lazy">'
           + '</div>';
       } else if (b.thumb_id) {
         thumbHtml = '<div class="w-full overflow-hidden bg-sky-50 flex items-center justify-center" style="aspect-ratio:3/4">'
@@ -3813,7 +3814,8 @@ function brochurePage(t: Record<string, string>): string {
         if(linksAll && data.length) {
           linksAll.innerHTML = data.map(function(b){
             var isExt = b.file_name && (b.file_name.indexOf('http://') === 0 || b.file_name.indexOf('https://') === 0);
-            var href = isExt ? b.file_name : '/brochure/' + b.file_name;
+            var isAbsPath2 = !isExt && b.file_name && b.file_name.indexOf('/') === 0;
+            var href = isExt ? b.file_name : (isAbsPath2 ? b.file_name : '/brochure/' + b.file_name);
             var target = isExt ? '_blank' : '_self';
             var label = b.titolo ? b.titolo.substring(0, 32) + (b.titolo.length > 32 ? '…' : '') : b.file_name.replace('brochure-','').replace('.pdf','');
             return '<a href="' + href + '" target="' + target + '" rel="noopener" class="inline-flex items-center gap-1.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg text-xs font-medium">'
