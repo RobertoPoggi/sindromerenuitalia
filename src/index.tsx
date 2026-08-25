@@ -3658,7 +3658,7 @@ function brochurePage(t: Record<string, string>): string {
             <div class="p-3 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-sky-500 mb-1">EN · Yvonne Schimmel</p>
               <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">The ReNU Syndrome — Science, Stories, Hope</h3>
-              <a href="https://amzn.eu/d/06Ab0iWB" target="_blank" rel="noopener"
+              <a href="https://amzn.eu/d/08f2ddnR" target="_blank" rel="noopener"
                  class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
                  style="background:#FF9900">
                 <i class="fas fa-external-link-alt"></i>Amazon
@@ -3674,7 +3674,7 @@ function brochurePage(t: Record<string, string>): string {
             <div class="p-3 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-blue-900 mb-1">IT · Yvonne Schimmel</p>
               <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">La Sindrome ReNU — Scienza, Storie, Speranza</h3>
-              <a href="https://amzn.eu/d/0fmF1Oxr" target="_blank" rel="noopener"
+              <a href="https://amzn.eu/d/04hHNDmR" target="_blank" rel="noopener"
                  class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
                  style="background:#FF9900">
                 <i class="fas fa-external-link-alt"></i>Amazon
@@ -3690,7 +3690,7 @@ function brochurePage(t: Record<string, string>): string {
             <div class="p-3 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-gray-600 mb-1">EN · Imma Audino</p>
               <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">For Your Own Good — An Intimate Story</h3>
-              <a href="https://amzn.eu/d/08n1RRfE" target="_blank" rel="noopener"
+              <a href="https://amzn.eu/d/002VpJFN" target="_blank" rel="noopener"
                  class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
                  style="background:#FF9900">
                 <i class="fas fa-external-link-alt"></i>Amazon
@@ -3706,7 +3706,7 @@ function brochurePage(t: Record<string, string>): string {
             <div class="p-3 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-gray-600 mb-1">IT · Imma Audino</p>
               <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">Per il Tuo Bene — Un racconto intimo e coraggioso</h3>
-              <a href="https://amzn.eu/d/06gDukBD" target="_blank" rel="noopener"
+              <a href="https://amzn.eu/d/02XKpG7z" target="_blank" rel="noopener"
                  class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
                  style="background:#FF9900">
                 <i class="fas fa-external-link-alt"></i>Amazon
