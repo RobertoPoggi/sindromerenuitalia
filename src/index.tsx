@@ -1033,7 +1033,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-25-d">
+  <meta name="build" content="2026-08-25-e">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${t.title}</title>
   <meta name="description" content="${t.tagline}">
@@ -3411,7 +3411,7 @@ function contactPage(t: Record<string, string>): string {
         <div class="flex gap-4 mt-5">
           <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
           <a href="https://www.facebook.com/share/1EjJ5EfaZ4/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
-          <a href="https://www.instagram.com/sindrome_renu_italia/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl"></i></a>
         </div>
       </div>
@@ -3433,6 +3433,65 @@ function brochurePage(t: Record<string, string>): string {
 
   <section class="py-16 px-4 section-light">
     <div class="max-w-6xl mx-auto space-y-14">
+
+      <!-- ═══ SEZIONE 0: VIDEO YOUTUBE ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#DC2626">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Video':'Videos'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Video informativi e di sensibilizzazione sulla Sindrome ReNU':'Informational and awareness videos about ReNU Syndrome'}
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Video 1 -->
+          <div class="card overflow-hidden">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <iframe
+                src="https://www.youtube.com/embed/LqWlxU11UPM"
+                title="Sindrome ReNU – Video 1"
+                class="absolute inset-0 w-full h-full"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+            <div class="p-4">
+              <a href="https://youtu.be/LqWlxU11UPM" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 text-xs font-semibold" style="color:#DC2626">
+                <i class="fab fa-youtube"></i>${isIt?'Guarda su YouTube':'Watch on YouTube'}
+              </a>
+            </div>
+          </div>
+          <!-- Video 2 -->
+          <div class="card overflow-hidden">
+            <div class="relative w-full" style="padding-bottom:56.25%">
+              <iframe
+                src="https://www.youtube.com/embed/Pe_5GQ7bei4"
+                title="Sindrome ReNU – Video 2"
+                class="absolute inset-0 w-full h-full"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+            <div class="p-4">
+              <a href="https://youtube.com/watch?v=Pe_5GQ7bei4" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 text-xs font-semibold" style="color:#DC2626">
+                <i class="fab fa-youtube"></i>${isIt?'Guarda su YouTube':'Watch on YouTube'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- ═══ SEZIONE 1: BROCHURE & MATERIALI ═══ -->
       <div>
@@ -3791,10 +3850,17 @@ function eventsPage(t: Record<string, string>): string {
     <div class="max-w-4xl mx-auto">
 
       <!-- Prossimi eventi – caricati dal DB -->
-      <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+      <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-2" style="color:#082050">
         <i class="fas fa-star" style="color:#F59E0B"></i>
         ${t.lang==='it'?'Prossimi Appuntamenti':'Upcoming Events'}
       </h2>
+      <!-- Banner prossimi eventi -->
+      <div class="rounded-2xl overflow-hidden mb-6">
+        <img src="/images/sezione_prossimi_eventi.png"
+             alt="${t.lang==='it'?'Prossimi eventi Sindrome ReNU Italia':'Upcoming events Sindrome ReNU Italia'}"
+             class="w-full h-auto object-contain"
+             loading="lazy" decoding="async">
+      </div>
       <div id="eventi-list">
         <div class="text-center py-10 text-gray-400">
           <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
@@ -3952,6 +4018,55 @@ function eventsPage(t: Record<string, string>): string {
               <a href="/${t.lang}/donations"
                  class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#DC2626">
                 <i class="fas fa-heart"></i>${t.lang==='it'?'Sostieni l\'iniziativa':'Support the initiative'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DYNAMO CAMP -->
+      <div class="mt-12 mb-6">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-campground" style="color:#10B981"></i>
+          ${t.lang==='it'?'Dynamo Camp – Terapia Ricreativa':'Dynamo Camp – Therapeutic Recreation'}
+        </h2>
+        <div class="card overflow-hidden">
+          <!-- Immagine informativa Dynamo -->
+          <div class="w-full overflow-hidden" style="max-height:320px">
+            <img src="/images/dynamo_informativa.jpg"
+                 alt="Dynamo Camp informativa"
+                 class="w-full h-auto object-contain bg-white"
+                 loading="lazy" decoding="async">
+          </div>
+          <div class="p-8">
+            <p class="text-gray-600 leading-relaxed mb-6">
+              ${t.lang==='it'
+                ? 'Dynamo Camp è un programma di Terapia Ricreativa che offre soggiorni gratuiti a bambini e ragazzi con patologie gravi o croniche, tra cui le malattie rare. Sindrome ReNU Italia APS collabora con Dynamo per garantire ai nostri bambini questa preziosa opportunità di gioco, socialità e benessere.'
+                : 'Dynamo Camp is a Therapeutic Recreation programme offering free stays to children and young people with serious or chronic illnesses, including rare diseases. Sindrome ReNU Italia APS collaborates with Dynamo to ensure our children have this valuable opportunity for play, socialising and wellbeing.'}
+            </p>
+            <!-- Foto partecipanti ReNU -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div class="rounded-xl overflow-hidden">
+                <img src="/images/dynamo_maya.jpg"
+                     alt="Maya – Dynamo Camp"
+                     class="w-full h-auto object-cover"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="rounded-xl overflow-hidden">
+                <img src="/images/dynamo_francesco.jpg"
+                     alt="Francesco – Dynamo Camp"
+                     class="w-full h-auto object-cover"
+                     loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://www.dynamocamp.org" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#10B981">
+                <i class="fas fa-external-link-alt"></i>${t.lang==='it'?'Scopri Dynamo Camp':'Learn about Dynamo Camp'}
+              </a>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Dynamo Camp – informazioni':'Dynamo Camp – information')}"
+                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
+                <i class="fas fa-envelope"></i>${t.lang==='it'?'Chiedi informazioni':'Request info'}
               </a>
             </div>
           </div>
@@ -4531,6 +4646,24 @@ function faqPage(t: Record<string, string>): string {
       note: t.lang==='it'?'💡 Per le malattie rare cronico-degenerative come la Sindrome ReNU, la revisione INPS non è dovuta: conserva sempre copia del verbale con indicazione di "patologia stabilizzata" o codice esenzione malattia rara. Rivolgiti a ANMIC o a un patronato per la consulenza gratuita.':'💡 For chronic rare diseases like ReNU Syndrome, INPS revision is not required. Always keep a copy of the certificate. Contact ANMIC or a patronato for free advice.',
     },
     {
+      icon: 'fa-building', ic: 'ic-navy', id: 'anmic',
+      title: t.lang==='it'?'ANMIC – Sedi e Supporto Patronale':'ANMIC – Branches and Support',
+      steps: t.lang==='it' ? [
+        'ANMIC (Associazione Nazionale Mutilati e Invalidi Civili) offre assistenza gratuita per tutte le pratiche legate alla disabilità su tutto il territorio nazionale.',
+        'Sito ufficiale: https://www.anmic.org/',
+        'Rivalutazione INPS: come prevede la Legge 80/2006 art. 6 e il D.M. 2 agosto 2007, per le malattie croniche e le malattie genetiche rare NON va effettuata la revisione da parte dell\'INPS.',
+        'Il congedo straordinario (Legge 104, 2 anni) è coperto da contribuzione figurativa, valida ai fini del diritto e del calcolo della pensione: i due anni di congedo sono considerati utili come anni di contribuzione pensionistica.',
+        'Per assistenza: contatta la sede ANMIC più vicina (vedi elenco sotto) o scrivi a info@anmic.it.',
+      ] : [
+        'ANMIC (National Association of Disabled Civilians) offers free assistance for all disability-related procedures throughout Italy.',
+        'Official website: https://www.anmic.org/',
+        'INPS review: as per Law 80/2006 art. 6 and Ministerial Decree of August 2, 2007, for chronic diseases and rare genetic diseases, INPS review is NOT required.',
+        'Extraordinary leave (Law 104, 2 years) is covered by figurative pension contributions: the two years of leave count towards pension rights and calculation.',
+        'For assistance: contact the nearest ANMIC branch or write to info@anmic.it.',
+      ],
+      note: t.lang==='it'?'💡 Le sedi ANMIC offrono consulenza gratuita per: Legge 104, congedo straordinario, APE Sociale, indennità di accompagnamento, Disability Card e tutte le pratiche INPS. Prenota un appuntamento nella tua città.':'💡 ANMIC branches offer free advice on: Law 104, extraordinary leave, APE Sociale, attendance allowance, Disability Card and all INPS procedures.',
+    },
+    {
       icon: 'fa-question-circle', ic: 'ic-red', id: 'faq',
       title: t.lang==='it'?'Domande Frequenti (FAQ)':'Frequently Asked Questions (FAQ)',
       steps: t.lang==='it' ? [
@@ -4656,6 +4789,68 @@ function faqPage(t: Record<string, string>): string {
           </div>
         </div>`).join('')}
       </div>
+
+      ${t.lang==='it' ? `
+      <!-- ── TABELLA SEDI ANMIC ── -->
+      <div id="anmic-sedi" class="card card-navy p-7 scroll-mt-24 mb-8">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="ic ic-navy flex-shrink-0 w-14 h-14"><i class="fas fa-building text-2xl"></i></div>
+          <div>
+            <h2 class="text-xl font-extrabold" style="color:#082050">Principali Sedi ANMIC (Patronato)</h2>
+            <p class="text-sm text-gray-500">Associazione Nazionale Invalidi e Mutilati Civili – assistenza gratuita su tutto il territorio nazionale</p>
+          </div>
+        </div>
+        <div class="rounded-xl p-4 mb-5" style="background:#EEF6FB; border-left:3px solid #45B8EC">
+          <p class="text-sky-800 text-sm"><strong>ANMIC</strong> è a disposizione per supportare in tutte le pratiche legate alla disabilità: Legge 104, indennità di accompagnamento, congedo straordinario, APE Sociale, Disability Card e molto altro. <a href="https://www.anmic.org/" target="_blank" rel="noopener" class="font-bold underline">www.anmic.org</a></p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr style="background:#082050;color:white">
+                <th class="text-left p-3 rounded-tl-lg">Città</th>
+                <th class="text-left p-3">Indirizzo</th>
+                <th class="text-left p-3">Telefono</th>
+                <th class="text-left p-3">Email</th>
+                <th class="text-left p-3 rounded-tr-lg">PEC</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['Roma',    'Piazza Bologna 10, 00162',         '06 44232997',  'anmicst@inwind.it',         'roma@pec.anmic.it'],
+                ['Milano',  'Via G.A. Boltraffio 7, 20159',    '02 66809607',  'info@anmicmilano.org',      'milano@pec.anmic.it'],
+                ['Torino',  'Via Campana 15, 10125',            '011 6689877',  'anmic@anmic-torino.it',     'torino@pec.anmic.it'],
+                ['Napoli',  'Piazzetta Duca degli Abruzzi 96', '081 5537073',  'anmicnapoli@libero.it',     'napoli@pec.anmic.it'],
+                ['Bologna', 'Via Riva di Reno 75/3-77',        '051 255235',   'anmicbo@libero.it',         'bologna@pec.anmic.it'],
+                ['Firenze', 'Piazza Mascagni 20',               '055 4935647',  'anmic.firenze@libero.it',   'firenze@pec.anmic.it'],
+                ['Genova',  'Corso Torino 8R',                  '010 5956760',  'anmicgenova@libero.it',     'genova@pec.anmic.it'],
+                ['Venezia', 'Corso del Popolo 227/C, Mestre',  '041 5315295',  'anmicve@libero.it',         'venezia@pec.anmic.it'],
+                ['Bari',    'Via Libia 10',                     '080 5217750',  'anmicbari@libero.it',       'bari@pec.anmic.it'],
+                ['Palermo', 'Via Notarbartolo 38/G',            '091 6252211',  'anmicpalermo@libero.it',    'palermo@pec.anmic.it'],
+                ['Catania', 'Via Sabato Martelli Castaldi 4',   '095 7151840',  'anmic.ct@virgilio.it',      'catania@pec.anmic.it'],
+                ['Salerno', 'Corso Garibaldi 33',               '089 231134',   'anmic-salerno@libero.it',   'salerno@pec.anmic.it'],
+                ['Ancona',  'Piazza Stamira 13',                '071 52297',    'anmic@anmic-ancona.it',     'ancona@pec.anmic.it'],
+                ['Sassari', 'Via Don Giovanni Minzoni 17/A',    '079 210792',   'anmicss@tiscali.it',        'sassari@pec.anmic.it'],
+                ['Trento',  'Via Benevoli 22',                  '0461 934555',  'info@anmic-tn.org',         'trento@pec.anmic.it'],
+              ].map(([cit,ind,tel,email,pec],i) =>
+                '<tr class="' + (i%2===0?'bg-white':'bg-sky-50') + '">' +
+                '<td class="p-3 border-b border-gray-100 font-semibold" style="color:#082050;white-space:nowrap">' + cit + '</td>' +
+                '<td class="p-3 border-b border-gray-100 text-xs">' + ind + '</td>' +
+                '<td class="p-3 border-b border-gray-100 text-xs font-mono">' + tel + '</td>' +
+                '<td class="p-3 border-b border-gray-100 text-xs"><a href="mailto:' + email + '" class="text-sky-600 hover:underline">' + email + '</a></td>' +
+                '<td class="p-3 border-b border-gray-100 text-xs text-gray-500">' + pec + '</td>' +
+                '</tr>'
+              ).join('')}
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 text-center">
+          <a href="https://www.anmic.org/sedi" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#082050">
+            <i class="fas fa-search-location"></i>Cerca tutte le sedi ANMIC
+          </a>
+        </div>
+      </div>
+      ` : ''}
 
       ${t.lang==='it' ? `
       <!-- ── MISURE REGIONALI ── -->
@@ -5359,8 +5554,9 @@ function sciencePage(t: Record<string, string>): string {
         </p>
         <div class="card p-6 flex flex-col md:flex-row gap-6 items-start">
           <div class="flex-shrink-0">
-            <div class="ic ic-amber w-16 h-16">
-              <i class="fas fa-bolt text-2xl"></i>
+            <div class="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50" style="border:2px solid #FDE68A">
+              <img src="/images/icona_epilessia.jpg" alt="${isIt?'Icona epilessia ReNU':'ReNU Epilepsy icon'}"
+                   class="w-full h-full object-cover" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="flex-1">
