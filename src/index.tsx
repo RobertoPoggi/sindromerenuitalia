@@ -1,3 +1,4 @@
+// Build: 2026-08-25-c
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 
