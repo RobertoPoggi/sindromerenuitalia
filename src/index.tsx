@@ -1733,7 +1733,7 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden">
-            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -2579,7 +2579,7 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
           <div class="flex items-center justify-center p-3" style="background:#EEF6FB">
-            <img src="/images/renu_mappa_italia_16casi.jpg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto" style="display:block;border-radius:0.5rem" loading="lazy" decoding="async">
+            <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto" style="display:block;border-radius:0.5rem" loading="lazy" decoding="async">
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -2636,7 +2636,7 @@ function communityPage(t: Record<string, string>): string {
           <div class="flex-shrink-0 flex items-center justify-center mx-auto md:mx-0" style="position:relative">
             <!-- Mappa Italia reale con badge famiglie -->
             <div style="position:relative;width:240px;display:flex;align-items:center;justify-content:center">
-              <img src="/images/renu_mappa_italia_16casi.jpg"
+              <img src="/images/renu_mappa_aggiornata.jpeg"
                    alt="Mappa Italia Famiglie ReNU"
                    style="width:240px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22));object-fit:contain"
                    loading="lazy" decoding="async">
@@ -2650,7 +2650,7 @@ function communityPage(t: Record<string, string>): string {
           </div>
           <div class="flex-1">
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              ${t.lang==='it'?'In Italia sono stati accertati <strong>16 casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell\'Associazione.':'In Italy, <strong>16 cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.'}
+              ${t.lang==='it'?`In Italia sono stati accertati <strong>${t.casi_italia||'16'} casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell'Associazione.`:`In Italy, <strong>${t.casi_italia||'16'} cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.`}
             </p>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
               ${t.lang==='it'?'Se hai un familiare con Sindrome ReNU e non sei ancora in contatto con la nostra rete, <strong>scrivici</strong>: ti aiutiamo a entrare nella comunità italiana e a conoscere le famiglie vicino a te.':'If you have a family member with ReNU Syndrome and are not yet in contact with our network, <strong>write to us</strong>: we will help you join the Italian community.'}
@@ -3572,6 +3572,98 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- ═══ SEZIONE 4: LIBRI AMAZON ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#FF9900">
+            <i class="fas fa-book"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Libri su Amazon':'Books on Amazon'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Libri scritti da famiglie e ricercatori sulla Sindrome ReNU, disponibili su Amazon.':'Books written by families and researchers about ReNU Syndrome, available on Amazon.'}
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+
+          <!-- Libro 1: The ReNU Syndrome (EN) -->
+          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #1078C0">
+            <div class="w-full overflow-hidden bg-sky-50" style="aspect-ratio:3/4">
+              <img src="/images/amazon_libro1.jpg" alt="The ReNU Syndrome – Science, Stories, Hope and Practical Guidance" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="p-3 flex-1 flex flex-col">
+              <p class="text-xs font-bold uppercase tracking-wide text-sky-500 mb-1">EN · Yvonne Schimmel</p>
+              <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">The ReNU Syndrome — Science, Stories, Hope</h3>
+              <a href="https://www.amazon.com/dp/B0F6P51N3G" target="_blank" rel="noopener"
+                 class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
+                 style="background:#FF9900">
+                <i class="fas fa-external-link-alt"></i>Amazon
+              </a>
+            </div>
+          </div>
+
+          <!-- Libro 2: La Sindrome ReNU (IT) -->
+          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #082050">
+            <div class="w-full overflow-hidden bg-sky-50" style="aspect-ratio:3/4">
+              <img src="/images/amazon_libro2.jpg" alt="La Sindrome ReNU – Cienza, Storie, Speranza e Guida Pratica" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="p-3 flex-1 flex flex-col">
+              <p class="text-xs font-bold uppercase tracking-wide text-blue-900 mb-1">IT · Yvonne Schimmel</p>
+              <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">La Sindrome ReNU — Scienza, Storie, Speranza</h3>
+              <a href="https://www.amazon.it/dp/B0F5PGJ3M2" target="_blank" rel="noopener"
+                 class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
+                 style="background:#FF9900">
+                <i class="fas fa-external-link-alt"></i>Amazon
+              </a>
+            </div>
+          </div>
+
+          <!-- Libro 3: For Your Own Good (EN) -->
+          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #6B7280">
+            <div class="w-full overflow-hidden bg-gray-50" style="aspect-ratio:3/4">
+              <img src="/images/amazon_libro3.jpg" alt="For Your Own Good – Imma Audino" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="p-3 flex-1 flex flex-col">
+              <p class="text-xs font-bold uppercase tracking-wide text-gray-600 mb-1">EN · Imma Audino</p>
+              <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">For Your Own Good — An Intimate Story</h3>
+              <a href="https://www.amazon.com/dp/B0DWX1G7YZ" target="_blank" rel="noopener"
+                 class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
+                 style="background:#FF9900">
+                <i class="fas fa-external-link-alt"></i>Amazon
+              </a>
+            </div>
+          </div>
+
+          <!-- Libro 4: Per il Tuo Bene (IT) -->
+          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #4B5563">
+            <div class="w-full overflow-hidden bg-gray-50" style="aspect-ratio:3/4">
+              <img src="/images/amazon_libro4.jpg" alt="Per il Tuo Bene – Imma Audino" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="p-3 flex-1 flex flex-col">
+              <p class="text-xs font-bold uppercase tracking-wide text-gray-600 mb-1">IT · Imma Audino</p>
+              <h3 class="font-bold text-xs leading-snug flex-1 mb-2" style="color:#082050">Per il Tuo Bene — Un racconto intimo e coraggioso</h3>
+              <a href="https://www.amazon.it/dp/B0DWX3V8CD" target="_blank" rel="noopener"
+                 class="mt-auto inline-flex items-center justify-center gap-1.5 text-white px-3 py-2 rounded-lg text-xs font-semibold"
+                 style="background:#FF9900">
+                <i class="fas fa-external-link-alt"></i>Amazon
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="mt-5 rounded-xl p-3 flex items-center gap-3" style="background:#FFF8F0;border:1px solid #FFDCAB">
+          <i class="fab fa-amazon text-amber-600 text-lg flex-shrink-0"></i>
+          <p class="text-xs text-amber-800">
+            <strong>${isIt?'Acquistando questi libri':'By purchasing these books'}</strong>
+            ${isIt?' supporti le famiglie e la ricerca sulla Sindrome ReNU. I libri sono disponibili in versione cartacea e digitale su Amazon.it e Amazon.com.'
+            :' you support families and ReNU Syndrome research. Books are available in print and digital format on Amazon.it and Amazon.com.'}
+          </p>
+        </div>
+      </div>
+
       <!-- Download all -->
       <div id="brochure-download-all" class="rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%); display:none">
         <i class="fas fa-file-archive text-5xl text-sky-300 mb-4 block"></i>
@@ -4391,6 +4483,52 @@ function faqPage(t: Record<string, string>): string {
       note: t.lang==='it'?'💡 Rivolgiti a un patronato (CAAF, ACLI, CGIL, CISL, UIL) per la consulenza gratuita su bonus e agevolazioni.':'💡 Contact a patronato (CAAF, ACLI, CGIL, CISL, UIL) for free advice on bonuses and benefits.',
     },
     {
+      icon: 'fa-hand-holding-heart', ic: 'ic-orange', id: 'ape_sociale',
+      title: t.lang==='it'?'APE Sociale per Caregiver':'APE Sociale for Caregivers',
+      steps: t.lang==='it' ? [
+        'Cos\'è: Indennità statale per anticipare l\'uscita dal lavoro prima della pensione ordinaria.',
+        'Chi può richiederla: caregiver con familiare convivente con disabilità grave (Legge 104 art. 3 comma 3) da almeno 6 mesi, al cui accudimento abbia ridotto o cessato l\'attività lavorativa.',
+        'Età minima: 63 anni e 5 mesi (requisito aggiornato al 2024).',
+        'Contributi minimi richiesti: 30 anni. Le donne con 2 o più figli possono accedere con 28 anni di contributi.',
+        'Importo: fino a 1.500 € lordi al mese, per 12 mensilità l\'anno (non è cumulabile con altri redditi da lavoro).',
+        'Durata: dall\'anticipo fino al raggiungimento dell\'età pensionabile. Prorogata per chi matura i requisiti entro il 31 dicembre 2026.',
+        'Come fare domanda: presentare istanza all\'INPS tramite sito inps.it o tramite un patronato (gratuito). Allegare certificazione Legge 104 art. 3 comma 3 del familiare assistito.',
+        'Per assistenza su pratiche patronali: ANMIC – Associazione Nazionale Mutilati e Invalidi Civili (anmic.org).',
+      ] : [
+        'What it is: A state allowance to retire early before the standard pension age.',
+        'Who can apply: caregivers with a cohabiting family member with severe disability (Law 104 art. 3 comma 3) for at least 6 months, for whose care they have reduced or ceased work.',
+        'Minimum age: 63 years and 5 months.',
+        'Minimum contributions: 30 years (28 for women with 2+ children).',
+        'Amount: up to €1,500 gross/month, for 12 months per year.',
+        'Duration: from early retirement until standard pension age. Extended for those meeting requirements by December 31, 2026.',
+        'How to apply: submit application to INPS via inps.it or through a free patronato. Attach Law 104 art. 3 comma 3 certificate.',
+        'For support with patronato paperwork: ANMIC – anmic.org.',
+      ],
+      note: t.lang==='it'?'💡 Il requisito di caregiver deve essere autocertificato e verificato dall\'INPS. Contatta un patronato (CAAF, ACLI, CGIL, CISL, UIL) o ANMIC (anmic.org) per assistenza gratuita nella compilazione della domanda.':'💡 Contact a patronato or ANMIC (anmic.org) for free assistance with the application.',
+    },
+    {
+      icon: 'fa-umbrella', ic: 'ic-teal', id: 'congedo',
+      title: t.lang==='it'?'Congedo Straordinario (2 anni – Legge 104)':'Extraordinary Leave (2 years – Law 104)',
+      steps: t.lang==='it' ? [
+        'Il genitore (o il familiare entro il 3° grado) di un figlio/a con disabilità grave (Legge 104 art. 3 comma 3) può usufruire di fino a 2 anni di congedo straordinario retribuito nell\'arco dell\'intera vita lavorativa.',
+        'Il congedo straordinario è coperto da contribuzione figurativa ai fini pensionistici: i 2 anni contano come se si fosse lavorato.',
+        'Importante per le malattie croniche e genetiche rare: per queste patologie NON è necessaria la revisione periodica da parte dell\'INPS (Legge 80/2006, art. 6, e DM 2 agosto 2007). La Sindrome ReNU rientra in questa categoria.',
+        'Come fare domanda: presentare istanza all\'INPS tramite inps.it o patronato. Allegare verbale Legge 104 art. 3 comma 3. In caso di malattia rara, specificare il codice esenzione per evitare convocazioni di revisione.',
+        'Il congedo può essere frazionato e usato in più periodi nel corso degli anni.',
+        'I 3 giorni mensili di permesso Legge 104 sono separati e non scalano dai 2 anni di congedo.',
+        'ANMIC (anmic.org) offre assistenza gratuita per la compilazione e il follow-up con l\'INPS.',
+      ] : [
+        'A parent (or relative within 3rd degree) of a child with severe disability (Law 104 art. 3 comma 3) can use up to 2 years of paid extraordinary leave throughout their working life.',
+        'The extraordinary leave is covered by figurative contributions for pension purposes: the 2 years count as if you had worked.',
+        'Important for rare genetic diseases: for these conditions, periodic INPS review is NOT required (Law 80/2006, art. 6, and Ministerial Decree of August 2, 2007). ReNU Syndrome falls in this category.',
+        'How to apply: submit application to INPS via inps.it or patronato. Attach Law 104 art. 3 comma 3 certificate. Specify the rare disease exemption code to avoid revision calls.',
+        'The leave can be split and used in multiple periods over the years.',
+        'The 3 monthly Law 104 leave days are separate and do not reduce the 2-year leave entitlement.',
+        'ANMIC (anmic.org) offers free assistance for application and INPS follow-up.',
+      ],
+      note: t.lang==='it'?'💡 Per le malattie rare cronico-degenerative come la Sindrome ReNU, la revisione INPS non è dovuta: conserva sempre copia del verbale con indicazione di "patologia stabilizzata" o codice esenzione malattia rara. Rivolgiti a ANMIC o a un patronato per la consulenza gratuita.':'💡 For chronic rare diseases like ReNU Syndrome, INPS revision is not required. Always keep a copy of the certificate. Contact ANMIC or a patronato for free advice.',
+    },
+    {
       icon: 'fa-question-circle', ic: 'ic-red', id: 'faq',
       title: t.lang==='it'?'Domande Frequenti (FAQ)':'Frequently Asked Questions (FAQ)',
       steps: t.lang==='it' ? [
@@ -5093,12 +5231,12 @@ function sciencePage(t: Record<string, string>): string {
           ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5" style="align-items:start">
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:9/4">
-            <img src="/images/it_comitato.jpg"
-                 alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia':'Sindrome ReNU Italia Scientific Committee'}"
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:4/3">
+            <img src="/images/renu_comitato_scientifico.jpg"
+                 alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS Scientific Committee'}"
                  class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:3/2">
+          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:4/3">
             <img src="/images/renu_science_committee.jpg"
                  alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
                  class="w-full h-full object-cover" loading="lazy" decoding="async">
