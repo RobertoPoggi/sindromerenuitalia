@@ -3497,12 +3497,8 @@ function brochurePage(t: Record<string, string>): string {
 
           <!-- Bambini elementari -->
           <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #38BDF8">
-            <div class="w-full flex items-center justify-center" style="aspect-ratio:3/4;background:linear-gradient(135deg,#E0F2FE,#BAE6FD)">
-              <div class="text-center px-4">
-                <i class="fas fa-child text-5xl mb-3" style="color:#0284C7"></i>
-                <p class="font-bold text-sm" style="color:#082050">${isIt?'Scuola Primaria':'Primary School'}</p>
-                <p class="text-xs text-sky-500">${isIt?'6–11 anni':'Ages 6–11'}</p>
-              </div>
+            <div class="w-full overflow-hidden" style="aspect-ratio:3/4">
+              <img src="/images/thumb_opuscolo_bambini.jpg" alt="${isIt?'Opuscolo scuola elementare – Sindrome ReNU':'Primary school brochure – ReNU Syndrome'}" class="w-full h-full object-cover" loading="lazy">
             </div>
             <div class="p-4 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-sky-500 mb-1">${isIt?'Bambini':'Children'}</p>
@@ -3523,12 +3519,8 @@ function brochurePage(t: Record<string, string>): string {
 
           <!-- Adolescenti scuola media -->
           <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #818CF8">
-            <div class="w-full flex items-center justify-center" style="aspect-ratio:3/4;background:linear-gradient(135deg,#EEF2FF,#C7D2FE)">
-              <div class="text-center px-4">
-                <i class="fas fa-user-graduate text-5xl mb-3" style="color:#4338CA"></i>
-                <p class="font-bold text-sm" style="color:#082050">${isIt?'Scuola Media':'Middle School'}</p>
-                <p class="text-xs text-indigo-400">${isIt?'11–14 anni':'Ages 11–14'}</p>
-              </div>
+            <div class="w-full overflow-hidden" style="aspect-ratio:3/4">
+              <img src="/images/thumb_opuscolo_adolescenti.jpg" alt="${isIt?'Opuscolo scuola media – Sindrome ReNU':'Middle school brochure – ReNU Syndrome'}" class="w-full h-full object-cover" loading="lazy">
             </div>
             <div class="p-4 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-indigo-500 mb-1">${isIt?'Adolescenti':'Teens'}</p>
@@ -3549,12 +3541,8 @@ function brochurePage(t: Record<string, string>): string {
 
           <!-- Adulti, genitori, educatori -->
           <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #34D399">
-            <div class="w-full flex items-center justify-center" style="aspect-ratio:3/4;background:linear-gradient(135deg,#D1FAE5,#A7F3D0)">
-              <div class="text-center px-4">
-                <i class="fas fa-chalkboard-teacher text-5xl mb-3" style="color:#059669"></i>
-                <p class="font-bold text-sm" style="color:#082050">${isIt?'Adulti & Educatori':'Adults & Educators'}</p>
-                <p class="text-xs text-emerald-500">${isIt?'Genitori, insegnanti, professionisti':'Parents, teachers, professionals'}</p>
-              </div>
+            <div class="w-full overflow-hidden" style="aspect-ratio:3/4">
+              <img src="/images/thumb_opuscolo_adulti.jpg" alt="${isIt?'Opuscolo adulti ed educatori – Sindrome ReNU':'Adults and educators brochure – ReNU Syndrome'}" class="w-full h-full object-cover" loading="lazy">
             </div>
             <div class="p-4 flex-1 flex flex-col">
               <p class="text-xs font-bold uppercase tracking-wide text-emerald-600 mb-1">${isIt?'Adulti':'Adults'}</p>
