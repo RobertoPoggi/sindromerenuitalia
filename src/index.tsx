@@ -29,6 +29,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
     nav_events: 'Eventi', nav_projects: 'Progetti', nav_members: 'Diventa Socio', nav_faq: 'FAQ & Diritti',
     nav_science: 'Comitato Scientifico',
+    nav_glossary: 'Glossario Medico',
     btn_diagnosis: 'DONA ORA – SOSTIENI LE FAMIGLIE RENU',
     btn_diagnosis_sub: 'Ogni contributo fa la differenza. Grazie.',
     btn_info: 'VUOI MAGGIORI INFORMAZIONI? CLICCA QUI',
@@ -219,6 +220,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
     nav_events: 'Events', nav_projects: 'Projects', nav_members: 'Become a Member', nav_faq: 'FAQ & Rights',
     nav_science: 'Scientific Committee',
+    nav_glossary: 'Medical Glossary',
     btn_diagnosis: 'WANT MORE INFORMATION? CLICK HERE',
     btn_diagnosis_sub: 'Contact us for information about ReNU Syndrome',
     section_map_title: 'Register Here',
@@ -454,6 +456,7 @@ const translations: Record<string, Record<string, string>> = {
     community_network_it: 'Réseau de parents italiens',
     community_network_desc: 'Le réseau de parents italiens est un point de référence pour ceux qui veulent se sentir moins seuls, partager des questions et des expériences du quotidien.',
     nav_science: 'Comité Scientifique',
+    nav_glossary: 'Glossaire Médical',
     science_title: 'Comité Scientifique',
     science_intro: 'Le Comité Scientifique de Sindrome ReNU Italia APS joue un rôle fondamental pour garantir rigueur et cohérence avec les meilleures preuves scientifiques disponibles.',
     science_role1_title: 'Validation des Contenus',
@@ -645,6 +648,7 @@ const translations: Record<string, Record<string, string>> = {
     community_network_it: 'Red de padres italianos',
     community_network_desc: 'La red de padres italianos es un punto de referencia para quienes desean sentirse menos solos y compartir experiencias cotidianas.',
     nav_science: 'Comité Científico',
+    nav_glossary: 'Glosario Médico',
     science_title: 'Comité Científico',
     science_intro: 'El Comité Científico de Sindrome ReNU Italia APS juega un papel fundamental para garantizar rigor y coherencia con la mejor evidencia científica disponible.',
     science_role1_title: 'Validación de Contenidos',
@@ -836,6 +840,7 @@ const translations: Record<string, Record<string, string>> = {
     community_network_it: 'Netzwerk italienischer Eltern',
     community_network_desc: 'Das Netzwerk italienischer Eltern ist ein Anlaufpunkt für alle, die sich weniger allein fühlen und alltägliche Erfahrungen teilen möchten.',
     nav_science: 'Wissenschaftlicher Ausschuss',
+    nav_glossary: 'Medizinisches Glossar',
     science_title: 'Wissenschaftlicher Ausschuss',
     science_intro: 'Der Wissenschaftliche Ausschuss von Sindrome ReNU Italia APS spielt eine grundlegende Rolle bei der Sicherstellung von Strenge und Kohärenz mit den besten verfügbaren wissenschaftlichen Erkenntnissen.',
     science_role1_title: 'Validierung von Inhalten',
@@ -1022,6 +1027,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_brochure', page: 'brochure', icon: 'fa-photo-video', disabled: false },
     { key: 'nav_members', page: 'members', icon: 'fa-id-card', disabled: false },
     { key: 'nav_faq', page: 'faq', icon: 'fa-question-circle', disabled: false },
+    { key: 'nav_glossary', page: 'glossary', icon: 'fa-book-medical', disabled: false },
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
   const navLinks = navItems.filter(item => !item.hidden).map(item => item.disabled ? `
@@ -3859,7 +3865,7 @@ function donationsPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Detrazione (Persone Fisiche)':'Tax Deduction (Individuals)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS (iscritta al RUNTS come APS) danno diritto a una detrazione IRPEF del <strong>30%</strong>, fino a un massimo di 30.000€ all\'anno (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore). Il regime del 35% si applica esclusivamente alle Organizzazioni di Volontariato (ODV), non alle APS.':'Donations from individuals to Sindrome ReNU Italia APS (registered in RUNTS as an APS) entitle a <strong>30%</strong> income tax deduction, up to €30,000 per year (art. 83 D.Lgs. 117/2017 – Third Sector Code). The 35% rate applies exclusively to Voluntary Organisations (ODV), not to APS.'}
+                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS (iscritta al RUNTS come APS) danno diritto a una detrazione IRPEF del <strong>30%</strong>, fino a un massimo di 30.000€ all\'anno (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore).':'Donations from individuals to Sindrome ReNU Italia APS (registered in RUNTS as an APS) entitle a <strong>30%</strong> income tax deduction, up to €30,000 per year (art. 83 D.Lgs. 117/2017 – Third Sector Code).'}
               </p>
             </div>
             <div>
