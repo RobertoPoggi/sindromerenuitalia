@@ -1,4 +1,4 @@
-// Build: 2026-08-25-c
+// Build: 2026-08-26-science-final
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 
@@ -6329,14 +6329,8 @@ function sciencePage(t: Record<string, string>): string {
             ? 'La Sindrome ReNU può essere associata a condizioni neurologiche specifiche che richiedono attenzione clinica dedicata. La conoscenza di queste correlazioni è fondamentale per una presa in carico multidisciplinare efficace.'
             : 'ReNU Syndrome may be associated with specific neurological conditions requiring dedicated clinical attention. Knowledge of these correlations is essential for effective multidisciplinary care.'}
         </p>
-        <div class="card p-6 flex flex-col md:flex-row gap-6 items-start">
-          <div class="flex-shrink-0">
-            <div class="w-20 h-20 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50" style="border:2px solid #FDE68A">
-              <img src="/images/icona_epilessia.jpg" alt="${isIt?'Icona epilessia ReNU':'ReNU Epilepsy icon'}"
-                   class="w-full h-full object-cover" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="flex-1">
+        <div class="card p-6">
+          <div>
             <div class="flex flex-wrap items-center gap-3 mb-3">
               <h3 class="font-extrabold text-xl" style="color:#082050">
                 ${isIt?'Epilessia / Crisi Epilettiche':'Epilepsy / Seizures'}
@@ -6402,147 +6396,6 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- MATERIALI EDUCATIVI: OPUSCOLI SCUOLA -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background:#E0F2FE;color:#0369A1">
-            ${isIt?'Materiali Educativi':'Educational Materials'}
-          </span>
-        </div>
-        <h2 class="text-2xl font-extrabold mb-2" style="color:#082050">
-          ${isIt?'Opuscoli per la Scuola e la Famiglia':'School & Family Brochures'}
-        </h2>
-        <p class="text-gray-600 mb-6 max-w-2xl">
-          ${isIt
-            ? 'Tre opuscoli gratuiti, scaricabili e stampabili, pensati per accompagnare la conoscenza della Sindrome ReNU in contesti scolastici, familiari ed educativi. Ogni opuscolo è calibrato per un\'età e un pubblico specifico.'
-            : 'Three free, downloadable and printable brochures designed to support knowledge of ReNU Syndrome in school, family and educational settings. Each brochure is tailored to a specific age group and audience.'}
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- Opuscolo 1: Bambini elementari -->
-          <div class="card p-6 flex flex-col h-full" style="border-top:4px solid #38BDF8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#E0F2FE">
-                <i class="fas fa-child text-sky-600 text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wide text-sky-500">
-                  ${isIt?'Scuola Primaria':'Primary School'}
-                </span>
-                <p class="text-xs text-gray-400">${isIt?'6–11 anni':'Ages 6–11'}</p>
-              </div>
-            </div>
-            <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${isIt?'Parliamo della Sindrome di ReNU':'Let\'s Talk About ReNU Syndrome'}
-            </h3>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
-              ${isIt
-                ? 'Per i bambini delle elementari. Presenta la Sindrome ReNU con parole semplici attraverso i personaggi Aaron, Maya e Vittoria. Sezioni dedicate a scuola e casa.'
-                : 'For primary school children. Introduces ReNU Syndrome using simple words through characters Aaron, Maya and Vittoria. Sections on school and home life.'}
-            </p>
-            <div class="flex flex-col gap-2 mt-auto">
-              <a href="/static/opuscolo-bambini-elementari.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-bold px-5 py-2.5 rounded-xl text-sm text-white w-full"
-                 style="background:linear-gradient(135deg,#0EA5E9,#0369A1)">
-                <i class="fas fa-download"></i>
-                ${isIt?'Scarica PDF':'Download PDF'}
-              </a>
-              <a href="/static/opuscolo-bambini-elementari.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-xl text-sm w-full"
-                 style="background:#E0F2FE;color:#0369A1">
-                <i class="fas fa-eye"></i>
-                ${isIt?'Anteprima':'Preview'}
-              </a>
-            </div>
-          </div>
-
-          <!-- Opuscolo 2: Adolescenti / Scuola Media -->
-          <div class="card p-6 flex flex-col h-full" style="border-top:4px solid #818CF8">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#EEF2FF">
-                <i class="fas fa-user-graduate text-indigo-500 text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wide text-indigo-500">
-                  ${isIt?'Scuola Media':'Middle School'}
-                </span>
-                <p class="text-xs text-gray-400">${isIt?'11–14 anni':'Ages 11–14'}</p>
-              </div>
-            </div>
-            <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${isIt?'Crescere con la Sindrome di ReNU':'Growing Up with ReNU Syndrome'}
-            </h3>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
-              ${isIt
-                ? 'Per ragazze e ragazzi adolescenti. Affronta temi di identità, autonomia, comunicazione aumentativa (CAA) e rispetto dell\'età. Linguaggio diretto e inclusivo.'
-                : 'For teenage girls and boys. Addresses themes of identity, autonomy, augmentative communication (AAC) and age-appropriate respect. Direct and inclusive language.'}
-            </p>
-            <div class="flex flex-col gap-2 mt-auto">
-              <a href="/static/opuscolo-adolescenti-scuola-media.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-bold px-5 py-2.5 rounded-xl text-sm text-white w-full"
-                 style="background:linear-gradient(135deg,#6366F1,#4338CA)">
-                <i class="fas fa-download"></i>
-                ${isIt?'Scarica PDF':'Download PDF'}
-              </a>
-              <a href="/static/opuscolo-adolescenti-scuola-media.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-xl text-sm w-full"
-                 style="background:#EEF2FF;color:#4338CA">
-                <i class="fas fa-eye"></i>
-                ${isIt?'Anteprima':'Preview'}
-              </a>
-            </div>
-          </div>
-
-          <!-- Opuscolo 3: Adulti / Educatori -->
-          <div class="card p-6 flex flex-col h-full" style="border-top:4px solid #34D399">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#D1FAE5">
-                <i class="fas fa-chalkboard-teacher text-emerald-600 text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-wide text-emerald-600">
-                  ${isIt?'Adulti, Insegnanti & Educatori':'Adults, Teachers & Educators'}
-                </span>
-                <p class="text-xs text-gray-400">${isIt?'Genitori, parenti, professionisti':'Parents, relatives, professionals'}</p>
-              </div>
-            </div>
-            <h3 class="font-bold text-lg mb-2" style="color:#082050">
-              ${isIt?'Comprendere la Disabilità e la Sindrome di ReNU':'Understanding Disability and ReNU Syndrome'}
-            </h3>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
-              ${isIt
-                ? 'Per genitori, parenti, insegnanti ed educatori. Affronta la disabilità con il modello biopsicosociale, risponde alle domande più frequenti sulla vita quotidiana e scolastica.'
-                : 'For parents, relatives, teachers and educators. Addresses disability using the biopsychosocial model, answering the most common questions about daily and school life.'}
-            </p>
-            <div class="flex flex-col gap-2 mt-auto">
-              <a href="/static/opuscolo-adulti-educatori.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-bold px-5 py-2.5 rounded-xl text-sm text-white w-full"
-                 style="background:linear-gradient(135deg,#10B981,#059669)">
-                <i class="fas fa-download"></i>
-                ${isIt?'Scarica PDF':'Download PDF'}
-              </a>
-              <a href="/static/opuscolo-adulti-educatori.pdf" target="_blank" rel="noopener"
-                 class="inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-xl text-sm w-full"
-                 style="background:#D1FAE5;color:#059669">
-                <i class="fas fa-eye"></i>
-                ${isIt?'Anteprima':'Preview'}
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Banner stampa libera -->
-        <div class="mt-6 rounded-xl p-4 flex items-center gap-3" style="background:#F0FDF4;border:1px solid #BBF7D0">
-          <i class="fas fa-print text-emerald-600 text-xl flex-shrink-0"></i>
-          <p class="text-sm text-emerald-800">
-            <strong>${isIt?'Stampa libera e gratuita:':'Free to print:'}</strong>
-            ${isIt
-              ? ' tutti gli opuscoli sono liberamente scaricabili, stampabili e distribuibili nelle scuole, negli studi medici e nelle famiglie. Non è richiesta alcuna autorizzazione.'
-              : ' all brochures are freely downloadable, printable and distributable in schools, medical practices and families. No permission required.'}
-          </p>
-        </div>
-      </div>
 
       <!-- CTA collabora -->
       <div class="rounded-2xl p-8 text-white text-center" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
