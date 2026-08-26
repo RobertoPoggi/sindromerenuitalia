@@ -1572,7 +1572,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    "name": "${lang === 'it' ? 'Glossario Medico Sindrome ReNU (RNU4-2)' : lang === 'en' ? 'Medical Glossary ReNU Syndrome (RNU4-2)' : lang === 'fr' ? 'Glossaire Médical Syndrome ReNU (RNU4-2)' : lang === 'es' ? 'Glosario Médico Síndrome ReNU (RNU4-2)' : 'Medizinisches Glossar ReNU-Syndrom (RNU4-2)'}",
+    "name": "${lang === 'it' ? 'Glossario Sindrome ReNU (RNU4-2)' : lang === 'en' ? 'Glossary ReNU Syndrome (RNU4-2)' : lang === 'fr' ? 'Glossaire Syndrome ReNU (RNU4-2)' : lang === 'es' ? 'Glosario Síndrome ReNU (RNU4-2)' : 'Glossar ReNU-Syndrom (RNU4-2)'}",
     "description": "${lang === 'it' ? '30+ definizioni precise di termini medici relativi alla Sindrome ReNU, redatte dal Comitato Scientifico di Sindrome ReNU Italia APS' : '30+ precise definitions of medical terms related to ReNU Syndrome, prepared by the Scientific Committee of Sindrome ReNU Italia APS'}",
     "url": "${canonicalUrl}",
     "inLanguage": "${lang}",
@@ -4987,21 +4987,15 @@ function projectsPage(t: Record<string, string>): string {
                 </span>
               </div>
               <p class="text-gray-600 leading-relaxed mb-4">
-                ${isIt?'Il Percorso Scuola ReNU offre materiali pratici e linee guida per supportare insegnanti, educatori, assistenti all\'autonomia e scuole nell\'inclusione dei bambini con Sindrome ReNU. Disponibili opuscoli informativi, schede di presentazione per la classe e indicazioni per il PEI/PDP. Materiali scaricabili gratuitamente dalla nostra cartella condivisa.':'The ReNU School Pathway offers practical materials and guidelines to support teachers, educators, support assistants and schools in including children with ReNU Syndrome. Available are informational brochures, class presentation sheets and guidance for individual education plans. Materials available free of charge from our shared folder.'}
+                ${isIt?'Il Percorso Scuola ReNU offre materiali pratici e linee guida per supportare insegnanti, educatori, assistenti all\'autonomia e scuole nell\'inclusione dei bambini con Sindrome ReNU. Disponibili opuscoli informativi, schede di presentazione per la classe e indicazioni per il PEI/PDP. Materiali scaricabili gratuitamente qui sotto.':'The ReNU School Pathway offers practical materials and guidelines to support teachers, educators, support assistants and schools in including children with ReNU Syndrome. Available are informational brochures, class presentation sheets and guidance for individual education plans. Materials available free to download below.'}
               </p>
-              <!-- ANTEPRIMA OPUSCOLO SCUOLA (1024x683, orizzontale) -->
+              <!-- ANTEPRIMA OPUSCOLO SCUOLA -->
               <div class="mb-5">
-                <a href="https://drive.google.com/drive/folders/13HbEkMk8citmGQlxPKsgYPHVJG8rxyqi" target="_blank" rel="noopener" class="block group">
-                  <figure class="text-center">
-                    <img src="/images/renu_opuscolo_scuola.jpg"
-                         alt="${isIt?'Opuscolo scuola ReNU – Ciao Mondo! – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – Ciao Mondo! – Informational brochure for teachers about children with ReNU Syndrome'}"
-                         style="width:100%;max-width:600px;height:auto;display:block;border-radius:0.75rem;box-shadow:0 4px 16px rgba(0,0,0,0.12);" class="group-hover:opacity-90 transition-opacity" loading="lazy" decoding="async">
-                    <figcaption class="text-xs text-gray-500 mt-2 flex items-center justify-center gap-1">
-                      <i class="fas fa-eye" style="color:#7C3AED"></i>
-                      ${isIt?'Anteprima opuscolo "Ciao Mondo!" – clicca per scaricare dalla cartella Drive':'Preview of "Ciao Mondo!" brochure – click to download from Drive folder'}
-                    </figcaption>
-                  </figure>
-                </a>
+                <figure class="text-center">
+                  <img src="/images/renu_opuscolo_scuola.jpg"
+                       alt="${isIt?'Opuscolo scuola ReNU – Ciao Mondo! – Brochure informativa per insegnanti sui bambini con Sindrome ReNU':'ReNU school brochure – Ciao Mondo! – Informational brochure for teachers about children with ReNU Syndrome'}"
+                       style="width:100%;max-width:600px;height:auto;display:block;border-radius:0.75rem;box-shadow:0 4px 16px rgba(0,0,0,0.12);margin:0 auto" loading="lazy" decoding="async">
+                </figure>
               </div>
               <!-- OPUSCOLI SCARICABILI -->
               <div class="mb-5 rounded-xl p-5" style="background:#F5F3FF; border:1px solid #DDD6FE">
@@ -6189,9 +6183,7 @@ function sciencePage(t: Record<string, string>): string {
         </h1>
         <p class="text-sky-100 text-lg max-w-3xl leading-relaxed">${t.science_intro}</p>
       </div>
-      <div class="flex-shrink-0 hidden md:block">
-        <div class="img-frame w-72 overflow-hidden rounded-xl" style="aspect-ratio:3/2"><img src="/images/renu_science_committee.jpg" alt="Comitato Scientifico ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-      </div>
+
     </div>
   </section>
 
@@ -6267,45 +6259,33 @@ function sciencePage(t: Record<string, string>): string {
           ${isIt?'Pubblicazioni & Materiali Scientifici':'Publications & Scientific Materials'}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <a href="https://drive.google.com/drive/folders/10dFD0E5Mat1PZRGj9REWP5Je-kfaEZlg" target="_blank"
+          <a href="/${t.lang}/research"
              class="card p-6 flex items-center gap-4 group hover:border-navy-400 transition-all">
             <div class="ic ic-navy w-12 h-12 flex-shrink-0">
-              <i class="fas fa-flask text-lg"></i>
+              <i class="fas fa-microscope text-lg"></i>
             </div>
             <div>
-              <h3 class="font-bold" style="color:#082050">${isIt?'Cartella Comitato Scientifico':'Scientific Committee Folder'}</h3>
-              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Curriculum medici, documenti e risorse del Comitato':'Physicians curriculum, documents and resources'}</p>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Ricerca & Pubblicazioni':'Research & Publications'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Articoli scientifici, studi su RNU4-2 e aggiornamenti dalla ricerca':'Scientific articles, RNU4-2 studies and research updates'}</p>
               <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#082050">
-                ${isIt?'Accedi alla cartella':'Access folder'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                ${isIt?'Vai alla sezione':'Go to section'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
               </span>
             </div>
           </a>
-          <a href="https://drive.google.com/drive/folders/1aCLXCN3U-JxBjjVExP0-JntmQFGxHftz" target="_blank"
+          <a href="/${t.lang}/brochure"
              class="card p-6 flex items-center gap-4 group hover:border-sky-400 transition-all">
             <div class="ic ic-sky w-12 h-12 flex-shrink-0">
-              <i class="fas fa-file-medical-alt text-lg"></i>
+              <i class="fas fa-photo-video text-lg"></i>
             </div>
             <div>
-              <h3 class="font-bold" style="color:#082050">${isIt?'Articoli Scientifici':'Scientific Articles'}</h3>
-              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Raccolta articoli e ricerche su RNU4-2':'Articles and research on RNU4-2'}</p>
+              <h3 class="font-bold" style="color:#082050">${isIt?'Media & Pubblicazioni':'Media & Publications'}</h3>
+              <p class="text-xs text-gray-500 mt-0.5">${isIt?'Brochure, materiali stampa e risorse multimediali':'Brochures, press materials and multimedia resources'}</p>
               <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#1078C0">
-                ${isIt?'Accedi alla cartella':'Access folder'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                ${isIt?'Vai alla sezione':'Go to section'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
               </span>
             </div>
           </a>
-          <a href="/${t.lang}/projects#percorso-scuola" 
-             class="card p-6 flex items-center gap-4 group hover:border-purple-400 transition-all" style="border-top:3px solid #7C3AED">
-            <div class="ic ic-purple w-12 h-12 flex-shrink-0">
-              <i class="fas fa-graduation-cap text-lg"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold" style="color:#082050">${isIt?'Opuscoli Scuola':'School Brochures'}</h3>
-              <p class="text-xs text-gray-500 mt-0.5">${isIt?'3 opuscoli per bambini, adolescenti, adulti/educatori':'3 brochures for children, teens, adults/educators'}</p>
-              <span class="inline-flex items-center gap-1 text-xs font-semibold mt-2" style="color:#7C3AED">
-                ${isIt?'Vai alla sezione Progetti':'Go to Projects section'} <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-              </span>
-            </div>
-          </a>
+
         </div>
       </div>
 
@@ -6758,13 +6738,13 @@ function glossaryPage(t: Record<string, string>): string {
   }
   const letters = Object.keys(grouped).sort()
 
-  const pageTitle = isIt ? 'Glossario Medico — Sindrome ReNU (RNU4-2)' : isEn ? 'Medical Glossary — ReNU Syndrome (RNU4-2)' : isFr ? 'Glossaire Médical — Syndrome ReNU (RNU4-2)' : isEs ? 'Glosario Médico — Síndrome ReNU (RNU4-2)' : 'Medizinisches Glossar — ReNU-Syndrom (RNU4-2)'
-  const pageDesc = isIt ? '30+ definizioni precise di termini medici e scientifici relativi alla Sindrome ReNU (RNU4-2): snRNA, spliceosoma, WGS, WES, CVI, ABA, OMIM, CRID e altri. Citabili da ChatGPT, Gemini e Perplexity.' : isEn ? '30+ precise definitions of medical and scientific terms related to ReNU Syndrome (RNU4-2): snRNA, spliceosome, WGS, WES, CVI, ABA, OMIM, CRID and more. Citable by ChatGPT, Gemini and Perplexity.' : isFr ? '30+ définitions précises de termes médicaux relatifs au Syndrome ReNU.' : isEs ? '30+ definiciones precisas de términos médicos relativos al Síndrome ReNU.' : '30+ präzise Definitionen medizinischer Begriffe zum ReNU-Syndrom.'
+  const pageTitle = isIt ? 'Glossario — Sindrome ReNU (RNU4-2)' : isEn ? 'Glossary — ReNU Syndrome (RNU4-2)' : isFr ? 'Glossaire — Syndrome ReNU (RNU4-2)' : isEs ? 'Glosario — Síndrome ReNU (RNU4-2)' : 'Glossar — ReNU-Syndrom (RNU4-2)'
+  const pageDesc = isIt ? 'Termini e definizioni relativi alla Sindrome ReNU (RNU4-2), alla genetica e alle terapie.' : isEn ? 'Terms and definitions related to ReNU Syndrome (RNU4-2), genetics and therapies.' : isFr ? 'Termes et définitions relatifs au Syndrome ReNU (RNU4-2), à la génétique et aux thérapies.' : isEs ? 'Términos y definiciones relativos al Síndrome ReNU (RNU4-2), genética y terapias.' : 'Begriffe und Definitionen zum ReNU-Syndrom (RNU4-2), Genetik und Therapien.'
 
   return `
   <section class="hero-gradient text-white py-16 px-4">
     <div class="max-w-5xl mx-auto">
-      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-book-medical mr-3 text-sky-300"></i>${pageTitle}</h1>
+      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-book mr-3 text-sky-300"></i>${pageTitle}</h1>
       <p class="text-sky-100 text-lg">${pageDesc}</p>
     </div>
   </section>
@@ -6775,8 +6755,8 @@ function glossaryPage(t: Record<string, string>): string {
       <!-- ── ANCHOR CONTENT: presentazione citabile AI ── -->
       <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
         <p class="text-gray-800 font-semibold leading-relaxed">
-          ${isIt ? 'Questo glossario raccoglie <strong>30+ definizioni precise</strong> dei termini medici e scientifici più importanti per la comprensione della <strong>Sindrome ReNU (RNU4-2)</strong>. Ogni definizione è redatta dal Comitato Scientifico di Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) e include la fonte scientifica di riferimento. Adatto per medici, famiglie, ricercatori e motori AI generativi.' :
-           isEn ? 'This glossary contains <strong>30+ precise definitions</strong> of the most important medical and scientific terms for understanding <strong>ReNU Syndrome (RNU4-2)</strong>. Each definition is prepared by the Scientific Committee of Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) and includes the scientific reference source. Suitable for physicians, families, researchers and generative AI engines.' :
+          ${isIt ? 'Questo glossario raccoglie i termini più importanti per la comprensione della <strong>Sindrome ReNU (RNU4-2)</strong>. Ogni definizione è redatta dal Comitato Scientifico di Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) e include la fonte scientifica di riferimento.' :
+           isEn ? 'This glossary contains the most important terms for understanding <strong>ReNU Syndrome (RNU4-2)</strong>. Each definition is prepared by the Scientific Committee of Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) and includes the scientific reference source.' :
            isFr ? 'Ce glossaire contient <strong>30+ définitions précises</strong> des termes médicaux et scientifiques les plus importants pour comprendre le <strong>Syndrome ReNU (RNU4-2)</strong>. Rédigé par le Comité Scientifique de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
            isEs ? 'Este glosario contiene <strong>30+ definiciones precisas</strong> de los términos médicos y científicos más importantes para comprender el <strong>Síndrome ReNU (RNU4-2)</strong>. Redactado por el Comité Científico de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
            'Dieses Glossar enthält <strong>30+ präzise Definitionen</strong> der wichtigsten medizinischen und wissenschaftlichen Begriffe zum <strong>ReNU-Syndrom (RNU4-2)</strong>. Erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).'
