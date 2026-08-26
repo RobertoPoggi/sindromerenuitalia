@@ -1034,14 +1034,392 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       <span class="hidden 2xl:inline nav-label ml-0.5">${t[item.key]}</span>
     </a>`).join('')
 
+  // ── SEO: title e description per pagina ──────────────────────────────────
+  const BASE_URL = 'https://sindromerenu-italia.pages.dev'
+  const SITE_NAME = 'Sindrome ReNU Italia APS'
+  const OG_IMAGE = `${BASE_URL}/images/og-cover.jpg`
+
+  // Title ottimizzato per ogni pagina e lingua
+  const pageTitles: Record<string, Record<string, string>> = {
+    home: {
+      it: 'Sindrome ReNU Italia APS | Associazione per RNU4-2',
+      en: 'ReNU Syndrome Italy APS | Association for RNU4-2',
+      fr: 'Syndrome ReNU Italie APS | Association pour RNU4-2',
+      es: 'Síndrome ReNU Italia APS | Asociación para RNU4-2',
+      de: 'ReNU-Syndrom Italien APS | Verein für RNU4-2',
+    },
+    about: {
+      it: 'Cos\'è la Sindrome ReNU (RNU4-2)? Sintomi, Diagnosi e Caratteristiche',
+      en: 'What is ReNU Syndrome (RNU4-2)? Symptoms, Diagnosis and Features',
+      fr: 'Qu\'est-ce que le Syndrome ReNU (RNU4-2)? Symptômes et Diagnostic',
+      es: '¿Qué es el Síndrome ReNU (RNU4-2)? Síntomas, Diagnóstico y Características',
+      de: 'Was ist das ReNU-Syndrom (RNU4-2)? Symptome, Diagnose und Merkmale',
+    },
+    diagnosis: {
+      it: 'Diagnosi Sindrome ReNU: Test WGS in Italia | Centri Specializzati',
+      en: 'ReNU Syndrome Diagnosis: WGS Testing in Italy | Specialised Centres',
+      fr: 'Diagnostic Syndrome ReNU: Test WGS en Italie | Centres Spécialisés',
+      es: 'Diagnóstico Síndrome ReNU: Test WGS en Italia | Centros Especializados',
+      de: 'ReNU-Syndrom Diagnose: WGS-Test in Italien | Spezialisierte Zentren',
+    },
+    therapies: {
+      it: 'Terapie per la Sindrome ReNU: Fisioterapia, Logopedia, ABA, Feuerstein',
+      en: 'Therapies for ReNU Syndrome: Physiotherapy, Speech Therapy, ABA, Feuerstein',
+      fr: 'Thérapies pour le Syndrome ReNU: Kinésithérapie, Orthophonie, ABA',
+      es: 'Terapias para el Síndrome ReNU: Fisioterapia, Logopedia, ABA, Feuerstein',
+      de: 'Therapien für das ReNU-Syndrom: Physiotherapie, Logopädie, ABA, Feuerstein',
+    },
+    research: {
+      it: 'Ricerca Scientifica sulla Sindrome ReNU (RNU4-2) | Pubblicazioni PubMed',
+      en: 'Scientific Research on ReNU Syndrome (RNU4-2) | PubMed Publications',
+      fr: 'Recherche Scientifique sur le Syndrome ReNU (RNU4-2) | Publications PubMed',
+      es: 'Investigación Científica sobre el Síndrome ReNU (RNU4-2) | Publicaciones PubMed',
+      de: 'Wissenschaftliche Forschung zum ReNU-Syndrom (RNU4-2) | PubMed-Publikationen',
+    },
+    community: {
+      it: 'Community Sindrome ReNU Italia | Famiglie, Storie e Rete di Supporto',
+      en: 'ReNU Syndrome Italy Community | Families, Stories and Support Network',
+      fr: 'Communauté Syndrome ReNU Italie | Familles, Histoires et Réseau de Soutien',
+      es: 'Comunidad Síndrome ReNU Italia | Familias, Historias y Red de Apoyo',
+      de: 'ReNU-Syndrom Italien Community | Familien, Geschichten und Unterstützungsnetzwerk',
+    },
+    donations: {
+      it: 'Dona alla Sindrome ReNU Italia APS | 5x1000, Lascito Testamentario, Bonifico',
+      en: 'Donate to ReNU Syndrome Italy APS | 5x1000, Legacy, Bank Transfer',
+      fr: 'Faire un Don au Syndrome ReNU Italie APS | 5x1000, Legs Testamentaire',
+      es: 'Donar al Síndrome ReNU Italia APS | 5x1000, Legado Testamentario, Transferencia',
+      de: 'Spenden für ReNU-Syndrom Italien APS | 5x1000, Erbschaft, Banküberweisung',
+    },
+    faq: {
+      it: 'FAQ & Diritti per Sindrome ReNU | Legge 104, Disability Card, Scuola',
+      en: 'FAQ & Rights for ReNU Syndrome | Law 104, Disability Card, School Support',
+      fr: 'FAQ & Droits pour Syndrome ReNU | Loi 104, Carte Européenne du Handicap',
+      es: 'FAQ & Derechos para Síndrome ReNU | Ley 104, Disability Card, Escuela',
+      de: 'FAQ & Rechte für ReNU-Syndrom | Gesetz 104, Disability Card, Schule',
+    },
+    science: {
+      it: 'Comitato Scientifico Sindrome ReNU Italia | Dr. Claudia Gravaghi PhD',
+      en: 'ReNU Syndrome Italy Scientific Committee | Dr. Claudia Gravaghi PhD',
+      fr: 'Comité Scientifique Syndrome ReNU Italie | Dr. Claudia Gravaghi PhD',
+      es: 'Comité Científico Síndrome ReNU Italia | Dr. Claudia Gravaghi PhD',
+      de: 'Wissenschaftlicher Ausschuss ReNU-Syndrom Italien | Dr. Claudia Gravaghi PhD',
+    },
+    brochure: {
+      it: 'Media & Pubblicazioni Sindrome ReNU | Articoli Scientifici e Brochure PDF',
+      en: 'ReNU Syndrome Media & Publications | Scientific Articles and PDF Brochures',
+      fr: 'Médias & Publications Syndrome ReNU | Articles Scientifiques et Brochures PDF',
+      es: 'Medios & Publicaciones Síndrome ReNU | Artículos Científicos y Folletos PDF',
+      de: 'Medien & Publikationen ReNU-Syndrom | Wissenschaftliche Artikel und PDF-Broschüren',
+    },
+    events: {
+      it: 'Eventi e Incontri Sindrome ReNU Italia | Calendario 2026',
+      en: 'ReNU Syndrome Italy Events & Meetings | 2026 Calendar',
+      fr: 'Événements et Rencontres Syndrome ReNU Italie | Calendrier 2026',
+      es: 'Eventos y Encuentros Síndrome ReNU Italia | Calendario 2026',
+      de: 'Veranstaltungen und Treffen ReNU-Syndrom Italien | Kalender 2026',
+    },
+    projects: {
+      it: 'Progetti e Iniziative Sindrome ReNU Italia | Campagne di Sensibilizzazione',
+      en: 'ReNU Syndrome Italy Projects & Initiatives | Awareness Campaigns',
+      fr: 'Projets et Initiatives Syndrome ReNU Italie | Campagnes de Sensibilisation',
+      es: 'Proyectos e Iniciativas Síndrome ReNU Italia | Campañas de Sensibilización',
+      de: 'Projekte und Initiativen ReNU-Syndrom Italien | Sensibilisierungskampagnen',
+    },
+    members: {
+      it: 'Diventa Socio di Sindrome ReNU Italia APS | Iscrizione all\'Associazione',
+      en: 'Become a Member of ReNU Syndrome Italy APS | Join the Association',
+      fr: 'Devenir Membre de Syndrome ReNU Italie APS | Adhésion à l\'Association',
+      es: 'Hazte Socio de Síndrome ReNU Italia APS | Inscripción en la Asociación',
+      de: 'Mitglied werden bei ReNU-Syndrom Italien APS | Vereinsmitgliedschaft',
+    },
+    contact: {
+      it: 'Contatta Sindrome ReNU Italia APS | Email, WhatsApp, Sede Legale',
+      en: 'Contact ReNU Syndrome Italy APS | Email, WhatsApp, Legal Address',
+      fr: 'Contacter Syndrome ReNU Italie APS | Email, WhatsApp, Siège Social',
+      es: 'Contactar Síndrome ReNU Italia APS | Email, WhatsApp, Sede Legal',
+      de: 'Kontakt ReNU-Syndrom Italien APS | E-Mail, WhatsApp, Satzungssitz',
+    },
+    privacy: {
+      it: `Privacy Policy | ${SITE_NAME}`,
+      en: `Privacy Policy | ${SITE_NAME}`,
+      fr: `Politique de Confidentialité | ${SITE_NAME}`,
+      es: `Política de Privacidad | ${SITE_NAME}`,
+      de: `Datenschutzerklärung | ${SITE_NAME}`,
+    },
+  }
+
+  // Meta description ottimizzata per ogni pagina (max 160 char)
+  const pageDescs: Record<string, Record<string, string>> = {
+    home: {
+      it: 'Sindrome ReNU Italia APS: associazione no-profit per le famiglie con la sindrome RNU4-2. Sostieni la ricerca, ottieni supporto, dona il 5x1000. CF 97995890151.',
+      en: 'ReNU Syndrome Italy APS: non-profit association for families with RNU4-2 syndrome. Support research, get help, donate your 5x1000. Tax code 97995890151.',
+      fr: 'Syndrome ReNU Italie APS: association à but non lucratif pour les familles avec le syndrome RNU4-2. Soutenez la recherche, faites un don 5x1000.',
+      es: 'Síndrome ReNU Italia APS: asociación sin ánimo de lucro para familias con síndrome RNU4-2. Apoya la investigación, dona tu 5x1000. NIF 97995890151.',
+      de: 'ReNU-Syndrom Italien APS: gemeinnütziger Verein für Familien mit RNU4-2-Syndrom. Forschung unterstützen, Hilfe erhalten, 5x1000 spenden.',
+    },
+    about: {
+      it: 'La Sindrome ReNU (RNU4-2) è una rara malattia genetica del neurosviluppo identificata nel 2024. Prevalenza 1:35.000. Scopri sintomi, caratteristiche e storia della scoperta.',
+      en: 'ReNU Syndrome (RNU4-2) is a rare genetic neurodevelopmental disorder identified in 2024. Prevalence 1:35,000. Learn about symptoms, features and the story of discovery.',
+      fr: 'Le Syndrome ReNU (RNU4-2) est une maladie génétique rare du neurodéveloppement identifiée en 2024. Prévalence 1:35 000. Découvrez les symptômes et caractéristiques.',
+      es: 'El Síndrome ReNU (RNU4-2) es una enfermedad genética rara del neurodesarrollo identificada en 2024. Prevalencia 1:35.000. Síntomas, características y diagnóstico.',
+      de: 'Das ReNU-Syndrom (RNU4-2) ist eine seltene genetische Neurodevelopment-Störung, die 2024 identifiziert wurde. Prävalenz 1:35.000. Symptome und Diagnose kennenlernen.',
+    },
+    diagnosis: {
+      it: 'Per diagnosticare la Sindrome RNU4-2 serve il WGS (Whole Genome Sequencing). Il WES non rileva le varianti RNU4-2. Scopri i centri italiani abilitati al test.',
+      en: 'RNU4-2 Syndrome diagnosis requires WGS (Whole Genome Sequencing). WES cannot detect RNU4-2 variants. Find Italian centres enabled for the test.',
+      fr: 'Le diagnostic du Syndrome RNU4-2 nécessite un WGS (Séquençage du Génome Entier). Le WES ne détecte pas les variants RNU4-2. Centres italiens habilités.',
+      es: 'El diagnóstico del Síndrome RNU4-2 requiere WGS (Secuenciación del Genoma Completo). El WES no detecta variantes RNU4-2. Centros italianos habilitados.',
+      de: 'Die Diagnose des RNU4-2-Syndroms erfordert WGS (Whole Genome Sequencing). WES kann RNU4-2-Varianten nicht erkennen. Italianische Testzentren finden.',
+    },
+    therapies: {
+      it: 'Terapie per la Sindrome ReNU: fisioterapia, logopedia, ABA, metodo Feuerstein, acquaticità, musicoterapia. Linee guida e risorse per le famiglie italiane.',
+      en: 'Therapies for ReNU Syndrome: physiotherapy, speech therapy, ABA, Feuerstein method, aquatic therapy, music therapy. Guidelines and resources for families.',
+      fr: 'Thérapies pour le Syndrome ReNU: kinésithérapie, orthophonie, ABA, méthode Feuerstein, balnéothérapie, musicothérapie. Ressources pour les familles.',
+      es: 'Terapias para Síndrome ReNU: fisioterapia, logopedia, ABA, método Feuerstein, acuaterapia, musicoterapia. Guías y recursos para familias.',
+      de: 'Therapien für ReNU-Syndrom: Physiotherapie, Logopädie, ABA, Feuerstein-Methode, Aquatherapie, Musiktherapie. Leitlinien und Ressourcen für Familien.',
+    },
+    research: {
+      it: 'Pubblicazioni scientifiche sulla Sindrome ReNU (RNU4-2): studi su Nature, Nature Genetics, PubMed, American Journal of Medical Genetics. Aggiornamenti 2025-2026.',
+      en: 'Scientific publications on ReNU Syndrome (RNU4-2): studies in Nature, Nature Genetics, PubMed, American Journal of Medical Genetics. Updates 2025-2026.',
+      fr: 'Publications scientifiques sur le Syndrome ReNU (RNU4-2): études dans Nature, Nature Genetics, PubMed. Mises à jour 2025-2026.',
+      es: 'Publicaciones científicas sobre Síndrome ReNU (RNU4-2): estudios en Nature, Nature Genetics, PubMed. Actualizaciones 2025-2026.',
+      de: 'Wissenschaftliche Publikationen zum ReNU-Syndrom (RNU4-2): Studien in Nature, Nature Genetics, PubMed. Updates 2025-2026.',
+    },
+    community: {
+      it: 'Comunità italiana della Sindrome ReNU: mappa delle famiglie, storie di vita, rete di supporto. Unisciti alla community su Instagram e Facebook.',
+      en: 'Italian ReNU Syndrome community: family map, life stories, support network. Join the community on Instagram and Facebook.',
+      fr: 'Communauté italienne du Syndrome ReNU: carte des familles, histoires, réseau de soutien. Rejoignez la communauté sur Instagram et Facebook.',
+      es: 'Comunidad italiana del Síndrome ReNU: mapa de familias, historias de vida, red de apoyo. Únete a la comunidad en Instagram y Facebook.',
+      de: 'Italienische ReNU-Syndrom-Community: Familienkarte, Lebensgeschichten, Unterstützungsnetzwerk. Treten Sie der Community auf Instagram und Facebook bei.',
+    },
+    donations: {
+      it: 'Dona a Sindrome ReNU Italia APS: 5x1000 (CF 97995890151), bonifico IBAN, lascito testamentario, compleanno solidale. Ogni contributo fa la differenza.',
+      en: 'Donate to ReNU Syndrome Italy APS: 5x1000 (tax code 97995890151), bank transfer, legacy donation, birthday fundraising. Every contribution matters.',
+      fr: 'Faites un don au Syndrome ReNU Italie APS: 5x1000, virement bancaire, legs testamentaire. Code fiscal 97995890151. Chaque contribution compte.',
+      es: 'Dona al Síndrome ReNU Italia APS: 5x1000 (NIF 97995890151), transferencia bancaria, legado testamentario. Cada contribución importa.',
+      de: 'Spenden für ReNU-Syndrom Italien APS: 5x1000 (Steuernummer 97995890151), Banküberweisung, Erbschaft. Jeder Beitrag macht den Unterschied.',
+    },
+    faq: {
+      it: 'Diritti e tutele per famiglie con Sindrome ReNU: Legge 104, Pass Auto Disabili, Disability Card, 5x1000, indennità accompagnamento, sostegno scolastico, GLO.',
+      en: 'Rights and protections for ReNU Syndrome families: Law 104, Disability Car Badge, European Disability Card, school support, GLO. Italy guide.',
+      fr: 'Droits et protections pour les familles avec Syndrome ReNU: Loi 104, Badge Handicap, Carte Européenne du Handicap, soutien scolaire. Guide Italie.',
+      es: 'Derechos y protecciones para familias con Síndrome ReNU: Ley 104, Badge Discapacidad, Tarjeta Europea de Discapacidad, apoyo escolar. Guía Italia.',
+      de: 'Rechte und Schutz für Familien mit ReNU-Syndrom: Gesetz 104, Behindertenparkausweis, Europäischer Behindertenausweis, Schulbegleitung. Italien-Leitfaden.',
+    },
+    science: {
+      it: 'Comitato Scientifico di Sindrome ReNU Italia APS, guidato dalla Dr. Claudia Gravaghi PhD. Validazione contenuti, supporto alla diagnosi, ricerca e registro pazienti.',
+      en: 'Scientific Committee of ReNU Syndrome Italy APS, led by Dr. Claudia Gravaghi PhD. Content validation, diagnostic support, research and patient registry.',
+      fr: 'Comité Scientifique du Syndrome ReNU Italie APS, dirigé par le Dr Claudia Gravaghi PhD. Validation, soutien diagnostique, recherche et registre patients.',
+      es: 'Comité Científico del Síndrome ReNU Italia APS, liderado por la Dra. Claudia Gravaghi PhD. Validación, soporte diagnóstico, investigación y registro.',
+      de: 'Wissenschaftlicher Ausschuss des ReNU-Syndrom-Vereins Italien APS, geleitet von Dr. Claudia Gravaghi PhD. Inhaltsvalidierung, Diagnoseunterstützung, Forschung.',
+    },
+    brochure: {
+      it: 'Scarica brochure, articoli scientifici e guide PDF sulla Sindrome ReNU: guida epilessia, Progetto Vita, pubblicazioni Nature e PubMed. Materiali per famiglie e medici.',
+      en: 'Download brochures, scientific articles and PDF guides on ReNU Syndrome: epilepsy guide, Life Project, Nature and PubMed publications. Materials for families and doctors.',
+      fr: 'Téléchargez brochures, articles scientifiques et guides PDF sur le Syndrome ReNU: guide épilepsie, Projet Vie, publications Nature et PubMed.',
+      es: 'Descarga folletos, artículos científicos y guías PDF sobre Síndrome ReNU: guía epilepsia, Proyecto Vida, publicaciones Nature y PubMed.',
+      de: 'Broschüren, wissenschaftliche Artikel und PDF-Leitfäden zum ReNU-Syndrom herunterladen: Epilepsie-Leitfaden, Lebensprojekt, Nature- und PubMed-Publikationen.',
+    },
+    events: {
+      it: 'Calendario eventi Sindrome ReNU Italia 2026: convegni, incontri per famiglie, Dynamo Camp per bambini con malattie rare. Non perderti i prossimi appuntamenti.',
+      en: 'ReNU Syndrome Italy 2026 events calendar: conferences, family meetings, Dynamo Camp for children with rare diseases. Don\'t miss upcoming events.',
+      fr: 'Calendrier des événements Syndrome ReNU Italie 2026: conférences, rencontres familiales, Dynamo Camp pour enfants atteints de maladies rares.',
+      es: 'Calendario de eventos Síndrome ReNU Italia 2026: conferencias, encuentros para familias, Dynamo Camp para niños con enfermedades raras.',
+      de: 'Veranstaltungskalender ReNU-Syndrom Italien 2026: Konferenzen, Familientreffen, Dynamo Camp für Kinder mit seltenen Krankheiten.',
+    },
+    projects: {
+      it: 'Progetti e campagne di Sindrome ReNU Italia APS: sensibilizzazione, consapevolezza sulla malattia, raccolta fondi e iniziative per le famiglie.',
+      en: 'ReNU Syndrome Italy APS projects and campaigns: awareness, disease education, fundraising and family initiatives.',
+      fr: 'Projets et campagnes de Syndrome ReNU Italie APS: sensibilisation, éducation sur la maladie, collecte de fonds et initiatives familiales.',
+      es: 'Proyectos y campañas de Síndrome ReNU Italia APS: sensibilización, educación sobre la enfermedad, recaudación de fondos e iniciativas familiares.',
+      de: 'Projekte und Kampagnen des ReNU-Syndrom-Vereins Italien APS: Sensibilisierung, Krankheitsaufklärung, Spendenaktionen und Familieninitiativen.',
+    },
+    members: {
+      it: 'Diventa socio di Sindrome ReNU Italia APS. Unisciti alla rete di famiglie, medici e sostenitori che ogni giorno lavorano per i bambini con sindrome RNU4-2.',
+      en: 'Become a member of ReNU Syndrome Italy APS. Join the network of families, doctors and supporters who work every day for children with RNU4-2 syndrome.',
+      fr: 'Devenez membre du Syndrome ReNU Italie APS. Rejoignez le réseau de familles, médecins et supporters qui œuvrent chaque jour pour les enfants.',
+      es: 'Hazte socio del Síndrome ReNU Italia APS. Únete a la red de familias, médicos y seguidores que trabajan cada día por los niños con síndrome RNU4-2.',
+      de: 'Werden Sie Mitglied des ReNU-Syndrom-Vereins Italien APS. Treten Sie dem Netzwerk aus Familien, Ärzten und Unterstützern bei.',
+    },
+    contact: {
+      it: 'Contatta Sindrome ReNU Italia APS: email info@sindromerenu.it, WhatsApp, modulo di contatto. Siamo qui per le famiglie, i medici e i sostenitori.',
+      en: 'Contact ReNU Syndrome Italy APS: email info@sindromerenu.it, WhatsApp, contact form. We are here for families, doctors and supporters.',
+      fr: 'Contactez Syndrome ReNU Italie APS: email info@sindromerenu.it, WhatsApp, formulaire de contact. Nous sommes là pour les familles et les médecins.',
+      es: 'Contacta Síndrome ReNU Italia APS: email info@sindromerenu.it, WhatsApp, formulario. Estamos aquí para familias, médicos y seguidores.',
+      de: 'Kontaktieren Sie ReNU-Syndrom Italien APS: E-Mail info@sindromerenu.it, WhatsApp, Kontaktformular. Wir sind für Familien und Ärzte da.',
+    },
+    privacy: {
+      it: `Informativa sulla Privacy di ${SITE_NAME}. Scopri come trattiamo i tuoi dati personali in conformità al GDPR.`,
+      en: `Privacy Policy of ${SITE_NAME}. Learn how we handle your personal data in compliance with GDPR.`,
+      fr: `Politique de Confidentialité de ${SITE_NAME}. Découvrez comment nous traitons vos données personnelles conformément au RGPD.`,
+      es: `Política de Privacidad de ${SITE_NAME}. Descubra cómo tratamos sus datos personales de conformidad con el RGPD.`,
+      de: `Datenschutzerklärung von ${SITE_NAME}. Erfahren Sie, wie wir Ihre personenbezogenen Daten gemäß der DSGVO verarbeiten.`,
+    },
+  }
+
+  // Risolvi il page slug (gestisce alias come 'progetti'→'projects', 'eventi'→'events' ecc.)
+  const pageSlugNorm = (['progetti','projects'].includes(page) ? 'projects'
+    : ['eventi','events'].includes(page) ? 'events'
+    : ['membri','members','diventa-socio'].includes(page) ? 'members'
+    : ['comitato-scientifico','science'].includes(page) ? 'science'
+    : page) as string
+  const lang = t.lang as string
+  const canonicalUrl = `${BASE_URL}/${lang}/${pageSlugNorm}`
+  const seoTitle   = (pageTitles[pageSlugNorm]?.[lang] ?? pageTitles[pageSlugNorm]?.['it']) || t.title
+  const seoDesc    = (pageDescs[pageSlugNorm]?.[lang]  ?? pageDescs[pageSlugNorm]?.['it'])  || t.tagline
+
+  // hreflang per tutte le lingue
+  const hreflangs = ['it','en','fr','es','de'].map(l =>
+    `  <link rel="alternate" hreflang="${l}" href="${BASE_URL}/${l}/${pageSlugNorm}">`
+  ).join('\n')
+
+  // JSON-LD: NGO (homepage) + MedicalCondition (about/home) + BreadcrumbList (tutte)
+  const jsonLdNGO = page === 'home' || pageSlugNorm === 'home' ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Sindrome ReNU Italia APS",
+    "alternateName": ["ReNU Italia", "ReNU Syndrome Italy"],
+    "url": "${BASE_URL}",
+    "logo": "${BASE_URL}/icons/icon-512x512.png",
+    "image": "${OG_IMAGE}",
+    "description": "Associazione italiana no-profit per le famiglie con la Sindrome ReNU (variante RNU4-2), rara malattia genetica del neurosviluppo identificata nel 2024.",
+    "foundingDate": "2024",
+    "areaServed": "Italy",
+    "knowsAbout": ["RNU4-2 syndrome", "rare genetic disease", "neurodevelopmental disorder", "snRNA", "spliceosome"],
+    "taxID": "97995890151",
+    "nonprofitStatus": "Associazione di Promozione Sociale",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@sindromerenu.it",
+      "contactType": "customer support",
+      "availableLanguage": ["Italian", "English"]
+    },
+    "sameAs": [
+      "https://www.instagram.com/sindromerenu_italia",
+      "https://www.facebook.com/sindromerenitalia"
+    ]
+  }
+  </script>` : ''
+
+  const jsonLdCondition = (pageSlugNorm === 'home' || pageSlugNorm === 'about') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalCondition",
+    "name": "Sindrome ReNU",
+    "alternateName": ["RNU4-2 Syndrome", "ReNU Syndrome", "Sindrome RNU4-2"],
+    "description": "La Sindrome ReNU è una rara malattia genetica del neurosviluppo causata da varianti del gene RNU4-2 (piccolo RNA nucleare U4). Identificata nell'ottobre 2024, ha una prevalenza stimata di circa 1 su 35.000 nati vivi. È caratterizzata da disabilità intellettiva, epilessia, anomalie cerebrali, ipotonia e caratteristiche dismorfiche.",
+    "code": {
+      "@type": "MedicalCode",
+      "codeValue": "RNU4-2",
+      "codingSystem": "HGNC"
+    },
+    "relevantSpecialty": [
+      {"@type": "MedicalSpecialty", "name": "Genetics"},
+      {"@type": "MedicalSpecialty", "name": "Neurology"},
+      {"@type": "MedicalSpecialty", "name": "Pediatrics"}
+    ],
+    "signOrSymptom": [
+      {"@type": "MedicalSymptom", "name": "Disabilità intellettiva"},
+      {"@type": "MedicalSymptom", "name": "Epilessia"},
+      {"@type": "MedicalSymptom", "name": "Ipotonia muscolare"},
+      {"@type": "MedicalSymptom", "name": "Microcefalia"},
+      {"@type": "MedicalSymptom", "name": "Anomalie cerebrali"},
+      {"@type": "MedicalSymptom", "name": "Difficoltà di linguaggio"}
+    ],
+    "possibleTreatment": [
+      {"@type": "MedicalTherapy", "name": "Fisioterapia"},
+      {"@type": "MedicalTherapy", "name": "Logopedia"},
+      {"@type": "MedicalTherapy", "name": "ABA – Applied Behavior Analysis"},
+      {"@type": "MedicalTherapy", "name": "Metodo Feuerstein"},
+      {"@type": "MedicalTherapy", "name": "Terapia acquatica"},
+      {"@type": "MedicalTherapy", "name": "Musicoterapia"}
+    ],
+    "typicalTest": [
+      {"@type": "MedicalTest", "name": "WGS – Whole Genome Sequencing"},
+      {"@type": "MedicalTest", "name": "Sequenziamento dell'Intero Genoma"}
+    ]
+  }
+  </script>` : ''
+
+  const jsonLdBreadcrumb = `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "${BASE_URL}/${lang}/home"
+      }${pageSlugNorm !== 'home' ? `,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "${seoTitle.split('|')[0].trim()}",
+        "item": "${canonicalUrl}"
+      }` : ''}
+    ]
+  }
+  </script>`
+
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-25-g">
+  <meta name="build" content="2026-08-26-seo1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>${t.title}</title>
-  <meta name="description" content="${t.tagline}">
+
+  <!-- ── SEO: Title e Description per pagina ── -->
+  <title>${seoTitle}</title>
+  <meta name="description" content="${seoDesc}">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="Sindrome ReNU Italia APS">
+  <meta name="keywords" content="${
+    pageSlugNorm === 'home'      ? 'sindrome ReNU, RNU4-2, malattia rara genetica, neurosviluppo, associazione famiglie, Italia, donazione, 5x1000' :
+    pageSlugNorm === 'about'     ? 'cos è sindrome ReNU, RNU4-2 sintomi, gene RNU4-2, spliceosoma, malattia rara neurosviluppo, diagnosi genetica' :
+    pageSlugNorm === 'diagnosis' ? 'diagnosi RNU4-2, WGS whole genome sequencing, test genetico malattia rara, centri specializzati Italia' :
+    pageSlugNorm === 'therapies' ? 'terapie sindrome ReNU, fisioterapia, logopedia, ABA, Feuerstein, acquaticità, musicoterapia, disabilità bambini' :
+    pageSlugNorm === 'research'  ? 'ricerca RNU4-2, pubblicazioni scientifiche sindrome ReNU, PubMed, Nature Genetics, aggiornamenti 2026' :
+    pageSlugNorm === 'donations' ? 'donare associazione malattia rara, 5x1000 97995890151, lascito testamentario, bonifico sindrome ReNU' :
+    pageSlugNorm === 'faq'       ? 'diritti disabilità Italia, legge 104, disability card, pass auto disabili, indennità accompagnamento, sostegno scolastico' :
+    pageSlugNorm === 'science'   ? 'comitato scientifico sindrome ReNU, Claudia Gravaghi, ricerca genetica, validazione scientifica' :
+    pageSlugNorm === 'community' ? 'community sindrome ReNU, famiglie italiane RNU4-2, rete supporto, storie bambini, associazione genitori' :
+    'sindrome ReNU, RNU4-2, malattia rara, associazione famiglie Italia'
+  }">
+
+  <!-- ── Canonical e hreflang ── -->
+  <link rel="canonical" href="${canonicalUrl}">
+${hreflangs}
+  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/it/${pageSlugNorm}">
+
+  <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp) ── -->
+  <meta property="og:type" content="${pageSlugNorm === 'home' ? 'website' : 'article'}">
+  <meta property="og:site_name" content="${SITE_NAME}">
+  <meta property="og:title" content="${seoTitle}">
+  <meta property="og:description" content="${seoDesc}">
+  <meta property="og:url" content="${canonicalUrl}">
+  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sindrome ReNU Italia APS — ${t.lang === 'it' ? 'Associazione per la Sindrome RNU4-2' : 'Association for RNU4-2 Syndrome'}">
+  <meta property="og:locale" content="${
+    lang === 'it' ? 'it_IT' : lang === 'en' ? 'en_GB' : lang === 'fr' ? 'fr_FR' : lang === 'es' ? 'es_ES' : 'de_DE'
+  }">
+
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@sindromerenu_it">
+  <meta name="twitter:creator" content="@sindromerenu_it">
+  <meta name="twitter:title" content="${seoTitle}">
+  <meta name="twitter:description" content="${seoDesc}">
+  <meta name="twitter:image" content="${OG_IMAGE}">
+  <meta name="twitter:image:alt" content="Sindrome ReNU Italia APS">
+
+  <!-- ── PWA / App ── -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
@@ -1289,6 +1667,9 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     }
     /* ═══════════════════════════════════════════════════════════════ */
   </style>
+  ${jsonLdNGO}
+  ${jsonLdCondition}
+  ${jsonLdBreadcrumb}
 </head>
 <body>
 

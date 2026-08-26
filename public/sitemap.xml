@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ══════════════════════════════════════════════════
+       Sindrome ReNU Italia APS — Sitemap multilingua
+       15 pagine × 5 lingue (it, en, fr, es, de) = 75 URL
+       Aggiornata: 2026-08-26
+       ══════════════════════════════════════════════════ -->
+
+  <!-- HOME -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/home</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/home"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/home"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/home"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/home</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/home"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/home"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/home"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/home</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/home"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/home"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/home"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/home</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/home"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/home"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/home"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/home</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/home"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/home"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/home"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/home"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ABOUT / COS'È RENU -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/about</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/about</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/about"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- DIAGNOSI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/diagnosis</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/diagnosis</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/diagnosis</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/diagnosis</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/diagnosis</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/diagnosis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/diagnosis"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- TERAPIE -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/therapies</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/therapies"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/therapies"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/therapies"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/therapies"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/therapies</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/therapies"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/therapies"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/therapies"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/therapies"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/therapies</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/therapies"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/therapies"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/therapies"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/therapies"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/therapies</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/therapies"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/therapies"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/therapies"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/therapies"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/therapies</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/therapies"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/therapies"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/therapies"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/therapies"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/therapies"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- DONAZIONI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/donations</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/donations"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/donations"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/donations"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/donations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/donations</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/donations"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/donations"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/donations"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/donations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/donations</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/donations"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/donations"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/donations"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/donations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/donations</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/donations"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/donations"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/donations"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/donations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/donations</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/donations"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/donations"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/donations"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/donations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/donations"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- FAQ & DIRITTI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/faq</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/faq"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- RESEARCH / APPROFONDIMENTI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/research</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/research"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/research"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/research"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/research"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/research</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/research"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/research"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/research"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/research"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/research</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/research"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/research"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/research"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/research"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/research</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/research"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/research"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/research"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/research"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/research</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/research"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/research"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/research"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/research"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/research"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- COMMUNITY -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/community</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/community"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/community"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/community"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/community"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/community</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/community"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/community"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/community"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/community"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/community</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/community"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/community"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/community"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/community"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/community</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/community"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/community"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/community"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/community"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/community</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/community"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/community"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/community"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/community"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/community"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- COMITATO SCIENTIFICO -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/science</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/science"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/science"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/science"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/science</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/science"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/science"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/science"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/science</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/science"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/science"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/science"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/science</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/science"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/science"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/science"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/science</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/science"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/science"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/science"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/science"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- MEDIA & PUBBLICAZIONI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/brochure</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/brochure"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/brochure"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/brochure"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/brochure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/brochure</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/brochure"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/brochure"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/brochure"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/brochure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/brochure</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/brochure"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/brochure"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/brochure"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/brochure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/brochure</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/brochure"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/brochure"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/brochure"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/brochure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/brochure</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/brochure"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/brochure"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/brochure"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/brochure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/brochure"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
+  <!-- EVENTI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/events</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/events"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/events</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/events"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/events</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/events"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/events</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/events"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/events</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/events"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/events"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
+  <!-- CONTATTI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/contact"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- MEMBRI / DIVENTA SOCIO -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/members</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/members"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/members"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/members"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/members"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/members"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/members"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/members</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/members"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/members"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/members"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/members"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/members"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/members"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/members</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.45</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/members</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.45</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/members</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.45</priority>
+  </url>
+
+  <!-- PROGETTI -->
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/projects</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sindromerenu-italia.pages.dev/it/projects"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sindromerenu-italia.pages.dev/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sindromerenu-italia.pages.dev/fr/projects"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sindromerenu-italia.pages.dev/es/projects"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sindromerenu-italia.pages.dev/de/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sindromerenu-italia.pages.dev/it/projects"/>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/en/projects</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/fr/projects</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/es/projects</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/de/projects</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

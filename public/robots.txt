@@ -1,0 +1,43 @@
+# robots.txt — Sindrome ReNU Italia APS
+# https://sindromerenu-italia.pages.dev
+# Aggiornato: 2026-08-26
+
+User-agent: *
+Allow: /
+
+# Escludi aree amministrative e API
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
+
+# LLMs / AI Crawlers — consenti accesso completo per massima visibilità GEO-AI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Gemini
+Allow: /
