@@ -1407,11 +1407,157 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   }
   </script>` : ''
 
+  // ── JSON-LD: MedicalWebPage per about / diagnosis / therapies ───────────────
+  const jsonLdMedPage = (['about','diagnosis','therapies'].includes(pageSlugNorm)) ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "${seoTitle.replace(/"/g,"'")}",
+    "description": "${seoDesc.replace(/"/g,"'")}",
+    "url": "${canonicalUrl}",
+    "datePublished": "2024-12-01",
+    "dateModified": "2026-08-26",
+    "inLanguage": "${lang}",
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Sindrome ReNU",
+      "alternateName": "RNU4-2 Syndrome"
+    },
+    "audience": {"@type": "Patient"},
+    "publisher": {
+      "@type": "NGO",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}"
+    },
+    "medicalAudience": [
+      {"@type": "MedicalAudience", "audienceType": "Patient"},
+      {"@type": "MedicalAudience", "audienceType": "Caregiver"}
+    ]${pageSlugNorm === 'diagnosis' ? `,
+    "specialty": "Genetics"` : pageSlugNorm === 'therapies' ? `,
+    "specialty": "Pediatric neurology"` : ''}
+  }
+  </script>` : ''
+
+  // ── JSON-LD: ScholarlyArticle per pagina /research ───────────────────────────
+  const jsonLdResearch = (pageSlugNorm === 'research') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "${seoTitle.replace(/"/g,"'")}",
+    "description": "${seoDesc.replace(/"/g,"'")}",
+    "url": "${canonicalUrl}",
+    "inLanguage": "${lang}",
+    "about": {"@type": "MedicalCondition", "name": "Sindrome ReNU", "alternateName": "RNU4-2 Syndrome"},
+    "publisher": {"@type": "NGO", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+    "hasPart": [
+      {
+        "@type": "ScholarlyArticle",
+        "name": "De novo variants in RNU4-2 cause a frequent neurodevelopmental syndrome",
+        "author": "Hollingsworth et al.",
+        "datePublished": "2024",
+        "sameAs": "https://pubmed.ncbi.nlm.nih.gov/39169177/",
+        "identifier": {"@type": "PropertyValue", "propertyID": "PMID", "value": "39169177"}
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "RNU4-2 as a major cause of neurodevelopmental disorders in exome-sequenced patients",
+        "datePublished": "2025",
+        "sameAs": "https://pubmed.ncbi.nlm.nih.gov/42419151/",
+        "identifier": {"@type": "PropertyValue", "propertyID": "PMID", "value": "42419151"}
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Longitudinal Behavior Phenotype Hallmarks in RNU4-2 Syndrome",
+        "datePublished": "2026",
+        "sameAs": "https://pubmed.ncbi.nlm.nih.gov/41681065/",
+        "identifier": {"@type": "PropertyValue", "propertyID": "PMID", "value": "41681065"}
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Biallelic variants in RNU4-2 cause a recessive neurodevelopmental syndrome",
+        "datePublished": "2026",
+        "sameAs": "https://pubmed.ncbi.nlm.nih.gov/41951959/",
+        "identifier": {"@type": "PropertyValue", "propertyID": "PMID", "value": "41951959"}
+      }
+    ]
+  }
+  </script>` : ''
+
+  // ── JSON-LD: DonateAction per pagina /donations ──────────────────────────────
+  const jsonLdDonate = (pageSlugNorm === 'donations') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DonateAction",
+    "name": "Dona alla Sindrome ReNU Italia APS",
+    "description": "Sostieni la ricerca e le famiglie italiane con Sindrome ReNU (RNU4-2). Donazione tramite bonifico, 5x1000 (CF 97995890151) o lascito testamentario.",
+    "url": "${canonicalUrl}",
+    "recipient": {
+      "@type": "NGO",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}",
+      "taxID": "97995890151",
+      "nonprofitStatus": "Associazione di Promozione Sociale",
+      "email": "info@sindromerenu.it"
+    },
+    "object": {
+      "@type": "MonetaryAmount",
+      "currency": "EUR"
+    }
+  }
+  </script>` : ''
+
+  // ── JSON-LD: JoinAction / Organization per pagina /members ───────────────────
+  const jsonLdJoin = (pageSlugNorm === 'members') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JoinAction",
+    "name": "Diventa Socio di Sindrome ReNU Italia APS",
+    "description": "Iscriviti come socio dell'associazione italiana per la Sindrome ReNU (RNU4-2). Supporta le famiglie e la ricerca.",
+    "url": "${canonicalUrl}",
+    "agent": {"@type": "Person", "description": "Genitore, familiare o sostenitore di persone con Sindrome ReNU"},
+    "object": {
+      "@type": "Organization",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}",
+      "email": "info@sindromerenu.it",
+      "taxID": "97995890151"
+    }
+  }
+  </script>` : ''
+
+  // ── JSON-LD: Article per community / projects / brochure ────────────────────
+  const jsonLdArticle = (['community','projects','brochure'].includes(pageSlugNorm)) ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "${seoTitle.replace(/"/g,"'")}",
+    "description": "${seoDesc.replace(/"/g,"'")}",
+    "url": "${canonicalUrl}",
+    "datePublished": "2024-12-01",
+    "dateModified": "2026-08-26",
+    "inLanguage": "${lang}",
+    "image": "${OG_IMAGE}",
+    "author": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}",
+      "logo": {"@type": "ImageObject", "url": "${BASE_URL}/icons/icon-512x512.png"}
+    },
+    "about": {"@type": "MedicalCondition", "name": "Sindrome ReNU", "alternateName": "RNU4-2 Syndrome"}
+  }
+  </script>` : ''
+
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-26-seo2">
+  <meta name="build" content="2026-08-26-seo3">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ── SEO: Title e Description per pagina ── -->
@@ -1459,6 +1605,58 @@ ${hreflangs}
   <meta name="twitter:description" content="${seoDesc}">
   <meta name="twitter:image" content="${OG_IMAGE}">
   <meta name="twitter:image:alt" content="Sindrome ReNU Italia APS">
+
+  <!-- ── Geo / Location ── -->
+  <meta name="geo.region" content="IT">
+  <meta name="geo.placename" content="Italia">
+  <meta name="geo.position" content="41.9028;12.4964">
+  <meta name="ICBM" content="41.9028, 12.4964">
+  <meta name="language" content="${t.lang}">
+
+  <!-- ── Dublin Core / DCTERMS (motori accademici: BASE, CORE, OpenAIRE) ── -->
+  <meta name="DC.title" content="${seoTitle}">
+  <meta name="DC.description" content="${seoDesc}">
+  <meta name="DC.language" content="${t.lang}">
+  <meta name="DC.type" content="${pageSlugNorm === 'home' ? 'Text' : 'Text'}">
+  <meta name="DC.publisher" content="Sindrome ReNU Italia APS">
+  <meta name="DC.rights" content="https://sindromerenu-italia.pages.dev/it/privacy">
+  <meta name="DC.subject" content="Sindrome ReNU; RNU4-2; malattia rara; neurosviluppo; genetica">
+  <meta name="DC.date" content="2026-08-26">
+  <meta name="DCTERMS.modified" content="2026-08-26">
+  <meta name="DCTERMS.language" content="${t.lang}">
+  <meta name="DCTERMS.license" content="https://sindromerenu-italia.pages.dev/it/privacy">
+
+  <!-- ── Article metadata (pagine non-home) ── -->
+  ${pageSlugNorm !== 'home' ? `<meta property="article:published_time" content="2024-12-01T00:00:00Z">
+  <meta property="article:modified_time" content="2026-08-26T00:00:00Z">
+  <meta property="article:author" content="Sindrome ReNU Italia APS">
+  <meta property="article:section" content="${
+    pageSlugNorm === 'about'     ? 'Malattia Rara' :
+    pageSlugNorm === 'diagnosis' ? 'Diagnosi Genetica' :
+    pageSlugNorm === 'therapies' ? 'Terapie' :
+    pageSlugNorm === 'research'  ? 'Ricerca Scientifica' :
+    pageSlugNorm === 'community' ? 'Community' :
+    pageSlugNorm === 'donations' ? 'Donazioni' :
+    pageSlugNorm === 'faq'       ? 'FAQ e Diritti' :
+    pageSlugNorm === 'science'   ? 'Comitato Scientifico' :
+    pageSlugNorm === 'brochure'  ? 'Pubblicazioni' :
+    pageSlugNorm === 'events'    ? 'Eventi' :
+    pageSlugNorm === 'projects'  ? 'Progetti' :
+    pageSlugNorm === 'members'   ? 'Associazione' :
+    pageSlugNorm === 'contact'   ? 'Contatti' :
+    pageSlugNorm === 'privacy'   ? 'Privacy' : 'Informazioni'
+  }">
+  <meta property="article:tag" content="Sindrome ReNU">
+  <meta property="article:tag" content="RNU4-2">
+  <meta property="article:tag" content="malattia rara">
+  <meta property="article:tag" content="neurosviluppo">` : ''}
+
+  <!-- ── OG extra ── -->
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:secure_url" content="${OG_IMAGE}">
+  ${['en','fr','es','de'].filter(l => l !== t.lang).map(l =>
+    `<meta property="og:locale:alternate" content="${l === 'en' ? 'en_US' : l === 'fr' ? 'fr_FR' : l === 'es' ? 'es_ES' : 'de_DE'}">`
+  ).join('\n  ')}
 
   <!-- ── PWA / App ── -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -1713,6 +1911,11 @@ ${hreflangs}
   ${jsonLdBreadcrumb}
   ${jsonLdWebSite}
   ${jsonLdPerson}
+  ${jsonLdMedPage}
+  ${jsonLdResearch}
+  ${jsonLdDonate}
+  ${jsonLdJoin}
+  ${jsonLdArticle}
   ${extraHead}
 </head>
 <body>

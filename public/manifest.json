@@ -1,70 +1,62 @@
 {
   "name": "Sindrome ReNU Italia APS",
   "short_name": "ReNU Italia",
-  "description": "Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.",
+  "description": "Associazione italiana per famiglie e pazienti con Sindrome ReNU (RNU4-2). Informazioni mediche, supporto, comunità e ricerca.",
   "start_url": "/it/home",
+  "id": "/it/home",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#EEF6FB",
   "theme_color": "#082050",
   "orientation": "portrait-primary",
   "lang": "it",
+  "dir": "ltr",
+  "categories": ["health", "medical", "education"],
+  "iarc_rating_id": "",
+  "scope": "/",
   "icons": [
+    { "src": "/icons/icon-57x57.png",   "sizes": "57x57",   "type": "image/png" },
+    { "src": "/icons/icon-60x60.png",   "sizes": "60x60",   "type": "image/png" },
+    { "src": "/icons/icon-72x72.png",   "sizes": "72x72",   "type": "image/png" },
+    { "src": "/icons/icon-76x76.png",   "sizes": "76x76",   "type": "image/png" },
+    { "src": "/icons/icon-114x114.png", "sizes": "114x114", "type": "image/png" },
+    { "src": "/icons/icon-120x120.png", "sizes": "120x120", "type": "image/png" },
+    { "src": "/icons/icon-144x144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-180x180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
     {
-      "src": "/icons/icon-57x57.png",
-      "sizes": "57x57",
-      "type": "image/png"
+      "name": "Cos'è la Sindrome ReNU",
+      "short_name": "Sindrome",
+      "description": "Scopri cos'è la Sindrome ReNU (RNU4-2)",
+      "url": "/it/about",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     },
     {
-      "src": "/icons/icon-60x60.png",
-      "sizes": "60x60",
-      "type": "image/png"
+      "name": "Diagnosi",
+      "short_name": "Diagnosi",
+      "description": "Come si effettua la diagnosi genetica",
+      "url": "/it/diagnosis",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     },
     {
-      "src": "/icons/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
+      "name": "Donazioni",
+      "short_name": "Dona",
+      "description": "Sostieni la ricerca sulla Sindrome ReNU",
+      "url": "/it/donations",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     },
     {
-      "src": "/icons/icon-76x76.png",
-      "sizes": "76x76",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-114x114.png",
-      "sizes": "114x114",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-120x120.png",
-      "sizes": "120x120",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-180x180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "name": "FAQ & Diritti",
+      "short_name": "FAQ",
+      "description": "Domande frequenti e diritti delle famiglie",
+      "url": "/it/faq",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

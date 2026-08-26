@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ══════════════════════════════════════════════════
+       Sindrome ReNU Italia APS — Image Sitemap
+       Immagini principali del sito
+       Aggiornata: 2026-08-26
+       ══════════════════════════════════════════════════ -->
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/home</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/og-cover.jpg</image:loc>
+      <image:title>Sindrome ReNU Italia APS — Cover ufficiale</image:title>
+      <image:caption>Associazione italiana per la Sindrome RNU4-2. Logo, DNA e mascotte tartaruga Reny.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/bambini.jpg</image:loc>
+      <image:title>Bambini con Sindrome ReNU</image:title>
+      <image:caption>Bambini italiani affetti dalla Sindrome RNU4-2, una rara malattia genetica del neurosviluppo.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/famiglie.jpg</image:loc>
+      <image:title>Famiglie italiane con Sindrome ReNU</image:title>
+      <image:caption>Le famiglie italiane unite dall'associazione Sindrome ReNU Italia APS.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/about</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/bambini.jpg</image:loc>
+      <image:title>Cos'è la Sindrome ReNU (RNU4-2)</image:title>
+      <image:caption>Caratteristiche cliniche della Sindrome ReNU: disabilità intellettiva, epilessia, ipotonia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/icona_epilessia.jpg</image:loc>
+      <image:title>Epilessia nella Sindrome ReNU</image:title>
+      <image:caption>L'epilessia è una delle manifestazioni principali della Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/diagnosis</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/icona_epilessia.jpg</image:loc>
+      <image:title>Diagnosi Sindrome ReNU tramite WGS</image:title>
+      <image:caption>Il Whole Genome Sequencing (WGS) è l'unico test affidabile per diagnosticare la Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/therapies</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/ashley_water.jpg</image:loc>
+      <image:title>Terapia acquatica per bambini ReNU</image:title>
+      <image:caption>La terapia acquatica è una delle terapie raccomandate per i bambini con Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/research</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/it_bambini_gruppo.jpg</image:loc>
+      <image:title>Ricerca sulla Sindrome ReNU</image:title>
+      <image:caption>La ricerca scientifica internazionale sulla Sindrome RNU4-2, identificata nell'ottobre 2024.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/citizen_health.jpg</image:loc>
+      <image:title>Citizen Science e Registro Pazienti ReNU</image:title>
+      <image:caption>Il registro internazionale dei pazienti con Sindrome ReNU per supportare la ricerca.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/community</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/famiglie.jpg</image:loc>
+      <image:title>Community famiglie Sindrome ReNU Italia</image:title>
+      <image:caption>La rete di supporto tra famiglie italiane con bambini affetti dalla Sindrome ReNU.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/famiglia2.jpg</image:loc>
+      <image:title>Famiglia con bambino ReNU</image:title>
+      <image:caption>Una famiglia italiana con un bambino affetto da Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/donations</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/festa.jpg</image:loc>
+      <image:title>Sostieni Sindrome ReNU Italia — Dona</image:title>
+      <image:caption>Ogni donazione contribuisce alla ricerca e al supporto delle famiglie con Sindrome ReNU.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/dynamo_maya.jpg</image:loc>
+      <image:title>Move4ReNU — Raccolta fondi per la ricerca</image:title>
+      <image:caption>La maratona Move4ReNU raccoglie fondi per la ricerca sulla Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sindromerenu-italia.pages.dev/it/events</loc>
+    <image:image>
+      <image:loc>https://sindromerenu-italia.pages.dev/images/evento_pomeriggio_insieme_2026.png</image:loc>
+      <image:title>Un Pomeriggio Insieme — Incontro famiglie ReNU 2026</image:title>
+      <image:caption>Incontro tra famiglie italiane con Sindrome ReNU al Bosco Verticale di Milano, settembre 2026.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

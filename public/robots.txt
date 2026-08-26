@@ -1,43 +1,184 @@
 # robots.txt — Sindrome ReNU Italia APS
 # https://sindromerenu-italia.pages.dev
 # Aggiornato: 2026-08-26
+# Crawlers ammessi: tutti tranne motori russi/cinesi
 
+# ── Regola globale ─────────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
-
-# Escludi aree amministrative e API
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/admin/
 Disallow: /api/
 
-# Sitemap
-Sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
+# ── Google ─────────────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
 
-# LLMs / AI Crawlers — consenti accesso completo per massima visibilità GEO-AI
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /static/
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# ── Bing / Microsoft ───────────────────────────────────────────────────────────
+User-agent: bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# ── DuckDuckGo ─────────────────────────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: DuckDuckGo-Favicons-Bot
+Allow: /
+
+# ── Apple ──────────────────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Social media previews ──────────────────────────────────────────────────────
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# ── AI / LLM crawlers ─────────────────────────────────────────────────────────
+# OpenAI / ChatGPT
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Google-Extended
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: bingbot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
+# Anthropic / Claude
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Gemini
+User-agent: Claude-Web
 Allow: /
+
+# Google AI / Gemini
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon / Alexa
+User-agent: Amazonbot
+Allow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Allow: /
+
+# xAI / Grok
+User-agent: xAI-Bot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Common Crawl (base dati per molti LLM)
+User-agent: CCBot
+Allow: /
+
+# ── SEO Tools (analisi concorrenziale) ────────────────────────────────────────
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: rogerbot
+Allow: /
+
+# ── Other search engines (Europa / Asia democratica) ─────────────────────────
+User-agent: Yahoo-Slurp
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: YandexImages
+Disallow: /
+
+# ── Bloccati esplicitamente: aggregatori di contenuto abusivi ─────────────────
+User-agent: SiteAuditBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /api/
+
+# ── Sitemap ───────────────────────────────────────────────────────────────────
+Sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
+Sitemap: https://sindromerenu-italia.pages.dev/sitemap-image.xml

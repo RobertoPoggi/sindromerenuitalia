@@ -1,0 +1,5 @@
+Contact: mailto:presidenza@sindromerenu.it
+Expires: 2027-08-26T00:00:00.000Z
+Preferred-Languages: it, en
+Canonical: https://sindromerenu-italia.pages.dev/.well-known/security.txt
+Policy: https://sindromerenu-italia.pages.dev/it/privacy

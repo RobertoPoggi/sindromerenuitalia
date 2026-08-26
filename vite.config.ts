@@ -13,7 +13,7 @@ const patchRoutesPlugin = {
     const routes = {
       version: 1,
       include: ['/*'],
-      exclude: ['/images/*', '/static/*', '/brochure/*', '/favicon.svg', '/icons/*', '/manifest.json', '/robots.txt', '/sitemap.xml', '/llms.txt']
+      exclude: ['/images/*', '/static/*', '/brochure/*', '/favicon.svg', '/icons/*', '/manifest.json', '/robots.txt', '/sitemap.xml', '/sitemap-image.xml', '/llms.txt', '/humans.txt', '/.well-known/*']
     }
     try {
       writeFileSync(routesPath, JSON.stringify(routes))

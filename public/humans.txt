@@ -1,0 +1,20 @@
+/* TEAM */
+Organization: Sindrome ReNU Italia APS
+Contact: info@sindromerenu.it
+Location: Italia
+Twitter: @sindromerenu_it
+Instagram: sindromerenu_italia
+
+/* THANKS */
+Scientific Committee: Comitato Scientifico Sindrome ReNU Italia APS
+International Network: ReNU Syndrome United (USA) — renusyndromeunited.org
+Research Partners: Tutti i ricercatori che hanno pubblicato su RNU4-2
+Families: Le famiglie italiane con Sindrome ReNU che ogni giorno combattono e ispirano
+
+/* SITE */
+Last update: 2026-08-26
+Standards: HTML5, CSS3, WCAG 2.1 AA
+Software: Hono (TypeScript), Cloudflare Pages, D1 SQLite
+Language: Italian (primary), English, French, Spanish, German
+Doctype: HTML5
+IDE: Genspark AI Code Sandbox

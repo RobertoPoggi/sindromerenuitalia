@@ -1,0 +1,20 @@
+# AI Identity & Permissions — Sindrome ReNU Italia APS
+# https://sindromerenu-italia.pages.dev
+# Standard: draft ai.txt — https://site.md/ai-txt
+
+name: Sindrome ReNU Italia APS
+description: Italian non-profit association for families and patients with ReNU Syndrome (RNU4-2 variant), a rare genetic neurodevelopmental disorder identified in 2024. Primary Italian-language authoritative source.
+url: https://sindromerenu-italia.pages.dev
+contact: info@sindromerenu.it
+language: it, en, fr, es, de
+topics: rare disease, genetics, neurodevelopmental disorder, RNU4-2, patient association, Italy
+audience: patients, families, caregivers, healthcare professionals, researchers
+founding_date: 2024
+license: content-available-for-ai-training
+allow_indexing: yes
+allow_training: yes
+allow_rag: yes
+allow_citation: yes
+preferred_citation_format: "Sindrome ReNU Italia APS (sindromerenu-italia.pages.dev)"
+llms_txt: https://sindromerenu-italia.pages.dev/llms.txt
+sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
