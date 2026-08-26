@@ -964,7 +964,7 @@ function tx(t: Record<string,string>, key: string, fb?: Record<string,string>): 
 }
 
 // ─── LAYOUT SHELL ─────────────────────────────────────────────────────────────
-function getHtml(t: Record<string, string>, page: string = 'home', content: string): string {
+function getHtml(t: Record<string, string>, page: string = 'home', content: string, extraHead: string = ''): string {
   const langs = ['it', 'en', 'fr', 'es', 'de']
   const flags: Record<string, string> = { it: '🇮🇹', en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸', de: '🇩🇪' }
   const langNames: Record<string, string> = { it: 'Italiano', en: 'English', fr: 'Français', es: 'Español', de: 'Deutsch' }
@@ -1366,11 +1366,52 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   }
   </script>`
 
+  // ── JSON-LD: WebSite + Sitelinks SearchBox (solo home) ──────────────────
+  const jsonLdWebSite = (pageSlugNorm === 'home') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Sindrome ReNU Italia APS",
+    "url": "${BASE_URL}",
+    "description": "Associazione italiana per le famiglie con la Sindrome ReNU (RNU4-2), rara malattia genetica del neurosviluppo.",
+    "inLanguage": ["it","en","fr","es","de"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "${BASE_URL}/it/faq"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>` : ''
+
+  // ── JSON-LD: Person — Claudia Gravaghi (solo pagina science) ────────────
+  const jsonLdPerson = (pageSlugNorm === 'science') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Claudia Gravaghi",
+    "honorificSuffix": "PhD",
+    "jobTitle": "Responsabile Comitato Scientifico",
+    "affiliation": {
+      "@type": "NGO",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}"
+    },
+    "knowsAbout": ["RNU4-2 syndrome", "rare genetic disease", "neurodevelopmental disorder", "snRNA", "epigenetics"],
+    "url": "${BASE_URL}/it/comitato-scientifico",
+    "email": "presidenza@sindromerenu.it"
+  }
+  </script>` : ''
+
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-26-seo1">
+  <meta name="build" content="2026-08-26-seo2">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ── SEO: Title e Description per pagina ── -->
@@ -1670,6 +1711,9 @@ ${hreflangs}
   ${jsonLdNGO}
   ${jsonLdCondition}
   ${jsonLdBreadcrumb}
+  ${jsonLdWebSite}
+  ${jsonLdPerson}
+  ${extraHead}
 </head>
 <body>
 
@@ -6222,9 +6266,126 @@ async function loadConfig(db: D1Database | undefined): Promise<Record<string,str
   } catch { return {} }
 }
 
+// ─── HELPER: escape JSON string per JSON-LD ──────────────────────────────────
+function escJld(s: string): string {
+  return (s || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ').replace(/\r/g, '').slice(0, 500)
+}
+
+// ─── ROUTE DEDICATE CON JSON-LD DINAMICI (prima del loop generico) ───────────
+
+// FAQ — FAQPage JSON-LD generato dal DB
+for (const lang of ['it','en','fr','es','de']) {
+  for (const slug of ['faq']) {
+    app.get(`/${lang}/${slug}`, async (c) => {
+      const base = translations[lang]
+      const overrides = await loadTesti(c.env?.DB, lang)
+      const config = await loadConfig(c.env?.DB)
+      const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+      const pageFn = (pages as Record<string, (t: Record<string,string>) => string>)[slug]
+      // Carica FAQ dal DB per il JSON-LD
+      let jsonLdFaq = ''
+      try {
+        const db = c.env?.DB
+        if (db) {
+          const dCol = lang === 'en' ? 'domanda_en' : 'domanda_it'
+          const rCol = lang === 'en' ? 'risposta_en' : 'risposta_it'
+          const r = await db.prepare(
+            'SELECT ' + dCol + ' as domanda, ' + rCol + ' as risposta FROM faq WHERE attiva=1 ORDER BY ordine ASC, id ASC LIMIT 15'
+          ).all()
+          const items = (r.results as Array<{domanda:string,risposta:string}>)
+            .filter(f => f.domanda && f.risposta)
+            .map((f, i) => `{"@type":"Question","name":"${escJld(f.domanda)}","acceptedAnswer":{"@type":"Answer","text":"${escJld(f.risposta)}"}}`)
+            .join(',\n      ')
+          if (items) {
+            jsonLdFaq = `<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      ${items}
+    ]
+  }
+  </script>`
+          }
+        }
+      } catch {}
+      return c.html(getHtml(t, slug, pageFn ? pageFn(t) : '', jsonLdFaq))
+    })
+  }
+}
+
+// EVENTI — Event JSON-LD generato dal DB (route events + eventi)
+for (const lang of ['it','en','fr','es','de']) {
+  for (const slug of ['events','eventi']) {
+    app.get(`/${lang}/${slug}`, async (c) => {
+      const base = translations[lang]
+      const overrides = await loadTesti(c.env?.DB, lang)
+      const config = await loadConfig(c.env?.DB)
+      const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+      // La pagina eventi è registrata nel loop come "events"
+      const pageKey = 'events'
+      const pageFn = (pages as Record<string, (t: Record<string,string>) => string>)[pageKey]
+      // Carica eventi dal DB per il JSON-LD
+      let jsonLdEvents = ''
+      try {
+        const db = c.env?.DB
+        if (db) {
+          const tCol = `titolo_${lang === 'en' ? 'en' : lang === 'fr' ? 'fr' : lang === 'es' ? 'es' : lang === 'de' ? 'de' : 'it'}`
+          const dCol = `desc_${lang === 'en' ? 'en' : 'it'}`
+          const r = await db.prepare(
+            `SELECT id, data_evento, luogo, stato, categoria, img_url, url_esterno,
+             COALESCE(NULLIF(${tCol},''), NULLIF(titolo_it,'')) as titolo,
+             COALESCE(NULLIF(${dCol},''), NULLIF(desc_it,'')) as desc
+             FROM eventi WHERE attivo=1 AND data_evento IS NOT NULL
+             ORDER BY COALESCE(data_evento,'9999') ASC LIMIT 10`
+          ).all()
+          const BASE_URL_EV = 'https://sindromerenu-italia.pages.dev'
+          const evItems = (r.results as Array<{id:number,data_evento:string,luogo:string,stato:string,categoria:string,img_url:string|null,url_esterno:string|null,titolo:string,desc:string}>)
+            .filter(ev => ev.titolo && ev.data_evento)
+            .map(ev => {
+              const eventStatus = ev.stato === 'passato' ? 'EventPast'
+                : ev.stato === 'annullato' ? 'EventCancelled'
+                : ev.stato === 'confermato' ? 'EventScheduled'
+                : 'EventScheduled'
+              const imgPart = ev.img_url ? `,"image":"${BASE_URL_EV}${escJld(ev.img_url)}"` : ''
+              const urlPart = ev.url_esterno ? `,"url":"${escJld(ev.url_esterno)}"` : `,"url":"${BASE_URL_EV}/${lang}/events"`
+              const descPart = ev.desc ? `,"description":"${escJld(ev.desc)}"` : ''
+              return `{
+        "@type": "Event",
+        "name": "${escJld(ev.titolo)}",
+        "startDate": "${ev.data_evento}",
+        "eventStatus": "https://schema.org/${eventStatus}",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {"@type":"Place","name":"${escJld(ev.luogo || 'Italia')}","address":{"@type":"PostalAddress","addressCountry":"IT","addressLocality":"${escJld(ev.luogo || 'Italia')}"}}${descPart}${imgPart}${urlPart},
+        "organizer": {"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE_URL_EV}"}
+      }`
+            })
+            .join(',\n      ')
+          if (evItems) {
+            jsonLdEvents = `<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Eventi Sindrome ReNU Italia",
+    "itemListElement": [
+      ${evItems}
+    ]
+  }
+  </script>`
+          }
+        }
+      } catch {}
+      return c.html(getHtml(t, pageKey, pageFn ? pageFn(t) : '', jsonLdEvents))
+    })
+  }
+}
+
 for (const lang of ['it','en','fr','es','de']) {
   app.get(`/${lang}`, (c) => c.redirect(`/${lang}/home`))
+  // Pagine con JSON-LD dinamici già registrate nelle route dedicate sopra
+  const skipPages = new Set(['faq', 'events', 'eventi'])
   for (const [page, fn] of Object.entries(pages)) {
+    if (skipPages.has(page)) continue
     app.get(`/${lang}/${page}`, async (c) => {
       const base = translations[lang]
       const overrides = await loadTesti(c.env?.DB, lang)
