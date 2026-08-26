@@ -3859,7 +3859,7 @@ function donationsPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Detrazione (Persone Fisiche)':'Tax Deduction (Individuals)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS (iscritta al RUNTS) danno diritto a una detrazione IRPEF del 30% (35% per i soci), fino a un massimo di 30.000€ all\'anno.':'Donations from individuals to Sindrome ReNU Italia APS (registered in RUNTS) entitle a 30% income tax deduction (35% for members), up to €30,000 per year.'}
+                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS (iscritta al RUNTS come APS) danno diritto a una detrazione IRPEF del <strong>30%</strong>, fino a un massimo di 30.000€ all\'anno (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore). Il regime del 35% si applica esclusivamente alle Organizzazioni di Volontariato (ODV), non alle APS.':'Donations from individuals to Sindrome ReNU Italia APS (registered in RUNTS as an APS) entitle a <strong>30%</strong> income tax deduction, up to €30,000 per year (art. 83 D.Lgs. 117/2017 – Third Sector Code). The 35% rate applies exclusively to Voluntary Organisations (ODV), not to APS.'}
               </p>
             </div>
             <div>
@@ -3868,7 +3868,7 @@ function donationsPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Deduzione (Aziende)':'Tax Deduction (Companies)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le aziende che fanno donazioni a Sindrome ReNU Italia APS possono dedurre il 10% del reddito imponibile, con un limite di 70.000€ annui. Contattaci per ricevere la documentazione necessaria.':'Companies making donations to Sindrome ReNU Italia APS can deduct 10% of taxable income, up to €70,000 annually. Contact us for the necessary documentation.'}
+                ${t.lang==='it'?'Le aziende che erogano liberalità a Sindrome ReNU Italia APS possono dedurre dal reddito imponibile le somme donate, nel limite del <strong>10% del reddito complessivo netto dichiarato</strong> (art. 83 D.Lgs. 117/2017). Non è previsto un tetto massimo in euro. Contattaci per ricevere la documentazione fiscale necessaria.':'Companies making donations to Sindrome ReNU Italia APS may deduct donated amounts from taxable income, up to <strong>10% of net declared total income</strong> (art. 83 D.Lgs. 117/2017 – Third Sector Code). There is no fixed euro cap. Contact us for the necessary tax documentation.'}
               </p>
             </div>
           </div>
@@ -6223,20 +6223,15 @@ function sciencePage(t: Record<string, string>): string {
           <i class="fas fa-images" style="color:#1078C0"></i>
           ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" style="align-items:start">
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:4/3">
-            <img src="/images/renu_comitato_scientifico.jpg"
-                 alt="${isIt?'Comitato Scientifico Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS Scientific Committee'}"
-                 class="w-full h-full object-cover" loading="lazy" decoding="async">
-          </div>
-          <div class="img-frame overflow-hidden rounded-2xl" style="aspect-ratio:4/3">
+        <div class="flex justify-center">
+          <div class="img-frame overflow-hidden rounded-2xl" style="max-width:560px;width:100%;aspect-ratio:4/3">
             <img src="/images/renu_science_committee.jpg"
                  alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
                  class="w-full h-full object-cover" loading="lazy" decoding="async">
           </div>
         </div>
         <p class="text-sm text-gray-500 mt-3 text-center">
-          ${isIt?'Comitato Scientifico Sindrome ReNU Italia APS (sinistra) · Comitato Scientifico ReNU Internazionale (destra)':'Sindrome ReNU Italia APS Scientific Committee (left) · ReNU International Scientific Committee (right)'}
+          ${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}
         </p>
       </div>
 
@@ -6393,6 +6388,18 @@ function sciencePage(t: Record<string, string>): string {
                   ? '<strong>Nota clinica:</strong> La gestione delle crisi nei pazienti ReNU richiede valutazione EEG, neuroimaging e un piano terapeutico individualizzato. Il trattamento farmacologico antiepilettico deve essere adattato al profilo clinico specifico del paziente. La ricerca internazionale ReNU sta raccogliendo dati sul profilo epilettico della sindrome per migliorare le linee guida di trattamento.'
                   : '<strong>Clinical note:</strong> Seizure management in ReNU patients requires EEG assessment, neuroimaging and an individualised therapeutic plan. Antiepileptic drug treatment must be adapted to the patient\'s specific clinical profile. International ReNU research is collecting data on the epileptic profile of the syndrome to improve treatment guidelines.'}
               </p>
+            </div>
+            <!-- Infografica epilessia ReNU -->
+            <div class="my-6">
+              <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm">
+                <img src="/images/infografica_epilessia_renu.jpg"
+                     alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
+                     class="w-full h-auto block" loading="lazy" decoding="async"
+                     style="max-width:100%;display:block;margin:0 auto">
+                <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
+                  ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
+                </figcaption>
+              </figure>
             </div>
             <div class="flex flex-wrap gap-3">
               <a href="/${t.lang}/about" class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
@@ -7189,16 +7196,16 @@ for (const lang of ['it','en','fr','es','de']) {
     const html = `
       <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
         <p class="text-gray-800 font-semibold text-lg leading-relaxed">
-          ${isIt ? 'La <strong>donazione aziendale</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) è deducibile ai sensi dell’art. 14 del D.L. 35/2005 (fino al 10% del reddito complessivo, max 70.000€/anno). L’azienda riceve certificazione formale e visibilità CSR nella comunicazione dell’associazione.' :
-           isEn ? 'A <strong>corporate donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) is tax-deductible under art. 14 of D.L. 35/2005 (up to 10% of total income, max €70,000/year). The company receives formal certification and CSR visibility.' :
-           isFr ? 'Un <strong>don d’entreprise</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) est déductible fiscalement selon l’art. 14 du D.L. 35/2005 (jusqu’à 10% du revenu total, max 70 000€/an).' :
-           isEs ? 'Una <strong>donación empresarial</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) es deducible según el art. 14 del D.L. 35/2005 (hasta el 10% de los ingresos totales, máx. 70.000€/año).' :
-           'Eine <strong>Unternehmenssspende</strong> an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. 97995890151) ist nach Art. 14 des D.L. 35/2005 steuerlich absetzbar (bis zu 10% des Gesamteinkommens, max. 70.000€/Jahr).'}
+          ${isIt ? 'La <strong>donazione aziendale</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) è deducibile dal reddito imponibile nel limite del <strong>10% del reddito complessivo netto dichiarato</strong>, senza tetto massimo in euro (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore). L’azienda riceve certificazione formale e visibilità CSR nella comunicazione dell’associazione.' :
+           isEn ? 'A <strong>corporate donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) is tax-deductible up to <strong>10% of net declared total income</strong>, with no fixed euro cap (art. 83 D.Lgs. 117/2017 – Third Sector Code). The company receives formal certification and CSR visibility.' :
+           isFr ? 'Un <strong>don d’entreprise</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) est déductible fiscalement jusqu’à <strong>10% du revenu net total déclaré</strong>, sans plafond en euros (art. 83 D.Lgs. 117/2017 – Code du Tiers Secteur italien). L’entreprise reçoit une certification formelle et une visibilité RSE.' :
+           isEs ? 'Una <strong>donación empresarial</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) es deducible hasta el <strong>10% de la renta neta total declarada</strong>, sin límite máximo en euros (art. 83 D.Lgs. 117/2017 – Código del Tercer Sector italiano). La empresa recibe certificación formal y visibilidad RSC.' :
+           'Eine <strong>Unternehmensspende</strong> an <strong>Sindrome ReNU Italia APS</strong> (St.-Nr. 97995890151) ist steuerlich absetzbar bis zu <strong>10% des netto erklärten Gesamteinkommens</strong>, ohne festen Euro-Höchstbetrag (Art. 83 D.Lgs. 117/2017 – Italienisches Dritter-Sektor-Gesetz). Das Unternehmen erhält eine formelle Bescheinigung und CSR-Sichtbarkeit.'}
         </p>
       </div>
       <div class="max-w-3xl mx-auto space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="card p-6 text-center"><i class="fas fa-percent text-3xl mb-3" style="color:#1078C0"></i><h3 class="font-bold mb-2" style="color:#082050">${isIt?'Deducibilità fiscale':'Tax deductibility'}</h3><p class="text-sm text-gray-600">${isIt?'Fino al 10% del reddito imponibile, max 70.000€/anno (art. 14 D.L. 35/2005)':'Up to 10% of taxable income, max €70,000/year'}</p></div>
+          <div class="card p-6 text-center"><i class="fas fa-percent text-3xl mb-3" style="color:#1078C0"></i><h3 class="font-bold mb-2" style="color:#082050">${isIt?'Deducibilità fiscale':'Tax deductibility'}</h3><p class="text-sm text-gray-600">${isIt?'10% del reddito complessivo netto dichiarato, senza tetto massimo in euro (art. 83 D.Lgs. 117/2017)':'Up to 10% of net declared total income, no fixed euro cap (art. 83 D.Lgs. 117/2017)'}</p></div>
           <div class="card p-6 text-center"><i class="fas fa-certificate text-3xl mb-3" style="color:#7C3AED"></i><h3 class="font-bold mb-2" style="color:#082050">${isIt?'Certificazione':'Certification'}</h3><p class="text-sm text-gray-600">${isIt?'Ricevuta fiscale e lettera di ringraziamento formale per la contabilità aziendale':'Tax receipt and formal thank-you letter for corporate accounting'}</p></div>
           <div class="card p-6 text-center"><i class="fas fa-bullhorn text-3xl mb-3" style="color:#059669"></i><h3 class="font-bold mb-2" style="color:#082050">CSR & Visibility</h3><p class="text-sm text-gray-600">${isIt?'Logo aziendale sul sito, nelle pubblicazioni e negli eventi dell’associazione':'Company logo on website, publications and association events'}</p></div>
         </div>
