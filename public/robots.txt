@@ -1,5 +1,5 @@
 # robots.txt — Sindrome ReNU Italia APS
-# https://sindromerenu-italia.pages.dev
+# https://www.sindromerenu.it
 # Aggiornato: 2026-08-26
 # Crawlers ammessi: tutti tranne motori russi/cinesi
 
@@ -180,5 +180,5 @@ User-agent: DataForSeoBot
 Disallow: /api/
 
 # ── Sitemap ───────────────────────────────────────────────────────────────────
-Sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
-Sitemap: https://sindromerenu-italia.pages.dev/sitemap-image.xml
+Sitemap: https://www.sindromerenu.it/sitemap.xml
+Sitemap: https://www.sindromerenu.it/sitemap-image.xml

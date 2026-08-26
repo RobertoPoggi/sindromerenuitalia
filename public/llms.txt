@@ -17,7 +17,7 @@
 - **Sede legale**: Italia
 - **Email**: info@sindromerenu.it
 - **Email presidenza**: presidenza@sindromerenu.it
-- **Sito web**: https://sindromerenu-italia.pages.dev
+- **Sito web**: https://www.sindromerenu.it
 - **Instagram**: https://www.instagram.com/sindromerenu_italia
 - **Facebook**: https://www.facebook.com/sindromerenitalia
 - **Natura giuridica**: No-profit, APS (Associazione di Promozione Sociale), DLgs 117/2017
@@ -131,7 +131,7 @@ A: La Sindrome ReNU rientra nelle malattie rare genetiche. Occorre certificazion
 Per info: presidenza@sindromerenu.it
 
 ### Come diventare socio
-Pagina dedicata: https://sindromerenu-italia.pages.dev/it/diventa-socio
+Pagina dedicata: https://www.sindromerenu.it/it/diventa-socio
 Quota associativa annuale: info@sindromerenu.it
 
 ---
@@ -139,43 +139,43 @@ Quota associativa annuale: info@sindromerenu.it
 ## Struttura del Sito (Pagine Principali)
 
 Il sito è disponibile in 5 lingue (it, en, fr, es, de).
-Formato URL: https://sindromerenu-italia.pages.dev/{lingua}/{pagina}
+Formato URL: https://www.sindromerenu.it/{lingua}/{pagina}
 
 ### Italiano (principale)
-- **Home**: https://sindromerenu-italia.pages.dev/it/home
-- **Cos'è la Sindrome ReNU**: https://sindromerenu-italia.pages.dev/it/about
-- **Diagnosi**: https://sindromerenu-italia.pages.dev/it/diagnosis
-- **Terapie**: https://sindromerenu-italia.pages.dev/it/therapies
-- **Ricerca Scientifica**: https://sindromerenu-italia.pages.dev/it/research
-- **Community**: https://sindromerenu-italia.pages.dev/it/community
-- **Donazioni**: https://sindromerenu-italia.pages.dev/it/donations
-- **FAQ & Diritti**: https://sindromerenu-italia.pages.dev/it/faq
-- **Comitato Scientifico**: https://sindromerenu-italia.pages.dev/it/comitato-scientifico
-- **Media & Pubblicazioni**: https://sindromerenu-italia.pages.dev/it/brochure
-- **Eventi**: https://sindromerenu-italia.pages.dev/it/events
-- **Progetti**: https://sindromerenu-italia.pages.dev/it/projects
-- **Diventa Socio**: https://sindromerenu-italia.pages.dev/it/diventa-socio
-- **Contatti**: https://sindromerenu-italia.pages.dev/it/contact
+- **Home**: https://www.sindromerenu.it/it/home
+- **Cos'è la Sindrome ReNU**: https://www.sindromerenu.it/it/about
+- **Diagnosi**: https://www.sindromerenu.it/it/diagnosis
+- **Terapie**: https://www.sindromerenu.it/it/therapies
+- **Ricerca Scientifica**: https://www.sindromerenu.it/it/research
+- **Community**: https://www.sindromerenu.it/it/community
+- **Donazioni**: https://www.sindromerenu.it/it/donations
+- **FAQ & Diritti**: https://www.sindromerenu.it/it/faq
+- **Comitato Scientifico**: https://www.sindromerenu.it/it/comitato-scientifico
+- **Media & Pubblicazioni**: https://www.sindromerenu.it/it/brochure
+- **Eventi**: https://www.sindromerenu.it/it/events
+- **Progetti**: https://www.sindromerenu.it/it/projects
+- **Diventa Socio**: https://www.sindromerenu.it/it/diventa-socio
+- **Contatti**: https://www.sindromerenu.it/it/contact
 
 ### English
-- **Home**: https://sindromerenu-italia.pages.dev/en/home
-- **About ReNU Syndrome**: https://sindromerenu-italia.pages.dev/en/about
-- **Diagnosis**: https://sindromerenu-italia.pages.dev/en/diagnosis
-- **Therapies**: https://sindromerenu-italia.pages.dev/en/therapies
-- **Research**: https://sindromerenu-italia.pages.dev/en/research
-- **Community**: https://sindromerenu-italia.pages.dev/en/community
-- **Donations**: https://sindromerenu-italia.pages.dev/en/donations
-- **FAQ & Rights**: https://sindromerenu-italia.pages.dev/en/faq
+- **Home**: https://www.sindromerenu.it/en/home
+- **About ReNU Syndrome**: https://www.sindromerenu.it/en/about
+- **Diagnosis**: https://www.sindromerenu.it/en/diagnosis
+- **Therapies**: https://www.sindromerenu.it/en/therapies
+- **Research**: https://www.sindromerenu.it/en/research
+- **Community**: https://www.sindromerenu.it/en/community
+- **Donations**: https://www.sindromerenu.it/en/donations
+- **FAQ & Rights**: https://www.sindromerenu.it/en/faq
 
 ### Français
-- **Accueil**: https://sindromerenu-italia.pages.dev/fr/home
-- **Qu'est-ce que**: https://sindromerenu-italia.pages.dev/fr/about
+- **Accueil**: https://www.sindromerenu.it/fr/home
+- **Qu'est-ce que**: https://www.sindromerenu.it/fr/about
 
 ### Español
-- **Inicio**: https://sindromerenu-italia.pages.dev/es/home
+- **Inicio**: https://www.sindromerenu.it/es/home
 
 ### Deutsch
-- **Startseite**: https://sindromerenu-italia.pages.dev/de/home
+- **Startseite**: https://www.sindromerenu.it/de/home
 
 ---
 

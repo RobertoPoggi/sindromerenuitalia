@@ -1035,7 +1035,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     </a>`).join('')
 
   // ── SEO: title e description per pagina ──────────────────────────────────
-  const BASE_URL = 'https://sindromerenu-italia.pages.dev'
+  const BASE_URL = 'https://www.sindromerenu.it'
   const SITE_NAME = 'Sindrome ReNU Italia APS'
   const OG_IMAGE = `${BASE_URL}/images/og-cover.jpg`
 
@@ -1299,7 +1299,18 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "sameAs": [
       "https://www.instagram.com/sindromerenu_italia",
       "https://www.facebook.com/sindromerenitalia"
-    ]
+    ],
+    "potentialAction": {
+      "@type": "DonateAction",
+      "name": "Dona a Sindrome ReNU Italia APS",
+      "target": "${BASE_URL}/${lang}/donations",
+      "recipient": {
+        "@type": "NGO",
+        "name": "Sindrome ReNU Italia APS",
+        "url": "${BASE_URL}",
+        "taxID": "97995890151"
+      }
+    }
   }
   </script>` : ''
 
@@ -1309,37 +1320,56 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "@context": "https://schema.org",
     "@type": "MedicalCondition",
     "name": "Sindrome ReNU",
-    "alternateName": ["RNU4-2 Syndrome", "ReNU Syndrome", "Sindrome RNU4-2"],
+    "alternateName": ["RNU4-2 Syndrome", "ReNU Syndrome", "Sindrome RNU4-2", "RNU4-2 Neurodevelopmental Disorder"],
     "description": "La Sindrome ReNU è una rara malattia genetica del neurosviluppo causata da varianti del gene RNU4-2 (piccolo RNA nucleare U4). Identificata nell'ottobre 2024, ha una prevalenza stimata di circa 1 su 35.000 nati vivi. È caratterizzata da disabilità intellettiva, epilessia, anomalie cerebrali, ipotonia e caratteristiche dismorfiche.",
     "code": {
       "@type": "MedicalCode",
       "codeValue": "RNU4-2",
       "codingSystem": "HGNC"
     },
+    "associatedGene": {
+      "@type": "Gene",
+      "name": "RNU4-2",
+      "description": "Gene che codifica per lo snRNA U4, componente essenziale del complesso di splicing dell'mRNA (spliceosoma). Varianti patogenetiche in RNU4-2 causano la Sindrome ReNU."
+    },
+    "prevalence": "Circa 1 su 35.000 nati vivi",
+    "typicalAgeRange": "Infanzia–adolescenza",
     "relevantSpecialty": [
       {"@type": "MedicalSpecialty", "name": "Genetics"},
       {"@type": "MedicalSpecialty", "name": "Neurology"},
       {"@type": "MedicalSpecialty", "name": "Pediatrics"}
     ],
     "signOrSymptom": [
-      {"@type": "MedicalSymptom", "name": "Disabilità intellettiva"},
-      {"@type": "MedicalSymptom", "name": "Epilessia"},
+      {"@type": "MedicalSymptom", "name": "Disabilità intellettiva da moderata a grave"},
+      {"@type": "MedicalSymptom", "name": "Epilessia (spasmi infantili, crisi focali, tonico-cloniche)"},
+      {"@type": "MedicalSymptom", "name": "Ritardo del neurosviluppo"},
+      {"@type": "MedicalSymptom", "name": "Anomalie cerebrali alla RM (materia bianca ridotta, ventricolomegalia, ipoplasia del corpo calloso)"},
       {"@type": "MedicalSymptom", "name": "Ipotonia muscolare"},
-      {"@type": "MedicalSymptom", "name": "Microcefalia"},
-      {"@type": "MedicalSymptom", "name": "Anomalie cerebrali"},
-      {"@type": "MedicalSymptom", "name": "Difficoltà di linguaggio"}
+      {"@type": "MedicalSymptom", "name": "Ipoplasia del nervo ottico e CVI"},
+      {"@type": "MedicalSymptom", "name": "Difficoltà di linguaggio"},
+      {"@type": "MedicalSymptom", "name": "Microcefalia e bassa statura"},
+      {"@type": "MedicalSymptom", "name": "Difficoltà alimentari e reflusso"}
     ],
     "possibleTreatment": [
       {"@type": "MedicalTherapy", "name": "Fisioterapia"},
       {"@type": "MedicalTherapy", "name": "Logopedia"},
       {"@type": "MedicalTherapy", "name": "ABA – Applied Behavior Analysis"},
       {"@type": "MedicalTherapy", "name": "Metodo Feuerstein"},
-      {"@type": "MedicalTherapy", "name": "Terapia acquatica"},
-      {"@type": "MedicalTherapy", "name": "Musicoterapia"}
+      {"@type": "MedicalTherapy", "name": "Terapia acquatica e ippoterapia"},
+      {"@type": "MedicalTherapy", "name": "Musicoterapia"},
+      {"@type": "MedicalTherapy", "name": "Terapia occupazionale"}
     ],
     "typicalTest": [
       {"@type": "MedicalTest", "name": "WGS – Whole Genome Sequencing"},
       {"@type": "MedicalTest", "name": "Sequenziamento dell'Intero Genoma"}
+    ],
+    "diagnosisMethod": "Sequenziamento dell'Intero Genoma (WGS) obbligatorio; il WES non rileva varianti introniche profonde del gene RNU4-2.",
+    "url": "${BASE_URL}/it/about",
+    "sameAs": [
+      "https://en.wikipedia.org/wiki/RNU4-2",
+      "https://www.omim.org/entry/620849",
+      "https://rarediseases.info.nih.gov/diseases/RNU4-2",
+      "https://www.orpha.net/consor/cgi-bin/OC_Exp.php?lng=EN&Expert=RNU4-2"
     ]
   }
   </script>` : ''
@@ -1530,6 +1560,31 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   </script>` : ''
 
   // ── JSON-LD: Article per community / projects / brochure ────────────────────
+  // ── JSON-LD: DefinedTermSet per il glossario medico ──────────────────────────
+  const jsonLdGlossary = (['glossary','glossario'].includes(pageSlugNorm)) ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "name": "${lang === 'it' ? 'Glossario Medico Sindrome ReNU (RNU4-2)' : lang === 'en' ? 'Medical Glossary ReNU Syndrome (RNU4-2)' : lang === 'fr' ? 'Glossaire Médical Syndrome ReNU (RNU4-2)' : lang === 'es' ? 'Glosario Médico Síndrome ReNU (RNU4-2)' : 'Medizinisches Glossar ReNU-Syndrom (RNU4-2)'}",
+    "description": "${lang === 'it' ? '30+ definizioni precise di termini medici relativi alla Sindrome ReNU, redatte dal Comitato Scientifico di Sindrome ReNU Italia APS' : '30+ precise definitions of medical terms related to ReNU Syndrome, prepared by the Scientific Committee of Sindrome ReNU Italia APS'}",
+    "url": "${canonicalUrl}",
+    "inLanguage": "${lang}",
+    "dateModified": "2026-08-26",
+    "publisher": {
+      "@type": "NGO",
+      "name": "Sindrome ReNU Italia APS",
+      "url": "${BASE_URL}",
+      "logo": {"@type": "ImageObject", "url": "${BASE_URL}/icons/icon-512x512.png"}
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Sindrome ReNU",
+      "alternateName": "RNU4-2 Syndrome"
+    }
+  }
+  </script>` : ''
+
   const jsonLdArticle = (['community','projects','brochure'].includes(pageSlugNorm)) ? `
   <script type="application/ld+json">
   {
@@ -1619,12 +1674,12 @@ ${hreflangs}
   <meta name="DC.language" content="${t.lang}">
   <meta name="DC.type" content="${pageSlugNorm === 'home' ? 'Text' : 'Text'}">
   <meta name="DC.publisher" content="Sindrome ReNU Italia APS">
-  <meta name="DC.rights" content="https://sindromerenu-italia.pages.dev/it/privacy">
+  <meta name="DC.rights" content="https://www.sindromerenu.it/it/privacy">
   <meta name="DC.subject" content="Sindrome ReNU; RNU4-2; malattia rara; neurosviluppo; genetica">
   <meta name="DC.date" content="2026-08-26">
   <meta name="DCTERMS.modified" content="2026-08-26">
   <meta name="DCTERMS.language" content="${t.lang}">
-  <meta name="DCTERMS.license" content="https://sindromerenu-italia.pages.dev/it/privacy">
+  <meta name="DCTERMS.license" content="https://www.sindromerenu.it/it/privacy">
 
   <!-- ── Article metadata (pagine non-home) ── -->
   ${pageSlugNorm !== 'home' ? `<meta property="article:published_time" content="2024-12-01T00:00:00Z">
@@ -1916,13 +1971,14 @@ ${hreflangs}
   ${jsonLdDonate}
   ${jsonLdJoin}
   ${jsonLdArticle}
+  ${jsonLdGlossary}
   ${extraHead}
 </head>
 <body>
 
 <!-- ── LOGO WATERMARK FISSO SU TUTTA LA PAGINA (PDF punto 5) ── -->
 <div id="page-logo-watermark" aria-hidden="true">
-  <img src="/images/logo_transparent2.png" alt="">
+  <img src="/images/logo_transparent2.png" alt="Logo Sindrome ReNU Italia APS" loading="lazy" decoding="async">
 </div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
@@ -2397,7 +2453,7 @@ function homePage(t: Record<string, string>): string {
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:1.5rem;max-width:520px;width:92%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.35);display:flex;flex-direction:column">
           <button onclick="chiudiStoria()" style="position:absolute;top:12px;right:14px;z-index:10;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15)">✕</button>
           <div id="storia-modal-img-wrap" style="width:100%;aspect-ratio:4/5;overflow:hidden;background:#EEF6FB;flex-shrink:0">
-            <img id="storia-modal-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top">
+            <img id="storia-modal-img" src="" alt="Foto famiglia Sindrome ReNU" style="width:100%;height:100%;object-fit:cover;object-position:top">
           </div>
           <div style="padding:1.5rem;flex:1">
             <div style="display:inline-flex;align-items:center;gap:6px;background:#f0f8fd;border-radius:9999px;padding:4px 12px;margin-bottom:12px">
@@ -2624,7 +2680,7 @@ function aboutPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/nastro.png" alt="Nastro ReNU" class="w-full object-contain" style="max-height:220px;background:#f0f8fd;" loading="lazy" decoding="async">
+          <img src="/images/nastro.png" alt="Nastro azzurro simbolo Sindrome ReNU Italia APS" class="w-full object-contain" style="max-height:220px;background:#f0f8fd;" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2633,6 +2689,18 @@ function aboutPage(t: Record<string, string>): string {
   <section class="py-16 px-4 section-light">
     <div class="max-w-5xl mx-auto">
       
+      <!-- ── ANCHOR CONTENT: definizione 60 parole citabile da AI ── -->
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${t.lang==='it' ? 'La <strong>Sindrome ReNU (RNU4-2)</strong> è una malattia genetica rara del neurosviluppo con prevalenza stimata di <strong>1 su 35.000 nati vivi</strong>, identificata nell\'ottobre 2024 in studi internazionali pubblicati su <em>Nature</em> (Hollingsworth et al., 2024). È causata da varianti patogenetiche del gene <strong>RNU4-2</strong>, che compromettono lo splicing dell\'RNA. La diagnosi richiede il <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Sequenziamento dell\'Intero Genoma (WGS)</a>.' :
+           t.lang==='en' ? '<strong>ReNU Syndrome (RNU4-2)</strong> is a rare neurodevelopmental genetic disorder with an estimated prevalence of <strong>1 in 35,000 live births</strong>, identified in October 2024 (Hollingsworth et al., <em>Nature</em>, 2024). It is caused by pathogenic variants of the <strong>RNU4-2</strong> gene, which impair RNA splicing. Diagnosis requires <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Whole Genome Sequencing (WGS)</a>.' :
+           t.lang==='fr' ? 'Le <strong>Syndrome ReNU (RNU4-2)</strong> est une maladie génétique rare du neurodéveloppement, prévalence estimée à <strong>1 sur 35 000 naissances</strong>, identifiée en octobre 2024 (<em>Nature</em>, Hollingsworth et al., 2024). Causé par des variants pathogènes du gène <strong>RNU4-2</strong>. Diagnostic via <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Séquençage du Génome Entier (WGS)</a>.' :
+           t.lang==='es' ? 'El <strong>Síndrome ReNU (RNU4-2)</strong> es una enfermedad genética rara del neurodesarrollo con prevalencia estimada de <strong>1 en 35.000 nacidos vivos</strong>, identificada en octubre de 2024 (<em>Nature</em>, Hollingsworth et al., 2024). Causada por variantes patogénicas del gen <strong>RNU4-2</strong>. Diagnóstico: <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Secuenciación del Genoma Completo (WGS)</a>.' :
+           'Das <strong>ReNU-Syndrom (RNU4-2)</strong> ist eine seltene neurogenetische Entwicklungsstörung mit einer geschätzten Prävalenz von <strong>1 von 35.000 Lebendgeburten</strong>, identifiziert im Oktober 2024 (<em>Nature</em>, Hollingsworth et al., 2024). Verursacht durch pathogene Varianten des <strong>RNU4-2</strong>-Gens. Diagnose: <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Whole-Genome-Sequencing (WGS)</a>.'
+          }
+        </p>
+      </div>
+
       <!-- Gene info card -->
       <div class="card card-blue p-8 mb-8">
         <p class="text-gray-700 leading-relaxed mb-5 text-lg">${t.about_gene}</p>
@@ -2731,6 +2799,18 @@ function aboutPage(t: Record<string, string>): string {
           ${t.lang==='it'?'Approfondisci su RSU':t.lang==='en'?'Learn more on RSU':'Plus d\'infos sur RSU'}
         </a>
       </div>
+
+      <!-- Internal linking strutturato §2.2.7 -->
+      <nav class="mt-10 border-t border-sky-100 pt-8" aria-label="${t.lang==='it'?'Approfondimenti correlati':t.lang==='en'?'Related pages':t.lang==='fr'?'Pages connexes':t.lang==='es'?'Páginas relacionadas':'Verwandte Seiten'}">
+        <p class="text-sm font-semibold mb-3" style="color:#082050">${t.lang==='it'?'Approfondimenti correlati:':t.lang==='en'?'Related pages:':t.lang==='fr'?'Pages connexes :':t.lang==='es'?'Páginas relacionadas:':'Verwandte Seiten:'}</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a href="/${t.lang}/diagnosis" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-stethoscope text-xs"></i>${t.lang==='it'?'Scopri i centri diagnostici WGS per RNU4-2':t.lang==='en'?'Find WGS diagnostic centres for RNU4-2':t.lang==='fr'?'Centres de diagnostic WGS pour RNU4-2':t.lang==='es'?'Centros de diagnóstico WGS para RNU4-2':'WGS-Diagnosezentren für RNU4-2'}</a></li>
+          <li><a href="/${t.lang}/therapies" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heartbeat text-xs"></i>${t.lang==='it'?'Terapie di supporto per bambini RNU4-2':t.lang==='en'?'Support therapies for RNU4-2 children':t.lang==='fr'?'Thérapies de soutien pour RNU4-2':t.lang==='es'?'Terapias de apoyo para niños RNU4-2':'Unterstützungstherapien für RNU4-2-Kinder'}</a></li>
+          <li><a href="/${t.lang}/research" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-microscope text-xs"></i>${t.lang==='it'?'Pubblicazioni scientifiche su RNU4-2':t.lang==='en'?'Scientific publications on RNU4-2':t.lang==='fr'?'Publications scientifiques sur RNU4-2':t.lang==='es'?'Publicaciones científicas sobre RNU4-2':'Wissenschaftliche Publikationen zu RNU4-2'}</a></li>
+          <li><a href="/${t.lang}/faq" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-question-circle text-xs"></i>${t.lang==='it'?'Diritti delle famiglie con bambini RNU4-2':t.lang==='en'?'Rights for families with RNU4-2 children':t.lang==='fr'?'Droits des familles avec enfants RNU4-2':t.lang==='es'?'Derechos de familias con niños RNU4-2':'Rechte für Familien mit RNU4-2-Kindern'}</a></li>
+          <li><a href="/${t.lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${t.lang==='it'?'Aiuta la ricerca sulla Sindrome ReNU':t.lang==='en'?'Support ReNU Syndrome research':t.lang==='fr'?'Soutenir la recherche sur ReNU':t.lang==='es'?'Apoya la investigación ReNU':'ReNU-Forschung unterstützen'}</a></li>
+        </ul>
+      </nav>
     </div>
   </section>`
 }
@@ -2972,6 +3052,19 @@ function therapiesPage(t: Record<string, string>): string {
   </section>
   <section class="py-16 px-4 section-light">
     <div class="max-w-5xl mx-auto">
+
+      <!-- ── ANCHOR CONTENT: definizione citabile per AI §3.2.3 ── -->
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${t.lang==='it' ? 'Non esiste ancora una terapia causale per la <strong>Sindrome ReNU (RNU4-2)</strong>. Le terapie di supporto raccomandate includono: <strong>fisioterapia, logopedia, ABA, metodo Feuerstein, terapia occupazionale, acquaticità e musicoterapia</strong>. Ogni percorso deve essere personalizzato. Molti bambini ReNU mostrano progressi significativi con interventi precoci e multidisciplinari. <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Come si diagnostica la Sindrome ReNU</a>.' :
+           t.lang==='en' ? 'There is currently no causal therapy for <strong>ReNU Syndrome (RNU4-2)</strong>. Recommended support therapies include: <strong>physical therapy, speech therapy, ABA, Feuerstein method, occupational therapy, aquatics and music therapy</strong>. Each path must be personalised. Many ReNU children show significant progress with early, multidisciplinary interventions. <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">How ReNU Syndrome is diagnosed</a>.' :
+           t.lang==='fr' ? 'Il n\'existe pas encore de thérapie causale pour le <strong>Syndrome ReNU (RNU4-2)</strong>. Les thérapies de soutien recommandées incluent : <strong>kinésithérapie, orthophonie, ABA, méthode Feuerstein, ergothérapie, aquaticité et musicothérapie</strong>. <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Diagnostic du Syndrome ReNU</a>.' :
+           t.lang==='es' ? 'Actualmente no existe terapia causal para el <strong>Síndrome ReNU (RNU4-2)</strong>. Las terapias de apoyo recomendadas incluyen: <strong>fisioterapia, logopedia, ABA, método Feuerstein, terapia ocupacional, acuaticidad y musicoterapia</strong>. <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Diagnóstico del Síndrome ReNU</a>.' :
+           'Es gibt noch keine kausale Therapie für das <strong>ReNU-Syndrom (RNU4-2)</strong>. Empfohlene Unterstützungstherapien: <strong>Physiotherapie, Logopädie, ABA, Feuerstein-Methode, Ergotherapie, Aquatik und Musiktherapie</strong>. <a href="/${t.lang}/diagnosis" class="text-blue-700 underline font-bold">Diagnose des ReNU-Syndroms</a>.'
+          }
+        </p>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         ${th.map(x => `
         <div class="card p-6 flex gap-4">
@@ -3023,6 +3116,17 @@ function therapiesPage(t: Record<string, string>): string {
           </div>
         </div>
       </div>
+
+      <!-- Internal linking strutturato §2.2.7 -->
+      <nav class="mt-8 border-t border-sky-100 pt-6" aria-label="${t.lang==='it'?'Approfondimenti':t.lang==='en'?'Related pages':'Pages connexes'}">
+        <p class="text-sm font-semibold mb-3" style="color:#082050">${t.lang==='it'?'Approfondimenti correlati:':t.lang==='en'?'Related pages:':t.lang==='fr'?'Pages connexes :':t.lang==='es'?'Páginas relacionadas:':'Verwandte Seiten:'}</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a href="/${t.lang}/about" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-dna text-xs"></i>${t.lang==='it'?'Cos\'è la Sindrome ReNU (RNU4-2)':t.lang==='en'?'What is ReNU Syndrome (RNU4-2)':t.lang==='fr'?'Qu\'est-ce que le Syndrome ReNU':t.lang==='es'?'¿Qué es el Síndrome ReNU':'Was ist das ReNU-Syndrom'}</a></li>
+          <li><a href="/${t.lang}/diagnosis" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-stethoscope text-xs"></i>${t.lang==='it'?'Centri diagnostici WGS per RNU4-2':t.lang==='en'?'WGS diagnostic centres for RNU4-2':t.lang==='fr'?'Centres de diagnostic WGS':t.lang==='es'?'Centros de diagnóstico WGS':'WGS-Diagnosezentren'}</a></li>
+          <li><a href="/${t.lang}/research" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-microscope text-xs"></i>${t.lang==='it'?'Ricerche scientifiche sulla Sindrome ReNU':t.lang==='en'?'Scientific research on ReNU Syndrome':t.lang==='fr'?'Recherche sur le Syndrome ReNU':t.lang==='es'?'Investigación sobre el Síndrome ReNU':'Forschung zum ReNU-Syndrom'}</a></li>
+          <li><a href="/${t.lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${t.lang==='it'?'Sostieni la ricerca':t.lang==='en'?'Support research':t.lang==='fr'?'Soutenir la recherche':t.lang==='es'?'Apoya la investigación':'Forschung unterstützen'}</a></li>
+        </ul>
+      </nav>
     </div>
   </section>`
 }
@@ -3039,6 +3143,18 @@ function diagnosisPage(t: Record<string, string>): string {
   </section>
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
+
+      <!-- ── ANCHOR CONTENT: definizione citabile per AI §3.2.3 ── -->
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${t.lang==='it' ? 'Per diagnosticare la <strong>Sindrome ReNU (RNU4-2)</strong> è obbligatorio il <strong>Sequenziamento dell\'Intero Genoma (WGS)</strong>. Il sequenziamento dell\'esoma (WES) non è sufficiente perché non rileva le varianti introniche profonde del gene RNU4-2. Il WGS analizza tutti i 3 miliardi di paia di basi del genoma umano, incluse le regioni introniche. Tempo medio di refertazione: 2–4 settimane. <a href="/${t.lang}/about" class="text-blue-700 underline font-bold">Scopri cos\'è la Sindrome ReNU</a>.' :
+           t.lang==='en' ? 'Diagnosing <strong>ReNU Syndrome (RNU4-2)</strong> requires <strong>Whole Genome Sequencing (WGS)</strong>. Whole Exome Sequencing (WES) is insufficient because it does not detect deep intronic variants in the RNU4-2 gene. WGS analyses all 3 billion base pairs, including intronic regions. Average turnaround: 2–4 weeks. <a href="/${t.lang}/about" class="text-blue-700 underline font-bold">Learn about ReNU Syndrome</a>.' :
+           t.lang==='fr' ? 'Le diagnostic du <strong>Syndrome ReNU (RNU4-2)</strong> nécessite le <strong>Séquençage du Génome Entier (WGS)</strong>. Le WES est insuffisant car il ne détecte pas les variants introniques profonds du gène RNU4-2. Délai moyen : 2–4 semaines. <a href="/${t.lang}/about" class="text-blue-700 underline font-bold">En savoir plus sur le Syndrome ReNU</a>.' :
+           t.lang==='es' ? 'El diagnóstico del <strong>Síndrome ReNU (RNU4-2)</strong> requiere la <strong>Secuenciación del Genoma Completo (WGS)</strong>. El WES es insuficiente porque no detecta variantes intrónicas profundas del gen RNU4-2. Plazo medio: 2–4 semanas. <a href="/${t.lang}/about" class="text-blue-700 underline font-bold">Conoce el Síndrome ReNU</a>.' :
+           'Die Diagnose des <strong>ReNU-Syndroms (RNU4-2)</strong> erfordert <strong>Whole-Genome-Sequencing (WGS)</strong>. WES ist unzureichend, da es tiefe intronische Varianten des RNU4-2-Gens nicht erkennt. Durchlaufzeit: 2–4 Wochen. <a href="/${t.lang}/about" class="text-blue-700 underline font-bold">Über das ReNU-Syndrom</a>.'
+          }
+        </p>
+      </div>
 
       <!-- Sezione in aggiornamento -->
       <div class="card p-8 mb-8 flex flex-col md:flex-row gap-6 items-center" style="background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">
@@ -3114,11 +3230,20 @@ function diagnosisPage(t: Record<string, string>): string {
           </div>
         </div>
       </div>
+
+      <!-- Internal linking strutturato §2.2.7 -->
+      <nav class="mt-6 border-t border-sky-100 pt-6" aria-label="${t.lang==='it'?'Approfondimenti':t.lang==='en'?'Related pages':'Pages connexes'}">
+        <p class="text-sm font-semibold mb-3" style="color:#082050">${t.lang==='it'?'Approfondimenti correlati:':t.lang==='en'?'Related pages:':t.lang==='fr'?'Pages connexes :':t.lang==='es'?'Páginas relacionadas:':'Verwandte Seiten:'}</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a href="/${t.lang}/about" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-dna text-xs"></i>${t.lang==='it'?'Cos\'è la Sindrome ReNU (RNU4-2)':t.lang==='en'?'What is ReNU Syndrome (RNU4-2)':t.lang==='fr'?'Qu\'est-ce que le Syndrome ReNU':t.lang==='es'?'¿Qué es el Síndrome ReNU':'Was ist das ReNU-Syndrom'}</a></li>
+          <li><a href="/${t.lang}/therapies" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heartbeat text-xs"></i>${t.lang==='it'?'Terapie di supporto per bambini RNU4-2':t.lang==='en'?'Support therapies for RNU4-2 children':t.lang==='fr'?'Thérapies de soutien':t.lang==='es'?'Terapias de apoyo':'Unterstützungstherapien'}</a></li>
+          <li><a href="/${t.lang}/faq" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-question-circle text-xs"></i>${t.lang==='it'?'FAQ e diritti delle famiglie':t.lang==='en'?'FAQ and family rights':t.lang==='fr'?'FAQ et droits des familles':t.lang==='es'?'FAQ y derechos familiares':'FAQ und Familienrechte'}</a></li>
+          <li><a href="/${t.lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${t.lang==='it'?'Sostieni la ricerca sulla Sindrome ReNU':t.lang==='en'?'Support ReNU research':t.lang==='fr'?'Soutenir la recherche ReNU':t.lang==='es'?'Apoya la investigación ReNU':'ReNU-Forschung unterstützen'}</a></li>
+        </ul>
+      </nav>
     </div>
   </section>`
 }
-
-// ─── COMMUNITY PAGE ───────────────────────────────────────────────────────────
 function communityPage(t: Record<string, string>): string {
   const intlAssoc = [
     { country: t.lang==='it'?'Italia':'Italy', flag: '🇮🇹',
@@ -3502,6 +3627,18 @@ function donationsPage(t: Record<string, string>): string {
   <section class="py-12 px-4 section-light">
     <div class="max-w-4xl mx-auto space-y-12">
 
+      <!-- ── ANCHOR CONTENT: definizione citabile per AI §3.2.3 ── -->
+      <div class="rounded-2xl p-6 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
+        <p class="text-gray-800 font-semibold leading-relaxed">
+          ${t.lang==='it' ? 'È possibile donare a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) tramite: <strong>bonifico bancario</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> nella dichiarazione dei redditi (codice fiscale 97995890151 – Associazioni di Promozione Sociale), <strong>lascito testamentario</strong>, donazione ricorrente mensile o <strong>compleanno solidale</strong>. Ogni contributo è deducibile fiscalmente. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Diventa anche socio</a>.' :
+           t.lang==='en' ? 'You can donate to <strong>Sindrome ReNU Italia APS</strong> (Tax ID 97995890151) via: <strong>bank transfer</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> on your Italian tax return (code 97995890151), <strong>legacy donation</strong>, monthly recurring donation or <strong>birthday fundraiser</strong>. All contributions are tax-deductible. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Become a member</a>.' :
+           t.lang==='fr' ? 'Vous pouvez faire un don à <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) par : <strong>virement bancaire</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legs testamentaire</strong> ou don mensuel récurrent. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Devenir membre</a>.' :
+           t.lang==='es' ? 'Puede donar a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) mediante: <strong>transferencia bancaria</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legado testamentario</strong> o donación mensual. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Hazte socio</a>.' :
+           'Sie können an <strong>Sindrome ReNU Italia APS</strong> (Steuer-ID 97995890151) spenden: <strong>Banküberweisung</strong> (IBAN IT18H0306909606100000416360), <strong>Erbschaft</strong> oder monatliche Dauerspende. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Mitglied werden</a>.'
+          }
+        </p>
+      </div>
+
       <!-- WHY SUPPORT -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         ${[
@@ -3768,6 +3905,17 @@ function donationsPage(t: Record<string, string>): string {
           </div>
         </div>
       </div>
+
+      <!-- Internal linking strutturato §2.2.7 -->
+      <nav class="border-t border-sky-100 pt-6" aria-label="${t.lang==='it'?'Approfondimenti':t.lang==='en'?'Related pages':'Pages connexes'}">
+        <p class="text-sm font-semibold mb-3" style="color:#082050">${t.lang==='it'?'Approfondimenti correlati:':t.lang==='en'?'Related pages:':t.lang==='fr'?'Pages connexes :':t.lang==='es'?'Páginas relacionadas:':'Verwandte Seiten:'}</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a href="/${t.lang}/about" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-dna text-xs"></i>${t.lang==='it'?'Cos\'è la Sindrome ReNU (RNU4-2)':t.lang==='en'?'What is ReNU Syndrome (RNU4-2)':t.lang==='fr'?'Qu\'est-ce que le Syndrome ReNU':t.lang==='es'?'¿Qué es el Síndrome ReNU':'Was ist das ReNU-Syndrom'}</a></li>
+          <li><a href="/${t.lang}/members" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-user-plus text-xs"></i>${t.lang==='it'?'Diventa socio di Sindrome ReNU Italia APS':t.lang==='en'?'Become a member of ReNU Italia APS':t.lang==='fr'?'Devenir membre de ReNU Italia APS':t.lang==='es'?'Hazte socio de ReNU Italia APS':'Mitglied von ReNU Italia APS werden'}</a></li>
+          <li><a href="/${t.lang}/projects" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-project-diagram text-xs"></i>${t.lang==='it'?'Progetti finanziati con le donazioni':t.lang==='en'?'Projects funded by donations':t.lang==='fr'?'Projets financés par les dons':t.lang==='es'?'Proyectos financiados con donaciones':'Mit Spenden finanzierte Projekte'}</a></li>
+          <li><a href="/${t.lang}/research" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-microscope text-xs"></i>${t.lang==='it'?'Ricerca scientifica sulla Sindrome ReNU':t.lang==='en'?'Scientific research on ReNU Syndrome':t.lang==='fr'?'Recherche sur le Syndrome ReNU':t.lang==='es'?'Investigación sobre el Síndrome ReNU':'Forschung zum ReNU-Syndrom'}</a></li>
+        </ul>
+      </nav>
 
     </div>
   </section>`
@@ -4391,7 +4539,7 @@ function brochurePage(t: Record<string, string>): string {
           + '</div>';
       } else if (b.thumb_id) {
         thumbHtml = '<div class="w-full overflow-hidden bg-sky-50 flex items-center justify-center" style="aspect-ratio:3/4">'
-          + '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="" class="w-full h-full object-contain" loading="lazy">'
+          + '<img src="/brochure/thumbnails/' + b.thumb_id + '.png" alt="Copertina pubblicazione: ' + (b.titolo || b.title || 'Documento Sindrome ReNU') + '" class="w-full h-full object-contain" loading="lazy">'
           + '</div>';
       } else {
         thumbHtml = '<div class="w-full flex items-center justify-center" style="aspect-ratio:3/4;background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">'
@@ -5628,15 +5776,32 @@ function faqPage(t: Record<string, string>): string {
               const icon = catIcons[faq.categoria] || 'fa-question';
               const color = catColors[faq.categoria] || '#1078C0';
               const id = 'faq-ans-' + i;
-              return '<div class="border border-gray-200 rounded-xl overflow-hidden">' +
+              // GEO-AI §3.3.2: badge categoria + fonte citabile + itemprop per AI crawlers
+              const catLabel = {
+                diagnosi: lang==='it'?'Diagnosi':'Diagnosis',
+                terapie:  lang==='it'?'Terapie':'Therapies',
+                comunita: lang==='it'?'Comunità':'Community',
+                ricerca:  lang==='it'?'Ricerca':'Research',
+                medici:   lang==='it'?'Per Medici':'For Doctors',
+                diritti:  lang==='it'?'Diritti':'Rights',
+                scuola:   lang==='it'?'Scuola':'School',
+                bonus:    lang==='it'?'Bonus':'Benefits'
+              }[faq.categoria] || faq.categoria;
+              const fonte = '<p class="text-xs text-gray-400 mt-2 pt-2 border-t border-sky-100">' +
+                '<i class="fas fa-info-circle mr-1"></i>' +
+                (lang==='it' ? 'Fonte: Sindrome ReNU Italia APS — ' : 'Source: Sindrome ReNU Italia APS — ') +
+                '<a href="https://www.sindromerenu.it/' + lang + '/faq" class="underline hover:text-sky-600" target="_blank">sindromerenu.it</a></p>';
+              return '<div class="border border-gray-200 rounded-xl overflow-hidden" itemscope itemtype="https://schema.org/Question">' +
                 '<button onclick="toggleFaq(this)" data-target="' + id + '" ' +
-                'class="w-full text-left flex items-center gap-3 p-4 bg-white hover:bg-sky-50 transition-colors">' +
-                '<i class="fas ' + icon + ' text-sm flex-shrink-0" style="color:' + color + '"></i>' +
-                '<span class="flex-1 font-semibold text-sm" style="color:#082050">' + faq.domanda + '</span>' +
+                'class="w-full text-left flex items-center gap-3 p-4 bg-white hover:bg-sky-50 transition-colors" aria-expanded="false">' +
+                '<i class="fas ' + icon + ' text-sm flex-shrink-0" style="color:' + color + '" aria-hidden="true"></i>' +
+                '<span class="flex-1 font-semibold text-sm" style="color:#082050" itemprop="name">' + faq.domanda + '</span>' +
+                '<span class="text-xs font-medium px-2 py-0.5 rounded-full mr-1 flex-shrink-0" style="background:' + color + '20;color:' + color + '">' + catLabel + '</span>' +
                 '<i class="fas fa-chevron-down text-gray-400 text-xs transition-transform duration-200 flex-shrink-0"></i>' +
                 '</button>' +
-                '<div id="' + id + '" class="hidden px-4 pb-4 pt-2 bg-sky-50 border-t border-gray-100">' +
-                '<p class="text-sm text-gray-700 leading-relaxed">' + faq.risposta + '</p>' +
+                '<div id="' + id + '" class="hidden px-4 pb-4 pt-2 bg-sky-50 border-t border-gray-100" itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">' +
+                '<p class="text-sm text-gray-700 leading-relaxed" itemprop="text">' + faq.risposta + '</p>' +
+                fonte +
                 '</div></div>';
             }).join('');
           })
@@ -6410,6 +6575,239 @@ function sciencePage(t: Record<string, string>): string {
   </section>`
 }
 
+// ─── GLOSSARY PAGE ────────────────────────────────────────────────────────────
+function glossaryPage(t: Record<string, string>): string {
+  const isIt = t.lang === 'it'
+  const isEn = t.lang === 'en'
+  const isFr = t.lang === 'fr'
+  const isEs = t.lang === 'es'
+
+  type GlossaryEntry = { term: string; def: string; source?: string }
+  const terms: GlossaryEntry[] = [
+    {
+      term: isIt ? 'snRNA U4 (Small Nuclear RNA U4)' : isEn ? 'snRNA U4 (Small Nuclear RNA U4)' : isFr ? 'snRNA U4 (Petit ARN nucléaire U4)' : isEs ? 'snRNA U4 (ARN nuclear pequeño U4)' : 'snRNA U4 (Kleines nukleäres RNA U4)',
+      def: isIt ? 'Piccolo RNA nucleare (small nuclear RNA) codificato dal gene RNU4-2, componente essenziale del complesso di splicing U4/U6.U5 tri-snRNP. Varianti patogenetiche in RNU4-2 compromettono la funzione dello spliceosoma e causano la Sindrome ReNU.' : isEn ? 'Small nuclear RNA encoded by the RNU4-2 gene, an essential component of the U4/U6.U5 tri-snRNP splicing complex. Pathogenic variants in RNU4-2 impair spliceosome function and cause ReNU Syndrome.' : isFr ? 'Petit ARN nucléaire codé par le gène RNU4-2, composant essentiel du complexe d\'épissage U4/U6.U5 tri-snRNP. Les variants pathogènes compromettent la fonction du spliceosome.' : isEs ? 'ARN nuclear pequeño codificado por el gen RNU4-2, componente esencial del complejo de splicing U4/U6.U5 tri-snRNP.' : 'Kleines nukleäres RNA, kodiert durch das RNU4-2-Gen, wesentlicher Bestandteil des U4/U6.U5 tri-snRNP-Spleißkomplexes.',
+      source: 'Hollingsworth et al., Nature 2024 (PMID 39169177)'
+    },
+    {
+      term: isIt ? 'Spliceosoma' : isEn ? 'Spliceosome' : isFr ? 'Splicéosome' : isEs ? 'Espliceosoma' : 'Spleißosom',
+      def: isIt ? 'Complesso macromolecolare RNA-proteico che catalizza la rimozione degli introni dall\'pre-mRNA (processo detto splicing). È composto da 5 snRNA principali (U1, U2, U4, U5, U6) e centinaia di proteine. Una disfunzione dello spliceosoma, come quella causata da varianti RNU4-2, determina l\'accumulo di trascritti aberranti e patologia del neurosviluppo.' : isEn ? 'RNA-protein macromolecular complex that catalyses the removal of introns from pre-mRNA (splicing). Composed of 5 main snRNAs (U1, U2, U4, U5, U6) and hundreds of proteins. Spliceosome dysfunction causes aberrant transcripts and neurodevelopmental pathology.' : isFr ? 'Complexe macromoléculaire ARN-protéique qui catalyse l\'élimination des introns de l\'pré-ARNm. Composé de 5 snARN principaux (U1, U2, U4, U5, U6) et de centaines de protéines.' : isEs ? 'Complejo macromolecular ARN-proteico que cataliza la eliminación de intrones del pre-ARNm. Compuesto por 5 snARN principales (U1, U2, U4, U5, U6) y cientos de proteínas.' : 'RNA-Protein-Makromolekularkomplex, der die Entfernung von Introns aus der Prä-mRNA katalysiert. Besteht aus 5 snRNAs (U1, U2, U4, U5, U6) und Hunderten von Proteinen.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Variante de novo' : isEn ? 'De novo variant' : isFr ? 'Variant de novo' : isEs ? 'Variante de novo' : 'De-novo-Variante',
+      def: isIt ? 'Mutazione genetica presente nel paziente ma non ereditata dai genitori biologici: insorge per la prima volta nella linea germinale del paziente o in fase embrionale precoce. La quasi totalità delle varianti RNU4-2 patogenetiche note sono de novo: il rischio di ricorrenza nella stessa famiglia è molto basso (<1%).' : isEn ? 'A genetic mutation present in the patient but not inherited from biological parents: it arises for the first time in the patient\'s germline or in early embryonic development. Almost all known pathogenic RNU4-2 variants are de novo: recurrence risk in the same family is very low (<1%).' : isFr ? 'Mutation génétique présente chez le patient mais non héritée des parents biologiques. Presque tous les variants RNU4-2 pathogènes sont de novo: le risque de récurrence est très faible (<1%).' : isEs ? 'Mutación genética presente en el paciente pero no heredada de los padres biológicos. Casi todas las variantes RNU4-2 patogénicas conocidas son de novo: el riesgo de recurrencia es muy bajo (<1%).' : 'Genetische Mutation beim Patienten, die nicht von biologischen Eltern geerbt wurde. Fast alle bekannten pathogenen RNU4-2-Varianten sind de novo: Rezidivrisiko < 1%.',
+      source: 'Hollingsworth et al., Nature 2024'
+    },
+    {
+      term: 'WGS — Whole Genome Sequencing',
+      def: isIt ? 'Sequenziamento dell\'intero genoma umano (≈ 3 miliardi di paia di basi). Rileva varianti in tutte le regioni genomiche, incluse le regioni introniche profonde dove risiedono le varianti patogenetiche di RNU4-2. È l\'unico test diagnostico affidabile per la Sindrome ReNU. Tempo di refertazione tipico: 2–4 settimane.' : isEn ? 'Sequencing of the entire human genome (≈ 3 billion base pairs). Detects variants in all genomic regions, including the deep intronic regions where RNU4-2 pathogenic variants reside. It is the only reliable diagnostic test for ReNU Syndrome. Typical turnaround: 2–4 weeks.' : isFr ? 'Séquençage de l\'ensemble du génome humain (≈ 3 milliards de paires de bases). Seul test diagnostique fiable pour le Syndrome ReNU, car il détecte les variants dans les régions introniques profondes.' : isEs ? 'Secuenciación del genoma humano completo (≈ 3.000 millones de pares de bases). Único test diagnóstico fiable para el Síndrome ReNU, ya que detecta variantes en regiones intrónicas profundas.' : 'Sequenzierung des gesamten menschlichen Genoms (≈ 3 Milliarden Basenpaare). Einziger zuverlässiger Diagnosetest für das ReNU-Syndrom, da er Varianten in tiefen intronischen Regionen erkennt.',
+      source: ''
+    },
+    {
+      term: 'WES — Whole Exome Sequencing',
+      def: isIt ? 'Sequenziamento mirato solo dell\'esoma, cioè degli esoni che codificano proteine (≈ 2% del genoma). Non è adatto alla diagnosi della Sindrome ReNU, perché le varianti patogenetiche di RNU4-2 risiedono in una regione intronica profonda che WES non analizza. Molti pazienti ReNU hanno ricevuto inizialmente un WES negativo, con ritardo diagnostico di anni.' : isEn ? 'Targeted sequencing of only the exome, i.e. protein-coding exons (≈ 2% of the genome). Not suitable for diagnosing ReNU Syndrome, as RNU4-2 pathogenic variants reside in a deep intronic region that WES does not analyse. Many ReNU patients initially received a negative WES, resulting in years of diagnostic delay.' : isFr ? 'Séquençage ciblé du seul exome (≈ 2% du génome). Ne convient pas au diagnostic du Syndrome ReNU car les variants RNU4-2 résident dans une région intronique profonde que le WES n\'analyse pas.' : isEs ? 'Secuenciación específica del exoma (≈ 2% del genoma). No es adecuado para diagnosticar el Síndrome ReNU, ya que las variantes RNU4-2 residen en una región intrónica profunda no analizada por WES.' : 'Gezielte Sequenzierung nur des Exoms (≈ 2% des Genoms). Nicht geeignet für die Diagnose des ReNU-Syndroms, da RNU4-2-Varianten in tiefen intronischen Regionen liegen.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Fenotipo comportamentale' : isEn ? 'Behavioural phenotype' : isFr ? 'Phénotype comportemental' : isEs ? 'Fenotipo conductual' : 'Verhaltensphänotyp',
+      def: isIt ? 'Insieme delle caratteristiche cognitive, comportamentali e adattive osservabili in un paziente con una data variante genetica. Nella Sindrome ReNU il fenotipo comportamentale include: disabilità intellettiva da moderata a grave, tratti autistici (ASD), temperamento generalmente allegro e socievole, amore per musica, acqua e routine, ridotta soglia al dolore, comportamenti ripetitivi.' : isEn ? 'The set of cognitive, behavioural and adaptive characteristics observable in a patient with a given genetic variant. In ReNU Syndrome, the behavioural phenotype includes: moderate-to-severe intellectual disability, autistic traits (ASD), generally cheerful and sociable temperament, love of music, water and routines, reduced pain threshold, repetitive behaviours.' : isFr ? 'Ensemble des caractéristiques cognitives, comportementales et adaptatives observables. Dans le Syndrome ReNU: déficience intellectuelle modérée à sévère, traits autistiques, tempérament généralement joyeux, amour de la musique et de l\'eau.' : isEs ? 'Conjunto de características cognitivas, conductuales y adaptativas observables. En el Síndrome ReNU incluye: discapacidad intelectual moderada a grave, rasgos autistas, temperamento alegre, amor por la música y el agua.' : 'Gesamtheit der kognitiven, verhaltensmäßigen und adaptiven Merkmale. Beim ReNU-Syndrom: moderate bis schwere intellektuelle Beeinträchtigung, autistische Züge, fröhliches Temperament, Vorliebe für Musik und Wasser.',
+      source: 'Ciaccio et al., AJMG B 2026 (PMID 41681065)'
+    },
+    {
+      term: isIt ? 'Ventricolomegalia' : isEn ? 'Ventriculomegaly' : isFr ? 'Ventriculomégalie' : isEs ? 'Ventriculomegalia' : 'Ventrikulomegalie',
+      def: isIt ? 'Dilatazione dei ventricoli cerebrali laterali, rilevabile con risonanza magnetica (RM) cerebrale. È uno dei marker neuroradiologici più frequenti nella Sindrome ReNU. Può essere associata ad ipoplasia del corpo calloso e a riduzione della sostanza bianca.' : isEn ? 'Dilation of the lateral cerebral ventricles, detectable by brain MRI. It is one of the most frequent neuroradiological markers in ReNU Syndrome, often associated with callosal hypoplasia and white matter reduction.' : isFr ? 'Dilatation des ventricules cérébraux latéraux, détectable par IRM. L\'un des marqueurs neuroradiologiques les plus fréquents dans le Syndrome ReNU.' : isEs ? 'Dilatación de los ventrículos cerebrales laterales, detectable por RM cerebral. Uno de los marcadores neuroradiológicos más frecuentes en el Síndrome ReNU.' : 'Erweiterung der lateralen Hirnventrikel, erkennbar im MRT. Einer der häufigsten neuroradiologischen Marker beim ReNU-Syndrom.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Microcefalia' : isEn ? 'Microcephaly' : isFr ? 'Microcéphalie' : isEs ? 'Microcefalia' : 'Mikrozephalie',
+      def: isIt ? 'Circonferenza cranica inferiore al 3° percentile per età e sesso. È un segno clinico ricorrente nei pazienti con Sindrome ReNU, in particolare nelle varianti con fenotipo grave. Può essere presente dalla nascita (microcefalia congenita) o svilupparsi nel tempo (microcefalia acquisita o postnatale).' : isEn ? 'Head circumference below the 3rd percentile for age and sex. A recurrent clinical sign in ReNU Syndrome patients, particularly in those with severe phenotype. May be congenital or develop postnatally.' : isFr ? 'Périmètre crânien inférieur au 3ème percentile pour l\'âge et le sexe. Signe clinique récurrent dans le Syndrome ReNU, particulièrement dans les phénotypes sévères.' : isEs ? 'Circunferencia craneal por debajo del percentil 3 para edad y sexo. Signo clínico recurrente en el Síndrome ReNU, especialmente en fenotipos graves.' : 'Kopfumfang unter der 3. Perzentile für Alter und Geschlecht. Wiederkehrendes klinisches Zeichen beim ReNU-Syndrom, besonders bei schwerem Phänotyp.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Ipoplasia del corpo calloso' : isEn ? 'Callosal hypoplasia' : isFr ? 'Hypoplasie du corps calleux' : isEs ? 'Hipoplasia del cuerpo calloso' : 'Corpus-callosum-Hypoplasie',
+      def: isIt ? 'Sottosviluppo parziale o completo del corpo calloso, la struttura cerebrale che connette i due emisferi e coordina lo scambio di informazioni tra le aree corticali. È un marker neuroradiologico frequente nella Sindrome ReNU, spesso associato a riduzione del volume della sostanza bianca e ritardo del neurosviluppo.' : isEn ? 'Partial or complete underdevelopment of the corpus callosum, the brain structure that connects the two hemispheres. A frequent neuroradiological marker in ReNU Syndrome, often associated with reduced white matter volume.' : isFr ? 'Sous-développement partiel ou complet du corps calleux, structure cérébrale connectant les deux hémisphères. Marqueur neuroradiologique fréquent dans le Syndrome ReNU.' : isEs ? 'Subdesarrollo parcial o completo del cuerpo calloso, estructura cerebral que conecta los dos hemisferios. Marcador neuroradiológico frecuente en el Síndrome ReNU.' : 'Teilweise oder vollständige Unterentwicklung des Corpus callosum, der Hirnstruktur, die beide Hemisphären verbindet. Häufiger neuroradiologischer Marker beim ReNU-Syndrom.',
+      source: ''
+    },
+    {
+      term: 'CVI — Cerebral Visual Impairment',
+      def: isIt ? 'Compromissione visiva di origine cerebrale (non oculare): il problema non è nell\'occhio, ma nella capacità del cervello di interpretare le informazioni visive. Frequente nei pazienti con Sindrome ReNU, spesso associata a ipoplasia del nervo ottico, strabismo e nistagmo. Richiede una valutazione neuroftalmologica specifica.' : isEn ? 'Visual impairment of cerebral (not ocular) origin: the problem is not in the eye but in the brain\'s ability to interpret visual information. Frequent in ReNU Syndrome patients, often associated with optic nerve hypoplasia, strabismus and nystagmus.' : isFr ? 'Déficience visuelle d\'origine cérébrale (non oculaire). Fréquente dans le Syndrome ReNU, souvent associée à une hypoplasie du nerf optique.' : isEs ? 'Discapacidad visual de origen cerebral (no ocular). Frecuente en el Síndrome ReNU, a menudo asociada a hipoplasia del nervio óptico.' : 'Sehbeeinträchtigung zerebralen (nicht okulären) Ursprungs. Häufig beim ReNU-Syndrom, oft verbunden mit Sehnerv-Hypoplasie.',
+      source: ''
+    },
+    {
+      term: 'ABA — Applied Behavior Analysis',
+      def: isIt ? 'Approccio educativo-comportamentale basato sui principi dell\'analisi del comportamento applicata. Aiuta il bambino ad apprendere nuove abilità (comunicazione, autonomia, apprendimento) e a ridurre comportamenti che ostacolano la vita quotidiana. Il percorso è altamente personalizzato, utilizza il rinforzo positivo e richiede un monitoraggio continuo dei progressi. È uno degli interventi con maggiori evidenze scientifiche per bambini con disabilità del neurosviluppo.' : isEn ? 'Educational-behavioural approach based on applied behaviour analysis principles. Helps children learn new skills (communication, independence, learning) and reduce behaviours that hinder daily life. Highly personalised, uses positive reinforcement and continuous progress monitoring. One of the most evidence-based interventions for children with neurodevelopmental disabilities.' : isFr ? 'Approche éducative-comportementale basée sur l\'analyse comportementale appliquée. Aide les enfants à acquérir de nouvelles compétences et à réduire les comportements problématiques. Hautement personnalisée avec renforcement positif.' : isEs ? 'Enfoque educativo-conductual basado en los principios del análisis del comportamiento aplicado. Ayuda a los niños a aprender nuevas habilidades y reducir comportamientos problemáticos. Altamente personalizado con refuerzo positivo.' : 'Pädagogisch-verhaltenstherapeutischer Ansatz auf Basis der angewandten Verhaltensanalyse. Hilft Kindern, neue Fähigkeiten zu erlernen und störende Verhaltensweisen zu reduzieren.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Epilessia – Spasmi infantili' : isEn ? 'Epilepsy – Infantile spasms' : isFr ? 'Épilepsie – Spasmes infantiles' : isEs ? 'Epilepsia – Espasmos infantiles' : 'Epilepsie – Infantile Spasmen',
+      def: isIt ? 'Tipo di crisi epilettica caratteristica dell\'infanzia (esordio tipicamente tra 3 e 12 mesi). Si manifesta con brevi contrazioni simmetriche degli arti. Nella Sindrome ReNU l\'epilessia è presente nel 65–70% dei pazienti e può includere spasmi infantili, crisi focali, tonico-cloniche e crisi febbrili. La gestione farmacologica richiede consulenza neurologica specialistica.' : isEn ? 'Type of seizure characteristic of infancy (typical onset 3–12 months). Manifests as brief symmetrical limb contractions. In ReNU Syndrome, epilepsy is present in 65–70% of patients and may include infantile spasms, focal seizures, tonic-clonic seizures and febrile convulsions.' : isFr ? 'Type de crise épileptique caractéristique de la petite enfance (début typique 3–12 mois). Dans le Syndrome ReNU, l\'épilepsie est présente chez 65–70% des patients.' : isEs ? 'Tipo de crisis epiléptica característica de la infancia. En el Síndrome ReNU, la epilepsia está presente en el 65–70% de los pacientes.' : 'Für das Säuglingsalter charakteristischer Epilepsietyp. Beim ReNU-Syndrom bei 65–70% der Patienten vorhanden.',
+      source: 'Ciaccio et al., AJMG B 2026'
+    },
+    {
+      term: isIt ? 'Ipotonia muscolare' : isEn ? 'Muscle hypotonia' : isFr ? 'Hypotonie musculaire' : isEs ? 'Hipotonía muscular' : 'Muskelhypotonie',
+      def: isIt ? 'Riduzione del tono muscolare (resistenza passiva al movimento). Frequente nei neonati e bambini con Sindrome ReNU, si manifesta come "flaccidità" muscolare, ritardo nello sviluppo motorio, difficoltà a mantenere la postura eretta. Può interessare anche i muscoli oro-facciali, contribuendo alle difficoltà alimentari e di linguaggio.' : isEn ? 'Reduced muscle tone (passive resistance to movement). Frequent in ReNU Syndrome infants and children, manifesting as muscle "flaccidity", motor developmental delay, difficulty maintaining upright posture. May also affect oro-facial muscles, contributing to feeding and speech difficulties.' : isFr ? 'Réduction du tonus musculaire. Fréquente dans le Syndrome ReNU, se manifeste par une flaccidité musculaire et un retard du développement moteur.' : isEs ? 'Reducción del tono muscular. Frecuente en el Síndrome ReNU, se manifiesta como flacidez muscular y retraso en el desarrollo motor.' : 'Verminderte Muskelspannung. Häufig beim ReNU-Syndrom, manifestiert sich als Muskelflaccidität und motorische Entwicklungsverzögerung.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Disabilità intellettiva (DI)' : isEn ? 'Intellectual disability (ID)' : isFr ? 'Déficience intellectuelle (DI)' : isEs ? 'Discapacidad intelectual (DI)' : 'Intellektuelle Behinderung (IB)',
+      def: isIt ? 'Condizione caratterizzata da limitazioni significative nel funzionamento intellettivo (QI < 70) e nel comportamento adattivo (abilità concettuali, sociali e pratiche), con esordio in età evolutiva. Nella Sindrome ReNU è presente in quasi tutti i pazienti, con grado da moderato a grave nel 90%+ dei casi.' : isEn ? 'Condition characterised by significant limitations in intellectual functioning (IQ < 70) and adaptive behaviour (conceptual, social, practical skills), with onset in the developmental period. Present in almost all ReNU Syndrome patients, moderate-to-severe in 90%+ of cases.' : isFr ? 'Condition caractérisée par des limitations significatives du fonctionnement intellectuel (QI < 70) et du comportement adaptatif. Présente chez presque tous les patients ReNU.' : isEs ? 'Condición caracterizada por limitaciones significativas en el funcionamiento intelectual (CI < 70) y el comportamiento adaptativo. Presente en casi todos los pacientes ReNU.' : 'Zustand mit erheblichen Einschränkungen des intellektuellen Funktionierens (IQ < 70) und des adaptiven Verhaltens. Bei fast allen ReNU-Patienten vorhanden.',
+      source: 'Hollingsworth et al., Nature 2024'
+    },
+    {
+      term: isIt ? 'Prevalenza' : isEn ? 'Prevalence' : isFr ? 'Prévalence' : isEs ? 'Prevalencia' : 'Prävalenz',
+      def: isIt ? 'Proporzione di individui in una popolazione che presentano una determinata condizione in un dato momento. La Sindrome ReNU ha una prevalenza stimata di circa 1 su 35.000 nati vivi, che la classifica come malattia ultra-rara (soglia europea: meno di 5 casi su 10.000). In Italia si stima siano presenti circa 16 casi diagnosticati, ma il numero reale è probabilmente molto superiore per via del deficit diagnostico.' : isEn ? 'Proportion of individuals in a population with a given condition at a given time. ReNU Syndrome has an estimated prevalence of approximately 1 in 35,000 live births, classifying it as ultra-rare (EU threshold: fewer than 5 per 10,000). In Italy, approximately 16 diagnosed cases are known, but the real number is likely much higher due to diagnostic deficit.' : isFr ? 'Proportion d\'individus présentant une condition donnée à un moment donné. Le Syndrome ReNU a une prévalence estimée d\'environ 1 sur 35 000 naissances vivantes.' : isEs ? 'Proporción de individuos con una condición dada en un momento dado. El Síndrome ReNU tiene una prevalencia estimada de aproximadamente 1 en 35.000 nacidos vivos.' : 'Anteil der Individuen mit einer bestimmten Erkrankung zu einem bestimmten Zeitpunkt. Das ReNU-Syndrom hat eine geschätzte Prävalenz von ca. 1 von 35.000 Lebendgeburten.',
+      source: 'Hollingsworth et al., Nature 2024'
+    },
+    {
+      term: isIt ? 'Gene RNU4-2' : isEn ? 'RNU4-2 gene' : isFr ? 'Gène RNU4-2' : isEs ? 'Gen RNU4-2' : 'RNU4-2-Gen',
+      def: isIt ? 'Gene che codifica per lo snRNA U4, localizzato sul cromosoma 12 (12q24.31). È un gene non codificante (non produce una proteina, ma un RNA funzionale). Le varianti patogenetiche note si concentrano in soli 13 nucleotidi critici della sequenza genica. La malattia causata da varianti di questo gene è stata denominata "Sindrome ReNU" (o RNU4-2 Syndrome) dalla comunità scientifica internazionale nel 2024.' : isEn ? 'Gene encoding snRNA U4, located on chromosome 12 (12q24.31). It is a non-coding gene (produces a functional RNA, not a protein). Known pathogenic variants concentrate in only 13 critical nucleotides of the gene sequence. The disease caused by variants of this gene was named "ReNU Syndrome" (or RNU4-2 Syndrome) by the international scientific community in 2024.' : isFr ? 'Gène codant pour le snARN U4, localisé sur le chromosome 12. Gène non codant (produit un ARN fonctionnel, non une protéine). Les variants pathogènes se concentrent en seulement 13 nucléotides critiques.' : isEs ? 'Gen que codifica el snARN U4, ubicado en el cromosoma 12. Gen no codificante (produce ARN funcional, no proteína). Las variantes patogénicas se concentran en solo 13 nucleótidos críticos.' : 'Gen, das für snRNA U4 kodiert, auf Chromosom 12 gelegen. Nicht-kodierendes Gen (produziert funktionelle RNA, kein Protein). Pathogene Varianten konzentrieren sich auf nur 13 kritische Nukleotide.',
+      source: 'Hollingsworth et al., Nature 2024 (PMID 39169177)'
+    },
+    {
+      term: isIt ? 'Cromosoma 12 (12q24.31)' : isEn ? 'Chromosome 12 (12q24.31)' : isFr ? 'Chromosome 12 (12q24.31)' : isEs ? 'Cromosoma 12 (12q24.31)' : 'Chromosom 12 (12q24.31)',
+      def: isIt ? 'Posizione cromosomica del gene RNU4-2 nel genoma umano: cromosoma 12, braccio lungo (q), regione 2, banda 4, sottobanda 31. La notazione "12q24.31" descrive la localizzazione fisica del gene sulla mappa cromosomica standard (UCSC Genome Browser, assembly GRCh38).' : isEn ? 'Chromosomal location of the RNU4-2 gene in the human genome: chromosome 12, long arm (q), region 2, band 4, sub-band 31. This notation describes the physical location on the standard chromosomal map (GRCh38).' : isFr ? 'Localisation chromosomique du gène RNU4-2: chromosome 12, bras long (q), région 2, bande 4, sous-bande 31.' : isEs ? 'Localización cromosómica del gen RNU4-2: cromosoma 12, brazo largo (q), región 2, banda 4, sub-banda 31.' : 'Chromosomale Lage des RNU4-2-Gens: Chromosom 12, langer Arm (q), Region 2, Bande 4, Subbande 31.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Legge 104/1992 (IT)' : isEn ? 'Italian Law 104/1992' : isFr ? 'Loi italienne 104/1992' : isEs ? 'Ley italiana 104/1992' : 'Italienisches Gesetz 104/1992',
+      def: isIt ? 'Legge italiana che garantisce tutele, agevolazioni e servizi alle persone con disabilità e alle loro famiglie. Per un bambino con Sindrome ReNU include: insegnante di sostegno, permessi lavorativi per il caregiver (3 giorni/mese o 2 ore/giorno), agevolazioni IVA sull\'acquisto di ausili, esenzioni ticket sanitario, contrassegno disabile per parcheggio. Il riconoscimento avviene tramite la commissione medica dell\'INPS.' : isEn ? 'Italian law guaranteeing protections, benefits and services to people with disabilities and their families. For a child with ReNU Syndrome it includes: support teacher, work leave for caregiver (3 days/month or 2 hours/day), VAT reductions on assistive devices, healthcare ticket exemptions, disabled parking permit. Recognition is through the INPS medical commission.' : isFr ? 'Loi italienne garantissant des protections et services aux personnes handicapées et à leurs familles. Inclut: enseignant de soutien, congés pour aidant, réductions TVA, exemptions de tickets.' : isEs ? 'Ley italiana que garantiza protecciones y servicios a las personas con discapacidad. Incluye: maestro de apoyo, permisos laborales para cuidadores, reducciones de IVA, exenciones de copago.' : 'Italienisches Gesetz mit Schutzmaßnahmen und Leistungen für Menschen mit Behinderungen. Beinhaltet: Förderlehrer, Pflegeurlaub, MwSt.-Ermäßigungen, Gesundheitsbefreiungen.',
+      source: ''
+    },
+    {
+      term: isIt ? 'CAA — Comunicazione Aumentativa Alternativa' : isEn ? 'AAC — Augmentative and Alternative Communication' : isFr ? 'CAA — Communication Augmentative et Alternative' : isEs ? 'CAA — Comunicación Aumentativa Alternativa' : 'CAA — Unterstützte Kommunikation (UK)',
+      def: isIt ? 'Sistema di strumenti e strategie che integra o sostituisce il linguaggio verbale per persone con difficoltà comunicative gravi. Include: tabelle di comunicazione con immagini/simboli (PECS), comunicatori elettronici (VOCA), app su tablet, gesti codificati (es. KWS – Keyword Sign). Indicata per bambini non verbali o con comunicazione limitata, tra cui molti bambini con Sindrome ReNU.' : isEn ? 'System of tools and strategies that augments or replaces verbal language for people with severe communication difficulties. Includes: picture/symbol communication boards (PECS), electronic communicators (VOCA), tablet apps, coded gestures (e.g. KWS – Keyword Sign). Indicated for non-verbal or limited-communication children, including many with ReNU Syndrome.' : isFr ? 'Système d\'outils et stratégies complétant ou remplaçant le langage verbal. Inclut tableaux de communication avec images/symboles, communicateurs électroniques, applications sur tablette.' : isEs ? 'Sistema de herramientas y estrategias que complementa o reemplaza el lenguaje verbal. Incluye tableros de comunicación con imágenes/símbolos, comunicadores electrónicos, apps en tablet.' : 'System von Werkzeugen und Strategien, das die verbale Sprache ergänzt oder ersetzt. Beinhaltet Bild-/Symbolkommunikationstafeln, elektronische Kommunikatoren, Tablet-Apps.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Splicing dell\'RNA' : isEn ? 'RNA splicing' : isFr ? 'Épissage de l\'ARN' : isEs ? 'Splicing del ARN' : 'RNA-Spleißen',
+      def: isIt ? 'Processo biologico mediante il quale gli introni (sequenze non codificanti) vengono rimossi dall\'pre-mRNA e gli esoni (sequenze codificanti) vengono uniti per formare l\'mRNA maturo. È eseguito dallo spliceosoma. Varianti patogenetiche in RNU4-2 compromettono questo processo, portando a inclusione di introni aberranti o salto di esoni, con produzione di proteine anomale o riduzione dell\'espressione genica.' : isEn ? 'Biological process whereby introns (non-coding sequences) are removed from pre-mRNA and exons (coding sequences) are joined to form mature mRNA. Carried out by the spliceosome. Pathogenic RNU4-2 variants impair this process, leading to aberrant intron inclusion or exon skipping, producing abnormal proteins or reduced gene expression.' : isFr ? 'Processus biologique par lequel les introns sont retirés du pré-ARNm et les exons sont joints pour former l\'ARNm mature. Réalisé par le splicéosome. Les variants RNU4-2 perturbent ce processus.' : isEs ? 'Proceso biológico mediante el cual los intrones se eliminan del pre-ARNm y los exones se unen para formar ARNm maduro. Realizado por el espliceosoma. Las variantes RNU4-2 alteran este proceso.' : 'Biologischer Prozess, bei dem Introns aus der Prä-mRNA entfernt und Exons verbunden werden, um reife mRNA zu bilden. Wird vom Spleißosom durchgeführt.',
+      source: ''
+    },
+    {
+      term: isIt ? '5×1000 (Italia)' : isEn ? '5×1000 Italian tax donation' : isFr ? '5×1000 Don fiscal italien' : isEs ? '5×1000 Donación fiscal italiana' : '5×1000 Italienische Steuerdonation',
+      def: isIt ? 'Meccanismo fiscale italiano che consente al contribuente di destinare il 5 per mille dell\'IRPEF a un\'organizzazione no-profit senza alcun costo aggiuntivo. Per destinare il 5×1000 a Sindrome ReNU Italia APS, inserire il codice fiscale 97995890151 nella casella "Associazioni di promozione sociale" della dichiarazione dei redditi (730 o UNICO). Non si tratta di una donazione aggiuntiva: il contribuente decide solo dove va una quota delle imposte già dovute allo Stato.' : isEn ? 'Italian fiscal mechanism allowing taxpayers to allocate 5 per thousand of their income tax to a non-profit organisation at no additional cost. To allocate your 5×1000 to Sindrome ReNU Italia APS, enter tax code 97995890151 in the "Social promotion associations" box of your Italian tax return. This is not an additional donation: you decide where a share of taxes already owed to the State goes.' : isFr ? 'Mécanisme fiscal italien permettant au contribuable d\'attribuer 5 pour mille de l\'IRPEF à une organisation à but non lucratif sans frais supplémentaires. Code fiscal: 97995890151.' : isEs ? 'Mecanismo fiscal italiano que permite destinar 5 por mil del IRPF a una organización sin ánimo de lucro sin coste adicional. Código fiscal: 97995890151.' : 'Italienischer Steuermechanismus, der es Steuerzahlern ermöglicht, 5 Promille ihrer Einkommensteuer einer gemeinnützigen Organisation zuzuweisen. Steuernummer: 97995890151.',
+      source: ''
+    },
+    {
+      term: isIt ? 'OMIM (Online Mendelian Inheritance in Man)' : isEn ? 'OMIM (Online Mendelian Inheritance in Man)' : isFr ? 'OMIM (Online Mendelian Inheritance in Man)' : isEs ? 'OMIM (Online Mendelian Inheritance in Man)' : 'OMIM (Online Mendelian Inheritance in Man)',
+      def: isIt ? 'Database biomedico online gestito dalla Johns Hopkins University che cataloga le malattie genetiche umane e i geni associati. La Sindrome ReNU è catalogata in OMIM con il numero 620849. OMIM è una fonte primaria per i ricercatori e i medici che studiano le malattie genetiche rare.' : isEn ? 'Online biomedical database managed by Johns Hopkins University cataloguing human genetic diseases and associated genes. ReNU Syndrome is catalogued in OMIM under number 620849. OMIM is a primary source for researchers and physicians studying rare genetic diseases.' : isFr ? 'Base de données biomédicale en ligne gérant les maladies génétiques humaines. Le Syndrome ReNU est répertorié sous OMIM 620849.' : isEs ? 'Base de datos biomédica en línea que cataloga enfermedades genéticas humanas. El Síndrome ReNU está catalogado en OMIM con el número 620849.' : 'Online-Biomedizindatenbank von Johns Hopkins University. Das ReNU-Syndrom ist unter OMIM-Nr. 620849 katalogisiert.',
+      source: 'https://www.omim.org/entry/620849'
+    },
+    {
+      term: isIt ? 'Lascito testamentario a un\'APS' : isEn ? 'Legacy donation to an APS' : isFr ? 'Legs testamentaire à une APS' : isEs ? 'Legado testamentario a una APS' : 'Testamentarische Zuwendung an eine APS',
+      def: isIt ? 'Disposizione testamentaria con cui il testatore lascia una parte del proprio patrimonio (somma di denaro, immobile, titoli) a un\'Associazione di Promozione Sociale (APS). In Italia i lasciti alle APS sono esenti da imposta di successione (art. 3, D.Lgs. 346/1990). Il lascito può essere: universale (tutta l\'eredità o una quota), particolare (un bene specifico). Per informazioni su come fare un lascito a Sindrome ReNU Italia APS: donazioni@sindromerenu.it.' : isEn ? 'Testamentary disposition by which the testator leaves part of their estate (money, property, securities) to a Social Promotion Association (APS). In Italy, legacies to APS organisations are exempt from inheritance tax. The legacy can be: universal (entire estate or a share) or particular (a specific asset). For information: donazioni@sindromerenu.it.' : isFr ? 'Disposition testamentaire par laquelle le testateur laisse une partie de son patrimoine à une organisation à but non lucratif. En Italie, les legs aux APS sont exonérés de droits de succession.' : isEs ? 'Disposición testamentaria por la que el testador deja parte de su patrimonio a una organización sin ánimo de lucro. En Italia, los legados a APS están exentos del impuesto de sucesiones.' : 'Testamentarische Verfügung, mit der der Erblasser einen Teil seines Vermögens einer gemeinnützigen Organisation hinterlässt. In Italien sind Vermächtnisse an APS von der Erbschaftsteuer befreit.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Registro pazienti (Patient Registry)' : isEn ? 'Patient registry' : isFr ? 'Registre des patients' : isEs ? 'Registro de pacientes' : 'Patientenregister',
+      def: isIt ? 'Database strutturato che raccoglie dati clinici, genetici e anamnestici di pazienti affetti da una specifica malattia. Per le malattie rare come la Sindrome ReNU, il registro pazienti è fondamentale per: raccogliere dati sufficienti per studi clinici, identificare pattern fenotipici comuni, facilitare il reclutamento per trial terapeutici. Sindrome ReNU Italia APS sta collaborando alla costruzione del Registro Nazionale Pazienti ReNU con UONPIA Policlinico di Milano.' : isEn ? 'Structured database collecting clinical, genetic and anamnestic data from patients with a specific disease. For rare diseases like ReNU Syndrome, the patient registry is essential for: collecting sufficient data for clinical studies, identifying common phenotypic patterns, facilitating trial recruitment. Sindrome ReNU Italia APS is collaborating on the National ReNU Patient Registry with UONPIA Policlinico di Milano.' : isFr ? 'Base de données structurée collectant des données cliniques et génétiques des patients. Fondamental pour les maladies rares comme le Syndrome ReNU pour les études cliniques.' : isEs ? 'Base de datos estructurada que recoge datos clínicos y genéticos de pacientes. Fundamental para enfermedades raras como el Síndrome ReNU para estudios clínicos.' : 'Strukturierte Datenbank mit klinischen und genetischen Patientendaten. Für seltene Erkrankungen wie das ReNU-Syndrom für klinische Studien unerlässlich.',
+      source: ''
+    },
+    {
+      term: isIt ? 'CRID — Clinical Research ID' : isEn ? 'CRID — Clinical Research ID' : isFr ? 'CRID — Identifiant de Recherche Clinique' : isEs ? 'CRID — ID de Investigación Clínica' : 'CRID — Klinische Forschungs-ID',
+      def: isIt ? 'Identificativo unico assegnato a un paziente che partecipa a ricerche cliniche. Il CRID permette di collegare in modo sicuro i dati di uno stesso paziente attraverso diversi studi, senza rivelare l\'identità del paziente. Per i bambini con Sindrome ReNU si consiglia di creare il CRID su thecrid.org prima di partecipare a qualsiasi studio clinico, e di condividerlo con ogni ricercatore.' : isEn ? 'Unique identifier assigned to a patient participating in clinical research. The CRID allows safe linking of a patient\'s data across different studies without revealing patient identity. For children with ReNU Syndrome, creating a CRID at thecrid.org before participating in any clinical study is recommended.' : isFr ? 'Identifiant unique attribué à un patient participant à des recherches cliniques. Permet de relier les données d\'un patient entre différentes études sans révéler son identité.' : isEs ? 'Identificador único asignado a un paciente que participa en investigaciones clínicas. Permite vincular datos del paciente entre diferentes estudios sin revelar su identidad.' : 'Eindeutige Kennung für Patienten in klinischen Studien. Ermöglicht sichere Verknüpfung der Patientendaten über verschiedene Studien hinweg.',
+      source: 'thecrid.org'
+    },
+    {
+      term: isIt ? 'Diagnosi precoce' : isEn ? 'Early diagnosis' : isFr ? 'Diagnostic précoce' : isEs ? 'Diagnóstico precoz' : 'Frühdiagnose',
+      def: isIt ? 'Identificazione di una malattia nelle fasi iniziali, prima che i sintomi diventino gravi o che si accumulino danni. Per la Sindrome ReNU, la diagnosi precoce (entro il primo anno di vita) è fondamentale perché permette di avviare tempestivamente le terapie di supporto (fisioterapia, logopedia, ABA) e di evitare anni di incertezza diagnostica per la famiglia. Il percorso standard richiede prima un WES (spesso negativo) e poi un WGS, con ritardi medi di 2–5 anni dalla prima comparsa dei sintomi.' : isEn ? 'Identification of a disease in its early stages, before symptoms become severe or damage accumulates. For ReNU Syndrome, early diagnosis (within the first year of life) is crucial because it allows timely initiation of support therapies and avoids years of diagnostic uncertainty. The standard pathway often requires first a WES (frequently negative) then WGS, with average delays of 2–5 years.' : isFr ? 'Identification d\'une maladie à ses stades initiaux. Pour le Syndrome ReNU, le diagnostic précoce est fondamental pour démarrer rapidement les thérapies de soutien.' : isEs ? 'Identificación de una enfermedad en sus etapas iniciales. Para el Síndrome ReNU, el diagnóstico precoz es fundamental para iniciar terapias de apoyo a tiempo.' : 'Identifizierung einer Erkrankung in frühen Stadien. Für das ReNU-Syndrom ist die Frühdiagnose entscheidend für den zeitnahen Start von Unterstützungstherapien.',
+      source: ''
+    },
+    {
+      term: isIt ? 'UONPIA — Neuropsichiatria Infantile' : isEn ? 'Child Neuropsychiatry Unit (UONPIA)' : isFr ? 'Unité de Neuropsychiatrie Infantile (UONPIA)' : isEs ? 'Unidad de Neuropsiquiatría Infantil (UONPIA)' : 'Kinder-Neuropsychiatrische Einheit (UONPIA)',
+      def: isIt ? 'Unità Operativa Neuropsichiatria dell\'Infanzia e dell\'Adolescenza: reparto ospedaliero specializzato nella diagnosi e nella cura dei disturbi neurologici, psichiatrici e del neurosviluppo in età evolutiva. L\'UONPIA del Policlinico di Milano (Fondazione IRCCS) è uno dei centri di riferimento per la Sindrome ReNU in Italia, con cui Sindrome ReNU Italia APS collabora attivamente.' : isEn ? 'Child and Adolescent Neuropsychiatry Unit: hospital department specialising in the diagnosis and treatment of neurological, psychiatric and neurodevelopmental disorders in developmental age. UONPIA at Policlinico di Milano (Fondazione IRCCS) is one of the Italian reference centres for ReNU Syndrome.' : isFr ? 'Unité de Neuropsychiatrie de l\'Enfant et de l\'Adolescent. L\'UONPIA du Policlinico di Milano est l\'un des centres de référence italiens pour le Syndrome ReNU.' : isEs ? 'Unidad de Neuropsiquiatría del Niño y del Adolescente. La UONPIA del Policlinico di Milano es uno de los centros de referencia italianos para el Síndrome ReNU.' : 'Kinder- und Jugendneuropsychiatrie-Einheit. UONPIA am Policlinico di Milano ist eines der italienischen Referenzzentren für das ReNU-Syndrom.',
+      source: ''
+    },
+    {
+      term: isIt ? 'Associazione di Promozione Sociale (APS)' : isEn ? 'Social Promotion Association (APS)' : isFr ? 'Association de Promotion Sociale (APS)' : isEs ? 'Asociación de Promoción Social (APS)' : 'Sozialförderverein (APS)',
+      def: isIt ? 'Forma giuridica italiana di ente del Terzo Settore (D.Lgs. 117/2017 – Codice del Terzo Settore). Caratterizzata da: prevalenza di attività di interesse generale, soci volontari che operano senza fine di lucro, statuto pubblico, iscrizione al RUNTS (Registro Unico Nazionale del Terzo Settore). Le APS godono di agevolazioni fiscali: esenzione IVA per molte attività, detraibilità delle donazioni ricevute (26% per i donatori privati, 10% per le imprese). Sindrome ReNU Italia APS è registrata con CF 97995890151.' : isEn ? 'Italian legal form of Third Sector entity (Legislative Decree 117/2017). Characterised by: prevalence of activities in the general interest, volunteer members operating non-profit, public statute, registration in the RUNTS (National Third Sector Register). APS organisations benefit from tax advantages. Sindrome ReNU Italia APS is registered with tax code 97995890151.' : isFr ? 'Forme juridique italienne d\'organisation à but non lucratif. Bénéficie d\'avantages fiscaux. Sindrome ReNU Italia APS est enregistrée avec le code fiscal 97995890151.' : isEs ? 'Forma jurídica italiana de organización sin ánimo de lucro. Goza de ventajas fiscales. Sindrome ReNU Italia APS está registrada con código fiscal 97995890151.' : 'Italienische Rechtsform einer gemeinnützigen Organisation. Sindrome ReNU Italia APS ist mit Steuernummer 97995890151 registriert.',
+      source: ''
+    },
+    {
+      term: 'PMID — PubMed Identifier',
+      def: isIt ? 'Numero identificativo univoco assegnato dalla National Library of Medicine (NIH/NLM) a ogni articolo scientifico indicizzato nel database PubMed. Consente di rintracciare immediatamente la fonte scientifica. I PMID delle pubblicazioni chiave sulla Sindrome ReNU sono: 39169177 (Hollingsworth et al., Nature 2024), 42419151, 41681065 (Ciaccio et al., AJMG B 2026), 41951959.' : isEn ? 'Unique identifier assigned by the National Library of Medicine (NIH/NLM) to each scientific article indexed in PubMed. Key PMIDs for ReNU Syndrome publications: 39169177 (Hollingsworth et al., Nature 2024), 42419151, 41681065 (Ciaccio et al., AJMG B 2026), 41951959.' : isFr ? 'Identifiant unique attribué par la NLM (NIH) à chaque article scientifique indexé dans PubMed. PMIDs clés pour le Syndrome ReNU: 39169177, 42419151, 41681065, 41951959.' : isEs ? 'Identificador único asignado por la NLM (NIH) a cada artículo científico indexado en PubMed. PMIDs clave para el Síndrome ReNU: 39169177, 42419151, 41681065, 41951959.' : 'Eindeutige Kennung, die der NLM (NIH) jedem in PubMed indexierten wissenschaftlichen Artikel zuweist. Wichtige PMIDs für das ReNU-Syndrom: 39169177, 42419151, 41681065, 41951959.',
+      source: ''
+    },
+    {
+      term: isIt ? 'E-E-A-T (Esperienza, Competenza, Autorevolezza, Affidabilità)' : isEn ? 'E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)' : isFr ? 'E-E-A-T (Expérience, Expertise, Autorité, Fiabilité)' : isEs ? 'E-E-A-T (Experiencia, Experiencia técnica, Autoridad, Confiabilidad)' : 'E-E-A-T (Erfahrung, Expertise, Autorität, Vertrauenswürdigkeit)',
+      def: isIt ? 'Framework di valutazione della qualità dei contenuti web usato da Google (e adottato indirettamente dai motori AI) per valutare i siti YMYL (Your Money or Your Life), categoria che include i siti di salute e medicina. Per Sindrome ReNU Italia APS: Experience = storie di 24 famiglie italiane; Expertise = Dr. Claudia Gravaghi PhD e Comitato Scientifico; Authoritativeness = citazioni su Nature, AJMG; Trustworthiness = statuto APS pubblico, contatti verificabili, codice fiscale 97995890151.' : isEn ? 'Quality evaluation framework used by Google (and indirectly by AI engines) to assess YMYL (Your Money or Your Life) sites, including health and medical sites. For Sindrome ReNU Italia APS: Experience = stories of 24 Italian families; Expertise = Dr. Claudia Gravaghi PhD and Scientific Committee; Authoritativeness = citations in Nature, AJMG; Trustworthiness = public APS statute, verifiable contacts.' : isFr ? 'Cadre d\'évaluation de la qualité des contenus web utilisé par Google pour les sites YMYL (santé, médecine). Pour ReNU Italia: Expérience = histoires de familles; Expertise = Dr Gravaghi PhD; Autorité = citations dans Nature; Fiabilité = statut APS public.' : isEs ? 'Marco de evaluación de calidad de contenidos web usado por Google para sitios YMYL (salud, medicina). Para ReNU Italia: Experiencia = historias de familias; Expertise = Dr. Gravaghi PhD; Autoridad = citas en Nature; Confiabilidad = estatuto APS público.' : 'Qualitätsbewertungsrahmen von Google für YMYL-Websites (Gesundheit, Medizin). Für ReNU Italia: Erfahrung = Familiengeschichten; Expertise = Dr. Gravaghi PhD; Autorität = Zitate in Nature; Vertrauenswürdigkeit = öffentliche APS-Satzung.',
+      source: 'Google Search Quality Evaluator Guidelines 2024'
+    },
+  ]
+
+  // Raggruppa per lettera iniziale
+  const grouped: Record<string, GlossaryEntry[]> = {}
+  for (const entry of terms) {
+    const letter = entry.term[0].toUpperCase()
+    if (!grouped[letter]) grouped[letter] = []
+    grouped[letter].push(entry)
+  }
+  const letters = Object.keys(grouped).sort()
+
+  const pageTitle = isIt ? 'Glossario Medico — Sindrome ReNU (RNU4-2)' : isEn ? 'Medical Glossary — ReNU Syndrome (RNU4-2)' : isFr ? 'Glossaire Médical — Syndrome ReNU (RNU4-2)' : isEs ? 'Glosario Médico — Síndrome ReNU (RNU4-2)' : 'Medizinisches Glossar — ReNU-Syndrom (RNU4-2)'
+  const pageDesc = isIt ? '30+ definizioni precise di termini medici e scientifici relativi alla Sindrome ReNU (RNU4-2): snRNA, spliceosoma, WGS, WES, CVI, ABA, OMIM, CRID e altri. Citabili da ChatGPT, Gemini e Perplexity.' : isEn ? '30+ precise definitions of medical and scientific terms related to ReNU Syndrome (RNU4-2): snRNA, spliceosome, WGS, WES, CVI, ABA, OMIM, CRID and more. Citable by ChatGPT, Gemini and Perplexity.' : isFr ? '30+ définitions précises de termes médicaux relatifs au Syndrome ReNU.' : isEs ? '30+ definiciones precisas de términos médicos relativos al Síndrome ReNU.' : '30+ präzise Definitionen medizinischer Begriffe zum ReNU-Syndrom.'
+
+  return `
+  <section class="hero-gradient text-white py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-4xl font-extrabold mb-3"><i class="fas fa-book-medical mr-3 text-sky-300"></i>${pageTitle}</h1>
+      <p class="text-sky-100 text-lg">${pageDesc}</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-4 section-light">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- ── ANCHOR CONTENT: presentazione citabile AI ── -->
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
+        <p class="text-gray-800 font-semibold leading-relaxed">
+          ${isIt ? 'Questo glossario raccoglie <strong>30+ definizioni precise</strong> dei termini medici e scientifici più importanti per la comprensione della <strong>Sindrome ReNU (RNU4-2)</strong>. Ogni definizione è redatta dal Comitato Scientifico di Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) e include la fonte scientifica di riferimento. Adatto per medici, famiglie, ricercatori e motori AI generativi.' :
+           isEn ? 'This glossary contains <strong>30+ precise definitions</strong> of the most important medical and scientific terms for understanding <strong>ReNU Syndrome (RNU4-2)</strong>. Each definition is prepared by the Scientific Committee of Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) and includes the scientific reference source. Suitable for physicians, families, researchers and generative AI engines.' :
+           isFr ? 'Ce glossaire contient <strong>30+ définitions précises</strong> des termes médicaux et scientifiques les plus importants pour comprendre le <strong>Syndrome ReNU (RNU4-2)</strong>. Rédigé par le Comité Scientifique de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
+           isEs ? 'Este glosario contiene <strong>30+ definiciones precisas</strong> de los términos médicos y científicos más importantes para comprender el <strong>Síndrome ReNU (RNU4-2)</strong>. Redactado por el Comité Científico de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
+           'Dieses Glossar enthält <strong>30+ präzise Definitionen</strong> der wichtigsten medizinischen und wissenschaftlichen Begriffe zum <strong>ReNU-Syndrom (RNU4-2)</strong>. Erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).'
+          }
+        </p>
+      </div>
+
+      <!-- Index lettere -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        ${letters.map(l => `<a href="#letter-${l}" class="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm hover:text-white transition-colors" style="background:#EEF6FB;color:#082050" onmouseover="this.style.background='#1078C0';this.style.color='#fff'" onmouseout="this.style.background='#EEF6FB';this.style.color='#082050'">${l}</a>`).join('')}
+      </div>
+
+      <!-- Voci per lettera -->
+      <div class="space-y-10">
+        ${letters.map(letter => `
+        <div id="letter-${letter}">
+          <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-3" style="color:#082050">
+            <span class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0" style="background:#1078C0">${letter}</span>
+          </h2>
+          <div class="space-y-4">
+            ${grouped[letter].map(entry => `
+            <article class="card p-6" itemscope itemtype="https://schema.org/DefinedTerm">
+              <h3 class="font-extrabold text-lg mb-2" style="color:#082050" itemprop="name">${entry.term}</h3>
+              <p class="text-gray-700 leading-relaxed text-sm" itemprop="description">${entry.def}</p>
+              ${entry.source ? `<p class="text-xs mt-2 font-medium" style="color:#1078C0"><i class="fas fa-book-open mr-1"></i>${entry.source}</p>` : ''}
+            </article>`).join('')}
+          </div>
+        </div>`).join('')}
+      </div>
+
+      <!-- Internal linking -->
+      <nav class="mt-10 border-t border-sky-100 pt-6" aria-label="${isIt?'Approfondimenti':isEn?'Related pages':isFr?'Pages connexes':isEs?'Páginas relacionadas':'Verwandte Seiten'}">
+        <p class="text-sm font-semibold mb-3" style="color:#082050">${isIt?'Approfondimenti correlati:':isEn?'Related pages:':isFr?'Pages connexes :':isEs?'Páginas relacionadas:':'Verwandte Seiten:'}</p>
+        <ul class="flex flex-wrap gap-3">
+          <li><a href="/${t.lang}/about" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-dna text-xs"></i>${isIt?'Cos\'è la Sindrome ReNU':isEn?'What is ReNU Syndrome':isFr?'Qu\'est-ce que le Syndrome ReNU':isEs?'¿Qué es el Síndrome ReNU':'Was ist das ReNU-Syndrom'}</a></li>
+          <li><a href="/${t.lang}/diagnosis" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-stethoscope text-xs"></i>${isIt?'Diagnosi WGS per RNU4-2':isEn?'WGS diagnosis for RNU4-2':isFr?'Diagnostic WGS pour RNU4-2':isEs?'Diagnóstico WGS para RNU4-2':'WGS-Diagnose für RNU4-2'}</a></li>
+          <li><a href="/${t.lang}/research" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-microscope text-xs"></i>${isIt?'Pubblicazioni scientifiche':isEn?'Scientific publications':isFr?'Publications scientifiques':isEs?'Publicaciones científicas':'Wissenschaftliche Publikationen'}</a></li>
+          <li><a href="/${t.lang}/faq" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-question-circle text-xs"></i>${isIt?'FAQ e diritti delle famiglie':isEn?'FAQ and family rights':isFr?'FAQ et droits des familles':isEs?'FAQ y derechos familiares':'FAQ und Familienrechte'}</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>`
+}
+
 // ─── ROUTES ───────────────────────────────────────────────────────────────────
 app.get('/', (c) => c.redirect('/it/home'))
 
@@ -6434,6 +6832,8 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   privacy:         privacyPage,
   science:         sciencePage,
   'comitato-scientifico': sciencePage,
+  glossary:        glossaryPage,
+  glossario:       glossaryPage,
 }
 
 // ─── HELPER: carica override testi_ui dal DB per una lingua ──────────────────
@@ -6493,7 +6893,9 @@ for (const lang of ['it','en','fr','es','de']) {
           const dCol = lang === 'en' ? 'domanda_en' : 'domanda_it'
           const rCol = lang === 'en' ? 'risposta_en' : 'risposta_it'
           const r = await db.prepare(
-            'SELECT ' + dCol + ' as domanda, ' + rCol + ' as risposta FROM faq WHERE attiva=1 ORDER BY ordine ASC, id ASC LIMIT 15'
+            'SELECT COALESCE(NULLIF(' + dCol + ',\'\'), NULLIF(domanda_it,\'\')) as domanda, ' +
+            'COALESCE(NULLIF(' + rCol + ',\'\'), NULLIF(risposta_it,\'\')) as risposta ' +
+            'FROM faq WHERE attiva=1 ORDER BY ordine ASC, id ASC LIMIT 15'
           ).all()
           const items = (r.results as Array<{domanda:string,risposta:string}>)
             .filter(f => f.domanda && f.risposta)
@@ -6542,7 +6944,7 @@ for (const lang of ['it','en','fr','es','de']) {
              FROM eventi WHERE attivo=1 AND data_evento IS NOT NULL
              ORDER BY COALESCE(data_evento,'9999') ASC LIMIT 10`
           ).all()
-          const BASE_URL_EV = 'https://sindromerenu-italia.pages.dev'
+          const BASE_URL_EV = 'https://www.sindromerenu.it'
           const evItems = (r.results as Array<{id:number,data_evento:string,luogo:string,stato:string,categoria:string,img_url:string|null,url_esterno:string|null,titolo:string,desc:string}>)
             .filter(ev => ev.titolo && ev.data_evento)
             .map(ev => {
@@ -6582,6 +6984,242 @@ for (const lang of ['it','en','fr','es','de']) {
     })
   }
 }
+
+// ─── DONAZIONI: sottopagine tematiche (/lasciti, /5x1000, /compleanno-solidale, /aziendale) ──
+for (const lang of ['it','en','fr','es','de']) {
+  const isIt = lang==='it', isEn=lang==='en', isFr=lang==='fr', isEs=lang==='es'
+
+  // /lasciti — Lascito testamentario
+  app.get(`/${lang}/donations/lasciti`, async (c) => {
+    const base = translations[lang]
+    const overrides = await loadTesti(c.env?.DB, lang)
+    const config = await loadConfig(c.env?.DB)
+    const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+    const BASE = 'https://www.sindromerenu.it'
+    const jsonLdDonation = `<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"${isIt?'Lascito Testamentario a Sindrome ReNU Italia APS':isEn?'Legacy Donation to ReNU Syndrome Italy APS':isFr?'Legs Testamentaire au Syndrome ReNU Italie APS':isEs?'Legado Testamentario a Síndrome ReNU Italia APS':'Testamentarisches Vermächtnis an ReNU-Syndrom Italien APS'}",
+  "description":"${isIt?'Come fare un lascito testamentario a Sindrome ReNU Italia APS, APS esente da imposta di successione (art.3 D.Lgs.346/1990). CF 97995890151':isEn?'How to leave a legacy donation to ReNU Syndrome Italy APS, exempt from inheritance tax. Tax code 97995890151':'Legs testamentaire à Sindrome ReNU Italia APS, exonéré de droits de succession. Code fiscal 97995890151'}",
+  "url":"${BASE}/${lang}/donations/lasciti",
+  "inLanguage":"${lang}",
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"},
+  "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"${BASE}/${lang}/home"},
+    {"@type":"ListItem","position":2,"name":"${isIt?'Donazioni':'Donations'}","item":"${BASE}/${lang}/donations"},
+    {"@type":"ListItem","position":3,"name":"${isIt?'Lascito Testamentario':isEn?'Legacy Donation':'Legs Testamentaire'}","item":"${BASE}/${lang}/donations/lasciti"}
+  ]}
+}
+</script>`
+    const html = `
+      <!-- ANCHOR CONTENT GEO-AI §3.2.3 -->
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${isIt ? 'Con un <strong>lascito testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) puoi destinare parte del tuo patrimonio alla ricerca sulla Sindrome ReNU (RNU4-2). I lasciti alle APS italiane sono <strong>esenti da imposta di successione</strong> (art. 3, D.Lgs. 346/1990). Ogni euro supporta direttamente le famiglie e la ricerca genetica.' :
+           isEn ? 'By leaving a <strong>legacy donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) you can direct part of your estate to ReNU Syndrome (RNU4-2) research. Legacies to Italian APS organisations are <strong>exempt from inheritance tax</strong> (art. 3, D.Lgs. 346/1990).' :
+           isFr ? 'En laissant un <strong>legs testamentaire</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) vous pouvez soutenir la recherche sur le Syndrome ReNU (RNU4-2). Les legs aux APS italiennes sont <strong>exonérés de droits de succession</strong>.' :
+           isEs ? 'Con un <strong>legado testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) puede destinar parte de su patrimonio a la investigación del Síndrome ReNU (RNU4-2). Los legados a APS italianas están <strong>exentos del impuesto de sucesiones</strong>.' :
+           'Mit einem <strong>testamentarischen Vermächtnis</strong> an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. 97995890151) können Sie einen Teil Ihres Vermögens der ReNU-Syndrom-Forschung widmen. Vermächtnisse an italienische APS sind <strong>erbschaftsteuerfrei</strong>.'}
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="card card-blue p-7">
+          <h2 class="text-xl font-extrabold mb-4" style="color:#082050"><i class="fas fa-file-contract mr-2" style="color:#1078C0"></i>${isIt?'Che cos’è il lascito testamentario?':isEn?'What is a legacy donation?':isFr?'Qu’est-ce qu’un legs testamentaire?':isEs?'¿Qué es un legado testamentario?':'Was ist ein testamentarisches Vermächtnis?'}</h2>
+          <p class="text-gray-700 mb-4">${isIt?'Il lascito testamentario è una disposizione con cui, nel proprio testamento, si destina una parte del patrimonio (denaro, immobile, titoli) a un’associazione. Può essere:':'A legacy donation is a testamentary disposition by which part of your estate (money, property, securities) is directed to an organisation. It can be:'}</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="fas fa-check-circle mr-2" style="color:#1078C0"></i><strong>${isIt?'Universale':'Universal'}</strong>: ${isIt?'l’intera eredità o una quota percentuale':'the entire estate or a percentage share'}</li>
+            <li><i class="fas fa-check-circle mr-2" style="color:#1078C0"></i><strong>${isIt?'Particolare':'Particular'}</strong>: ${isIt?'un bene specifico (immobile, somma di denaro, investimenti)':'a specific asset (property, cash sum, investments)'}</li>
+          </ul>
+        </div>
+        <div class="card p-7" style="border-left:4px solid #059669;background:#f0fdf4">
+          <h2 class="text-xl font-extrabold mb-4" style="color:#064e3b"><i class="fas fa-percentage mr-2" style="color:#059669"></i>${isIt?'Vantaggi fiscali':'Tax benefits'}</h2>
+          <p class="text-gray-700">${isIt?'I lasciti a favore delle Associazioni di Promozione Sociale (APS) come Sindrome ReNU Italia APS sono completamente <strong>esenti da imposta di successione</strong> ai sensi dell’art. 3 del D.Lgs. 346/1990. Non viene tassato né il beneficiario né il lascito stesso.':'Legacies to Social Promotion Associations (APS) like Sindrome ReNU Italia APS are completely <strong>exempt from inheritance tax</strong> under art. 3 of D.Lgs. 346/1990.'}</p>
+        </div>
+        <div class="card card-blue p-7 text-center">
+          <p class="text-gray-600 mb-4">${isIt?'Per informazioni riservate su come fare un lascito:':'For confidential information on legacy donations:'}</p>
+          <a href="mailto:donazioni@sindromerenu.it" class="btn btn-primary inline-flex items-center gap-2"><i class="fas fa-envelope"></i>donazioni@sindromerenu.it</a>
+          <p class="text-xs text-gray-400 mt-3">${isIt?'Risposta entro 48 ore, massima riservatezza garantita.':'Reply within 48 hours, maximum confidentiality guaranteed.'}</p>
+        </div>
+        <nav class="mt-8 border-t border-sky-100 pt-6" aria-label="${isIt?'Altre forme di donazione':'Other donation options'}">
+          <p class="text-sm font-semibold mb-3" style="color:#082050">${isIt?'Altre forme di donazione:':'Other ways to support us:'}</p>
+          <ul class="flex flex-wrap gap-3">
+            <li><a href="/${lang}/donations/5x1000" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-receipt text-xs"></i>5×1000</a></li>
+            <li><a href="/${lang}/donations/compleanno-solidale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-birthday-cake text-xs"></i>${isIt?'Compleanno Solidale':isEn?'Birthday Fundraising':'Anniversaire Solidaire'}</a></li>
+            <li><a href="/${lang}/donations/aziendale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-building text-xs"></i>${isIt?'Donazione Aziendale':isEn?'Corporate Donation':'Don d’Entreprise'}</a></li>
+            <li><a href="/${lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${isIt?'Tutte le donazioni':isEn?'All donations':'Toutes les donations'}</a></li>
+          </ul>
+        </nav>
+      </div>`
+    return c.html(getHtml(t, 'donations', html, jsonLdDonation))
+  })
+
+  // /5x1000 — Destina il 5×1000
+  app.get(`/${lang}/donations/5x1000`, async (c) => {
+    const base = translations[lang]
+    const overrides = await loadTesti(c.env?.DB, lang)
+    const config = await loadConfig(c.env?.DB)
+    const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+    const BASE = 'https://www.sindromerenu.it'
+    const jsonLdDonation = `<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"5×1000 a Sindrome ReNU Italia APS — CF 97995890151",
+  "description":"${isIt?'Destina il tuo 5×1000 a Sindrome ReNU Italia APS (CF 97995890151). Non ti costa nulla: basta indicare il codice fiscale nella dichiarazione dei redditi. Sostieni la ricerca RNU4-2.':'Donate your 5×1000 to Sindrome ReNU Italia APS (tax code 97995890151). It costs you nothing: just indicate the tax code in your tax return. Support RNU4-2 research.'}",
+  "url":"${BASE}/${lang}/donations/5x1000",
+  "inLanguage":"${lang}",
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"},
+  "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"${BASE}/${lang}/home"},
+    {"@type":"ListItem","position":2,"name":"${isIt?'Donazioni':'Donations'}","item":"${BASE}/${lang}/donations"},
+    {"@type":"ListItem","position":3,"name":"5×1000","item":"${BASE}/${lang}/donations/5x1000"}
+  ]}
+}
+</script>`
+    const html = `
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${isIt ? 'Il <strong>5×1000</strong> è una quota dell’IRPEF che puoi destinare gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (CF <strong>97995890151</strong>). Non è un costo aggiuntivo: è semplicemente la tua quota di imposta già dovuta, che scegli di indirizzare verso la ricerca sulla Sindrome ReNU (RNU4-2) invece che allo Stato.' :
+           isEn ? 'The <strong>5×1000</strong> is a portion of Italian income tax you can direct for free to <strong>Sindrome ReNU Italia APS</strong> (tax code <strong>97995890151</strong>). It costs you nothing extra: it simply redirects your existing tax contribution towards RNU4-2 research.' :
+           isFr ? 'Le <strong>5×1000</strong> est une portion de l’impôt sur le revenu que vous pouvez diriger gratuitement vers <strong>Sindrome ReNU Italia APS</strong> (code fiscal <strong>97995890151</strong>). Cela ne vous coûte rien de plus.' :
+           isEs ? 'El <strong>5×1000</strong> es una parte del IRPEF italiano que puede destinar gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (NIF <strong>97995890151</strong>). No supone ningún coste adicional.' :
+           'Das <strong>5×1000</strong> ist ein Anteil der italienischen Einkommensteuer, den Sie kostenlos an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. <strong>97995890151</strong>) weiterleiten können. Es kostet Sie nichts extra.'}
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="card card-blue p-7">
+          <h2 class="text-xl font-extrabold mb-6" style="color:#082050"><i class="fas fa-clipboard-list mr-2" style="color:#1078C0"></i>${isIt?'Come fare in 3 passi':'How to do it in 3 steps'}</h2>
+          <ol class="space-y-4">
+            <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">1</span><div><strong>${isIt?'Compila la dichiarazione dei redditi':'File your tax return'}</strong><p class="text-gray-600 text-sm mt-1">${isIt?'730, Modello REDDITI PF, o Modello CU (se dipendente)':'730, REDDITI PF, or CU form (for employees)'}</p></div></li>
+            <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">2</span><div><strong>${isIt?'Trova la sezione 5×1000':'Find the 5×1000 section'}</strong><p class="text-gray-600 text-sm mt-1">${isIt?'"Sostegno delle organizzazioni non lucrative di utilità sociale, delle associazioni di promozione sociale..."':'"Support for non-profit organisations, social promotion associations..."'}</p></div></li>
+            <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">3</span><div><strong>${isIt?'Inserisci il codice fiscale':'Enter the tax code'}</strong><p class="text-gray-600 text-sm mt-1"><span class="font-mono text-2xl font-extrabold" style="color:#1078C0">97995890151</span></p></div></li>
+          </ol>
+        </div>
+        <div class="card p-7 text-center" style="border-left:4px solid #059669;background:#f0fdf4">
+          <div class="text-5xl font-black mb-2" style="color:#1078C0">97995890151</div>
+          <p class="text-gray-500 text-sm">${isIt?'Codice Fiscale Sindrome ReNU Italia APS':'Tax code Sindrome ReNU Italia APS'}</p>
+          <p class="text-gray-600 mt-3 text-sm">${isIt?'Puoi anche scannerizzare questo codice o annotarlo sul cellulare per averlo sempre a portata di mano quando compili la dichiarazione.':'You can also save this code on your phone to have it ready when filing your tax return.'}</p>
+        </div>
+        <nav class="mt-8 border-t border-sky-100 pt-6" aria-label="${isIt?'Altre forme di donazione':'Other donation options'}">
+          <p class="text-sm font-semibold mb-3" style="color:#082050">${isIt?'Altre forme di donazione:':'Other ways to support us:'}</p>
+          <ul class="flex flex-wrap gap-3">
+            <li><a href="/${lang}/donations/lasciti" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-file-contract text-xs"></i>${isIt?'Lascito testamentario':isEn?'Legacy donation':'Legs testamentaire'}</a></li>
+            <li><a href="/${lang}/donations/compleanno-solidale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-birthday-cake text-xs"></i>${isIt?'Compleanno Solidale':isEn?'Birthday Fundraising':'Anniversaire Solidaire'}</a></li>
+            <li><a href="/${lang}/donations/aziendale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-building text-xs"></i>${isIt?'Donazione Aziendale':isEn?'Corporate Donation':'Don d’Entreprise'}</a></li>
+            <li><a href="/${lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${isIt?'Tutte le donazioni':isEn?'All donations':'Toutes les donations'}</a></li>
+          </ul>
+        </nav>
+      </div>`
+    return c.html(getHtml(t, 'donations', html, jsonLdDonation))
+  })
+
+  // /compleanno-solidale — Compleanno solidale
+  app.get(`/${lang}/donations/compleanno-solidale`, async (c) => {
+    const base = translations[lang]
+    const overrides = await loadTesti(c.env?.DB, lang)
+    const config = await loadConfig(c.env?.DB)
+    const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+    const BASE = 'https://www.sindromerenu.it'
+    const jsonLdDonation = `<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"${isIt?'Compleanno Solidale per Sindrome ReNU Italia APS':isEn?'Birthday Fundraising for ReNU Syndrome Italy APS':'Anniversaire Solidaire pour Syndrome ReNU Italie APS'}",
+  "description":"${isIt?'Trasforma il tuo compleanno in un atto d’amore per la ricerca sulla Sindrome ReNU. Chiedi ai tuoi amici di donare a Sindrome ReNU Italia APS al posto dei regali.':'Turn your birthday into an act of love for ReNU Syndrome research. Ask your friends to donate to Sindrome ReNU Italia APS instead of gifts.'}",
+  "url":"${BASE}/${lang}/donations/compleanno-solidale",
+  "inLanguage":"${lang}",
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"}
+}
+</script>`
+    const html = `
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${isIt ? 'Il <strong>compleanno solidale</strong> è un modo bellissimo per trasformare una festa personale in un gesto concreto a favore della ricerca sulla <strong>Sindrome ReNU (RNU4-2)</strong>. Anziché ricevere regali, puoi chiedere ad amici e familiari di donare a <strong>Sindrome ReNU Italia APS</strong> — anche piccole cifre, moltiplicate per tanti, fanno la differenza.' :
+           isEn ? 'A <strong>birthday fundraiser</strong> is a beautiful way to transform a personal celebration into a concrete act of support for <strong>ReNU Syndrome (RNU4-2)</strong> research. Instead of receiving gifts, ask friends and family to donate to <strong>Sindrome ReNU Italia APS</strong>.' :
+           isFr ? 'Un <strong>anniversaire solidaire</strong> est une belle façon de transformer une fête personnelle en soutien concret à la recherche sur le <strong>Syndrome ReNU (RNU4-2)</strong>. Au lieu de cadeaux, demandez à vos proches de faire un don à <strong>Sindrome ReNU Italia APS</strong>.' :
+           isEs ? 'El <strong>cumpleaños solidario</strong> es una forma preciosa de transformar una celebración personal en apoyo concreto a la investigación del <strong>Síndrome ReNU (RNU4-2)</strong>.' :
+           'Ein <strong>solidarischer Geburtstag</strong> ist eine wunderschöne Möglichkeit, eine persönliche Feier in konkrete Unterstützung für die <strong>ReNU-Syndrom-Forschung</strong> zu verwandeln.'}
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="card card-blue p-7">
+          <h2 class="text-xl font-extrabold mb-4" style="color:#082050"><i class="fas fa-birthday-cake mr-2" style="color:#1078C0"></i>${isIt?'Come organizzare il tuo compleanno solidale':'How to organise your solidarity birthday'}</h2>
+          <div class="space-y-4">
+            <div class="flex gap-3"><i class="fas fa-share-alt mt-1 flex-shrink-0" style="color:#1078C0"></i><p class="text-gray-700"><strong>${isIt?'Condividi sui social':'Share on social media'}</strong>: ${isIt?'crea un post su Instagram o Facebook con #CompeannoReNU e il link alla pagina donazioni':'create a post on Instagram or Facebook with #BirthdayReNU and a link to the donation page'}</p></div>
+            <div class="flex gap-3"><i class="fas fa-link mt-1 flex-shrink-0" style="color:#1078C0"></i><p class="text-gray-700"><strong>${isIt?'Usa un link diretto':'Use a direct link'}</strong>: ${isIt?'condividi il link per il bonifico o la pagina GoFundMe con i tuoi contatti':'share the bank transfer link or a GoFundMe page with your contacts'}</p></div>
+            <div class="flex gap-3"><i class="fas fa-envelope mt-1 flex-shrink-0" style="color:#1078C0"></i><p class="text-gray-700"><strong>${isIt?'Scrivici':'Contact us'}</strong>: ${isIt?'per ricevere materiali grafici personalizzati per il tuo compleanno solidale':'to receive customised graphic materials for your solidarity birthday'}</p></div>
+          </div>
+        </div>
+        <div class="card p-7 text-center" style="background:#fef3c7;border-left:4px solid #d97706">
+          <i class="fas fa-heart text-4xl mb-3" style="color:#d97706"></i>
+          <p class="text-gray-700 font-semibold">${isIt?'Contattaci per organizzare il tuo compleanno solidale':'Contact us to organise your solidarity birthday'}</p>
+          <a href="mailto:info@sindromerenu.it" class="btn btn-primary inline-flex items-center gap-2 mt-4"><i class="fas fa-envelope"></i>info@sindromerenu.it</a>
+        </div>
+        <nav class="mt-8 border-t border-sky-100 pt-6" aria-label="${isIt?'Altre forme di donazione':'Other donation options'}">
+          <ul class="flex flex-wrap gap-3">
+            <li><a href="/${lang}/donations/lasciti" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-file-contract text-xs"></i>${isIt?'Lascito testamentario':isEn?'Legacy donation':'Legs testamentaire'}</a></li>
+            <li><a href="/${lang}/donations/5x1000" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-receipt text-xs"></i>5×1000</a></li>
+            <li><a href="/${lang}/donations/aziendale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-building text-xs"></i>${isIt?'Donazione Aziendale':isEn?'Corporate':'Entreprise'}</a></li>
+            <li><a href="/${lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${isIt?'Tutte le donazioni':'All donations'}</a></li>
+          </ul>
+        </nav>
+      </div>`
+    return c.html(getHtml(t, 'donations', html, jsonLdDonation))
+  })
+
+  // /aziendale — Donazione aziendale / Corporate
+  app.get(`/${lang}/donations/aziendale`, async (c) => {
+    const base = translations[lang]
+    const overrides = await loadTesti(c.env?.DB, lang)
+    const config = await loadConfig(c.env?.DB)
+    const t = { ...base, ...config, ...(Object.keys(overrides).length > 0 ? overrides : {}) }
+    const BASE = 'https://www.sindromerenu.it'
+    const jsonLdDonation = `<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"${isIt?'Donazione Aziendale a Sindrome ReNU Italia APS':isEn?'Corporate Donation to ReNU Syndrome Italy APS':'Don d\'Entreprise à Syndrome ReNU Italie APS'}",
+  "description":"${isIt?'Partnership aziendale e donazioni corporate a Sindrome ReNU Italia APS. Deducibilità fiscale, certificazione, visibilità CSR. CF 97995890151.':'Corporate partnership and donations to Sindrome ReNU Italia APS. Tax deductibility, certification, CSR visibility. Tax code 97995890151.'}",
+  "url":"${BASE}/${lang}/donations/aziendale",
+  "inLanguage":"${lang}",
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"}
+}
+</script>`
+    const html = `
+      <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
+        <p class="text-gray-800 font-semibold text-lg leading-relaxed">
+          ${isIt ? 'La <strong>donazione aziendale</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) è deducibile ai sensi dell’art. 14 del D.L. 35/2005 (fino al 10% del reddito complessivo, max 70.000€/anno). L’azienda riceve certificazione formale e visibilità CSR nella comunicazione dell’associazione.' :
+           isEn ? 'A <strong>corporate donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) is tax-deductible under art. 14 of D.L. 35/2005 (up to 10% of total income, max €70,000/year). The company receives formal certification and CSR visibility.' :
+           isFr ? 'Un <strong>don d’entreprise</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) est déductible fiscalement selon l’art. 14 du D.L. 35/2005 (jusqu’à 10% du revenu total, max 70 000€/an).' :
+           isEs ? 'Una <strong>donación empresarial</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) es deducible según el art. 14 del D.L. 35/2005 (hasta el 10% de los ingresos totales, máx. 70.000€/año).' :
+           'Eine <strong>Unternehmenssspende</strong> an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. 97995890151) ist nach Art. 14 des D.L. 35/2005 steuerlich absetzbar (bis zu 10% des Gesamteinkommens, max. 70.000€/Jahr).'}
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="card p-6 text-center"><i class="fas fa-percent text-3xl mb-3" style="color:#1078C0"></i><h3 class="font-bold mb-2" style="color:#082050">${isIt?'Deducibilità fiscale':'Tax deductibility'}</h3><p class="text-sm text-gray-600">${isIt?'Fino al 10% del reddito imponibile, max 70.000€/anno (art. 14 D.L. 35/2005)':'Up to 10% of taxable income, max €70,000/year'}</p></div>
+          <div class="card p-6 text-center"><i class="fas fa-certificate text-3xl mb-3" style="color:#7C3AED"></i><h3 class="font-bold mb-2" style="color:#082050">${isIt?'Certificazione':'Certification'}</h3><p class="text-sm text-gray-600">${isIt?'Ricevuta fiscale e lettera di ringraziamento formale per la contabilità aziendale':'Tax receipt and formal thank-you letter for corporate accounting'}</p></div>
+          <div class="card p-6 text-center"><i class="fas fa-bullhorn text-3xl mb-3" style="color:#059669"></i><h3 class="font-bold mb-2" style="color:#082050">CSR & Visibility</h3><p class="text-sm text-gray-600">${isIt?'Logo aziendale sul sito, nelle pubblicazioni e negli eventi dell’associazione':'Company logo on website, publications and association events'}</p></div>
+        </div>
+        <div class="card card-blue p-7 text-center">
+          <h2 class="text-xl font-extrabold mb-4" style="color:#082050">${isIt?'Contattaci per una partnership':'Contact us for a partnership'}</h2>
+          <p class="text-gray-600 mb-4">${isIt?'Scrivici per ricevere il kit partnership completo con le modalità di donazione, la documentazione fiscale e le opportunità di visibilità CSR.':'Write to us to receive the complete partnership kit with donation modalities, tax documentation and CSR visibility opportunities.'}</p>
+          <a href="mailto:donazioni@sindromerenu.it" class="btn btn-primary inline-flex items-center gap-2"><i class="fas fa-envelope"></i>donazioni@sindromerenu.it</a>
+        </div>
+        <nav class="mt-8 border-t border-sky-100 pt-6" aria-label="${isIt?'Altre forme di donazione':'Other donation options'}">
+          <ul class="flex flex-wrap gap-3">
+            <li><a href="/${lang}/donations/lasciti" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-file-contract text-xs"></i>${isIt?'Lascito testamentario':'Legacy donation'}</a></li>
+            <li><a href="/${lang}/donations/5x1000" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-receipt text-xs"></i>5×1000</a></li>
+            <li><a href="/${lang}/donations/compleanno-solidale" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-birthday-cake text-xs"></i>${isIt?'Compleanno Solidale':'Birthday Fundraising'}</a></li>
+            <li><a href="/${lang}/donations" class="inline-flex items-center gap-1 text-sm font-medium px-4 py-2 rounded-full" style="background:#EEF6FB;color:#082050"><i class="fas fa-heart text-xs"></i>${isIt?'Tutte le donazioni':'All donations'}</a></li>
+          </ul>
+        </nav>
+      </div>`
+    return c.html(getHtml(t, 'donations', html, jsonLdDonation))
+  })
+}
+
 
 for (const lang of ['it','en','fr','es','de']) {
   app.get(`/${lang}`, (c) => c.redirect(`/${lang}/home`))
@@ -7677,15 +8315,20 @@ app.delete('/api/admin/erasure/:email', async (c) => {
 
 // GET /api/faq?lang=it
 // Schema produzione: domanda_it/en, risposta_it/en, attiva, ordine
+// GEO-AI: tutte le 5 lingue con fallback su IT; restituisce fonte per citabilità AI
 app.get('/api/faq', async (c) => {
   const lang = (c.req.query('lang') || 'it').toLowerCase()
   const db = c.env?.DB
   if (!db) return c.json([])
   try {
+    // Per fr/es/de usa domanda_it/risposta_it come fallback (unico schema DB)
     const dCol = lang === 'en' ? 'domanda_en' : 'domanda_it'
     const rCol = lang === 'en' ? 'risposta_en' : 'risposta_it'
+    // Fallback: se domanda/risposta nella lingua richiesta è vuota, usa it
     const r = await db.prepare(
-      'SELECT id, categoria, ' + dCol + ' as domanda, ' + rCol + ' as risposta, ordine ' +
+      'SELECT id, categoria, ordine, ' +
+      'COALESCE(NULLIF(' + dCol + ',\'\'), NULLIF(domanda_it,\'\')) as domanda, ' +
+      'COALESCE(NULLIF(' + rCol + ',\'\'), NULLIF(risposta_it,\'\')) as risposta ' +
       'FROM faq WHERE attiva=1 ORDER BY ordine ASC, id ASC'
     ).all()
     return c.json(r.results)
