@@ -3871,10 +3871,10 @@ function donationsPage(t: Record<string, string>): string {
             <div>
               <h3 class="font-bold text-lg mb-3 flex items-center gap-2" style="color:#082050">
                 <i class="fas fa-building" style="color:#16A085"></i>
-                ${t.lang==='it'?'Deduzione (Aziende)':'Tax Deduction (Companies)'}
+                ${t.lang==='it'?'Deduzione (Persone fisiche e aziende)':'Tax Deduction (Individuals and Companies)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le donazioni effettuate da aziende a Sindrome ReNU Italia APS possono essere dedotte dal reddito complessivo nel limite del <strong>10% del reddito dichiarato</strong>.':'Donations made by companies to Sindrome ReNU Italia APS may be deducted from total income up to <strong>10% of declared income</strong>.'}
+                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche e aziende a Sindrome ReNU Italia APS possono essere dedotte dal reddito complessivo nel limite del <strong>10% del reddito dichiarato</strong>. I due benefici fiscali, detrazione e deduzione, non sono cumulabili.':'Donations made by individuals and companies to Sindrome ReNU Italia APS may be deducted from total income up to <strong>10% of declared income</strong>. The two tax benefits, deduction and tax credit, cannot be combined.'}
               </p>
             </div>
           </div>
