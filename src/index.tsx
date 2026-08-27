@@ -3865,7 +3865,7 @@ function donationsPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Detrazione (Persone Fisiche)':'Tax Deduction (Individuals)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS (iscritta al RUNTS come APS) danno diritto a una detrazione IRPEF del <strong>30%</strong>, fino a un massimo di 30.000€ all\'anno (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore).':'Donations from individuals to Sindrome ReNU Italia APS (registered in RUNTS as an APS) entitle a <strong>30%</strong> income tax deduction, up to €30,000 per year (art. 83 D.Lgs. 117/2017 – Third Sector Code).'}
+                ${t.lang==='it'?'Le donazioni effettuate da persone fisiche a Sindrome ReNU Italia APS, iscritta al RUNTS, danno diritto a una detrazione IRPEF del <strong>30%</strong>, fino a un massimo di 30.000 euro all\'anno.':'Donations made by individuals to Sindrome ReNU Italia APS, registered in the RUNTS, entitle a <strong>30%</strong> income tax deduction, up to a maximum of €30,000 per year.'}
               </p>
             </div>
             <div>
@@ -3874,7 +3874,7 @@ function donationsPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Deduzione (Aziende)':'Tax Deduction (Companies)'}
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed mb-3">
-                ${t.lang==='it'?'Le aziende che erogano liberalità a Sindrome ReNU Italia APS possono dedurre dal reddito imponibile le somme donate, nel limite del <strong>10% del reddito complessivo netto dichiarato</strong> (art. 83 D.Lgs. 117/2017). Non è previsto un tetto massimo in euro. Contattaci per ricevere la documentazione fiscale necessaria.':'Companies making donations to Sindrome ReNU Italia APS may deduct donated amounts from taxable income, up to <strong>10% of net declared total income</strong> (art. 83 D.Lgs. 117/2017 – Third Sector Code). There is no fixed euro cap. Contact us for the necessary tax documentation.'}
+                ${t.lang==='it'?'Le donazioni effettuate da aziende a Sindrome ReNU Italia APS possono essere dedotte dal reddito complessivo nel limite del <strong>10% del reddito dichiarato</strong>.':'Donations made by companies to Sindrome ReNU Italia APS may be deducted from total income up to <strong>10% of declared income</strong>.'}
               </p>
             </div>
           </div>
@@ -6216,15 +6216,15 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Il Comitato Scientifico in Immagini -->
+      <!-- Infografica Epilessia nella Sindrome ReNU -->
       <div class="mb-12">
-        <figure class="rounded-2xl overflow-hidden border border-sky-200 shadow-sm bg-white">
-          <img src="/images/renu_science_committee.jpg"
-               alt="${isIt?'Il Comitato Scientifico di Sindrome ReNU Italia APS':'The Scientific Committee of Sindrome ReNU Italia APS'}"
+        <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm bg-white">
+          <img src="/images/infografica_epilessia_renu.jpg"
+               alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
                class="w-full h-auto block" loading="lazy" decoding="async"
                style="display:block;width:100%;height:auto;object-fit:contain;">
-          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-sky-50">
-            ${isIt?'Il Comitato Scientifico di Sindrome ReNU Italia APS · Fonte: Sindrome ReNU Italia APS':'The Scientific Committee of Sindrome ReNU Italia APS · Source: Sindrome ReNU Italia APS'}
+          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
+            ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
           </figcaption>
         </figure>
       </div>
@@ -6365,18 +6365,7 @@ function sciencePage(t: Record<string, string>): string {
                   : '<strong>Clinical note:</strong> Seizure management in ReNU patients requires EEG assessment, neuroimaging and an individualised therapeutic plan. Antiepileptic drug treatment must be adapted to the patient\'s specific clinical profile. International ReNU research is collecting data on the epileptic profile of the syndrome to improve treatment guidelines.'}
               </p>
             </div>
-            <!-- Infografica epilessia ReNU -->
-            <div class="my-6">
-              <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm">
-                <img src="/images/infografica_epilessia_renu.jpg"
-                     alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
-                     class="w-full h-auto block" loading="lazy" decoding="async"
-                     style="max-width:100%;display:block;margin:0 auto">
-                <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
-                  ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
-                </figcaption>
-              </figure>
-            </div>
+
             <div class="flex flex-wrap gap-3">
               <a href="/${t.lang}/about" class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#1078C0">
                 <i class="fas fa-dna"></i>${isIt?'Caratteristiche cliniche ReNU':'ReNU clinical features'}
