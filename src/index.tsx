@@ -6216,15 +6216,15 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Infografica Epilessia nella Sindrome ReNU -->
+      <!-- Il Comitato Scientifico in Immagini -->
       <div class="mb-12">
-        <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm bg-white">
-          <img src="/images/infografica_epilessia_renu.jpg"
-               alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
+        <figure class="rounded-2xl overflow-hidden border border-sky-200 shadow-sm bg-white">
+          <img src="/images/renu_science_committee.jpg"
+               alt="${isIt?'Il Comitato Scientifico di Sindrome ReNU Italia APS':'The Scientific Committee of Sindrome ReNU Italia APS'}"
                class="w-full h-auto block" loading="lazy" decoding="async"
                style="display:block;width:100%;height:auto;object-fit:contain;">
-          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
-            ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
+          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-sky-50">
+            ${isIt?'Il Comitato Scientifico — Sindrome ReNU Italia APS · Fonte: Sindrome ReNU Italia APS':'Scientific Committee — Sindrome ReNU Italia APS · Source: Sindrome ReNU Italia APS'}
           </figcaption>
         </figure>
       </div>
@@ -6364,6 +6364,19 @@ function sciencePage(t: Record<string, string>): string {
                   ? '<strong>Nota clinica:</strong> La gestione delle crisi nei pazienti ReNU richiede valutazione EEG, neuroimaging e un piano terapeutico individualizzato. Il trattamento farmacologico antiepilettico deve essere adattato al profilo clinico specifico del paziente. La ricerca internazionale ReNU sta raccogliendo dati sul profilo epilettico della sindrome per migliorare le linee guida di trattamento.'
                   : '<strong>Clinical note:</strong> Seizure management in ReNU patients requires EEG assessment, neuroimaging and an individualised therapeutic plan. Antiepileptic drug treatment must be adapted to the patient\'s specific clinical profile. International ReNU research is collecting data on the epileptic profile of the syndrome to improve treatment guidelines.'}
               </p>
+            </div>
+
+            <!-- Infografica epilessia ReNU -->
+            <div class="my-6">
+              <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm bg-white">
+                <img src="/images/infografica_epilessia_renu.jpg"
+                     alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
+                     class="w-full h-auto block" loading="lazy" decoding="async"
+                     style="display:block;width:100%;height:auto;object-fit:contain;max-width:100%;">
+                <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
+                  ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
+                </figcaption>
+              </figure>
             </div>
 
             <div class="flex flex-wrap gap-3">
