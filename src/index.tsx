@@ -1573,7 +1573,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     "name": "${lang === 'it' ? 'Glossario Sindrome ReNU (RNU4-2)' : lang === 'en' ? 'Glossary ReNU Syndrome (RNU4-2)' : lang === 'fr' ? 'Glossaire Syndrome ReNU (RNU4-2)' : lang === 'es' ? 'Glosario Síndrome ReNU (RNU4-2)' : 'Glossar ReNU-Syndrom (RNU4-2)'}",
-    "description": "${lang === 'it' ? '30+ definizioni precise di termini medici relativi alla Sindrome ReNU, redatte dal Comitato Scientifico di Sindrome ReNU Italia APS' : '30+ precise definitions of medical terms related to ReNU Syndrome, prepared by the Scientific Committee of Sindrome ReNU Italia APS'}",
+    "description": "${lang === 'it' ? 'Glossario di termini medici relativi alla Sindrome ReNU (RNU4-2), redatto dal Comitato Scientifico di Sindrome ReNU Italia APS' : lang === 'fr' ? 'Glossaire de termes médicaux relatifs au Syndrome ReNU (RNU4-2), rédigé par le Comité Scientifique de Sindrome ReNU Italia APS' : lang === 'es' ? 'Glosario de términos médicos relativos al Síndrome ReNU (RNU4-2), redactado por el Comité Científico de Sindrome ReNU Italia APS' : lang === 'de' ? 'Glossar medizinischer Begriffe zum ReNU-Syndrom (RNU4-2), erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS' : 'Glossary of medical terms related to ReNU Syndrome (RNU4-2), prepared by the Scientific Committee of Sindrome ReNU Italia APS'}",
     "url": "${canonicalUrl}",
     "inLanguage": "${lang}",
     "dateModified": "2026-08-26",
@@ -6606,9 +6606,9 @@ function glossaryPage(t: Record<string, string>): string {
         <p class="text-gray-800 font-semibold leading-relaxed">
           ${isIt ? 'Questo glossario raccoglie i termini più importanti per la comprensione della <strong>Sindrome ReNU (RNU4-2)</strong>. Ogni definizione è redatta dal Comitato Scientifico di Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) e include la fonte scientifica di riferimento.' :
            isEn ? 'This glossary contains the most important terms for understanding <strong>ReNU Syndrome (RNU4-2)</strong>. Each definition is prepared by the Scientific Committee of Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) and includes the scientific reference source.' :
-           isFr ? 'Ce glossaire contient <strong>30+ définitions précises</strong> des termes médicaux et scientifiques les plus importants pour comprendre le <strong>Syndrome ReNU (RNU4-2)</strong>. Rédigé par le Comité Scientifique de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
-           isEs ? 'Este glosario contiene <strong>30+ definiciones precisas</strong> de los términos médicos y científicos más importantes para comprender el <strong>Síndrome ReNU (RNU4-2)</strong>. Redactado por el Comité Científico de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).' :
-           'Dieses Glossar enthält <strong>30+ präzise Definitionen</strong> der wichtigsten medizinischen und wissenschaftlichen Begriffe zum <strong>ReNU-Syndrom (RNU4-2)</strong>. Erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD).'
+           isFr ? 'Ce glossaire réunit les termes médicaux et scientifiques essentiels pour comprendre le <strong>Syndrome ReNU (RNU4-2)</strong>. Rédigé par le Comité Scientifique de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) avec les sources scientifiques de référence.' :
+           isEs ? 'Este glosario reúne los términos médicos y científicos esenciales para comprender el <strong>Síndrome ReNU (RNU4-2)</strong>. Redactado por el Comité Científico de Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) con las fuentes científicas de referencia.' :
+           'Dieses Glossar versammelt die wichtigsten medizinischen und wissenschaftlichen Begriffe zum <strong>ReNU-Syndrom (RNU4-2)</strong>. Erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS (Dr. Claudia Gravaghi PhD) mit den wissenschaftlichen Referenzquellen.'
           }
         </p>
       </div>
