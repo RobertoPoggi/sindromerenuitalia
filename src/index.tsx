@@ -8010,7 +8010,7 @@ async function showConfig(){
       + (item.descrizione ? '<p class="text-xs text-gray-600">' + item.descrizione + '</p>' : '')
       + '<div class="flex items-center gap-3 mt-1">'
       + '<input id="cfg_' + item.chiave + '" type="text" value="' + (item.valore||'') + '" class="flex-1 border border-amber-300 rounded-lg px-3 py-2 text-sm font-semibold" placeholder="Valore…">'
-      + '<button onclick="saveConfig(\'' + item.chiave + '\')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap">'
+      + '<button onclick="saveConfig(&quot;' + item.chiave + '&quot;)" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap">'
       + '<i class="fas fa-save mr-1"></i>Salva</button>'
       + '</div>'
       + '</div>';
