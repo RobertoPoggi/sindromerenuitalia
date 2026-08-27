@@ -1,4 +1,4 @@
-// Build: 2026-08-26-science-final
+// Build: 2026-08-27-infografica-epilessia
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 
@@ -6215,22 +6215,17 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Foto Comitato Scientifico -->
+      <!-- Infografica Epilessia -->
       <div class="mb-12">
-        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3" style="color:#082050">
-          <i class="fas fa-images" style="color:#1078C0"></i>
-          ${isIt?'Il Comitato Scientifico in Immagini':'Scientific Committee Gallery'}
-        </h2>
-        <div class="flex justify-center">
-          <div class="img-frame overflow-hidden rounded-2xl" style="max-width:560px;width:100%;aspect-ratio:4/3">
-            <img src="/images/renu_science_committee.jpg"
-                 alt="${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}"
-                 class="w-full h-full object-cover" loading="lazy" decoding="async">
-          </div>
-        </div>
-        <p class="text-sm text-gray-500 mt-3 text-center">
-          ${isIt?'Comitato Scientifico ReNU Internazionale':'ReNU International Scientific Committee'}
-        </p>
+        <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm bg-white">
+          <img src="/images/infografica_epilessia_renu.jpg"
+               alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
+               class="w-full h-auto block" loading="lazy" decoding="async"
+               style="display:block;width:100%;height:auto;object-fit:contain;">
+          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
+            ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
+          </figcaption>
+        </figure>
       </div>
 
       <!-- Membri del Comitato -->
