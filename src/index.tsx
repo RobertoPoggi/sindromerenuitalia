@@ -6216,15 +6216,15 @@ function sciencePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- Infografica Epilessia -->
+      <!-- Il Comitato Scientifico in Immagini -->
       <div class="mb-12">
-        <figure class="rounded-2xl overflow-hidden border border-amber-200 shadow-sm bg-white">
-          <img src="/images/infografica_epilessia_renu.jpg"
-               alt="${isIt?'Infografica epilessia nella Sindrome ReNU: tipi di crisi, cause, prevalenza e gestione clinica':'ReNU Syndrome epilepsy infographic: seizure types, causes, prevalence and clinical management'}"
+        <figure class="rounded-2xl overflow-hidden border border-sky-200 shadow-sm bg-white">
+          <img src="/images/renu_science_committee.jpg"
+               alt="${isIt?'Il Comitato Scientifico di Sindrome ReNU Italia APS':'The Scientific Committee of Sindrome ReNU Italia APS'}"
                class="w-full h-auto block" loading="lazy" decoding="async"
                style="display:block;width:100%;height:auto;object-fit:contain;">
-          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-amber-50">
-            ${isIt?'Epilessia nella Sindrome ReNU — dati clinici e tipi di crisi · Fonte: Sindrome ReNU Italia APS':'Epilepsy in ReNU Syndrome — clinical data and seizure types · Source: Sindrome ReNU Italia APS'}
+          <figcaption class="text-xs text-gray-500 text-center px-4 py-2 bg-sky-50">
+            ${isIt?'Il Comitato Scientifico di Sindrome ReNU Italia APS · Fonte: Sindrome ReNU Italia APS':'The Scientific Committee of Sindrome ReNU Italia APS · Source: Sindrome ReNU Italia APS'}
           </figcaption>
         </figure>
       </div>
