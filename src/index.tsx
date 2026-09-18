@@ -1303,8 +1303,10 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       "availableLanguage": ["Italian", "English"]
     },
     "sameAs": [
-      "https://www.instagram.com/sindromerenu_italia",
-      "https://www.facebook.com/sindromerenitalia"
+      "https://www.instagram.com/sindrome_renu_italia_aps_",
+      "https://www.facebook.com/share/1JJ787h377/",
+      "https://www.facebook.com/share/1K7eVNCXtM/",
+      "https://www.youtube.com/@sindromerenu"
     ],
     "potentialAction": {
       "@type": "DonateAction",
@@ -2085,9 +2087,10 @@ ${hreflangs}
         <p class="text-sky-400 text-xs mt-1"><i class="fas fa-map-marker-alt mr-1"></i>Via Marina 6, 20121 Milano (MI)</p>
         <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
-          <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.facebook.com/share/1EjJ5EfaZ4/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="https://www.youtube.com/@sindromerenu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -2435,7 +2438,7 @@ function homePage(t: Record<string, string>): string {
             <p class="text-gray-600 text-sm mb-4">
               ${t.map_desc}
             </p>
-            <a href="https://www.renusyndrome.org/map" target="_blank"
+            <a href="https://www.renusyndrome.org/coe-network" target="_blank"
                class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#082050">
               <i class="fas fa-map-marked-alt"></i>${t.map_btn}
             </a>
@@ -3098,6 +3101,163 @@ function therapiesPage(t: Record<string, string>): string {
         </a>
       </div>
 
+      <!-- Gesti Comunicativi - 9 schede maya -->
+      <div class="mt-14">
+        <div class="text-center mb-8">
+          <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-3">
+            <i class="fas fa-hand-paper"></i>
+            ${t.lang==='it'?'Strumento CAA':'AAC Tool'}
+          </span>
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">
+            ${t.lang==='it'?'Esempi di Gesti Comunicativi':'Examples of Communicative Gestures'}
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+            ${t.lang==='it'?'Le schede Maya offrono un sistema visivo di gesti comunicativi immediati, utilizzati nella Comunicazione Aumentativa Alternativa (CAA) per bambini e ragazzi con difficoltà di linguaggio verbale.':'The Maya cards offer a visual system of immediate communicative gestures, used in Augmentative and Alternative Communication (AAC) for children and young people with verbal language difficulties.'}
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Scheda 1 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-green w-12 h-12 flex-shrink-0">
+                <i class="fas fa-compass text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 1 di 9':'Card 1 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Ambienti e Direzioni':'Environments & Directions'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['su','giù','dentro','fuori','qui','là','vicino','lontano'].map(g=>`<span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 2 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-blue w-12 h-12 flex-shrink-0">
+                <i class="fas fa-check-circle text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 2 di 9':'Card 2 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Risposte e Indicazioni':'Responses & Indications'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['sì','no','basta','aspetta','ancora','aiuto','stop'].map(g=>`<span class="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 3 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-amber w-12 h-12 flex-shrink-0">
+                <i class="fas fa-hand-holding text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 3 di 9':'Card 3 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Richieste':'Requests'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['dammi','dammi il cinque','vieni','guarda','apri','chiudi','porta'].map(g=>`<span class="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded-full border border-amber-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 4 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-purple w-12 h-12 flex-shrink-0">
+                <i class="fas fa-heart text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 4 di 9':'Card 4 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Persone e Relazioni':'People & Relationships'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['io','tu','abbraccio','bacio','mamma','papà','amico'].map(g=>`<span class="bg-rose-50 text-rose-700 text-xs px-2 py-1 rounded-full border border-rose-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 5 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-purple w-12 h-12 flex-shrink-0">
+                <i class="fas fa-smile text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 5 di 9':'Card 5 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Emozioni e Conferme':'Emotions & Confirmations'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['tenerezza','bravo','bene','ok','tristezza','paura','felice'].map(g=>`<span class="bg-purple-50 text-purple-700 text-xs px-2 py-1 rounded-full border border-purple-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 6 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-amber w-12 h-12 flex-shrink-0">
+                <i class="fas fa-utensils text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 6 di 9':'Card 6 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Bisogni e Alimentazione':'Needs & Nutrition'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['ho fame','mangiare','bere','buono','non voglio','ancora','finito'].map(g=>`<span class="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded-full border border-amber-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 7 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-green w-12 h-12 flex-shrink-0">
+                <i class="fas fa-running text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 7 di 9':'Card 7 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Azioni e Attività':'Actions & Activities'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['giocare','dormire','camminare','correre','fare','andare','fermarsi'].map(g=>`<span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 8 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-blue w-12 h-12 flex-shrink-0">
+                <i class="fas fa-school text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 8 di 9':'Card 8 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Scuola e Apprendimento':'School & Learning'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['libro','penna','disegnare','leggere','scrivere','bravo','finito'].map(g=>`<span class="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-200">${g}</span>`).join('')}
+            </div>
+          </div>
+          <!-- Scheda 9 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="ic ic-sky w-12 h-12 flex-shrink-0">
+                <i class="fas fa-spa text-lg"></i>
+              </div>
+              <div>
+                <span class="text-xs font-semibold text-sky-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 9 di 9':'Card 9 of 9'}</span>
+                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Igiene e Cura di Sé':'Hygiene & Self-Care'}</h3>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              ${['lavarsi','bagno','denti','vestirsi','pettinarsi','stanco','dolore'].map(g=>`<span class="bg-sky-50 text-sky-700 text-xs px-2 py-1 rounded-full border border-sky-200">${g}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800">
+          <i class="fas fa-lightbulb mr-2 text-green-600"></i>
+          ${t.lang==='it'?'<strong>Fonte:</strong> Schede Maya per la scuola — sistema di gesti comunicativi CAA. I gesti possono essere usati singolarmente o combinati per formare messaggi più complessi. Consulta il logopedista o terapista occupazionale per personalizzare il sistema al tuo bambino.':'<strong>Source:</strong> Maya cards for school — CAA communicative gesture system. Gestures can be used individually or combined to form more complex messages. Consult a speech therapist or occupational therapist to personalise the system for your child.'}
+        </div>
+      </div>
+
       <!-- CTA Diritti e Tutele -->
       <div class="mt-14 rounded-2xl p-7 text-white flex flex-col md:flex-row items-center gap-6" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex-shrink-0 ic ic-sky w-20 h-20">
@@ -3254,8 +3414,8 @@ function communityPage(t: Record<string, string>): string {
   const intlAssoc = [
     { country: t.lang==='it'?'Italia':'Italy', flag: '🇮🇹',
       name: 'Associazione Sindrome RENU Italia APS',
-      fb: 'https://www.facebook.com/share/1D4c9R5w3V/',
-      ig: 'https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw',
+      fb: 'https://www.facebook.com/share/1K7eVNCXtM/',
+      ig: 'https://www.instagram.com/sindrome_renu_italia_aps_',
       web: 'https://www.sindromerenu.it',
       email: 'info@sindromerenu.it', phone: '+39 327 763 4894',  // Segreteria
       ref: 'Imma Audino, Stefania Rocca' },
@@ -3375,11 +3535,11 @@ function communityPage(t: Record<string, string>): string {
                  class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
                 <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
               </a>
-              <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank"
+              <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank"
                  class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#E1306C">
                 <i class="fab fa-instagram"></i>Instagram
               </a>
-              <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank"
+              <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank"
                  class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#1877F2">
                 <i class="fab fa-facebook"></i>Facebook
               </a>
@@ -4192,9 +4352,10 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
-          <a href="https://www.facebook.com/share/1D4c9R5w3V/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
-          <a href="https://www.facebook.com/share/1EjJ5EfaZ4/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
-          <a href="https://www.instagram.com/sindrome_renu_italia_aps_new?igsh=d213aWtzbzc5Y3Aw" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+          <a href="https://www.youtube.com/@sindromerenu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl"></i></a>
         </div>
       </div>
@@ -5462,6 +5623,48 @@ function faqPage(t: Record<string, string>): string {
       ],
       note: t.lang==='it'?'💡 Non trovi risposta alla tua domanda? Scrivici a info@sindromerenu.it: aggiungiamo continuamente nuove FAQ!':'💡 Can\'t find the answer? Write to info@sindromerenu.it: we continuously add new FAQs!',
     },
+    {
+      icon: 'fa-chalkboard-teacher', ic: 'ic-green', id: 'educatore_territoriale',
+      title: t.lang==='it'?'Educatore Territoriale per persone con disabilità':'Territorial Educator for people with disabilities',
+      steps: t.lang==='it' ? [
+        'L\'educatore territoriale sostiene bambini, ragazzi e adulti con disabilità nello sviluppo delle autonomie, della comunicazione, delle relazioni sociali e della partecipazione alla vita della comunità.',
+        'La richiesta deve essere presentata ai Servizi Sociali del Comune di residenza. Generalmente si può fare durante tutto l\'anno, ma l\'attivazione dipende dalla valutazione del bisogno e dalle risorse disponibili.',
+        'Milano – Il servizio è rivolto a minorenni e maggiorenni residenti a Milano. Rivolgersi al Servizio Sociale Territoriale del Municipio di residenza. Tel. 02 02 02 | Email: PSS.serviziosociale1livelloM[numero Municipio]@comune.milano.it (es. Municipio 8: PSS.serviziosociale1livelloM8@comune.milano.it)',
+        'Roma – Il servizio si chiama SAISH (Servizio per l\'autonomia e l\'integrazione della persona con disabilità) ed è rivolto a minorenni e adulti. Possono esserci graduatorie o liste d\'attesa. Tel. 06 06 06 | Email: 060606@comune.roma.it',
+        'Torino – L\'educativa territoriale è rivolta a minorenni e adulti con disabilità, generalmente fino a 64 anni. La valutazione viene effettuata dall\'UMVD (Unità Multidisciplinare di Valutazione della Disabilità). Tel. 011 011 011',
+        'Cagliari – Per gli adulti 18-64 anni: servizio domiciliare con interventi educativi. Per i minorenni: Servizio educativo territoriale distinto. Tel. 800 016 058',
+        'Genova – Il sistema Do.Ge prevede interventi educativi domiciliari per persone con disabilità maggiorenni. Per i minorenni: Ambito Territoriale Sociale del Municipio. Tel. 010 557111',
+        'Con bambini e ragazzi l\'educatore può lavorare su: comunicazione e CAA, autonomie personali, socializzazione, gioco e tempo libero, uscite inclusive, collaborazione con famiglia e scuola.',
+        'Con gli adulti può lavorare su: autonomie personali e domestiche, uso del denaro e dei mezzi pubblici, partecipazione ad attività sociali, inclusione lavorativa, vita indipendente.',
+        'ISEE: per minorenni si usa l\'ISEE minorenni (in caso di genitori non conviventi); per adulti con disabilità si usa l\'ISEE sociosanitario. Ogni Comune può applicare regole diverse.',
+      ] : [
+        'The territorial educator supports children, young people and adults with disabilities in developing autonomy, communication, social relationships and community participation.',
+        'The request must be submitted to the Social Services of the municipality of residence. It can generally be submitted throughout the year, but activation depends on needs assessment and available resources.',
+        'Milan – Service for minors and adults resident in Milan. Contact the Territorial Social Service of your Municipality. Tel. 02 02 02',
+        'Rome – The service is called SAISH and is for minors and adults. Tel. 06 06 06 | Email: 060606@comune.roma.it',
+        'The educator does NOT replace therapies or medical assistance: they implement a personalised educational project.',
+        'ISEE: for minors, the ISEE minorenni is used; for adults with disabilities, the socio-sanitary ISEE. Each municipality may apply different rules.',
+      ],
+      note: t.lang==='it'?'💡 Per richiedere il servizio rivolgiti al Servizio Sociale del tuo Municipio/Comune di residenza. Il numero verde di Milano è 02 02 02. Il servizio è generalmente gratuito o a quota ISEE.':'💡 Contact your municipality\'s Social Services to request this service.',
+    },
+    {
+      icon: 'fa-home', ic: 'ic-amber', id: 'mutuo_prima_casa',
+      title: t.lang==='it'?'Mutuo Prima Casa: Nuova Garanzia Statale (Legge 116/2026)':'First Home Mortgage: New State Guarantee (Law 116/2026)',
+      steps: t.lang==='it' ? [
+        'La Legge 2 luglio 2026, n. 116 (Piano Casa) amplia l\'accesso al Fondo di Garanzia Consap per il mutuo prima casa. Operativa dal 3 agosto 2026.',
+        'Chi può beneficiarne: persone con disabilità grave ai sensi dell\'art. 3, comma 3, della Legge 104/1992; nuclei familiari in cui convive da almeno 2 anni un figlio, una figlia, un fratello o una sorella con disabilità grave.',
+        'Cosa prevede: garanzia statale sul mutuo prima casa fino all\'80% della quota capitale; per ISEE fino a 40.000 €; per mutui fino a 250.000 €.',
+        'Importante: non è un contributo economico diretto. Lo Stato garantisce una parte rilevante del finanziamento, riducendo il rischio per la banca e facilitando l\'accesso al credito.',
+        'Come si richiede: la domanda si presenta direttamente in banca, insieme alla richiesta di mutuo. La banca verifica i requisiti e attiva la garanzia Consap.',
+        'Riferimento normativo: Legge 2 luglio 2026, n. 116 – art. specifico Piano Casa per persone con disabilità.',
+      ] : [
+        'Law 2 July 2026, no. 116 (Piano Casa) expands access to the Consap Guarantee Fund for first home mortgages. Effective from 3 August 2026.',
+        'Who can benefit: people with severe disability under art. 3, comma 3, Law 104/1992; households where a child or sibling with severe disability has lived for at least 2 years.',
+        'What it covers: state guarantee on first home mortgage up to 80% of the capital share; ISEE up to €40,000; mortgages up to €250,000.',
+        'How to apply: the application is submitted directly to the bank, together with the mortgage request.',
+      ],
+      note: t.lang==='it'?'💡 La garanzia Consap riduce il rischio per la banca e facilita l\'accesso al mutuo anche per famiglie con reddito medio-basso. Consulta la tua banca per i dettagli e i requisiti specifici.':'💡 The Consap guarantee reduces the risk for the bank and facilitates mortgage access for low-to-middle income families. Consult your bank for specific requirements.',
+    },
   ]
 
   // Dati regionali da Excel REGIONI.xlsx
@@ -6162,7 +6365,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260827-gallery-infografica'
+  const _v = '20260918-aggiornamento-settembre'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
