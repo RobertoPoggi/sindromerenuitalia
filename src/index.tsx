@@ -1874,8 +1874,14 @@ ${hreflangs}
   <!-- Android / Chrome -->
   <meta name="theme-color" content="#082050">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <!-- Preconnect per ridurre la latenza CDN -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- Tailwind: preload critico, poi swap a stylesheet -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></noscript>
+  <!-- FontAwesome: caricare in modo non-bloccante (media=print trick) -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
   <style>
     :root {
       --navy:   #082050;
@@ -1890,6 +1896,9 @@ ${hreflangs}
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--bg);
     }
+    /* font-display: swap per Font Awesome — evita FOIT (Flash of Invisible Text) */
+    @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2') format('woff2'); font-weight: 900; }
+    @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2'); font-weight: 400; }
     /* ── Logo sfondo intera pagina (come da specifiche PDF punto 5) ── */
     /* Il logo appare come watermark fisso sopra tutto il contenuto, visibile su ogni sezione */
     /* watermark fisso centrato su tutta la pagina */
@@ -2122,7 +2131,10 @@ ${hreflangs}
 
 <!-- ── LOGO WATERMARK FISSO SU TUTTA LA PAGINA (PDF punto 5) ── -->
 <div id="page-logo-watermark" aria-hidden="true">
-  <img src="/images/logo_transparent2.png" alt="Logo Sindrome ReNU Italia APS" loading="lazy" decoding="async">
+  <picture>
+    <source srcset="/images/logo_transparent2.webp" type="image/webp">
+    <img src="/images/logo_transparent2.png" alt="Logo Sindrome ReNU Italia APS" fetchpriority="high" decoding="async" width="600" height="600">
+  </picture>
 </div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
@@ -2223,10 +2235,10 @@ ${hreflangs}
         <p class="text-sky-400 text-xs mt-1"><i class="fas fa-map-marker-alt mr-1"></i>Via Marina 6, 20121 Milano (MI)</p>
         <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
-          <a href="https://www.youtube.com/@sindromerenu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
-          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="https://www.youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook (profilo): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook (pagina): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -2452,10 +2464,13 @@ function homePage(t: Record<string, string>): string {
         <a href="${c.href}" ${(c as any).ext ? 'target="_blank"' : ''} class="card ${c.accent} overflow-hidden block group">
           <div class="overflow-hidden bg-sky-50 relative" style="aspect-ratio:${(c as any).aspect||'16/9'}">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
-            <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
-                 style="object-position:${(c as any).pos||'center'}"
-                 loading="lazy" decoding="async"
-                 onerror="this.style.display='none'">
+            <picture>
+              <source srcset="${c.img.replace(/\.(jpg|png)$/, '.webp')}" type="image/webp">
+              <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
+                   style="object-position:${(c as any).pos||'center'}"
+                   loading="lazy" decoding="async"
+                   onerror="this.style.display='none'">
+            </picture>
           </div>
           <div class="p-5">
             <div class="flex items-center gap-3 mb-2">
@@ -3656,7 +3671,10 @@ function communityPage(t: Record<string, string>): string {
 
         <div class="card card-sky overflow-hidden">
           <div class="overflow-hidden bg-white" style="aspect-ratio:1018/955">
-            <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/it_rete_famiglie.webp" type="image/webp">
+              <img src="/images/it_rete_famiglie.jpg" alt="Famiglia italiana ReNU – Stefania, Francesco e Massimiliano" class="w-full h-full object-cover" loading="lazy" decoding="async" width="800" height="750">
+            </picture>
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-sky mx-auto mb-3"><i class="fas fa-heart text-xl"></i></div>
@@ -4488,11 +4506,11 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
-          <a href="https://www.youtube.com/@sindromerenu" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
-          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
-          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
-          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
-          <a href="https://www.renusyndrome.org" target="_blank" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl"></i></a>
+          <a href="https://www.youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook (profilo): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook (pagina): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.renusyndrome.org" target="_blank" rel="noopener" aria-label="Sito internazionale ReNU Syndrome" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -6507,7 +6525,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260918-schema-cf-webp'
+  const _v = '20260918-pagespeed-fixes'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },

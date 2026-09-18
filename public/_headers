@@ -1,0 +1,51 @@
+/*
+  # Sicurezza: HSTS (HTTP Strict Transport Security) — max 1 anno
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Clickjacking protection: X-Frame-Options
+  X-Frame-Options: SAMEORIGIN
+
+  # Cross-Origin-Opener-Policy: isola il documento dai popup/terze parti
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+  # Content-Security-Policy: policy permissiva ma sicura
+  # Consente CDN jsdelivr (Tailwind, FA), YouTube embed, whatsapp, Google Fonts
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; img-src 'self' data: https: img.youtube.com; font-src 'self' cdn.jsdelivr.net; frame-src www.youtube.com youtube.com; connect-src 'self'; form-action 'self'; base-uri 'self';
+
+  # Protezione XSS browser-level
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Permissions Policy: limita feature non necessarie
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# Cache per asset statici
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/icons/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/static/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=2592000, immutable
+  Content-Type: image/webp
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/llms.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/.well-known/*
+  Cache-Control: public, max-age=86400

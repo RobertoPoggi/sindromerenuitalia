@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 import { writeFileSync } from 'fs'
 import { resolve } from 'path'
 
-// Custom plugin to patch _routes.json after build
+// Custom plugin to patch _routes.json and copy _headers after build
 const patchRoutesPlugin = {
   name: 'patch-routes',
   closeBundle() {
@@ -21,6 +21,7 @@ const patchRoutesPlugin = {
     } catch (e) {
       // ignore if dist doesn't exist yet
     }
+    // _headers viene copiato nel post-build script in package.json
   }
 }
 
