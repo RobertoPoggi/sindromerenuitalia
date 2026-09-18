@@ -1876,11 +1876,10 @@ ${hreflangs}
   <meta name="mobile-web-app-capable" content="yes">
   <!-- Preconnect per ridurre la latenza CDN -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <!-- Tailwind: preload critico, poi swap a stylesheet -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></noscript>
-  <!-- FontAwesome: caricare in modo non-bloccante (media=print trick) -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Tailwind: bloccante (indispensabile per il render corretto — evita FOUC e CLS) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <!-- FontAwesome: non-bloccante con media=print trick (icone non critiche per LCP) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
   <style>
     :root {
@@ -2133,7 +2132,7 @@ ${hreflangs}
 <div id="page-logo-watermark" aria-hidden="true">
   <picture>
     <source srcset="/images/logo_transparent2.webp" type="image/webp">
-    <img src="/images/logo_transparent2.png" alt="Logo Sindrome ReNU Italia APS" fetchpriority="high" decoding="async" width="600" height="600">
+    <img src="/images/logo_transparent2.png" alt="" fetchpriority="high" decoding="async" width="600" height="600">
   </picture>
 </div>
 
@@ -2154,7 +2153,10 @@ ${hreflangs}
 
       <!-- Logo + nome -->
       <a href="/${t.lang}/home" class="flex items-center gap-2 flex-shrink-0">
-        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-14 w-auto drop-shadow-lg" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="/images/logo.webp" type="image/webp">
+          <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-14 w-auto drop-shadow-lg" fetchpriority="high" decoding="async" width="200" height="200">
+        </picture>
         <span class="hidden lg:block text-xs font-bold leading-tight text-sky-100" style="max-width:110px">Sindrome<br>ReNU Italia APS</span>
       </a>
 
@@ -2228,7 +2230,10 @@ ${hreflangs}
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <!-- Brand -->
       <div class="md:col-span-1">
-        <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-16 w-auto mb-4 drop-shadow" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="/images/logo.webp" type="image/webp">
+          <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-16 w-auto mb-4 drop-shadow" loading="lazy" decoding="async" width="200" height="200">
+        </picture>
         <p class="text-sky-200 text-sm italic mb-2">"${t.footer_tagline}"</p>
         <p class="text-sky-300 text-sm">${t.footer_partnership}</p>
         <p class="text-sky-300 text-sm mt-1">www.sindromerenu.it</p>
@@ -6525,7 +6530,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260918-pagespeed-fixes'
+  const _v = '20260918-css-fix-v2'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
