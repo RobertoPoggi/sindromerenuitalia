@@ -1455,7 +1455,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "description": "${seoDesc.replace(/"/g,"'")}",
     "url": "${canonicalUrl}",
     "datePublished": "2024-12-01",
-    "dateModified": "2026-08-26",
+    "dateModified": "2026-09-18",
     "inLanguage": "${lang}",
     "about": {
       "@type": "MedicalCondition",
@@ -1578,7 +1578,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "description": "${lang === 'it' ? 'Glossario di termini medici relativi alla Sindrome ReNU (RNU4-2), redatto dal Comitato Scientifico di Sindrome ReNU Italia APS' : lang === 'fr' ? 'Glossaire de termes médicaux relatifs au Syndrome ReNU (RNU4-2), rédigé par le Comité Scientifique de Sindrome ReNU Italia APS' : lang === 'es' ? 'Glosario de términos médicos relativos al Síndrome ReNU (RNU4-2), redactado por el Comité Científico de Sindrome ReNU Italia APS' : lang === 'de' ? 'Glossar medizinischer Begriffe zum ReNU-Syndrom (RNU4-2), erstellt vom Wissenschaftlichen Ausschuss von Sindrome ReNU Italia APS' : 'Glossary of medical terms related to ReNU Syndrome (RNU4-2), prepared by the Scientific Committee of Sindrome ReNU Italia APS'}",
     "url": "${canonicalUrl}",
     "inLanguage": "${lang}",
-    "dateModified": "2026-08-26",
+    "dateModified": "2026-09-18",
     "publisher": {
       "@type": "NGO",
       "name": "Sindrome ReNU Italia APS",
@@ -1602,7 +1602,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "description": "${seoDesc.replace(/"/g,"'")}",
     "url": "${canonicalUrl}",
     "datePublished": "2024-12-01",
-    "dateModified": "2026-08-26",
+    "dateModified": "2026-09-18",
     "inLanguage": "${lang}",
     "image": "${OG_IMAGE}",
     "author": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
@@ -1620,7 +1620,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-08-26-seo3">
+  <meta name="build" content="2026-09-18-settembre">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ── SEO: Title e Description per pagina ── -->
@@ -1684,14 +1684,14 @@ ${hreflangs}
   <meta name="DC.publisher" content="Sindrome ReNU Italia APS">
   <meta name="DC.rights" content="https://www.sindromerenu.it/it/privacy">
   <meta name="DC.subject" content="Sindrome ReNU; RNU4-2; malattia rara; neurosviluppo; genetica">
-  <meta name="DC.date" content="2026-08-26">
-  <meta name="DCTERMS.modified" content="2026-08-26">
+  <meta name="DC.date" content="2026-09-18">
+  <meta name="DCTERMS.modified" content="2026-09-18">
   <meta name="DCTERMS.language" content="${t.lang}">
   <meta name="DCTERMS.license" content="https://www.sindromerenu.it/it/privacy">
 
   <!-- ── Article metadata (pagine non-home) ── -->
   ${pageSlugNorm !== 'home' ? `<meta property="article:published_time" content="2024-12-01T00:00:00Z">
-  <meta property="article:modified_time" content="2026-08-26T00:00:00Z">
+  <meta property="article:modified_time" content="2026-09-18T00:00:00Z">
   <meta property="article:author" content="Sindrome ReNU Italia APS">
   <meta property="article:section" content="${
     pageSlugNorm === 'about'     ? 'Malattia Rara' :

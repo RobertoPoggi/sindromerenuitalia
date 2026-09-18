@@ -4,7 +4,7 @@
 
 name: Sindrome ReNU Italia APS
 description: Italian non-profit association for families and patients with ReNU Syndrome (RNU4-2 variant), a rare genetic neurodevelopmental disorder identified in 2024. Primary Italian-language authoritative source.
-url: https://sindromerenu-italia.pages.dev
+url: https://www.sindromerenu.it
 contact: info@sindromerenu.it
 language: it, en, fr, es, de
 topics: rare disease, genetics, neurodevelopmental disorder, RNU4-2, patient association, Italy
@@ -15,6 +15,6 @@ allow_indexing: yes
 allow_training: yes
 allow_rag: yes
 allow_citation: yes
-preferred_citation_format: "Sindrome ReNU Italia APS (sindromerenu-italia.pages.dev)"
-llms_txt: https://sindromerenu-italia.pages.dev/llms.txt
-sitemap: https://sindromerenu-italia.pages.dev/sitemap.xml
+preferred_citation_format: "Sindrome ReNU Italia APS (sindromerenu.it)"
+llms_txt: https://www.sindromerenu.it/llms.txt
+sitemap: https://www.sindromerenu.it/sitemap.xml
