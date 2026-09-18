@@ -1157,10 +1157,10 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   // Meta description ottimizzata per ogni pagina (max 160 char)
   const pageDescs: Record<string, Record<string, string>> = {
     home: {
-      it: 'Sindrome ReNU Italia APS: associazione no-profit per le famiglie con la sindrome RNU4-2. Sostieni la ricerca, ottieni supporto, dona il 5x1000. CF 97995890151.',
-      en: 'ReNU Syndrome Italy APS: non-profit association for families with RNU4-2 syndrome. Support research, get help, donate your 5x1000. Tax code 97995890151.',
+      it: 'Sindrome ReNU Italia APS: associazione no-profit per le famiglie con la sindrome RNU4-2. Sostieni la ricerca, ottieni supporto, dona il 5x1000. CF 98020680157.',
+      en: 'ReNU Syndrome Italy APS: non-profit association for families with RNU4-2 syndrome. Support research, get help, donate your 5x1000. Tax code 98020680157.',
       fr: 'Syndrome ReNU Italie APS: association à but non lucratif pour les familles avec le syndrome RNU4-2. Soutenez la recherche, faites un don 5x1000.',
-      es: 'Síndrome ReNU Italia APS: asociación sin ánimo de lucro para familias con síndrome RNU4-2. Apoya la investigación, dona tu 5x1000. NIF 97995890151.',
+      es: 'Síndrome ReNU Italia APS: asociación sin ánimo de lucro para familias con síndrome RNU4-2. Apoya la investigación, dona tu 5x1000. NIF 98020680157.',
       de: 'ReNU-Syndrom Italien APS: gemeinnütziger Verein für Familien mit RNU4-2-Syndrom. Forschung unterstützen, Hilfe erhalten, 5x1000 spenden.',
     },
     about: {
@@ -1199,11 +1199,11 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       de: 'Italienische ReNU-Syndrom-Community: Familienkarte, Lebensgeschichten, Unterstützungsnetzwerk. Treten Sie der Community auf Instagram und Facebook bei.',
     },
     donations: {
-      it: 'Dona a Sindrome ReNU Italia APS: 5x1000 (CF 97995890151), bonifico IBAN, lascito testamentario, compleanno solidale. Ogni contributo fa la differenza.',
-      en: 'Donate to ReNU Syndrome Italy APS: 5x1000 (tax code 97995890151), bank transfer, legacy donation, birthday fundraising. Every contribution matters.',
-      fr: 'Faites un don au Syndrome ReNU Italie APS: 5x1000, virement bancaire, legs testamentaire. Code fiscal 97995890151. Chaque contribution compte.',
-      es: 'Dona al Síndrome ReNU Italia APS: 5x1000 (NIF 97995890151), transferencia bancaria, legado testamentario. Cada contribución importa.',
-      de: 'Spenden für ReNU-Syndrom Italien APS: 5x1000 (Steuernummer 97995890151), Banküberweisung, Erbschaft. Jeder Beitrag macht den Unterschied.',
+      it: 'Dona a Sindrome ReNU Italia APS: 5x1000 (CF 98020680157), bonifico IBAN, lascito testamentario, compleanno solidale. Ogni contributo fa la differenza.',
+      en: 'Donate to ReNU Syndrome Italy APS: 5x1000 (tax code 98020680157), bank transfer, legacy donation, birthday fundraising. Every contribution matters.',
+      fr: 'Faites un don au Syndrome ReNU Italie APS: 5x1000, virement bancaire, legs testamentaire. Code fiscal 98020680157. Chaque contribution compte.',
+      es: 'Dona al Síndrome ReNU Italia APS: 5x1000 (NIF 98020680157), transferencia bancaria, legado testamentario. Cada contribución importa.',
+      de: 'Spenden für ReNU-Syndrom Italien APS: 5x1000 (Steuernummer 98020680157), Banküberweisung, Erbschaft. Jeder Beitrag macht den Unterschied.',
     },
     faq: {
       it: 'Diritti e tutele per famiglie con Sindrome ReNU: Legge 104, Pass Auto Disabili, Disability Card, 5x1000, indennità accompagnamento, sostegno scolastico, GLO.',
@@ -1294,7 +1294,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "foundingDate": "2024",
     "areaServed": "Italy",
     "knowsAbout": ["RNU4-2 syndrome", "rare genetic disease", "neurodevelopmental disorder", "snRNA", "spliceosome"],
-    "taxID": "97995890151",
+    "taxID": "98020680157",
     "nonprofitStatus": "Associazione di Promozione Sociale",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -1316,7 +1316,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
         "@type": "NGO",
         "name": "Sindrome ReNU Italia APS",
         "url": "${BASE_URL}",
-        "taxID": "97995890151"
+        "taxID": "98020680157"
       }
     }
   }
@@ -1530,13 +1530,13 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     "@context": "https://schema.org",
     "@type": "DonateAction",
     "name": "Dona alla Sindrome ReNU Italia APS",
-    "description": "Sostieni la ricerca e le famiglie italiane con Sindrome ReNU (RNU4-2). Donazione tramite bonifico, 5x1000 (CF 97995890151) o lascito testamentario.",
+    "description": "Sostieni la ricerca e le famiglie italiane con Sindrome ReNU (RNU4-2). Donazione tramite bonifico, 5x1000 (CF 98020680157) o lascito testamentario.",
     "url": "${canonicalUrl}",
     "recipient": {
       "@type": "NGO",
       "name": "Sindrome ReNU Italia APS",
       "url": "${BASE_URL}",
-      "taxID": "97995890151",
+      "taxID": "98020680157",
       "nonprofitStatus": "Associazione di Promozione Sociale",
       "email": "info@sindromerenu.it"
     },
@@ -1562,7 +1562,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       "name": "Sindrome ReNU Italia APS",
       "url": "${BASE_URL}",
       "email": "info@sindromerenu.it",
-      "taxID": "97995890151"
+      "taxID": "98020680157"
     }
   }
   </script>` : ''
@@ -1616,6 +1616,138 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   }
   </script>` : ''
 
+  // ── HowTo: Legge 104/92 — procedura richiesta (solo pagina FAQ, solo IT) ──
+  const jsonLdHowTo = (pageSlugNorm === 'faq' && lang === 'it') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Come ottenere il riconoscimento ai sensi della Legge 104/92",
+    "description": "Procedura per ottenere il riconoscimento della disabilità ai sensi della Legge 104/92 in Italia, utile per le famiglie con Sindrome ReNU (RNU4-2).",
+    "url": "${BASE_URL}/it/faq",
+    "totalTime": "P60D",
+    "tool": [
+      {"@type": "HowToTool", "name": "Certificato medico del medico di base"},
+      {"@type": "HowToTool", "name": "Documentazione clinica specialistica"},
+      {"@type": "HowToTool", "name": "Codice fiscale del richiedente"}
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Richiesta certificato medico introduttivo",
+        "text": "Rivolgersi al medico di base per ottenere il certificato medico introduttivo da inviare all'INPS in via telematica. Il medico compila il certificato sul portale INPS con il codice fiscale del paziente.",
+        "url": "${BASE_URL}/it/faq"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Presentazione domanda all'INPS",
+        "text": "Presentare domanda di accertamento all'INPS tramite il portale online (www.inps.it), CAF, patronato o con PIN/SPID. Allegare il numero del certificato medico introduttivo già inviato dal medico.",
+        "url": "${BASE_URL}/it/faq"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Visita della Commissione Medica INPS",
+        "text": "Presentarsi alla visita medica presso la Commissione INPS (o ASL territoriale) nella data comunicata. Portare tutta la documentazione sanitaria disponibile, incluse relazioni di neuropsichiatria infantile, genetica e fisiatria.",
+        "url": "${BASE_URL}/it/faq"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Ricevimento del verbale di invalidità",
+        "text": "Ricevere il verbale di invalidità civile/disabilità per posta o tramite SPID sul portale INPS. Il verbale indica la percentuale di invalidità e il diritto alle prestazioni collegate.",
+        "url": "${BASE_URL}/it/faq"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Richiesta agevolazioni collegate",
+        "text": "Sulla base del verbale, richiedere le agevolazioni collegate: indennità di accompagnamento (se titolari), Pass Disabili per parcheggio, Disability Card europea, benefici fiscali (detrazione IRPEF), sostegno scolastico (insegnante di sostegno, Piano Educativo Individualizzato).",
+        "url": "${BASE_URL}/it/faq"
+      }
+    ],
+    "author": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+    "publisher": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}", "taxID": "98020680157"}
+  }
+  </script>` : ''
+
+  // ── SpeakableSpecification — ottimizza risposte vocali assistenti AI (home + about + faq) ──
+  const jsonLdSpeakable = (['home','about','faq'].includes(pageSlugNorm)) ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "${canonicalUrl}",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1","main p:first-of-type","[data-speakable]"]
+    },
+    "name": "${seoTitle.replace(/"/g, "'")}"
+  }
+  </script>` : ''
+
+  // ── VideoObject — due video YouTube presenti sulla pagina community ──
+  const jsonLdVideo = (pageSlugNorm === 'community') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "name": "Sindrome ReNU – Presentazione dell'associazione italiana",
+        "description": "Video di presentazione di Sindrome ReNU Italia APS, associazione no-profit per le famiglie colpite dalla Sindrome ReNU (RNU4-2), malattia rara del neurosviluppo.",
+        "thumbnailUrl": "https://img.youtube.com/vi/LqWlxU11UPM/maxresdefault.jpg",
+        "uploadDate": "2024-12-01",
+        "contentUrl": "https://www.youtube.com/watch?v=LqWlxU11UPM",
+        "embedUrl": "https://www.youtube.com/embed/LqWlxU11UPM",
+        "publisher": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+        "inLanguage": "it",
+        "about": {"@type": "MedicalCondition", "name": "Sindrome ReNU", "alternateName": "RNU4-2 Syndrome"}
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Sindrome ReNU – Sensibilizzazione e ricerca 2025",
+        "description": "Video di sensibilizzazione sulla Sindrome ReNU (RNU4-2): diagnosi, sintomi, ricerca scientifica e il ruolo delle famiglie italiane.",
+        "thumbnailUrl": "https://img.youtube.com/vi/Pe_5GQ7bei4/maxresdefault.jpg",
+        "uploadDate": "2025-01-01",
+        "contentUrl": "https://www.youtube.com/watch?v=Pe_5GQ7bei4",
+        "embedUrl": "https://www.youtube.com/embed/Pe_5GQ7bei4",
+        "publisher": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+        "inLanguage": "it",
+        "about": {"@type": "MedicalCondition", "name": "Sindrome ReNU", "alternateName": "RNU4-2 Syndrome"}
+      }
+    ]
+  }
+  </script>` : ''
+
+  // ── ItemList: 9 Schede Maya Gesti Comunicativi (pagina therapies) ──
+  const jsonLdGestiItemList = (pageSlugNorm === 'therapies') ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Esempi di Gesti Comunicativi CAA – Schede Maya",
+    "description": "Le 9 categorie di gesti comunicativi del sistema CAA Schede Maya per bambini con Sindrome ReNU (RNU4-2).",
+    "url": "${BASE_URL}/${lang}/therapies",
+    "numberOfItems": 9,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Ambienti e Direzioni", "description": "Gesti per: su, giù, dentro, fuori, qui, là, vicino, lontano"},
+      {"@type": "ListItem", "position": 2, "name": "Risposte e Indicazioni", "description": "Gesti per: sì, no, basta, aspetta, ancora, aiuto, stop"},
+      {"@type": "ListItem", "position": 3, "name": "Richieste", "description": "Gesti per: dammi, vieni, guarda, apri, chiudi, porta"},
+      {"@type": "ListItem", "position": 4, "name": "Persone e Relazioni", "description": "Gesti per: io, tu, abbraccio, bacio, mamma, papà, amico"},
+      {"@type": "ListItem", "position": 5, "name": "Emozioni e Conferme", "description": "Gesti per: tenerezza, bravo, bene, ok, tristezza, paura, felice"},
+      {"@type": "ListItem", "position": 6, "name": "Bisogni e Alimentazione", "description": "Gesti per: ho fame, mangiare, bere, buono, non voglio, ancora, finito"},
+      {"@type": "ListItem", "position": 7, "name": "Azioni e Attività", "description": "Gesti per: giocare, dormire, camminare, correre, fare, andare, fermarsi"},
+      {"@type": "ListItem", "position": 8, "name": "Scuola e Apprendimento", "description": "Gesti per: libro, penna, disegnare, leggere, scrivere, bravo, finito"},
+      {"@type": "ListItem", "position": 9, "name": "Igiene e Cura di Sé", "description": "Gesti per: lavarsi, bagno, denti, vestirsi, pettinarsi, stanco, dolore"}
+    ],
+    "author": {"@type": "Organization", "name": "Sindrome ReNU Italia APS", "url": "${BASE_URL}"},
+    "about": {"@type": "MedicalCondition", "name": "Sindrome ReNU", "alternateName": "RNU4-2 Syndrome"}
+  }
+  </script>` : ''
+
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
 <head>
@@ -1634,7 +1766,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     pageSlugNorm === 'diagnosis' ? 'diagnosi RNU4-2, WGS whole genome sequencing, test genetico malattia rara, centri specializzati Italia' :
     pageSlugNorm === 'therapies' ? 'terapie sindrome ReNU, fisioterapia, logopedia, ABA, Feuerstein, acquaticità, musicoterapia, disabilità bambini' :
     pageSlugNorm === 'research'  ? 'ricerca RNU4-2, pubblicazioni scientifiche sindrome ReNU, PubMed, Nature Genetics, aggiornamenti 2026' :
-    pageSlugNorm === 'donations' ? 'donare associazione malattia rara, 5x1000 97995890151, lascito testamentario, bonifico sindrome ReNU' :
+    pageSlugNorm === 'donations' ? 'donare associazione malattia rara, 5x1000 98020680157, lascito testamentario, bonifico sindrome ReNU' :
     pageSlugNorm === 'faq'       ? 'diritti disabilità Italia, legge 104, disability card, pass auto disabili, indennità accompagnamento, sostegno scolastico' :
     pageSlugNorm === 'science'   ? 'comitato scientifico sindrome ReNU, Claudia Gravaghi, ricerca genetica, validazione scientifica' :
     pageSlugNorm === 'community' ? 'community sindrome ReNU, famiglie italiane RNU4-2, rete supporto, storie bambini, associazione genitori' :
@@ -1980,6 +2112,10 @@ ${hreflangs}
   ${jsonLdJoin}
   ${jsonLdArticle}
   ${jsonLdGlossary}
+  ${jsonLdHowTo}
+  ${jsonLdSpeakable}
+  ${jsonLdVideo}
+  ${jsonLdGestiItemList}
   ${extraHead}
 </head>
 <body>
@@ -3796,11 +3932,11 @@ function donationsPage(t: Record<string, string>): string {
       <!-- ── ANCHOR CONTENT: definizione citabile per AI §3.2.3 ── -->
       <div class="rounded-2xl p-6 border-l-4" style="background:#EEF6FB; border-color:#1078C0;">
         <p class="text-gray-800 font-semibold leading-relaxed">
-          ${t.lang==='it' ? 'È possibile donare a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) tramite: <strong>bonifico bancario</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> nella dichiarazione dei redditi (codice fiscale 97995890151 – Associazioni di Promozione Sociale), <strong>lascito testamentario</strong>, donazione ricorrente mensile o <strong>compleanno solidale</strong>. Ogni contributo è deducibile fiscalmente. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Diventa anche socio</a>.' :
-           t.lang==='en' ? 'You can donate to <strong>Sindrome ReNU Italia APS</strong> (Tax ID 97995890151) via: <strong>bank transfer</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> on your Italian tax return (code 97995890151), <strong>legacy donation</strong>, monthly recurring donation or <strong>birthday fundraiser</strong>. All contributions are tax-deductible. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Become a member</a>.' :
-           t.lang==='fr' ? 'Vous pouvez faire un don à <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) par : <strong>virement bancaire</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legs testamentaire</strong> ou don mensuel récurrent. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Devenir membre</a>.' :
-           t.lang==='es' ? 'Puede donar a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) mediante: <strong>transferencia bancaria</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legado testamentario</strong> o donación mensual. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Hazte socio</a>.' :
-           'Sie können an <strong>Sindrome ReNU Italia APS</strong> (Steuer-ID 97995890151) spenden: <strong>Banküberweisung</strong> (IBAN IT18H0306909606100000416360), <strong>Erbschaft</strong> oder monatliche Dauerspende. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Mitglied werden</a>.'
+          ${t.lang==='it' ? 'È possibile donare a <strong>Sindrome ReNU Italia APS</strong> (CF 98020680157) tramite: <strong>bonifico bancario</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> nella dichiarazione dei redditi (codice fiscale 98020680157 – Associazioni di Promozione Sociale), <strong>lascito testamentario</strong>, donazione ricorrente mensile o <strong>compleanno solidale</strong>. Ogni contributo è deducibile fiscalmente. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Diventa anche socio</a>.' :
+           t.lang==='en' ? 'You can donate to <strong>Sindrome ReNU Italia APS</strong> (Tax ID 98020680157) via: <strong>bank transfer</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong> on your Italian tax return (code 98020680157), <strong>legacy donation</strong>, monthly recurring donation or <strong>birthday fundraiser</strong>. All contributions are tax-deductible. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Become a member</a>.' :
+           t.lang==='fr' ? 'Vous pouvez faire un don à <strong>Sindrome ReNU Italia APS</strong> (NIF 98020680157) par : <strong>virement bancaire</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legs testamentaire</strong> ou don mensuel récurrent. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Devenir membre</a>.' :
+           t.lang==='es' ? 'Puede donar a <strong>Sindrome ReNU Italia APS</strong> (NIF 98020680157) mediante: <strong>transferencia bancaria</strong> (IBAN IT18H0306909606100000416360), <strong>5×1000</strong>, <strong>legado testamentario</strong> o donación mensual. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Hazte socio</a>.' :
+           'Sie können an <strong>Sindrome ReNU Italia APS</strong> (Steuer-ID 98020680157) spenden: <strong>Banküberweisung</strong> (IBAN IT18H0306909606100000416360), <strong>Erbschaft</strong> oder monatliche Dauerspende. <a href="/${t.lang}/members" class="text-blue-700 underline font-bold">Mitglied werden</a>.'
           }
         </p>
       </div>
@@ -4802,10 +4938,13 @@ function eventsPage(t: Record<string, string>): string {
       </h2>
       <!-- Banner prossimi eventi -->
       <div class="rounded-2xl overflow-hidden mb-6">
-        <img src="/images/sezione_prossimi_eventi.png"
-             alt="${t.lang==='it'?'Prossimi eventi Sindrome ReNU Italia':'Upcoming events Sindrome ReNU Italia'}"
-             class="w-full h-auto object-contain"
-             loading="lazy" decoding="async">
+        <picture>
+          <source srcset="/images/sezione_prossimi_eventi.webp" type="image/webp">
+          <img src="/images/sezione_prossimi_eventi.png"
+               alt="${t.lang==='it'?'Prossimi eventi Sindrome ReNU Italia':'Upcoming events Sindrome ReNU Italia'}"
+               class="w-full h-auto object-contain"
+               loading="lazy" decoding="async" width="900" height="900">
+        </picture>
       </div>
       <div id="eventi-list">
         <div class="text-center py-10 text-gray-400">
@@ -6108,9 +6247,12 @@ function faqPage(t: Record<string, string>): string {
               </div>
             </div>
             <div class="relative overflow-hidden rounded-r-2xl" style="min-height:320px">
-              <img src="/images/progetto-vita.png"
-                   alt="${t.lang==='it'?'Progetto Vita – Sindrome ReNU':'Progetto Vita – ReNU Syndrome'}"
-                   class="w-full h-full object-cover" style="min-height:320px" loading="lazy" decoding="async">
+              <picture>
+                <source srcset="/images/progetto-vita.webp" type="image/webp">
+                <img src="/images/progetto-vita.png"
+                     alt="${t.lang==='it'?'Progetto Vita – Sindrome ReNU':'Progetto Vita – ReNU Syndrome'}"
+                     class="w-full h-full object-cover" style="min-height:320px" loading="lazy" decoding="async" width="800" height="1200">
+              </picture>
               <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,95,70,0.6) 0%, transparent 50%)"></div>
               <div class="absolute bottom-4 left-4 right-4">
                 <span class="inline-flex items-center gap-2 text-white text-xs font-bold px-3 py-1.5 rounded-full" style="background:rgba(5,150,105,0.85)">
@@ -6365,7 +6507,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260918-aggiornamento-settembre'
+  const _v = '20260918-schema-cf-webp'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -6733,7 +6875,7 @@ function glossaryPage(t: Record<string, string>): string {
     },
     {
       term: isIt ? '5×1000 (Italia)' : isEn ? '5×1000 Italian tax donation' : isFr ? '5×1000 Don fiscal italien' : isEs ? '5×1000 Donación fiscal italiana' : '5×1000 Italienische Steuerdonation',
-      def: isIt ? 'Meccanismo fiscale italiano che consente al contribuente di destinare il 5 per mille dell\'IRPEF a un\'organizzazione no-profit senza alcun costo aggiuntivo. Per destinare il 5×1000 a Sindrome ReNU Italia APS, inserire il codice fiscale 97995890151 nella casella "Associazioni di promozione sociale" della dichiarazione dei redditi (730 o UNICO). Non si tratta di una donazione aggiuntiva: il contribuente decide solo dove va una quota delle imposte già dovute allo Stato.' : isEn ? 'Italian fiscal mechanism allowing taxpayers to allocate 5 per thousand of their income tax to a non-profit organisation at no additional cost. To allocate your 5×1000 to Sindrome ReNU Italia APS, enter tax code 97995890151 in the "Social promotion associations" box of your Italian tax return. This is not an additional donation: you decide where a share of taxes already owed to the State goes.' : isFr ? 'Mécanisme fiscal italien permettant au contribuable d\'attribuer 5 pour mille de l\'IRPEF à une organisation à but non lucratif sans frais supplémentaires. Code fiscal: 97995890151.' : isEs ? 'Mecanismo fiscal italiano que permite destinar 5 por mil del IRPF a una organización sin ánimo de lucro sin coste adicional. Código fiscal: 97995890151.' : 'Italienischer Steuermechanismus, der es Steuerzahlern ermöglicht, 5 Promille ihrer Einkommensteuer einer gemeinnützigen Organisation zuzuweisen. Steuernummer: 97995890151.',
+      def: isIt ? 'Meccanismo fiscale italiano che consente al contribuente di destinare il 5 per mille dell\'IRPEF a un\'organizzazione no-profit senza alcun costo aggiuntivo. Per destinare il 5×1000 a Sindrome ReNU Italia APS, inserire il codice fiscale 98020680157 nella casella "Associazioni di promozione sociale" della dichiarazione dei redditi (730 o UNICO). Non si tratta di una donazione aggiuntiva: il contribuente decide solo dove va una quota delle imposte già dovute allo Stato.' : isEn ? 'Italian fiscal mechanism allowing taxpayers to allocate 5 per thousand of their income tax to a non-profit organisation at no additional cost. To allocate your 5×1000 to Sindrome ReNU Italia APS, enter tax code 98020680157 in the "Social promotion associations" box of your Italian tax return. This is not an additional donation: you decide where a share of taxes already owed to the State goes.' : isFr ? 'Mécanisme fiscal italien permettant au contribuable d\'attribuer 5 pour mille de l\'IRPEF à une organisation à but non lucratif sans frais supplémentaires. Code fiscal: 98020680157.' : isEs ? 'Mecanismo fiscal italiano que permite destinar 5 por mil del IRPF a una organización sin ánimo de lucro sin coste adicional. Código fiscal: 98020680157.' : 'Italienischer Steuermechanismus, der es Steuerzahlern ermöglicht, 5 Promille ihrer Einkommensteuer einer gemeinnützigen Organisation zuzuweisen. Steuernummer: 98020680157.',
       source: ''
     },
     {
@@ -6768,7 +6910,7 @@ function glossaryPage(t: Record<string, string>): string {
     },
     {
       term: isIt ? 'Associazione di Promozione Sociale (APS)' : isEn ? 'Social Promotion Association (APS)' : isFr ? 'Association de Promotion Sociale (APS)' : isEs ? 'Asociación de Promoción Social (APS)' : 'Sozialförderverein (APS)',
-      def: isIt ? 'Forma giuridica italiana di ente del Terzo Settore (D.Lgs. 117/2017 – Codice del Terzo Settore). Caratterizzata da: prevalenza di attività di interesse generale, soci volontari che operano senza fine di lucro, statuto pubblico, iscrizione al RUNTS (Registro Unico Nazionale del Terzo Settore). Le APS godono di agevolazioni fiscali: esenzione IVA per molte attività, detraibilità delle donazioni ricevute (26% per i donatori privati, 10% per le imprese). Sindrome ReNU Italia APS è registrata con CF 97995890151.' : isEn ? 'Italian legal form of Third Sector entity (Legislative Decree 117/2017). Characterised by: prevalence of activities in the general interest, volunteer members operating non-profit, public statute, registration in the RUNTS (National Third Sector Register). APS organisations benefit from tax advantages. Sindrome ReNU Italia APS is registered with tax code 97995890151.' : isFr ? 'Forme juridique italienne d\'organisation à but non lucratif. Bénéficie d\'avantages fiscaux. Sindrome ReNU Italia APS est enregistrée avec le code fiscal 97995890151.' : isEs ? 'Forma jurídica italiana de organización sin ánimo de lucro. Goza de ventajas fiscales. Sindrome ReNU Italia APS está registrada con código fiscal 97995890151.' : 'Italienische Rechtsform einer gemeinnützigen Organisation. Sindrome ReNU Italia APS ist mit Steuernummer 97995890151 registriert.',
+      def: isIt ? 'Forma giuridica italiana di ente del Terzo Settore (D.Lgs. 117/2017 – Codice del Terzo Settore). Caratterizzata da: prevalenza di attività di interesse generale, soci volontari che operano senza fine di lucro, statuto pubblico, iscrizione al RUNTS (Registro Unico Nazionale del Terzo Settore). Le APS godono di agevolazioni fiscali: esenzione IVA per molte attività, detraibilità delle donazioni ricevute (26% per i donatori privati, 10% per le imprese). Sindrome ReNU Italia APS è registrata con CF 98020680157.' : isEn ? 'Italian legal form of Third Sector entity (Legislative Decree 117/2017). Characterised by: prevalence of activities in the general interest, volunteer members operating non-profit, public statute, registration in the RUNTS (National Third Sector Register). APS organisations benefit from tax advantages. Sindrome ReNU Italia APS is registered with tax code 98020680157.' : isFr ? 'Forme juridique italienne d\'organisation à but non lucratif. Bénéficie d\'avantages fiscaux. Sindrome ReNU Italia APS est enregistrée avec le code fiscal 98020680157.' : isEs ? 'Forma jurídica italiana de organización sin ánimo de lucro. Goza de ventajas fiscales. Sindrome ReNU Italia APS está registrada con código fiscal 98020680157.' : 'Italienische Rechtsform einer gemeinnützigen Organisation. Sindrome ReNU Italia APS ist mit Steuernummer 98020680157 registriert.',
       source: ''
     },
     {
@@ -6778,7 +6920,7 @@ function glossaryPage(t: Record<string, string>): string {
     },
     {
       term: isIt ? 'E-E-A-T (Esperienza, Competenza, Autorevolezza, Affidabilità)' : isEn ? 'E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)' : isFr ? 'E-E-A-T (Expérience, Expertise, Autorité, Fiabilité)' : isEs ? 'E-E-A-T (Experiencia, Experiencia técnica, Autoridad, Confiabilidad)' : 'E-E-A-T (Erfahrung, Expertise, Autorität, Vertrauenswürdigkeit)',
-      def: isIt ? 'Framework di valutazione della qualità dei contenuti web usato da Google (e adottato indirettamente dai motori AI) per valutare i siti YMYL (Your Money or Your Life), categoria che include i siti di salute e medicina. Per Sindrome ReNU Italia APS: Experience = storie di 24 famiglie italiane; Expertise = Dr. Claudia Gravaghi PhD e Comitato Scientifico; Authoritativeness = citazioni su Nature, AJMG; Trustworthiness = statuto APS pubblico, contatti verificabili, codice fiscale 97995890151.' : isEn ? 'Quality evaluation framework used by Google (and indirectly by AI engines) to assess YMYL (Your Money or Your Life) sites, including health and medical sites. For Sindrome ReNU Italia APS: Experience = stories of 24 Italian families; Expertise = Dr. Claudia Gravaghi PhD and Scientific Committee; Authoritativeness = citations in Nature, AJMG; Trustworthiness = public APS statute, verifiable contacts.' : isFr ? 'Cadre d\'évaluation de la qualité des contenus web utilisé par Google pour les sites YMYL (santé, médecine). Pour ReNU Italia: Expérience = histoires de familles; Expertise = Dr Gravaghi PhD; Autorité = citations dans Nature; Fiabilité = statut APS public.' : isEs ? 'Marco de evaluación de calidad de contenidos web usado por Google para sitios YMYL (salud, medicina). Para ReNU Italia: Experiencia = historias de familias; Expertise = Dr. Gravaghi PhD; Autoridad = citas en Nature; Confiabilidad = estatuto APS público.' : 'Qualitätsbewertungsrahmen von Google für YMYL-Websites (Gesundheit, Medizin). Für ReNU Italia: Erfahrung = Familiengeschichten; Expertise = Dr. Gravaghi PhD; Autorität = Zitate in Nature; Vertrauenswürdigkeit = öffentliche APS-Satzung.',
+      def: isIt ? 'Framework di valutazione della qualità dei contenuti web usato da Google (e adottato indirettamente dai motori AI) per valutare i siti YMYL (Your Money or Your Life), categoria che include i siti di salute e medicina. Per Sindrome ReNU Italia APS: Experience = storie di 24 famiglie italiane; Expertise = Dr. Claudia Gravaghi PhD e Comitato Scientifico; Authoritativeness = citazioni su Nature, AJMG; Trustworthiness = statuto APS pubblico, contatti verificabili, codice fiscale 98020680157.' : isEn ? 'Quality evaluation framework used by Google (and indirectly by AI engines) to assess YMYL (Your Money or Your Life) sites, including health and medical sites. For Sindrome ReNU Italia APS: Experience = stories of 24 Italian families; Expertise = Dr. Claudia Gravaghi PhD and Scientific Committee; Authoritativeness = citations in Nature, AJMG; Trustworthiness = public APS statute, verifiable contacts.' : isFr ? 'Cadre d\'évaluation de la qualité des contenus web utilisé par Google pour les sites YMYL (santé, médecine). Pour ReNU Italia: Expérience = histoires de familles; Expertise = Dr Gravaghi PhD; Autorité = citations dans Nature; Fiabilité = statut APS public.' : isEs ? 'Marco de evaluación de calidad de contenidos web usado por Google para sitios YMYL (salud, medicina). Para ReNU Italia: Experiencia = historias de familias; Expertise = Dr. Gravaghi PhD; Autoridad = citas en Nature; Confiabilidad = estatuto APS público.' : 'Qualitätsbewertungsrahmen von Google für YMYL-Websites (Gesundheit, Medizin). Für ReNU Italia: Erfahrung = Familiengeschichten; Expertise = Dr. Gravaghi PhD; Autorität = Zitate in Nature; Vertrauenswürdigkeit = öffentliche APS-Satzung.',
       source: 'Google Search Quality Evaluator Guidelines 2024'
     },
   ]
@@ -7048,10 +7190,10 @@ for (const lang of ['it','en','fr','es','de']) {
   "@context":"https://schema.org",
   "@type":"WebPage",
   "name":"${isIt?'Lascito Testamentario a Sindrome ReNU Italia APS':isEn?'Legacy Donation to ReNU Syndrome Italy APS':isFr?'Legs Testamentaire au Syndrome ReNU Italie APS':isEs?'Legado Testamentario a Síndrome ReNU Italia APS':'Testamentarisches Vermächtnis an ReNU-Syndrom Italien APS'}",
-  "description":"${isIt?'Come fare un lascito testamentario a Sindrome ReNU Italia APS, APS esente da imposta di successione (art.3 D.Lgs.346/1990). CF 97995890151':isEn?'How to leave a legacy donation to ReNU Syndrome Italy APS, exempt from inheritance tax. Tax code 97995890151':'Legs testamentaire à Sindrome ReNU Italia APS, exonéré de droits de succession. Code fiscal 97995890151'}",
+  "description":"${isIt?'Come fare un lascito testamentario a Sindrome ReNU Italia APS, APS esente da imposta di successione (art.3 D.Lgs.346/1990). CF 98020680157':isEn?'How to leave a legacy donation to ReNU Syndrome Italy APS, exempt from inheritance tax. Tax code 98020680157':'Legs testamentaire à Sindrome ReNU Italia APS, exonéré de droits de succession. Code fiscal 98020680157'}",
   "url":"${BASE}/${lang}/donations/lasciti",
   "inLanguage":"${lang}",
-  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"},
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"98020680157"},
   "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"${BASE}/${lang}/home"},
     {"@type":"ListItem","position":2,"name":"${isIt?'Donazioni':'Donations'}","item":"${BASE}/${lang}/donations"},
@@ -7063,11 +7205,11 @@ for (const lang of ['it','en','fr','es','de']) {
       <!-- ANCHOR CONTENT GEO-AI §3.2.3 -->
       <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
         <p class="text-gray-800 font-semibold text-lg leading-relaxed">
-          ${isIt ? 'Con un <strong>lascito testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) puoi destinare parte del tuo patrimonio alla ricerca sulla Sindrome ReNU (RNU4-2). I lasciti alle APS italiane sono <strong>esenti da imposta di successione</strong> (art. 3, D.Lgs. 346/1990). Ogni euro supporta direttamente le famiglie e la ricerca genetica.' :
-           isEn ? 'By leaving a <strong>legacy donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) you can direct part of your estate to ReNU Syndrome (RNU4-2) research. Legacies to Italian APS organisations are <strong>exempt from inheritance tax</strong> (art. 3, D.Lgs. 346/1990).' :
-           isFr ? 'En laissant un <strong>legs testamentaire</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) vous pouvez soutenir la recherche sur le Syndrome ReNU (RNU4-2). Les legs aux APS italiennes sont <strong>exonérés de droits de succession</strong>.' :
-           isEs ? 'Con un <strong>legado testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) puede destinar parte de su patrimonio a la investigación del Síndrome ReNU (RNU4-2). Los legados a APS italianas están <strong>exentos del impuesto de sucesiones</strong>.' :
-           'Mit einem <strong>testamentarischen Vermächtnis</strong> an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. 97995890151) können Sie einen Teil Ihres Vermögens der ReNU-Syndrom-Forschung widmen. Vermächtnisse an italienische APS sind <strong>erbschaftsteuerfrei</strong>.'}
+          ${isIt ? 'Con un <strong>lascito testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 98020680157) puoi destinare parte del tuo patrimonio alla ricerca sulla Sindrome ReNU (RNU4-2). I lasciti alle APS italiane sono <strong>esenti da imposta di successione</strong> (art. 3, D.Lgs. 346/1990). Ogni euro supporta direttamente le famiglie e la ricerca genetica.' :
+           isEn ? 'By leaving a <strong>legacy donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 98020680157) you can direct part of your estate to ReNU Syndrome (RNU4-2) research. Legacies to Italian APS organisations are <strong>exempt from inheritance tax</strong> (art. 3, D.Lgs. 346/1990).' :
+           isFr ? 'En laissant un <strong>legs testamentaire</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 98020680157) vous pouvez soutenir la recherche sur le Syndrome ReNU (RNU4-2). Les legs aux APS italiennes sont <strong>exonérés de droits de succession</strong>.' :
+           isEs ? 'Con un <strong>legado testamentario</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 98020680157) puede destinar parte de su patrimonio a la investigación del Síndrome ReNU (RNU4-2). Los legados a APS italianas están <strong>exentos del impuesto de sucesiones</strong>.' :
+           'Mit einem <strong>testamentarischen Vermächtnis</strong> an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. 98020680157) können Sie einen Teil Ihres Vermögens der ReNU-Syndrom-Forschung widmen. Vermächtnisse an italienische APS sind <strong>erbschaftsteuerfrei</strong>.'}
         </p>
       </div>
       <div class="max-w-3xl mx-auto space-y-8">
@@ -7112,11 +7254,11 @@ for (const lang of ['it','en','fr','es','de']) {
 {
   "@context":"https://schema.org",
   "@type":"WebPage",
-  "name":"5×1000 a Sindrome ReNU Italia APS — CF 97995890151",
-  "description":"${isIt?'Destina il tuo 5×1000 a Sindrome ReNU Italia APS (CF 97995890151). Non ti costa nulla: basta indicare il codice fiscale nella dichiarazione dei redditi. Sostieni la ricerca RNU4-2.':'Donate your 5×1000 to Sindrome ReNU Italia APS (tax code 97995890151). It costs you nothing: just indicate the tax code in your tax return. Support RNU4-2 research.'}",
+  "name":"5×1000 a Sindrome ReNU Italia APS — CF 98020680157",
+  "description":"${isIt?'Destina il tuo 5×1000 a Sindrome ReNU Italia APS (CF 98020680157). Non ti costa nulla: basta indicare il codice fiscale nella dichiarazione dei redditi. Sostieni la ricerca RNU4-2.':'Donate your 5×1000 to Sindrome ReNU Italia APS (tax code 98020680157). It costs you nothing: just indicate the tax code in your tax return. Support RNU4-2 research.'}",
   "url":"${BASE}/${lang}/donations/5x1000",
   "inLanguage":"${lang}",
-  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"},
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"98020680157"},
   "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"${BASE}/${lang}/home"},
     {"@type":"ListItem","position":2,"name":"${isIt?'Donazioni':'Donations'}","item":"${BASE}/${lang}/donations"},
@@ -7127,11 +7269,11 @@ for (const lang of ['it','en','fr','es','de']) {
     const html = `
       <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
         <p class="text-gray-800 font-semibold text-lg leading-relaxed">
-          ${isIt ? 'Il <strong>5×1000</strong> è una quota dell’IRPEF che puoi destinare gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (CF <strong>97995890151</strong>). Non è un costo aggiuntivo: è semplicemente la tua quota di imposta già dovuta, che scegli di indirizzare verso la ricerca sulla Sindrome ReNU (RNU4-2) invece che allo Stato.' :
-           isEn ? 'The <strong>5×1000</strong> is a portion of Italian income tax you can direct for free to <strong>Sindrome ReNU Italia APS</strong> (tax code <strong>97995890151</strong>). It costs you nothing extra: it simply redirects your existing tax contribution towards RNU4-2 research.' :
-           isFr ? 'Le <strong>5×1000</strong> est une portion de l’impôt sur le revenu que vous pouvez diriger gratuitement vers <strong>Sindrome ReNU Italia APS</strong> (code fiscal <strong>97995890151</strong>). Cela ne vous coûte rien de plus.' :
-           isEs ? 'El <strong>5×1000</strong> es una parte del IRPEF italiano que puede destinar gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (NIF <strong>97995890151</strong>). No supone ningún coste adicional.' :
-           'Das <strong>5×1000</strong> ist ein Anteil der italienischen Einkommensteuer, den Sie kostenlos an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. <strong>97995890151</strong>) weiterleiten können. Es kostet Sie nichts extra.'}
+          ${isIt ? 'Il <strong>5×1000</strong> è una quota dell’IRPEF che puoi destinare gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (CF <strong>98020680157</strong>). Non è un costo aggiuntivo: è semplicemente la tua quota di imposta già dovuta, che scegli di indirizzare verso la ricerca sulla Sindrome ReNU (RNU4-2) invece che allo Stato.' :
+           isEn ? 'The <strong>5×1000</strong> is a portion of Italian income tax you can direct for free to <strong>Sindrome ReNU Italia APS</strong> (tax code <strong>98020680157</strong>). It costs you nothing extra: it simply redirects your existing tax contribution towards RNU4-2 research.' :
+           isFr ? 'Le <strong>5×1000</strong> est une portion de l’impôt sur le revenu que vous pouvez diriger gratuitement vers <strong>Sindrome ReNU Italia APS</strong> (code fiscal <strong>98020680157</strong>). Cela ne vous coûte rien de plus.' :
+           isEs ? 'El <strong>5×1000</strong> es una parte del IRPEF italiano que puede destinar gratuitamente a <strong>Sindrome ReNU Italia APS</strong> (NIF <strong>98020680157</strong>). No supone ningún coste adicional.' :
+           'Das <strong>5×1000</strong> ist ein Anteil der italienischen Einkommensteuer, den Sie kostenlos an <strong>Sindrome ReNU Italia APS</strong> (Steuernr. <strong>98020680157</strong>) weiterleiten können. Es kostet Sie nichts extra.'}
         </p>
       </div>
       <div class="max-w-3xl mx-auto space-y-8">
@@ -7140,11 +7282,11 @@ for (const lang of ['it','en','fr','es','de']) {
           <ol class="space-y-4">
             <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">1</span><div><strong>${isIt?'Compila la dichiarazione dei redditi':'File your tax return'}</strong><p class="text-gray-600 text-sm mt-1">${isIt?'730, Modello REDDITI PF, o Modello CU (se dipendente)':'730, REDDITI PF, or CU form (for employees)'}</p></div></li>
             <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">2</span><div><strong>${isIt?'Trova la sezione 5×1000':'Find the 5×1000 section'}</strong><p class="text-gray-600 text-sm mt-1">${isIt?'"Sostegno delle organizzazioni non lucrative di utilità sociale, delle associazioni di promozione sociale..."':'"Support for non-profit organisations, social promotion associations..."'}</p></div></li>
-            <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">3</span><div><strong>${isIt?'Inserisci il codice fiscale':'Enter the tax code'}</strong><p class="text-gray-600 text-sm mt-1"><span class="font-mono text-2xl font-extrabold" style="color:#1078C0">97995890151</span></p></div></li>
+            <li class="flex gap-4"><span class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background:#1078C0">3</span><div><strong>${isIt?'Inserisci il codice fiscale':'Enter the tax code'}</strong><p class="text-gray-600 text-sm mt-1"><span class="font-mono text-2xl font-extrabold" style="color:#1078C0">98020680157</span></p></div></li>
           </ol>
         </div>
         <div class="card p-7 text-center" style="border-left:4px solid #059669;background:#f0fdf4">
-          <div class="text-5xl font-black mb-2" style="color:#1078C0">97995890151</div>
+          <div class="text-5xl font-black mb-2" style="color:#1078C0">98020680157</div>
           <p class="text-gray-500 text-sm">${isIt?'Codice Fiscale Sindrome ReNU Italia APS':'Tax code Sindrome ReNU Italia APS'}</p>
           <p class="text-gray-600 mt-3 text-sm">${isIt?'Puoi anche scannerizzare questo codice o annotarlo sul cellulare per averlo sempre a portata di mano quando compili la dichiarazione.':'You can also save this code on your phone to have it ready when filing your tax return.'}</p>
         </div>
@@ -7176,7 +7318,7 @@ for (const lang of ['it','en','fr','es','de']) {
   "description":"${isIt?'Trasforma il tuo compleanno in un atto d’amore per la ricerca sulla Sindrome ReNU. Chiedi ai tuoi amici di donare a Sindrome ReNU Italia APS al posto dei regali.':'Turn your birthday into an act of love for ReNU Syndrome research. Ask your friends to donate to Sindrome ReNU Italia APS instead of gifts.'}",
   "url":"${BASE}/${lang}/donations/compleanno-solidale",
   "inLanguage":"${lang}",
-  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"}
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"98020680157"}
 }
 </script>`
     const html = `
@@ -7227,20 +7369,20 @@ for (const lang of ['it','en','fr','es','de']) {
   "@context":"https://schema.org",
   "@type":"WebPage",
   "name":"${isIt?'Donazione Aziendale a Sindrome ReNU Italia APS':isEn?'Corporate Donation to ReNU Syndrome Italy APS':'Don d\'Entreprise à Syndrome ReNU Italie APS'}",
-  "description":"${isIt?'Partnership aziendale e donazioni corporate a Sindrome ReNU Italia APS. Deducibilità fiscale, certificazione, visibilità CSR. CF 97995890151.':'Corporate partnership and donations to Sindrome ReNU Italia APS. Tax deductibility, certification, CSR visibility. Tax code 97995890151.'}",
+  "description":"${isIt?'Partnership aziendale e donazioni corporate a Sindrome ReNU Italia APS. Deducibilità fiscale, certificazione, visibilità CSR. CF 98020680157.':'Corporate partnership and donations to Sindrome ReNU Italia APS. Tax deductibility, certification, CSR visibility. Tax code 98020680157.'}",
   "url":"${BASE}/${lang}/donations/aziendale",
   "inLanguage":"${lang}",
-  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"97995890151"}
+  "publisher":{"@type":"NGO","name":"Sindrome ReNU Italia APS","url":"${BASE}","taxID":"98020680157"}
 }
 </script>`
     const html = `
       <div class="rounded-2xl p-6 mb-8 border-l-4" style="background:#EEF6FB;border-color:#1078C0">
         <p class="text-gray-800 font-semibold text-lg leading-relaxed">
-          ${isIt ? 'La <strong>donazione aziendale</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 97995890151) è deducibile dal reddito imponibile nel limite del <strong>10% del reddito complessivo netto dichiarato</strong>, senza tetto massimo in euro (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore). L’azienda riceve certificazione formale e visibilità CSR nella comunicazione dell’associazione.' :
-           isEn ? 'A <strong>corporate donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 97995890151) is tax-deductible up to <strong>10% of net declared total income</strong>, with no fixed euro cap (art. 83 D.Lgs. 117/2017 – Third Sector Code). The company receives formal certification and CSR visibility.' :
-           isFr ? 'Un <strong>don d’entreprise</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 97995890151) est déductible fiscalement jusqu’à <strong>10% du revenu net total déclaré</strong>, sans plafond en euros (art. 83 D.Lgs. 117/2017 – Code du Tiers Secteur italien). L’entreprise reçoit une certification formelle et une visibilité RSE.' :
-           isEs ? 'Una <strong>donación empresarial</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 97995890151) es deducible hasta el <strong>10% de la renta neta total declarada</strong>, sin límite máximo en euros (art. 83 D.Lgs. 117/2017 – Código del Tercer Sector italiano). La empresa recibe certificación formal y visibilidad RSC.' :
-           'Eine <strong>Unternehmensspende</strong> an <strong>Sindrome ReNU Italia APS</strong> (St.-Nr. 97995890151) ist steuerlich absetzbar bis zu <strong>10% des netto erklärten Gesamteinkommens</strong>, ohne festen Euro-Höchstbetrag (Art. 83 D.Lgs. 117/2017 – Italienisches Dritter-Sektor-Gesetz). Das Unternehmen erhält eine formelle Bescheinigung und CSR-Sichtbarkeit.'}
+          ${isIt ? 'La <strong>donazione aziendale</strong> a <strong>Sindrome ReNU Italia APS</strong> (CF 98020680157) è deducibile dal reddito imponibile nel limite del <strong>10% del reddito complessivo netto dichiarato</strong>, senza tetto massimo in euro (art. 83 D.Lgs. 117/2017 – Codice del Terzo Settore). L’azienda riceve certificazione formale e visibilità CSR nella comunicazione dell’associazione.' :
+           isEn ? 'A <strong>corporate donation</strong> to <strong>Sindrome ReNU Italia APS</strong> (tax code 98020680157) is tax-deductible up to <strong>10% of net declared total income</strong>, with no fixed euro cap (art. 83 D.Lgs. 117/2017 – Third Sector Code). The company receives formal certification and CSR visibility.' :
+           isFr ? 'Un <strong>don d’entreprise</strong> à <strong>Sindrome ReNU Italia APS</strong> (code fiscal 98020680157) est déductible fiscalement jusqu’à <strong>10% du revenu net total déclaré</strong>, sans plafond en euros (art. 83 D.Lgs. 117/2017 – Code du Tiers Secteur italien). L’entreprise reçoit une certification formelle et une visibilité RSE.' :
+           isEs ? 'Una <strong>donación empresarial</strong> a <strong>Sindrome ReNU Italia APS</strong> (NIF 98020680157) es deducible hasta el <strong>10% de la renta neta total declarada</strong>, sin límite máximo en euros (art. 83 D.Lgs. 117/2017 – Código del Tercer Sector italiano). La empresa recibe certificación formal y visibilidad RSC.' :
+           'Eine <strong>Unternehmensspende</strong> an <strong>Sindrome ReNU Italia APS</strong> (St.-Nr. 98020680157) ist steuerlich absetzbar bis zu <strong>10% des netto erklärten Gesamteinkommens</strong>, ohne festen Euro-Höchstbetrag (Art. 83 D.Lgs. 117/2017 – Italienisches Dritter-Sektor-Gesetz). Das Unternehmen erhält eine formelle Bescheinigung und CSR-Sichtbarkeit.'}
         </p>
       </div>
       <div class="max-w-3xl mx-auto space-y-8">

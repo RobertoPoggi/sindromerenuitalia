@@ -12,7 +12,7 @@
 ## Identità dell'Organizzazione
 
 - **Nome legale**: Sindrome ReNU Italia APS (Associazione di Promozione Sociale)
-- **Codice Fiscale**: 97995890151
+- **Codice Fiscale**: 98020680157
 - **Fondata**: 2024
 - **Sede legale**: Italia
 - **Email**: info@sindromerenu.it
@@ -139,7 +139,7 @@ A: Sì. La Legge 2 luglio 2026 n.116 ha introdotto una garanzia statale fino all
 - **BIC/SWIFT**: BCITITMM
 
 ### 5x1000 (senza costo aggiuntivo per il donante)
-- **Codice Fiscale**: 97995890151
+- **Codice Fiscale**: 98020680157
 - Da indicare nella dichiarazione dei redditi (730, UNICO, CU) nella sezione "5x1000 alle associazioni di promozione sociale"
 - Non costa nulla in più: è una quota delle tasse già dovuta allo Stato
 
