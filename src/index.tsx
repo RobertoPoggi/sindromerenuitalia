@@ -1878,9 +1878,8 @@ ${hreflangs}
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- Tailwind: bloccante (indispensabile per il render corretto — evita FOUC e CLS) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <!-- FontAwesome: non-bloccante con media=print trick (icone non critiche per LCP) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
+  <!-- FontAwesome: bloccante (le icone sono presenti inline nel DOM, caricarle async causa CLS) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <style>
     :root {
       --navy:   #082050;
@@ -1949,13 +1948,15 @@ ${hreflangs}
     .card-amber { border-top: 4px solid #D97706; }
 
     /* ── Diagnosis pulse button ── */
+    /* Usa transform+opacity (composite) invece di box-shadow (non-composite → CLS) */
     .btn-diagnosis {
       background: linear-gradient(135deg, #E74C3C, #C0392B);
       animation: pulse-red 2.2s infinite;
+      will-change: transform, opacity;
     }
     @keyframes pulse-red {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(231,76,60,0.6); }
-      50%       { box-shadow: 0 0 0 14px rgba(231,76,60,0); }
+      0%, 100% { transform: scale(1);   opacity: 1;    }
+      50%       { transform: scale(1.04); opacity: 0.92; }
     }
 
     /* ── Icon circles ── */
@@ -2440,7 +2441,10 @@ function homePage(t: Record<string, string>): string {
         </div>
         <div class="flex-shrink-0 hidden md:block">
           <div class="flex flex-col items-center gap-4">
-            <img src="/images/logo_transparent.png" alt="Sindrome ReNU Italia APS – Logo" class="w-64 xl:w-72 drop-shadow-xl">
+            <picture>
+              <source srcset="/images/logo_transparent.webp" type="image/webp">
+              <img src="/images/logo_transparent.png" alt="Sindrome ReNU Italia APS – Logo" class="w-64 xl:w-72 drop-shadow-xl" width="288" height="248" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -2520,10 +2524,10 @@ function homePage(t: Record<string, string>): string {
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4" style="align-items:start">
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1018/955"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/1109"><img src="/images/it_bambini_gruppo.jpg" alt="Bambini con Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:3/2"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/757"><img src="/images/renu_natale_2026.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1018/955"><picture><source srcset="/images/famiglie.webp" type="image/webp"><img src="/images/famiglie.jpg" alt="Famiglie Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1018" height="955"></picture></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/1109"><picture><source srcset="/images/it_bambini_gruppo.webp" type="image/webp"><img src="/images/it_bambini_gruppo.jpg" alt="Bambini con Sindrome ReNU" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1080" height="1109"></picture></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:3/2"><picture><source srcset="/images/mani.webp" type="image/webp"><img src="/images/mani.jpg" alt="Comunità Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1000" height="663"></picture></div>
+          <div class="img-frame rounded-xl overflow-hidden" style="aspect-ratio:1080/757"><picture><source srcset="/images/renu_natale_2026.webp" type="image/webp"><img src="/images/renu_natale_2026.jpg" alt="Insieme – Sindrome ReNU Italia" class="w-full h-full object-cover" loading="lazy" decoding="async" width="1080" height="757"></picture></div>
         </div>
       </div>
     </div>
@@ -2543,9 +2547,12 @@ function homePage(t: Record<string, string>): string {
         <!-- Awareness card - mascotte Reny -->
         <div class="card card-sky overflow-hidden">
           <div class="overflow-hidden h-52 flex items-center justify-center" style="background: linear-gradient(135deg, #E8F4FC 0%, #C8E8F8 100%);">
-            <img src="/images/mascotte_reny_1.png" alt="Reny – Mascotte Sindrome ReNU Italia"
-                 class="h-full w-auto object-contain py-2"
-                 style="max-height:200px; filter: drop-shadow(0 4px 16px rgba(8,32,80,0.13));" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/mascotte_reny_1.webp" type="image/webp">
+              <img src="/images/mascotte_reny_1.png" alt="Reny – Mascotte Sindrome ReNU Italia"
+                   class="h-full w-auto object-contain py-2"
+                   style="max-height:200px; filter: drop-shadow(0 4px 16px rgba(8,32,80,0.13));" loading="lazy" decoding="async" width="400" height="385">
+            </picture>
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -2567,7 +2574,10 @@ function homePage(t: Record<string, string>): string {
         <!-- Gallery card -->
         <div class="card card-blue overflow-hidden">
           <div class="overflow-hidden">
-            <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/renu_gallery.webp" type="image/webp">
+              <img src="/images/renu_gallery.jpg" alt="Galleria Sindrome ReNU Italia" class="w-full h-auto block" loading="lazy" decoding="async" width="1080" height="961">
+            </picture>
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -2585,7 +2595,10 @@ function homePage(t: Record<string, string>): string {
         <!-- Map card -->
         <div class="card card-navy overflow-hidden">
           <div class="overflow-hidden">
-            <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/renu_mappa_aggiornata.webp" type="image/webp">
+              <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto block" loading="lazy" decoding="async" width="1200" height="900">
+            </picture>
           </div>
           <div class="p-5">
             <h3 class="font-bold text-lg mb-2" style="color:#082050">
@@ -2845,7 +2858,10 @@ function aboutPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="img-frame w-64">
-          <img src="/images/nastro.png" alt="Nastro azzurro simbolo Sindrome ReNU Italia APS" class="w-full object-contain" style="max-height:220px;background:#f0f8fd;" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="/images/nastro.webp" type="image/webp">
+            <img src="/images/nastro.png" alt="Nastro azzurro simbolo Sindrome ReNU Italia APS" class="w-full object-contain" style="max-height:220px;background:#f0f8fd;" loading="lazy" decoding="async" width="600" height="400">
+          </picture>
         </div>
       </div>
     </div>
@@ -2924,7 +2940,10 @@ function aboutPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Infografica: le caratteristiche cliniche della Sindrome ReNU':t.lang==='en'?'Infographic: clinical features of ReNU Syndrome':t.lang==='fr'?'Infographie : caractéristiques cliniques du Syndrome ReNU':t.lang==='es'?'Infografía: características clínicas del Síndrome ReNU':'Infografik: klinische Merkmale des ReNU-Syndroms'}
           </span>
         </div>
-        <img src="/images/it_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full h-auto block" style="border-radius:0 0 1rem 1rem" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="/images/it_sintomi.webp" type="image/webp">
+          <img src="/images/it_sintomi.jpg" alt="Infografica sintomi Sindrome ReNU" class="w-full h-auto block" style="border-radius:0 0 1rem 1rem" loading="lazy" decoding="async" width="900" height="600">
+        </picture>
       </div>
 
       <!-- Strumento di Supporto per la Sindrome ReNU -->
@@ -3210,8 +3229,8 @@ function therapiesPage(t: Record<string, string>): string {
         <p class="text-sky-100 text-lg">${t.therapies_intro}</p>
       </div>
       <div class="flex-shrink-0 hidden md:flex gap-4">
-        <div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
-        <div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async"></div>
+<div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><picture><source srcset="/images/renu_terapia_1.webp" type="image/webp"><img src="/images/renu_terapia_1.jpg" alt="Logopedista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async" width="800" height="450"></picture></div>
+<div class="img-frame w-56 overflow-hidden rounded-xl" style="aspect-ratio:16/9"><picture><source srcset="/images/renu_terapia_2.webp" type="image/webp"><img src="/images/renu_terapia_2.jpg" alt="Fisioterapista con bambino" class="w-full h-full object-cover" loading="lazy" decoding="async" width="800" height="450"></picture></div>
       </div>
     </div>
   </section>
@@ -3642,9 +3661,12 @@ function communityPage(t: Record<string, string>): string {
       </div>
       <div class="flex-shrink-0 hidden md:block">
         <div class="rounded-2xl overflow-hidden shadow-lg" style="width:360px; flex-shrink:0; aspect-ratio:1080/709">
-          <img src="/images/it_festa_natale.jpg" alt="Comunità ReNU Italia – famiglie e bambini insieme"
-               class="w-full h-full object-cover"
-               loading="lazy" decoding="async">
+          <picture>
+            <source srcset="/images/it_festa_natale.webp" type="image/webp">
+            <img src="/images/it_festa_natale.jpg" alt="Comunità ReNU Italia – famiglie e bambini insieme"
+                 class="w-full h-full object-cover"
+                 loading="lazy" decoding="async" width="1080" height="709">
+          </picture>
         </div>
       </div>
     </div>
@@ -3657,7 +3679,10 @@ function communityPage(t: Record<string, string>): string {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:start">
         <div class="card card-blue overflow-hidden">
           <div class="flex items-center justify-center p-3" style="background:#EEF6FB">
-            <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto" style="display:block;border-radius:0.5rem" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/renu_mappa_aggiornata.webp" type="image/webp">
+              <img src="/images/renu_mappa_aggiornata.jpeg" alt="Mappa Italia e Mondiale Sindrome ReNU" class="w-full h-auto" style="display:block;border-radius:0.5rem" loading="lazy" decoding="async" width="1200" height="900">
+            </picture>
           </div>
           <div class="p-6 text-center">
             <div class="ic ic-blue mx-auto mb-3"><i class="fas fa-map-marked-alt text-xl"></i></div>
@@ -3717,10 +3742,13 @@ function communityPage(t: Record<string, string>): string {
           <div class="flex-shrink-0 flex items-center justify-center mx-auto md:mx-0" style="position:relative">
             <!-- Mappa Italia reale con badge famiglie -->
             <div style="position:relative;width:240px;display:flex;align-items:center;justify-content:center">
-              <img src="/images/renu_mappa_aggiornata.jpeg"
-                   alt="Mappa Italia Famiglie ReNU"
-                   style="width:240px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22));object-fit:contain"
-                   loading="lazy" decoding="async">
+              <picture>
+                <source srcset="/images/renu_mappa_aggiornata.webp" type="image/webp">
+                <img src="/images/renu_mappa_aggiornata.jpeg"
+                     alt="Mappa Italia Famiglie ReNU"
+                     style="width:240px;height:auto;display:block;border-radius:16px;filter:drop-shadow(0 4px 16px rgba(8,32,80,0.22));object-fit:contain"
+                     loading="lazy" decoding="async" width="240" height="180">
+              </picture>
               <!-- Badge contatore sovrapposto -->
               <div style="position:absolute;top:10px;right:-14px;background:#F59E0B;color:white;border-radius:50%;width:66px;height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
                 <span style="font-size:14px;font-weight:800;line-height:1.1">16</span>
@@ -6530,7 +6558,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260918-css-fix-v2'
+  const _v = '20260918-cls-webp-fix-v3'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
