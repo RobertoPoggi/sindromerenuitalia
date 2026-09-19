@@ -3276,7 +3276,7 @@ function therapiesPage(t: Record<string, string>): string {
         </a>
       </div>
 
-      <!-- Gesti Comunicativi - 9 schede maya -->
+      <!-- Esempi di Gesti Comunicativi - 9 schede con immagini -->
       <div class="mt-14">
         <div class="text-center mb-8">
           <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-3">
@@ -3287,149 +3287,266 @@ function therapiesPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Esempi di Gesti Comunicativi':'Examples of Communicative Gestures'}
           </h2>
           <p class="text-gray-600 max-w-2xl mx-auto text-sm">
-            ${t.lang==='it'?'Le schede Maya offrono un sistema visivo di gesti comunicativi immediati, utilizzati nella Comunicazione Aumentativa Alternativa (CAA) per bambini e ragazzi con difficoltà di linguaggio verbale.':'The Maya cards offer a visual system of immediate communicative gestures, used in Augmentative and Alternative Communication (AAC) for children and young people with verbal language difficulties.'}
+            ${t.lang==='it'?'Un sistema visivo di gesti comunicativi immediati, utilizzato nella Comunicazione Aumentativa Alternativa (CAA) per bambini e ragazzi con difficoltà di linguaggio verbale. Le 9 schede coprono le aree principali della comunicazione quotidiana.':'A visual system of immediate communicative gestures, used in Augmentative and Alternative Communication (AAC) for children and young people with verbal language difficulties. The 9 cards cover the main areas of daily communication.'}
           </p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <!-- Scheda 1 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-green w-12 h-12 flex-shrink-0">
-                <i class="fas fa-compass text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 1 di 9':'Card 1 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Ambienti e Direzioni':'Environments & Directions'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['su','giù','dentro','fuori','qui','là','vicino','lontano'].map(g=>`<span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200">${g}</span>`).join('')}
+
+        <!-- Scheda 1: Ambienti e Direzioni -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-green w-10 h-10 flex-shrink-0"><i class="fas fa-compass"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 1 di 9':'Card 1 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Ambienti e Direzioni':'Environments & Directions'}</h3>
             </div>
           </div>
-          <!-- Scheda 2 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-blue w-12 h-12 flex-shrink-0">
-                <i class="fas fa-check-circle text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 2 di 9':'Card 2 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Risposte e Indicazioni':'Responses & Indications'}</h3>
-              </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/ambienti_direzioni_1.webp" type="image/webp"><img src="/images/maya/ambienti_direzioni_1.png" alt="${t.lang==='it'?'Gesto: Casà':'Gesture: Home'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Casà':'Home'}</p>
             </div>
-            <div class="flex flex-wrap gap-2">
-              ${['sì','no','basta','aspetta','ancora','aiuto','stop'].map(g=>`<span class="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-200">${g}</span>`).join('')}
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/ambienti_direzioni_2.webp" type="image/webp"><img src="/images/maya/ambienti_direzioni_2.png" alt="${t.lang==='it'?'Gesto: Qui':'Gesture: Here'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="482"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Qui':'Here'}</p>
             </div>
-          </div>
-          <!-- Scheda 3 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-amber w-12 h-12 flex-shrink-0">
-                <i class="fas fa-hand-holding text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 3 di 9':'Card 3 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Richieste':'Requests'}</h3>
-              </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/ambienti_direzioni_3.webp" type="image/webp"><img src="/images/maya/ambienti_direzioni_3.png" alt="${t.lang==='it'?'Gesto: Su':'Gesture: Up'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="482"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Su':'Up'}</p>
             </div>
-            <div class="flex flex-wrap gap-2">
-              ${['dammi','dammi il cinque','vieni','guarda','apri','chiudi','porta'].map(g=>`<span class="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded-full border border-amber-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 4 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-purple w-12 h-12 flex-shrink-0">
-                <i class="fas fa-heart text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 4 di 9':'Card 4 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Persone e Relazioni':'People & Relationships'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['io','tu','abbraccio','bacio','mamma','papà','amico'].map(g=>`<span class="bg-rose-50 text-rose-700 text-xs px-2 py-1 rounded-full border border-rose-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 5 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-purple w-12 h-12 flex-shrink-0">
-                <i class="fas fa-smile text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 5 di 9':'Card 5 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Emozioni e Conferme':'Emotions & Confirmations'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['tenerezza','bravo','bene','ok','tristezza','paura','felice'].map(g=>`<span class="bg-purple-50 text-purple-700 text-xs px-2 py-1 rounded-full border border-purple-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 6 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-amber w-12 h-12 flex-shrink-0">
-                <i class="fas fa-utensils text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 6 di 9':'Card 6 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Bisogni e Alimentazione':'Needs & Nutrition'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['ho fame','mangiare','bere','buono','non voglio','ancora','finito'].map(g=>`<span class="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded-full border border-amber-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 7 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-green w-12 h-12 flex-shrink-0">
-                <i class="fas fa-running text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 7 di 9':'Card 7 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Azioni e Attività':'Actions & Activities'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['giocare','dormire','camminare','correre','fare','andare','fermarsi'].map(g=>`<span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded-full border border-green-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 8 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-blue w-12 h-12 flex-shrink-0">
-                <i class="fas fa-school text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 8 di 9':'Card 8 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Scuola e Apprendimento':'School & Learning'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['libro','penna','disegnare','leggere','scrivere','bravo','finito'].map(g=>`<span class="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-200">${g}</span>`).join('')}
-            </div>
-          </div>
-          <!-- Scheda 9 -->
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="ic ic-sky w-12 h-12 flex-shrink-0">
-                <i class="fas fa-spa text-lg"></i>
-              </div>
-              <div>
-                <span class="text-xs font-semibold text-sky-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 9 di 9':'Card 9 of 9'}</span>
-                <h3 class="font-bold text-gray-800">${t.lang==='it'?'Igiene e Cura di Sé':'Hygiene & Self-Care'}</h3>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${['lavarsi','bagno','denti','vestirsi','pettinarsi','stanco','dolore'].map(g=>`<span class="bg-sky-50 text-sky-700 text-xs px-2 py-1 rounded-full border border-sky-200">${g}</span>`).join('')}
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/ambienti_direzioni_4.webp" type="image/webp"><img src="/images/maya/ambienti_direzioni_4.png" alt="${t.lang==='it'?'Gesto: Giù':'Gesture: Down'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Giù':'Down'}</p>
             </div>
           </div>
         </div>
+
+        <!-- Scheda 2: Risposte e Indicazioni -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-blue w-10 h-10 flex-shrink-0"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 2 di 9':'Card 2 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Risposte e Indicazioni':'Responses & Indications'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/risposte_indicazioni_1.webp" type="image/webp"><img src="/images/maya/risposte_indicazioni_1.png" alt="${t.lang==='it'?'Gesto: Sì':'Gesture: Yes'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="482"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Sì':'Yes'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/risposte_indicazioni_2.webp" type="image/webp"><img src="/images/maya/risposte_indicazioni_2.png" alt="${t.lang==='it'?'Gesto: No':'Gesture: No'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">No</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/risposte_indicazioni_3.webp" type="image/webp"><img src="/images/maya/risposte_indicazioni_3.png" alt="${t.lang==='it'?'Gesto: Aspetta':'Gesture: Wait'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Aspetta':'Wait'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/risposte_indicazioni_4.webp" type="image/webp"><img src="/images/maya/risposte_indicazioni_4.png" alt="${t.lang==='it'?'Gesto: Basta':'Gesture: Stop'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Basta':'Stop'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 3: Richieste -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-amber w-10 h-10 flex-shrink-0"><i class="fas fa-hand-holding"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 3 di 9':'Card 3 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Richieste':'Requests'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/richieste_1.webp" type="image/webp"><img src="/images/maya/richieste_1.png" alt="${t.lang==='it'?'Gesto: Dammi':'Gesture: Give me'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Dammi':'Give me'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/richieste_2.webp" type="image/webp"><img src="/images/maya/richieste_2.png" alt="${t.lang==='it'?'Gesto: Dammi il cinque':'Gesture: High five'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Dammi il cinque':'High five'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/richieste_3.webp" type="image/webp"><img src="/images/maya/richieste_3.png" alt="${t.lang==='it'?'Gesto: Vieni':'Gesture: Come'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Vieni':'Come'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 4: Persone e Relazioni -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-purple w-10 h-10 flex-shrink-0"><i class="fas fa-heart"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 4 di 9':'Card 4 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Persone e Relazioni':'People & Relationships'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/persone_relazioni_1.webp" type="image/webp"><img src="/images/maya/persone_relazioni_1.png" alt="${t.lang==='it'?'Gesto: Io':'Gesture: Me'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Io':'Me'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/persone_relazioni_2.webp" type="image/webp"><img src="/images/maya/persone_relazioni_2.png" alt="${t.lang==='it'?'Gesto: Tu':'Gesture: You'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Tu':'You'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/persone_relazioni_3.webp" type="image/webp"><img src="/images/maya/persone_relazioni_3.png" alt="${t.lang==='it'?'Gesto: Abbraccio':'Gesture: Hug'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Abbraccio':'Hug'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/persone_relazioni_4.webp" type="image/webp"><img src="/images/maya/persone_relazioni_4.png" alt="${t.lang==='it'?'Gesto: Bacio':'Gesture: Kiss'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="480"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Bacio':'Kiss'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 5: Emozioni e Conferme -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-purple w-10 h-10 flex-shrink-0"><i class="fas fa-smile"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-purple-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 5 di 9':'Card 5 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Emozioni e Conferme':'Emotions & Confirmations'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/emozioni_conferme_1.webp" type="image/webp"><img src="/images/maya/emozioni_conferme_1.png" alt="${t.lang==='it'?'Gesto: Tenerezza':'Gesture: Tenderness'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Tenerezza':'Tenderness'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/emozioni_conferme_2.webp" type="image/webp"><img src="/images/maya/emozioni_conferme_2.png" alt="${t.lang==='it'?'Gesto: Bravo':'Gesture: Well done'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Bravo':'Well done'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/emozioni_conferme_3.webp" type="image/webp"><img src="/images/maya/emozioni_conferme_3.png" alt="${t.lang==='it'?'Gesto: Bene':'Gesture: Good'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Bene':'Good'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/emozioni_conferme_4.webp" type="image/webp"><img src="/images/maya/emozioni_conferme_4.png" alt="Gesto: Ok" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="482"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">Ok</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 6: Bisogni e Alimentazione -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-amber w-10 h-10 flex-shrink-0"><i class="fas fa-utensils"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 6 di 9':'Card 6 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Bisogni e Alimentazione':'Needs & Nutrition'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/bisogni_alimentazione_1.webp" type="image/webp"><img src="/images/maya/bisogni_alimentazione_1.png" alt="${t.lang==='it'?'Gesto: Ho fame':'Gesture: I am hungry'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Ho fame':'I am hungry'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/bisogni_alimentazione_2.webp" type="image/webp"><img src="/images/maya/bisogni_alimentazione_2.png" alt="${t.lang==='it'?'Gesto: Mangiare':'Gesture: Eat'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Mangiare':'Eat'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/bisogni_alimentazione_3.webp" type="image/webp"><img src="/images/maya/bisogni_alimentazione_3.png" alt="${t.lang==='it'?'Gesto: Bere':'Gesture: Drink'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Bere':'Drink'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/bisogni_alimentazione_4.webp" type="image/webp"><img src="/images/maya/bisogni_alimentazione_4.png" alt="${t.lang==='it'?'Gesto: Buono':'Gesture: Good (taste)'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Buono':'Yummy'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 7: Cura Personale e Riposo -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-green w-10 h-10 flex-shrink-0"><i class="fas fa-bed"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-green-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 7 di 9':'Card 7 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Cura Personale e Riposo':'Personal Care & Rest'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/cura_riposo_1.webp" type="image/webp"><img src="/images/maya/cura_riposo_1.png" alt="${t.lang==='it'?'Gesto: Voglio dormire':'Gesture: I want to sleep'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Voglio dormire':'I want to sleep'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/cura_riposo_2.webp" type="image/webp"><img src="/images/maya/cura_riposo_2.png" alt="${t.lang==='it'?'Gesto: Fare la pipì':'Gesture: Toilet (pee)'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Fare la pipì':'Toilet'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/cura_riposo_3.webp" type="image/webp"><img src="/images/maya/cura_riposo_3.png" alt="${t.lang==='it'?'Gesto: Fare la cacca':'Gesture: Toilet (poo)'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Fare la cacca':'Potty'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/cura_riposo_4.webp" type="image/webp"><img src="/images/maya/cura_riposo_4.png" alt="${t.lang==='it'?'Gesto: Cambio':'Gesture: Change'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Cambio':'Change'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 8: Attenzione e Apprendimento -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-blue w-10 h-10 flex-shrink-0"><i class="fas fa-school"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 8 di 9':'Card 8 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Attenzione e Apprendimento':'Attention & Learning'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/attenzione_apprendimento_1.webp" type="image/webp"><img src="/images/maya/attenzione_apprendimento_1.png" alt="${t.lang==='it'?'Gesto: Zitto':'Gesture: Quiet'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Zitto':'Quiet'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/attenzione_apprendimento_2.webp" type="image/webp"><img src="/images/maya/attenzione_apprendimento_2.png" alt="${t.lang==='it'?'Gesto: Ascoltare':'Gesture: Listen'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="482"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Ascoltare':'Listen'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/attenzione_apprendimento_3.webp" type="image/webp"><img src="/images/maya/attenzione_apprendimento_3.png" alt="${t.lang==='it'?'Gesto: Vedere':'Gesture: Look'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Vedere':'Look'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/attenzione_apprendimento_4.webp" type="image/webp"><img src="/images/maya/attenzione_apprendimento_4.png" alt="${t.lang==='it'?'Gesto: Libro':'Gesture: Book'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Libro':'Book'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheda 9: Comunicazione Sociale -->
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="ic ic-sky w-10 h-10 flex-shrink-0"><i class="fas fa-comments"></i></div>
+            <div>
+              <span class="text-xs font-semibold text-sky-600 uppercase tracking-wide">${t.lang==='it'?'Scheda 9 di 9':'Card 9 of 9'}</span>
+              <h3 class="font-bold text-lg text-gray-800">${t.lang==='it'?'Comunicazione Sociale':'Social Communication'}</h3>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/comunicazione_sociale_1.webp" type="image/webp"><img src="/images/maya/comunicazione_sociale_1.png" alt="${t.lang==='it'?'Gesto: Ciao':'Gesture: Hello/Goodbye'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Ciao':'Hello'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/comunicazione_sociale_2.webp" type="image/webp"><img src="/images/maya/comunicazione_sociale_2.png" alt="${t.lang==='it'?'Gesto: Battere le mani':'Gesture: Clap hands'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Battere le mani':'Clap'}</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+              <picture><source srcset="/images/maya/comunicazione_sociale_3.webp" type="image/webp"><img src="/images/maya/comunicazione_sociale_3.png" alt="${t.lang==='it'?'Gesto: Cellulare':'Gesture: Phone'}" class="w-full h-auto" loading="lazy" decoding="async" width="440" height="481"></picture>
+              <p class="text-center text-xs font-semibold text-gray-600 py-2">${t.lang==='it'?'Cellulare':'Phone'}</p>
+            </div>
+          </div>
+        </div>
+
         <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800">
           <i class="fas fa-lightbulb mr-2 text-green-600"></i>
-          ${t.lang==='it'?'<strong>Fonte:</strong> Schede Maya per la scuola — sistema di gesti comunicativi CAA. I gesti possono essere usati singolarmente o combinati per formare messaggi più complessi. Consulta il logopedista o terapista occupazionale per personalizzare il sistema al tuo bambino.':'<strong>Source:</strong> Maya cards for school — CAA communicative gesture system. Gestures can be used individually or combined to form more complex messages. Consult a speech therapist or occupational therapist to personalise the system for your child.'}
+          ${t.lang==='it'?'<strong>Fonte:</strong> Schede per la scuola — sistema di gesti comunicativi CAA. I gesti possono essere usati singolarmente o combinati per formare messaggi più complessi. Consulta il logopedista o terapista occupazionale per personalizzare il sistema al tuo bambino.':'<strong>Source:</strong> Cards for school — CAA communicative gesture system. Gestures can be used individually or combined to form more complex messages. Consult a speech therapist or occupational therapist to personalise the system for your child.'}
         </div>
       </div>
 
@@ -6558,7 +6675,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260919-verifica-settembre-v1'
+  const _v = '20260919-gesti-comunicativi-immagini-v1'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
