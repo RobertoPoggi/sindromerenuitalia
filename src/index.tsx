@@ -2970,6 +2970,49 @@ function aboutPage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- ── Associazioni in Rete – Fondazione Telethon ── -->
+      <div class="mt-10 mb-8 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+        <!-- Header verde -->
+        <div class="px-6 py-3 text-center font-bold text-sm uppercase tracking-widest" style="background:#1a7f3c; color:#fff;">
+          ${t.lang==='it'?'La nostra associazione fa parte delle:':t.lang==='en'?'Our association is part of:':t.lang==='fr'?'Notre association fait partie des :':t.lang==='es'?'Nuestra asociación forma parte de:':'Unser Verband ist Teil von:'}
+        </div>
+        <!-- Body bianco: logo + testo -->
+        <div class="bg-white px-6 py-8 flex flex-col md:flex-row items-center gap-8">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center justify-center" style="min-width:220px">
+            <picture>
+              <source srcset="/images/associazioni_in_rete_telethon.webp" type="image/webp">
+              <img src="/images/associazioni_in_rete_telethon.png"
+                   alt="Associazioni in Rete – Fondazione Telethon"
+                   class="w-full h-auto"
+                   style="max-width:240px"
+                   loading="lazy" decoding="async" width="1024" height="461">
+            </picture>
+          </div>
+          <!-- Testo -->
+          <div class="flex-1 text-gray-700 text-sm leading-relaxed space-y-3">
+            ${t.lang==='it' ? `
+              <p>Il programma <strong>"Associazioni in Rete"</strong> di Fondazione Telethon riunisce le associazioni che rappresentano persone e famiglie con malattie genetiche rare, favorendo la collaborazione, lo scambio di esperienze e il dialogo con il mondo della ricerca.</p>
+              <p>Per <strong>Sindrome ReNU Italia APS</strong> far parte di questa rete è un'importante opportunità: ci permette di ricevere informazioni e supporto, partecipare a incontri ed eventi, confrontarci con altre associazioni e dare maggiore visibilità alla Sindrome ReNU4-2.</p>
+              <p>Per una realtà giovane come la nostra significa poter crescere, creare nuove collaborazioni e sentirsi parte di una rete autorevole, unita dall'obiettivo comune di sostenere le famiglie e promuovere la ricerca.</p>
+            ` : t.lang==='en' ? `
+              <p>The <strong>"Associazioni in Rete"</strong> programme by Fondazione Telethon brings together associations representing people and families affected by rare genetic diseases, fostering collaboration, the sharing of experiences and dialogue with the research community.</p>
+              <p>For <strong>Sindrome ReNU Italia APS</strong>, being part of this network is an important opportunity: it allows us to receive information and support, participate in meetings and events, exchange views with other associations and raise greater awareness of ReNU4-2 Syndrome.</p>
+              <p>For a young organisation like ours, it means growing, building new partnerships and feeling part of an authoritative network united by the shared goal of supporting families and promoting research.</p>
+            ` : `
+              <p>Le programme <strong>"Associazioni in Rete"</strong> de la Fondazione Telethon rassemble les associations représentant les personnes et familles atteintes de maladies génétiques rares, favorisant la collaboration, le partage d'expériences et le dialogue avec le monde de la recherche.</p>
+              <p>Pour <strong>Sindrome ReNU Italia APS</strong>, faire partie de ce réseau est une opportunité importante : cela nous permet de recevoir informations et soutien, de participer à des rencontres et événements, et de donner plus de visibilité au Syndrome ReNU4-2.</p>
+            `}
+            <a href="https://www.telethon.it/come-aiutare/associazioni-in-rete/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full mt-2"
+               style="background:#e8f5e9; color:#1a7f3c; border: 1px solid #a5d6a7">
+              <i class="fas fa-external-link-alt text-xs"></i>
+              ${t.lang==='it'?'Scopri il programma su Telethon.it':t.lang==='en'?'Learn more on Telethon.it':'En savoir plus sur Telethon.it'}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA buttons -->
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="/${t.lang}/diagnosis" class="btn-diagnosis inline-flex items-center gap-2 text-white font-bold px-7 py-4 rounded-full text-lg shadow-xl">
@@ -6675,7 +6718,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260919-gesti-comunicativi-immagini-v1'
+  const _v = '20260919-telethon-about-v1'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
