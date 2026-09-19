@@ -12,7 +12,7 @@ Research Partners: Tutti i ricercatori che hanno pubblicato su RNU4-2
 Families: Le famiglie italiane con Sindrome ReNU che ogni giorno combattono e ispirano
 
 /* SITE */
-Last update: 2026-08-26
+Last update: 2026-09-19
 Standards: HTML5, CSS3, WCAG 2.1 AA
 Software: Hono (TypeScript), Cloudflare Pages, D1 SQLite
 Language: Italian (primary), English, French, Spanish, German

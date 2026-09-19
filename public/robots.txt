@@ -1,6 +1,6 @@
 # robots.txt — Sindrome ReNU Italia APS
 # https://www.sindromerenu.it
-# Aggiornato: 2026-08-26
+# Aggiornato: 2026-09-19
 # Crawlers ammessi: tutti tranne motori russi/cinesi
 
 # ── Regola globale ─────────────────────────────────────────────────────────────

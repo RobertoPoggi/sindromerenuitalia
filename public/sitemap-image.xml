@@ -5,9 +5,10 @@
   <!-- ══════════════════════════════════════════════════
        Sindrome ReNU Italia APS — Image Sitemap
        Immagini principali del sito
-       Aggiornata: 2026-09-18
+       Aggiornata: 2026-09-19
        ══════════════════════════════════════════════════ -->
 
+  <!-- HOME -->
   <url>
     <loc>https://www.sindromerenu.it/it/home</loc>
     <image:image>
@@ -25,8 +26,14 @@
       <image:title>Famiglie italiane con Sindrome ReNU</image:title>
       <image:caption>Le famiglie italiane unite dall'associazione Sindrome ReNU Italia APS.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/renu_mappa_aggiornata.webp</image:loc>
+      <image:title>Centri di Riferimento ReNU nel Mondo — COE Network</image:title>
+      <image:caption>Mappa globale dei Centri di Riferimento per la Sindrome ReNU. ReNU Syndrome United sta costruendo una rete internazionale di centri medici specializzati.</image:caption>
+    </image:image>
   </url>
 
+  <!-- ABOUT / COS'È RENU -->
   <url>
     <loc>https://www.sindromerenu.it/it/about</loc>
     <image:image>
@@ -39,8 +46,14 @@
       <image:title>Epilessia nella Sindrome ReNU</image:title>
       <image:caption>L'epilessia è una delle manifestazioni principali della Sindrome RNU4-2.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/associazioni_in_rete_telethon.webp</image:loc>
+      <image:title>Associazioni in Rete – Fondazione Telethon</image:title>
+      <image:caption>Sindrome ReNU Italia APS è parte del programma Associazioni in Rete della Fondazione Telethon, che sostiene le associazioni di malattie rare in Italia.</image:caption>
+    </image:image>
   </url>
 
+  <!-- DIAGNOSI -->
   <url>
     <loc>https://www.sindromerenu.it/it/diagnosis</loc>
     <image:image>
@@ -50,6 +63,7 @@
     </image:image>
   </url>
 
+  <!-- TERAPIE / CAA -->
   <url>
     <loc>https://www.sindromerenu.it/it/therapies</loc>
     <image:image>
@@ -57,8 +71,39 @@
       <image:title>Terapia acquatica per bambini ReNU</image:title>
       <image:caption>La terapia acquatica è una delle terapie raccomandate per i bambini con Sindrome RNU4-2.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/emozioni_conferme_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Emozioni e Conferme</image:title>
+      <image:caption>Scheda CAA di gesti comunicativi per bambini con Sindrome ReNU: emozioni e conferme. Comunicazione Aumentativa Alternativa per RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/richieste_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Richieste</image:title>
+      <image:caption>Scheda CAA: gesti di richiesta per bambini non verbali con Sindrome RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/persone_relazioni_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Persone e Relazioni</image:title>
+      <image:caption>Scheda CAA: gesti per riconoscere persone e relazioni nei bambini con Sindrome RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/bisogni_alimentazione_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Bisogni e Alimentazione</image:title>
+      <image:caption>Scheda CAA: gesti per bisogni primari e alimentazione in bambini con RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/ambienti_direzioni_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Ambienti e Direzioni</image:title>
+      <image:caption>Scheda CAA: gesti per ambienti e orientamento spaziale in bambini con Sindrome RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/maya/comunicazione_sociale_1.webp</image:loc>
+      <image:title>CAA — Gesti comunicativi Sindrome ReNU: Comunicazione Sociale</image:title>
+      <image:caption>Scheda CAA: gesti di comunicazione sociale per bambini con Sindrome RNU4-2.</image:caption>
+    </image:image>
   </url>
 
+  <!-- RICERCA SCIENTIFICA -->
   <url>
     <loc>https://www.sindromerenu.it/it/research</loc>
     <image:image>
@@ -73,6 +118,7 @@
     </image:image>
   </url>
 
+  <!-- COMMUNITY -->
   <url>
     <loc>https://www.sindromerenu.it/it/community</loc>
     <image:image>
@@ -87,6 +133,7 @@
     </image:image>
   </url>
 
+  <!-- DONAZIONI -->
   <url>
     <loc>https://www.sindromerenu.it/it/donations</loc>
     <image:image>
@@ -101,12 +148,13 @@
     </image:image>
   </url>
 
+  <!-- EVENTI -->
   <url>
     <loc>https://www.sindromerenu.it/it/events</loc>
     <image:image>
       <image:loc>https://www.sindromerenu.it/images/evento_pomeriggio_insieme_2026.png</image:loc>
       <image:title>Un Pomeriggio Insieme — Incontro famiglie ReNU 2026</image:title>
-      <image:caption>Incontro tra famiglie italiane con Sindrome ReNU al Bosco Verticale di Milano, settembre 2026.</image:caption>
+      <image:caption>Incontro tra famiglie italiane con Sindrome ReNU al Bosco Verticale di Milano, 20 settembre 2026.</image:caption>
     </image:image>
   </url>
 
