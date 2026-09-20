@@ -4832,7 +4832,7 @@ function brochurePage(t: Record<string, string>): string {
               </a>
               <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
                     style="background:#dbeafe;color:#1d4ed8;">
-                <i class="fas fa-file-pdf"></i> PDF · 5,4 MB
+                <i class="fas fa-file-pdf"></i> PDF · 1,2 MB
               </span>
             </div>
           </div>
@@ -6832,7 +6832,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260920-welcome-kit-cover-v2'
+  const _v = '20260920-welcome-kit-compressed-v3'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
