@@ -4521,20 +4521,33 @@ function contactPage(t: Record<string, string>): string {
       </div>
 
       <!-- Welcome Kit Nuove Famiglie -->
-      <div class="card p-6 mb-8" style="background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:2px solid #7dd3fc;">
-        <div class="flex items-start gap-4">
-          <div class="ic flex-shrink-0" style="background:#0ea5e9;color:white;width:52px;height:52px;font-size:1.4rem;">
-            <i class="fas fa-gift"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-bold text-xl mb-1" style="color:#082050">
-              ${t.lang==='it'?'Kit di benvenuto per le nuove famiglie':
-                t.lang==='en'?'Welcome Kit for New Families':
-                t.lang==='fr'?'Kit de bienvenue pour les nouvelles familles':
-                t.lang==='es'?'Kit de bienvenida para nuevas familias':
-                'Willkommenspaket für neue Familien'}
-            </h3>
-            <p class="text-gray-600 text-sm mb-1 font-semibold">
+      <div class="card mb-8 overflow-hidden" style="background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:2px solid #7dd3fc;">
+        <div class="flex flex-col sm:flex-row">
+          <!-- Immagine copertina -->
+          <a href="/welcome-kit-renu.pdf" target="_blank" download class="sm:w-56 flex-shrink-0 block overflow-hidden">
+            <picture>
+              <source srcset="/images/welcome-kit-cover.webp" type="image/webp">
+              <img src="/images/welcome-kit-cover.jpg"
+                   alt="Kit di benvenuto – Insieme per conoscere"
+                   class="w-full h-48 sm:h-full object-cover hover:scale-105 transition-transform duration-300"
+                   loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <!-- Testo -->
+          <div class="flex-1 p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="ic flex-shrink-0" style="background:#0ea5e9;color:white;width:36px;height:36px;font-size:1rem;">
+                <i class="fas fa-gift"></i>
+              </div>
+              <h3 class="font-bold text-xl" style="color:#082050">
+                ${t.lang==='it'?'Kit di benvenuto per le nuove famiglie':
+                  t.lang==='en'?'Welcome Kit for New Families':
+                  t.lang==='fr'?'Kit de bienvenue pour les nouvelles familles':
+                  t.lang==='es'?'Kit de bienvenida para nuevas familias':
+                  'Willkommenspaket für neue Familien'}
+              </h3>
+            </div>
+            <p class="text-sky-700 text-sm mb-2 font-semibold">
               ${t.lang==='it'?'"Insieme per conoscere – Accoglienza nuove famiglie"':
                 t.lang==='en'?'"Together to learn – Welcome for new families"':
                 t.lang==='fr'?'"Ensemble pour apprendre – Accueil des nouvelles familles"':
@@ -4763,49 +4776,65 @@ function brochurePage(t: Record<string, string>): string {
     <div class="max-w-6xl mx-auto space-y-14">
 
       <!-- ═══ SEZIONE WELCOME KIT ═══ -->
-      <div class="rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-6 shadow-md"
+      <div class="rounded-2xl overflow-hidden shadow-lg"
            style="background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:2px solid #7dd3fc;">
-        <div class="flex-shrink-0 flex items-center justify-center rounded-2xl w-20 h-20 text-white text-3xl shadow"
-             style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
-          <i class="fas fa-gift"></i>
-        </div>
-        <div class="flex-1">
-          <h2 class="text-2xl font-extrabold mb-1" style="color:#082050">
-            ${isIt?'Kit di Benvenuto per le Nuove Famiglie':
-              t.lang==='en'?'Welcome Kit for New Families':
-              t.lang==='fr'?'Kit de bienvenue pour les nouvelles familles':
-              t.lang==='es'?'Kit de bienvenida para nuevas familias':
-              'Willkommenspaket für neue Familien'}
-          </h2>
-          <p class="text-sky-700 font-semibold text-sm mb-2">
-            ${isIt?'"Insieme per conoscere – Accoglienza nuove famiglie"':
-              t.lang==='en'?'"Together to learn – Welcome for new families"':
-              t.lang==='fr'?'"Ensemble pour apprendre – Accueil des nouvelles familles"':
-              t.lang==='es'?'"Juntos para conocer – Bienvenida a nuevas familias"':
-              '"Gemeinsam lernen – Willkommen für neue Familien"'}
-          </p>
-          <p class="text-gray-600 text-sm mb-5">
-            ${isIt?'Il documento che inviamo alle famiglie che ci contattano per la prima volta. Una guida pensata con cura per accompagnare chi inizia questo percorso: informazioni sulla sindrome, la nostra comunità, i primi passi utili e le storie di chi ci è già passato.':
-              t.lang==='en'?'The document we send to families contacting us for the first time. A carefully crafted guide with information on the syndrome, our community, the first useful steps, and stories from families who have been through it.':
-              t.lang==='fr'?'Le document que nous envoyons aux familles qui nous contactent pour la première fois. Un guide soigneusement conçu pour accompagner ceux qui commencent ce parcours.':
-              t.lang==='es'?'El documento que enviamos a las familias que nos contactan por primera vez. Una guía cuidadosamente diseñada con información sobre el síndrome y nuestra comunidad.':
-              'Das Dokument, das wir Familien schicken, die uns zum ersten Mal kontaktieren. Ein sorgfältig erstellter Leitfaden mit Informationen über das Syndrom und unsere Gemeinschaft.'}
-          </p>
-          <div class="flex flex-wrap gap-3 items-center">
-            <a href="/welcome-kit-renu.pdf" target="_blank" download
-               class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-all hover:scale-105 hover:shadow-lg"
-               style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
-              <i class="fas fa-download text-base"></i>
-              ${isIt?'Scarica il Kit di Benvenuto (PDF)':
-                t.lang==='en'?'Download Welcome Kit (PDF)':
-                t.lang==='fr'?'Télécharger le Kit de bienvenue (PDF)':
-                t.lang==='es'?'Descargar el Kit de bienvenida (PDF)':
-                'Willkommenspaket herunterladen (PDF)'}
-            </a>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
-                  style="background:#dbeafe;color:#1d4ed8;">
-              <i class="fas fa-file-pdf"></i> PDF · 5,4 MB
-            </span>
+        <div class="flex flex-col md:flex-row">
+          <!-- Immagine copertina -->
+          <a href="/welcome-kit-renu.pdf" target="_blank" download
+             class="md:w-72 flex-shrink-0 block overflow-hidden">
+            <picture>
+              <source srcset="/images/welcome-kit-cover.webp" type="image/webp">
+              <img src="/images/welcome-kit-cover.jpg"
+                   alt="Kit di benvenuto – Insieme per conoscere – Sindrome ReNU Italia"
+                   class="w-full h-56 md:h-full object-cover hover:scale-105 transition-transform duration-300"
+                   loading="lazy" decoding="async">
+            </picture>
+          </a>
+          <!-- Testo -->
+          <div class="flex-1 p-6 sm:p-8 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="flex-shrink-0 flex items-center justify-center rounded-xl w-12 h-12 text-white text-xl shadow"
+                   style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+                <i class="fas fa-gift"></i>
+              </div>
+              <h2 class="text-2xl font-extrabold" style="color:#082050">
+                ${isIt?'Kit di Benvenuto per le Nuove Famiglie':
+                  t.lang==='en'?'Welcome Kit for New Families':
+                  t.lang==='fr'?'Kit de bienvenue pour les nouvelles familles':
+                  t.lang==='es'?'Kit de bienvenida para nuevas familias':
+                  'Willkommenspaket für neue Familien'}
+              </h2>
+            </div>
+            <p class="text-sky-700 font-semibold text-sm mb-3">
+              ${isIt?'"Insieme per conoscere – Accoglienza nuove famiglie"':
+                t.lang==='en'?'"Together to learn – Welcome for new families"':
+                t.lang==='fr'?'"Ensemble pour apprendre – Accueil des nouvelles familles"':
+                t.lang==='es'?'"Juntos para conocer – Bienvenida a nuevas familias"':
+                '"Gemeinsam lernen – Willkommen für neue Familien"'}
+            </p>
+            <p class="text-gray-600 text-sm mb-6">
+              ${isIt?'Il documento che inviamo alle famiglie che ci contattano per la prima volta. Una guida pensata con cura per accompagnare chi inizia questo percorso: informazioni sulla sindrome, la nostra comunità, i primi passi utili e le storie di chi ci è già passato.':
+                t.lang==='en'?'The document we send to families contacting us for the first time. A carefully crafted guide with information on the syndrome, our community, the first useful steps, and stories from families who have been through it.':
+                t.lang==='fr'?'Le document que nous envoyons aux familles qui nous contactent pour la première fois. Un guide soigneusement conçu pour accompagner ceux qui commencent ce parcours.':
+                t.lang==='es'?'El documento que enviamos a las familias que nos contactan por primera vez. Una guía cuidadosamente diseñada con información sobre el síndrome y nuestra comunidad.':
+                'Das Dokument, das wir Familien schicken, die uns zum ersten Mal kontaktieren. Ein sorgfältig erstellter Leitfaden mit Informationen über das Syndrom und unsere Gemeinschaft.'}
+            </p>
+            <div class="flex flex-wrap gap-3 items-center">
+              <a href="/welcome-kit-renu.pdf" target="_blank" download
+                 class="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                 style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+                <i class="fas fa-download text-base"></i>
+                ${isIt?'Scarica il Kit di Benvenuto (PDF)':
+                  t.lang==='en'?'Download Welcome Kit (PDF)':
+                  t.lang==='fr'?'Télécharger le Kit de bienvenue (PDF)':
+                  t.lang==='es'?'Descargar el Kit de bienvenida (PDF)':
+                  'Willkommenspaket herunterladen (PDF)'}
+              </a>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+                    style="background:#dbeafe;color:#1d4ed8;">
+                <i class="fas fa-file-pdf"></i> PDF · 5,4 MB
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -6803,7 +6832,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260920-welcome-kit-v1'
+  const _v = '20260920-welcome-kit-cover-v2'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
