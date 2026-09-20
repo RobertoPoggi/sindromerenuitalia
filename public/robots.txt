@@ -1,6 +1,6 @@
 # robots.txt — Sindrome ReNU Italia APS
 # https://www.sindromerenu.it
-# Aggiornato: 2026-09-19
+# Aggiornato: 2026-09-20
 # Crawlers ammessi: tutti tranne motori russi/cinesi
 
 # ── Regola globale ─────────────────────────────────────────────────────────────
@@ -182,3 +182,8 @@ Disallow: /api/
 # ── Sitemap ───────────────────────────────────────────────────────────────────
 Sitemap: https://www.sindromerenu.it/sitemap.xml
 Sitemap: https://www.sindromerenu.it/sitemap-image.xml
+
+# ── Risorse audio e PDF (indicizzabili) ──────────────────────────────────────
+Allow: /audio/
+Allow: /welcome-kit-renu.pdf
+Allow: /images/

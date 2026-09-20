@@ -5,7 +5,7 @@
   <!-- ══════════════════════════════════════════════════
        Sindrome ReNU Italia APS — Image Sitemap
        Immagini principali del sito
-       Aggiornata: 2026-09-19
+       Aggiornata: 2026-09-20
        ══════════════════════════════════════════════════ -->
 
   <!-- HOME -->
@@ -137,14 +137,29 @@
   <url>
     <loc>https://www.sindromerenu.it/it/donations</loc>
     <image:image>
-      <image:loc>https://www.sindromerenu.it/images/festa.jpg</image:loc>
+      <image:loc>https://www.sindromerenu.it/images/renu_donations.webp</image:loc>
       <image:title>Sostieni Sindrome ReNU Italia — Dona</image:title>
+      <image:caption>Mani che tengono un cuore luminoso — simbolo di supporto e donazione per la ricerca sulla Sindrome ReNU.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/festa.jpg</image:loc>
+      <image:title>Evento Sindrome ReNU Italia — Sostieni la ricerca</image:title>
       <image:caption>Ogni donazione contribuisce alla ricerca e al supporto delle famiglie con Sindrome ReNU.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.sindromerenu.it/images/dynamo_maya.jpg</image:loc>
       <image:title>Move4ReNU — Raccolta fondi per la ricerca</image:title>
       <image:caption>La maratona Move4ReNU raccoglie fondi per la ricerca sulla Sindrome RNU4-2.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- COMMUNITY / AWARENESS -->
+  <url>
+    <loc>https://www.sindromerenu.it/it/community</loc>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/renu_awareness.webp</image:loc>
+      <image:title>Aumenta la Consapevolezza sulla Sindrome ReNU — DNA e ricerca</image:title>
+      <image:caption>Immagine simbolica di DNA con lente di ingrandimento per la sezione Aumenta la Consapevolezza di Sindrome ReNU Italia APS.</image:caption>
     </image:image>
   </url>
 
@@ -155,6 +170,36 @@
       <image:loc>https://www.sindromerenu.it/images/evento_pomeriggio_insieme_2026.png</image:loc>
       <image:title>Un Pomeriggio Insieme — Incontro famiglie ReNU 2026</image:title>
       <image:caption>Incontro tra famiglie italiane con Sindrome ReNU al Bosco Verticale di Milano, 20 settembre 2026.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- MEDIA & PUBBLICAZIONI — Canzoni e Kit Benvenuto -->
+  <url>
+    <loc>https://www.sindromerenu.it/it/brochure</loc>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/sguardi-di-renu-cover.webp</image:loc>
+      <image:title>Sguardi di ReNU — Canzone originale Sindrome ReNU Italia APS</image:title>
+      <image:caption>Copertina della canzone "Sguardi di ReNU", brano originale creato dall'Associazione Sindrome ReNU Italia APS per i bambini con Sindrome RNU4-2.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/parlano-gli-occhi-cover.webp</image:loc>
+      <image:title>Parlano gli Occhi — Canzone originale Sindrome ReNU Italia APS</image:title>
+      <image:caption>Copertina della canzone "Parlano gli Occhi", dedicata alla comunicazione non verbale dei bambini con Sindrome ReNU.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/welcome-kit-cover.webp</image:loc>
+      <image:title>Kit di Benvenuto — Insieme per conoscere, accoglienza nuove famiglie ReNU</image:title>
+      <image:caption>Copertina del documento "Insieme per conoscere – Accoglienza nuove famiglie", kit distribuito da Sindrome ReNU Italia APS alle famiglie con diagnosi recente.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- CONTATTI — Kit Benvenuto -->
+  <url>
+    <loc>https://www.sindromerenu.it/it/contact</loc>
+    <image:image>
+      <image:loc>https://www.sindromerenu.it/images/welcome-kit-cover.webp</image:loc>
+      <image:title>Kit di Benvenuto Sindrome ReNU Italia — Insieme per conoscere</image:title>
+      <image:caption>Il kit di benvenuto "Insieme per conoscere" è disponibile per il download dalla pagina Contatti di Sindrome ReNU Italia APS.</image:caption>
     </image:image>
   </url>
 

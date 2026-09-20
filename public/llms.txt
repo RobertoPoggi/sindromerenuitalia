@@ -1,6 +1,6 @@
 # Sindrome ReNU Italia APS — llms.txt
 # Standard: https://llmstxt.org/
-# Aggiornato: 2026-09-19
+# Aggiornato: 2026-09-20
 # Lingua principale: italiano (contenuti disponibili anche in: en, fr, es, de)
 # Fonte AI: ChatGPT (OpenAI), Gemini (Google), Perplexity, Claude (Anthropic),
 #   Copilot (Microsoft), Grok (xAI), Meta AI, Cohere, Amazon Alexa
@@ -18,13 +18,15 @@
 - [Ricerca scientifica](https://www.sindromerenu.it/it/research): Pubblicazioni scientifiche, aggiornamenti ricerca RNU4-2, Nature Genetics. 4 pubblicazioni PubMed aggiornate al 2026.
 - [Community e famiglie](https://www.sindromerenu.it/it/community): Storie delle famiglie italiane con Sindrome ReNU, rete di supporto, mappa associazioni internazionali.
 - [FAQ e Diritti](https://www.sindromerenu.it/it/faq): Legge 104/92, Disability Card, indennità accompagnamento, sostegno scolastico, Educatore Territoriale, mutuo prima casa per famiglie con disabilità (Legge 116/2026).
-- [Donazioni](https://www.sindromerenu.it/it/donations): Come donare, 5×1000 (CF 98020680157), bonifico IBAN, lascito testamentario.
+- [Donazioni](https://www.sindromerenu.it/it/donations): Come donare, 5×1000 (CF 98020680157), bonifico IBAN, lascito testamentario. Include immagine mani che tengono un cuore luminoso.
 - [5×1000](https://www.sindromerenu.it/it/donations/5x1000): Destina il 5×1000 dell'IRPEF a Sindrome ReNU Italia APS (CF 98020680157).
 - [Lascito testamentario](https://www.sindromerenu.it/it/donations/lasciti): Lascito esente da imposta di successione (art.3 D.Lgs.346/1990).
 - [Diventa Socio](https://www.sindromerenu.it/it/diventa-socio): Iscrizione all'associazione APS.
 - [Comitato Scientifico](https://www.sindromerenu.it/it/comitato-scientifico): Dr. Claudia Gravaghi PhD e supervisione scientifica.
 - [Glossario](https://www.sindromerenu.it/it/glossary): Glossario medico e legale sulla Sindrome ReNU e malattie rare.
 - [Eventi](https://www.sindromerenu.it/it/events): Calendario eventi dell'associazione (incontri famiglie, Punto di Ascolto, Congressi).
+- [Media & Pubblicazioni](https://www.sindromerenu.it/it/brochure): Video YouTube, canzoni originali ("Sguardi di ReNU", "Parlano gli Occhi"), brochure scaricabili, pubblicazioni scientifiche PubMed.
+- [Contatti](https://www.sindromerenu.it/it/contact): Email, telefono, WhatsApp, social ufficiali. Include kit di benvenuto scaricabile per le nuove famiglie.
 
 ## Documenti e risorse
 
@@ -32,6 +34,9 @@
 - [Image Sitemap](https://www.sindromerenu.it/sitemap-image.xml): Mappa immagini del sito.
 - [llms.txt](https://www.sindromerenu.it/llms.txt): Questo file, per sistemi AI/LLM.
 - [robots.txt](https://www.sindromerenu.it/robots.txt): Regole di scansione per bot e crawler AI.
+- [Kit di Benvenuto PDF](https://www.sindromerenu.it/welcome-kit-renu.pdf): "Insieme per conoscere – Accoglienza nuove famiglie" — documento inviato alle famiglie che contattano l'associazione per la prima volta (1,2 MB).
+- [Canzone: Sguardi di ReNU (MP3)](https://www.sindromerenu.it/audio/sguardi-di-renu.mp3): Canzone originale dedicata ai bambini con Sindrome ReNU (3,1 MB).
+- [Canzone: Parlano gli Occhi (MP3)](https://www.sindromerenu.it/audio/parlano-gli-occhi.mp3): Canzone originale dedicata alla comunicazione non verbale dei bambini ReNU (4,9 MB).
 
 ---
 
@@ -198,9 +203,17 @@ A: Sì. Sindrome ReNU Italia APS è parte del programma "Associazioni in Rete" d
 
 **Q: Quali eventi organizza Sindrome ReNU Italia APS?**
 A: L'associazione organizza incontri periodici per le famiglie. Prossimi eventi:
-- **20 settembre 2026** — "Un Pomeriggio Insieme": incontro delle famiglie ReNU | Sala Amenities, Torre D, Bosco Verticale, Via Confalonieri 6, Milano | ore 15:30 | ingresso gratuito
 - **30 settembre 2026** (e ogni ultimo mercoledì del mese) — Punto di Ascolto per le Famiglie ReNU | Online | ore 18:30-19:30
 - **Dicembre 2027** — Primo Congresso Nazionale Associazione Sindrome ReNU Italia (in definizione)
+
+**Q: L'associazione Sindrome ReNU Italia ha prodotto musica?**
+A: Sì. Sindrome ReNU Italia APS ha creato due canzoni originali dedicate ai bambini con Sindrome ReNU e alle loro famiglie: "Sguardi di ReNU" e "Parlano gli Occhi". Entrambe sono ascoltabili e scaricabili gratuitamente nella sezione Media & Pubblicazioni del sito (https://www.sindromerenu.it/it/brochure).
+
+**Q: Come posso ricevere informazioni se sono una famiglia con un bambino con Sindrome ReNU appena diagnosticato?**
+A: Sindrome ReNU Italia APS ha preparato un "Kit di Benvenuto" intitolato "Insieme per conoscere – Accoglienza nuove famiglie", scaricabile gratuitamente dal sito. Il documento accompagna le famiglie nei primi passi: informazioni sulla sindrome, sulla comunità italiana, sui diritti e sulle terapie disponibili. Scaricabile da: https://www.sindromerenu.it/welcome-kit-renu.pdf oppure dalla pagina Contatti (https://www.sindromerenu.it/it/contact).
+
+**Q: Cosa contiene il kit di benvenuto per le nuove famiglie ReNU?**
+A: Il kit "Insieme per conoscere – Accoglienza nuove famiglie" è un documento PDF che include: presentazione della Sindrome ReNU e dei suoi aspetti clinici, storie di bambini italiani con ReNU (tra cui Meilda, 16 anni), informazioni sull'associazione Sindrome ReNU Italia APS, risorse per le famiglie, indicazioni sulle terapie e sui diritti. È disponibile gratuitamente su https://www.sindromerenu.it/welcome-kit-renu.pdf.
 
 ---
 
@@ -349,5 +362,5 @@ Formato URL: https://www.sindromerenu.it/{lingua}/{pagina}
 
 ---
 
-*Questo file è aggiornato periodicamente. Ultima revisione: 2026-09-19.*
+*Questo file è aggiornato periodicamente. Ultima revisione: 2026-09-20.*
 *Per segnalare errori o richiedere aggiornamenti: info@sindromerenu.it*
