@@ -4839,6 +4839,139 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- ═══ SEZIONE CANZONI ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+            <i class="fas fa-music"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Le nostre Canzoni':t.lang==='en'?'Our Songs':t.lang==='fr'?'Nos Chansons':t.lang==='es'?'Nuestras Canciones':'Unsere Lieder'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Musica creata con il cuore per la comunità ReNU Italia':t.lang==='en'?'Music created with heart for the ReNU Italia community':t.lang==='fr'?'Musique créée avec le cœur pour la communauté ReNU':t.lang==='es'?'Música creada con el corazón para la comunidad ReNU':'Musik, die mit Herz für die ReNU-Gemeinschaft geschaffen wurde'}
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Canzone 1: Sguardi di ReNU -->
+          <div class="card overflow-hidden shadow-lg group">
+            <!-- Copertina -->
+            <div class="relative overflow-hidden" style="aspect-ratio:1/1;max-height:280px;">
+              <picture>
+                <source srcset="/images/sguardi-di-renu-cover.webp" type="image/webp">
+                <img src="/images/sguardi-di-renu-cover.jpg"
+                     alt="Sguardi di ReNU – copertina"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                     loading="lazy" decoding="async">
+              </picture>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style="background:rgba(124,58,237,0.35)">
+                <i class="fas fa-play-circle text-white text-6xl drop-shadow-lg"></i>
+              </div>
+              <div class="absolute top-3 left-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold text-white shadow"
+                      style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+                  <i class="fas fa-music mr-1"></i>${isIt?'Canzone':'Song'}
+                </span>
+              </div>
+            </div>
+            <!-- Info + Player -->
+            <div class="p-5">
+              <h3 class="text-xl font-extrabold mb-0.5" style="color:#082050">Sguardi di ReNU</h3>
+              <p class="text-purple-600 text-sm font-semibold mb-3">
+                ${isIt?'Sindrome ReNU Italia APS':'ReNU Italia APS'}
+              </p>
+              <p class="text-gray-500 text-xs mb-4">
+                ${isIt?'Una canzone che racconta la forza e la bellezza degli sguardi dei nostri bambini speciali.':
+                  t.lang==='en'?'A song that tells the strength and beauty of our special children\'s gazes.':
+                  t.lang==='fr'?'Une chanson qui raconte la force et la beauté des regards de nos enfants spéciaux.':
+                  t.lang==='es'?'Una canción que cuenta la fuerza y la belleza de las miradas de nuestros niños especiales.':
+                  'Ein Lied, das die Kraft und Schönheit der Blicke unserer besonderen Kinder erzählt.'}
+              </p>
+              <!-- Player HTML5 -->
+              <audio id="player-sguardi" controls preload="none"
+                     class="w-full mb-4 rounded-lg"
+                     style="accent-color:#7c3aed;">
+                <source src="/audio/sguardi-di-renu.mp3" type="audio/mpeg">
+              </audio>
+              <div class="flex flex-wrap gap-3">
+                <a href="/audio/sguardi-di-renu.mp3" download="Sguardi di ReNU.mp3"
+                   class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-xs font-bold shadow transition-all hover:scale-105"
+                   style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+                  <i class="fas fa-download"></i>
+                  ${isIt?'Scarica MP3':'Download MP3'}
+                </a>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+                      style="background:#f3e8ff;color:#7c3aed;">
+                  <i class="fas fa-file-audio"></i> MP3 · 3,1 MB
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canzone 2: Parlano gli Occhi -->
+          <div class="card overflow-hidden shadow-lg group">
+            <!-- Copertina -->
+            <div class="relative overflow-hidden" style="aspect-ratio:1/1;max-height:280px;">
+              <picture>
+                <source srcset="/images/parlano-gli-occhi-cover.webp" type="image/webp">
+                <img src="/images/parlano-gli-occhi-cover.jpg"
+                     alt="Parlano gli Occhi – copertina"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                     loading="lazy" decoding="async">
+              </picture>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style="background:rgba(14,165,233,0.35)">
+                <i class="fas fa-play-circle text-white text-6xl drop-shadow-lg"></i>
+              </div>
+              <div class="absolute top-3 left-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold text-white shadow"
+                      style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
+                  <i class="fas fa-music mr-1"></i>${isIt?'Canzone':'Song'}
+                </span>
+              </div>
+            </div>
+            <!-- Info + Player -->
+            <div class="p-5">
+              <h3 class="text-xl font-extrabold mb-0.5" style="color:#082050">Parlano gli Occhi</h3>
+              <p class="text-sky-600 text-sm font-semibold mb-3">
+                ${isIt?'Sindrome ReNU Italia APS':'ReNU Italia APS'}
+              </p>
+              <p class="text-gray-500 text-xs mb-4">
+                ${isIt?'Un brano dedicato agli occhi che parlano per chi non ha ancora trovato le parole.':
+                  t.lang==='en'?'A track dedicated to the eyes that speak for those who have not yet found words.':
+                  t.lang==='fr'?'Un morceau dédié aux yeux qui parlent pour ceux qui n\'ont pas encore trouvé les mots.':
+                  t.lang==='es'?'Una canción dedicada a los ojos que hablan por quienes aún no han encontrado las palabras.':
+                  'Ein Stück für die Augen, die für jene sprechen, die noch keine Worte gefunden haben.'}
+              </p>
+              <!-- Player HTML5 -->
+              <audio id="player-parlano" controls preload="none"
+                     class="w-full mb-4 rounded-lg"
+                     style="accent-color:#0369a1;">
+                <source src="/audio/parlano-gli-occhi.mp3" type="audio/mpeg">
+              </audio>
+              <div class="flex flex-wrap gap-3">
+                <a href="/audio/parlano-gli-occhi.mp3" download="Parlano gli Occhi.mp3"
+                   class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-xs font-bold shadow transition-all hover:scale-105"
+                   style="background:linear-gradient(135deg,#0369a1,#0ea5e9)">
+                  <i class="fas fa-download"></i>
+                  ${isIt?'Scarica MP3':'Download MP3'}
+                </a>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
+                      style="background:#e0f2fe;color:#0369a1;">
+                  <i class="fas fa-file-audio"></i> MP3 · 4,9 MB
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- fine grid -->
+      </div><!-- fine sezione canzoni -->
+
       <!-- ═══ SEZIONE 0: VIDEO YOUTUBE ═══ -->
       <div>
         <div class="flex items-center gap-3 mb-8">
@@ -6832,7 +6965,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260920-welcome-kit-compressed-v3'
+  const _v = '20260920-canzoni-renu-v4'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
