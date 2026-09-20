@@ -2241,10 +2241,11 @@ ${hreflangs}
         <p class="text-sky-400 text-xs mt-1"><i class="fas fa-map-marker-alt mr-1"></i>Via Marina 6, 20121 Milano (MI)</p>
         <p class="text-sky-400 text-xs mt-0.5"><i class="fas fa-receipt mr-1"></i>P.IVA / C.F.: 98020680157</p>
         <div class="flex gap-3 mt-4">
-          <a href="https://www.youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-xl" aria-hidden="true"></i></a>
-          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook (profilo): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
-          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook (pagina): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
+          <a href="https://youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook profilo: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook pagina: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook-square text-xl" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
+          <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank" rel="noopener" aria-label="WhatsApp community: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-whatsapp text-xl" aria-hidden="true"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -4692,10 +4693,11 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
         </div>
         <div class="flex gap-4 mt-5">
-          <a href="https://www.youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl" aria-hidden="true"></i></a>
-          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook (profilo): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl" aria-hidden="true"></i></a>
-          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook (pagina): Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl" aria-hidden="true"></i></a>
+          <a href="https://youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1JJ787h377/" target="_blank" rel="noopener" aria-label="Facebook profilo: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook pagina: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook-square text-2xl" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl" aria-hidden="true"></i></a>
+          <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank" rel="noopener" aria-label="WhatsApp community: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" rel="noopener" aria-label="Sito internazionale ReNU Syndrome" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl" aria-hidden="true"></i></a>
         </div>
       </div>
