@@ -3322,15 +3322,11 @@ function therapiesPage(t: Record<string, string>): string {
       <!-- Esempi di Gesti Comunicativi - 9 schede con immagini -->
       <div class="mt-14">
         <div class="text-center mb-8">
-          <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-3">
-            <i class="fas fa-hand-paper"></i>
-            ${t.lang==='it'?'Strumento CAA':'AAC Tool'}
-          </span>
           <h2 class="text-2xl font-bold text-gray-800 mb-2">
             ${t.lang==='it'?'Esempi di Gesti Comunicativi':'Examples of Communicative Gestures'}
           </h2>
           <p class="text-gray-600 max-w-2xl mx-auto text-sm">
-            ${t.lang==='it'?'Un sistema visivo di gesti comunicativi immediati, utilizzato nella Comunicazione Aumentativa Alternativa (CAA) per bambini e ragazzi con difficoltà di linguaggio verbale. Le 9 schede coprono le aree principali della comunicazione quotidiana.':'A visual system of immediate communicative gestures, used in Augmentative and Alternative Communication (AAC) for children and young people with verbal language difficulties. The 9 cards cover the main areas of daily communication.'}
+            ${t.lang==='it'?'I gesti rappresentano un modo naturale, immediato e accessibile per aiutare i bambini non verbali a esprimere bisogni, emozioni e desideri. Attraverso gesti semplici e comprensibili a tutti la comunicazione diventa più facile e favorisce una maggiore partecipazione nella vita quotidiana. In queste schede proponiamo alcuni esempi.':'Gestures are a natural, immediate and accessible way to help non-verbal children express their needs, emotions and desires. Through simple gestures that everyone can understand, communication becomes easier and encourages greater participation in daily life. In these cards we offer some examples.'}
           </p>
         </div>
 
@@ -3587,10 +3583,7 @@ function therapiesPage(t: Record<string, string>): string {
           </div>
         </div>
 
-        <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800">
-          <i class="fas fa-lightbulb mr-2 text-green-600"></i>
-          ${t.lang==='it'?'<strong>Fonte:</strong> Schede per la scuola — sistema di gesti comunicativi CAA. I gesti possono essere usati singolarmente o combinati per formare messaggi più complessi. Consulta il logopedista o terapista occupazionale per personalizzare il sistema al tuo bambino.':'<strong>Source:</strong> Cards for school — CAA communicative gesture system. Gestures can be used individually or combined to form more complex messages. Consult a speech therapist or occupational therapist to personalise the system for your child.'}
-        </div>
+
       </div>
 
       <!-- CTA Diritti e Tutele -->
