@@ -5077,58 +5077,7 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- ═══ SEZIONE 3: MATERIALI DI PROGETTO ═══ -->
-      <div>
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#7350a4">
-            <i class="fas fa-hands-helping"></i>
-          </div>
-          <div>
-            <h2 class="text-2xl font-extrabold" style="color:#082050">
-              ${isIt?'Materiali di Progetto':t.lang==='en'?'Project Materials':t.lang==='fr'?'Matériaux de Projet':t.lang==='es'?'Materiales de Proyecto':'Projektmaterialien'}
-            </h2>
-            <p class="text-gray-500 text-sm">
-              ${isIt?'Opuscoli e risorse scaricabili relativi ai progetti e alle iniziative di Sindrome ReNU Italia APS':t.lang==='en'?'Downloadable brochures and resources for ReNU Syndrome Italy APS projects and initiatives':'Brochures et ressources téléchargeables relatives aux projets de l\'association'}
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- Rete del Tempo – ReNU -->
-          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #7350a4">
-            <div class="w-full overflow-hidden flex items-center justify-center bg-white" style="aspect-ratio:4/3;background:linear-gradient(135deg,#ece4fa 0%,#f5f3ff 100%)">
-              <div class="flex flex-col items-center justify-center gap-2 p-6 text-center">
-                <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-md" style="background:linear-gradient(135deg,#142f60,#7350a4)">
-                  <i class="fas fa-hands-helping text-white text-2xl"></i>
-                </div>
-                <span class="text-xs font-bold uppercase tracking-widest" style="color:#7350a4">Rete del Tempo – ReNU</span>
-              </div>
-            </div>
-            <div class="p-4 flex-1 flex flex-col">
-              <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:#7350a4">
-                ${isIt?'Progetto sollievo':'Relief project'}
-              </p>
-              <h3 class="font-bold mb-2 text-sm leading-snug flex-1" style="color:#082050">
-                ${isIt?'Rete del Tempo – ReNU':'Rete del Tempo – ReNU'}
-              </h3>
-              <p class="text-xs text-gray-500 mb-3">
-                ${isIt
-                  ? 'Opuscolo informativo sul progetto: tempo libero, sollievo alla famiglia e assistenza domiciliare. Tutti i servizi sono gratuiti per le famiglie.'
-                  : 'Informational brochure about the project: free time activities, family relief and home care. All services are free for families.'}
-              </p>
-              <a href="/rete-del-tempo-renu.pdf" target="_blank" rel="noopener" download
-                 class="mt-auto inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold"
-                 style="background:#7350a4">
-                <i class="fas fa-download"></i>
-                ${isIt?'Scarica PDF':'Download PDF'}
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ═══ SEZIONE 4: OPUSCOLI EDUCATIVI SCOLASTICI ═══ -->
+      <!-- ═══ SEZIONE 3: OPUSCOLI EDUCATIVI SCOLASTICI ═══ -->
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#059669">
@@ -7128,7 +7077,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-calendario-v9'
+  const _v = '20260921-rm-materiali-progetto-v10'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
