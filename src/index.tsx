@@ -5077,7 +5077,58 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- ═══ SEZIONE 3: OPUSCOLI EDUCATIVI SCOLASTICI ═══ -->
+      <!-- ═══ SEZIONE 3: MATERIALI DI PROGETTO ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#7350a4">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Materiali di Progetto':t.lang==='en'?'Project Materials':t.lang==='fr'?'Matériaux de Projet':t.lang==='es'?'Materiales de Proyecto':'Projektmaterialien'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Opuscoli e risorse scaricabili relativi ai progetti e alle iniziative di Sindrome ReNU Italia APS':t.lang==='en'?'Downloadable brochures and resources for ReNU Syndrome Italy APS projects and initiatives':'Brochures et ressources téléchargeables relatives aux projets de l\'association'}
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Rete del Tempo – ReNU -->
+          <div class="card overflow-hidden flex flex-col" style="border-top:4px solid #7350a4">
+            <div class="w-full overflow-hidden flex items-center justify-center bg-white" style="aspect-ratio:4/3;background:linear-gradient(135deg,#ece4fa 0%,#f5f3ff 100%)">
+              <div class="flex flex-col items-center justify-center gap-2 p-6 text-center">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-md" style="background:linear-gradient(135deg,#142f60,#7350a4)">
+                  <i class="fas fa-hands-helping text-white text-2xl"></i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-widest" style="color:#7350a4">Rete del Tempo – ReNU</span>
+              </div>
+            </div>
+            <div class="p-4 flex-1 flex flex-col">
+              <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:#7350a4">
+                ${isIt?'Progetto sollievo':'Relief project'}
+              </p>
+              <h3 class="font-bold mb-2 text-sm leading-snug flex-1" style="color:#082050">
+                ${isIt?'Rete del Tempo – ReNU':'Rete del Tempo – ReNU'}
+              </h3>
+              <p class="text-xs text-gray-500 mb-3">
+                ${isIt
+                  ? 'Opuscolo informativo sul progetto: tempo libero, sollievo alla famiglia e assistenza domiciliare. Tutti i servizi sono gratuiti per le famiglie.'
+                  : 'Informational brochure about the project: free time activities, family relief and home care. All services are free for families.'}
+              </p>
+              <a href="/rete-del-tempo-renu.pdf" target="_blank" rel="noopener" download
+                 class="mt-auto inline-flex items-center justify-center gap-2 text-white px-4 py-2.5 rounded-lg text-sm font-semibold"
+                 style="background:#7350a4">
+                <i class="fas fa-download"></i>
+                ${isIt?'Scarica PDF':'Download PDF'}
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ SEZIONE 4: OPUSCOLI EDUCATIVI SCOLASTICI ═══ -->
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#059669">
@@ -5171,7 +5222,7 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
-      <!-- ═══ SEZIONE 4: LIBRI AMAZON ═══ -->
+      <!-- ═══ SEZIONE 5: LIBRI AMAZON ═══ -->
       <div>
         <div class="flex items-center gap-3 mb-8">
           <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:#FF9900">
@@ -5701,6 +5752,7 @@ function projectsPage(t: Record<string, string>): string {
 
         <!-- RETE DEL TEMPO -->
         <div class="card p-0 overflow-hidden">
+          <!-- Header card -->
           <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
             <div class="flex-shrink-0">
               <div class="ic ic-green w-16 h-16">
@@ -5710,20 +5762,130 @@ function projectsPage(t: Record<string, string>): string {
             <div class="flex-1">
               <div class="flex flex-wrap items-center gap-3 mb-2">
                 <h3 class="font-extrabold text-xl" style="color:#082050">
-                  ${isIt?'Rete del Tempo – Banca del Tempo ReNU':'Time Network – ReNU Time Bank'}
+                  ${isIt?'Rete del Tempo – ReNU':'Time Network – ReNU'}
                 </h3>
                 <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#D1FAE5;color:#059669">
                   <i class="fas fa-circle text-xs"></i>${isIt?'In sviluppo':'In development'}
                 </span>
+                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0">
+                  <i class="fas fa-tag text-xs"></i>${isIt?'progetto sollievo':'relief project'}
+                </span>
               </div>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                ${isIt?'Viene supportata da Associazioni radicate sul territorio che reperiscono personale, lo formano e lo sensibilizzano. Nasce per creare una rete concreta di vicinanza e supporto alle famiglie, attraverso piccoli gesti capaci di fare una grande differenza. Chiediamo a volontari e volontarie di dedicare almeno due ore al mese del proprio tempo, scegliendo liberamente come aiutare una famiglia: accompagnamenti, aiuto compiti, tempo condiviso, piccole commissioni o momenti di sollievo per i genitori.':'Supported by local organisations that recruit, train and raise awareness among volunteers. Born to create a concrete network of closeness and support for families, through small gestures capable of making a great difference. We ask volunteers to dedicate at least two hours a month of their time, freely choosing how to help a family: accompaniments, homework help, shared time, small errands or moments of relief for parents.'}
+              <p class="text-gray-600 leading-relaxed mb-3">
+                ${isIt
+                  ? 'Con Rete del Tempo – ReNU vogliamo offrire ai ragazzi occasioni di socialità e alle loro famiglie un aiuto concreto. Il progetto si sviluppa in tre ambiti, grazie alla collaborazione con realtà già presenti sul territorio.'
+                  : 'With Rete del Tempo – ReNU we aim to offer young people opportunities for socialisation and concrete support to their families. The project develops across three areas, thanks to collaboration with organisations already active in local communities.'}
               </p>
-              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
-                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
-                <i class="fas fa-envelope"></i>${isIt?'Partecipa alla rete':'Join the network'}
-              </a>
             </div>
+          </div>
+
+          <!-- 3 schede progetto -->
+          <div class="px-7 pb-2">
+            <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#7350a4">
+              <i class="fas fa-layer-group mr-1"></i>${isIt?'Il progetto in tre ambiti':'Three project areas'}
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+
+              <!-- 01 Tempo libero -->
+              <div class="rounded-2xl p-5" style="background:#fff;border:1px solid #e7e5f3;box-shadow:0 4px 16px rgba(30,48,100,.06)">
+                <div class="inline-grid place-items-center w-10 h-10 rounded-xl mb-3 text-sm font-black" style="background:#ece4fa;color:#7350a4">01</div>
+                <h4 class="font-bold mb-2" style="color:#142f60;font-size:1.05rem">
+                  ${isIt?'Tempo libero':'Free time'}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed mb-2">
+                  ${isIt
+                    ? 'Uscite e attività di socializzazione pensate per offrire ai ragazzi nuove esperienze e occasioni di incontro.'
+                    : 'Outings and socialisation activities designed to give young people new experiences and opportunities to connect.'}
+                </p>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                  ${isIt
+                    ? 'Le attività sono organizzate da associazioni locali, anche con il contributo di volontari da loro coordinati.'
+                    : 'Activities are organised by local associations, including with the contribution of volunteers they coordinate.'}
+                </p>
+              </div>
+
+              <!-- 02 Sollievo alla famiglia -->
+              <div class="rounded-2xl p-5" style="background:#fff;border:1px solid #e7e5f3;box-shadow:0 4px 16px rgba(30,48,100,.06)">
+                <div class="inline-grid place-items-center w-10 h-10 rounded-xl mb-3 text-sm font-black" style="background:#ece4fa;color:#7350a4">02</div>
+                <h4 class="font-bold mb-2" style="color:#142f60;font-size:1.05rem">
+                  ${isIt?'Sollievo alla famiglia':'Family relief'}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed mb-2">
+                  ${isIt
+                    ? 'Qualche ora di supporto a casa, con una persona di fiducia, per permettere ai genitori di riposare, occuparsi di un impegno o dedicare del tempo a sé.'
+                    : 'A few hours of support at home, with a trusted person, to allow parents to rest, attend to other commitments, or take time for themselves.'}
+                </p>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                  ${isIt
+                    ? 'Il servizio è svolto da cooperative e associazioni del territorio, anche su base volontaria sotto il loro coordinamento.'
+                    : 'The service is carried out by local cooperatives and associations, including on a voluntary basis under their coordination.'}
+                </p>
+              </div>
+
+              <!-- 03 Assistenza domiciliare -->
+              <div class="rounded-2xl p-5" style="background:#fff;border:1px solid #e7e5f3;box-shadow:0 4px 16px rgba(30,48,100,.06)">
+                <div class="inline-grid place-items-center w-10 h-10 rounded-xl mb-3 text-sm font-black" style="background:#ece4fa;color:#7350a4">03</div>
+                <h4 class="font-bold mb-2" style="color:#142f60;font-size:1.05rem">
+                  ${isIt?'Assistenza domiciliare':'Home care'}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed mb-2">
+                  ${isIt
+                    ? 'Un aiuto a casa, definito in base alle esigenze della persona e della famiglia. Quando necessario, può comprendere anche assistenza sanitaria prestata da personale qualificato.'
+                    : 'Support at home, defined according to the needs of the individual and the family. Where necessary, it may also include healthcare provided by qualified staff.'}
+                </p>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                  ${isIt
+                    ? 'Il servizio è svolto da cooperative qualificate del territorio.'
+                    : 'The service is carried out by qualified local cooperatives.'}
+                </p>
+              </div>
+            </div>
+
+            <!-- Box evidenza: servizi gratuiti -->
+            <div class="rounded-r-2xl mb-5 px-5 py-4" style="background:#eae4f7;border-left:5px solid #7350a4">
+              <p class="text-sm leading-relaxed" style="color:#25344e">
+                <strong style="color:#142f60">${isIt?'Tutti i servizi sono gratuiti per le famiglie.':'All services are free of charge for families.'}</strong>
+                ${isIt
+                  ? ' Ci appoggiamo a cooperative e associazioni già attive sul territorio, che organizzano e svolgono le attività. La nostra associazione sostiene interamente i costi dei servizi.'
+                  : ' We rely on cooperatives and associations already active locally, who organise and deliver the activities. Our association covers all service costs in full.'}
+              </p>
+            </div>
+
+            <!-- Sezione finale: rete in crescita + invito -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div>
+                <h4 class="font-bold mb-2" style="color:#142f60;font-size:1.05rem">
+                  <i class="fas fa-network-wired mr-2 text-green-600"></i>${isIt?'Una rete in crescita':'A growing network'}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  ${isIt
+                    ? 'Stiamo costruendo la Rete nelle città in cui vivono i nostri ragazzi. La disponibilità dei singoli servizi dipenderà dalle collaborazioni attivate in ciascun territorio.'
+                    : 'We are building the Network in the cities where our young people live. The availability of individual services will depend on the partnerships established in each area.'}
+                </p>
+              </div>
+              <div class="rounded-2xl p-4" style="background:#fff;border:1px solid #dcd5ee">
+                <h4 class="font-bold mb-2" style="color:#142f60;font-size:1.05rem">
+                  <i class="fas fa-seedling mr-2 text-purple-600"></i>${isIt?'Aiutateci a far crescere la Rete':'Help us grow the Network'}
+                </h4>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  ${isIt
+                    ? 'Se conoscete un\'associazione o una cooperativa affidabile nella vostra zona che potrebbe collaborare al progetto, condividete con noi i suoi contatti.'
+                    : 'If you know a reliable association or cooperative in your area that could collaborate on the project, share their contact details with us.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA footer card -->
+          <div class="px-7 pb-6 flex flex-wrap gap-3">
+            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
+              <i class="fas fa-envelope"></i>${isIt?'Partecipa alla rete':'Join the network'}
+            </a>
+            <a href="/rete-del-tempo-renu.pdf" target="_blank" download
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#F0FDF4;color:#166534;border:1px solid #86EFAC">
+              <i class="fas fa-file-pdf"></i>${isIt?'Scarica l\'opuscolo PDF':'Download PDF brochure'}
+            </a>
           </div>
         </div>
 
@@ -6965,7 +7127,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260920-seo-aeo-geo-v5'
+  const _v = '20260921-rete-del-tempo-v6'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
