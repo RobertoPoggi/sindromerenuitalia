@@ -5443,7 +5443,7 @@ function eventsPage(t: Record<string, string>): string {
       <!-- Prossimi eventi – caricati dal DB -->
       <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-2" style="color:#082050">
         <i class="fas fa-star" style="color:#F59E0B"></i>
-        ${t.lang==='it'?'Prossimi Appuntamenti':'Upcoming Events'}
+        ${t.lang==='it'?'Calendario Appuntamenti':'Events Calendar'}
       </h2>
       <div id="eventi-list">
         <div class="text-center py-10 text-gray-400">
@@ -7128,7 +7128,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-eventi-collage-v8'
+  const _v = '20260921-calendario-v9'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
