@@ -5582,7 +5582,7 @@ function eventsPage(t: Record<string, string>): string {
         </h2>
         <div class="card overflow-hidden">
           <!-- Immagine informativa Dynamo -->
-          <div class="w-full overflow-hidden" style="max-height:320px">
+          <div class="w-full overflow-hidden">
             <img src="/images/dynamo_informativa.jpg"
                  alt="Dynamo Camp informativa"
                  class="w-full h-auto object-contain bg-white"
@@ -7083,7 +7083,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-titolo-incontro-v11'
+  const _v = '20260921-dynamo-fix-v12'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
