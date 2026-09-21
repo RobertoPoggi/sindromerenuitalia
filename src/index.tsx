@@ -5449,6 +5449,12 @@ function eventsPage(t: Record<string, string>): string {
       </script>
 
       <!-- COLLAGE INCONTRO FAMIGLIE 20 SETTEMBRE 2026 -->
+      <div class="flex items-center gap-3 mb-4 mt-4">
+        <img src="/images/logo_transparent.webp" alt="Sindrome ReNU Italia APS" class="w-10 h-10 object-contain flex-shrink-0" loading="lazy">
+        <h2 class="text-2xl font-extrabold" style="color:#082050">
+          ${t.lang==='it'?'Incontro delle Famiglie ReNU':'ReNU Families Meeting'}
+        </h2>
+      </div>
       <div class="rounded-2xl overflow-hidden mb-10 shadow-lg">
         <picture>
           <source srcset="/images/incontro_famiglie_renu_20set2026_collage.webp" type="image/webp">
@@ -7077,7 +7083,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-rm-materiali-progetto-v10'
+  const _v = '20260921-titolo-incontro-v11'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
