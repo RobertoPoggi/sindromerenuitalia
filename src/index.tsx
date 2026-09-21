@@ -5445,16 +5445,6 @@ function eventsPage(t: Record<string, string>): string {
         <i class="fas fa-star" style="color:#F59E0B"></i>
         ${t.lang==='it'?'Prossimi Appuntamenti':'Upcoming Events'}
       </h2>
-      <!-- Banner prossimi eventi -->
-      <div class="rounded-2xl overflow-hidden mb-6">
-        <picture>
-          <source srcset="/images/sezione_prossimi_eventi.webp" type="image/webp">
-          <img src="/images/sezione_prossimi_eventi.png"
-               alt="${t.lang==='it'?'Prossimi eventi Sindrome ReNU Italia':'Upcoming events Sindrome ReNU Italia'}"
-               class="w-full h-auto object-contain"
-               loading="lazy" decoding="async" width="900" height="900">
-        </picture>
-      </div>
       <div id="eventi-list">
         <div class="text-center py-10 text-gray-400">
           <i class="fas fa-spinner fa-spin text-3xl mb-3 block"></i>
@@ -5508,6 +5498,17 @@ function eventsPage(t: Record<string, string>): string {
           });
       })();
       </script>
+
+      <!-- COLLAGE INCONTRO FAMIGLIE 20 SETTEMBRE 2026 -->
+      <div class="rounded-2xl overflow-hidden mb-10 shadow-lg">
+        <picture>
+          <source srcset="/images/incontro_famiglie_renu_20set2026_collage.webp" type="image/webp">
+          <img src="/images/incontro_famiglie_renu_20set2026_collage.jpg"
+               alt="${t.lang==='it'?'Incontro delle Famiglie ReNU – 20 settembre 2026, Bosco Verticale Milano':'ReNU Families Meeting – 20 September 2026, Bosco Verticale Milan'}"
+               class="w-full h-auto object-cover"
+               loading="lazy" decoding="async" width="1200" height="1200">
+        </picture>
+      </div>
 
       <!-- MOVE4RENU INTERNAZIONALE -->
       <div class="mt-12 mb-6">
@@ -7127,7 +7128,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-evento-foto-v7'
+  const _v = '20260921-eventi-collage-v8'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
