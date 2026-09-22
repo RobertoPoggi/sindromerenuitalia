@@ -6045,6 +6045,16 @@ function membersPage(t: Record<string, string>): string {
             <input type="email" name="email" required placeholder="${t.lang==='it'?'La tua email':'Your email'}"
                    class="w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sky-400" style="border-color:#C8E8F8">
           </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" style="color:#082050">
+              ${t.lang==='it'?'Codice Fiscale *':'Tax Code (Codice Fiscale) *'}
+            </label>
+            <input type="text" name="codice_fiscale" required placeholder="${t.lang==='it'?'Es. RSSMRA80A01H501U':'e.g. RSSMRA80A01H501U'}"
+                   maxlength="16" style="text-transform:uppercase;border-color:#C8E8F8"
+                   class="w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sky-400 tracking-widest font-mono"
+                   oninput="this.value=this.value.toUpperCase()">
+            <p class="text-xs text-gray-400 mt-1">${t.lang==='it'?'Necessario per emettere la ricevuta del versamento della quota associativa.':'Required to issue the receipt for the membership fee payment.'}</p>
+          </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-semibold mb-1" style="color:#082050">
@@ -6068,7 +6078,7 @@ function membersPage(t: Record<string, string>): string {
             <label class="block text-sm font-semibold mb-1" style="color:#082050">
               ${t.lang==='it'?'Come hai conosciuto Sindrome ReNU Italia APS?':'How did you hear about Sindrome ReNU Italia APS?'}
             </label>
-            <textarea name="come_hai_trovato" rows="2" placeholder="${t.lang==='it'?'Facebook, Instagram, medico, altra famiglia...':'Facebook, Instagram, doctor, another family...'}"
+            <textarea name="come_hai_trovato" rows="2" placeholder="${t.lang==='it'?'Sito Web Istituzionale, Facebook, Instagram, medico, altra famiglia...':'Institutional Website, Facebook, Instagram, doctor, another family...'}"
                       class="w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sky-400 resize-none" style="border-color:#C8E8F8"></textarea>
           </div>
           <div class="flex items-start gap-3">
@@ -6104,6 +6114,7 @@ function membersPage(t: Record<string, string>): string {
             nome: fd.get('nome'),
             cognome: fd.get('cognome'),
             email: fd.get('email'),
+            codice_fiscale: (fd.get('codice_fiscale') || '').toString().toUpperCase().trim(),
             citta: fd.get('citta') || '',
             tipo: fd.get('tipo') || 'lista_attesa',
             come_conosciuto: fd.get('come_hai_trovato') || '',
@@ -7083,7 +7094,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260921-dynamo-fix-v12'
+  const _v = '20260922-codice-fiscale-v13'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8039,6 +8050,8 @@ app.post('/api/lista-attesa', async (c) => {
     if (!san(body.nome) || san(body.nome).length < 2) errors.nome = 'Nome obbligatorio.'
     if (!san(body.cognome) || san(body.cognome).length < 2) errors.cognome = 'Cognome obbligatorio.'
     if (!validEmail(san(body.email))) errors.email = 'Email valida obbligatoria.'
+    const cfRaw = san(body.codice_fiscale, 16).toUpperCase().replace(/\s/g, '')
+    if (!cfRaw || cfRaw.length < 11) errors.codice_fiscale = 'Codice Fiscale obbligatorio.'
 
     if (Object.keys(errors).length > 0) {
       return c.json({ success: false, errors }, 400)
@@ -8051,10 +8064,11 @@ app.post('/api/lista-attesa', async (c) => {
       // Save to Cloudflare D1
       await db.prepare(`
         INSERT OR IGNORE INTO lista_attesa
-        (nome, cognome, email, citta, tipo, consenso_gdpr, data_consenso, testo_consenso_versione, ip_hash)
-        VALUES (?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP, '2.0', ?)
+        (nome, cognome, email, codice_fiscale, citta, tipo, consenso_gdpr, data_consenso, testo_consenso_versione, ip_hash)
+        VALUES (?, ?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP, '2.0', ?)
       `).bind(
         san(body.nome), san(body.cognome), san(body.email, 200),
+        cfRaw,
         san(body.citta, 100), san(body.tipo || 'lista_attesa', 50),
         ipHash
       ).run()
@@ -9023,7 +9037,7 @@ app.get('/api/admin/lista-attesa', async (c) => {
   const db = c.env?.DB
   if (db) {
     try {
-      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,citta,tipo,consenso_gdpr,data_consenso FROM lista_attesa WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
+      const r = await db.prepare('SELECT id,created_at,nome,cognome,email,codice_fiscale,citta,tipo,come_conosciuto,consenso_gdpr,data_consenso FROM lista_attesa WHERE cancellato=0 ORDER BY created_at DESC LIMIT 200').all()
       return c.json(r.results)
     } catch(e) {}
   }
