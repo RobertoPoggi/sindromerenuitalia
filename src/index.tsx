@@ -4460,7 +4460,7 @@ function donationsPage(t: Record<string, string>): string {
               <p class="text-xs text-gray-500 font-sans mb-1">IBAN</p>
               <p class="text-xl font-bold tracking-wide" style="color:#082050">${t.donations_iban}</p>
             </div>
-            <p class="text-center text-sm text-gray-500 font-sans">${t.lang==='it'?'Causale: "Donazione Sindrome ReNU Italia APS"':'Reference: "Donazione Sindrome ReNU Italia APS"'}</p>
+            <p class="text-center text-sm text-gray-500 font-sans">${t.lang==='it'?'Causale: "Donazione Sindrome ReNU Italia APS - CF 98020680157"':'Reference: "Donazione Sindrome ReNU Italia APS - CF 98020680157"'}</p>
 
             <!-- Sezione donazioni dall'estero -->
             <div class="border-t mt-2 pt-4" style="border-color:#C7DFF0">
@@ -7378,7 +7378,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-logo-fix-rsu-v16'
+  const _v = '20260922-causale-cf-v17'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
