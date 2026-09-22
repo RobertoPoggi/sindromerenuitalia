@@ -4237,7 +4237,10 @@ function communityPage(t: Record<string, string>): string {
       <!-- RSU Partnership -->
       <div class="rounded-2xl p-8 text-white mb-10" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex flex-col md:flex-row items-center gap-6">
-          <img src="/images/logo.png" alt="Logo" class="w-28 h-auto drop-shadow-lg flex-shrink-0" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="/images/logo_renu_syndrome_united.webp" type="image/webp">
+            <img src="/images/logo_renu_syndrome_united.jpg" alt="ReNU Syndrome United (USA)" class="w-28 h-auto drop-shadow-lg flex-shrink-0" loading="lazy" decoding="async">
+          </picture>
           <div>
             <h3 class="text-2xl font-bold mb-2">ReNU Syndrome United (USA)</h3>
             <p class="text-sky-200 mb-4">
@@ -5012,7 +5015,10 @@ function contactPage(t: Record<string, string>): string {
       <!-- Card info associazione -->
       <div class="rounded-2xl p-8 text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%);">
         <div class="flex items-center gap-4 mb-5">
-          <img src="/images/logo.png" alt="Logo" class="h-16 w-auto drop-shadow" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="/images/logo.webp" type="image/webp">
+            <img src="/images/logo.png" alt="Sindrome ReNU Italia APS" class="h-16 w-auto drop-shadow" loading="lazy" decoding="async">
+          </picture>
           <div>
             <h2 class="text-xl font-bold">Sindrome ReNU Italia APS</h2>
             <p class="text-sky-200 text-sm">${t.footer_partnership}</p>
@@ -7372,7 +7378,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-responsive-v15'
+  const _v = '20260922-logo-fix-rsu-v16'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
