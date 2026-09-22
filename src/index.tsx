@@ -1853,24 +1853,30 @@ ${hreflangs}
     `<meta property="og:locale:alternate" content="${l === 'en' ? 'en_US' : l === 'fr' ? 'fr_FR' : l === 'es' ? 'es_ES' : 'de_DE'}">`
   ).join('\n  ')}
 
-  <!-- ── PWA / App ── -->
+  <!-- ── Favicon: tutti i browser e dispositivi ── -->
+  <!-- Chrome/Firefox/Edge: preferisce SVG (vettoriale, qualsiasi dimensione) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Safari < 12 / Android Chrome < 80: fallback PNG 32px -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-60x60.png">
+  <!-- Favicon ICO classico (IE, vecchi browser) -->
+  <link rel="shortcut icon" href="/icons/icon-57x57.png">
+  <!-- ── PWA / App ── -->
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
-  <!-- iOS / Safari -->
+  <!-- iOS / Safari: apple-touch-icon (usato su home screen iPhone/iPad) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="ReNU Italia">
-  <link rel="apple-touch-icon" href="/icons/icon-180x180.png">
-  <link rel="apple-touch-icon" sizes="57x57"  href="/icons/icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60"  href="/icons/icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72"  href="/icons/icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76"  href="/icons/icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+  <!-- iOS usa la prima apple-touch-icon che matcha (o la più grande disponibile) -->
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="76x76"   href="/icons/icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="72x72"   href="/icons/icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="60x60"   href="/icons/icon-60x60.png">
   <!-- Android / Chrome -->
   <meta name="theme-color" content="#082050">
   <meta name="mobile-web-app-capable" content="yes">
@@ -1985,12 +1991,7 @@ ${hreflangs}
     html { scroll-behavior: smooth; }
     img  { max-width:100%; height:auto; }
 
-    /* ── Responsive fixes ── */
-    @media (max-width: 767px) {
-      .hero-gradient { padding-top: 2rem; padding-bottom: 2rem; }
-      h1 { font-size: 1.75rem !important; line-height: 2.2rem !important; }
-      .stat-bar { font-size: 0.7rem; }
-    }
+    /* ── Responsive fixes (legacy — esteso nel blocco RESPONSIVE GLOBALE sopra) ── */
     /* ── Nav label visible from lg (1024px) – icone pure su md ── */
     @media (min-width: 1024px) {
       .nav-label { display: inline !important; }
@@ -2006,6 +2007,283 @@ ${hreflangs}
 
     /* Image frame */
     .img-frame { border-radius: 1.25rem; overflow: hidden; box-shadow: 0 12px 40px rgba(8,32,80,0.18); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE GLOBALE — MOBILE-FIRST
+       Breakpoints: xs <480  sm 480-767  md 768-1023  lg 1024+
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* Base: previene scroll orizzontale globale */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-text-size-adjust: 100%; /* Safari: no auto-scaling del testo */
+    }
+
+    /* ── Padding orizzontale pagina adattivo ── */
+    section, .section-light, .section-white, .section-pale {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    @media (min-width: 640px) {
+      section, .section-light, .section-white, .section-pale {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      section, .section-light, .section-white, .section-pale {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+      }
+    }
+
+    /* ── Tipografia scalabile su mobile ── */
+    @media (max-width: 479px) {
+      h1 { font-size: 1.6rem !important; line-height: 2rem !important; }
+      h2 { font-size: 1.3rem !important; line-height: 1.75rem !important; }
+      h3 { font-size: 1.1rem !important; line-height: 1.5rem !important; }
+      .text-3xl { font-size: 1.4rem !important; line-height: 1.85rem !important; }
+      .text-4xl { font-size: 1.6rem !important; line-height: 2rem !important; }
+      .text-5xl { font-size: 1.8rem !important; line-height: 2.2rem !important; }
+      .text-6xl { font-size: 2rem !important; line-height: 2.5rem !important; }
+      .text-2xl { font-size: 1.2rem !important; line-height: 1.65rem !important; }
+    }
+    @media (min-width: 480px) and (max-width: 767px) {
+      h1 { font-size: 1.8rem !important; line-height: 2.2rem !important; }
+      h2 { font-size: 1.5rem !important; line-height: 1.9rem !important; }
+      .text-3xl { font-size: 1.5rem !important; }
+      .text-4xl { font-size: 1.75rem !important; }
+      .text-5xl { font-size: 2rem !important; }
+    }
+
+    /* ── Hero section mobile ── */
+    @media (max-width: 767px) {
+      .hero-gradient {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        text-align: center;
+      }
+      .hero-gradient .flex.flex-col.md\\:flex-row { flex-direction: column !important; align-items: center !important; }
+      .hero-gradient .text-center.md\\:text-left { text-align: center !important; }
+      .hero-gradient .flex-col.sm\\:flex-row { flex-direction: column !important; gap: 0.75rem !important; }
+      .hero-gradient a, .hero-gradient button { width: 100% !important; justify-content: center !important; }
+      /* Nascondi logo hero su mobile — già visibile come watermark */
+      .hero-gradient .hidden.md\\:block { display: none !important; }
+    }
+
+    /* ── Navbar: logo e hamburger ── */
+    @media (max-width: 767px) {
+      header .h-14 { height: 2.75rem !important; }
+      header .h-16 { height: 3rem !important; }
+      /* Annuncio bar: testo più piccolo, no overflow */
+      .stat-bar { font-size: 0.65rem !important; padding-left: 0.5rem !important; padding-right: 0.5rem !important; white-space: normal !important; text-align: center !important; }
+    }
+
+    /* ── Mobile menu: full-width, font leggibile ── */
+    #mobileMenu a, #mobileMenu span {
+      font-size: 0.95rem !important;
+      padding: 0.65rem 1rem !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+    }
+
+    /* ── Griglia cards: mai meno di 1 colonna su xs ── */
+    @media (max-width: 479px) {
+      .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+      .sm\\:grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+      .sm\\:grid-cols-3 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+      .sm\\:grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    }
+    @media (min-width: 480px) and (max-width: 767px) {
+      .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .lg\\:grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .lg\\:grid-cols-6 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+      .md\\:grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    }
+
+    /* ── Padding interno card adattivo ── */
+    @media (max-width: 639px) {
+      .p-8 { padding: 1.25rem !important; }
+      .p-10 { padding: 1.5rem !important; }
+      .p-12 { padding: 1.75rem !important; }
+      .px-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+      .px-7 { padding-left: 1rem !important; padding-right: 1rem !important; }
+      .px-6 { padding-left: 0.875rem !important; padding-right: 0.875rem !important; }
+      .py-14 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+      .py-16 { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+      .py-20 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+      .gap-10 { gap: 1.5rem !important; }
+      .gap-12 { gap: 1.75rem !important; }
+      .gap-16 { gap: 2rem !important; }
+    }
+
+    /* ── Flex → column su mobile ── */
+    @media (max-width: 767px) {
+      .md\\:flex-row { flex-direction: column !important; }
+      .md\\:col-span-1 { grid-column: span 1 !important; }
+    }
+
+    /* ── Bottoni: full-width su xs ── */
+    @media (max-width: 479px) {
+      .inline-flex.items-center.gap-2.px-6,
+      .inline-flex.items-center.gap-2.px-8 {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
+    /* ── Stat bar numeri: font più piccolo su mobile ── */
+    @media (max-width: 639px) {
+      .text-3xl.font-extrabold.text-sky-300 { font-size: 1.4rem !important; }
+      .max-w-5xl.mx-auto.grid.grid-cols-2.md\\:grid-cols-5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+      }
+    }
+    @media (max-width: 399px) {
+      .max-w-5xl.mx-auto.grid.grid-cols-2.md\\:grid-cols-5 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    /* ── Modal storie: full-screen su mobile ── */
+    @media (max-width: 639px) {
+      #storia-modal-inner {
+        max-width: 100vw !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 1rem 1rem 0 0 !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        top: auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        max-height: 90vh !important;
+      }
+    }
+
+    /* ── Tabelle admin: scroll orizzontale ── */
+    #content table {
+      min-width: 600px;
+    }
+    #content .overflow-x-auto,
+    #content > div:first-child {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Form responsive ── */
+    @media (max-width: 639px) {
+      .grid.grid-cols-1.sm\\:grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+      form input, form textarea, form select {
+        width: 100% !important;
+      }
+    }
+
+    /* ── Footer: impilato su mobile ── */
+    @media (max-width: 767px) {
+      footer .grid.grid-cols-1.md\\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+    }
+
+    /* ── Sezione media/pubblicazioni: card full width su xs ── */
+    @media (max-width: 479px) {
+      .grid.grid-cols-2.sm\\:grid-cols-3.lg\\:grid-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+      }
+      .grid.grid-cols-2.md\\:grid-cols-3 {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+      }
+    }
+
+    /* ── Sezione Rete del Tempo: schede responsive ── */
+    @media (max-width: 639px) {
+      .px-7.py-5.flex.flex-col.md\\:flex-row {
+        padding: 1rem !important;
+      }
+    }
+
+    /* ── Immagini: mai più grandi del contenitore ── */
+    img { max-width: 100% !important; height: auto; }
+    picture { display: block; max-width: 100%; }
+    picture img { max-width: 100% !important; width: auto; }
+
+    /* ── Watermark logo: più piccolo su mobile ── */
+    @media (max-width: 639px) {
+      #page-logo-watermark img {
+        width: 85vmin !important;
+        height: 85vmin !important;
+        max-width: 300px !important;
+        max-height: 300px !important;
+        opacity: 0.10 !important;
+      }
+    }
+
+    /* ── Ricerca sito: dropdown full-width su mobile ── */
+    @media (max-width: 767px) {
+      #searchBox { width: 100% !important; }
+      #searchResults { left: 0 !important; right: 0 !important; width: 100% !important; }
+    }
+
+    /* ── Collage/immagini evento: altezza max su mobile ── */
+    @media (max-width: 639px) {
+      .rounded-2xl.overflow-hidden.mb-10.shadow-lg picture img {
+        max-height: 350px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    /* ── Sezione donazioni: CTA impilate su mobile ── */
+    @media (max-width: 639px) {
+      .flex.flex-col.sm\\:flex-row.items-center.justify-between {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+      }
+    }
+
+    /* ── Progetto Vita / Telethon card: layout colonna su mobile ── */
+    @media (max-width: 767px) {
+      .bg-white.px-6.py-8.flex.flex-col.md\\:flex-row {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 1.25rem !important;
+      }
+    }
+
+    /* ── Icone grandi: ridimensionate su xs ── */
+    @media (max-width: 479px) {
+      .ic { width: 2.75rem !important; height: 2.75rem !important; }
+      .ic i { font-size: 1rem !important; }
+      .w-16.h-16 { width: 3rem !important; height: 3rem !important; }
+    }
+
+    /* ── Cookie banner: testo leggibile su tutti i dispositivi ── */
+    @media (max-width: 479px) {
+      #cookieBanner { font-size: 0.75rem !important; padding: 0.75rem 1rem !important; }
+      #cookieBanner .flex { flex-wrap: wrap !important; gap: 0.5rem !important; }
+      #cookieBanner button { font-size: 0.7rem !important; padding: 0.4rem 0.75rem !important; }
+    }
+
+    /* ── Annuncio bar top: wrap su mobile ── */
+    @media (max-width: 639px) {
+      .stat-bar.text-white.text-center { 
+        white-space: normal !important; 
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        line-height: 1.4 !important;
+        padding: 0.4rem 0.75rem !important;
+      }
+    }
 
     /* ═══════════════════════════════════════════════════════════════
        CROSS-BROWSER / CROSS-DEVICE COMPATIBILITY FIXES
@@ -7094,7 +7372,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-nuovo-logo-v14'
+  const _v = '20260922-responsive-v15'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
