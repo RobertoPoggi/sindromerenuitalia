@@ -2547,6 +2547,7 @@ ${hreflangs}
             ['https://citizen.health/renu','Citizen Health'],
             ['https://www.syndrome-renu.fr/','Assoc. Française ReNU'],
             ['https://www.sindromerenu.es/','Asociación ReNU España'],
+            ['https://www.retedeldono.it/onp/sindrome-renu-italia-aps','Rete del Dono'],
           ].map(([href,lbl]) => `
           <li><a href="${href}" target="_blank" class="hover:text-white transition-colors flex items-center gap-2"><i class="fas fa-external-link-alt text-xs"></i>${lbl}</a></li>`).join('')}
         </ul>
@@ -7378,7 +7379,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-causale-cf-v17'
+  const _v = '20260922-retedeldono-v18'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
