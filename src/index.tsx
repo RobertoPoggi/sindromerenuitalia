@@ -7382,7 +7382,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-maratona-2link-v19'
+  const _v = '20260922-maratona-2link-v20'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -9512,7 +9512,7 @@ app.get('/api/eventi', async (c) => {
   if (!db) return c.json([])
   try {
     const col = lang==='en'?'en':lang==='fr'?'fr':lang==='es'?'es':lang==='de'?'de':'it'
-    let sql = `SELECT id, data_evento, luogo, stato, categoria, img_url, url_esterno, ordine,
+    let sql = `SELECT id, data_evento, luogo, stato, categoria, img_url, url_esterno, url_esterno2, url_esterno2_label, ordine,
                       titolo_${col} as titolo,
                       desc_${col==='it'?'it':'en'} as desc
                FROM eventi WHERE attivo=1`
