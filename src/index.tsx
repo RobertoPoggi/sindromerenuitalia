@@ -5723,7 +5723,10 @@ function eventsPage(t: Record<string, string>): string {
                   <h3 class="font-bold text-xl mb-2" style="color:#082050">\${ev.titolo||''}</h3>
                   \${ev.luogo ? \`<p class="text-xs font-semibold text-sky-600 mb-2"><i class="fas fa-map-marker-alt mr-1"></i>\${ev.luogo}</p>\` : ''}
                   <p class="text-gray-600 mb-3 text-sm">\${ev.desc||''}</p>
-                  \${ev.url_esterno ? \`<a href="\${ev.url_esterno}" target="_blank" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0"><i class="fas fa-external-link-alt"></i>${t.lang==='it'?'Apri link':'Open link'}</a>\` : ''}
+                  <div class="flex flex-wrap gap-2">
+                    \${ev.url_esterno ? \`<a href="\${ev.url_esterno}" target="_blank" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#1078C0"><i class="fas fa-external-link-alt"></i>${t.lang==='it'?'Apri link':'Open link'}</a>\` : ''}
+                    \${ev.url_esterno2 ? \`<a href="\${ev.url_esterno2}" target="_blank" class="inline-flex items-center gap-2 text-white px-4 py-2 rounded-full text-sm font-semibold" style="background:#16A34A"><i class="fas fa-hand-holding-heart"></i>\${ev.url_esterno2_label||'Rete del Dono'}</a>\` : ''}
+                  </div>
                 </div>
               </div>\`;
             }).join('');
@@ -7379,7 +7382,7 @@ function privacyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-retedeldono-v18'
+  const _v = '20260922-maratona-2link-v19'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
