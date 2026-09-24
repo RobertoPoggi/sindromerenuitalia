@@ -2569,6 +2569,8 @@ ${hreflangs}
       <span class="hidden md:inline">&nbsp;|&nbsp;</span>
       <a href="/${t.lang}/privacy" class="hover:text-white underline">${t.privacy_link}</a>
       &nbsp;|&nbsp;
+      <a href="/${t.lang}/cookie-policy" class="hover:text-white underline">${t.lang==='it'?'Cookie Policy':'Cookie Policy'}</a>
+      &nbsp;|&nbsp;
       <a href="mailto:dpo@sindromerenu.it" class="hover:text-white underline">${t.contact_dpo}</a>
       &nbsp;|&nbsp;
       <span>${t.gdpr_label}</span>
@@ -2581,21 +2583,16 @@ ${hreflangs}
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between">
     <div style="flex:1;min-width:200px;font-size:0.85rem">
       <i class="fas fa-cookie-bite" style="color:#45B8EC;margin-right:0.5rem"></i>
-      <strong>${t.cookie_notice}</strong>
-      <span style="color:#C8E8F8;margin-left:0.5rem">
-        ${t.cookie_text}
+      <span style="color:#C8E8F8;">
+        ${t.lang==='it'
+          ? 'Utilizziamo esclusivamente cookie tecnici necessari per garantire il corretto funzionamento del sito. Tali cookie non richiedono il consenso dell\'utente. Per saperne di più, consulta la <a href="/it/cookie-policy" style="color:#45B8EC;text-decoration:underline;font-weight:600">Cookie Policy</a>.'
+          : 'We use only technical cookies necessary to ensure the correct functioning of the site. These cookies do not require user consent. For more information, please read our <a href="/en/cookie-policy" style="color:#45B8EC;text-decoration:underline;font-weight:600">Cookie Policy</a>.'}
       </span>
     </div>
     <div style="display:flex;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;align-items:center">
       <button onclick="acceptCookies()" style="background:#45B8EC;color:#082050;border:none;padding:0.5rem 1.25rem;border-radius:999px;font-weight:700;cursor:pointer;font-size:0.85rem">
-        ${t.cookie_accept}
+        ${t.lang==='it'?'Chiudi':'Close'} ✕
       </button>
-      <button onclick="acceptCookies()" style="background:transparent;color:#C8E8F8;border:1px solid #C8E8F8;padding:0.5rem 1.25rem;border-radius:999px;font-weight:600;cursor:pointer;font-size:0.8rem">
-        ${t.cookie_necessary}
-      </button>
-      <a href="/${t.lang}/privacy" style="color:#C8E8F8;font-size:0.75rem;align-self:center;text-decoration:underline">
-        ${t.cookie_more}
-      </a>
     </div>
   </div>
 </div>
@@ -4161,6 +4158,11 @@ function communityPage(t: Record<string, string>): string {
                 <i class="fab fa-facebook"></i>Facebook
               </a>
             </div>
+            <div class="mt-3 p-3 rounded-xl text-xs text-gray-500 text-left" style="background:#F0FFF4;border-left:3px solid #25D366">
+              <i class="fas fa-shield-alt mr-1" style="color:#25D366"></i>
+              ${t.lang==='it'
+                ? 'Iscrivendomi al gruppo WhatsApp "Rete Genitori Italiani" dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#082050">Informativa Privacy</a>.<br>L\'adesione al gruppo comporta la visibilità del proprio numero di telefono, del nome del profilo e degli eventuali contenuti condivisi agli altri partecipanti del gruppo WhatsApp.'
+                : 'By joining the WhatsApp group "Rete Genitori Italiani" I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#082050">Privacy Policy</a>.<br>Joining the group implies that your phone number, profile name and any shared content will be visible to other group members.'}</div>
           </div>
         </div>
       </div>
@@ -4303,6 +4305,12 @@ function communityPage(t: Record<string, string>): string {
               <i class="fas fa-external-link-alt"></i>
               ${t.lang==='it'?'Galleria Internazionale':t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
             </a>
+          </div>
+          <div class="mt-3 p-3 rounded-xl text-xs text-gray-500" style="background:#F0F9FF;border-left:3px solid #1078C0">
+            <i class="fas fa-shield-alt mr-1" style="color:#1078C0"></i>
+            ${t.lang==='it'
+              ? '☐ Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.<br>☐ Acconsento al trattamento dei miei dati personali e, ove presenti, dei dati appartenenti alle categorie particolari di cui all\'art. 9 del Regolamento (UE) 2016/679 contenuti nella testimonianza trasmessa, nonché alla loro eventuale pubblicazione. Sono consapevole di poter revocare il consenso in qualsiasi momento.'
+              : '☐ I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.<br>☐ I consent to the processing of my personal data and, where present, data belonging to the special categories under art. 9 of Regulation (EU) 2016/679 contained in the submitted testimony, including their possible publication. I understand I may revoke this consent at any time.'}
           </div>
         </div>
       </div>
@@ -4485,6 +4493,12 @@ function donationsPage(t: Record<string, string>): string {
             <i class="fas fa-envelope mr-1" style="color:#1078C0"></i>
             <a href="mailto:donazioni@sindromerenu.it" class="hover:underline" style="color:#1078C0">donazioni@sindromerenu.it</a>
           </p>
+          <div class="mt-4 p-3 rounded-xl text-xs text-gray-500 text-center" style="background:#F0F9FF;border:1px solid #C8E8F8">
+            <i class="fas fa-shield-alt mr-1" style="color:#1078C0"></i>
+            ${t.lang==='it'
+              ? 'Inviando una donazione dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#1078C0">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.'
+              : 'By making a donation I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#1078C0">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.'}
+          </div>
         </div>
 
         <!-- Donazione ricorrente -->
@@ -4945,8 +4959,8 @@ function contactPage(t: Record<string, string>): string {
             <input type="checkbox" name="consenso_gdpr" required id="contactPrivacy" class="mt-1 w-4 h-4 flex-shrink-0">
             <label for="contactPrivacy" class="text-xs text-gray-600">
               ${t.lang==='it'
-                ? 'Acconsento al trattamento dei dati personali ai sensi del GDPR (Reg. UE 2016/679) per ricevere una risposta alla mia richiesta. I dati non saranno ceduti a terzi. <a href="/it/privacy" class="underline text-sky-600">Leggi l\'informativa privacy</a>.'
-                : 'I consent to the processing of personal data pursuant to GDPR (EU Reg. 2016/679) to receive a reply to my request. Data will not be shared with third parties. <a href="/en/privacy" class="underline text-sky-600">Read the privacy policy</a>.'}
+                ? 'Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679. *'
+                : 'I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679. *'}
             </label>
           </div>
           <button type="submit" id="contactSubmitBtn"
@@ -5031,6 +5045,12 @@ function contactPage(t: Record<string, string>): string {
           <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393277634894" class="hover:text-white">+39 327 763 4894</a> <span class="text-sky-500 text-xs">(${t.lang==='it'?'Segreteria':'Secretariat'})</span></div>
           <div class="flex items-center gap-2"><i class="fas fa-phone w-5 text-sky-400"></i><a href="tel:+393357301206" class="hover:text-white">+39 335 730 1206</a> <span class="text-sky-500 text-xs">(${t.lang==='it'?'Presidenza':'Presidency'})</span></div>
           <div class="flex items-center gap-2"><i class="fas fa-envelope w-5 text-sky-400"></i><a href="mailto:Stefania.rocca@sindromerenu.it" class="hover:text-white">Stefania.rocca@sindromerenu.it</a></div>
+        </div>
+        <div class="mt-4 p-3 rounded-xl text-xs" style="background:rgba(255,255,255,0.1);color:#C8E8F8">
+          <i class="fas fa-shield-alt mr-1" style="color:#45B8EC"></i>
+          ${t.lang==='it'
+            ? 'Inviando una richiesta di contatto dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold text-sky-300">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.'
+            : 'By sending a contact request I declare that I have read the <a href="/en/privacy" class="underline font-semibold text-sky-300">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.'}
         </div>
         <div class="flex gap-4 mt-5">
           <a href="https://youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl" aria-hidden="true"></i></a>
@@ -6372,7 +6392,9 @@ function membersPage(t: Record<string, string>): string {
           <div class="flex items-start gap-3">
             <input type="checkbox" name="privacy" required id="privacyCheck" class="mt-1 w-4 h-4 flex-shrink-0">
             <label for="privacyCheck" class="text-xs text-gray-600">
-              ${t.lang==='it'?'Acconsento al trattamento dei dati personali ai sensi del GDPR (Reg. UE 2016/679) per la gestione della lista d\'attesa di Sindrome ReNU Italia APS. I dati non saranno ceduti a terzi. <a href="/it/privacy" class="underline text-sky-600">Leggi l\'informativa privacy</a>.':'I consent to the processing of personal data pursuant to GDPR (EU Reg. 2016/679) for the management of the Sindrome ReNU Italia APS waiting list. Data will not be shared with third parties. <a href="/'+t.lang+'/privacy" class="underline text-sky-600">Read the privacy policy</a>.'}
+              ${t.lang==='it'
+                ? 'Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679. *'
+                : 'I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679. *'}
             </label>
           </div>
           <button type="submit"
@@ -7172,7 +7194,17 @@ function privacyPage(t: Record<string, string>): string {
         <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color:#082050">
           ${isIt?'Informativa sulla Privacy':'Privacy Policy'}
         </h1>
-        <p class="text-gray-500 text-sm">${isIt?'Ultimo aggiornamento: Giugno 2026':'Last updated: June 2026'} · ${isIt?'Versione':'Version'} 2.1</p>
+        <p class="text-gray-500 text-sm">${isIt?'Data di pubblicazione: 1 ottobre 2026':'Publication date: 1 October 2026'} · ${isIt?'Versione':'Version'} 2.0</p>
+        <div class="flex flex-wrap gap-3 mt-4">
+          <a href="/privacy-policy.pdf" target="_blank"
+             class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+            <i class="fas fa-file-pdf"></i>${isIt?'Scarica PDF ufficiale':'Download official PDF'}
+          </a>
+          <a href="/${t.lang}/cookie-policy"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm border-2" style="color:#082050;border-color:#1078C0">
+            <i class="fas fa-cookie-bite"></i>Cookie Policy
+          </a>
+        </div>
       </div>
 
       <div class="space-y-8 text-gray-700 leading-relaxed">
@@ -7380,9 +7412,131 @@ function privacyPage(t: Record<string, string>): string {
   </section>`
 }
 
+// ─── COOKIE POLICY PAGE ───────────────────────────────────────────────────────
+function cookiePolicyPage(t: Record<string, string>): string {
+  const isIt = t.lang === 'it'
+  return `
+  <section class="section-light py-16 px-4 min-h-screen">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-10">
+        <span class="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 rounded-full px-4 py-2 text-sm font-semibold mb-4" style="color:#082050">
+          <i class="fas fa-cookie-bite" style="color:#1078C0"></i>
+          Cookie Policy
+        </span>
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4" style="color:#082050">Cookie Policy</h1>
+        <p class="text-gray-500 text-sm">${isIt?'Data di pubblicazione: 1 ottobre 2026':'Publication date: 1 October 2026'} &nbsp;|&nbsp; Sindrome ReNU Italia APS</p>
+        <a href="/cookie-policy.pdf" target="_blank"
+           class="inline-flex items-center gap-2 mt-4 text-white px-5 py-2.5 rounded-full font-semibold text-sm" style="background:#1078C0">
+          <i class="fas fa-file-pdf"></i>${isIt?'Scarica PDF ufficiale':'Download official PDF'}
+        </a>
+      </div>
+
+      <div class="space-y-6 text-gray-700 leading-relaxed">
+
+        <div class="card p-6">
+          <p class="text-sm">${isIt
+            ? 'Con il presente documento, il Titolare del trattamento, <strong>Sindrome ReNU Italia APS</strong>, con sede legale in Milano – 20121, via Marina, 6, Partita IVA e Codice Fiscale 98020680157, e-mail <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>, PEC <a href="mailto:sindromerenuitalia@legalmail.it" class="text-blue-600 hover:underline">sindromerenuitalia@legalmail.it</a>, fornisce agli utenti del sito <a href="https://www.sindromerenu.it" class="text-blue-600 hover:underline">https://www.sindromerenu.it</a> (in seguito, il "Sito") alcune informazioni sui cookie utilizzati.'
+            : 'With this document, the Data Controller, <strong>Sindrome ReNU Italia APS</strong>, with registered office in Milan – 20121, via Marina, 6, VAT/Tax Code 98020680157, email <a href="mailto:info@sindromerenu.it" class="text-blue-600 hover:underline">info@sindromerenu.it</a>, PEC <a href="mailto:sindromerenuitalia@legalmail.it" class="text-blue-600 hover:underline">sindromerenuitalia@legalmail.it</a>, provides users of the website <a href="https://www.sindromerenu.it" class="text-blue-600 hover:underline">https://www.sindromerenu.it</a> (hereinafter, the "Site") with information about the cookies used.'}</p>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-question-circle mr-2" style="color:#1078C0"></i>${isIt?'Cosa sono i cookie?':'What are cookies?'}</h2>
+          <p class="text-sm mb-3">${isIt
+            ? 'I cookie sono stringhe di testo di piccole dimensioni che il sito visitato dall\'utente invia al suo terminale (solitamente al browser), dove vengono memorizzati per essere poi ritrasmessi allo stesso sito, alla successiva visita da parte del medesimo utente. Nel corso della navigazione, l\'utente può ricevere sul suo terminale anche cookie che vengono inviati da siti o da web server diversi (c.d. "terze parti"), sui quali possono risiedere alcuni elementi presenti sul sito che l\'utente sta visitando.'
+            : 'Cookies are small text strings that the visited website sends to the user\'s device (usually the browser), where they are stored and then retransmitted to the same site on the user\'s next visit. During browsing, the user may also receive cookies sent by different sites or web servers (so-called "third parties").'}
+          </p>
+          <p class="text-sm mb-3">${isIt
+            ? 'I cookie si differenziano gli uni dagli altri sulla base delle finalità perseguite da chi li utilizza. Al riguardo si individuano due macrocategorie di cookie:'
+            : 'Cookies differ from each other based on the purposes pursued by those who use them. Two macro-categories can be identified:'}
+          </p>
+          <ul class="text-sm space-y-2 text-gray-600 list-none">
+            <li class="flex items-start gap-2"><i class="fas fa-circle text-xs mt-1.5" style="color:#1078C0"></i><span><strong>${isIt?'Cookie tecnici':'Technical cookies'}</strong>: ${isIt?'utilizzati al solo fine di effettuare la trasmissione di una comunicazione su una rete di comunicazione elettronica, o nella misura strettamente necessaria fornire il servizio richiesto dall\'utente.':'used solely to carry out the transmission of a communication over an electronic communications network, or to provide the service requested by the user.'}</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-circle text-xs mt-1.5" style="color:#1078C0"></i><span><strong>${isIt?'Cookie di profilazione':'Profiling cookies'}</strong>: ${isIt?'volti a creare profili relativi all\'utente e vengono utilizzati al fine di inviare messaggi pubblicitari in linea con le preferenze manifestate dallo stesso nell\'ambito della navigazione in rete.':'aimed at creating user profiles and used to send advertising messages in line with preferences expressed during browsing.'}</span></li>
+          </ul>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-list-alt mr-2" style="color:#1078C0"></i>${isIt?'Tipologie di cookie utilizzate dal sito':'Types of cookies used by the site'}</h2>
+          <div class="rounded-xl p-4 mb-4" style="background:#EEF6FB;border-left:4px solid #1078C0">
+            <h3 class="font-bold text-base mb-2" style="color:#082050">${isIt?'Cookie tecnici':'Technical cookies'}</h3>
+            <p class="text-sm text-gray-700">${isIt
+              ? 'Il Sito utilizza cookie tecnici che consentono di riconoscere gli utenti che tornano a visitare il Sito e i loro dati in modo da evitare loro di dover inserire più volte le medesime informazioni. <strong>Tali cookie non necessitano del preventivo consenso dell\'utente</strong> per essere installati ed utilizzati. Il Sito utilizza esclusivamente cookie di navigazione o di sessione, per mezzo dei quali è garantita la normale navigazione e fruizione del Sito.'
+              : 'The Site uses technical cookies that allow returning users to be recognised and their data stored so they do not have to re-enter the same information. <strong>These cookies do not require prior user consent</strong> to be installed and used. The Site uses exclusively navigation or session cookies, through which normal browsing and use of the Site is guaranteed.'}</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead><tr class="bg-sky-50"><th class="text-left p-3 border border-sky-100">Cookie</th><th class="text-left p-3 border border-sky-100">${isIt?'Tipo':'Type'}</th><th class="text-left p-3 border border-sky-100">${isIt?'Durata':'Duration'}</th><th class="text-left p-3 border border-sky-100">${isIt?'Finalità':'Purpose'}</th></tr></thead>
+              <tbody>
+                <tr><td class="p-3 border border-gray-100">session</td><td class="p-3 border border-gray-100">${isIt?'Tecnico – navigazione':'Technical – navigation'}</td><td class="p-3 border border-gray-100">${isIt?'Sessione (chiusura browser)':'Session (browser close)'}</td><td class="p-3 border border-gray-100">${isIt?'Garantisce la normale fruizione del Sito':'Ensures normal use of the Site'}</td></tr>
+                <tr class="bg-gray-50"><td class="p-3 border border-gray-100">cf_clearance</td><td class="p-3 border border-gray-100">${isIt?'Tecnico – sicurezza (Cloudflare)':'Technical – security (Cloudflare)'}</td><td class="p-3 border border-gray-100">30 ${isIt?'giorni':'days'}</td><td class="p-3 border border-gray-100">${isIt?'Protezione CDN e sicurezza del sito':'CDN protection and site security'}</td></tr>
+                <tr><td class="p-3 border border-gray-100">cookie_consent</td><td class="p-3 border border-gray-100">${isIt?'Tecnico – preferenze utente':'Technical – user preferences'}</td><td class="p-3 border border-gray-100">365 ${isIt?'giorni':'days'}</td><td class="p-3 border border-gray-100">${isIt?'Memorizza la scelta dell\'utente sul banner cookie':'Stores user\'s cookie banner choice'}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-sliders-h mr-2" style="color:#1078C0"></i>${isIt?'Come posso gestire i cookie?':'How can I manage cookies?'}</h2>
+          <p class="text-sm mb-3">${isIt
+            ? 'Il Sito utilizza esclusivamente Cookie tecnici, necessari per garantire il corretto funzionamento delle pagine e dei servizi offerti. Tali Cookie non richiedono il consenso dell\'utente.'
+            : 'The Site uses exclusively technical cookies, necessary to ensure the correct functioning of pages and services offered. These cookies do not require user consent.'}</p>
+          <p class="text-sm mb-3">${isIt
+            ? 'L\'utente può in ogni momento configurare il proprio browser per limitare o bloccare l\'utilizzo dei cookie tecnici; tuttavia, la disabilitazione di tali cookie potrebbe compromettere il corretto funzionamento del Sito.'
+            : 'Users may at any time configure their browser to limit or block the use of technical cookies; however, disabling such cookies may compromise the correct functioning of the Site.'}</p>
+          <p class="text-sm">${isIt?'Per ulteriori informazioni sulla gestione dei cookie tramite browser, l\'utente può consultare le pagine di supporto dei principali produttori.':'For further information on managing cookies through the browser, users may consult the support pages of major browser manufacturers.'}</p>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-trash-alt mr-2" style="color:#1078C0"></i>${isIt?'I cookie possono essere anche cancellati?':'Can cookies also be deleted?'}</h2>
+          <p class="text-sm">${isIt
+            ? 'Sì: a tal fine si invitano gli utenti a consultare la pagina di supporto del browser utilizzato.'
+            : 'Yes: to this end, users are invited to consult the support page of their browser.'}</p>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-user-shield mr-2" style="color:#1078C0"></i>${isIt?'Il titolare del trattamento come usa e tratta i cookie?':'How does the data controller use and process cookies?'}</h2>
+          <p class="text-sm mb-3">${isIt
+            ? 'L\'utilizzo dei cookie avviene nel pieno rispetto della normativa vigente, che sancisce la liceità di tali tecnologie per determinati scopi legittimi. Il trattamento dei dati avviene con l\'impiego di supporti informatici e telematici ad opera di soggetti previamente autorizzati e istruiti dal Titolare del trattamento.'
+            : 'The use of cookies occurs in full compliance with current regulations, which establish the lawfulness of such technologies for certain legitimate purposes. Data processing is carried out using IT and telematic tools by subjects previously authorised and instructed by the Data Controller.'}</p>
+          <p class="text-sm">${isIt
+            ? 'I dati sono conservati in archivi elettronici in osservanza di misure di sicurezza idonee a prevenire la perdita dei dati, eventuali usi illeciti o non corretti e accessi non autorizzati.'
+            : 'Data is stored in electronic archives with security measures to prevent data loss, unlawful or incorrect use, and unauthorised access.'}</p>
+        </div>
+
+        <div class="card p-6">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050"><i class="fas fa-sync-alt mr-2" style="color:#1078C0"></i>${isIt?'Modifiche alla cookie policy':'Changes to the cookie policy'}</h2>
+          <p class="text-sm">${isIt
+            ? 'Il Titolare del trattamento si riserva la facoltà di modificare o semplicemente aggiornare, in tutto o in parte, la presente Cookie Policy, anche in seguito a eventuali modifiche delle norme che disciplinano questa materia. Le modifiche e gli aggiornamenti saranno vincolanti non appena pubblicati. Gli utenti sono pertanto invitati ad accedere con regolarità a questa sezione per verificarne i contenuti.'
+            : 'The Data Controller reserves the right to modify or update, in whole or in part, this Cookie Policy, including following any changes to the rules governing this matter. Changes and updates will be binding as soon as they are published. Users are therefore invited to regularly access this section to check its contents.'}</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-white" style="background:linear-gradient(135deg,#082050,#1078C0)">
+          <i class="fas fa-envelope text-3xl text-sky-300 mb-3 block"></i>
+          <h3 class="font-bold text-lg mb-2">${isIt?'Contatti':'Contacts'}</h3>
+          <p class="text-sky-100 text-sm mb-4">${isIt
+            ? 'Per domande o informazioni sui contenuti della presente cookie policy:'
+            : 'For questions or information about the contents of this cookie policy:'}</p>
+          <div class="space-y-2 text-sm text-sky-200">
+            <div><i class="fas fa-envelope mr-2 text-sky-400"></i><a href="mailto:info@sindromerenu.it" class="hover:text-white underline">info@sindromerenu.it</a></div>
+            <div><i class="fas fa-envelope mr-2 text-sky-400"></i><a href="mailto:sindromerenuitalia@legalmail.it" class="hover:text-white underline">sindromerenuitalia@legalmail.it</a> (PEC)</div>
+            <div class="mt-3 text-sky-300 text-xs">${isIt?'Milano, luglio 2026 – Sindrome ReNU Italia APS':'Milan, July 2026 – Sindrome ReNU Italia APS'}</div>
+          </div>
+          <div class="mt-4">
+            <a href="/cookie-policy.pdf" target="_blank"
+               class="inline-flex items-center gap-2 bg-white font-bold px-5 py-2.5 rounded-full text-sm hover:bg-sky-50" style="color:#082050">
+              <i class="fas fa-file-pdf"></i>${isIt?'Scarica PDF ufficiale':'Download official PDF'}
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>`
+}
+
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20260922-maratona-2link-v20'
+  const _v = '20261001-dpo-privacy-cookie-v21'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -7894,6 +8048,9 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   eventi:          eventsPage,
   faq:             faqPage,
   privacy:         privacyPage,
+  'cookie-policy': cookiePolicyPage,
+  'cookie-policy-it': cookiePolicyPage,
+  'cookie-policy-en': cookiePolicyPage,
   science:         sciencePage,
   'comitato-scientifico': sciencePage,
   glossary:        glossaryPage,
