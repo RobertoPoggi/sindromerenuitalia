@@ -4149,6 +4149,14 @@ function communityPage(t: Record<string, string>): string {
                  class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#25D366">
                 <i class="fab fa-whatsapp"></i>${t.lang==='it'?'Unisciti alla Chat':'Join the Chat'}
               </a>
+            </div>
+            <div class="mt-3 p-3 rounded-xl text-xs text-gray-500 text-left" style="background:#F0FFF4;border-left:3px solid #25D366">
+              <i class="fas fa-shield-alt mr-1" style="color:#25D366"></i>
+              ${t.lang==='it'
+                ? 'Iscrivendomi al gruppo WhatsApp "Rete Genitori Italiani" dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#082050">Informativa Privacy</a>.<br>L\'adesione al gruppo comporta la visibilità del proprio numero di telefono, del nome del profilo e degli eventuali contenuti condivisi agli altri partecipanti del gruppo WhatsApp.'
+                : 'By joining the WhatsApp group "Rete Genitori Italiani" I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#082050">Privacy Policy</a>.<br>Joining the group implies that your phone number, profile name and any shared content will be visible to other group members.'}
+            </div>
+            <div class="flex flex-wrap justify-center gap-2 mt-3">
               <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank"
                  class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-full font-semibold transition-colors" style="background:#E1306C">
                 <i class="fab fa-instagram"></i>Instagram
@@ -4158,11 +4166,6 @@ function communityPage(t: Record<string, string>): string {
                 <i class="fab fa-facebook"></i>Facebook
               </a>
             </div>
-            <div class="mt-3 p-3 rounded-xl text-xs text-gray-500 text-left" style="background:#F0FFF4;border-left:3px solid #25D366">
-              <i class="fas fa-shield-alt mr-1" style="color:#25D366"></i>
-              ${t.lang==='it'
-                ? 'Iscrivendomi al gruppo WhatsApp "Rete Genitori Italiani" dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#082050">Informativa Privacy</a>.<br>L\'adesione al gruppo comporta la visibilità del proprio numero di telefono, del nome del profilo e degli eventuali contenuti condivisi agli altri partecipanti del gruppo WhatsApp.'
-                : 'By joining the WhatsApp group "Rete Genitori Italiani" I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#082050">Privacy Policy</a>.<br>Joining the group implies that your phone number, profile name and any shared content will be visible to other group members.'}</div>
           </div>
         </div>
       </div>
@@ -4309,8 +4312,8 @@ function communityPage(t: Record<string, string>): string {
           <div class="mt-3 p-3 rounded-xl text-xs text-gray-500" style="background:#F0F9FF;border-left:3px solid #1078C0">
             <i class="fas fa-shield-alt mr-1" style="color:#1078C0"></i>
             ${t.lang==='it'
-              ? '☐ Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.<br>☐ Acconsento al trattamento dei miei dati personali e, ove presenti, dei dati appartenenti alle categorie particolari di cui all\'art. 9 del Regolamento (UE) 2016/679 contenuti nella testimonianza trasmessa, nonché alla loro eventuale pubblicazione. Sono consapevole di poter revocare il consenso in qualsiasi momento.'
-              : '☐ I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.<br>☐ I consent to the processing of my personal data and, where present, data belonging to the special categories under art. 9 of Regulation (EU) 2016/679 contained in the submitted testimony, including their possible publication. I understand I may revoke this consent at any time.'}
+              ? '☐ Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.<br>☐ Acconsento al trattamento dei miei dati personali e, ove presenti, dei dati appartenenti alle categorie particolari di cui all\'art. 9 del Regolamento (UE) 2016/679 contenuti nella testimonianza da me trasmessa, nonché alla loro eventuale pubblicazione, secondo quanto descritto nell\'Informativa Privacy. Sono consapevole di poter revocare il presente consenso in qualsiasi momento.'
+              : '☐ I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.<br>☐ I consent to the processing of my personal data and, where present, data belonging to the special categories under art. 9 of Regulation (EU) 2016/679 contained in the testimony submitted by me, including their possible publication, as described in the Privacy Policy. I understand I may revoke this consent at any time.'}
           </div>
         </div>
       </div>
@@ -5049,8 +5052,8 @@ function contactPage(t: Record<string, string>): string {
         <div class="mt-4 p-3 rounded-xl text-xs" style="background:rgba(255,255,255,0.1);color:#C8E8F8">
           <i class="fas fa-shield-alt mr-1" style="color:#45B8EC"></i>
           ${t.lang==='it'
-            ? 'Inviando una richiesta di contatto dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold text-sky-300">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.'
-            : 'By sending a contact request I declare that I have read the <a href="/en/privacy" class="underline font-semibold text-sky-300">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.'}
+            ? 'Inviando una richiesta di contatto ai recapiti di seguito indicati dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold text-sky-300">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.'
+            : 'By sending a contact request to the contact details listed below I declare that I have read the <a href="/en/privacy" class="underline font-semibold text-sky-300">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.'}
         </div>
         <div class="flex gap-4 mt-5">
           <a href="https://youtube.com/@sindromerenu" target="_blank" rel="noopener" aria-label="YouTube: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl" aria-hidden="true"></i></a>
@@ -7536,7 +7539,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v21'
+  const _v = '20261001-dpo-privacy-cookie-v22'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
