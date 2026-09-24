@@ -7401,6 +7401,40 @@ function privacyPage(t: Record<string, string>): string {
           <p class="text-xs text-gray-400 mt-3">${isIt?'DPF = EU-US Data Privacy Framework (Dec. adeguatezza Commissione Europea 2023/1795, 10 lug. 2023). Cloudflare è certificata DPF: il trasferimento dati verso USA è lecito senza necessità di Clausole Contrattuali Standard. Per i dati che Cloudflare elabora come titolare autonomo, si rinvia alla sua Privacy Policy: www.cloudflare.com/privacypolicy/':'DPF = EU-US Data Privacy Framework (European Commission adequacy decision 2023/1795, 10 Jul. 2023). Cloudflare is DPF certified: data transfers to the USA are lawful without Standard Contractual Clauses. For data that Cloudflare processes as independent controller, please refer to its Privacy Policy: www.cloudflare.com/privacypolicy/'}</p>
         </div>
 
+        <!-- WhatsApp Rete Genitori -->
+        <div class="card p-6" style="border-left:4px solid #25D366">
+          <h2 class="text-xl font-bold mb-3" style="color:#082050">
+            <i class="fab fa-whatsapp mr-2" style="color:#25D366"></i>
+            ${isIt?'9. Gruppo WhatsApp "Rete Genitori Italiani"':'9. WhatsApp Group "Italian Parent Network"'}
+          </h2>
+          <p class="text-sm text-gray-600 mb-4">
+            ${isIt
+              ? 'Sindrome ReNU Italia APS gestisce un gruppo WhatsApp denominato "Rete Genitori Italiani", accessibile tramite link di invito. L\'adesione al gruppo è volontaria e comporta il trattamento di dati personali da parte della piattaforma WhatsApp (Meta Platforms Ireland Ltd.), che agisce come titolare autonomo del trattamento.'
+              : 'Sindrome ReNU Italia APS manages a WhatsApp group called "Italian Parent Network", accessible via invitation link. Joining the group is voluntary and involves the processing of personal data by the WhatsApp platform (Meta Platforms Ireland Ltd.), which acts as an independent data controller.'}
+          </p>
+          <div class="rounded-xl p-4 text-sm" style="background:#F0FFF4; border:1px solid #BBF7D0">
+            <p class="font-semibold mb-2" style="color:#166534">
+              <i class="fas fa-shield-alt mr-1"></i>
+              ${isIt?'Informativa ai sensi dell\'Art. 13 GDPR — da leggere prima di iscriversi:':'Information pursuant to Art. 13 GDPR — please read before joining:'}
+            </p>
+            <p class="text-gray-700 mb-2">
+              ${isIt
+                ? 'Iscrivendomi al gruppo WhatsApp "Rete Genitori Italiani" dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#082050">Informativa Privacy</a>.'
+                : 'By joining the WhatsApp group "Italian Parent Network" I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#082050">Privacy Policy</a>.'}
+            </p>
+            <p class="text-gray-600">
+              ${isIt
+                ? 'L\'adesione al gruppo comporta la visibilità del proprio numero di telefono, del nome del profilo e degli eventuali contenuti condivisi agli altri partecipanti del gruppo WhatsApp.'
+                : 'Joining the group implies that your phone number, profile name and any shared content will be visible to other group members.'}
+            </p>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            ${isIt
+              ? 'Per il trattamento dei dati effettuato dalla piattaforma WhatsApp si rinvia all\'Informativa Privacy di Meta/WhatsApp: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" class="text-blue-500 hover:underline">www.whatsapp.com/legal/privacy-policy</a>.'
+              : 'For data processing carried out by the WhatsApp platform, please refer to the Meta/WhatsApp Privacy Policy: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" class="text-blue-500 hover:underline">www.whatsapp.com/legal/privacy-policy</a>.'}
+          </p>
+        </div>
+
         <!-- Contatti Garante -->
         <div class="rounded-2xl p-6 text-white" style="background:linear-gradient(135deg,#082050,#1078C0)">
           <i class="fas fa-balance-scale text-3xl text-sky-300 mb-3 block"></i>
@@ -7539,7 +7573,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v22'
+  const _v = '20261001-dpo-privacy-cookie-v23'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
