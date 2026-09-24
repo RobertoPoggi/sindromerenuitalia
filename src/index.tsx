@@ -4297,9 +4297,41 @@ function communityPage(t: Record<string, string>): string {
             ${t.lang==='it'?'Le immagini sono pubblicate con il consenso esplicito dei genitori. Per aggiungere le foto del tuo bambino scrivi a':t.lang==='en'?'Images are published with explicit parental consent. To add your child\'s photos write to':t.lang==='fr'?'Les images sont publiées avec le consentement explicite des parents. Pour ajouter des photos écrivez à':t.lang==='es'?'Las imágenes se publican con el consentimiento explícito de los padres. Para añadir fotos escriba a':'Bilder werden mit ausdrücklicher Einwilligung der Eltern veröffentlicht. Um Fotos hinzuzufügen schreiben Sie an'}
             <a href="mailto:presidenza@sindromerenu.it" class="font-semibold underline">presidenza@sindromerenu.it</a>
           </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Voglio condividere la mia storia':'I want to share my story')}"
-               class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm" style="background:#1078C0">
+          <!-- Checkbox consenso DPO — entrambe obbligatorie per abilitare il pulsante -->
+          <div class="mt-3 p-4 rounded-xl text-xs text-gray-600" style="background:#F0F9FF;border-left:3px solid #1078C0">
+            <p class="font-semibold mb-2 flex items-center gap-1" style="color:#082050">
+              <i class="fas fa-shield-alt" style="color:#1078C0"></i>
+              ${t.lang==='it'?'Consenso obbligatorio prima di inviare la tua storia:':t.lang==='en'?'Required consent before sharing your story:':t.lang==='fr'?'Consentement obligatoire avant de partager votre histoire:':t.lang==='es'?'Consentimiento obligatorio antes de compartir tu historia:':'Pflichteinwilligung vor dem Teilen Ihrer Geschichte:'}
+            </p>
+            <label class="flex items-start gap-2 mb-2 cursor-pointer">
+              <input type="checkbox" id="storia-check1" onchange="checkStoriaConsent()" class="mt-0.5 accent-sky-600" style="width:14px;height:14px;flex-shrink:0">
+              <span>${t.lang==='it'
+                ? 'Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline font-semibold" style="color:#1078C0">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.'
+                : t.lang==='en'
+                ? 'I declare that I have read the <a href="/en/privacy" class="underline font-semibold" style="color:#1078C0">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.'
+                : t.lang==='fr'
+                ? 'Je déclare avoir pris connaissance de la <a href="/fr/privacy" class="underline font-semibold" style="color:#1078C0">Politique de confidentialité</a> conformément à l\'art. 13 du Règlement (UE) 2016/679.'
+                : t.lang==='es'
+                ? 'Declaro haber leído la <a href="/es/privacy" class="underline font-semibold" style="color:#1078C0">Política de Privacidad</a> conforme al art. 13 del Reglamento (UE) 2016/679.'
+                : 'Ich erkläre, die <a href="/de/privacy" class="underline font-semibold" style="color:#1078C0">Datenschutzerklärung</a> gemäß Art. 13 der Verordnung (EU) 2016/679 gelesen zu haben.'}</span>
+            </label>
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" id="storia-check2" onchange="checkStoriaConsent()" class="mt-0.5 accent-sky-600" style="width:14px;height:14px;flex-shrink:0">
+              <span>${t.lang==='it'
+                ? 'Acconsento al trattamento dei miei dati personali e, ove presenti, dei dati appartenenti alle categorie particolari di cui all\'art. 9 del Regolamento (UE) 2016/679 contenuti nella testimonianza da me trasmessa, nonché alla loro eventuale pubblicazione, secondo quanto descritto nell\'<a href="/it/privacy" class="underline font-semibold" style="color:#1078C0">Informativa Privacy</a>. Sono consapevole di poter revocare il presente consenso in qualsiasi momento.'
+                : t.lang==='en'
+                ? 'I consent to the processing of my personal data and, where present, data belonging to the special categories under art. 9 of Regulation (EU) 2016/679 contained in the testimony submitted by me, including their possible publication, as described in the <a href="/en/privacy" class="underline font-semibold" style="color:#1078C0">Privacy Policy</a>. I understand I may revoke this consent at any time.'
+                : t.lang==='fr'
+                ? 'Je consens au traitement de mes données personnelles et, le cas échéant, des données appartenant aux catégories particulières visées à l\'art. 9 du Règlement (UE) 2016/679 contenues dans le témoignage que j\'ai transmis, ainsi qu\'à leur éventuelle publication, comme décrit dans la <a href="/fr/privacy" class="underline font-semibold" style="color:#1078C0">Politique de confidentialité</a>. Je sais que je peux révoquer ce consentement à tout moment.'
+                : t.lang==='es'
+                ? 'Consiento el tratamiento de mis datos personales y, en su caso, de los datos pertenecientes a las categorías especiales del art. 9 del Reglamento (UE) 2016/679 contenidos en el testimonio que he transmitido, así como su eventual publicación, según lo descrito en la <a href="/es/privacy" class="underline font-semibold" style="color:#1078C0">Política de Privacidad</a>. Soy consciente de que puedo revocar este consentimiento en cualquier momento.'
+                : 'Ich stimme der Verarbeitung meiner personenbezogenen Daten und ggf. der besonderen Kategorien gemäß Art. 9 der Verordnung (EU) 2016/679 in meinem übermittelten Zeugnis sowie deren möglicher Veröffentlichung zu, wie in der <a href="/de/privacy" class="underline font-semibold" style="color:#1078C0">Datenschutzerklärung</a> beschrieben. Ich bin mir bewusst, dass ich diese Einwilligung jederzeit widerrufen kann.'}</span>
+            </label>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-3">
+            <a id="storia-btn-condividi"
+               href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(t.lang==='it'?'Voglio condividere la mia storia':'I want to share my story')}"
+               class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm opacity-40 pointer-events-none" style="background:#1078C0" aria-disabled="true">
               <i class="fas fa-paper-plane"></i>
               ${t.lang==='it'?'Condividi la tua storia':t.lang==='en'?'Share your story':t.lang==='fr'?'Partager votre histoire':t.lang==='es'?'Comparte tu historia':'Teile deine Geschichte'}
             </a>
@@ -4309,12 +4341,22 @@ function communityPage(t: Record<string, string>): string {
               ${t.lang==='it'?'Galleria Internazionale':t.lang==='en'?'International Gallery':t.lang==='fr'?'Galerie Internationale':t.lang==='es'?'Galería Internacional':'Internationale Galerie'}
             </a>
           </div>
-          <div class="mt-3 p-3 rounded-xl text-xs text-gray-500" style="background:#F0F9FF;border-left:3px solid #1078C0">
-            <i class="fas fa-shield-alt mr-1" style="color:#1078C0"></i>
-            ${t.lang==='it'
-              ? '☐ Dichiaro di aver preso visione dell\'<a href="/it/privacy" class="underline text-sky-600 font-semibold">Informativa Privacy</a> ai sensi dell\'art. 13 del Regolamento (UE) 2016/679.<br>☐ Acconsento al trattamento dei miei dati personali e, ove presenti, dei dati appartenenti alle categorie particolari di cui all\'art. 9 del Regolamento (UE) 2016/679 contenuti nella testimonianza da me trasmessa, nonché alla loro eventuale pubblicazione, secondo quanto descritto nell\'Informativa Privacy. Sono consapevole di poter revocare il presente consenso in qualsiasi momento.'
-              : '☐ I declare that I have read the <a href="/en/privacy" class="underline text-sky-600 font-semibold">Privacy Policy</a> pursuant to art. 13 of Regulation (EU) 2016/679.<br>☐ I consent to the processing of my personal data and, where present, data belonging to the special categories under art. 9 of Regulation (EU) 2016/679 contained in the testimony submitted by me, including their possible publication, as described in the Privacy Policy. I understand I may revoke this consent at any time.'}
-          </div>
+          <script>
+          function checkStoriaConsent() {
+            var c1 = document.getElementById('storia-check1');
+            var c2 = document.getElementById('storia-check2');
+            var btn = document.getElementById('storia-btn-condividi');
+            if (c1 && c2 && btn) {
+              if (c1.checked && c2.checked) {
+                btn.classList.remove('opacity-40','pointer-events-none');
+                btn.removeAttribute('aria-disabled');
+              } else {
+                btn.classList.add('opacity-40','pointer-events-none');
+                btn.setAttribute('aria-disabled','true');
+              }
+            }
+          }
+          </script>
         </div>
       </div>
 
@@ -7573,7 +7615,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v23'
+  const _v = '20261001-dpo-privacy-cookie-v24'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
