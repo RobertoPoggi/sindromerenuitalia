@@ -1722,6 +1722,56 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   }
   </script>` : ''
 
+  // ── AudioObject — 2 canzoni originali MP3 (pagina brochure/community) ──────
+  const jsonLdAudio = (['brochure','community'].includes(pageSlugNorm)) ? `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AudioObject",
+        "name": "Sguardi di ReNU",
+        "description": "Canzone originale dedicata ai bambini con Sindrome ReNU (RNU4-2), composta da volontari dell'associazione Sindrome ReNU Italia APS.",
+        "contentUrl": "${BASE_URL}/audio/sguardi-di-renu.mp3",
+        "encodingFormat": "audio/mpeg",
+        "duration": "PT3M10S",
+        "inLanguage": "it",
+        "uploadDate": "2025-06-01",
+        "creator": {
+          "@type": "NGO",
+          "name": "Sindrome ReNU Italia APS",
+          "url": "${BASE_URL}"
+        },
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Sindrome ReNU",
+          "alternateName": "RNU4-2 Syndrome"
+        }
+      },
+      {
+        "@type": "AudioObject",
+        "name": "Parlano gli Occhi",
+        "description": "Canzone originale dedicata alla comunicazione non verbale e al linguaggio degli occhi dei bambini con Sindrome ReNU (RNU4-2).",
+        "contentUrl": "${BASE_URL}/audio/parlano-gli-occhi.mp3",
+        "encodingFormat": "audio/mpeg",
+        "duration": "PT4M55S",
+        "inLanguage": "it",
+        "uploadDate": "2025-06-01",
+        "creator": {
+          "@type": "NGO",
+          "name": "Sindrome ReNU Italia APS",
+          "url": "${BASE_URL}"
+        },
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Sindrome ReNU",
+          "alternateName": "RNU4-2 Syndrome"
+        }
+      }
+    ]
+  }
+  </script>` : ''
+
   // ── ItemList: 9 Schede Maya Gesti Comunicativi (pagina therapies) ──
   const jsonLdGestiItemList = (pageSlugNorm === 'therapies') ? `
   <script type="application/ld+json">
@@ -1752,7 +1802,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
 <html lang="${t.lang}">
 <head>
   <meta charset="UTF-8">
-  <meta name="build" content="2026-09-18-settembre">
+  <meta name="build" content="2026-10-01-go-live">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- ── SEO: Title e Description per pagina ── -->
@@ -1816,14 +1866,14 @@ ${hreflangs}
   <meta name="DC.publisher" content="Sindrome ReNU Italia APS">
   <meta name="DC.rights" content="https://www.sindromerenu.it/it/privacy">
   <meta name="DC.subject" content="Sindrome ReNU; RNU4-2; malattia rara; neurosviluppo; genetica">
-  <meta name="DC.date" content="2026-09-18">
-  <meta name="DCTERMS.modified" content="2026-09-18">
+  <meta name="DC.date" content="2026-10-01">
+  <meta name="DCTERMS.modified" content="2026-10-01">
   <meta name="DCTERMS.language" content="${t.lang}">
   <meta name="DCTERMS.license" content="https://www.sindromerenu.it/it/privacy">
 
   <!-- ── Article metadata (pagine non-home) ── -->
   ${pageSlugNorm !== 'home' ? `<meta property="article:published_time" content="2024-12-01T00:00:00Z">
-  <meta property="article:modified_time" content="2026-09-18T00:00:00Z">
+  <meta property="article:modified_time" content="2026-10-01T00:00:00Z">
   <meta property="article:author" content="Sindrome ReNU Italia APS">
   <meta property="article:section" content="${
     pageSlugNorm === 'about'     ? 'Malattia Rara' :
@@ -1880,8 +1930,15 @@ ${hreflangs}
   <!-- Android / Chrome -->
   <meta name="theme-color" content="#082050">
   <meta name="mobile-web-app-capable" content="yes">
-  <!-- Preconnect per ridurre la latenza CDN -->
+  <!-- ── Resource hints: preconnect + dns-prefetch (riduce RTT CDN e origin) ── -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://www.sindromerenu.it">
+  <!-- ── Preload LCP: og-cover caricato prima del render (FCP/LCP improvement) ── -->
+  ${pageSlugNorm === 'home' ? `<link rel="preload" as="image" href="/images/og-cover.jpg" fetchpriority="high" type="image/jpeg">` : ''}
+  <!-- ── Preload font critici FontAwesome (evita FOIT su icone above-the-fold) ── -->
+  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
   <!-- Tailwind: bloccante (indispensabile per il render corretto — evita FOUC e CLS) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <!-- FontAwesome: bloccante (le icone sono presenti inline nel DOM, caricarle async causa CLS) -->
@@ -2386,6 +2443,67 @@ ${hreflangs}
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PERFORMANCE — CORE WEB VITALS
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* M — content-visibility: auto (Chrome 85+, Edge 85+)
+       Salta il rendering delle sezioni fuori schermo → INP/FCP migliorati
+       contain-intrinsic-size evita CLS durante lo scroll (stima altezza) */
+    section:not(.hero-gradient):not(#header-section) {
+      content-visibility: auto;
+      contain-intrinsic-size: 0 500px;
+    }
+    /* Footer: più basso, stimiamo 300px */
+    footer { content-visibility: auto; contain-intrinsic-size: 0 300px; }
+
+    /* N — Touch targets: dimensione minima 44×44px (WCAG 2.5.5, Apple HIG)
+       Tutti i link e bottoni avranno un'area tocco adeguata su mobile */
+    @media (pointer: coarse) {
+      a, button, [role="button"], input[type="submit"], input[type="button"],
+      input[type="checkbox"], input[type="radio"], label[for],
+      .nav-link, nav a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      /* eccezione: label inline dentro testo */
+      p > a, li > a, td > a { min-height: unset; min-width: unset; display: inline; }
+      /* nav link con icone: forziamo padding per area touch */
+      nav a, #mobileMenu a { padding-top: 0.6rem !important; padding-bottom: 0.6rem !important; }
+    }
+
+    /* O — Tabelle privacy/cookie: scroll orizzontale su mobile (evita overflow layout) */
+    .privacy-table-wrap, .cookie-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    .privacy-table-wrap table, .cookie-table-wrap table {
+      min-width: 540px;
+      border-collapse: collapse;
+    }
+    /* Qualunque tabella dentro le pagine privacy/cookie (classe aggiunta via JS o presente nel markup) */
+    @media (max-width: 767px) {
+      .prose table, article table, .card table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+      }
+    }
+
+    /* P — Lazy loading immagini: aspect-ratio previene CLS
+       Le immagini dichiarano width+height → browser riserva spazio prima del load */
+    img[loading="lazy"] { aspect-ratio: attr(width) / attr(height); }
+
+    /* Q — Skeleton placeholder (riduce CLS su immagini senza dimensione esplicita) */
+    img:not([width]):not([height]) {
+      min-height: 1px; /* evita altezza 0 che causa CLS */
+    }
+
     /* ═══════════════════════════════════════════════════════════════ */
   </style>
   ${jsonLdNGO}
@@ -2402,6 +2520,7 @@ ${hreflangs}
   ${jsonLdHowTo}
   ${jsonLdSpeakable}
   ${jsonLdVideo}
+  ${jsonLdAudio}
   ${jsonLdGestiItemList}
   ${extraHead}
 </head>

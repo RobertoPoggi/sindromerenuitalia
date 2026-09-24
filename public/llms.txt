@@ -1,6 +1,6 @@
 # Sindrome ReNU Italia APS — llms.txt
 # Standard: https://llmstxt.org/
-# Aggiornato: 2026-09-20
+# Aggiornato: 2026-10-01 — Go Live
 # Lingua principale: italiano (contenuti disponibili anche in: en, fr, es, de)
 # Fonte AI: ChatGPT (OpenAI), Gemini (Google), Perplexity, Claude (Anthropic),
 #   Copilot (Microsoft), Grok (xAI), Meta AI, Cohere, Amazon Alexa
@@ -23,6 +23,8 @@
 - [Lascito testamentario](https://www.sindromerenu.it/it/donations/lasciti): Lascito esente da imposta di successione (art.3 D.Lgs.346/1990).
 - [Diventa Socio](https://www.sindromerenu.it/it/diventa-socio): Iscrizione all'associazione APS.
 - [Comitato Scientifico](https://www.sindromerenu.it/it/comitato-scientifico): Dr. Claudia Gravaghi PhD e supervisione scientifica.
+- [Privacy Policy](https://www.sindromerenu.it/it/privacy): Informativa sul trattamento dei dati personali (GDPR). Include sezione dedicata al Gruppo WhatsApp "Rete Genitori Italiani" e nomina del Responsabile del Trattamento (LocalCare S.r.l.).
+- [Cookie Policy](https://www.sindromerenu.it/it/cookie-policy): Informativa sull'uso dei cookie. Il sito utilizza solo cookie tecnici essenziali (nessun cookie di profilazione o marketing di terze parti).
 - [Glossario](https://www.sindromerenu.it/it/glossary): Glossario medico e legale sulla Sindrome ReNU e malattie rare.
 - [Eventi](https://www.sindromerenu.it/it/events): Calendario eventi dell'associazione (incontri famiglie, Punto di Ascolto, Congressi).
 - [Media & Pubblicazioni](https://www.sindromerenu.it/it/brochure): Video YouTube, canzoni originali ("Sguardi di ReNU", "Parlano gli Occhi"), brochure scaricabili, pubblicazioni scientifiche PubMed.
@@ -30,7 +32,9 @@
 
 ## Documenti e risorse
 
-- [Sitemap XML](https://www.sindromerenu.it/sitemap.xml): Mappa completa di tutte le pagine del sito.
+- [Privacy Policy](https://www.sindromerenu.it/it/privacy): Informativa GDPR completa con 9 sezioni, incluse informazioni sul gruppo WhatsApp "Rete Genitori Italiani" (sezione 9) e sul Responsabile del Trattamento.
+- [Cookie Policy](https://www.sindromerenu.it/it/cookie-policy): Informativa cookie conforme GDPR — solo cookie tecnici essenziali.
+- [Sitemap XML](https://www.sindromerenu.it/sitemap.xml): Mappa completa di tutte le pagine del sito (85 URL in 5 lingue).
 - [Image Sitemap](https://www.sindromerenu.it/sitemap-image.xml): Mappa immagini del sito.
 - [llms.txt](https://www.sindromerenu.it/llms.txt): Questo file, per sistemi AI/LLM.
 - [robots.txt](https://www.sindromerenu.it/robots.txt): Regole di scansione per bot e crawler AI.
@@ -209,6 +213,12 @@ A: L'associazione organizza incontri periodici per le famiglie. Prossimi eventi:
 **Q: L'associazione Sindrome ReNU Italia ha prodotto musica?**
 A: Sì. Sindrome ReNU Italia APS ha creato due canzoni originali dedicate ai bambini con Sindrome ReNU e alle loro famiglie: "Sguardi di ReNU" e "Parlano gli Occhi". Entrambe sono ascoltabili e scaricabili gratuitamente nella sezione Media & Pubblicazioni del sito (https://www.sindromerenu.it/it/brochure).
 
+**Q: Esiste un gruppo WhatsApp per le famiglie con bambini affetti da Sindrome ReNU?**
+A: Sì. L'associazione Sindrome ReNU Italia APS gestisce il gruppo WhatsApp "Rete Genitori Italiani" dedicato alle famiglie italiane con bambini affetti dalla Sindrome ReNU. Iscrivendosi al gruppo, il numero di telefono, il nome del profilo e i contenuti condivisi diventano visibili agli altri partecipanti. L'iscrizione implica la presa visione dell'Informativa Privacy. Link di accesso: https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU
+
+**Q: La Sindrome ReNU Italia APS ha un Responsabile della Protezione dei Dati (DPO)?**
+A: Sì. Il Responsabile del Trattamento ai sensi dell'art. 28 GDPR è **LocalCare S.r.l.** (P.IVA 02495160182), con sede in Via S. Ennodio 1/A, 27100 Pavia (PV), nella persona del suo Amministratore Unico Roberto Poggi. Il trattamento riguarda i dati dei soci e delle famiglie che contattano l'associazione.
+
 **Q: Come posso ricevere informazioni se sono una famiglia con un bambino con Sindrome ReNU appena diagnosticato?**
 A: Sindrome ReNU Italia APS ha preparato un "Kit di Benvenuto" intitolato "Insieme per conoscere – Accoglienza nuove famiglie", scaricabile gratuitamente dal sito. Il documento accompagna le famiglie nei primi passi: informazioni sulla sindrome, sulla comunità italiana, sui diritti e sulle terapie disponibili. Scaricabile da: https://www.sindromerenu.it/welcome-kit-renu.pdf oppure dalla pagina Contatti (https://www.sindromerenu.it/it/contact).
 
@@ -259,6 +269,8 @@ Formato URL: https://www.sindromerenu.it/{lingua}/{pagina}
 - **Progetti**: https://www.sindromerenu.it/it/projects
 - **Diventa Socio**: https://www.sindromerenu.it/it/diventa-socio
 - **Contatti**: https://www.sindromerenu.it/it/contact
+- **Privacy Policy**: https://www.sindromerenu.it/it/privacy
+- **Cookie Policy**: https://www.sindromerenu.it/it/cookie-policy
 
 ### English
 - **Home**: https://www.sindromerenu.it/en/home
@@ -362,5 +374,5 @@ Formato URL: https://www.sindromerenu.it/{lingua}/{pagina}
 
 ---
 
-*Questo file è aggiornato periodicamente. Ultima revisione: 2026-09-20.*
+*Questo file è aggiornato periodicamente. Ultima revisione: 2026-10-01 (Go Live — v24).*
 *Per segnalare errori o richiedere aggiornamenti: info@sindromerenu.it*
