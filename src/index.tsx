@@ -23,7 +23,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (16 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui, tutti noi volontari, per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (16 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Dietro ogni progetto ci sono solo volontari. Sosteniamo le famiglie italiane e offriamo un aiuto concreto a bambini, ragazzi e adulti con sindrome ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -2822,7 +2822,7 @@ function homePage(t: Record<string, string>): string {
           <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed">${t.hero_desc
             .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
             .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
-            .replace('supportare le famiglie italiane','<strong>supportare le famiglie italiane</strong>')}</p>
+            .replace('solo volontari','<strong>solo volontari</strong>')}</p>
           <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start flex-wrap">
             <a href="/${t.lang}/donations" class="btn-diagnosis inline-flex items-center gap-3 text-white font-bold px-7 py-4 rounded-full text-lg shadow-xl" style="background: linear-gradient(135deg,#DC2626,#B91C1C);">
               <i class="fas fa-heart"></i>${t.btn_diagnosis}
@@ -2843,6 +2843,43 @@ function homePage(t: Record<string, string>): string {
               <img src="/images/logo_transparent.png" alt="Sindrome ReNU Italia APS – Logo" class="w-64 xl:w-72 drop-shadow-xl" width="288" height="248" loading="lazy" decoding="async">
             </picture>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO YOUTUBE HOME -->
+  <section class="py-14 px-4 section-light">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-6">
+        <span class="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 text-sm font-semibold mb-3" style="color:#B91C1C">
+          <i class="fab fa-youtube" style="color:#DC2626"></i>
+          ${t.lang==='it'?'Video':'Video'}
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold" style="color:#082050">
+          ${t.lang==='it'?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
+        </h2>
+      </div>
+      <div class="card overflow-hidden shadow-xl">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000">
+          <iframe
+            src="https://www.youtube.com/embed/6cLk5zFzVVM"
+            title="${t.lang==='it'?'Sindrome ReNU Italia APS – Video':'Sindrome ReNU Italia APS – Video'}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+          ></iframe>
+        </div>
+        <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-3" style="background:#F8FAFC">
+          <p class="text-sm text-gray-500 flex items-center gap-2">
+            <i class="fab fa-youtube text-red-500"></i>
+            ${t.lang==='it'?'Guarda il video sul nostro canale YouTube':'Watch on our YouTube channel'}
+          </p>
+          <a href="https://www.youtube.com/watch?v=6cLk5zFzVVM" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm flex-shrink-0" style="background:#DC2626">
+            <i class="fab fa-youtube"></i>${t.lang==='it'?'Apri su YouTube':'Open on YouTube'}
+          </a>
         </div>
       </div>
     </div>
@@ -3209,43 +3246,6 @@ function homePage(t: Record<string, string>): string {
             </span>
           </div>
         </a>`).join('')}
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO YOUTUBE HOME -->
-  <section class="py-14 px-4 section-light">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-6">
-        <span class="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 text-sm font-semibold mb-3" style="color:#B91C1C">
-          <i class="fab fa-youtube" style="color:#DC2626"></i>
-          ${t.lang==='it'?'Video':'Video'}
-        </span>
-        <h2 class="text-2xl md:text-3xl font-extrabold" style="color:#082050">
-          ${t.lang==='it'?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
-        </h2>
-      </div>
-      <div class="card overflow-hidden shadow-xl">
-        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000">
-          <iframe
-            src="https://www.youtube.com/embed/6cLk5zFzVVM"
-            title="${t.lang==='it'?'Sindrome ReNU Italia APS – Video':'Sindrome ReNU Italia APS – Video'}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
-          ></iframe>
-        </div>
-        <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-3" style="background:#F8FAFC">
-          <p class="text-sm text-gray-500 flex items-center gap-2">
-            <i class="fab fa-youtube text-red-500"></i>
-            ${t.lang==='it'?'Guarda il video sul nostro canale YouTube':'Watch on our YouTube channel'}
-          </p>
-          <a href="https://www.youtube.com/watch?v=6cLk5zFzVVM" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm flex-shrink-0" style="background:#DC2626">
-            <i class="fab fa-youtube"></i>${t.lang==='it'?'Apri su YouTube':'Open on YouTube'}
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -7776,7 +7776,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v25'
+  const _v = '20261001-dpo-privacy-cookie-v26'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
