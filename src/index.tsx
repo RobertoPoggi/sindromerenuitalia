@@ -23,7 +23,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (16 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (16 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Siamo qui, tutti noi volontari, per supportare le famiglie italiane e offrire un aiuto concreto ai bambini ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -2643,6 +2643,7 @@ ${hreflangs}
           <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook pagina: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook-square text-xl" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
           <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank" rel="noopener" aria-label="WhatsApp community: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-whatsapp text-xl" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/sindrome-renu-italia-aps-b1774943b" target="_blank" rel="noopener" aria-label="LinkedIn: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl" aria-hidden="true"></i></a>
         </div>
       </div>
       <!-- Contacts -->
@@ -3208,6 +3209,43 @@ function homePage(t: Record<string, string>): string {
             </span>
           </div>
         </a>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO YOUTUBE HOME -->
+  <section class="py-14 px-4 section-light">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-6">
+        <span class="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 text-sm font-semibold mb-3" style="color:#B91C1C">
+          <i class="fab fa-youtube" style="color:#DC2626"></i>
+          ${t.lang==='it'?'Video':'Video'}
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold" style="color:#082050">
+          ${t.lang==='it'?'Sindrome ReNU Italia APS':'Sindrome ReNU Italia APS'}
+        </h2>
+      </div>
+      <div class="card overflow-hidden shadow-xl">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000">
+          <iframe
+            src="https://www.youtube.com/embed/6cLk5zFzVVM"
+            title="${t.lang==='it'?'Sindrome ReNU Italia APS – Video':'Sindrome ReNU Italia APS – Video'}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+          ></iframe>
+        </div>
+        <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-3" style="background:#F8FAFC">
+          <p class="text-sm text-gray-500 flex items-center gap-2">
+            <i class="fab fa-youtube text-red-500"></i>
+            ${t.lang==='it'?'Guarda il video sul nostro canale YouTube':'Watch on our YouTube channel'}
+          </p>
+          <a href="https://www.youtube.com/watch?v=6cLk5zFzVVM" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-white px-5 py-2 rounded-full font-semibold text-sm flex-shrink-0" style="background:#DC2626">
+            <i class="fab fa-youtube"></i>${t.lang==='it'?'Apri su YouTube':'Open on YouTube'}
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -5222,6 +5260,7 @@ function contactPage(t: Record<string, string>): string {
           <a href="https://www.facebook.com/share/1K7eVNCXtM/" target="_blank" rel="noopener" aria-label="Facebook pagina: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-facebook-square text-2xl" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/sindrome_renu_italia_aps_" target="_blank" rel="noopener" aria-label="Instagram: @sindrome_renu_italia_aps_" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl" aria-hidden="true"></i></a>
           <a href="https://chat.whatsapp.com/H3gvFMLm9vz7ylEYT01LvU" target="_blank" rel="noopener" aria-label="WhatsApp community: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/sindrome-renu-italia-aps-b1774943b" target="_blank" rel="noopener" aria-label="LinkedIn: Sindrome ReNU Italia APS" class="text-sky-300 hover:text-white transition-colors"><i class="fab fa-linkedin text-2xl" aria-hidden="true"></i></a>
           <a href="https://www.renusyndrome.org" target="_blank" rel="noopener" aria-label="Sito internazionale ReNU Syndrome" class="text-sky-300 hover:text-white transition-colors"><i class="fas fa-globe text-2xl" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -6055,10 +6094,13 @@ function eventsPage(t: Record<string, string>): string {
         <div class="card overflow-hidden">
           <!-- Immagine informativa Dynamo -->
           <div class="w-full overflow-hidden">
-            <img src="/images/dynamo_informativa.jpg"
-                 alt="Dynamo Camp informativa"
-                 class="w-full h-auto object-contain bg-white"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="/images/dynamo_camp_2026.webp" type="image/webp">
+              <img src="/images/dynamo_camp_2026.jpg"
+                   alt="Dynamo Camp 2026 – locandina informativa"
+                   class="w-full h-auto object-contain bg-white"
+                   loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="p-8">
             <p class="text-gray-600 leading-relaxed mb-6">
@@ -7734,7 +7776,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v24'
+  const _v = '20261001-dpo-privacy-cookie-v25'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
