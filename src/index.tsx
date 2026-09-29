@@ -4691,7 +4691,27 @@ function donationsPage(t: Record<string, string>): string {
               <p class="text-xs text-gray-400 font-sans text-center mt-2">Banca Intesa Sanpaolo S.p.A. — ABI 03069 · CAB 09606</p>
             </div>
           </div>
-          <p class="mt-3 text-sm text-gray-500 text-center">
+          <!-- Locandina condivisibile IBAN -->
+          <div class="mt-6 flex flex-col items-center gap-3">
+            <p class="text-xs text-gray-400 text-center">
+              <i class="fas fa-share-alt mr-1"></i>
+              ${t.lang==='it'?'Condividi questa locandina con chi vuoi sostenere la nostra missione':'Share this flyer with anyone who wants to support our mission'}
+            </p>
+            <picture>
+              <source srcset="/images/donazioni_iban.webp" type="image/webp">
+              <img src="/images/donazioni_iban.jpg"
+                   alt="${t.lang==='it'?'Locandina donazioni – Sindrome ReNU Italia APS: IBAN IT18H0306909606100000416360':'Donation flyer – Sindrome ReNU Italia APS: IBAN IT18H0306909606100000416360'}"
+                   class="w-full max-w-sm rounded-2xl shadow-lg border border-sky-100"
+                   loading="lazy" decoding="async">
+            </picture>
+            <a href="/images/donazioni_iban.jpg" download="Donazioni-SindromeReNU-ItaliaAPS.jpg"
+               class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full transition-colors text-white" style="background:#1078C0">
+              <i class="fas fa-download"></i>
+              ${t.lang==='it'?'Scarica locandina':'Download flyer'}
+            </a>
+          </div>
+
+          <p class="mt-4 text-sm text-gray-500 text-center">
             <i class="fas fa-envelope mr-1" style="color:#1078C0"></i>
             <a href="mailto:donazioni@sindromerenu.it" class="hover:underline" style="color:#1078C0">donazioni@sindromerenu.it</a>
           </p>
@@ -7776,7 +7796,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v26'
+  const _v = '20261001-dpo-privacy-cookie-v27'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
