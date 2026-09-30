@@ -8,6 +8,19 @@ type Env = {
 
 const app = new Hono<{ Bindings: Env }>()
 
+// ─── Redirect dominio nudo → www (301 permanente) ─────────────────────────────
+// sindromerenu.it/* → https://www.sindromerenu.it/*
+// Necessario perché il record A del dominio nudo punta al vecchio hosting
+app.use('*', async (c, next) => {
+  const host = c.req.header('host') || ''
+  if (host === 'sindromerenu.it' || host === 'sindromerenu.it:443') {
+    const url = new URL(c.req.url)
+    url.host = 'www.sindromerenu.it'
+    return c.redirect(url.toString(), 301)
+  }
+  return next()
+})
+
 // Serve static files
 app.use('/static/*', serveStatic({ root: './public' }))
 app.use('/images/*', serveStatic({ root: './public' }))
@@ -7803,7 +7816,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-admin-tz-europe-rome-v30'
+  const _v = '20261001-redirects-naked-domain-v32'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
