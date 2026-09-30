@@ -14,6 +14,10 @@ app.use('/images/*', serveStatic({ root: './public' }))
 app.use('/brochure/*', serveStatic({ root: './public' }))
 
 app.use('/favicon.svg', serveStatic({ root: './public' }))
+app.use('/favicon.ico', serveStatic({ root: './public' }))
+app.use('/favicon.png', serveStatic({ root: './public' }))
+app.use('/apple-touch-icon.png', serveStatic({ root: './public' }))
+app.use('/icons/*', serveStatic({ root: './public' }))
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 const translations: Record<string, Record<string, string>> = {
@@ -1905,21 +1909,23 @@ ${hreflangs}
   ).join('\n  ')}
 
   <!-- ── Favicon: tutti i browser e dispositivi ── -->
-  <!-- Chrome/Firefox/Edge: preferisce SVG (vettoriale, qualsiasi dimensione) -->
+  <!-- Chrome/Firefox/Edge: ICO multi-layer 16+32+48 (generato da logo ufficiale) -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <!-- Fallback PNG 32×32 e 16×16 (logo semplificato: simbolo+ReNU) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+  <!-- SVG vettoriale per browser moderni che lo supportano -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <!-- Safari < 12 / Android Chrome < 80: fallback PNG 32px -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-60x60.png">
-  <!-- Favicon ICO classico (IE, vecchi browser) -->
-  <link rel="shortcut icon" href="/icons/icon-57x57.png">
   <!-- ── PWA / App ── -->
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
-  <!-- iOS / Safari: apple-touch-icon (usato su home screen iPhone/iPad) -->
+  <!-- iOS / Safari: apple-touch-icon con sfondo bianco (guidelines Apple) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="ReNU Italia">
-  <!-- iOS usa la prima apple-touch-icon che matcha (o la più grande disponibile) -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png">
+  <!-- apple-touch-icon dedicato 180×180 con sfondo bianco (iOS 8+) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- Fallback per dispositivi iOS più vecchi -->
   <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-152x152.png">
   <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
   <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png">
@@ -7797,7 +7803,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v28'
+  const _v = '20261001-favicon-ico-v29'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
