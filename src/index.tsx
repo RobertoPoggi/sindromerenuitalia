@@ -1306,7 +1306,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
       "https://www.instagram.com/sindrome_renu_italia_aps_",
       "https://www.facebook.com/share/1JJ787h377/",
       "https://www.facebook.com/share/1K7eVNCXtM/",
-      "https://www.youtube.com/@sindromerenu"
+      "https://www.youtube.com/@sindromerenu",
+      "https://www.linkedin.com/in/sindrome-renu-italia-aps-b1774943b"
     ],
     "potentialAction": {
       "@type": "DonateAction",
@@ -7796,7 +7797,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-dpo-privacy-cookie-v27'
+  const _v = '20261001-dpo-privacy-cookie-v28'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
