@@ -7803,7 +7803,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-favicon-ico-v29'
+  const _v = '20261001-admin-tz-europe-rome-v30'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -9103,10 +9103,18 @@ async function showTab(name){
   let html = '<div class="overflow-x-auto"><table class="w-full text-xs"><thead class="bg-gray-50 border-b"><tr>'
     + keys.map(k => '<th class="px-3 py-3 text-left font-semibold text-gray-600 whitespace-nowrap">'+k+'</th>').join('')
     + '</tr></thead><tbody>';
+  const DATE_COLS = new Set(['created_at','data_consenso','timestamp','data_cancellazione','updated_at']);
   data.forEach((row,i) => {
     html += '<tr class="'+(i%2?'bg-gray-50':'')+' border-b hover:bg-blue-50">';
     keys.forEach(k => {
-      const v = row[k] !== null ? String(row[k]) : '–';
+      let v = row[k] !== null ? String(row[k]) : '–';
+      // Converti date UTC → ora italiana (Europe/Rome) per leggibilità
+      if (DATE_COLS.has(k) && v !== '–') {
+        try {
+          const iso = v.includes('T') ? v : v.replace(' ','T')+'Z';
+          v = new Date(iso).toLocaleString('it-IT',{timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+        } catch(e) {}
+      }
       const short = v.length > 60 ? v.substring(0,60)+'…' : v;
       html += '<td class="px-3 py-2 text-gray-700 max-w-xs" title="'+v.replace(/"/g,'&quot;')+'">'+short+'</td>';
     });
