@@ -1950,19 +1950,18 @@ ${hreflangs}
   <!-- Android / Chrome -->
   <meta name="theme-color" content="#082050">
   <meta name="mobile-web-app-capable" content="yes">
-  <!-- ── Resource hints: preconnect + dns-prefetch (riduce RTT CDN e origin) ── -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <!-- ── Resource hints: preconnect (riduce RTT origine principale e thumbnail YT) ── -->
   <link rel="preconnect" href="https://www.sindromerenu.it">
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
   <!-- ── Preload LCP: og-cover caricato prima del render (FCP/LCP improvement) ── -->
   ${pageSlugNorm === 'home' ? `<link rel="preload" as="image" href="/images/og-cover.jpg" fetchpriority="high" type="image/jpeg">` : ''}
-  <!-- ── Preload font critici FontAwesome (evita FOIT su icone above-the-fold) ── -->
-  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
-  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
-  <!-- Tailwind: bloccante (indispensabile per il render corretto — evita FOUC e CLS) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <!-- FontAwesome: bloccante (le icone sono presenti inline nel DOM, caricarle async causa CLS) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <!-- ── Preload font critici FontAwesome — self-hosted (evita FOIT su icone above-the-fold) ── -->
+  <link rel="preload" as="font" href="/static/webfonts/fa-solid-900.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/static/webfonts/fa-brands-400.woff2" type="font/woff2" crossorigin>
+  <!-- Tailwind self-hosted: 35 KB purged vs 250 KB CDN — elimina 2100ms blocking render -->
+  <link rel="stylesheet" href="/static/tailwind.min.css">
+  <!-- FontAwesome self-hosted: elimina 910ms blocking render da cdn.jsdelivr.net -->
+  <link rel="stylesheet" href="/static/fa-all-local.min.css">
   <style>
     :root {
       --navy:   #082050;
@@ -1978,8 +1977,8 @@ ${hreflangs}
       background-color: var(--bg);
     }
     /* font-display: swap per Font Awesome — evita FOIT (Flash of Invisible Text) */
-    @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2') format('woff2'); font-weight: 900; }
-    @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2'); font-weight: 400; }
+    @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; src: url('/static/webfonts/fa-solid-900.woff2') format('woff2'); font-weight: 900; }
+    @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; src: url('/static/webfonts/fa-brands-400.woff2') format('woff2'); font-weight: 400; }
     /* ── Logo sfondo intera pagina (come da specifiche PDF punto 5) ── */
     /* Il logo appare come watermark fisso sopra tutto il contenuto, visibile su ogni sezione */
     /* watermark fisso centrato su tutta la pagina */
@@ -2543,14 +2542,31 @@ ${hreflangs}
   ${jsonLdAudio}
   ${jsonLdGestiItemList}
   ${extraHead}
+  <!-- YouTube facade: carica iframe al click invece che subito (risparmia ~1 MB + 458ms TBT) -->
+  <script>
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('.yt-facade');
+    if (!el) return;
+    var vid = el.dataset.vid;
+    if (!vid) return;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+    el.parentNode.style.position = 'relative';
+    el.replaceWith(iframe);
+  });
+  </script>
 </head>
 <body>
 
 <!-- ── LOGO WATERMARK FISSO SU TUTTA LA PAGINA (PDF punto 5) ── -->
 <div id="page-logo-watermark" aria-hidden="true">
   <picture>
-    <source srcset="/images/logo_transparent2.webp" type="image/webp">
-    <img src="/images/logo_transparent2.png" alt="" fetchpriority="high" decoding="async" width="600" height="600">
+    <source srcset="/images/logo_transparent2_opt.webp 525w, /images/logo_transparent2@2x.webp 1050w"
+            sizes="(max-width:768px) 400px, 525px" type="image/webp">
+    <img src="/images/logo_transparent2.png" alt="" fetchpriority="high" decoding="async" width="525" height="525">
   </picture>
 </div>
 
@@ -2882,14 +2898,18 @@ function homePage(t: Record<string, string>): string {
       </div>
       <div class="card overflow-hidden shadow-xl">
         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000">
-          <iframe
-            src="https://www.youtube.com/embed/6cLk5zFzVVM"
-            title="${t.lang==='it'?'Sindrome ReNU Italia APS – Video':'Sindrome ReNU Italia APS – Video'}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
-          ></iframe>
+          <!-- YouTube facade: carica iframe solo al click (risparmia ~993 KiB) -->
+          <div class="yt-facade" data-vid="6cLk5zFzVVM"
+               style="position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000">
+            <img src="https://i.ytimg.com/vi/6cLk5zFzVVM/hqdefault.jpg"
+                 alt="${t.lang==='it'?'Sindrome ReNU Italia APS – anteprima video':'Sindrome ReNU Italia APS – video preview'}"
+                 loading="lazy" decoding="async"
+                 style="width:100%;height:100%;object-fit:cover;opacity:0.85">
+            <button aria-label="${t.lang==='it'?'Riproduci video':'Play video'}"
+                    style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:#DC2626;border:none;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#DC2626"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
+            </button>
+          </div>
         </div>
         <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-3" style="background:#F8FAFC">
           <p class="text-sm text-gray-500 flex items-center gap-2">
@@ -2928,7 +2948,8 @@ function homePage(t: Record<string, string>): string {
           <div class="overflow-hidden bg-sky-50 relative" style="aspect-ratio:${(c as any).aspect||'16/9'}">
             <i class="fas ${c.icon} text-4xl text-sky-200 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></i>
             <picture>
-              <source srcset="${c.img.replace(/\.(jpg|png)$/, '.webp')}" type="image/webp">
+              <source srcset="${c.img.replace(/\.(jpg|png)$/, '_opt.webp')} 662w, ${c.img.replace(/\.(jpg|png)$/, '@2x.webp')} 1324w, ${c.img.replace(/\.(jpg|png)$/, '.webp')}"
+                      sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 662px" type="image/webp">
               <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 relative z-10"
                    style="object-position:${(c as any).pos||'center'}"
                    loading="lazy" decoding="async"
@@ -5539,15 +5560,16 @@ function brochurePage(t: Record<string, string>): string {
           <!-- Video 1 -->
           <div class="card overflow-hidden">
             <div class="relative w-full" style="padding-bottom:56.25%">
-              <iframe
-                src="https://www.youtube.com/embed/LqWlxU11UPM"
-                title="Sindrome ReNU – Video 1"
-                class="absolute inset-0 w-full h-full"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
+              <div class="yt-facade" data-vid="LqWlxU11UPM"
+                   style="position:absolute;inset:0;cursor:pointer;background:#000">
+                <img src="https://i.ytimg.com/vi/LqWlxU11UPM/hqdefault.jpg"
+                     alt="Sindrome ReNU – Video 1" loading="lazy" decoding="async"
+                     style="width:100%;height:100%;object-fit:cover;opacity:0.85">
+                <button aria-label="${isIt?'Riproduci video':'Play video'}"
+                        style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:40px;background:#DC2626;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 68 48" width="56" height="40"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#DC2626"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
+                </button>
+              </div>
             </div>
             <div class="p-4">
               <a href="https://youtu.be/LqWlxU11UPM" target="_blank" rel="noopener"
@@ -5559,15 +5581,16 @@ function brochurePage(t: Record<string, string>): string {
           <!-- Video 2 -->
           <div class="card overflow-hidden">
             <div class="relative w-full" style="padding-bottom:56.25%">
-              <iframe
-                src="https://www.youtube.com/embed/Pe_5GQ7bei4"
-                title="Sindrome ReNU – Video 2"
-                class="absolute inset-0 w-full h-full"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
+              <div class="yt-facade" data-vid="Pe_5GQ7bei4"
+                   style="position:absolute;inset:0;cursor:pointer;background:#000">
+                <img src="https://i.ytimg.com/vi/Pe_5GQ7bei4/hqdefault.jpg"
+                     alt="Sindrome ReNU – Video 2" loading="lazy" decoding="async"
+                     style="width:100%;height:100%;object-fit:cover;opacity:0.85">
+                <button aria-label="${isIt?'Riproduci video':'Play video'}"
+                        style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:40px;background:#DC2626;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">
+                  <svg viewBox="0 0 68 48" width="56" height="40"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#DC2626"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
+                </button>
+              </div>
             </div>
             <div class="p-4">
               <a href="https://youtube.com/watch?v=Pe_5GQ7bei4" target="_blank" rel="noopener"
@@ -7816,7 +7839,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-redirects-naked-domain-v32'
+  const _v = '20261001-pagespeed-v33'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
