@@ -24,23 +24,28 @@
   Vary: Accept-Encoding
 
 # ── Cache asset statici: immagini, icone, font ──────────────────────────
+# NOTA: NON usare "immutable" su file con nomi statici (es. _opt.webp, @2x.webp)
+# "immutable" è corretto solo per asset con hash nel nome (es. file-abc123.js)
+# Con nomi fissi, il browser potrebbe cachare un vecchio 404 per max-age giorni
+
 /images/*
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=2592000
   Vary: Accept-Encoding
 
 /icons/*
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=2592000
 
 /static/*
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=2592000
   Vary: Accept-Encoding
 
 /*.webp
-  Cache-Control: public, max-age=2592000, immutable
+  Cache-Control: public, max-age=2592000
   Content-Type: image/webp
 
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
+  # I font woff2 POSSONO usare immutable: il nome non cambia mai e il contenuto è stabile
 
 # ── Cache audio MP3 (30 giorni, immutable) ──────────────────────────────
 /audio/*
