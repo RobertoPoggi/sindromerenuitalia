@@ -1826,6 +1826,8 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
   <!-- ── SEO: Title e Description per pagina ── -->
   <title>${seoTitle}</title>
   <meta name="description" content="${seoDesc}">
+  <!-- ── Google Search Console: verifica proprietà ── -->
+  <meta name="google-site-verification" content="_blAe32yRUEAQVHmqoaJySETYva7-2EGVXnAFAzQJr8">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="Sindrome ReNU Italia APS">
   <meta name="keywords" content="${
