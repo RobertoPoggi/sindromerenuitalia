@@ -40,7 +40,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Insieme, facciamo la differenza',
     tagline: 'Una condizione genetica di nuova identificazione. Uno sforzo di ricerca coordinato a livello globale.',
     hero_text: 'La sindrome di ReNU è una condizione complessa che coinvolge ogni giorno bambini, ragazzi e famiglie. Questo spazio nasce per offrire informazioni chiare, orientamento concreto e la forza di una comunità che condivide lo stesso percorso.',
-    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (16 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Dietro ogni progetto ci sono solo volontari. Sosteniamo le famiglie italiane e offriamo un aiuto concreto a bambini, ragazzi e adulti con sindrome ReNU.',
+    hero_desc: 'La Sindrome ReNU è causata da varianti patogene del gene RNU4-2. Attualmente sono ~250 i casi accertati nel mondo (18 in Italia). Le varianti patogene si concentrano in soli 13 posizioni degli oltre 3 miliardi di paia di basi del genoma! Dietro ogni progetto ci sono solo volontari. Sosteniamo le famiglie italiane e offriamo un aiuto concreto a bambini, ragazzi e adulti con sindrome ReNU.',
     nav_home: 'Home', nav_about: 'Cos\'è ReNU', nav_research: 'Approfondimenti',
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
@@ -231,7 +231,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Together, we make a difference',
     tagline: 'A newly identified genetic condition. A globally coordinated research effort.',
     hero_text: 'RNU4-2 Emerges as a Leading Cause of Rare Neurodevelopmental Disorders – <strong>Renewing Hope for Families</strong>',
-    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (16 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
+    hero_desc: 'ReNU syndrome is a spliceosomal disorder with a defined mutational hotspot and growing global dataset. Currently <strong>~250 confirmed cases worldwide</strong> (18 in Italy), though the true number of undiagnosed cases is estimated to be much higher: pathogenic variants are concentrated in just <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> of our 3 billion base-pair genome!',
     nav_home: 'Home', nav_about: 'About ReNU', nav_research: 'Research',
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
@@ -403,7 +403,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Ensemble, nous faisons la différence',
     tagline: 'Une condition génétique nouvellement identifiée. Un effort de recherche coordonné mondialement.',
     hero_text: 'RNU4-2 émerge comme une cause majeure de troubles rares du neurodéveloppement – <strong>Renouvelant l\'espoir pour les familles</strong>',
-    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (16 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
+    hero_desc: 'Le syndrome ReNU est un trouble splicéosomal avec un hotspot mutationnel défini. Actuellement <strong>~250 cas confirmés dans le monde</strong> (18 en Italie), mais le nombre de cas non diagnostiqués est estimé bien plus élevé : les variants pathogènes se concentrent en seulement <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 positions</a> du génome!',
     nav_home: 'Accueil', nav_about: 'À propos de ReNU', nav_research: 'Recherche',
     nav_therapies: 'Thérapies', nav_diagnosis: 'Diagnostic', nav_community: 'Communauté',
     nav_donations: 'Dons', nav_contact: 'Contact', nav_brochure: 'Brochures',
@@ -595,7 +595,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Juntos, hacemos la diferencia',
     tagline: 'Una condición genética recién identificada. Un esfuerzo de investigación coordinado a nivel mundial.',
     hero_text: 'RNU4-2 emerge como una causa principal de trastornos raros del neurodesarrollo – <strong>Renovando la Esperanza para las Familias</strong>',
-    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (16 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
+    hero_desc: 'El Síndrome ReNU es un trastorno spliceosomal. Actualmente hay <strong>~250 casos confirmados en el mundo</strong> (18 en Italia), aunque el número real de casos no diagnosticados se estima mucho mayor: las variantes patogénicas se concentran en solo <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posiciones</a> del genoma!',
     nav_home: 'Inicio', nav_about: 'Sobre ReNU', nav_research: 'Investigación',
     nav_therapies: 'Terapias', nav_diagnosis: 'Diagnóstico', nav_community: 'Comunidad',
     nav_donations: 'Donaciones', nav_contact: 'Contacto', nav_brochure: 'Folletos',
@@ -787,7 +787,7 @@ const translations: Record<string, Record<string, string>> = {
     subtitle: 'Gemeinsam machen wir den Unterschied',
     tagline: 'Eine neu identifizierte genetische Erkrankung. Eine global koordinierte Forschungsarbeit.',
     hero_text: 'RNU4-2 entwickelt sich zu einer führenden Ursache seltener neurologischer Entwicklungsstörungen – <strong>Neue Hoffnung für Familien</strong>',
-    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (16 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
+    hero_desc: 'Das ReNU-Syndrom ist eine Spliceosom-Störung. Derzeit sind <strong>~250 Fälle weltweit bestätigt</strong> (18 in Italien), wobei die tatsächliche Zahl nicht diagnostizierter Fälle viel höher geschätzt wird: Pathogene Varianten konzentrieren sich auf nur <a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 Positionen</a> des Genoms!',
     nav_home: 'Startseite', nav_about: 'Über ReNU', nav_research: 'Forschung',
     nav_therapies: 'Therapien', nav_diagnosis: 'Diagnose', nav_community: 'Gemeinschaft',
     nav_donations: 'Spenden', nav_contact: 'Kontakt', nav_brochure: 'Broschüren',
@@ -2931,7 +2931,7 @@ function homePage(t: Record<string, string>): string {
   <section class="stat-bar text-white py-6 px-4">
     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
       <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_world}</div></div>
-      <div><div class="text-3xl font-extrabold text-sky-300" id="stat-cases-italy">${t.casi_italia||'16'}</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300" id="stat-cases-italy">${t.casi_italia||'18'}</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.stat_dna}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.stat_countries}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">2024</div><div class="text-sky-200 text-sm mt-1">${t.stat_year}</div></div>
@@ -4320,7 +4320,7 @@ function communityPage(t: Record<string, string>): string {
               ${t.lang==='it'?'Mappa Italia e Mondiale RNU4-2':'Italy &amp; World Map RNU4-2'}
             </h3>
             <p class="text-gray-600 mb-4 text-sm">
-              ${t.lang==='it'?'Aggiungi il tuo familiare alla mappa Italia e mondiale di RNU4-2. Ultimo aggiornamento: 15 aprile 2026.':'Add your family member to the Italy and worldwide RNU4-2 map. Last updated: April 15, 2026.'}
+              ${t.lang==='it'?'Aggiungi il tuo familiare alla mappa Italia e mondiale di RNU4-2. Ultimo aggiornamento: ottobre 2026.':'Add your family member to the Italy and worldwide RNU4-2 map. Last updated: October 2026.'}
             </p>
             <a href="https://form.jotform.com/250154538972159" target="_blank"
                class="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold transition-colors" style="background:#1078C0">
@@ -4397,7 +4397,7 @@ function communityPage(t: Record<string, string>): string {
           </div>
           <div class="flex-1">
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              ${t.lang==='it'?`In Italia sono stati accertati <strong>${t.casi_italia||'16'} casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell'Associazione.`:`In Italy, <strong>${t.casi_italia||'16'} cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.`}
+              ${t.lang==='it'?`In Italia sono stati accertati <strong>${t.casi_italia||'18'} casi</strong> di Sindrome ReNU (RNU4-2). Le famiglie sono distribuite in diverse regioni italiane. La mappa è in continuo aggiornamento grazie al lavoro di rete dell'Associazione.`:`In Italy, <strong>${t.casi_italia||'18'} cases</strong> of ReNU Syndrome (RNU4-2) have been confirmed. Families are distributed across several Italian regions.`}
             </p>
             <p class="text-gray-600 text-sm leading-relaxed mb-4">
               ${t.lang==='it'?'Se hai un familiare con Sindrome ReNU e non sei ancora in contatto con la nostra rete, <strong>scrivici</strong>: ti aiutiamo a entrare nella comunità italiana e a conoscere le famiglie vicino a te.':'If you have a family member with ReNU Syndrome and are not yet in contact with our network, <strong>write to us</strong>: we will help you join the Italian community.'}
@@ -7841,7 +7841,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261001-cache-fix-v34'
+  const _v = '20261012-mappa18-v35'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8179,7 +8179,7 @@ function glossaryPage(t: Record<string, string>): string {
     },
     {
       term: isIt ? 'Prevalenza' : isEn ? 'Prevalence' : isFr ? 'Prévalence' : isEs ? 'Prevalencia' : 'Prävalenz',
-      def: isIt ? 'Proporzione di individui in una popolazione che presentano una determinata condizione in un dato momento. La Sindrome ReNU ha una prevalenza stimata di circa 1 su 35.000 nati vivi, che la classifica come malattia ultra-rara (soglia europea: meno di 5 casi su 10.000). In Italia si stima siano presenti circa 16 casi diagnosticati, ma il numero reale è probabilmente molto superiore per via del deficit diagnostico.' : isEn ? 'Proportion of individuals in a population with a given condition at a given time. ReNU Syndrome has an estimated prevalence of approximately 1 in 35,000 live births, classifying it as ultra-rare (EU threshold: fewer than 5 per 10,000). In Italy, approximately 16 diagnosed cases are known, but the real number is likely much higher due to diagnostic deficit.' : isFr ? 'Proportion d\'individus présentant une condition donnée à un moment donné. Le Syndrome ReNU a une prévalence estimée d\'environ 1 sur 35 000 naissances vivantes.' : isEs ? 'Proporción de individuos con una condición dada en un momento dado. El Síndrome ReNU tiene una prevalencia estimada de aproximadamente 1 en 35.000 nacidos vivos.' : 'Anteil der Individuen mit einer bestimmten Erkrankung zu einem bestimmten Zeitpunkt. Das ReNU-Syndrom hat eine geschätzte Prävalenz von ca. 1 von 35.000 Lebendgeburten.',
+      def: isIt ? 'Proporzione di individui in una popolazione che presentano una determinata condizione in un dato momento. La Sindrome ReNU ha una prevalenza stimata di circa 1 su 35.000 nati vivi, che la classifica come malattia ultra-rara (soglia europea: meno di 5 casi su 10.000). In Italia si stima siano presenti circa 18 casi diagnosticati, ma il numero reale è probabilmente molto superiore per via del deficit diagnostico.' : isEn ? 'Proportion of individuals in a population with a given condition at a given time. ReNU Syndrome has an estimated prevalence of approximately 1 in 35,000 live births, classifying it as ultra-rare (EU threshold: fewer than 5 per 10,000). In Italy, approximately 18 diagnosed cases are known, but the real number is likely much higher due to diagnostic deficit.' : isFr ? 'Proportion d\'individus présentant une condition donnée à un moment donné. Le Syndrome ReNU a une prévalence estimée d\'environ 1 sur 35 000 naissances vivantes.' : isEs ? 'Proporción de individuos con una condición dada en un momento dado. El Síndrome ReNU tiene una prevalencia estimada de aproximadamente 1 en 35.000 nacidos vivos.' : 'Anteil der Individuen mit einer bestimmten Erkrankung zu einem bestimmten Zeitpunkt. Das ReNU-Syndrom hat eine geschätzte Prävalenz von ca. 1 von 35.000 Lebendgeburten.',
       source: 'Hollingsworth et al., Nature 2024'
     },
     {
