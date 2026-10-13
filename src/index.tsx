@@ -6025,11 +6025,11 @@ function eventsPage(t: Record<string, string>): string {
         <!-- Header viola con data -->
         <div class="px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4" style="background:linear-gradient(135deg,#082050,#6C3FC5)">
           <div>
-            <div class="text-xs font-bold tracking-widest text-purple-200 mb-1 uppercase">Milano Marathon · Charity Program</div>
+            <div class="text-xs font-bold tracking-widest mb-1 uppercase" style="color:#e9d5ff">Milano Marathon · Charity Program</div>
             <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight">
               ${t.lang==='it' ? 'Corri con noi. Diamo voce a ReNU.' : 'Run with us. Give voice to ReNU.'}
             </h2>
-            <p class="text-purple-200 text-sm mt-1">${t.lang==='it' ? 'Rari, non invisibili.' : 'Rare, not invisible.'}</p>
+            <p class="text-sm mt-1" style="color:#e9d5ff">${t.lang==='it' ? 'Rari, non invisibili.' : 'Rare, not invisible.'}</p>
           </div>
           <div class="flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-white text-lg" style="background:#6C3FC5; border: 2px solid #a78bfa">
             <i class="fas fa-calendar-alt"></i> 4 ${t.lang==='it'?'aprile':'April'} 2027
@@ -8112,7 +8112,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-quote4-v36'
+  const _v = '20261013-admin-v37'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -9786,65 +9786,131 @@ async function doErasure(){
 // ─── TESTI UI ────────────────────────────────────────────────────────────────
 // Mappa chiave → etichetta leggibile per l'interfaccia admin
 const TESTI_LABELS = {
+  // ── Home ──────────────────────────────────────────────────────────────────
   title:'Titolo sito', subtitle:'Sottotitolo', tagline:'Tagline header',
   hero_text:'Hero – testo principale', hero_desc:'Hero – descrizione casi',
-  btn_diagnosis:'Pulsante CTA donazioni', btn_diagnosis_sub:'Pulsante CTA donazioni – sub',
-  btn_info:'Pulsante CTA info', btn_info_sub:'Pulsante CTA info – sub',
-  section_map_title:'Card Mappa – titolo', section_map_desc:'Card Mappa – desc',
-  section_awareness_title:'Card Consapevolezza – titolo', section_awareness_desc:'Card Consapevolezza – desc',
-  section_science_title:'Card Comitato – titolo', section_science_desc:'Card Comitato – desc',
-  section_research_title:'Card Approfondimenti – titolo', section_research_desc:'Card Approfondimenti – desc',
-  section_info_title:'Card Info ReNU \u2013 titolo', section_info_desc:'Card Info ReNU \u2013 desc',
-  section_parents_title:'Card Genitori – titolo', section_parents_desc:'Card Genitori – desc',
-  section_donations_title:'Card Donazioni – titolo', section_donations_desc:'Card Donazioni – desc',
-  about_title:'About – titolo', about_gene:'About – paragrafo gene',
+  btn_diagnosis:'Pulsante CTA principale', btn_diagnosis_sub:'CTA principale – sottotitolo',
+  btn_info:'Pulsante CTA secondario', btn_info_sub:'CTA secondario – sottotitolo',
+  section_map_title:'Card Home – Mappa titolo', section_map_desc:'Card Home – Mappa desc',
+  section_awareness_title:'Card Home – Consapevolezza titolo', section_awareness_desc:'Card Home – Consapevolezza desc',
+  section_science_title:'Card Home – Comitato titolo', section_science_desc:'Card Home – Comitato desc',
+  section_research_title:'Card Home – Approfondimenti titolo', section_research_desc:'Card Home – Approfondimenti desc',
+  section_info_title:'Card Home – Info ReNU titolo', section_info_desc:'Card Home – Info ReNU desc',
+  section_parents_title:'Card Home – Genitori titolo', section_parents_desc:'Card Home – Genitori desc',
+  section_donations_title:'Card Home – Donazioni titolo', section_donations_desc:'Card Home – Donazioni desc',
+  // ── Cos'è ReNU (About) ────────────────────────────────────────────────────
+  about_title:'About – titolo pagina', about_gene:'About – paragrafo gene',
   about_discovery:'About – titolo scoperta', about_discovery_text:'About – testo scoperta',
-  about_features_title:'About – titolo caratteristiche',
-  about_brain:'About – anomalie cerebrali', about_brain_items:'About – anomalie cerebrali (lista)',
-  about_development:'About – disabilità intellettiva', about_development_items:'About – disabilità (lista)',
-  about_seizures:'About – epilessia', about_seizures_items:'About – epilessia (lista)',
-  about_vision:'About – problemi visivi', about_vision_items:'About – visivi (lista)',
-  about_face:'About – caratteristiche viso', about_face_items:'About – viso (lista)',
-  about_muscle:'About – tono muscolare', about_muscle_items:'About – muscolare (lista)',
-  about_mobility:'About – mobilità', about_mobility_items:'About – mobilità (lista)',
-  about_growth:'About – crescita', about_growth_items:'About – crescita (lista)',
-  about_feeding:'About – alimentazione', about_feeding_items:'About – alimentazione (lista)',
-  about_communication:'About – comunicazione', about_communication_items:'About – comunicazione (lista)',
-  about_bones:'About – problemi ossei', about_bones_items:'About – ossei (lista)',
+  about_features_title:'About – titolo caratteristiche cliniche',
+  about_brain:'About – anomalie cerebrali (titolo)', about_brain_items:'About – anomalie cerebrali (lista)',
+  about_development:'About – disabilità intellettiva (titolo)', about_development_items:'About – disabilità intellettiva (lista)',
+  about_seizures:'About – epilessia (titolo)', about_seizures_items:'About – epilessia (lista)',
+  about_vision:'About – problemi visivi (titolo)', about_vision_items:'About – visivi (lista)',
+  about_face:'About – caratteristiche viso (titolo)', about_face_items:'About – viso (lista)',
+  about_muscle:'About – tono muscolare (titolo)', about_muscle_items:'About – muscolare (lista)',
+  about_mobility:'About – mobilità (titolo)', about_mobility_items:'About – mobilità (lista)',
+  about_growth:'About – crescita (titolo)', about_growth_items:'About – crescita (lista)',
+  about_feeding:'About – alimentazione (titolo)', about_feeding_items:'About – alimentazione (lista)',
+  about_communication:'About – comunicazione (titolo)', about_communication_items:'About – comunicazione (lista)',
+  about_bones:'About – problemi ossei (titolo)', about_bones_items:'About – ossei (lista)',
   about_happy:'About – nota carattere felice', about_diagnosis_note:'About – nota diagnostica WGS',
-  research_title:'Ricerca – titolo', research_intro:'Ricerca – intro',
-  research_crid:'Ricerca – testo CRID', research_priorities_title:'Ricerca – priorità comunità',
-  therapies_title:'Terapie – titolo', therapies_intro:'Terapie – intro', therapies_note:'Terapie – nota disclaimer',
-  diagnosis_title:'Diagnosi – titolo', diagnosis_intro:'Diagnosi – intro', diagnosis_contact:'Diagnosi – contatto',
-  community_title:'Comunità – titolo', community_intro:'Comunità – intro',
+  // ── Diagnosi ──────────────────────────────────────────────────────────────
+  diagnosis_title:'Diagnosi – titolo pagina', diagnosis_intro:'Diagnosi – testo introduttivo', diagnosis_contact:'Diagnosi – testo contatto',
+  // ── Terapie ───────────────────────────────────────────────────────────────
+  therapies_title:'Terapie – titolo pagina', therapies_intro:'Terapie – testo introduttivo', therapies_note:'Terapie – nota disclaimer',
+  // ── Approfondimenti (Ricerca) ─────────────────────────────────────────────
+  research_title:'Approfondimenti – titolo pagina', research_intro:'Approfondimenti – testo introduttivo',
+  research_crid:'Approfondimenti – testo CRID', research_priorities_title:'Approfondimenti – titolo priorità comunità',
+  // ── Comunità ──────────────────────────────────────────────────────────────
+  community_title:'Comunità – titolo pagina', community_intro:'Comunità – testo introduttivo',
   community_network_it:'Comunità – rete genitori titolo', community_network_desc:'Comunità – rete genitori desc',
-  donations_title:'Donazioni – titolo', donations_intro:'Donazioni – intro',
-  donations_iban:'Donazioni – IBAN', donations_iban_label:'Donazioni – intestatario',
-  contact_title:'Contatti – titolo', contact_intro:'Contatti – intro',
-  brochure_title:'Media – titolo', brochure_intro:'Media – intro',
-  science_title:'Comitato – titolo', science_intro:'Comitato – intro',
-  science_role1_title:'Comitato – ruolo 1 titolo', science_role1_desc:'Comitato – ruolo 1 desc',
-  science_role2_title:'Comitato – ruolo 2 titolo', science_role2_desc:'Comitato – ruolo 2 desc',
-  science_role3_title:'Comitato – ruolo 3 titolo', science_role3_desc:'Comitato – ruolo 3 desc',
-  science_role4_title:'Comitato – ruolo 4 titolo', science_role4_desc:'Comitato – ruolo 4 desc',
-  science_role5_title:'Comitato – ruolo 5 titolo', science_role5_desc:'Comitato – ruolo 5 desc',
-  science_members_title:'Comitato – titolo membri', science_members_note:'Comitato – nota membri',
-  science_cta:'Comitato – CTA collabora',
-  coe_title:'COE – titolo', coe_desc:'COE – descrizione',
-  world_title:'Mondo – titolo', world_desc:'Mondo – desc paesi',
+  // ── Sostienici (Donazioni) ────────────────────────────────────────────────
+  donations_title:'Sostienici – titolo pagina', donations_intro:'Sostienici – testo introduttivo',
+  donations_iban:'Sostienici – IBAN', donations_iban_label:'Sostienici – intestatario conto',
+  // ── Contatti & Media ──────────────────────────────────────────────────────
+  contact_title:'Contatti – titolo pagina', contact_intro:'Contatti – testo introduttivo',
+  brochure_title:'Media & Pubblicazioni – titolo pagina', brochure_intro:'Media & Pubblicazioni – testo introduttivo',
+  // ── Comitato Scientifico ──────────────────────────────────────────────────
+  science_title:'Comitato – titolo pagina', science_intro:'Comitato – testo introduttivo',
+  science_role1_title:'Comitato – ruolo 1 titolo', science_role1_desc:'Comitato – ruolo 1 descrizione',
+  science_role2_title:'Comitato – ruolo 2 titolo', science_role2_desc:'Comitato – ruolo 2 descrizione',
+  science_role3_title:'Comitato – ruolo 3 titolo', science_role3_desc:'Comitato – ruolo 3 descrizione',
+  science_role4_title:'Comitato – ruolo 4 titolo', science_role4_desc:'Comitato – ruolo 4 descrizione',
+  science_role5_title:'Comitato – ruolo 5 titolo', science_role5_desc:'Comitato – ruolo 5 descrizione',
+  science_members_title:'Comitato – titolo lista membri', science_members_note:'Comitato – nota call to action membri',
+  science_cta:'Comitato – CTA collabora con noi',
+  // ── Rete Internazionale / COE ─────────────────────────────────────────────
+  coe_title:'COE – titolo sezione', coe_desc:'COE – descrizione',
+  world_title:'Mondo – titolo sezione paesi', world_desc:'Mondo – testo descrittivo paesi',
+  intl_network:'Rete Internazionale – testo',
+  // ── Footer ────────────────────────────────────────────────────────────────
   footer_rights:'Footer – copyright', footer_partnership:'Footer – partnership', footer_tagline:'Footer – tagline',
-  intl_network:'Rete Internazionale',
 };
 
-// Raggruppa le chiavi per area tematica
+// ── Gruppi per area (stessa struttura del menu del sito) ──────────────────────
 const TESTI_GROUPS = [
-  { label:'🏠 Generali & Header',  keys:['title','subtitle','tagline','hero_text','hero_desc','btn_diagnosis','btn_diagnosis_sub','btn_info','btn_info_sub','footer_rights','footer_partnership','footer_tagline'] },
-  { label:'🃏 Card Sezioni Home',   keys:['section_map_title','section_map_desc','section_awareness_title','section_awareness_desc','section_science_title','section_science_desc','section_research_title','section_research_desc','section_info_title','section_info_desc','section_parents_title','section_parents_desc','section_donations_title','section_donations_desc'] },
-  { label:'ℹ️ Pagina About',        keys:['about_title','about_gene','about_discovery','about_discovery_text','about_features_title','about_brain','about_brain_items','about_development','about_development_items','about_seizures','about_seizures_items','about_vision','about_vision_items','about_face','about_face_items','about_muscle','about_muscle_items','about_mobility','about_mobility_items','about_growth','about_growth_items','about_feeding','about_feeding_items','about_communication','about_communication_items','about_bones','about_bones_items','about_happy','about_diagnosis_note'] },
-  { label:'🔬 Ricerca & Terapie',   keys:['research_title','research_intro','research_priorities_title','therapies_title','therapies_intro','therapies_note','diagnosis_title','diagnosis_intro','diagnosis_contact'] },
-  { label:'👨‍👩‍👧 Comunità & Donazioni', keys:['community_title','community_intro','community_network_it','community_network_desc','donations_title','donations_intro','donations_iban','donations_iban_label','contact_title','contact_intro','brochure_title','brochure_intro'] },
-  { label:'🧪 Comitato Scientifico', keys:['science_title','science_intro','science_role1_title','science_role1_desc','science_role2_title','science_role2_desc','science_role3_title','science_role3_desc','science_role4_title','science_role4_desc','science_role5_title','science_role5_desc','science_members_title','science_members_note','science_cta'] },
-  { label:'🌍 Rete & Footer',        keys:['coe_title','coe_desc','world_title','world_desc','intl_network'] },
+  { label: '🏠 Home – Hero & CTA',
+    keys: ['title','subtitle','tagline','hero_text','hero_desc',
+           'btn_diagnosis','btn_diagnosis_sub','btn_info','btn_info_sub'] },
+
+  { label: '🃏 Home – Card Sezioni',
+    keys: ['section_map_title','section_map_desc',
+           'section_awareness_title','section_awareness_desc',
+           'section_science_title','section_science_desc',
+           'section_research_title','section_research_desc',
+           'section_info_title','section_info_desc',
+           'section_parents_title','section_parents_desc',
+           'section_donations_title','section_donations_desc'] },
+
+  { label: 'ℹ️ Cos\'è ReNU (About) – Intro',
+    keys: ['about_title','about_gene','about_discovery','about_discovery_text',
+           'about_features_title','about_happy','about_diagnosis_note'] },
+
+  { label: 'ℹ️ Cos\'è ReNU – Caratteristiche cliniche',
+    keys: ['about_brain','about_brain_items',
+           'about_development','about_development_items',
+           'about_seizures','about_seizures_items',
+           'about_vision','about_vision_items',
+           'about_face','about_face_items',
+           'about_muscle','about_muscle_items',
+           'about_mobility','about_mobility_items',
+           'about_growth','about_growth_items',
+           'about_feeding','about_feeding_items',
+           'about_communication','about_communication_items',
+           'about_bones','about_bones_items'] },
+
+  { label: '🩺 Diagnosi',
+    keys: ['diagnosis_title','diagnosis_intro','diagnosis_contact'] },
+
+  { label: '💊 Terapie',
+    keys: ['therapies_title','therapies_intro','therapies_note'] },
+
+  { label: '🔬 Approfondimenti / Ricerca',
+    keys: ['research_title','research_intro','research_crid','research_priorities_title'] },
+
+  { label: '👨‍👩‍👧 Comunità',
+    keys: ['community_title','community_intro','community_network_it','community_network_desc'] },
+
+  { label: '💙 Sostienici / Donazioni',
+    keys: ['donations_title','donations_intro','donations_iban','donations_iban_label'] },
+
+  { label: '📬 Contatti & Media',
+    keys: ['contact_title','contact_intro','brochure_title','brochure_intro'] },
+
+  { label: '🧪 Comitato Scientifico',
+    keys: ['science_title','science_intro',
+           'science_role1_title','science_role1_desc',
+           'science_role2_title','science_role2_desc',
+           'science_role3_title','science_role3_desc',
+           'science_role4_title','science_role4_desc',
+           'science_role5_title','science_role5_desc',
+           'science_members_title','science_members_note','science_cta'] },
+
+  { label: '🌍 Rete Internazionale & COE',
+    keys: ['coe_title','coe_desc','world_title','world_desc','intl_network'] },
+
+  { label: '📄 Footer',
+    keys: ['footer_rights','footer_partnership','footer_tagline'] },
 ];
 
 let _testiData = [];     // cache locale dati caricati dal server
@@ -9870,28 +9936,32 @@ function renderTestiUI(){
   _testiData.forEach(row => { dbMap[row.chiave] = row.valore; });
 
   let html = \`
-  <div class="p-4 flex items-center justify-between border-b sticky top-0 bg-white z-10">
-    <h2 class="font-bold text-lg text-gray-800">
-      <i class="fas fa-language mr-2 text-blue-500"></i>Testi Pagine IT
-      <span class="text-gray-400 text-sm font-normal ml-1">(\${_testiData.length} voci)</span>
-    </h2>
-    <div class="flex items-center gap-3">
-      <span id="testiSaveCounter" class="hidden text-xs bg-amber-100 text-amber-700 border border-amber-300 px-3 py-1 rounded-full font-semibold">
-        <i class="fas fa-circle-dot mr-1"></i><span id="testiModCount">0</span> modifiche non salvate
-      </span>
-      <button onclick="saveAllTesti()" id="testiSaveBtn"
-              class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold">
-        <i class="fas fa-save mr-1"></i>Salva tutto
-      </button>
+  <div class="sticky top-0 bg-white z-10 border-b shadow-sm">
+    <div class="p-4 flex items-center justify-between gap-4">
+      <h2 class="font-bold text-lg text-gray-800 flex-shrink-0">
+        <i class="fas fa-language mr-2 text-blue-500"></i>Testi Pagine IT
+        <span class="text-gray-400 text-sm font-normal ml-1">(\${_testiData.length} voci)</span>
+      </h2>
+      <input id="testiSearch" type="search" placeholder="🔍 Cerca chiave o testo…"
+             oninput="filterTesti(this.value)"
+             class="flex-1 max-w-xs border rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <span id="testiSaveCounter" class="hidden text-xs bg-amber-100 text-amber-700 border border-amber-300 px-3 py-1 rounded-full font-semibold">
+          <i class="fas fa-circle-dot mr-1"></i><span id="testiModCount">0</span> non salvate
+        </span>
+        <button onclick="saveAllTesti()" id="testiSaveBtn"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold">
+          <i class="fas fa-save mr-1"></i>Salva tutto
+        </button>
+      </div>
+    </div>
+    <div class="px-4 pb-2 bg-amber-50 border-t border-amber-100 text-xs text-amber-800">
+      <i class="fas fa-info-circle mr-1"></i>
+      <b>Solo italiano (IT).</b> Le sezioni seguono l'ordine del menu del sito. Modifica e clicca <b>Salva tutto</b>.
+      Il sito si aggiorna <b>immediatamente</b> senza deploy. Le altre lingue (EN/FR/ES/DE) sono nel codice sorgente.
     </div>
   </div>
-  <div class="p-4 bg-amber-50 border-b border-amber-200 text-xs text-amber-800">
-    <i class="fas fa-info-circle mr-1"></i>
-    <b>Solo italiano (IT).</b> Le altre lingue (EN/FR/ES/DE) restano nel codice. Modifica il testo e clicca <b>Salva tutto</b>.
-    Il sito si aggiorna <b>immediatamente</b> al prossimo caricamento pagina, senza necessità di deploy.
-    Solo testo normale — la formattazione (grassetti, link) è gestita automaticamente dal codice.
-  </div>
-  <div class="divide-y">\`;
+  <div id="testiContainer" class="divide-y">\`;
 
   TESTI_GROUPS.forEach(group => {
     html += \`<details open class="group">
@@ -9938,7 +10008,30 @@ function renderTestiUI(){
   </div>\`;
 
   document.getElementById('content').innerHTML = html;
+  // Abilita filtro immediato se c'era una ricerca in corso
+  const s = document.getElementById('testiSearch');
+  if(s && s.value) filterTesti(s.value);
 }
+
+function filterTesti(q){
+  q = q.trim().toLowerCase();
+  const rows = document.querySelectorAll('#testiContainer [id^="testo_row_"]');
+  const details = document.querySelectorAll('#testiContainer details');
+  rows.forEach(row => {
+    const chiave = (row.id || '').replace('testo_row_','');
+    const label  = (row.querySelector('label')?.textContent || '').toLowerCase();
+    const val    = (row.querySelector('input,textarea')?.value || '').toLowerCase();
+    const match  = !q || chiave.includes(q) || label.includes(q) || val.includes(q);
+    row.style.display = match ? '' : 'none';
+  });
+  // Nascondi sezioni vuote
+  details.forEach(det => {
+    const visible = [...det.querySelectorAll('[id^="testo_row_"]')].some(r => r.style.display !== 'none');
+    det.style.display = visible ? '' : 'none';
+    if(q) det.open = true;
+  });
+}
+// ─── fine filterTesti ─────────────────────────────────────────────────────────
 
 function markTestiModified(chiave){
   const el = document.getElementById('testo_' + chiave);
