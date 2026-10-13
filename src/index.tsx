@@ -8309,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-video-player-fix-v49'
+  const _v = '20261013-video-baseline-v50'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
