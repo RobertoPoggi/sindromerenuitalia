@@ -6780,10 +6780,10 @@ function membersPage(t: Record<string, string>): string {
         <i class="fas fa-check-circle text-3xl mt-1 flex-shrink-0" style="color:#059669"></i>
         <div>
           <h3 class="font-bold text-xl mb-1" style="color:#065F46">
-            ${t.lang==='it'?'Quota Associativa Annuale: 25 €':'Annual Membership Fee: €25'}
+            ${t.lang==='it'?'Quota Associativa: 25 €/anno':'Membership Fee: €25/year'}
           </h3>
           <p class="text-green-800 text-sm leading-relaxed">
-            ${t.lang==='it'?'Il Consiglio Direttivo ha approvato la quota associativa annuale di <strong>25 euro</strong>. La quota è valida per tutti i tipi di socio (familiare, sostenitore). Compila il modulo qui sotto per iscriverti o pre-iscriverti — ti contatteremo con le istruzioni di pagamento.':'The Board of Directors has approved the annual membership fee of <strong>€25</strong>. The fee applies to all member types (family, supporting). Fill in the form below to register or pre-register — we will contact you with payment instructions.'}
+            ${t.lang==='it'?'Il Consiglio Direttivo ha approvato la quota associativa annuale di <strong>25 euro</strong> per Soci Fondatori, Familiari e Sostenitori. I Soci Partner sostengono l\'associazione con servizi o agevolazioni (nessuna quota fissa). Compila il modulo qui sotto per iscriverti — ti contatteremo con le istruzioni di pagamento.':'The Board of Directors has approved the annual membership fee of <strong>€25</strong> for Founding, Family and Supporting members. Partner members support the association with services or benefits (no fixed fee). Fill in the form below to join — we will contact you with payment instructions.'}
           </p>
         </div>
       </div>
@@ -6810,36 +6810,58 @@ function membersPage(t: Record<string, string>): string {
         </div>`).join('')}
       </div>
 
-      <!-- Quote previsionali (placeholder) -->
+      <!-- Quote Associative — 4 tipologie -->
       <div class="card card-navy p-8 mb-10">
-        <h3 class="font-bold text-xl mb-4 flex items-center gap-2" style="color:#082050">
+        <h3 class="font-bold text-xl mb-2 flex items-center gap-2" style="color:#082050">
           <i class="fas fa-tag" style="color:#1078C0"></i>
-          ${t.lang==='it'?'Quote Associative':'Membership Fees'}
+          ${t.lang==='it'?'Tipologie di Socio':'Membership Types'}
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <p class="text-gray-500 text-sm mb-6">
+          ${t.lang==='it'
+            ? 'Sindrome ReNU Italia APS prevede quattro tipologie di soci, ognuna con il suo ruolo nella nostra comunità.'
+            : 'Sindrome ReNU Italia APS has four membership types, each with its own role in our community.'}
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           ${[
-            ['fa-child','ic-sky', t.lang==='it'?'Socio Familiare':'Family Member', t.lang==='it'?'Famiglie con un bambino/adulto con Sindrome ReNU':'Families with a child/adult with ReNU Syndrome'],
-            ['fa-user','ic-blue', t.lang==='it'?'Socio Sostenitore':'Supporting Member', t.lang==='it'?'Chiunque voglia sostenere la causa ReNU':'Anyone who wants to support the ReNU cause'],
-            ['fa-building','ic-navy', t.lang==='it'?'Socio Onorario':'Honorary Member', t.lang==='it'?'Su nomina del Consiglio Direttivo':'By appointment of the Board of Directors'],
-          ].map(([icon, ic, title, desc]) => `
-          <div class="rounded-xl p-5 text-center" style="background:#EEF6FB; border: 1px solid #45B8EC">
+            { icon: 'fa-star',      ic: 'ic-navy',
+              title: t.lang==='it'?'Socio Fondatore':'Founding Member',
+              desc:  t.lang==='it'?'Ha partecipato alla costituzione dell&#39;associazione.':'Participated in founding the association.',
+              badge: t.lang==='it'?'25 €/anno':'€25/year',
+              bs: 'background:#D1FAE5; color:#065F46' },
+            { icon: 'fa-heart',     ic: 'ic-sky',
+              title: t.lang==='it'?'Socio Familiare':'Family Member',
+              desc:  t.lang==='it'?'Familiare di una persona con Sindrome di ReNU.':'Family member of a person with ReNU Syndrome.',
+              badge: t.lang==='it'?'25 €/anno':'€25/year',
+              bs: 'background:#D1FAE5; color:#065F46' },
+            { icon: 'fa-user',      ic: 'ic-blue',
+              title: t.lang==='it'?'Socio Sostenitore':'Supporting Member',
+              desc:  t.lang==='it'?'Chiunque voglia sostenere la causa ReNU. Quota annuale con eventuale contributo libero aggiuntivo.':'Anyone who wants to support the ReNU cause. Annual fee with optional free contribution.',
+              badge: t.lang==='it'?'25 €/anno + lib.':'€25/year + opt.',
+              bs: 'background:#D1FAE5; color:#065F46' },
+            { icon: 'fa-handshake', ic: 'ic-purple',
+              title: t.lang==='it'?'Socio Partner':'Partner Member',
+              desc:  t.lang==='it'?'Sostiene l&#39;associazione con servizi o agevolazioni. Nessuna quota fissa.':'Supports the association with services or benefits. No fixed fee.',
+              badge: t.lang==='it'?'Nessuna quota':'No fixed fee',
+              bs: 'background:#EDE9FE; color:#5B21B6' },
+          ].map(({icon, ic, title, desc, badge, bs}) => `
+          <div class="rounded-xl p-5 text-center flex flex-col" style="background:#EEF6FB; border: 1px solid #45B8EC">
             <div class="ic ${ic} mx-auto mb-3"><i class="fas ${icon}"></i></div>
-            <h4 class="font-bold mb-1" style="color:#082050">${title}</h4>
-            <p class="text-gray-500 text-xs mb-3">${desc}</p>
-            <div class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#D1FAE5; color:#065F46">
+            <h4 class="font-bold mb-2" style="color:#082050">${title}</h4>
+            <p class="text-gray-500 text-xs mb-4 flex-1 leading-relaxed">${desc}</p>
+            <div class="inline-flex items-center justify-center gap-1 text-xs font-bold px-3 py-1 rounded-full mt-auto" style="${bs}">
               <i class="fas fa-euro-sign text-xs"></i>
-              25 €/anno
+              ${badge}
             </div>
           </div>`).join('')}
         </div>
-        <p class="text-gray-500 text-xs mt-4 flex items-center gap-1">
+        <p class="text-gray-500 text-xs mt-5 flex items-center gap-1">
           <i class="fas fa-info-circle" style="color:#45B8EC"></i>
-          ${t.lang==='it'?'La quota annuale di 25€ è valida per tutti i soci. Per informazioni scrivi a':'The annual fee of €25 applies to all members. For information write to'}
+          ${t.lang==='it'?'Per informazioni sulle modalità di adesione scrivi a':'For information on how to join write to'}
           <a href="mailto:segreteria@sindromerenu.it" class="underline" style="color:#1078C0">segreteria@sindromerenu.it</a>
         </p>
       </div>
 
-      <!-- FORM PRE-ADESIONE -->
+            <!-- FORM PRE-ADESIONE -->
       <div class="mt-10 card card-navy p-8">
         <h3 class="text-2xl font-extrabold mb-2 flex items-center gap-2" style="color:#082050">
           <i class="fas fa-user-plus" style="color:#1078C0"></i>
@@ -6895,9 +6917,10 @@ function membersPage(t: Record<string, string>): string {
                 ${t.lang==='it'?'Tipo di socio':'Member type'}
               </label>
               <select name="tipo" class="w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sky-400 bg-white" style="border-color:#C8E8F8">
-                <option value="familiare">${t.lang==='it'?'Socio Familiare (genitore/tutore di bambino ReNU)':'Family Member (parent/guardian of ReNU child)'}</option>
-                <option value="sostenitore">${t.lang==='it'?'Socio Sostenitore (simpatizzo/donatore)':'Supporting Member (supporter/donor)'}</option>
-                <option value="professionista">${t.lang==='it'?'Professionista (medico, terapista, educatore)':'Professional (doctor, therapist, educator)'}</option>
+                <option value="fondatore">${t.lang==='it'?'Socio Fondatore (ha partecipato alla costituzione)':'Founding Member (participated in founding)'}</option>
+                <option value="familiare">${t.lang==='it'?'Socio Familiare (familiare di persona con ReNU)':'Family Member (relative of person with ReNU)'}</option>
+                <option value="sostenitore">${t.lang==='it'?'Socio Sostenitore (quota 25€ + contributo libero)':'Supporting Member (€25 fee + optional contribution)'}</option>
+                <option value="partner">${t.lang==='it'?'Socio Partner (servizi o agevolazioni)':'Partner Member (services or benefits)'}</option>
               </select>
             </div>
           </div>
@@ -8089,7 +8112,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261012-mappa18-v35'
+  const _v = '20261013-quote4-v36'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
