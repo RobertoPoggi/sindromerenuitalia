@@ -8118,7 +8118,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-testimonials-v38'
+  const _v = '20261013-admin-fix-v39'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -10012,11 +10012,11 @@ const TESTI_GROUPS = [
            'section_parents_title','section_parents_desc',
            'section_donations_title','section_donations_desc'] },
 
-  { label: 'ℹ️ Cos\'è ReNU (About) – Intro',
+  { label: 'ℹ️ Cos\u2019è ReNU (About) – Intro',
     keys: ['about_title','about_gene','about_discovery','about_discovery_text',
            'about_features_title','about_happy','about_diagnosis_note'] },
 
-  { label: 'ℹ️ Cos\'è ReNU – Caratteristiche cliniche',
+  { label: 'ℹ️ Cos\u2019è ReNU – Caratteristiche cliniche',
     keys: ['about_brain','about_brain_items',
            'about_development','about_development_items',
            'about_seizures','about_seizures_items',
