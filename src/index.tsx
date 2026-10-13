@@ -8309,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-media-press-v46'
+  const _v = '20261013-admin-testi-cleanup-v47'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -10175,15 +10175,14 @@ async function doErasure(){
 // Mappa chiave → etichetta leggibile per l'interfaccia admin
 const TESTI_LABELS = {
   // ── Home – Hero & CTA ─────────────────────────────────────────────────────
-  title:'Titolo sito', subtitle:'Sottotitolo', tagline:'Tagline header',
+  title:'Titolo sito', tagline:'Tagline header',
   hero_text:'Hero – testo principale', hero_desc:'Hero – descrizione casi',
-  btn_diagnosis:'Pulsante CTA principale', btn_diagnosis_sub:'CTA principale – sottotitolo',
+  btn_diagnosis:'Pulsante CTA principale',
   btn_info:'Pulsante CTA secondario', btn_info_sub:'CTA secondario – sottotitolo',
   // ── Home – Statistiche ────────────────────────────────────────────────────
   stat_cases_world:'Stat – casi accertati nel mondo', stat_cases_italy:'Stat – casi in Italia',
   stat_countries:'Stat – paesi con famiglie', stat_dna:'Stat – posizioni DNA mutate', stat_year:'Stat – anno scoperta',
   // ── Home – Card Sezioni ───────────────────────────────────────────────────
-  section_map_title:'Card Home – Mappa titolo', section_map_desc:'Card Home – Mappa desc',
   section_awareness_title:'Card Home – Consapevolezza titolo', section_awareness_desc:'Card Home – Consapevolezza desc',
   section_awareness_badge:'Card Home – Consapevolezza badge',
   section_science_title:'Card Home – Comitato titolo', section_science_desc:'Card Home – Comitato desc',
@@ -10196,10 +10195,7 @@ const TESTI_LABELS = {
   learn_more:'Pulsante "Scopri di più"', read_more:'Pulsante "Leggi di più"',
   coming_soon:'Label "Sezione in preparazione"',
   search_label:'Barra ricerca – etichetta', search_placeholder:'Barra ricerca – placeholder',
-  gdpr_label:'Label GDPR footer', privacy_link:'Link Privacy Policy', privacy_title:'Privacy – titolo pagina',
-  // ── Cookie banner ─────────────────────────────────────────────────────────
-  cookie_notice:'Cookie – titolo banner', cookie_text:'Cookie – testo banner',
-  cookie_accept:'Cookie – pulsante accetta', cookie_necessary:'Cookie – pulsante solo tecnici', cookie_more:'Cookie – link maggiori info',
+  gdpr_label:'Label GDPR footer', privacy_link:'Link Privacy Policy',
   // ── Cos\u2019è ReNU (About) ────────────────────────────────────────────────────
   about_title:'About – titolo pagina', about_gene:'About – paragrafo gene',
   about_discovery:'About – titolo scoperta', about_discovery_text:'About – testo scoperta',
@@ -10217,22 +10213,16 @@ const TESTI_LABELS = {
   about_bones:'About – problemi ossei (titolo)', about_bones_items:'About – ossei (lista)',
   about_happy:'About – nota carattere felice', about_diagnosis_note:'About – nota diagnostica WGS',
   children_title:'About – sezione bambini titolo', children_desc:'About – sezione bambini desc',
-  mascot_title:'About – mascotte Reny titolo', mascot_desc:'About – mascotte Reny desc',
+  mascot_title:'About – mascotte Reny titolo',
   gallery_btn:'About – pulsante gallery',
   // ── Diagnosi ──────────────────────────────────────────────────────────────
   diagnosis_title:'Diagnosi – titolo pagina', diagnosis_intro:'Diagnosi – testo introduttivo', diagnosis_contact:'Diagnosi – testo contatto',
   // ── Terapie ───────────────────────────────────────────────────────────────
   therapies_title:'Terapie – titolo pagina', therapies_intro:'Terapie – testo introduttivo', therapies_note:'Terapie – nota disclaimer',
-  therapies_go:'Terapie – pulsante vai alla pagina', therapies_rsu:'Terapie – link ReNU Syndrome United',
   // ── Approfondimenti (Ricerca) ─────────────────────────────────────────────
-  research_title:'Approfondimenti – titolo pagina', research_intro:'Approfondimenti – testo introduttivo',
-  research_crid:'Approfondimenti – testo CRID', research_priorities_title:'Approfondimenti – titolo priorità comunità',
-  research_coming:'Approfondimenti – titolo sezione in preparazione', research_coming_desc:'Approfondimenti – testo sezione in preparazione',
-  pubmed_title:'PubMed – titolo sezione', pubmed_label:'PubMed – etichetta pubblicazioni',
-  pubmed_search:'PubMed – link cerca su PubMed', pubmed_loading:'PubMed – testo caricamento', pubmed_syn:'PubMed – etichetta sintesi',
+  research_title:'Approfondimenti – titolo pagina',
   // ── Comunità ──────────────────────────────────────────────────────────────
   community_title:'Comunità – titolo pagina', community_intro:'Comunità – testo introduttivo',
-  community_network_it:'Comunità – rete genitori titolo', community_network_desc:'Comunità – rete genitori desc',
   community_join_btn:'Comunità – pulsante unisciti',
   stories_it_title:'Comunità – storie IT titolo', stories_it_desc:'Comunità – storie IT desc',
   stories_intl_title:'Comunità – storie internazionali titolo',
@@ -10240,39 +10230,18 @@ const TESTI_LABELS = {
   stories_read:'Comunità – pulsante leggi storia', stories_read_full:'Comunità – pulsante leggi storia completa',
   stories_all_btn:'Comunità – pulsante tutte le storie',
   stories_share_btn:'Comunità – pulsante condividi storia', stories_share_cta:'Comunità – CTA condividi storia',
-  news_title:'Comunità – titolo news e iniziative',
   network_title:'Rete – titolo sezione', network_desc:'Rete – descrizione associazioni partner',
-  network_it_title:'Rete – titolo famiglie italiane', network_it_desc:'Rete – desc famiglie italiane',
-  // ── FAQ & Diritti ─────────────────────────────────────────────────────────
-  faq_title:'FAQ – titolo pagina', faq_intro:'FAQ – testo introduttivo',
-  rights_title:'Diritti – titolo sezione', rights_desc:'Diritti – testo introduttivo',
-  law104_title:'Diritti – Legge 104 titolo', law104_desc:'Diritti – Legge 104 descrizione',
-  allowance_title:'Diritti – Indennità accompagnamento titolo', allowance_desc:'Diritti – Indennità accompagnamento desc',
-  discard_title:'Diritti – Disability Card titolo', discard_desc:'Diritti – Disability Card desc',
-  carpass_title:'Diritti – Contrassegno disabile titolo', carpass_desc:'Diritti – Contrassegno disabile desc',
-  school_title:'Diritti – Supporto scolastico titolo', school_desc:'Diritti – Supporto scolastico desc',
   // ── Sostienici (Donazioni) ────────────────────────────────────────────────
   donations_title:'Sostienici – titolo pagina', donations_intro:'Sostienici – testo introduttivo',
   donations_iban:'Sostienici – IBAN', donations_iban_label:'Sostienici – intestatario conto',
   donate_now:'Sostienici – pulsante Dona Ora',
-  donate_5x1000:'Sostienici – etichetta 5x1000', donate_5x1000_title:'Sostienici – 5x1000 titolo', donate_5x1000_desc:'Sostienici – 5x1000 desc',
-  donate_recurring_title:'Sostienici – donazione ricorrente titolo', donate_recurring_desc:'Sostienici – donazione ricorrente desc', donate_recurring_btn:'Sostienici – pulsante donazione ricorrente',
-  donate_bday_title:'Sostienici – compleanno solidale titolo', donate_bday_desc:'Sostienici – compleanno solidale desc',
-  donate_company_title:'Sostienici – donazioni aziendali titolo', donate_company_desc:'Sostienici – donazioni aziendali desc',
-  donate_intl_label:'Sostienici – etichetta donazioni estero',
-  // ── Contatti & Media ──────────────────────────────────────────────────────
+  // ── Contatti ──────────────────────────────────────────────────────────────
   contact_title:'Contatti – titolo pagina', contact_intro:'Contatti – testo introduttivo',
-  contact_us:'Contatti – pulsante contattaci', contact_dpo:'Contatti – link contatta DPO',
-  contact_form_name:'Form contatti – campo nome', contact_form_email:'Form contatti – campo email',
-  contact_form_subject:'Form contatti – campo oggetto', contact_form_message:'Form contatti – campo messaggio',
-  contact_form_send:'Form contatti – pulsante invia', contact_form_sending:'Form contatti – testo invio in corso',
-  contact_form_success:'Form contatti – messaggio successo', contact_form_error:'Form contatti – messaggio errore',
+  contact_dpo:'Contatti – link contatta DPO',
+  // ── Media & Pubblicazioni ─────────────────────────────────────────────────
   brochure_title:'Media & Pubblicazioni – titolo pagina', brochure_intro:'Media & Pubblicazioni – testo introduttivo',
   brochure_download:'Media – pulsante scarica PDF',
-  events_title:'Media – eventi titolo', events_intro:'Media – eventi intro',
-  projects_title:'Media – progetti titolo', projects_intro:'Media – progetti intro',
   // ── Diventa Socio ─────────────────────────────────────────────────────────
-  join_title:'Soci – titolo pagina', join_intro:'Soci – testo introduttivo',
   join_registry:'Soci – pulsante unisciti al registro',
   // ── Mappa Famiglie ────────────────────────────────────────────────────────
   map_title:'Mappa – titolo sezione', map_desc:'Mappa – descrizione', map_btn:'Mappa – pulsante centri di riferimento',
@@ -10285,27 +10254,24 @@ const TESTI_LABELS = {
   science_role5_title:'Comitato – ruolo 5 titolo', science_role5_desc:'Comitato – ruolo 5 descrizione',
   science_members_title:'Comitato – titolo lista membri', science_members_note:'Comitato – nota call to action membri',
   science_cta:'Comitato – CTA collabora con noi',
-  science_collab_title:'Comitato – vuoi collaborare titolo', science_collab_desc:'Comitato – vuoi collaborare desc',
-  // ── Rete Internazionale / COE ─────────────────────────────────────────────
-  coe_title:'COE – titolo sezione', coe_desc:'COE – descrizione',
+  // ── Rete Internazionale ───────────────────────────────────────────────────
   world_title:'Mondo – titolo sezione paesi', world_desc:'Mondo – testo descrittivo paesi',
   intl_network:'Rete Internazionale – testo',
   // ── Footer ────────────────────────────────────────────────────────────────
   footer_rights:'Footer – copyright', footer_partnership:'Footer – partnership', footer_tagline:'Footer – tagline',
 };
 
-// ── Gruppi per area (stessa struttura del menu del sito) ──────────────────────
+// ── Gruppi per area (solo chiavi effettivamente lette con t.KEY nel codice) ────
 const TESTI_GROUPS = [
   { label: '🏠 Home – Hero & CTA',
-    keys: ['title','subtitle','tagline','hero_text','hero_desc',
-           'btn_diagnosis','btn_diagnosis_sub','btn_info','btn_info_sub'] },
+    keys: ['title','tagline','hero_text','hero_desc',
+           'btn_diagnosis','btn_info','btn_info_sub'] },
 
   { label: '🏠 Home – Statistiche',
     keys: ['stat_cases_world','stat_cases_italy','stat_countries','stat_dna','stat_year'] },
 
   { label: '🃏 Home – Card Sezioni',
-    keys: ['section_map_title','section_map_desc',
-           'section_awareness_title','section_awareness_desc','section_awareness_badge',
+    keys: ['section_awareness_title','section_awareness_desc','section_awareness_badge',
            'section_science_title','section_science_desc',
            'section_research_title','section_research_desc',
            'section_info_title','section_info_desc',
@@ -10316,15 +10282,12 @@ const TESTI_GROUPS = [
   { label: '🔤 Label & Pulsanti globali',
     keys: ['learn_more','read_more','coming_soon',
            'search_label','search_placeholder',
-           'gdpr_label','privacy_link','privacy_title'] },
-
-  { label: '🍪 Cookie Banner',
-    keys: ['cookie_notice','cookie_text','cookie_accept','cookie_necessary','cookie_more'] },
+           'gdpr_label','privacy_link'] },
 
   { label: 'ℹ️ Cos\u2019è ReNU (About) – Intro',
     keys: ['about_title','about_gene','about_discovery','about_discovery_text',
            'about_features_title','about_happy','about_diagnosis_note',
-           'children_title','children_desc','mascot_title','mascot_desc','gallery_btn'] },
+           'children_title','children_desc','mascot_title','gallery_btn'] },
 
   { label: 'ℹ️ Cos\u2019è ReNU – Caratteristiche cliniche',
     keys: ['about_brain','about_brain_items',
@@ -10343,54 +10306,30 @@ const TESTI_GROUPS = [
     keys: ['diagnosis_title','diagnosis_intro','diagnosis_contact'] },
 
   { label: '💊 Terapie',
-    keys: ['therapies_title','therapies_intro','therapies_note','therapies_go','therapies_rsu'] },
+    keys: ['therapies_title','therapies_intro','therapies_note'] },
 
   { label: '🔬 Approfondimenti / Ricerca',
-    keys: ['research_title','research_intro','research_crid','research_priorities_title',
-           'research_coming','research_coming_desc',
-           'pubmed_title','pubmed_label','pubmed_search','pubmed_loading','pubmed_syn'] },
+    keys: ['research_title'] },
 
-  { label: '👨\u200d👩\u200d👧 Comunità – Testi pagina',
-    keys: ['community_title','community_intro','community_network_it','community_network_desc',
-           'community_join_btn','news_title'] },
-
-  { label: '👨\u200d👩\u200d👧 Comunità – Storie famiglie',
-    keys: ['stories_it_title','stories_it_desc','stories_intl_title',
+  { label: '👨\u200d👩\u200d👧 Comunità',
+    keys: ['community_title','community_intro','community_join_btn',
+           'stories_it_title','stories_it_desc','stories_intl_title',
            'stories_loading','stories_nodesc','stories_read','stories_read_full',
-           'stories_all_btn','stories_share_btn','stories_share_cta'] },
-
-  { label: '⚖️ FAQ & Diritti',
-    keys: ['faq_title','faq_intro',
-           'rights_title','rights_desc',
-           'law104_title','law104_desc',
-           'allowance_title','allowance_desc',
-           'discard_title','discard_desc',
-           'carpass_title','carpass_desc',
-           'school_title','school_desc'] },
+           'stories_all_btn','stories_share_btn','stories_share_cta',
+           'network_title','network_desc'] },
 
   { label: '💙 Sostienici / Donazioni',
     keys: ['donations_title','donations_intro','donations_iban','donations_iban_label',
-           'donate_now',
-           'donate_5x1000','donate_5x1000_title','donate_5x1000_desc',
-           'donate_recurring_title','donate_recurring_desc','donate_recurring_btn',
-           'donate_bday_title','donate_bday_desc',
-           'donate_company_title','donate_company_desc',
-           'donate_intl_label'] },
+           'donate_now'] },
 
-  { label: '📬 Contatti – Testi pagina & form',
-    keys: ['contact_title','contact_intro','contact_us','contact_dpo',
-           'contact_form_name','contact_form_email','contact_form_subject',
-           'contact_form_message','contact_form_send','contact_form_sending',
-           'contact_form_success','contact_form_error'] },
+  { label: '📬 Contatti',
+    keys: ['contact_title','contact_intro','contact_dpo'] },
 
-  { label: '📰 Media, Brochure & Progetti',
-    keys: ['brochure_title','brochure_intro','brochure_download',
-           'events_title','events_intro',
-           'projects_title','projects_intro'] },
+  { label: '📰 Media & Pubblicazioni',
+    keys: ['brochure_title','brochure_intro','brochure_download'] },
 
   { label: '🤝 Diventa Socio & Mappa',
-    keys: ['join_title','join_intro','join_registry',
-           'map_title','map_desc','map_btn'] },
+    keys: ['join_registry','map_title','map_desc','map_btn'] },
 
   { label: '🧪 Comitato Scientifico',
     keys: ['science_title','science_intro',
@@ -10399,12 +10338,10 @@ const TESTI_GROUPS = [
            'science_role3_title','science_role3_desc',
            'science_role4_title','science_role4_desc',
            'science_role5_title','science_role5_desc',
-           'science_members_title','science_members_note','science_cta',
-           'science_collab_title','science_collab_desc'] },
+           'science_members_title','science_members_note','science_cta'] },
 
-  { label: '🌍 Rete Internazionale & COE',
-    keys: ['network_title','network_desc','network_it_title','network_it_desc',
-           'coe_title','coe_desc','world_title','world_desc','intl_network'] },
+  { label: '🌍 Rete Internazionale',
+    keys: ['world_title','world_desc','intl_network'] },
 
   { label: '📄 Footer',
     keys: ['footer_rights','footer_partnership','footer_tagline'] },
