@@ -8118,7 +8118,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-admin-labels-v41'
+  const _v = '20261013-video-thumb-v42'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8444,42 +8444,76 @@ function testimonialsPage(t: Record<string, string>): string {
             </div>
           </div>
 
-          <!-- Body: video + testo -->
-          <div class="p-6 flex flex-col md:flex-row gap-6 items-start">
+          <!-- Body: thumbnail + testo -->
+          <div class="p-5 flex flex-col sm:flex-row gap-5 items-start">
 
-            <!-- Player video -->
-            <div class="w-full md:w-64 flex-shrink-0">
-              <div class="rounded-2xl overflow-hidden shadow-md" style="background:#000; aspect-ratio:3/4">
+            <!-- Thumbnail cliccabile → apre player -->
+            <div class="flex-shrink-0 w-full sm:w-44">
+              <div id="thumb-${item.id}"
+                   onclick="playVideo('${item.id}')"
+                   class="relative rounded-xl overflow-hidden shadow cursor-pointer group"
+                   style="aspect-ratio:400/522; background:#082050">
+                <img src="/videos/testimonianza-mamma-maya-thumb.jpg"
+                     alt="${item.name}"
+                     loading="lazy"
+                     style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s"
+                     class="group-hover:opacity-80">
+                <!-- Overlay play button -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
+                       style="background:rgba(16,120,192,0.85); border:3px solid rgba(255,255,255,0.8)">
+                    <i class="fas fa-play text-white text-xl" style="margin-left:3px"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- Durata sotto thumbnail -->
+              <p class="text-center text-xs text-gray-400 mt-1.5">
+                <i class="fas fa-clock mr-1"></i>${item.duration} · ${item.date}
+              </p>
+            </div>
+
+            <!-- Player video (nascosto, appare al click) -->
+            <div id="player-${item.id}"
+                 class="flex-shrink-0 w-full sm:w-44 hidden">
+              <div class="rounded-xl overflow-hidden shadow" style="aspect-ratio:400/522; background:#000">
                 <video
                   id="video-${item.id}"
                   controls
-                  preload="metadata"
+                  autoplay
                   playsinline
-                  ${item.poster ? 'poster="' + item.poster + '"' : ''}
-                  style="width:100%; height:100%; object-fit:contain; display:block"
+                  preload="none"
+                  poster="/videos/testimonianza-mamma-maya-thumb.jpg"
+                  style="width:100%;height:100%;object-fit:cover;display:block"
                   aria-label="${item.name} – ${isIt ? 'testimonianza video' : 'video testimonial'}">
                   <source src="${item.videoSrc}" type="video/mp4">
-                  <p>${isIt ? 'Il tuo browser non supporta la riproduzione video.' : 'Your browser does not support video playback.'}</p>
                 </video>
               </div>
-              <p class="text-center text-xs text-gray-400 mt-2">
+              <p class="text-center text-xs text-gray-400 mt-1.5">
                 <i class="fas fa-volume-up mr-1"></i>${isIt ? 'Attiva il volume' : 'Enable audio'}
               </p>
             </div>
 
             <!-- Testo introduttivo + tag -->
-            <div class="flex-1">
-              <p class="text-gray-700 leading-relaxed mb-5 text-base">${item.intro}</p>
-              <div class="flex flex-wrap gap-2">
+            <div class="flex-1 min-w-0">
+              <p class="text-gray-700 leading-relaxed mb-4 text-sm">${item.intro}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
                 ${item.tags.map(tag => `
-                <span class="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full"
+                <span class="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full"
                       style="background:#EEF6FB; color:#1078C0; border:1px solid #C8E8F8">
                   <i class="fas fa-tag text-xs"></i>${tag}
                 </span>`).join('')}
               </div>
-              <div class="mt-6 p-4 rounded-2xl" style="background:#F0FDF4; border:1px solid #BBF7D0">
-                <p class="text-sm font-semibold" style="color:#065F46">
-                  <i class="fas fa-hands-helping mr-2"></i>
+              <!-- Pulsante Guarda ora (mobile-first, alternativo al click sulla thumb) -->
+              <button onclick="playVideo('${item.id}')"
+                      id="playbtn-${item.id}"
+                      class="inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-xl transition-colors mb-4"
+                      style="background:#1078C0; color:#fff">
+                <i class="fas fa-play text-xs"></i>
+                ${isIt ? 'Guarda la testimonianza' : 'Watch the testimonial'}
+              </button>
+              <div class="p-3 rounded-xl" style="background:#F0FDF4; border:1px solid #BBF7D0">
+                <p class="text-xs font-semibold" style="color:#065F46">
+                  <i class="fas fa-hands-helping mr-1"></i>
                   ${isIt
                     ? 'Vuoi condividere anche tu la tua storia? Scrivici a <a href="mailto:info@sindromerenu.it" style="color:#059669; text-decoration:underline">info@sindromerenu.it</a>.'
                     : 'Would you like to share your story too? Write to <a href="mailto:info@sindromerenu.it" style="color:#059669; text-decoration:underline">info@sindromerenu.it</a>.'}
@@ -8515,7 +8549,20 @@ function testimonialsPage(t: Record<string, string>): string {
       </div>
 
     </div>
-  </section>`
+  </section>
+  <script>
+  function playVideo(id) {
+    var thumb  = document.getElementById('thumb-'  + id);
+    var player = document.getElementById('player-' + id);
+    var btn    = document.getElementById('playbtn-' + id);
+    if (!thumb || !player) return;
+    thumb.style.display  = 'none';
+    player.classList.remove('hidden');
+    if (btn) btn.style.display = 'none';
+    var vid = document.getElementById('video-' + id);
+    if (vid) vid.play().catch(function(){});
+  }
+  </script>`
 }
 
 function glossaryPage(t: Record<string, string>): string {
