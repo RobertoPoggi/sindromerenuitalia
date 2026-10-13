@@ -2864,7 +2864,7 @@ function homePage(t: Record<string, string>): string {
             : ''
           }
           <p class="text-base md:text-lg text-sky-100 mb-8 leading-relaxed">${t.hero_desc
-            .replace('~250 i casi accertati nel mondo','<strong>~250 i casi accertati nel mondo</strong>')
+            .replace('~470 i casi accertati nel mondo','<strong>~470 i casi accertati nel mondo</strong>')
             .replace('13 posizioni','<a href="https://rarediseasegenomics.org/blog/saturation-genome-editing-of-rnu4-2" target="_blank" class="text-sky-200 hover:underline font-semibold">13 posizioni</a>')
             .replace('solo volontari','<strong>solo volontari</strong>')}</p>
           <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start flex-wrap">
@@ -2936,7 +2936,7 @@ function homePage(t: Record<string, string>): string {
   <!-- STATS STRIP -->
   <section class="stat-bar text-white py-6 px-4">
     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
-      <div><div class="text-3xl font-extrabold text-sky-300">~250</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_world}</div></div>
+      <div><div class="text-3xl font-extrabold text-sky-300">~470</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_world}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300" id="stat-cases-italy">${t.casi_italia||'18'}</div><div class="text-sky-200 text-sm mt-1">${t.stat_cases_italy}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">13</div><div class="text-sky-200 text-sm mt-1">${t.stat_dna}</div></div>
       <div><div class="text-3xl font-extrabold text-sky-300">38+</div><div class="text-sky-200 text-sm mt-1">${t.stat_countries}</div></div>
@@ -8309,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-admin-testi-cleanup-v47'
+  const _v = '20261013-stats-update-v48'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
