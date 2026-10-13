@@ -8309,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-video-baseline-v50'
+  const _v = '20261013-video-layout-v51'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8635,57 +8635,43 @@ function testimonialsPage(t: Record<string, string>): string {
             </div>
           </div>
 
-          <!-- Body: thumbnail + testo -->
-          <div class="p-5 flex flex-col sm:flex-row gap-5 items-start">
+          <!-- Body: layout verticale — video full-width sopra, testo sotto -->
+          <div class="p-5">
 
-            <!-- Thumbnail cliccabile → apre player -->
-            <div class="flex-shrink-0 w-full sm:w-44">
-              <div id="thumb-${item.id}"
-                   onclick="playVideo('${item.id}')"
-                   class="relative rounded-xl overflow-hidden shadow cursor-pointer group"
-                   style="aspect-ratio:400/522; background:#082050">
+            <!-- Zona video: thumbnail → player nello stesso contenitore -->
+            <div id="media-${item.id}" style="width:100%; margin-bottom:1.25rem; border-radius:0.75rem; overflow:hidden; background:#000; position:relative; cursor:pointer" onclick="playVideo('${item.id}')">
+
+              <!-- Thumbnail (visibile di default) -->
+              <div id="thumb-${item.id}" style="position:relative; width:100%">
                 <img src="/videos/testimonianza-mamma-maya-thumb.jpg"
                      alt="${item.name}"
-                     loading="lazy"
-                     style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s"
-                     class="group-hover:opacity-80">
-                <!-- Overlay play button -->
-                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div class="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
-                       style="background:rgba(16,120,192,0.85); border:3px solid rgba(255,255,255,0.8)">
-                    <i class="fas fa-play text-white text-xl" style="margin-left:3px"></i>
+                     style="width:100%; height:auto; display:block; max-height:420px; object-fit:cover">
+                <!-- Overlay play -->
+                <div id="overlay-${item.id}" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(8,32,80,0.35)">
+                  <div style="width:72px; height:72px; border-radius:50%; background:rgba(16,120,192,0.92); border:3px solid rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(0,0,0,0.4)">
+                    <i class="fas fa-play" style="color:#fff; font-size:1.6rem; margin-left:5px"></i>
                   </div>
                 </div>
               </div>
-              <!-- Durata sotto thumbnail -->
-              <p class="text-center text-xs text-gray-400 mt-1.5">
+
+              <!-- Video (nascosto di default, rivelato al click) -->
+              <video
+                id="video-${item.id}"
+                controls
+                playsinline
+                preload="metadata"
+                poster="/videos/testimonianza-mamma-maya-thumb.jpg"
+                style="width:100%; height:auto; display:none; max-height:520px; background:#000"
+                aria-label="${item.name} – ${isIt ? 'testimonianza video' : 'video testimonial'}">
+                <source src="${item.videoSrc}" type="video/mp4">
+              </video>
+            </div>
+
+            <!-- Info durata + testo + tag -->
+            <div>
+              <p class="text-xs text-gray-400 mb-3">
                 <i class="fas fa-clock mr-1"></i>${item.duration} · ${item.date}
               </p>
-            </div>
-
-            <!-- Player video (nascosto, appare al click) -->
-            <div id="player-${item.id}"
-                 class="flex-shrink-0 w-full sm:w-44"
-                 style="display:none">
-              <div class="rounded-xl overflow-hidden shadow" style="background:#000">
-                <video
-                  id="video-${item.id}"
-                  controls
-                  playsinline
-                  preload="metadata"
-                  poster="/videos/testimonianza-mamma-maya-thumb.jpg"
-                  style="width:100%;height:auto;display:block;max-height:320px;object-fit:contain"
-                  aria-label="${item.name} – ${isIt ? 'testimonianza video' : 'video testimonial'}">
-                  <source src="${item.videoSrc}" type="video/mp4">
-                </video>
-              </div>
-              <p class="text-center text-xs text-gray-400 mt-1.5">
-                <i class="fas fa-volume-up mr-1"></i>${isIt ? 'Attiva il volume' : 'Enable audio'}
-              </p>
-            </div>
-
-            <!-- Testo introduttivo + tag -->
-            <div class="flex-1 min-w-0">
               <p class="text-gray-700 leading-relaxed mb-4 text-sm">${item.intro}</p>
               <div class="flex flex-wrap gap-2 mb-4">
                 ${item.tags.map(tag => `
@@ -8694,14 +8680,6 @@ function testimonialsPage(t: Record<string, string>): string {
                   <i class="fas fa-tag text-xs"></i>${tag}
                 </span>`).join('')}
               </div>
-              <!-- Pulsante Guarda ora (mobile-first, alternativo al click sulla thumb) -->
-              <button onclick="playVideo('${item.id}')"
-                      id="playbtn-${item.id}"
-                      class="inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-xl transition-colors mb-4"
-                      style="background:#1078C0; color:#fff">
-                <i class="fas fa-play text-xs"></i>
-                ${isIt ? 'Guarda la testimonianza' : 'Watch the testimonial'}
-              </button>
               <div class="p-3 rounded-xl" style="background:#F0FDF4; border:1px solid #BBF7D0">
                 <p class="text-xs font-semibold" style="color:#065F46">
                   <i class="fas fa-hands-helping mr-1"></i>
@@ -8743,21 +8721,20 @@ function testimonialsPage(t: Record<string, string>): string {
   </section>
   <script>
   function playVideo(id) {
-    var thumb  = document.getElementById('thumb-'  + id);
-    var player = document.getElementById('player-' + id);
-    var btn    = document.getElementById('playbtn-' + id);
-    if (!thumb || !player) return;
-    thumb.style.display  = 'none';
-    player.style.display = 'block';
-    if (btn) btn.style.display = 'none';
-    var vid = document.getElementById('video-' + id);
-    if (vid) {
-      // Piccolo timeout per dare al browser il tempo di renderizzare
-      // le dimensioni del video prima di avviare la riproduzione
-      setTimeout(function() {
-        vid.play().catch(function(){});
-      }, 100);
-    }
+    var thumb   = document.getElementById('thumb-'   + id);
+    var overlay = document.getElementById('overlay-' + id);
+    var media   = document.getElementById('media-'   + id);
+    var vid     = document.getElementById('video-'   + id);
+    if (!vid) return;
+    // Nascondi thumbnail e overlay, mostra video
+    if (thumb)   thumb.style.display   = 'none';
+    if (overlay) overlay.style.display = 'none';
+    vid.style.display = 'block';
+    // Rimuovi onclick dal contenitore per evitare doppio trigger
+    if (media) media.removeAttribute('onclick');
+    // Avvia riproduzione
+    var p = vid.play();
+    if (p && p.catch) p.catch(function(){});
   }
   </script>`
 }
