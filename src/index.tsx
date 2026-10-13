@@ -6017,6 +6017,199 @@ function eventsPage(t: Record<string, string>): string {
   <section class="py-16 px-4 section-light">
     <div class="max-w-4xl mx-auto">
 
+      <!-- ══════════════════════════════════════════════════════════════ -->
+      <!-- MILANO MARATHON 2027 – blocco in evidenza                     -->
+      <!-- ══════════════════════════════════════════════════════════════ -->
+      <div class="rounded-3xl overflow-hidden mb-12 shadow-xl" style="border: 3px solid #6C3FC5">
+
+        <!-- Header viola con data -->
+        <div class="px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4" style="background:linear-gradient(135deg,#082050,#6C3FC5)">
+          <div>
+            <div class="text-xs font-bold tracking-widest text-purple-200 mb-1 uppercase">Milano Marathon · Charity Program</div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+              ${t.lang==='it' ? 'Corri con noi. Diamo voce a ReNU.' : 'Run with us. Give voice to ReNU.'}
+            </h2>
+            <p class="text-purple-200 text-sm mt-1">${t.lang==='it' ? 'Rari, non invisibili.' : 'Rare, not invisible.'}</p>
+          </div>
+          <div class="flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-white text-lg" style="background:#6C3FC5; border: 2px solid #a78bfa">
+            <i class="fas fa-calendar-alt"></i> 4 ${t.lang==='it'?'aprile':'April'} 2027
+          </div>
+        </div>
+
+        <!-- Corpo principale -->
+        <div class="bg-white px-8 py-8">
+
+          <!-- Testo introduttivo -->
+          <p class="text-gray-700 text-lg leading-relaxed mb-2 font-semibold" style="color:#082050">
+            ${t.lang==='it' ? 'Ogni storia merita un futuro. Aiutaci a costruirlo.' : 'Every story deserves a future. Help us build it.'}
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            ${t.lang==='it'
+              ? 'Il 4 aprile 2027, in occasione della <strong>Milano Marathon</strong>, scegli di sostenere la Sindrome di ReNU Italia APS. La nostra associazione partecipa alla Maratona Charity, una delle più importanti iniziative di raccolta fondi solidale in Italia, che ogni anno sostiene progetti di valore per il sociale.'
+              : 'On 4 April 2027, at the <strong>Milano Marathon</strong>, choose to support Sindrome ReNU Italia APS. Our association takes part in the Charity Marathon, one of Italy\'s most important solidarity fundraising events.'}
+          </p>
+
+          <!-- 3 modi per partecipare -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="rounded-2xl p-5 flex flex-col items-center text-center" style="background:#F3EFFC">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl mb-3" style="background:#6C3FC5">
+                <i class="fas fa-running text-white"></i>
+              </div>
+              <h3 class="font-bold mb-1" style="color:#082050">${t.lang==='it' ? 'Cerchiamo runner' : 'Join as a runner'}</h3>
+              <p class="text-gray-600 text-sm">${t.lang==='it' ? 'Corri con noi e coinvolgi amici e familiari nella raccolta fondi.' : 'Run with us and involve friends and family in fundraising.'}</p>
+            </div>
+            <div class="rounded-2xl p-5 flex flex-col items-center text-center" style="background:#F3EFFC">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl mb-3" style="background:#6C3FC5">
+                <i class="fas fa-building text-white"></i>
+              </div>
+              <h3 class="font-bold mb-1" style="color:#082050">${t.lang==='it' ? 'Aziende, facciamo squadra' : 'Companies, let\'s team up'}</h3>
+              <p class="text-gray-600 text-sm">${t.lang==='it' ? 'Coinvolgete la vostra azienda e trasformate i valori in un impegno concreto. Visibilità, CSR e team building.' : 'Involve your company and turn values into concrete commitment. Visibility, CSR and team building.'}</p>
+            </div>
+            <div class="rounded-2xl p-5 flex flex-col items-center text-center" style="background:#F3EFFC">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl mb-3" style="background:#6C3FC5">
+                <i class="fas fa-bullhorn text-white"></i>
+              </div>
+              <h3 class="font-bold mb-1" style="color:#082050">${t.lang==='it' ? 'Diamo visibilità a ReNU' : 'Give visibility to ReNU'}</h3>
+              <p class="text-gray-600 text-sm">${t.lang==='it' ? 'Attraverso la maratona racconteremo la nostra realtà a un pubblico ampio e aiuteremo ad aumentare la conoscenza di questa rarissima sindrome.' : 'Through the marathon we will tell our story to a wide audience and help raise awareness of this very rare syndrome.'}</p>
+            </div>
+          </div>
+
+          <!-- Volantini -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div class="rounded-2xl overflow-hidden shadow-md">
+              <picture>
+                <source srcset="/images/maratona_runner.webp" type="image/webp">
+                <img src="/images/maratona_runner.jpg" alt="Corri con noi – Milano Marathon 2027 ReNU" class="w-full h-auto block" loading="lazy" decoding="async" width="683" height="1024">
+              </picture>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-md">
+              <picture>
+                <source srcset="/images/maratona_aziende.webp" type="image/webp">
+                <img src="/images/maratona_aziende.jpg" alt="Insieme possiamo fare la differenza – Aziende Partner Milano Marathon 2027" class="w-full h-auto block" loading="lazy" decoding="async" width="683" height="1024">
+              </picture>
+            </div>
+          </div>
+
+          <!-- CTA principale: Rete del Dono + contatto -->
+          <div class="rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6" style="background:linear-gradient(135deg,#082050,#1078C0)">
+            <div class="text-white flex-1">
+              <p class="font-bold text-lg mb-1">${t.lang==='it' ? 'Ogni passo può diventare un aiuto concreto.' : 'Every step can become concrete help.'}</p>
+              <p class="text-sky-200 text-sm">${t.lang==='it' ? 'Vuoi partecipare, da solo o con la tua azienda? Lascia i tuoi contatti: ti aiuteremo a creare una pagina di raccolta fondi su Rete del Dono.' : 'Want to take part, alone or with your company? Leave your contacts: we will help you create a fundraising page on Rete del Dono.'}</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <a href="https://www.retedeldono.it/onp/sindrome-renu-italia-aps"
+                 target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-full text-base transition-all hover:opacity-90 shadow-lg"
+                 style="background:#F59E0B; color:#082050">
+                <i class="fas fa-hand-holding-heart"></i>
+                ${t.lang==='it' ? 'Dona su Rete del Dono' : 'Donate on Rete del Dono'}
+              </a>
+              <a href="mailto:info@sindromerenu.it?subject=Milano%20Marathon%202027"
+                 class="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-full text-base transition-all hover:opacity-90 border-2 border-white text-white"
+                 style="background:transparent">
+                <i class="fas fa-envelope"></i>
+                ${t.lang==='it' ? 'Contattaci' : 'Contact us'}
+              </a>
+            </div>
+          </div>
+
+          <!-- Modulo aziende (espandibile) -->
+          <div class="mt-6">
+            <button onclick="document.getElementById('form-azienda-marathon').classList.toggle('hidden')"
+                    class="w-full flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-2xl transition-all hover:opacity-90"
+                    style="background:#F3EFFC; color:#6C3FC5; border: 2px solid #6C3FC5">
+              <i class="fas fa-handshake"></i>
+              ${t.lang==='it' ? 'Partecipa con la tua azienda →' : 'Participate with your company →'}
+            </button>
+            <div id="form-azienda-marathon" class="hidden mt-4 rounded-2xl p-6" style="background:#F9F7FF; border: 1px solid #ddd6fe">
+              <p class="text-gray-600 text-sm mb-4">
+                ${t.lang==='it'
+                  ? 'La tua azienda può fare la differenza. Lascia i contatti del referente: vi ricontatteremo per individuare insieme la modalità di partecipazione più adatta.'
+                  : 'Your company can make a difference. Leave the contact details and we will get back to you to find the most suitable way to participate.'}
+              </p>
+              <form id="form-marathon-azienda" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Nome dell\'azienda *':'Company name *'}</label>
+                    <input type="text" name="azienda" required placeholder="${t.lang==='it'?'Es. Rossi S.r.l.':'E.g. Smith Ltd.'}" class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Nome e cognome referente *':'Contact name *'}</label>
+                    <input type="text" name="referente" required placeholder="${t.lang==='it'?'Mario Rossi':'John Smith'}" class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Email aziendale *':'Business email *'}</label>
+                    <input type="email" name="email" required placeholder="nome@azienda.it" class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Telefono (facoltativo)':'Phone (optional)'}</label>
+                    <input type="tel" name="telefono" placeholder="+39 02 ..." class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Come vorreste contribuire? *':'How would you like to contribute? *'}</label>
+                  <select name="modalita" required class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400">
+                    <option value="">${t.lang==='it'?'Seleziona...':'Select...'}</option>
+                    <option value="donazione">${t.lang==='it'?'Donazione':'Donation'}</option>
+                    <option value="staffetta">${t.lang==='it'?'Staffetta aziendale':'Company relay team'}</option>
+                    <option value="raccolta_fondi">${t.lang==='it'?'Raccolta fondi':'Fundraising campaign'}</option>
+                    <option value="informazioni">${t.lang==='it'?'Vorremmo maggiori informazioni':'We would like more information'}</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold mb-1" style="color:#082050">${t.lang==='it'?'Messaggio (facoltativo)':'Message (optional)'}</label>
+                  <textarea name="messaggio" rows="3" placeholder="${t.lang==='it'?'Aggiungi dettagli...':'Add details...'}" class="w-full border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-purple-400 resize-none"></textarea>
+                </div>
+                <div class="flex items-start gap-2">
+                  <input type="checkbox" name="privacy" id="privacy-marathon" required class="mt-1">
+                  <label for="privacy-marathon" class="text-xs text-gray-500">
+                    ${t.lang==='it'
+                      ? 'Ho letto e accetto l\'<a href="/it/privacy" class="underline text-purple-600">informativa privacy</a>. I dati saranno trattati esclusivamente per rispondere a questa richiesta.'
+                      : 'I have read and accept the <a href="/en/privacy" class="underline text-purple-600">privacy policy</a>.'}
+                  </label>
+                </div>
+                <div id="form-marathon-msg" class="hidden rounded-xl p-3 text-sm font-semibold text-center"></div>
+                <button type="submit" class="w-full font-bold py-3 px-6 rounded-xl text-white transition-all hover:opacity-90" style="background:#6C3FC5">
+                  <i class="fas fa-paper-plane mr-2"></i>${t.lang==='it'?'Invia la richiesta':'Send request'}
+                </button>
+              </form>
+              <script>
+              document.getElementById('form-marathon-azienda').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const fd = new FormData(this);
+                const body = {
+                  azienda: fd.get('azienda'), referente: fd.get('referente'),
+                  email: fd.get('email'), telefono: fd.get('telefono')||'',
+                  modalita: fd.get('modalita'), messaggio: fd.get('messaggio')||''
+                };
+                const msgEl = document.getElementById('form-marathon-msg');
+                try {
+                  const r = await fetch('/api/marathon-azienda', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify(body)
+                  });
+                  if (r.ok) {
+                    msgEl.className = 'rounded-xl p-3 text-sm font-semibold text-center bg-green-50 text-green-700';
+                    msgEl.textContent = '${t.lang==='it'?'✅ Richiesta inviata! Vi contatteremo presto.':'✅ Request sent! We will contact you soon.'}';
+                    this.reset();
+                  } else {
+                    throw new Error();
+                  }
+                } catch {
+                  msgEl.className = 'rounded-xl p-3 text-sm font-semibold text-center bg-red-50 text-red-700';
+                  msgEl.textContent = '${t.lang==='it'?'❌ Errore. Scrivici a info@sindromerenu.it':'❌ Error. Write to info@sindromerenu.it'}';
+                }
+                msgEl.classList.remove('hidden');
+              });
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- ══════════════════════════════════════════════════════════════ -->
+
       <!-- Prossimi eventi – caricati dal DB -->
       <h2 class="text-2xl font-extrabold mb-4 flex items-center gap-2" style="color:#082050">
         <i class="fas fa-star" style="color:#F59E0B"></i>
@@ -8891,6 +9084,47 @@ app.post('/api/lista-attesa', async (c) => {
 })
 
 // ─── API: CONTATTI ────────────────────────────────────────────────────────────
+// ── Maratona Milano 2027: richiesta partnership aziendale ─────────────────────
+app.post('/api/marathon-azienda', async (c) => {
+  try {
+    const body = await c.req.json().catch(() => ({})) as Record<string, unknown>
+    const errors: Record<string, string> = {}
+
+    if (!san(body.azienda) || san(body.azienda).length < 2) errors.azienda = 'Nome azienda obbligatorio.'
+    if (!san(body.referente) || san(body.referente).length < 2) errors.referente = 'Nome referente obbligatorio.'
+    if (!validEmail(san(body.email))) errors.email = 'Email valida obbligatoria.'
+    if (!san(body.modalita)) errors.modalita = 'Modalità di partecipazione obbligatoria.'
+
+    if (Object.keys(errors).length > 0) {
+      return c.json({ success: false, errors }, 400)
+    }
+
+    const db = c.env?.DB
+    if (db) {
+      await db.prepare(`
+        INSERT INTO contatti (nome, email, oggetto, messaggio, consenso_gdpr, created_at)
+        VALUES (?, ?, ?, ?, 1, CURRENT_TIMESTAMP)
+      `).bind(
+        san(body.referente) + ' (' + san(body.azienda) + ')',
+        san(body.email),
+        '[MARATONA 2027] ' + san(body.modalita),
+        [
+          'Azienda: ' + san(body.azienda),
+          'Referente: ' + san(body.referente),
+          'Email: ' + san(body.email),
+          body.telefono ? 'Tel: ' + san(body.telefono as string) : '',
+          'Modalità: ' + san(body.modalita),
+          body.messaggio ? 'Messaggio: ' + san(body.messaggio as string, 500) : ''
+        ].filter(Boolean).join('\n')
+      ).run()
+    }
+
+    return c.json({ success: true })
+  } catch (err) {
+    return c.json({ success: false, error: 'Errore interno' }, 500)
+  }
+})
+
 app.post('/api/contatti', async (c) => {
   try {
     const body = await c.req.json().catch(() => ({})) as Record<string, unknown>
