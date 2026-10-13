@@ -8309,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-stats-update-v48'
+  const _v = '20261013-video-player-fix-v49'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8665,16 +8665,16 @@ function testimonialsPage(t: Record<string, string>): string {
 
             <!-- Player video (nascosto, appare al click) -->
             <div id="player-${item.id}"
-                 class="flex-shrink-0 w-full sm:w-44 hidden">
-              <div class="rounded-xl overflow-hidden shadow" style="aspect-ratio:400/522; background:#000">
+                 class="flex-shrink-0 w-full sm:w-44"
+                 style="display:none">
+              <div class="rounded-xl overflow-hidden shadow" style="background:#000">
                 <video
                   id="video-${item.id}"
                   controls
-                  autoplay
                   playsinline
-                  preload="none"
+                  preload="metadata"
                   poster="/videos/testimonianza-mamma-maya-thumb.jpg"
-                  style="width:100%;height:100%;object-fit:cover;display:block"
+                  style="width:100%;height:auto;display:block;max-height:320px;object-fit:contain"
                   aria-label="${item.name} – ${isIt ? 'testimonianza video' : 'video testimonial'}">
                   <source src="${item.videoSrc}" type="video/mp4">
                 </video>
@@ -8748,10 +8748,16 @@ function testimonialsPage(t: Record<string, string>): string {
     var btn    = document.getElementById('playbtn-' + id);
     if (!thumb || !player) return;
     thumb.style.display  = 'none';
-    player.classList.remove('hidden');
+    player.style.display = 'block';
     if (btn) btn.style.display = 'none';
     var vid = document.getElementById('video-' + id);
-    if (vid) vid.play().catch(function(){});
+    if (vid) {
+      // Piccolo timeout per dare al browser il tempo di renderizzare
+      // le dimensioni del video prima di avviare la riproduzione
+      setTimeout(function() {
+        vid.play().catch(function(){});
+      }, 100);
+    }
   }
   </script>`
 }
