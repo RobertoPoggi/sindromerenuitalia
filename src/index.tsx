@@ -5993,6 +5993,68 @@ function brochurePage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- ═══ SEZIONE: RASSEGNA STAMPA ═══ -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#DC2626,#EF4444)">
+            <i class="fas fa-newspaper"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold" style="color:#082050">
+              ${isIt?'Rassegna Stampa':t.lang==='en'?'Press Coverage':t.lang==='fr'?'Revue de presse':t.lang==='es'?'Prensa':'Pressespiegel'}
+            </h2>
+            <p class="text-gray-500 text-sm">
+              ${isIt?'Articoli e reportage sulla disabilità, la vita adulta e le famiglie ReNU':t.lang==='en'?'Articles and reports on disability, adult life and ReNU families':'Articles et reportages sur le handicap, la vie adulte et les familles ReNU'}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-5">
+
+          <!-- Articolo: Il Post — Ninotti / anche i disabili diventano adulti -->
+          <a href="https://www.ilpost.it/2026/10/10/ninotti-anche-i-disabili-diventano-adulti/"
+             target="_blank" rel="noopener"
+             class="group flex flex-col sm:flex-row gap-0 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+             style="border:1.5px solid #E5E7EB;background:#fff">
+            <!-- Logo / testata -->
+            <div class="flex-shrink-0 flex items-center justify-center sm:w-36 py-6 px-4"
+                 style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
+              <span class="text-white font-extrabold text-xl tracking-tight leading-none text-center"
+                    style="font-family:Georgia,serif;letter-spacing:-0.02em">il<br>Post</span>
+            </div>
+            <!-- Testo -->
+            <div class="flex-1 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold"
+                        style="background:#FEE2E2;color:#991B1B">
+                    <i class="fas fa-newspaper text-xs"></i>
+                    ${isIt?'Giornalismo':'Press'}
+                  </span>
+                  <span class="text-xs text-gray-400">Il Post &middot; 10 ottobre 2026</span>
+                </div>
+                <h3 class="font-extrabold text-base leading-snug mb-2 group-hover:underline"
+                    style="color:#082050">
+                  ${isIt
+                    ? 'Anche i disabili diventano adulti'
+                    : 'People with disabilities grow up too'}
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                  ${isIt
+                    ? 'Una neuropsichiatra racconta la condizione invisibile delle persone con disabilit\u00e0 intellettiva in et\u00e0 adulta: i servizi che scompaiono a 18 anni, le famiglie lasciate sole e la necessit\u00e0 di immaginare un futuro diverso.'
+                    : 'A neuropsychiatrist describes the invisible condition of adults with intellectual disabilities: services that disappear at 18, families left alone, and the need to imagine a different future.'}
+                </p>
+              </div>
+              <div class="mt-4 flex items-center gap-2 text-sm font-semibold" style="color:#1078C0">
+                <span>${isIt?'Leggi l\u2019articolo':'Read the article'}</span>
+                <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform duration-200"></i>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
       <!-- Download all -->
       <div id="brochure-download-all" class="rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, #082050 0%, #1078C0 100%); display:none">
         <i class="fas fa-file-archive text-5xl text-sky-300 mb-4 block"></i>
@@ -8247,7 +8309,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-community-world-v45'
+  const _v = '20261013-media-press-v46'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
