@@ -4669,6 +4669,102 @@ function communityPage(t: Record<string, string>): string {
         </div>
       </div>
 
+      <!-- ── Associazioni ReNU nel Mondo ───────────────────────────────────── -->
+      <div class="mt-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="ic ic-sky w-11 h-11 flex-shrink-0">
+            <i class="fas fa-globe-europe text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold leading-tight" style="color:#082050">
+              ${t.lang==='it'?'ReNU nel mondo':'ReNU Worldwide'}
+            </h2>
+            <p class="text-sm" style="color:#1078C0">
+              ${t.lang==='it'?'Associazioni, organizzazioni e gruppi attivi in ogni paese':'Associations, organisations and active groups in each country'}
+            </p>
+          </div>
+        </div>
+
+        <!-- Immagine infografica associazioni -->
+        <div class="rounded-3xl overflow-hidden shadow-xl" style="border:2px solid #C8E8F8">
+          <img src="/images/renu-nel-mondo-associazioni.jpg"
+               alt="${t.lang==='it'?'ReNU nel mondo – associazioni internazionali':'ReNU worldwide – international associations'}"
+               class="w-full h-auto block"
+               loading="lazy" decoding="async">
+        </div>
+
+        <!-- Link alle associazioni principali -->
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="https://www.renusyndrome.org" target="_blank" rel="noopener"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇺🇸</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">ReNU Syndrome United</div>
+              <div class="text-xs" style="color:#1078C0">renusyndrome.org</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+          <a href="https://www.syndrome-renu.fr" target="_blank" rel="noopener"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇫🇷</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">Association Française du Syndrome ReNU</div>
+              <div class="text-xs" style="color:#1078C0">syndrome-renu.fr</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+          <a href="https://www.sindromerenu.es" target="_blank" rel="noopener"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇪🇸</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">Asociación Síndrome de ReNU</div>
+              <div class="text-xs" style="color:#1078C0">sindromerenu.es</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+          <a href="https://www.renu-syndrom.de" target="_blank" rel="noopener"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇩🇪</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">ReNU-Syndrom United Deutschland e.V.</div>
+              <div class="text-xs" style="color:#1078C0">renu-syndrom.de</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+          <a href="https://www.rnuuk.org" target="_blank" rel="noopener"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇬🇧</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">ReNU Syndrome UK</div>
+              <div class="text-xs" style="color:#1078C0">rnuuk.org</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+          <a href="mailto:renusyndromeaustralia@gmail.com"
+             class="flex items-center gap-3 p-4 rounded-2xl transition-shadow hover:shadow-md"
+             style="background:#EEF6FB; border:1px solid #C8E8F8">
+            <span class="text-2xl">🇦🇺</span>
+            <div>
+              <div class="font-bold text-sm" style="color:#082050">ReNU Syndrome United Australia</div>
+              <div class="text-xs" style="color:#1078C0">renusyndromeaustralia@gmail.com</div>
+            </div>
+            <i class="fas fa-external-link-alt text-xs ml-auto" style="color:#1078C0"></i>
+          </a>
+        </div>
+
+        <p class="text-xs text-gray-400 mt-4 text-center">
+          <i class="fas fa-info-circle mr-1"></i>
+          ${t.lang==='it'
+            ? '12 realtà riscontrate · Elenco non esaustivo · Verifica: ottobre 2026. Fonti: ReNU Syndrome United e siti delle realtà elencate.'
+            : '12 organisations found · Non-exhaustive list · Updated: October 2026. Sources: ReNU Syndrome United and listed organisations.'}
+        </p>
+      </div>
+
     </div>
   </section>`
 }
@@ -8151,7 +8247,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-rete-tempo-v44'
+  const _v = '20261013-community-world-v45'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
