@@ -4127,19 +4127,74 @@ function diagnosisPage(t: Record<string, string>): string {
         </p>
       </div>
 
-      <!-- Sezione in aggiornamento -->
-      <div class="card p-8 mb-8 flex flex-col md:flex-row gap-6 items-center" style="background:linear-gradient(135deg,#EEF6FB,#C8E8F8)">
-        <div class="flex-shrink-0 text-6xl">🔬</div>
-        <div>
-          <h2 class="text-2xl font-extrabold mb-2" style="color:#082050">
-            ${isIt?'Sezione in aggiornamento':'Section being updated'}
-          </h2>
-          <p class="text-gray-700 leading-relaxed mb-4">
-            ${isIt?'Stiamo raccogliendo le informazioni più aggiornate sui centri italiani che eseguono il Sequenziamento dell\'Intero Genoma (WGS) per la diagnosi della Sindrome ReNU. Questa sezione sarà aggiornata non appena il Comitato Scientifico avrà completato la validazione dei percorsi diagnostici raccomandati.':'We are gathering the most up-to-date information on Italian centres that perform Whole Genome Sequencing (WGS) for the diagnosis of ReNU Syndrome. This section will be updated once the Scientific Committee has completed validation of the recommended diagnostic pathways.'}
-          </p>
-          <p class="text-gray-700 text-sm">
-            ${isIt?'Nel frattempo, per ricevere informazioni sui centri diagnostici disponibili in Italia, puoi contattarci direttamente:':'In the meantime, to receive information on available diagnostic centres in Italy, you can contact us directly:'}
-          </p>
+      <!-- Percorso diagnostico 5 passi -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-2" style="color:#082050">
+          <i class="fas fa-route" style="color:#1078C0"></i>
+          ${isIt ? 'Come si fa la diagnosi' : isEn ? 'How is the diagnosis made' : t.lang==='fr' ? 'Comment établir le diagnostic' : t.lang==='es' ? 'Cómo se realiza el diagnóstico' : 'Wie wird die Diagnose gestellt'}
+        </h2>
+        <p class="text-gray-500 text-sm mb-6">${isIt ? 'Percorso diagnostico · passi essenziali' : 'Diagnostic pathway · essential steps'}</p>
+
+        <div class="space-y-4">
+
+          <!-- Passo 1 -->
+          <div class="flex gap-4 items-start rounded-2xl p-5" style="background:#EEF6FB">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-white text-lg" style="background:#1078C0">1</div>
+            <div>
+              <h3 class="font-bold text-lg mb-1" style="color:#082050">${isIt ? 'Sospetto clinico' : isEn ? 'Clinical suspicion' : t.lang==='fr' ? 'Suspicion clinique' : t.lang==='es' ? 'Sospecha clínica' : 'Klinischer Verdacht'}</h3>
+              <p class="text-gray-700 leading-relaxed">${isIt ? 'Pediatra o neuropsichiatra infantile nota i tratti — ritardo dello sviluppo, linguaggio assente o gravemente limitato, ipotonia, dismorfismi minori — e indirizza a genetista medico.' : 'Paediatrician or child neuropsychiatrist notes the features — developmental delay, absent or severely limited language, hypotonia, minor dysmorphisms — and refers to a medical geneticist.'}</p>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="flex gap-4 items-start rounded-2xl p-5" style="background:#EEF6FB">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-white text-lg" style="background:#1078C0">2</div>
+            <div>
+              <h3 class="font-bold text-lg mb-1" style="color:#082050">${isIt ? 'Test genetico' : isEn ? 'Genetic test' : t.lang==='fr' ? 'Test génétique' : t.lang==='es' ? 'Test genético' : 'Genetischer Test'}</h3>
+              <p class="text-gray-700 leading-relaxed">${isIt ? 'WGS (sequenziamento intero genoma) — oppure pannello dedicato che include RNU4-2 — oppure Sanger mirato sul gene RNU4-2.' : 'WGS (whole genome sequencing) — or a dedicated panel including RNU4-2 — or targeted Sanger sequencing of the RNU4-2 gene.'}</p>
+            </div>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="flex gap-4 items-start rounded-2xl p-5" style="background:#EEF6FB">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-white text-lg" style="background:#1078C0">3</div>
+            <div>
+              <h3 class="font-bold text-lg mb-1" style="color:#082050">${isIt ? 'Lettura e referto' : isEn ? 'Reading and report' : t.lang==='fr' ? 'Lecture et rapport' : t.lang==='es' ? 'Lectura e informe' : 'Auswertung und Befund'}</h3>
+              <p class="text-gray-700 leading-relaxed">${isIt ? 'RNU4-2 è un gene non codificante, spesso non coperto dai workflow standard. È fondamentale che il laboratorio analizzi esplicitamente questa regione.' : 'RNU4-2 is a non-coding gene, often not covered by standard workflows. It is essential that the laboratory explicitly analyses this region.'}</p>
+            </div>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="flex gap-4 items-start rounded-2xl p-5" style="background:#EEF6FB">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-white text-lg" style="background:#1078C0">4</div>
+            <div>
+              <h3 class="font-bold text-lg mb-1" style="color:#082050">${isIt ? 'Variante riscontrata' : isEn ? 'Variant identified' : t.lang==='fr' ? 'Variant identifié' : t.lang==='es' ? 'Variante encontrada' : 'Variante gefunden'}</h3>
+              <p class="text-gray-700 leading-relaxed">${isIt ? 'Identificata variante patogenetica. La più comune è la n.64_65insT, responsabile di circa il ~77% dei casi.' : 'Pathogenic variant identified. The most common is n.64_65insT, responsible for approximately ~77% of cases.'}</p>
+            </div>
+          </div>
+
+          <!-- Passo 5 -->
+          <div class="flex gap-4 items-start rounded-2xl p-5" style="background:#EEF6FB">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-extrabold text-white text-lg" style="background:#1078C0">5</div>
+            <div>
+              <h3 class="font-bold text-lg mb-1" style="color:#082050">${isIt ? 'Presa in carico' : isEn ? 'Care pathway' : t.lang==='fr' ? 'Prise en charge' : t.lang==='es' ? 'Atención y seguimiento' : 'Betreuung'}</h3>
+              <p class="text-gray-700 leading-relaxed">${isIt ? "Indirizzo al Comitato Scientifico dell'APS, al Punto di ascolto on line e alla rete internazionale ReNU." : "Referral to the APS Scientific Committee, the online listening point and the international ReNU network."}</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Box statistico + contatto -->
+        <div class="mt-6 rounded-2xl p-5 flex flex-col sm:flex-row gap-6 items-center" style="background:linear-gradient(135deg,#082050,#1078C0)">
+          <div class="text-center text-white flex-shrink-0">
+            <div class="text-5xl font-extrabold">~${t.casi_italia||'18'}</div>
+            <div class="text-sm mt-1 opacity-80">${isIt ? 'casi identificati in Italia' : 'identified cases in Italy'}</div>
+            <div class="text-xs mt-1 opacity-60">${isIt ? 'quasi tutti nel Nord Italia · molti ancora senza diagnosi' : 'mostly in Northern Italy · many still undiagnosed'}</div>
+          </div>
+          <div class="text-white text-sm leading-relaxed border-l border-white border-opacity-30 pl-6">
+            <p class="mb-2">${isIt ? 'Se hai difficoltà, scrivici a:' : 'If you need help, write to us at:'} <a href="mailto:info@sindromerenu.it" class="font-bold underline hover:opacity-80">info@sindromerenu.it</a></p>
+            <p class="opacity-60 text-xs">${isIt ? 'Fonte: renusyndrome.org · Conferenza Nazionale Sindrome ReNU Italia APS · Nature 2024 (Greene et al.)' : 'Source: renusyndrome.org · National Conference Sindrome ReNU Italia APS · Nature 2024 (Greene et al.)'}</p>
+          </div>
         </div>
       </div>
 
