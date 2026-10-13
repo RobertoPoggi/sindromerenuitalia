@@ -6540,31 +6540,64 @@ function projectsPage(t: Record<string, string>): string {
         </div>
 
         <!-- RETE DEL TEMPO -->
-        <div class="card p-0 overflow-hidden">
-          <!-- Header card -->
-          <div class="px-7 py-5 flex flex-col md:flex-row gap-5 items-start">
-            <div class="flex-shrink-0">
-              <div class="ic ic-green w-16 h-16">
-                <i class="fas fa-hands-helping text-2xl"></i>
-              </div>
+        <div class="card p-0 overflow-hidden" style="border:2px solid #dcd5ee">
+
+          <!-- Immagine hero -->
+          <div class="relative w-full overflow-hidden" style="max-height:340px">
+            <img src="/images/rete-del-tempo-volontari.jpg"
+                 alt="${isIt?'Rete del Tempo – Volontari ReNU Italia':'Time Network – ReNU Italy Volunteers'}"
+                 class="w-full object-cover object-top"
+                 style="max-height:340px"
+                 loading="lazy" decoding="async">
+            <!-- Badge sovrapposto in basso a sinistra -->
+            <div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow"
+                    style="background:#D1FAE5;color:#065F46">
+                <i class="fas fa-circle text-xs"></i>${isIt?'In sviluppo':'In development'}
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shadow"
+                    style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0">
+                <i class="fas fa-tag text-xs"></i>${isIt?'progetto sollievo':'relief project'}
+              </span>
             </div>
-            <div class="flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h3 class="font-extrabold text-xl" style="color:#082050">
+          </div>
+
+          <!-- Header card -->
+          <div class="px-7 py-6">
+            <div class="flex flex-wrap items-start gap-4 mb-4">
+              <div class="ic ic-green w-14 h-14 flex-shrink-0">
+                <i class="fas fa-hands-helping text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-extrabold text-2xl mb-1" style="color:#082050">
                   ${isIt?'Rete del Tempo – ReNU':'Time Network – ReNU'}
                 </h3>
-                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#D1FAE5;color:#059669">
-                  <i class="fas fa-circle text-xs"></i>${isIt?'In sviluppo':'In development'}
-                </span>
-                <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full" style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0">
-                  <i class="fas fa-tag text-xs"></i>${isIt?'progetto sollievo':'relief project'}
-                </span>
+                <p class="text-gray-600 leading-relaxed">
+                  ${isIt
+                    ? 'Con Rete del Tempo – ReNU vogliamo offrire ai ragazzi occasioni di socialità e alle loro famiglie un aiuto concreto. Il progetto si sviluppa in tre ambiti, grazie alla collaborazione con realtà già presenti sul territorio.'
+                    : 'With Rete del Tempo – ReNU we aim to offer young people opportunities for socialisation and concrete support to their families. The project develops across three areas, thanks to collaboration with organisations already active in local communities.'}
+                </p>
               </div>
-              <p class="text-gray-600 leading-relaxed mb-3">
-                ${isIt
-                  ? 'Con Rete del Tempo – ReNU vogliamo offrire ai ragazzi occasioni di socialità e alle loro famiglie un aiuto concreto. Il progetto si sviluppa in tre ambiti, grazie alla collaborazione con realtà già presenti sul territorio.'
-                  : 'With Rete del Tempo – ReNU we aim to offer young people opportunities for socialisation and concrete support to their families. The project develops across three areas, thanks to collaboration with organisations already active in local communities.'}
-              </p>
+            </div>
+
+            <!-- Box chiamata all'azione in evidenza -->
+            <div class="rounded-2xl px-5 py-4 mb-2 flex flex-col sm:flex-row items-center gap-4"
+                 style="background:linear-gradient(135deg,#6C3FC5,#082050)">
+              <div class="flex-1">
+                <p class="font-extrabold text-white text-lg leading-snug mb-1">
+                  ${isIt?'Il tuo tempo può fare la differenza.':'Your time can make a difference.'}
+                </p>
+                <p class="text-sm" style="color:#DDD6FE">
+                  ${isIt
+                    ? 'Cerchiamo associazioni e cooperative per costruire insieme una rete di sostegno gratuito alle famiglie ReNU.'
+                    : 'We are looking for associations and cooperatives to build a free support network for ReNU families.'}
+                </p>
+              </div>
+              <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
+                 class="flex-shrink-0 inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm whitespace-nowrap"
+                 style="background:#fff;color:#6C3FC5">
+                <i class="fas fa-envelope"></i>${isIt?'Partecipa ora':'Join now'}
+              </a>
             </div>
           </div>
 
@@ -6669,7 +6702,7 @@ function projectsPage(t: Record<string, string>): string {
           <div class="px-7 pb-6 flex flex-wrap gap-3">
             <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt?'Partecipo alla Rete del Tempo':'Join the Time Network')}"
                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#EEF6FB;color:#082050;border:1px solid #45B8EC">
-              <i class="fas fa-envelope"></i>${isIt?'Partecipa alla rete':'Join the network'}
+              <i class="fas fa-envelope"></i>${isIt?'Scrivici':'Contact us'}
             </a>
             <a href="/rete-del-tempo-renu.pdf" target="_blank" download
                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style="background:#F0FDF4;color:#166534;border:1px solid #86EFAC">
@@ -8118,7 +8151,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-nav-order-v43'
+  const _v = '20261013-rete-tempo-v44'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
