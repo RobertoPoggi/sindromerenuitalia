@@ -1042,6 +1042,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_therapies', page: 'therapies', icon: 'fa-heartbeat', disabled: false },
     { key: 'nav_diagnosis', page: 'diagnosis', icon: 'fa-stethoscope', disabled: false },
     { key: 'nav_community', page: 'community', icon: 'fa-users', disabled: false },
+    { key: 'nav_testimonials', page: 'testimonials', icon: 'fa-video', disabled: false },
     { key: 'nav_donations', page: 'donations', icon: 'fa-heart', disabled: false },
     { key: 'nav_events', page: 'events', icon: 'fa-calendar-alt', disabled: false },
     { key: 'nav_projects', page: 'projects', icon: 'fa-rocket', disabled: false },
@@ -1049,7 +1050,6 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_brochure', page: 'brochure', icon: 'fa-photo-video', disabled: false },
     { key: 'nav_members', page: 'members', icon: 'fa-id-card', disabled: false },
     { key: 'nav_faq', page: 'faq', icon: 'fa-question-circle', disabled: false },
-    { key: 'nav_testimonials', page: 'testimonials', icon: 'fa-video', disabled: false },
     { key: 'nav_glossary', page: 'glossary', icon: 'fa-book-medical', disabled: false },
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
@@ -8118,7 +8118,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-video-thumb-v42'
+  const _v = '20261013-nav-order-v43'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
