@@ -45,6 +45,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_therapies: 'Terapie', nav_diagnosis: 'Diagnosi', nav_community: 'Comunità',
     nav_donations: 'Sostienici', nav_contact: 'Contatti', nav_brochure: 'Media & Pubblicazioni',
     nav_events: 'Eventi', nav_projects: 'Progetti', nav_members: 'Diventa Socio', nav_faq: 'FAQ & Diritti',
+    nav_testimonials: 'Testimonianze',
     nav_science: 'Comitato Scientifico',
     nav_glossary: 'Glossario',
     btn_diagnosis: 'DONA ORA – SOSTIENI LE FAMIGLIE RENU',
@@ -236,6 +237,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_therapies: 'Therapies', nav_diagnosis: 'Diagnosis', nav_community: 'Community',
     nav_donations: 'Donations', nav_contact: 'Contact', nav_brochure: 'Media & Publications',
     nav_events: 'Events', nav_projects: 'Projects', nav_members: 'Become a Member', nav_faq: 'FAQ & Rights',
+    nav_testimonials: 'Testimonials',
     nav_science: 'Scientific Committee',
     nav_glossary: 'Glossary',
     btn_diagnosis: 'WANT MORE INFORMATION? CLICK HERE',
@@ -408,6 +410,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_therapies: 'Thérapies', nav_diagnosis: 'Diagnostic', nav_community: 'Communauté',
     nav_donations: 'Dons', nav_contact: 'Contact', nav_brochure: 'Brochures',
     nav_events: 'Événements', nav_projects: 'Projets', nav_members: 'Devenir Membre', nav_faq: 'FAQ & Droits',
+    nav_testimonials: 'Témoignages',
     btn_diagnosis: 'VOULEZ-VOUS PLUS D\'INFORMATIONS? CLIQUEZ ICI',
     btn_diagnosis_sub: 'Contactez-nous pour des informations sur le Syndrome ReNU',
     section_map_title: 'Inscrivez-vous ici',
@@ -600,6 +603,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_therapies: 'Terapias', nav_diagnosis: 'Diagnóstico', nav_community: 'Comunidad',
     nav_donations: 'Donaciones', nav_contact: 'Contacto', nav_brochure: 'Folletos',
     nav_events: 'Eventos', nav_projects: 'Proyectos', nav_members: 'Hazte Socio', nav_faq: 'FAQ & Derechos',
+    nav_testimonials: 'Testimonios',
     btn_diagnosis: '¿QUIERES MÁS INFORMACIÓN? HAZ CLIC AQUÍ',
     btn_diagnosis_sub: 'Contáctanos para información sobre el Síndrome ReNU',
     section_map_title: 'Regístrate aquí',
@@ -792,6 +796,7 @@ const translations: Record<string, Record<string, string>> = {
     nav_therapies: 'Therapien', nav_diagnosis: 'Diagnose', nav_community: 'Gemeinschaft',
     nav_donations: 'Spenden', nav_contact: 'Kontakt', nav_brochure: 'Broschüren',
     nav_events: 'Veranstaltungen', nav_projects: 'Projekte', nav_members: 'Mitglied werden', nav_faq: 'FAQ & Rechte',
+    nav_testimonials: 'Erfahrungsberichte',
     btn_diagnosis: 'MÖCHTEN SIE MEHR INFORMATIONEN? KLICKEN SIE HIER',
     btn_diagnosis_sub: 'Kontaktieren Sie uns für Informationen zum ReNU-Syndrom',
     section_map_title: 'Hier registrieren',
@@ -1044,6 +1049,7 @@ function getHtml(t: Record<string, string>, page: string = 'home', content: stri
     { key: 'nav_brochure', page: 'brochure', icon: 'fa-photo-video', disabled: false },
     { key: 'nav_members', page: 'members', icon: 'fa-id-card', disabled: false },
     { key: 'nav_faq', page: 'faq', icon: 'fa-question-circle', disabled: false },
+    { key: 'nav_testimonials', page: 'testimonials', icon: 'fa-video', disabled: false },
     { key: 'nav_glossary', page: 'glossary', icon: 'fa-book-medical', disabled: false },
     { key: 'nav_contact', page: 'contact', icon: 'fa-envelope', disabled: false },
   ]
@@ -8112,7 +8118,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-admin-v37'
+  const _v = '20261013-testimonials-v38'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8370,6 +8376,148 @@ function sciencePage(t: Record<string, string>): string {
 }
 
 // ─── GLOSSARY PAGE ────────────────────────────────────────────────────────────
+// ─── TESTIMONIANZE ────────────────────────────────────────────────────────────
+function testimonialsPage(t: Record<string, string>): string {
+  const isIt = t.lang === 'it'
+
+  // Dati testimonianze: array espandibile nel tempo
+  const testimonials = [
+    {
+      id: 'maya-mamma-2024',
+      name:     isIt ? 'Mamma di Maya' : 'Maya\'s mother',
+      subtitle: isIt ? 'Testimonianza diretta — famiglia italiana' : 'Direct testimony — Italian family',
+      date:     isIt ? 'Ottobre 2024' : 'October 2024',
+      videoSrc: '/videos/testimonianza-mamma-maya.mp4',
+      poster:   '',
+      duration: '4 min',
+      tags:     isIt ? ['Famiglia','Diagnosi','Quotidianità'] : ['Family','Diagnosis','Daily life'],
+      intro:    isIt
+        ? 'Un racconto autentico e toccante: la mamma di Maya condivide il percorso diagnostico, le emozioni del primo annuncio e la forza che si trova nell\'essere insieme.'
+        : 'An authentic and touching account: Maya\'s mother shares the diagnostic journey, the emotions of the first announcement and the strength found in being together.',
+    },
+  ]
+
+  return `
+  <section class="py-16 px-4 section-light">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Header sezione -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
+             style="background:#EEF6FB; color:#1078C0; border:1px solid #C8E8F8">
+          <i class="fas fa-video"></i>
+          ${isIt ? 'Voci vere · Storie reali' : 'Real voices · Real stories'}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-3 leading-tight" style="color:#082050">
+          ${isIt ? 'Dare voce a ReNU' : 'Giving Voice to ReNU'}
+        </h1>
+        <p class="text-xl font-medium" style="color:#1078C0">
+          ${isIt ? '"La condivisione è un abbraccio"' : '"Sharing is an embrace"'}
+        </p>
+        <p class="text-gray-500 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+          ${isIt
+            ? 'Le famiglie con Sindrome ReNU si raccontano. Ogni storia è unica, ogni voce conta. Qui trovi testimonianze video di genitori, fratelli e persone che vivono ogni giorno con ReNU.'
+            : 'Families living with ReNU Syndrome share their stories. Every story is unique, every voice matters. Here you will find video testimonials from parents, siblings and people living daily with ReNU.'}
+        </p>
+      </div>
+
+      <!-- Griglia testimonianze -->
+      <div class="space-y-10">
+        ${testimonials.map((item, idx) => `
+        <article class="rounded-3xl overflow-hidden shadow-lg" style="border: 2px solid #C8E8F8; background:#fff">
+
+          <!-- Header card -->
+          <div class="px-6 py-4 flex items-center gap-4" style="background:linear-gradient(135deg,#082050,#1078C0)">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.15)">
+              <i class="fas fa-heart text-white text-xl"></i>
+            </div>
+            <div class="flex-1">
+              <h2 class="font-extrabold text-white text-lg leading-tight">${item.name}</h2>
+              <p class="text-sm" style="color:#BAE6FD">${item.subtitle}</p>
+            </div>
+            <div class="flex-shrink-0 text-right">
+              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full"
+                    style="background:rgba(255,255,255,0.15); color:#fff">
+                <i class="fas fa-clock"></i> ${item.duration}
+              </span>
+              <div class="text-xs mt-1" style="color:#BAE6FD">${item.date}</div>
+            </div>
+          </div>
+
+          <!-- Body: video + testo -->
+          <div class="p-6 flex flex-col md:flex-row gap-6 items-start">
+
+            <!-- Player video -->
+            <div class="w-full md:w-64 flex-shrink-0">
+              <div class="rounded-2xl overflow-hidden shadow-md" style="background:#000; aspect-ratio:3/4">
+                <video
+                  id="video-${item.id}"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  ${item.poster ? 'poster="' + item.poster + '"' : ''}
+                  style="width:100%; height:100%; object-fit:contain; display:block"
+                  aria-label="${item.name} – ${isIt ? 'testimonianza video' : 'video testimonial'}">
+                  <source src="${item.videoSrc}" type="video/mp4">
+                  <p>${isIt ? 'Il tuo browser non supporta la riproduzione video.' : 'Your browser does not support video playback.'}</p>
+                </video>
+              </div>
+              <p class="text-center text-xs text-gray-400 mt-2">
+                <i class="fas fa-volume-up mr-1"></i>${isIt ? 'Attiva il volume' : 'Enable audio'}
+              </p>
+            </div>
+
+            <!-- Testo introduttivo + tag -->
+            <div class="flex-1">
+              <p class="text-gray-700 leading-relaxed mb-5 text-base">${item.intro}</p>
+              <div class="flex flex-wrap gap-2">
+                ${item.tags.map(tag => `
+                <span class="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full"
+                      style="background:#EEF6FB; color:#1078C0; border:1px solid #C8E8F8">
+                  <i class="fas fa-tag text-xs"></i>${tag}
+                </span>`).join('')}
+              </div>
+              <div class="mt-6 p-4 rounded-2xl" style="background:#F0FDF4; border:1px solid #BBF7D0">
+                <p class="text-sm font-semibold" style="color:#065F46">
+                  <i class="fas fa-hands-helping mr-2"></i>
+                  ${isIt
+                    ? 'Vuoi condividere anche tu la tua storia? Scrivici a <a href="mailto:info@sindromerenu.it" style="color:#059669; text-decoration:underline">info@sindromerenu.it</a>.'
+                    : 'Would you like to share your story too? Write to <a href="mailto:info@sindromerenu.it" style="color:#059669; text-decoration:underline">info@sindromerenu.it</a>.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tag numero -->
+          <div class="px-6 pb-4">
+            <span class="text-xs text-gray-400">#${String(idx+1).padStart(2,'0')}</span>
+          </div>
+        </article>`).join('')}
+      </div>
+
+      <!-- CTA condividi la tua storia -->
+      <div class="mt-14 rounded-3xl p-8 text-center" style="background:linear-gradient(135deg,#082050,#6C3FC5)">
+        <i class="fas fa-microphone-alt text-4xl text-white mb-4 block opacity-80"></i>
+        <h2 class="text-2xl font-extrabold text-white mb-2">
+          ${isIt ? 'La tua storia conta.' : 'Your story matters.'}
+        </h2>
+        <p class="text-sm mb-6" style="color:#DDD6FE">
+          ${isIt
+            ? 'Condividere la propria esperienza aiuta altre famiglie a sentirsi meno sole e rafforza la comunità ReNU.'
+            : 'Sharing your experience helps other families feel less alone and strengthens the ReNU community.'}
+        </p>
+        <a href="mailto:info@sindromerenu.it?subject=${encodeURIComponent(isIt ? 'Voglio condividere la mia testimonianza' : 'I want to share my testimony')}"
+           class="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl transition-colors"
+           style="background:#fff; color:#082050">
+          <i class="fas fa-envelope"></i>
+          ${isIt ? 'Scrivi a info@sindromerenu.it' : 'Write to info@sindromerenu.it'}
+        </a>
+      </div>
+
+    </div>
+  </section>`
+}
+
 function glossaryPage(t: Record<string, string>): string {
   const isIt = t.lang === 'it'
   const isEn = t.lang === 'en'
@@ -8631,6 +8779,8 @@ const pages: Record<string, (t: Record<string, string>) => string> = {
   'comitato-scientifico': sciencePage,
   glossary:        glossaryPage,
   glossario:       glossaryPage,
+  testimonials:    testimonialsPage,
+  testimonianze:   testimonialsPage,
 }
 
 // ─── HELPER: carica override testi_ui dal DB per una lingua ──────────────────
