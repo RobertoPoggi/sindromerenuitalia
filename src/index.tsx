@@ -8118,7 +8118,7 @@ function cookiePolicyPage(t: Record<string, string>): string {
 
 // ─── SCIENCE PAGE (COMITATO SCIENTIFICO) ──────────────────────────────────────
 function sciencePage(t: Record<string, string>): string {
-  const _v = '20261013-admin-fix-v39'
+  const _v = '20261013-testimonials-v40'
   const isIt = t.lang === 'it'
   const roles = [
     { icon: 'fa-check-double',  ic: 'ic-blue',   title: t.science_role1_title, desc: t.science_role1_desc },
@@ -8414,10 +8414,10 @@ function testimonialsPage(t: Record<string, string>): string {
         <p class="text-xl font-medium" style="color:#1078C0">
           ${isIt ? '"La condivisione è un abbraccio"' : '"Sharing is an embrace"'}
         </p>
-        <p class="text-gray-500 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+        <p class="text-gray-500 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
           ${isIt
-            ? 'Le famiglie con Sindrome ReNU si raccontano. Ogni storia è unica, ogni voce conta. Qui trovi testimonianze video di genitori, fratelli e persone che vivono ogni giorno con ReNU.'
-            : 'Families living with ReNU Syndrome share their stories. Every story is unique, every voice matters. Here you will find video testimonials from parents, siblings and people living daily with ReNU.'}
+            ? 'Uno spazio dedicato alle voci e alle storie delle famiglie ReNU.<br>Attraverso le videotestimonianze raccolte in questa sezione, condividiamo paure, speranze, piccoli traguardi e momenti di vita.<br>Raccontarsi è un modo per incontrarsi, sentirsi accolti e ricordare che nessuna famiglia è sola.'
+            : 'A space dedicated to the voices and stories of ReNU families.<br>Through the video testimonials collected here, we share fears, hopes, small milestones and moments of life.<br>Telling our story is a way to meet each other, feel welcomed and remember that no family is alone.'}
         </p>
       </div>
 
